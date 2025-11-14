@@ -15,6 +15,7 @@
 | 2 | Function - Đăng ký (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC register function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng ký] hoặc truy cập `/admin/auth/register` |
 | 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
 | 4 | Layout - Quản lý thông tin cá nhân (Admin) | Quản lý tài khoản Admin | GUI function for Admin personal information management | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] hoặc truy cập `/admin/account` |
+| 4.1 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
 | **ADMIN - QUẢN LÝ ĐƠN HÀNG** |
 | 5 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display order list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] hoặc truy cập `/admin/orders` |
 | 6 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
@@ -22,6 +23,7 @@
 | 8 | Function - Xóa đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC delete order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
 | 9 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
 | 10 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
+| 10.1 | Function - Tạo đơn hàng mới (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC create new order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Tạo đơn hàng mới] hoặc truy cập `/admin/orders/new` |
 | **ADMIN - QUẢN LÝ NGƯỜI DÙNG** |
 | 11 | Function - Tạo người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC create user function | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Tạo người dùng] hoặc truy cập `/admin/customers` |
 | 12 | Function - Hiển thị danh sách người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC display user list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
@@ -48,16 +50,22 @@
 | 30 | Function - Duyệt đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC approve review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Duyệt] |
 | 31 | Function - Từ chối đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reject review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Từ chối] |
 | 32 | Function - Xóa đánh giá sản phẩm (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC delete product review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xóa đánh giá] |
+| 32.1 | Function - Phản hồi đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reply to review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] 3. Click [Phản hồi] |
 | **ADMIN - HỖ TRỢ KHÁCH HÀNG** |
 | 33 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support request list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/admin/support` |
 | 34 | Function - Xem chi tiết yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC view support request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Xem] hoặc truy cập `/admin/support/[id]` |
 | 35 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
 | 36 | Function - Trả lời yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply to customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Trả lời] |
 | 37 | Function - Xóa yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC delete customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Xóa yêu cầu] |
+| 37.1 | Function - Export lịch sử chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC export chat history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Click [Export lịch sử] |
+| 37.2 | Function - Tìm kiếm trong chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC search in chat function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Sử dụng ô tìm kiếm trong chat |
+| 37.3 | Function - Quản lý SLA và phân công (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC SLA and assignment management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Cài đặt SLA] |
 | **ADMIN - XỬ LÝ PHẢN HỒI - KHIẾU NẠI** |
 | 38 | Function - Hiển thị danh sách phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC display complaints list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] hoặc truy cập `/admin/complaints` |
 | 39 | Function - Xem chi tiết phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC view complaint details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem] hoặc truy cập `/admin/complaints/[id]` |
 | 40 | Function - Trả lời phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC reply complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Trả lời] hoặc truy cập `/admin/complaints/[id]/reply` |
+| 40.1 | Function - Cập nhật trạng thái xử lý phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC update complaint status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
+| 40.2 | Function - Phân loại khiếu nại (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC classify complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Phân loại] |
 | **ADMIN - QUẢN LÝ ĐẶT TRƯỚC** |
 | 41 | Function - Hiển thị danh sách đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC display pre-orders list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] hoặc truy cập `/admin/pre-orders` |
 | 42 | Function - Xem chi tiết đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC view pre-order details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Xem] hoặc truy cập `/admin/pre-orders/[id]` |
@@ -67,10 +75,16 @@
 | **ADMIN - YÊU CẦU ĐẶT HÀNG** |
 | 46 | Function - Hiển thị danh sách yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC display special requests list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] hoặc truy cập `/admin/special-requests` |
 | 47 | Function - Xem chi tiết yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC view special request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem] hoặc truy cập `/admin/special-requests/[id]` |
+| 47.1 | Function - Xử lý yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC process special request function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Xử lý] |
+| 47.2 | Function - Cập nhật trạng thái yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC update special request status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
 | **ADMIN - QUẢN LÝ BÀI VIẾT** |
 | 48 | Function - Hiển thị danh sách bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC display posts list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] hoặc truy cập `/admin/posts` |
 | 49 | Function - Xem chi tiết bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC view post details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem] hoặc truy cập `/admin/posts/[id]` |
 | 50 | Function - Xóa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xóa] |
+| 50.1 | Function - Chỉnh sửa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC edit post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Chỉnh sửa] |
+| 50.2 | Function - Xóa bình luận (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete comment function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Xóa bình luận] |
+| 50.3 | Function - Khóa tài khoản đăng bài (Admin) | Quản lý bài viết Admin | Check GUI and FUNC ban user posting function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Khóa tài khoản] |
+| 50.4 | Function - Tìm kiếm và lọc bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC search and filter posts function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Sử dụng bộ lọc và tìm kiếm |
 | **ADMIN - BÁO CÁO VÀ THỐNG KÊ** |
 | 51 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem doanh thu] hoặc truy cập `/admin/reports/revenue` |
 | 52 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem chi phí] hoặc truy cập `/admin/reports` |
@@ -88,6 +102,8 @@
 | **ADMIN - BẢO MẬT** |
 | 63 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
 | 64 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
+| 64.1 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện và cảnh báo |
+| 64.2 | Function - Auto logout khi hết hạn (Admin) | Bảo mật Admin | Check GUI and FUNC auto logout on timeout function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] - Hệ thống tự động đăng xuất khi timeout |
 | **ADMIN - THÔNG BÁO** |
 | 65 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý thông báo] hoặc truy cập `/admin/notifications` |
 | **USER - QUẢN LÝ TÀI KHOẢN** |
@@ -96,6 +112,10 @@
 | 68 | Function - Đổi mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/user/account` |
 | 69 | Function - Cập nhật thông tin cá nhân (User) | Quản lý tài khoản User | Check GUI and FUNC update personal information function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Cập nhật thông tin] hoặc truy cập `/user/account` |
 | 70 | Layout - Quản lý thông tin cá nhân (User) | Quản lý tài khoản User | GUI function for User personal information management | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] hoặc truy cập `/user/account` |
+| 70.1 | Function - Khôi phục mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC forgot password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/user/auth/forgot-password` |
+| 70.2 | Function - Quản lý địa chỉ (User) | Quản lý tài khoản User | Check GUI and FUNC manage addresses function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Địa chỉ] hoặc truy cập `/user/account/addresses` |
+| 70.3 | Function - Quản lý thanh toán (User) | Quản lý tài khoản User | Check GUI and FUNC manage payments function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Thanh toán] hoặc truy cập `/user/account/payments` |
+| 70.4 | Function - Xem hạng thành viên (User) | Quản lý tài khoản User | Check GUI and FUNC view membership rank function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Hạng thành viên] hoặc truy cập `/user/account/rank` |
 | **USER - HIỂN THỊ SẢN PHẨM** |
 | 71 | Function - Hiển thị danh sách sản phẩm (User) | Hiển thị sản phẩm User | Check GUI and FUNC display products list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Mô hình] hoặc truy cập `/user/products` |
 | 72 | Function - Xem chi tiết sản phẩm (User) | Hiển thị sản phẩm User | Check GUI and FUNC view product details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Mô hình] 2. Click vào sản phẩm hoặc truy cập `/user/products/[id]` |
@@ -121,12 +141,19 @@
 | 87 | Function - Theo dõi đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC track order function (User) | Tại Menu Ứng dụng phía User: 1. Click [Theo dõi đơn hàng] hoặc truy cập `/user/orders/track/[id]` |
 | 88 | Function - Hủy đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC cancel order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Hủy đơn hàng] |
 | 89 | Function - Đánh giá đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC rate order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đánh giá] |
+| 89.1 | Function - Đặt lại đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC reorder function (User) | Tại Trang chi tiết đơn hàng hoặc danh sách đơn hàng: 1. Click [Đặt lại] |
+| 89.2 | Function - Yêu cầu đổi/trả hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC request return/exchange function (User) | Tại Trang chi tiết đơn hàng đã giao: 1. Click [Yêu cầu đổi/trả hàng] |
 | **USER - ĐÁNH GIÁ SẢN PHẨM** |
 | 90 | Function - Để lại đánh giá sản phẩm (User) | Đánh giá sản phẩm User | Check GUI and FUNC leave product review function (User) | Tại Menu ứng dụng phía User: 1. Click vào sản phẩm 2. Click [Gửi đánh giá] hoặc truy cập `/user/reviews` |
 | 91 | Function - Xem đánh giá sản phẩm (User) | Đánh giá sản phẩm User | Check GUI and FUNC view product reviews function (User) | Tại Trang chi tiết sản phẩm: 1. Scroll xuống phần đánh giá |
 | **USER - YÊU CẦU HỖ TRỢ** |
 | 92 | Function - Gửi yêu cầu hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC send support request function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Gửi yêu cầu] hoặc truy cập `/user/support` |
 | 93 | Function - Chat hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC chat support function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] |
+| 93.1 | Function - Quản lý yêu cầu hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC manage support requests function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Yêu cầu hỗ trợ] - Xem danh sách, lọc, tìm kiếm |
+| 93.2 | Function - Câu hỏi thường gặp (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC FAQ function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Câu hỏi thường gặp] |
+| 93.3 | Function - Thông tin liên hệ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC contact information function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Thông tin liên hệ] |
+| 93.4 | Function - Export lịch sử chat (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC export chat history function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] 3. Click [Export lịch sử] |
+| 93.5 | Function - Tìm kiếm trong chat (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC search in chat function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] 3. Sử dụng ô tìm kiếm trong chat |
 | **USER - KHUYẾN MÃI** |
 | 94 | Function - Xem danh sách khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC promotion management function | Tại Menu ứng dụng: 1. Click [Khuyến mãi] hoặc truy cập `/user/promotions` |
 | 95 | Function - Xem chi tiết khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC view promotion details function | Tại Menu ứng dụng: 1. Click [Khuyến mãi] 2. Click vào khuyến mãi hoặc truy cập `/user/promotions/[code]` |
@@ -139,6 +166,8 @@
 | 100 | Function - Đặt trước sản phẩm (User) | Đặt trước sản phẩm User | Check GUI and FUNC pre-order product function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đặt trước mô hình] hoặc truy cập `/user/borrow` |
 | 101 | Function - Xem danh sách đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC view pre-orders list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đặt trước mô hình] |
 | 102 | Function - Hủy đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC cancel pre-order function (User) | Tại Trang đặt trước: 1. Click [Hủy đặt trước] |
+| 102.1 | Function - Xem chi tiết đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC view pre-order details function (User) | Tại Trang danh sách đặt trước: 1. Click [Xem chi tiết] |
+| 102.2 | Function - Quản lý trạng thái đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC manage pre-order status function (User) | Tại Trang danh sách đặt trước: 1. Sử dụng tab trạng thái để lọc và theo dõi |
 | **USER - YÊU CẦU ĐẶT HÀNG** |
 | 103 | Function - Gửi yêu cầu đặt hàng (User) | Yêu cầu đặt hàng User | Check GUI and FUNC send special request function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] hoặc truy cập `/user/requests` |
 | 104 | Function - Xem chi tiết yêu cầu (User) | Yêu cầu đặt hàng User | Check GUI and FUNC view request details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] 2. Click [Xem] hoặc truy cập `/user/requests/[id]` |
@@ -160,6 +189,8 @@
 | **USER - BẢO MẬT** |
 | 115 | Function - Xem lịch sử đăng nhập (User) | Bảo mật User | Check GUI and FUNC login history function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/user/account/logins` |
 | 116 | Function - Quản lý phiên đăng nhập (User) | Bảo mật User | Check GUI and FUNC sessions management function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Phiên đăng nhập] hoặc truy cập `/user/account/sessions` |
+| 116.1 | Function - Phát hiện đăng nhập lạ (User) | Bảo mật User | Check GUI and FUNC detect suspicious login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện và cảnh báo |
+| 116.2 | Function - Auto logout khi hết hạn (User) | Bảo mật User | Check GUI and FUNC auto logout on timeout function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Phiên đăng nhập] - Hệ thống tự động đăng xuất khi timeout |
 | **USER - CÀI ĐẶT** |
 | 117 | Function - Cài đặt tài khoản (User) | Cài đặt User | Check GUI and FUNC account settings function (User) | Tại Menu Ứng dụng phía User: 1. Click [Cài đặt] hoặc truy cập `/user/settings` |
 
@@ -184,7 +215,6 @@
 
 ---
 
-**Tổng số chức năng:** 117 functions  
-**Admin:** 65 functions  
-**User:** 52 functions
-
+**Tổng số chức năng:** 147 functions  
+**Admin:** 79 functions  
+**User:** 68 functions
