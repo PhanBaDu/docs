@@ -1,267 +1,220 @@
-# Test Case Template - Quản lý đơn hàng (Admin)
+# BLACKBOX TEST CASE - TỔNG QUAN DỰ ÁN
 
-## Module Code
-**Model Management Store: Quản lý đơn hàng Admin**
-
-## Test Requirement
-1. Hiển thị danh sách đơn hàng
-2. Xem chi tiết đơn hàng
-3. Cập nhật đơn hàng
-4. Xóa đơn hàng
-5. Xác nhận đơn hàng
-6. In đơn hàng
-7. Tạo đơn hàng mới
+**Dự án:** Hệ Thống Quản Lý Model Shop  
+**Ngày tạo:** 2025  
+**Mục đích:** Tài liệu tổng quan về các chức năng và routes để thực hiện blackbox testing
 
 ---
 
-## Test Summary
+## BẢNG TỔNG HỢP TEST CASE
 
-### Người thực hiện Test: [Tên người test]
-
-| Status | Count |
-|--------|-------|
-| **Pass** | 99 |
-| **Fail** | 0 |
-| **Untested** | 22 |
-| **N/A** | 0 |
-| **Number of Test cases** | 121 |
-
----
-
-## Test Cases
-
-### Function: Hiển thị danh sách đơn hàng
-
-#### Check GUI: Hiển thị danh sách đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSDH-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý đơn hàng" | | Pass | 11/15/2015 | |
-| **GUI-DSDH-02** | Kiểm tra mô tả trang | 1. Truy cập /admin/orders<br>2. Kiểm tra mô tả | Hiển thị mô tả "Xử lý và theo dõi tất cả đơn hàng" | | Pass | 11/15/2015 | |
-| **GUI-DSDH-03** | Kiểm tra nút In báo cáo | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In báo cáo | Hiển thị nút "In báo cáo" với icon Printer | | Pass | 11/15/2015 | |
-| **GUI-DSDH-04** | Kiểm tra nút Bộ lọc nâng cao | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Bộ lọc nâng cao | Hiển thị nút "Bộ lọc nâng cao" với icon Filter | | Pass | 11/15/2015 | |
-| **GUI-DSDH-05** | Kiểm tra thẻ thống kê trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra các thẻ thống kê | Hiển thị 5 thẻ thống kê: Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy, mỗi thẻ có icon và số lượng tương ứng | | Pass | 11/15/2015 | |
-| **GUI-DSDH-06** | Kiểm tra ô tìm kiếm | 1. Truy cập /admin/orders<br>2. Kiểm tra ô tìm kiếm | Hiển thị ô tìm kiếm với icon Search bên trái, placeholder "Tìm kiếm đơn hàng, khách hàng..." | | Pass | 11/15/2015 | |
-| **GUI-DSDH-07** | Kiểm tra dropdown lọc trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra dropdown lọc trạng thái | Hiển thị dropdown Select với các tùy chọn: Tất cả, Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy, mỗi tùy chọn có số lượng trong ngoặc | | Pass | 11/15/2015 | |
-| **GUI-DSDH-08** | Kiểm tra dropdown lọc phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Kiểm tra dropdown lọc thanh toán | Hiển thị dropdown Select với các tùy chọn: Tất cả, COD, Banking, Credit Card, E-wallet | | Pass | 11/15/2015 | |
-| **GUI-DSDH-09** | Kiểm tra bộ lọc ngày tháng | 1. Truy cập /admin/orders<br>2. Kiểm tra bộ lọc ngày | Hiển thị 2 input date với text "đến" ở giữa | | Pass | 11/15/2015 | |
-| **GUI-DSDH-10** | Kiểm tra nút Áp dụng bộ lọc | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Áp dụng | Hiển thị nút "Áp dụng" với icon Filter | | Pass | 11/15/2015 | |
-| **GUI-DSDH-11** | Kiểm tra bảng danh sách đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra bảng | Hiển thị bảng với các cột: Mã đơn hàng, Khách hàng, Sản phẩm, Tổng tiền, Thanh toán, Trạng thái, Ngày tạo, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-DSDH-12** | Kiểm tra badge trạng thái đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra badge trạng thái | Mỗi đơn hàng hiển thị badge trạng thái với icon và text tương ứng (Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy) | | Pass | 11/15/2015 | |
-| **GUI-DSDH-13** | Kiểm tra nút Xem chi tiết | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Xem | Mỗi hàng có nút với icon Eye để xem chi tiết | | Pass | 11/15/2015 | |
-| **GUI-DSDH-14** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Cập nhật | Mỗi hàng có nút với icon Edit để cập nhật trạng thái | | Pass | 11/15/2015 | |
-| **GUI-DSDH-15** | Kiểm tra nút In đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In | Mỗi hàng có nút với icon Printer để in đơn hàng | | Pass | 11/15/2015 | |
-| **GUI-DSDH-16** | Kiểm tra nút Hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Hủy | Các đơn hàng chưa giao hoặc chưa hủy có nút với icon AlertTriangle để hủy đơn hàng | | Pass | 11/15/2015 | |
-| **GUI-DSDH-17** | Kiểm tra phân trang | 1. Truy cập /admin/orders<br>2. Kiểm tra phân trang | Hiển thị thông tin "Hiển thị 1-5 trong 156 đơn hàng", các nút Trước, số trang, nút Sau | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Hiển thị danh sách đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSDH-01** | Mở trang danh sách đơn hàng | 1. Truy cập /admin/orders | Hiển thị trang với tiêu đề, mô tả, thẻ thống kê, bộ lọc, bảng danh sách đơn hàng, phân trang | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-02** | Tìm kiếm đơn hàng theo mã | 1. Truy cập /admin/orders<br>2. Nhập mã đơn hàng vào ô tìm kiếm<br>3. Nhấn Enter hoặc click Áp dụng | Bảng hiển thị các đơn hàng có mã khớp với từ khóa tìm kiếm | | Untested | 11/15/2015 | |
-| **FUNC-DSDH-03** | Tìm kiếm đơn hàng theo tên khách hàng | 1. Truy cập /admin/orders<br>2. Nhập tên khách hàng vào ô tìm kiếm<br>3. Nhấn Enter hoặc click Áp dụng | Bảng hiển thị các đơn hàng của khách hàng có tên khớp với từ khóa | | Untested | 11/15/2015 | |
-| **FUNC-DSDH-04** | Lọc đơn hàng theo trạng thái | 1. Truy cập /admin/orders<br>2. Chọn trạng thái từ dropdown<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng có trạng thái đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-05** | Lọc đơn hàng theo phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Chọn phương thức thanh toán từ dropdown<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng có phương thức thanh toán đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-06** | Lọc đơn hàng theo khoảng thời gian | 1. Truy cập /admin/orders<br>2. Chọn ngày bắt đầu và ngày kết thúc<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng được tạo trong khoảng thời gian đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-07** | Click nút Xem chi tiết | 1. Truy cập /admin/orders<br>2. Click nút Eye trên một đơn hàng | Chuyển đến trang chi tiết đơn hàng /admin/orders/[id] | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-08** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/orders<br>2. Click nút Edit trên một đơn hàng | Chuyển đến trang /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-09** | Click nút In đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Printer trên một đơn hàng | Mở modal in đơn hàng với thông tin đơn hàng | | Pass | 11/15/2015 | |
-| **FUNC-DSDH-10** | Phân trang - Chuyển trang | 1. Truy cập /admin/orders<br>2. Click nút số trang hoặc nút Sau | Bảng hiển thị các đơn hàng của trang tiếp theo | | Untested | 11/15/2015 | |
-| **FUNC-DSDH-11** | Phân trang - Quay lại trang trước | 1. Truy cập /admin/orders<br>2. Đang ở trang 2<br>3. Click nút Trước | Bảng hiển thị các đơn hàng của trang trước | | Untested | 11/15/2015 | |
-| **FUNC-DSDH-12** | Hiển thị số lượng đơn hàng theo trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra các thẻ thống kê | Các thẻ thống kê hiển thị số lượng chính xác đơn hàng theo từng trạng thái | | Untested | 11/15/2015 | |
-| **FUNC-DSDH-13** | Sắp xếp đơn hàng | 1. Truy cập /admin/orders<br>2. Click vào header cột để sắp xếp | Bảng sắp xếp đơn hàng theo cột đã chọn (tăng dần/giảm dần) | | Untested | 11/15/2015 | |
-
----
-
-### Function: Xem chi tiết đơn hàng
-
-#### Check GUI: Xem chi tiết đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XCTDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chi tiết đơn hàng" và mã đơn hàng | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-03** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Xác nhận | Nếu đơn hàng ở trạng thái pending, hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-04** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Cập nhật | Hiển thị nút "Cập nhật trạng thái" với icon Edit | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-05** | Kiểm tra nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút In | Hiển thị nút "In đơn hàng" với icon Printer | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-06** | Kiểm tra nút Hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Hủy | Nếu đơn hàng chưa giao và chưa hủy, hiển thị nút "Hủy đơn hàng" với icon XCircle | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-07** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin đơn hàng | Hiển thị card với tiêu đề "Thông tin đơn hàng", các thông tin: Mã đơn hàng, Ngày tạo, Trạng thái, Tổng tiền | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-08** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin khách hàng | Hiển thị card với tiêu đề "Thông tin khách hàng", các thông tin: Tên, Email, Số điện thoại, Địa chỉ giao hàng | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-09** | Kiểm tra card Danh sách sản phẩm | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Danh sách sản phẩm | Hiển thị card với tiêu đề "Danh sách sản phẩm", bảng với các cột: Sản phẩm, Số lượng, Đơn giá, Thành tiền, tổng cộng ở cuối | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-10** | Kiểm tra card Lịch sử cập nhật | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Lịch sử | Hiển thị card với tiêu đề "Lịch sử cập nhật", danh sách các mốc thời gian với mô tả và người thực hiện | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-11** | Kiểm tra card Thông tin thanh toán | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin thanh toán | Hiển thị card với tiêu đề "Thông tin thanh toán", các thông tin: Phương thức thanh toán, Trạng thái thanh toán | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-12** | Kiểm tra card Thông tin vận chuyển | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin vận chuyển | Hiển thị card với tiêu đề "Thông tin vận chuyển", các thông tin: Đơn vị vận chuyển, Mã vận đơn, Dự kiến giao hàng | | Pass | 11/15/2015 | |
-| **GUI-XCTDH-13** | Kiểm tra card Ghi chú | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Ghi chú | Nếu có ghi chú, hiển thị card với tiêu đề "Ghi chú" và nội dung ghi chú | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xem chi tiết đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XCTDH-01** | Mở trang chi tiết đơn hàng | 1. Truy cập /admin/orders/[id] | Hiển thị đầy đủ thông tin đơn hàng: thông tin đơn hàng, khách hàng, danh sách sản phẩm, lịch sử cập nhật, thông tin thanh toán, vận chuyển | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-02** | Click nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/orders | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-03** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng ở trạng thái pending<br>3. Click "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển sang "Đã xác nhận" | | Untested | 11/15/2015 | |
-| **FUNC-XCTDH-04** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Click "Cập nhật trạng thái" | Chuyển đến trang /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-05** | Click nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click "In đơn hàng" | Hiển thị thông báo "Đã gửi lệnh in", mở cửa sổ in hoặc tải file PDF | | Untested | 11/15/2015 | |
-| **FUNC-XCTDH-06** | Hủy đơn hàng - Mở dialog | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng" | Mở Dialog với tiêu đề "Xác nhận hủy đơn hàng", mô tả, trường nhập lý do hủy, 2 nút (Hủy, Xác nhận hủy) | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-07** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng" | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-08** | Hủy đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", chuyển về trang /admin/orders, trạng thái đơn hàng chuyển sang "Đã hủy" | | Untested | 11/15/2015 | |
-| **FUNC-XCTDH-09** | Hủy dialog hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Click nút "Hủy" trong dialog | Dialog đóng, không hủy đơn hàng | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-10** | Hiển thị hình ảnh sản phẩm | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra danh sách sản phẩm | Mỗi sản phẩm hiển thị hình ảnh thumbnail, tên sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-XCTDH-11** | Tính tổng tiền đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra tổng tiền | Tổng tiền được tính đúng bằng tổng thành tiền của tất cả sản phẩm | | Pass | 11/15/2015 | |
-
----
-
-### Function: Cập nhật đơn hàng
-
-#### Check GUI: Cập nhật đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CNDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-CNDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cập nhật trạng thái đơn hàng" và mã đơn hàng | | Pass | 11/15/2015 | |
-| **GUI-CNDH-03** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thông tin đơn hàng | Hiển thị card với tiêu đề "Thông tin đơn hàng", các thông tin: Mã đơn hàng, Khách hàng, Tổng tiền, Ngày tạo | | Pass | 11/15/2015 | |
-| **GUI-CNDH-04** | Kiểm tra card Trạng thái hiện tại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Trạng thái hiện tại | Hiển thị card với tiêu đề "Trạng thái hiện tại", badge trạng thái với icon, text trạng thái, thời gian cập nhật lần cuối | | Pass | 11/15/2015 | |
-| **GUI-CNDH-05** | Kiểm tra dropdown chọn trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra dropdown | Hiển thị Select với placeholder "Chọn trạng thái mới...", các tùy chọn trạng thái (loại trừ trạng thái hiện tại) | | Pass | 11/15/2015 | |
-| **GUI-CNDH-06** | Kiểm tra preview trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Kiểm tra preview | Hiển thị alert với badge trạng thái mới và text "Trạng thái mới sẽ được áp dụng" | | Pass | 11/15/2015 | |
-| **GUI-CNDH-07** | Kiểm tra trường Lý do thay đổi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra trường Lý do | Hiển thị card với tiêu đề "Lý do thay đổi", textarea với placeholder "Nhập lý do thay đổi trạng thái..." | | Pass | 11/15/2015 | |
-| **GUI-CNDH-08** | Kiểm tra card Thời gian cập nhật | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thời gian | Hiển thị card với tiêu đề "Thời gian cập nhật", icon Clock, thời gian thực hiện thay đổi | | Pass | 11/15/2015 | |
-| **GUI-CNDH-09** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thông tin khách hàng | Hiển thị card với tiêu đề "Thông tin khách hàng", các thông tin: Tên, Email, Số điện thoại | | Pass | 11/15/2015 | |
-| **GUI-CNDH-10** | Kiểm tra checkbox Thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra checkbox | Hiển thị checkbox "Gửi thông báo cho khách hàng" với mô tả, mặc định được tích | | Pass | 11/15/2015 | |
-| **GUI-CNDH-11** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Cập nhật | Hiển thị nút "Cập nhật trạng thái" với icon Save, bị disable khi chưa chọn trạng thái hoặc chưa nhập lý do | | Pass | 11/15/2015 | |
-| **GUI-CNDH-12** | Kiểm tra nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X | | Pass | 11/15/2015 | |
-| **GUI-CNDH-13** | Kiểm tra card Lưu ý | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Lưu ý | Hiển thị card với tiêu đề "Lưu ý", danh sách các lưu ý về thay đổi trạng thái | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cập nhật đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CNDH-01** | Mở trang cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status | Hiển thị trang với thông tin đơn hàng, trạng thái hiện tại, form chọn trạng thái mới, nhập lý do | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-02** | Chọn trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click dropdown chọn trạng thái<br>3. Chọn một trạng thái | Dropdown hiển thị trạng thái đã chọn, hiển thị preview trạng thái mới | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-03** | Cập nhật trạng thái - Thiếu trạng thái | 1. Truy cập /admin/orders/[id]/update-status<br>2. Nhập lý do<br>3. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng chọn trạng thái mới", nút Cập nhật bị disable | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-04** | Cập nhật trạng thái - Thiếu lý do | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Để trống lý do<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng nhập lý do thay đổi trạng thái", nút Cập nhật bị disable | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-05** | Cập nhật trạng thái thành công | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", nếu có tích checkbox thông báo thì hiển thị "Đã gửi thông báo cho khách hàng", chuyển về trang chi tiết đơn hàng | | Untested | 11/15/2015 | |
-| **FUNC-CNDH-06** | Cập nhật trạng thái với thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Tích checkbox thông báo<br>5. Click "Cập nhật trạng thái" | Cập nhật thành công, gửi email và SMS thông báo cho khách hàng về thay đổi trạng thái | | Untested | 11/15/2015 | |
-| **FUNC-CNDH-07** | Cập nhật trạng thái không thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Bỏ tích checkbox thông báo<br>5. Click "Cập nhật trạng thái" | Cập nhật thành công, không gửi thông báo cho khách hàng | | Untested | 11/15/2015 | |
-| **FUNC-CNDH-08** | Click nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click nút "Hủy" | Chuyển về trang chi tiết đơn hàng, không lưu thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-09** | Click nút Quay lại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click nút "Quay lại" | Chuyển về trang chi tiết đơn hàng | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-10** | Lọc trạng thái không hiển thị trạng thái hiện tại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra dropdown trạng thái | Dropdown chỉ hiển thị các trạng thái khác trạng thái hiện tại | | Pass | 11/15/2015 | |
-| **FUNC-CNDH-11** | Ghi nhận lịch sử thay đổi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Cập nhật trạng thái thành công<br>3. Xem trang chi tiết đơn hàng | Lịch sử cập nhật ghi nhận thay đổi trạng thái với thời gian, lý do, người thực hiện | | Untested | 11/15/2015 | |
-
----
-
-### Function: Xóa đơn hàng
-
-#### Check GUI: Xóa đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XDH-01** | Kiểm tra nút Hủy đơn hàng trong danh sách | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Hủy | Các đơn hàng chưa giao và chưa hủy có nút với icon AlertTriangle | | Pass | 11/15/2015 | |
-| **GUI-XDH-02** | Kiểm tra modal xác nhận hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Hủy đơn hàng<br>3. Kiểm tra modal | Hiển thị modal với tiêu đề xác nhận, mô tả, trường nhập lý do hủy, 2 nút (Hủy, Xác nhận hủy) | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xóa đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XDH-01** | Hủy đơn hàng từ danh sách | 1. Truy cập /admin/orders<br>2. Click nút Hủy trên một đơn hàng<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", đơn hàng biến mất khỏi danh sách hoặc chuyển sang trạng thái "Đã hủy" | | Untested | 11/15/2015 | |
-| **FUNC-XDH-02** | Hủy đơn hàng từ chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Nhập lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", chuyển về trang danh sách, đơn hàng chuyển sang trạng thái "Đã hủy" | | Untested | 11/15/2015 | |
-| **FUNC-XDH-03** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng" | | Pass | 11/15/2015 | |
-| **FUNC-XDH-04** | Hủy dialog hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Click nút "Hủy" trong modal | Modal đóng, không hủy đơn hàng | | Pass | 11/15/2015 | |
-| **FUNC-XDH-05** | Không hiển thị nút Hủy cho đơn đã giao | 1. Truy cập /admin/orders<br>2. Tìm đơn hàng đã giao<br>3. Kiểm tra nút Hủy | Đơn hàng đã giao không có nút Hủy | | Pass | 11/15/2015 | |
-| **FUNC-XDH-06** | Không hiển thị nút Hủy cho đơn đã hủy | 1. Truy cập /admin/orders<br>2. Tìm đơn hàng đã hủy<br>3. Kiểm tra nút Hủy | Đơn hàng đã hủy không có nút Hủy | | Pass | 11/15/2015 | |
-
----
-
-### Function: Xác nhận đơn hàng
-
-#### Check GUI: Xác nhận đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XNDH-01** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Xác nhận | Nếu đơn hàng ở trạng thái pending, hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xác nhận đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XNDH-01** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng ở trạng thái pending<br>3. Click "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển sang "Đã xác nhận", nút Xác nhận biến mất | | Untested | 11/15/2015 | |
-| **FUNC-XNDH-02** | Không hiển thị nút Xác nhận cho đơn đã xác nhận | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng đã xác nhận<br>3. Kiểm tra nút Xác nhận | Không hiển thị nút "Xác nhận đơn hàng" | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-03** | Ghi nhận lịch sử xác nhận | 1. Truy cập /admin/orders/[id]<br>2. Xác nhận đơn hàng thành công<br>3. Kiểm tra lịch sử | Lịch sử cập nhật ghi nhận "Đơn hàng được xác nhận" với thời gian và người thực hiện | | Untested | 11/15/2015 | |
-
----
-
-### Function: In đơn hàng
-
-#### Check GUI: In đơn hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-IDH-01** | Kiểm tra nút In đơn hàng trong danh sách | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In | Mỗi hàng có nút với icon Printer | | Pass | 11/15/2015 | |
-| **GUI-IDH-02** | Kiểm tra nút In đơn hàng trong chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút In | Hiển thị nút "In đơn hàng" với icon Printer | | Pass | 11/15/2015 | |
-| **GUI-IDH-03** | Kiểm tra modal in đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra modal | Hiển thị modal với thông tin đơn hàng để in | | Pass | 11/15/2015 | |
+| No | Function Name | Sheet Name | Description | Pre-Condition (Route) |
+|----|---------------|------------|-------------|----------------------|
+| **ADMIN - QUẢN LÝ TÀI KHOẢN** |
+| 1 | Function - Đăng nhập (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] hoặc truy cập `/admin/auth/login` |
+| 2 | Function - Đăng ký (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC register function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng ký] hoặc truy cập `/admin/auth/register` |
+| 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
+| 4 | Layout - Quản lý thông tin cá nhân (Admin) | Quản lý tài khoản Admin | GUI function for Admin personal information management | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] hoặc truy cập `/admin/account` |
+| 4.1 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
+| **ADMIN - QUẢN LÝ ĐƠN HÀNG** |
+| 5 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display order list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] hoặc truy cập `/admin/orders` |
+| 6 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
+| 7 | Function - Cập nhật đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC update order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/orders/[id]/update-status` |
+| 8 | Function - Xóa đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC delete order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
+| 9 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
+| 10 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
+| 10.1 | Function - Tạo đơn hàng mới (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC create new order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Tạo đơn hàng mới] hoặc truy cập `/admin/orders/new` |
+| **ADMIN - QUẢN LÝ NGƯỜI DÙNG** |
+| 11 | Function - Tạo người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC create user function | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Tạo người dùng] hoặc truy cập `/admin/customers` |
+| 12 | Function - Hiển thị danh sách người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC display user list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
+| 13 | Function - Xem chi tiết người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC view user details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/admin/customers/[id]` |
+| 14 | Function - Xóa người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC delete user function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xóa] |
+| 15 | Function - Cập nhật người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC update user function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Cập nhật] |
+| **ADMIN - QUẢN LÝ SẢN PHẨM** |
+| 16 | Function - Hiển thị danh sách sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC display product list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] hoặc truy cập `/admin/products` |
+| 17 | Function - Xem chi tiết sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC view product details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Xem] hoặc truy cập `/admin/products/[id]` |
+| 18 | Function - Thêm sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC add product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Thêm sản phẩm] hoặc truy cập `/admin/products/new` |
+| 19 | Function - Cập nhật sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC update product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/products/[id]/edit` |
+| 20 | Function - Xóa sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC delete product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Xóa] |
+| **ADMIN - QUẢN LÝ TỒN KHO** |
+| 21 | Function - Hiển thị danh sách tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC display inventory list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] hoặc truy cập `/admin/inventory` |
+| 22 | Function - Xem chi tiết tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC view inventory details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Xem] hoặc truy cập `/admin/inventory/[id]` |
+| 23 | Function - Cập nhật tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC update inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/inventory/[id]/edit` |
+| 24 | Function - Nhập hàng mới (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/admin/inventory/new` |
+| 25 | Function - Cảnh báo tồn kho thấp (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory alerts function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Cảnh báo] hoặc truy cập `/admin/inventory/alerts` |
+| 26 | Function - Kiểm kê tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory audit function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/admin/inventory/audit` |
+| 27 | Function - Nhập kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Nhập kho] hoặc truy cập `/admin/inventory/import` |
+| **ADMIN - QUẢN LÝ ĐÁNH GIÁ** |
+| 28 | Function - Xem đánh giá sản phẩm (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC product review management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] hoặc truy cập `/admin/reviews` |
+| 29 | Function - Xem chi tiết đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC view review details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] hoặc truy cập `/admin/reviews/[id]` |
+| 30 | Function - Duyệt đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC approve review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Duyệt] |
+| 31 | Function - Từ chối đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reject review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Từ chối] |
+| 32 | Function - Xóa đánh giá sản phẩm (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC delete product review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xóa đánh giá] |
+| 32.1 | Function - Phản hồi đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reply to review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] 3. Click [Phản hồi] |
+| **ADMIN - HỖ TRỢ KHÁCH HÀNG** |
+| 33 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support request list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/admin/support` |
+| 34 | Function - Xem chi tiết yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC view support request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Xem] hoặc truy cập `/admin/support/[id]` |
+| 35 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
+| 36 | Function - Trả lời yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply to customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Trả lời] |
+| 37 | Function - Xóa yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC delete customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Xóa yêu cầu] |
+| 37.1 | Function - Export lịch sử chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC export chat history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Click [Export lịch sử] |
+| 37.2 | Function - Tìm kiếm trong chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC search in chat function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Sử dụng ô tìm kiếm trong chat |
+| 37.3 | Function - Quản lý SLA và phân công (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC SLA and assignment management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Cài đặt SLA] |
+| **ADMIN - XỬ LÝ PHẢN HỒI - KHIẾU NẠI** |
+| 38 | Function - Hiển thị danh sách phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC display complaints list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] hoặc truy cập `/admin/complaints` |
+| 39 | Function - Xem chi tiết phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC view complaint details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem] hoặc truy cập `/admin/complaints/[id]` |
+| 40 | Function - Trả lời phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC reply complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Trả lời] hoặc truy cập `/admin/complaints/[id]/reply` |
+| 40.1 | Function - Cập nhật trạng thái xử lý phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC update complaint status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
+| 40.2 | Function - Phân loại khiếu nại (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC classify complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Phân loại] |
+| **ADMIN - QUẢN LÝ ĐẶT TRƯỚC** |
+| 41 | Function - Hiển thị danh sách đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC display pre-orders list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] hoặc truy cập `/admin/pre-orders` |
+| 42 | Function - Xem chi tiết đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC view pre-order details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Xem] hoặc truy cập `/admin/pre-orders/[id]` |
+| 43 | Function - Xử lý đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC process pre-order function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Xử lý] hoặc truy cập `/admin/pre-orders/[id]/process` |
+| 44 | Function - Cập nhật trạng thái đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC update pre-order status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/pre-orders/[id]/update-status` |
+| 45 | Function - Thông báo có hàng (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC notify stock function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Thông báo có hàng] hoặc truy cập `/admin/pre-orders/[id]/notify-stock` |
+| **ADMIN - YÊU CẦU ĐẶT HÀNG** |
+| 46 | Function - Hiển thị danh sách yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC display special requests list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] hoặc truy cập `/admin/special-requests` |
+| 47 | Function - Xem chi tiết yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC view special request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem] hoặc truy cập `/admin/special-requests/[id]` |
+| 47.1 | Function - Xử lý yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC process special request function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Xử lý] |
+| 47.2 | Function - Cập nhật trạng thái yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC update special request status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
+| **ADMIN - QUẢN LÝ BÀI VIẾT** |
+| 48 | Function - Hiển thị danh sách bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC display posts list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] hoặc truy cập `/admin/posts` |
+| 49 | Function - Xem chi tiết bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC view post details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem] hoặc truy cập `/admin/posts/[id]` |
+| 50 | Function - Xóa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xóa] |
+| 50.1 | Function - Chỉnh sửa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC edit post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Chỉnh sửa] |
+| 50.2 | Function - Xóa bình luận (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete comment function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Xóa bình luận] |
+| 50.3 | Function - Khóa tài khoản đăng bài (Admin) | Quản lý bài viết Admin | Check GUI and FUNC ban user posting function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Khóa tài khoản] |
+| 50.4 | Function - Tìm kiếm và lọc bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC search and filter posts function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Sử dụng bộ lọc và tìm kiếm |
+| **ADMIN - BÁO CÁO VÀ THỐNG KÊ** |
+| 51 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem doanh thu] hoặc truy cập `/admin/reports/revenue` |
+| 52 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem chi phí] hoặc truy cập `/admin/reports` |
+| 53 | Function - Xem báo cáo lợi nhuận (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view profit report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem lợi nhuận] hoặc truy cập `/admin/reports/profit` |
+| 54 | Function - Xem sản phẩm bán chạy (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view top products report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Sản phẩm bán chạy] hoặc truy cập `/admin/reports/top-products` |
+| 55 | Function - Xem thống kê khách hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view customers statistics function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê khách hàng] hoặc truy cập `/admin/reports/customers` |
+| 56 | Function - Xem báo cáo tồn kho (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view inventory report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo tồn kho] hoặc truy cập `/admin/reports/inventory` |
+| 57 | Function - Tạo báo cáo tùy chỉnh (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC create custom report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo nâng cao] hoặc truy cập `/admin/reports/advanced` |
+| **ADMIN - CÀI ĐẶT HỆ THỐNG** |
+| 58 | Function - Cài đặt chính sách giảm giá sản phẩm (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC product discount policy function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Giảm giá sản phẩm] hoặc truy cập `/admin/settings/product-discounts` |
+| 59 | Function - Cài đặt chính sách giảm giá toàn bộ (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC global discount policy function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Giảm giá toàn bộ] hoặc truy cập `/admin/settings/global-discounts` |
+| 60 | Function - Cài đặt thanh toán (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC payment settings function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Cài đặt thanh toán] hoặc truy cập `/admin/settings/payments` |
+| 61 | Function - Cài đặt thông tin shop (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC shop information function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Thông tin shop] hoặc truy cập `/admin/settings/shop` |
+| 62 | Function - Cài đặt chung (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC general settings function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] hoặc truy cập `/admin/settings` |
+| **ADMIN - BẢO MẬT** |
+| 63 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
+| 64 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
+| 64.1 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện và cảnh báo |
+| 64.2 | Function - Auto logout khi hết hạn (Admin) | Bảo mật Admin | Check GUI and FUNC auto logout on timeout function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] - Hệ thống tự động đăng xuất khi timeout |
+| **ADMIN - THÔNG BÁO** |
+| 65 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý thông báo] hoặc truy cập `/admin/notifications` |
+| **USER - QUẢN LÝ TÀI KHOẢN** |
+| 66 | Function - Đăng nhập (User) | Quản lý tài khoản User | Check GUI and FUNC login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] hoặc truy cập `/user/auth/login` |
+| 67 | Function - Đăng ký (User) | Quản lý tài khoản User | Check GUI and FUNC register function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng ký] hoặc truy cập `/user/auth/register` |
+| 68 | Function - Đổi mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/user/account` |
+| 69 | Function - Cập nhật thông tin cá nhân (User) | Quản lý tài khoản User | Check GUI and FUNC update personal information function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Cập nhật thông tin] hoặc truy cập `/user/account` |
+| 70 | Layout - Quản lý thông tin cá nhân (User) | Quản lý tài khoản User | GUI function for User personal information management | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] hoặc truy cập `/user/account` |
+| 70.1 | Function - Khôi phục mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC forgot password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/user/auth/forgot-password` |
+| 70.2 | Function - Quản lý địa chỉ (User) | Quản lý tài khoản User | Check GUI and FUNC manage addresses function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Địa chỉ] hoặc truy cập `/user/account/addresses` |
+| 70.3 | Function - Quản lý thanh toán (User) | Quản lý tài khoản User | Check GUI and FUNC manage payments function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Thanh toán] hoặc truy cập `/user/account/payments` |
+| 70.4 | Function - Xem hạng thành viên (User) | Quản lý tài khoản User | Check GUI and FUNC view membership rank function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Hạng thành viên] hoặc truy cập `/user/account/rank` |
+| **USER - HIỂN THỊ SẢN PHẨM** |
+| 71 | Function - Hiển thị danh sách sản phẩm (User) | Hiển thị sản phẩm User | Check GUI and FUNC display products list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Mô hình] hoặc truy cập `/user/products` |
+| 72 | Function - Xem chi tiết sản phẩm (User) | Hiển thị sản phẩm User | Check GUI and FUNC view product details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Mô hình] 2. Click vào sản phẩm hoặc truy cập `/user/products/[id]` |
+| **USER - TÌM KIẾM SẢN PHẨM** |
+| 73 | Function - Tìm kiếm và lọc sản phẩm (User) | Tìm kiếm sản phẩm User | Check GUI and FUNC search and filter products function (User) | Tại Menu Ứng dụng: 1. Click [Tìm kiếm] hoặc truy cập `/user/search` |
+| **USER - BỘ LỌC VÀ PHÂN LOẠI** |
+| 74 | Layout - Bộ lọc sản phẩm (User) | Bộ lọc sản phẩm User | GUI function for product filtering and categorization | Tại Menu Ứng dụng phía User: 1. Click [Mô hình] hoặc truy cập `/user/products` |
+| **USER - QUẢN LÝ GIỎ HÀNG** |
+| 75 | Function - Thêm sản phẩm vào giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC add product to cart function (User) | Tại Danh sách sản phẩm: 1. Click [Thêm vào giỏ hàng] hoặc từ trang chi tiết sản phẩm |
+| 76 | Function - Hiển thị giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC view cart function (User) | Tại Menu chính: 1. Click [Giỏ hàng] hoặc truy cập `/user/cart` |
+| 77 | Function - Xóa sản phẩm khỏi giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC delete product from cart function (User) | Tại Menu Giỏ hàng: 1. Click [Xóa] |
+| 78 | Function - Cập nhật số lượng sản phẩm (User) | Quản lý giỏ hàng User | Check GUI and FUNC update product quantity function (User) | Tại Menu Giỏ hàng: 1. Thay đổi số lượng trong ô input |
+| 79 | Function - Áp dụng mã giảm giá (User) | Quản lý giỏ hàng User | Check GUI and FUNC apply discount code function (User) | Tại Menu Giỏ hàng: 1. Nhập mã giảm giá 2. Click [Áp dụng] |
+| 80 | Function - Thực hiện thanh toán (User) | Quản lý giỏ hàng User | Check GUI and FUNC proceed to checkout function (User) | Tại Menu Giỏ hàng: 1. Click [Thực hiện thanh toán] hoặc truy cập `/user/checkout` |
+| **USER - THANH TOÁN ĐƠN HÀNG** |
+| 81 | Function - Chọn phương thức thanh toán (User) | Thanh toán đơn hàng User | Check GUI and FUNC select payment method function (User) | Tại Menu Giỏ hàng: 1. Click [Thanh toán] hoặc truy cập `/user/checkout` |
+| 82 | Function - Thanh toán khi nhận hàng (User) | Thanh toán đơn hàng User | Check GUI and FUNC cash on delivery payment function (User) | Tại Menu Giỏ hàng: 1. Click [Thanh toán khi nhận hàng] 2. Click [Xác nhận thanh toán] |
+| 83 | Function - Thanh toán VNPAY (User) | Thanh toán đơn hàng User | Check GUI and FUNC VNPAY payment function (User) | Tại Menu Giỏ hàng: 1. Click [Thanh toán VNPAY] 2. Click [Xác nhận thanh toán] hoặc truy cập `/user/checkout/processing` |
+| 84 | Function - Xác nhận đơn hàng (User) | Thanh toán đơn hàng User | Check GUI and FUNC confirm order function (User) | Tại Trang thanh toán: 1. Điền thông tin giao hàng 2. Click [Xác nhận đơn hàng] |
+| **USER - QUẢN LÝ ĐƠN HÀNG** |
+| 85 | Function - Xem thông tin đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC view order information function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] hoặc truy cập `/user/account/orders` |
+| 86 | Function - Xem chi tiết đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC view order details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] 2. Click [Xem chi tiết] hoặc truy cập `/user/account/orders/[id]` |
+| 87 | Function - Theo dõi đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC track order function (User) | Tại Menu Ứng dụng phía User: 1. Click [Theo dõi đơn hàng] hoặc truy cập `/user/orders/track/[id]` |
+| 88 | Function - Hủy đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC cancel order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Hủy đơn hàng] |
+| 89 | Function - Đánh giá đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC rate order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đánh giá] |
+| 89.1 | Function - Đặt lại đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC reorder function (User) | Tại Trang chi tiết đơn hàng hoặc danh sách đơn hàng: 1. Click [Đặt lại] |
+| 89.2 | Function - Yêu cầu đổi/trả hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC request return/exchange function (User) | Tại Trang chi tiết đơn hàng đã giao: 1. Click [Yêu cầu đổi/trả hàng] |
+| **USER - ĐÁNH GIÁ SẢN PHẨM** |
+| 90 | Function - Để lại đánh giá sản phẩm (User) | Đánh giá sản phẩm User | Check GUI and FUNC leave product review function (User) | Tại Menu ứng dụng phía User: 1. Click vào sản phẩm 2. Click [Gửi đánh giá] hoặc truy cập `/user/reviews` |
+| 91 | Function - Xem đánh giá sản phẩm (User) | Đánh giá sản phẩm User | Check GUI and FUNC view product reviews function (User) | Tại Trang chi tiết sản phẩm: 1. Scroll xuống phần đánh giá |
+| **USER - YÊU CẦU HỖ TRỢ** |
+| 92 | Function - Gửi yêu cầu hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC send support request function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Gửi yêu cầu] hoặc truy cập `/user/support` |
+| 93 | Function - Chat hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC chat support function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] |
+| 93.1 | Function - Quản lý yêu cầu hỗ trợ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC manage support requests function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Yêu cầu hỗ trợ] - Xem danh sách, lọc, tìm kiếm |
+| 93.2 | Function - Câu hỏi thường gặp (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC FAQ function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Câu hỏi thường gặp] |
+| 93.3 | Function - Thông tin liên hệ (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC contact information function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Thông tin liên hệ] |
+| 93.4 | Function - Export lịch sử chat (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC export chat history function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] 3. Click [Export lịch sử] |
+| 93.5 | Function - Tìm kiếm trong chat (User) | Hỗ trợ - liên hệ User | Check GUI and FUNC search in chat function (User) | Tại Menu ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] 3. Sử dụng ô tìm kiếm trong chat |
+| **USER - KHUYẾN MÃI** |
+| 94 | Function - Xem danh sách khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC promotion management function | Tại Menu ứng dụng: 1. Click [Khuyến mãi] hoặc truy cập `/user/promotions` |
+| 95 | Function - Xem chi tiết khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC view promotion details function | Tại Menu ứng dụng: 1. Click [Khuyến mãi] 2. Click vào khuyến mãi hoặc truy cập `/user/promotions/[code]` |
+| 96 | Function - Áp dụng mã giảm giá (User) | Khuyến mãi User | Check GUI and FUNC apply discount code function | Tại Trang giỏ hàng: 1. Nhập mã giảm giá 2. Click [Áp dụng] |
+| **USER - SẢN PHẨM YÊU THÍCH** |
+| 97 | Function - Xem danh sách yêu thích (User) | Danh sách yêu thích User | Check GUI and FUNC view wishlist function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu thích] hoặc truy cập `/user/wishlist` |
+| 98 | Function - Thêm vào yêu thích (User) | Danh sách yêu thích User | Check GUI and FUNC add to wishlist function (User) | Tại Trang chi tiết sản phẩm: 1. Click [Thêm vào yêu thích] |
+| 99 | Function - Xóa khỏi yêu thích (User) | Danh sách yêu thích User | Check GUI and FUNC remove from wishlist function (User) | Tại Trang yêu thích: 1. Click [Xóa] |
+| **USER - ĐẶT TRƯỚC SẢN PHẨM** |
+| 100 | Function - Đặt trước sản phẩm (User) | Đặt trước sản phẩm User | Check GUI and FUNC pre-order product function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đặt trước mô hình] hoặc truy cập `/user/borrow` |
+| 101 | Function - Xem danh sách đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC view pre-orders list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đặt trước mô hình] |
+| 102 | Function - Hủy đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC cancel pre-order function (User) | Tại Trang đặt trước: 1. Click [Hủy đặt trước] |
+| 102.1 | Function - Xem chi tiết đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC view pre-order details function (User) | Tại Trang danh sách đặt trước: 1. Click [Xem chi tiết] |
+| 102.2 | Function - Quản lý trạng thái đặt trước (User) | Đặt trước sản phẩm User | Check GUI and FUNC manage pre-order status function (User) | Tại Trang danh sách đặt trước: 1. Sử dụng tab trạng thái để lọc và theo dõi |
+| **USER - YÊU CẦU ĐẶT HÀNG** |
+| 103 | Function - Gửi yêu cầu đặt hàng (User) | Yêu cầu đặt hàng User | Check GUI and FUNC send special request function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] hoặc truy cập `/user/requests` |
+| 104 | Function - Xem chi tiết yêu cầu (User) | Yêu cầu đặt hàng User | Check GUI and FUNC view request details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] 2. Click [Xem] hoặc truy cập `/user/requests/[id]` |
+| **USER - VẬN CHUYỂN** |
+| 105 | Layout - Chọn phương thức vận chuyển (User) | Vận chuyển User | GUI function for shipping method selection | Tại Trang thanh toán: 1. Chọn phương thức vận chuyển |
+| **USER - THÔNG BÁO** |
+| 106 | Function - Xem thông báo (User) | Thông báo User | Check GUI and FUNC view notifications function (User) | Tại Menu Ứng dụng phía User: 1. Click [Thông báo] hoặc truy cập `/user/notifications` |
+| **USER - BÀI VIẾT** |
+| 107 | Function - Tạo bài viết (User) | Tạo - hiển thị bài viết User | Check GUI and FUNC create post function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tạo bài viết] hoặc truy cập `/user/posts/create` |
+| 108 | Function - Hiển thị danh sách bài viết (User) | Tạo - hiển thị bài viết User | Check GUI and FUNC display posts list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Bài viết] hoặc truy cập `/user/posts` |
+| 109 | Function - Xem chi tiết bài viết (User) | Tạo - hiển thị bài viết User | Check GUI and FUNC view post details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Bài viết] 2. Click vào bài viết hoặc truy cập `/user/posts/[id]` |
+| 110 | Function - Chỉnh sửa bài viết (User) | Tạo - hiển thị bài viết User | Check GUI and FUNC edit post function (User) | Tại Trang chi tiết bài viết: 1. Click [Chỉnh sửa] hoặc truy cập `/user/posts/[id]/edit` |
+| **USER - TƯƠNG TÁC BÀI VIẾT** |
+| 111 | Function - Like bài viết (User) | Tương tác bài viết User | Check GUI and FUNC like post function (User) | Tại Trang chi tiết bài viết: 1. Click [Like] |
+| 112 | Function - Bình luận bài viết (User) | Tương tác bài viết User | Check GUI and FUNC comment post function (User) | Tại Trang chi tiết bài viết: 1. Nhập bình luận 2. Click [Gửi] |
+| 113 | Function - Chia sẻ bài viết (User) | Tương tác bài viết User | Check GUI and FUNC share post function (User) | Tại Trang chi tiết bài viết: 1. Click [Chia sẻ] |
+| **USER - XEM TRANG CÁ NHÂN** |
+| 114 | Function - Xem trang cá nhân người lạ (User) | Xem trang cá nhân User | Check GUI and FUNC view stranger profile function (User) | Tại Trang bài viết hoặc bình luận: 1. Click vào tên người dùng hoặc truy cập `/user/profile/[id]` |
+| **USER - BẢO MẬT** |
+| 115 | Function - Xem lịch sử đăng nhập (User) | Bảo mật User | Check GUI and FUNC login history function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/user/account/logins` |
+| 116 | Function - Quản lý phiên đăng nhập (User) | Bảo mật User | Check GUI and FUNC sessions management function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Phiên đăng nhập] hoặc truy cập `/user/account/sessions` |
+| 116.1 | Function - Phát hiện đăng nhập lạ (User) | Bảo mật User | Check GUI and FUNC detect suspicious login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện và cảnh báo |
+| 116.2 | Function - Auto logout khi hết hạn (User) | Bảo mật User | Check GUI and FUNC auto logout on timeout function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Phiên đăng nhập] - Hệ thống tự động đăng xuất khi timeout |
+| **USER - CÀI ĐẶT** |
+| 117 | Function - Cài đặt tài khoản (User) | Cài đặt User | Check GUI and FUNC account settings function (User) | Tại Menu Ứng dụng phía User: 1. Click [Cài đặt] hoặc truy cập `/user/settings` |
 
 ---
 
-### Check FUNC: In đơn hàng
+## GHI CHÚ QUAN TRỌNG
 
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-IDH-01** | In đơn hàng từ danh sách | 1. Truy cập /admin/orders<br>2. Click nút Printer trên một đơn hàng | Mở modal in đơn hàng với đầy đủ thông tin, có thể in hoặc tải PDF | | Untested | 11/15/2015 | |
-| **FUNC-IDH-02** | In đơn hàng từ chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Click "In đơn hàng" | Hiển thị thông báo "Đã gửi lệnh in", mở cửa sổ in hoặc tải file PDF | | Untested | 11/15/2015 | |
-| **FUNC-IDH-03** | Đóng modal in đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click nút đóng modal | Modal đóng, không in đơn hàng | | Pass | 11/15/2015 | |
+### Về Routes:
+- Tất cả routes được xác định dựa trên cấu trúc thư mục `src/app/admin/` và `src/app/user/`
+- Routes có thể truy cập trực tiếp qua URL hoặc thông qua menu navigation
+- Routes động (có `[id]`) cần thay thế `[id]` bằng ID thực tế khi test
 
----
+### Về Pre-Condition:
+- Pre-Condition mô tả các bước điều hướng từ menu hoặc URL trực tiếp
+- Có thể kết hợp cả hai cách: click menu hoặc truy cập URL trực tiếp
+- Một số chức năng yêu cầu đăng nhập trước khi truy cập
 
-### Function: Tạo đơn hàng mới
-
-#### Check GUI: Tạo đơn hàng mới
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TDHM-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-TDHM-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đơn hàng mới" và mô tả "Xử lý các đơn hàng mới cần được xác nhận" | | Pass | 11/15/2015 | |
-| **GUI-TDHM-03** | Kiểm tra thẻ thống kê | 1. Truy cập /admin/orders/new<br>2. Kiểm tra các thẻ | Hiển thị 4 thẻ: Tổng đơn hàng mới, Ưu tiên cao, Ưu tiên trung bình, Ưu tiên thấp, mỗi thẻ có icon và số lượng | | Pass | 11/15/2015 | |
-| **GUI-TDHM-04** | Kiểm tra bộ lọc ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra dropdown ưu tiên | Hiển thị Select với các tùy chọn: Tất cả, Cao, Trung bình, Thấp | | Pass | 11/15/2015 | |
-| **GUI-TDHM-05** | Kiểm tra bộ lọc thời gian | 1. Truy cập /admin/orders/new<br>2. Kiểm tra dropdown thời gian | Hiển thị Select với các tùy chọn: Hôm nay, 3 ngày qua, 1 tuần qua, 1 tháng qua | | Pass | 11/15/2015 | |
-| **GUI-TDHM-06** | Kiểm tra nút Sắp xếp theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Sắp xếp | Hiển thị nút "Sắp xếp theo ưu tiên" với icon Package | | Pass | 11/15/2015 | |
-| **GUI-TDHM-07** | Kiểm tra nút Xác nhận hàng loạt | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Xác nhận | Hiển thị nút "Xác nhận hàng loạt" với icon CheckCircle và số lượng đơn đã chọn | | Pass | 11/15/2015 | |
-| **GUI-TDHM-08** | Kiểm tra checkbox chọn đơn hàng | 1. Truy cập /admin/orders/new<br>2. Kiểm tra checkbox | Mỗi hàng có checkbox để chọn đơn hàng, header có checkbox để chọn tất cả | | Pass | 11/15/2015 | |
-| **GUI-TDHM-09** | Kiểm tra bảng đơn hàng mới | 1. Truy cập /admin/orders/new<br>2. Kiểm tra bảng | Hiển thị bảng với các cột: Checkbox, Mã đơn hàng, Khách hàng, Tổng tiền, Thời gian tạo, Ưu tiên, Thời gian chờ, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-TDHM-10** | Kiểm tra badge ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra badge ưu tiên | Mỗi đơn hàng hiển thị badge ưu tiên với icon và text (Cao, Trung bình, Thấp) | | Pass | 11/15/2015 | |
-| **GUI-TDHM-11** | Kiểm tra nút Xem chi tiết | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Xem | Mỗi hàng có nút với icon Eye để xem chi tiết | | Pass | 11/15/2015 | |
-| **GUI-TDHM-12** | Kiểm tra nút Đánh dấu đã xem | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Đánh dấu | Mỗi hàng có nút với icon CheckCircle để đánh dấu đã xem | | Pass | 11/15/2015 | |
+### Về Test Cases:
+- Mỗi function có thể có nhiều test case con (GUI test, Functional test, Validation test, etc.)
+- Cần bổ sung thêm các test case chi tiết cho từng function trong các sheet riêng
+- Test cases cần bao gồm: Test ID, Test Description, Pre-Condition, Test Steps, Expected Result, Actual Result, Status
 
 ---
 
-### Check FUNC: Tạo đơn hàng mới
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TDHM-01** | Mở trang đơn hàng mới | 1. Truy cập /admin/orders/new | Hiển thị trang với tiêu đề, thẻ thống kê, bộ lọc, bảng danh sách đơn hàng mới | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-02** | Lọc đơn hàng theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Chọn mức ưu tiên từ dropdown<br>3. Kiểm tra bảng | Bảng chỉ hiển thị các đơn hàng có mức ưu tiên đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-03** | Lọc đơn hàng theo thời gian | 1. Truy cập /admin/orders/new<br>2. Chọn khoảng thời gian từ dropdown<br>3. Kiểm tra bảng | Bảng chỉ hiển thị các đơn hàng trong khoảng thời gian đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-04** | Chọn một đơn hàng | 1. Truy cập /admin/orders/new<br>2. Tích checkbox một đơn hàng | Checkbox được tích, nút Xác nhận hàng loạt hiển thị số lượng (1) | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-05** | Chọn tất cả đơn hàng | 1. Truy cập /admin/orders/new<br>2. Tích checkbox ở header | Tất cả checkbox được tích, nút Xác nhận hàng loạt hiển thị số lượng tất cả | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-06** | Bỏ chọn tất cả đơn hàng | 1. Truy cập /admin/orders/new<br>2. Đã chọn tất cả<br>3. Bỏ tích checkbox ở header | Tất cả checkbox bị bỏ tích, nút Xác nhận hàng loạt bị disable | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-07** | Xác nhận hàng loạt - Chưa chọn đơn | 1. Truy cập /admin/orders/new<br>2. Không chọn đơn hàng nào<br>3. Click "Xác nhận hàng loạt" | Hiển thị thông báo lỗi "Vui lòng chọn ít nhất một đơn hàng", nút bị disable | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-08** | Xác nhận hàng loạt thành công | 1. Truy cập /admin/orders/new<br>2. Chọn một hoặc nhiều đơn hàng<br>3. Click "Xác nhận hàng loạt" | Hiển thị thông báo "Xác nhận hàng loạt thành công cho X đơn hàng", các đơn hàng đã chọn biến mất khỏi danh sách | | Untested | 11/15/2015 | |
-| **FUNC-TDHM-09** | Đánh dấu đơn hàng đã xem | 1. Truy cập /admin/orders/new<br>2. Click nút CheckCircle trên một đơn hàng | Hiển thị thông báo "Đã đánh dấu đơn hàng đã xem", đơn hàng có thể thay đổi trạng thái hiển thị | | Untested | 11/15/2015 | |
-| **FUNC-TDHM-10** | Sắp xếp theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Click "Sắp xếp theo ưu tiên" | Hiển thị thông báo "Đã sắp xếp theo mức độ ưu tiên", bảng sắp xếp đơn hàng theo thứ tự ưu tiên (Cao -> Trung bình -> Thấp) | | Untested | 11/15/2015 | |
-| **FUNC-TDHM-11** | Click nút Xem chi tiết | 1. Truy cập /admin/orders/new<br>2. Click nút Eye trên một đơn hàng | Chuyển đến trang chi tiết đơn hàng /admin/orders/[id] | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-12** | Click nút Quay lại | 1. Truy cập /admin/orders/new<br>2. Click nút "Quay lại" | Chuyển về trang /admin/orders | | Pass | 11/15/2015 | |
-| **FUNC-TDHM-13** | Hiển thị thời gian chờ | 1. Truy cập /admin/orders/new<br>2. Kiểm tra cột Thời gian chờ | Mỗi đơn hàng hiển thị thời gian chờ từ lúc tạo đến hiện tại (VD: "2 giờ 15 phút") | | Pass | 11/15/2015 | |
-
----
-
-*Template này được tạo theo chuẩn Markdown để dễ dàng quản lý và cập nhật test cases.*
-
+**Tổng số chức năng:** 147 functions  
+**Admin:** 79 functions  
+**User:** 68 functions
