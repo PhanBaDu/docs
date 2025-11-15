@@ -1,296 +1,205 @@
-# Test Case Template - Quản lý tài khoản (Admin)
+# BLACKBOX TEST CASE - ADMIN FUNCTIONS
 
-## Module Code
-**Model Management Store: Quản lý tài khoản Admin**
-
-## Test Requirement
-1. Đăng nhập
-2. Đăng ký
-3. Khôi phục mật khẩu
-4. Đổi mật khẩu
-5. Cập nhật thông tin cá nhân
-6. Đăng xuất
+**Dự án:** Hệ Thống Quản Lý Model Shop  
+**Ngày tạo:** 2025  
+**Mục đích:** Tài liệu tổng quan về các chức năng Admin và routes để thực hiện blackbox testing
 
 ---
 
-## Test Summary
+## BẢNG TỔNG HỢP TEST CASE
 
-### Người thực hiện Test: [Tên người test]
-
-| Status | Count |
-|--------|-------|
-| **Pass** | 142 |
-| **Fail** | 0 |
-| **Untested** | 38 |
-| **N/A** | 0 |
-| **Number of Test cases** | 180 |
-
----
-
-## Test Cases
-
-### Function: Đăng nhập
-
-#### Check GUI: Đăng nhập
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn ở header, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra trường Email Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Pass | 11/15/2015 | |
-| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" có thể click, nằm bên phải, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DN-08** | Kiểm tra nút Đăng nhập Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, chiếm toàn bộ chiều rộng form | | Pass | 11/15/2015 | |
-| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa, màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DN-10** | Kiểm tra link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft, màu primary, có thể click | | Pass | 11/15/2015 | |
-| **GUI-DN-11** | Kiểm tra thông báo cảnh báo | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" màu muted-foreground, kích thước text-sm | | Pass | 11/15/2015 | |
-| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background gradient từ primary/5 đến secondary/5, card container nằm giữa màn hình với max-width-md, form đăng nhập bên trong card | | Pass | 11/15/2015 | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có giới hạn chiều rộng tối đa (max-w-md), có padding | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đăng nhập
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: icon Shield, tiêu đề "Đăng nhập Admin", mô tả "Đăng nhập vào hệ thống quản trị", 2 trường nhập (Email Admin, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập Admin, separator "Hoặc", link đăng nhập với tài khoản khách hàng, thông báo cảnh báo | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ (VD: admin@modelshop.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập Admin | Hệ thống xác thực thông tin, chuyển đến dashboard Admin (/admin), lưu phiên đăng nhập và lưu token, hiển thị thông báo thành công | | Untested | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /admin/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message "Dữ liệu không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn, khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-09** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn, khi đóng trình duyệt sẽ đăng xuất | | Untested | 11/15/2015 | |
-| **FUNC-DN-10** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password | | Pass | 11/15/2015 | |
-| **FUNC-DN-11** | Nhấn link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DN-12** | Submit form bằng phím Enter | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập Admin | | Untested | 11/15/2015 | |
-| **FUNC-DN-13** | Đăng nhập với tài khoản chưa kích hoạt | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản chưa kích hoạt<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản chưa được kích hoạt. Vui lòng liên hệ quản trị viên cấp cao", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-14** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản bị khóa<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-15** | Đăng nhập sai nhiều lần - Hiển thị Captcha | 1. Truy cập /admin/auth/login<br>2. Nhập sai thông tin đăng nhập 3 lần liên tiếp<br>3. Lần thứ 4, nhập thông tin | Sau 3 lần đăng nhập sai, hiển thị captcha, yêu cầu nhập captcha trước khi tiếp tục đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-16** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/login<br>2. Tắt kết nối mạng<br>3. Nhập thông tin hợp lệ<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-17** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-18** | Kiểm tra redirect sau đăng nhập | 1. Truy cập /admin/auth/login?redirect=/admin/products<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công | Sau khi đăng nhập thành công, chuyển đến trang /admin/products thay vì dashboard mặc định | | Untested | 11/15/2015 | |
-| **FUNC-DN-19** | Kiểm tra lưu token sau đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra localStorage/sessionStorage | Token được lưu vào localStorage hoặc sessionStorage, có thể sử dụng cho các request tiếp theo | | Untested | 11/15/2015 | |
-| **FUNC-DN-20** | Kiểm tra tạo phiên đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra session | Phiên đăng nhập được tạo và lưu trữ trên server, có thể theo dõi trong lịch sử đăng nhập | | Untested | 11/15/2015 | |
-
----
-
-### Function: Đăng ký
-
-#### Check GUI: Đăng ký
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DK-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/register<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn ở header, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/register<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng ký tài khoản Admin" | | Pass | 11/15/2015 | |
-| **GUI-DK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/register<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tạo tài khoản quản trị viên mới cho hệ thống Model Shop" | | Pass | 11/15/2015 | |
-| **GUI-DK-04** | Kiểm tra trường Họ và tên | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên *" với icon User, input type text với placeholder "Nhập họ và tên", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-05** | Kiểm tra trường Email công ty | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Email | Hiển thị label "Email công ty *" với icon Mail, input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-06** | Kiểm tra trường Số điện thoại | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại *" với icon Phone, input type tel với placeholder "Nhập số điện thoại", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-07** | Kiểm tra trường Mã nhân viên | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Mã nhân viên | Hiển thị label "Mã nhân viên *" với icon Key, input type text với placeholder "EMP001", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-08** | Kiểm tra trường Phòng ban | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Phòng ban | Hiển thị label "Phòng ban *" với icon Building, Select với placeholder "Chọn phòng ban", có các option: Ban Giám đốc, Phòng Kinh doanh, Phòng Marketing, Phòng Kho, Phòng Chăm sóc khách hàng, Phòng IT, Phòng Nhân sự, Phòng Tài chính | | Pass | 11/15/2015 | |
-| **GUI-DK-09** | Kiểm tra trường Chức vụ | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Chức vụ | Hiển thị label "Chức vụ *" với icon Shield, input type text với placeholder "Nhập chức vụ", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-10** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Mật khẩu | Hiển thị label "Mật khẩu *", input type password với placeholder "Nhập mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required, có text hướng dẫn "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số" | | Pass | 11/15/2015 | |
-| **GUI-DK-11** | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu *", input type password với placeholder "Nhập lại mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-12** | Kiểm tra checkbox Điều khoản | 1. Truy cập /admin/auth/register<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Tôi đồng ý với Điều khoản sử dụng Admin và Chính sách bảo mật", có link đến trang điều khoản và chính sách | | Pass | 11/15/2015 | |
-| **GUI-DK-13** | Kiểm tra nút Đăng ký | 1. Truy cập /admin/auth/register<br>2. Kiểm tra nút Đăng ký | Hiển thị nút "Đăng ký tài khoản Admin" type submit, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-DK-14** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/register<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | 11/15/2015 | |
-| **GUI-DK-15** | Kiểm tra link Đăng nhập với tài khoản admin hiện có | 1. Truy cập /admin/auth/register<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản admin hiện có" với icon Shield, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DK-16** | Kiểm tra link Đăng ký tài khoản khách hàng | 1. Truy cập /admin/auth/register<br>2. Kiểm tra link | Hiển thị text "Chưa có tài khoản khách hàng? " với link "Đăng ký tài khoản khách hàng" có thể click | | Pass | 11/15/2015 | |
-| **GUI-DK-17** | Kiểm tra thông báo cảnh báo | 1. Truy cập /admin/auth/register<br>2. Kiểm tra thông báo | Hiển thị text "⚠️ Chỉ dành cho nhân viên được ủy quyền" và "Tài khoản admin cần được xác thực bởi quản trị viên cấp cao", màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DK-18** | Kiểm tra layout trang | 1. Truy cập /admin/auth/register<br>2. Kiểm tra layout tổng thể | Trang có background gradient từ primary/5 đến secondary/5, card container nằm giữa màn hình với max-width-2xl, form đăng ký bên trong card, có scroll nếu nội dung dài | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đăng ký
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DK-01** | Mở trang đăng ký | 1. Truy cập /admin/auth/register | Hiển thị form đăng ký với đầy đủ các thành phần: icon Shield, tiêu đề "Đăng ký tài khoản Admin", mô tả, các trường nhập (Họ tên, Email công ty, SĐT, Mã nhân viên, Phòng ban, Chức vụ, Mật khẩu, Xác nhận mật khẩu), checkbox điều khoản, nút đăng ký, separator, link đăng nhập admin, link đăng ký khách hàng, thông báo cảnh báo | | Pass | 11/15/2015 | |
-| **FUNC-DK-02** | Đăng ký thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin hợp lệ<br>3. Tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo "Đăng ký tài khoản admin thành công!", chuyển đến trang /admin/auth/login, tài khoản cần được xác thực bởi quản trị viên cấp cao | | Untested | 11/15/2015 | |
-| **FUNC-DK-03** | Đăng ký thiếu Họ tên | 1. Truy cập /admin/auth/register<br>2. Để trống Họ tên<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Họ tên không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-04** | Đăng ký thiếu Email | 1. Truy cập /admin/auth/register<br>2. Để trống Email<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-05** | Đăng ký với Email không hợp lệ | 1. Truy cập /admin/auth/register<br>2. Nhập email không có @<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-06** | Đăng ký với Email đã tồn tại | 1. Truy cập /admin/auth/register<br>2. Nhập email đã tồn tại trong hệ thống<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email đã tồn tại trong hệ thống", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-07** | Đăng ký thiếu Số điện thoại | 1. Truy cập /admin/auth/register<br>2. Để trống Số điện thoại<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Số điện thoại không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-08** | Đăng ký thiếu Mã nhân viên | 1. Truy cập /admin/auth/register<br>2. Để trống Mã nhân viên<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mã nhân viên không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-09** | Đăng ký thiếu Phòng ban | 1. Truy cập /admin/auth/register<br>2. Không chọn Phòng ban<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Vui lòng chọn phòng ban", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-10** | Đăng ký thiếu Chức vụ | 1. Truy cập /admin/auth/register<br>2. Để trống Chức vụ<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Chức vụ không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-11** | Đăng ký thiếu Mật khẩu | 1. Truy cập /admin/auth/register<br>2. Để trống Mật khẩu<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-12** | Đăng ký với Mật khẩu quá ngắn | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu < 8 ký tự<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 8 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-13** | Đăng ký với Mật khẩu không đủ yêu cầu | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu không có chữ hoa, chữ thường và số<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-14** | Đăng ký với Mật khẩu xác nhận không khớp | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu<br>3. Nhập xác nhận mật khẩu khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-15** | Đăng ký không tích checkbox điều khoản | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Không tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Vui lòng đồng ý với điều khoản sử dụng", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-16** | Hiển thị/ẩn mật khẩu | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-17** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /admin/auth/register<br>2. Nhập xác nhận mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-18** | Nhấn link Đăng nhập với tài khoản admin hiện có | 1. Truy cập /admin/auth/register<br>2. Nhấn link "Đăng nhập với tài khoản admin hiện có" | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DK-19** | Nhấn link Đăng ký tài khoản khách hàng | 1. Truy cập /admin/auth/register<br>2. Nhấn link "Đăng ký tài khoản khách hàng" | Chuyển đến trang /user/auth/register | | Pass | 11/15/2015 | |
-| **FUNC-DK-20** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-21** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Có lỗi xảy ra, vui lòng thử lại", form không được gửi | | Untested | 11/15/2015 | |
-
----
-
-### Function: Khôi phục mật khẩu
-
-#### Check GUI: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn màu xanh ở header | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Khôi phục mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra mô tả | Hiển thị mô tả "Chọn phương thức khôi phục mật khẩu của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-04** | Kiểm tra phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Email | Hiển thị radio button với icon Mail, label "Email", mô tả "Gửi mã xác thực qua email", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-05** | Kiểm tra phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức SMS | Hiển thị radio button với icon Phone, label "SMS", mô tả "Gửi mã xác thực qua SMS", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-06** | Kiểm tra phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Câu hỏi bảo mật | Hiển thị radio button với icon MessageSquare, label "Câu hỏi bảo mật", mô tả "Trả lời câu hỏi bảo mật", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-07** | Kiểm tra trường nhập Email (khi chọn Email) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Email<br>3. Kiểm tra trường nhập | Hiển thị label "Email", input type email với placeholder "Nhập email của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-08** | Kiểm tra trường nhập Số điện thoại (khi chọn SMS) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức SMS<br>3. Kiểm tra trường nhập | Hiển thị label "Số điện thoại", input type tel với placeholder "Nhập số điện thoại của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-09** | Kiểm tra câu hỏi bảo mật (khi chọn Câu hỏi bảo mật) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Câu hỏi bảo mật<br>3. Kiểm tra câu hỏi | Hiển thị 3 câu hỏi bảo mật với các trường nhập câu trả lời | | Pass | 11/15/2015 | |
-| **GUI-KPMK-10** | Kiểm tra nút Tiếp tục | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra nút | Hiển thị nút "Tiếp tục" với icon Key, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-KPMK-11** | Kiểm tra màn hình nhập mã xác thực | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực thành công<br>3. Kiểm tra màn hình | Hiển thị Alert với icon Mail, mô tả "Mã xác thực đã được gửi đến email/số điện thoại của bạn", trường nhập mã xác thực 6 chữ số, nút "Xác thực" với icon CheckCircle, link "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-KPMK-12** | Kiểm tra màn hình đặt mật khẩu mới | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Kiểm tra màn hình | Hiển thị Alert với icon CheckCircle, mô tả "Mã xác thực hợp lệ. Vui lòng đặt mật khẩu mới cho tài khoản của bạn", trường Mật khẩu mới, trường Xác nhận mật khẩu, thanh hiển thị độ mạnh mật khẩu, danh sách yêu cầu mật khẩu, nút "Đặt lại mật khẩu" với icon Lock, link "Quay lại" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-13** | Kiểm tra màn hình hoàn thành | 1. Truy cập /admin/auth/forgot-password<br>2. Đặt lại mật khẩu thành công<br>3. Kiểm tra màn hình | Hiển thị icon CheckCircle trong vòng tròn xanh, tiêu đề "Khôi phục mật khẩu thành công", mô tả, nút "Đăng nhập ngay" với icon User, nút "Quay về trang chủ" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-KPMK-14** | Kiểm tra link Đăng nhập | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra link | Hiển thị text "Bạn có tài khoản? " với link "Đăng nhập" có thể click | | Pass | 11/15/2015 | |
+| No | Function Name | Sheet Name | Description | Pre-Condition (Route) |
+|----|---------------|------------|-------------|----------------------|
+| **1. QUẢN LÝ TÀI KHOẢN** |
+| 1 | Function - Đăng nhập (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] hoặc truy cập `/admin/auth/login` |
+| 2 | Function - Đăng ký (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC register function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng ký] hoặc truy cập `/admin/auth/register` |
+| 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
+| 4 | Function - Cập nhật thông tin cá nhân (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC update personal information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/account` |
+| 4.1 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
+| 4.2 | Function - Đăng xuất (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC logout function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng xuất] hoặc truy cập `/admin/logout` |
+| 4.3 | Layout - Quản lý tài khoản (Admin) | [Layout Quản lý Tài khoản Admin](1.%20Quản%20lý%20tài%20khoản%20(Admin).md) | GUI chức năng Quản lý tài khoản Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tài khoản] hoặc truy cập `/admin/account` |
+| **2. QUẢN LÝ SẢN PHẨM** |
+| 5 | Function - Hiển thị danh sách sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC display product list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] hoặc truy cập `/admin/products` |
+| 6 | Function - Xem chi tiết sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC view product details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Xem] hoặc truy cập `/admin/products/[id]` |
+| 7 | Function - Thêm sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC add product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Thêm sản phẩm] hoặc truy cập `/admin/products/new` |
+| 8 | Function - Cập nhật sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC update product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/products/[id]/edit` |
+| 9 | Function - Xóa sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC delete product function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] 2. Click [Xóa] |
+| 9.1 | Function - Tìm kiếm sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC search products function (Admin) | Tại Trang danh sách sản phẩm: 1. Nhập từ khóa vào ô tìm kiếm |
+| 9.2 | Function - Lọc sản phẩm (Admin) | Quản lý sản phẩm Admin | Check GUI and FUNC filter products function (Admin) | Tại Trang danh sách sản phẩm: 1. Chọn danh mục, thương hiệu, trạng thái từ dropdown |
+| 9.3 | Layout - Quản lý sản phẩm (Admin) | [Layout Quản lý Sản phẩm Admin](2.%20Quản%20lý%20sản%20phẩm%20(Admin).md) | GUI chức năng Quản lý sản phẩm Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý mô hình] hoặc truy cập `/admin/products` |
+| **3. QUẢN LÝ TỒN KHO** |
+| 10 | Function - Hiển thị danh sách tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC display inventory list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] hoặc truy cập `/admin/inventory` |
+| 11 | Function - Xem chi tiết tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC view inventory details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Xem] hoặc truy cập `/admin/inventory/[id]` |
+| 12 | Function - Cập nhật tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC update inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/inventory/[id]/edit` |
+| 13 | Function - Nhập hàng mới (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/admin/inventory/new` |
+| 14 | Function - Cảnh báo tồn kho thấp (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory alerts function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Cảnh báo] hoặc truy cập `/admin/inventory/alerts` |
+| 15 | Function - Kiểm kê tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory audit function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/admin/inventory/audit` |
+| 16 | Function - Nhập kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import inventory function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] 2. Click [Nhập kho] hoặc truy cập `/admin/inventory/import` |
+| 16.1 | Layout - Quản lý tồn kho (Admin) | [Layout Quản lý Tồn kho Admin](3.%20Quản%20lý%20tồn%20kho%20(Admin).md) | GUI chức năng Quản lý tồn kho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý tồn kho] hoặc truy cập `/admin/inventory` |
+| **4. QUẢN LÝ ĐƠN HÀNG** |
+| 17 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display order list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] hoặc truy cập `/admin/orders` |
+| 18 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
+| 19 | Function - Cập nhật đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC update order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/orders/[id]/update-status` |
+| 20 | Function - Xóa đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC delete order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
+| 21 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
+| 22 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
+| 23 | Function - Tạo đơn hàng mới (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC create new order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] 2. Click [Tạo đơn hàng mới] hoặc truy cập `/admin/orders/new` |
+| 23.1 | Layout - Quản lý đơn hàng (Admin) | [Layout Quản lý Đơn hàng Admin](4.%20Quản%20lý%20đơn%20hàng%20(Admin).md) | GUI chức năng Quản lý đơn hàng Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Xử lý đơn hàng] hoặc truy cập `/admin/orders` |
+| **5. QUẢN LÝ NGƯỜI DÙNG** |
+| 24 | Function - Tạo người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC create user function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Tạo người dùng] hoặc truy cập `/admin/customers` |
+| 25 | Function - Hiển thị danh sách người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC display user list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
+| 26 | Function - Xem chi tiết người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC view user details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/admin/customers/[id]` |
+| 27 | Function - Xóa người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC delete user function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xóa] |
+| 28 | Function - Cập nhật người dùng (Admin) | Quản lý người dùng Admin | Check GUI and FUNC update user function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Cập nhật] |
+| 28.1 | Layout - Quản lý người dùng (Admin) | [Layout Quản lý Người dùng Admin](5.%20Quản%20lý%20người%20dùng%20(Admin).md) | GUI chức năng Quản lý người dùng Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
+| **6. YÊU CẦU ĐẶT HÀNG** |
+| 29 | Function - Hiển thị danh sách yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC display special requests list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] hoặc truy cập `/admin/special-requests` |
+| 30 | Function - Xem chi tiết yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC view special request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem] hoặc truy cập `/admin/special-requests/[id]` |
+| 31 | Function - Xử lý yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC process special request function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Xử lý] |
+| 32 | Function - Cập nhật trạng thái yêu cầu đặt hàng (Admin) | Yêu cầu đặt hàng Admin | Check GUI and FUNC update special request status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
+| 32.1 | Layout - Yêu cầu đặt hàng (Admin) | [Layout Yêu cầu Đặt hàng Admin](6.%20Yêu%20cầu%20đặt%20hàng%20(Admin).md) | GUI chức năng Yêu cầu đặt hàng Admin | Tại Menu ứng dụng phía Admin: 1. Click [Yêu cầu đặt hàng] hoặc truy cập `/admin/special-requests` |
+| **7. XỬ LÝ ĐẶT TRƯỚC** |
+| 33 | Function - Hiển thị danh sách đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC display pre-orders list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] hoặc truy cập `/admin/pre-orders` |
+| 34 | Function - Xem chi tiết đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC view pre-order details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Xem] hoặc truy cập `/admin/pre-orders/[id]` |
+| 35 | Function - Xử lý đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC process pre-order function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Xử lý] hoặc truy cập `/admin/pre-orders/[id]/process` |
+| 36 | Function - Cập nhật trạng thái đặt trước (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC update pre-order status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/pre-orders/[id]/update-status` |
+| 37 | Function - Thông báo có hàng (Admin) | Xử lý đặt trước Admin | Check GUI and FUNC notify stock function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] 2. Click [Thông báo có hàng] hoặc truy cập `/admin/pre-orders/[id]/notify-stock` |
+| 37.1 | Layout - Xử lý đặt trước (Admin) | [Layout Xử lý Đặt trước Admin](7.%20Xử%20lý%20đặt%20trước%20(Admin).md) | GUI chức năng Xử lý đặt trước Admin | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đặt trước] hoặc truy cập `/admin/pre-orders` |
+| **8. QUẢN LÝ HỖ TRỢ - LIÊN HỆ** |
+| 38 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support request list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/admin/support` |
+| 39 | Function - Xem chi tiết yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC view support request details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Xem] hoặc truy cập `/admin/support/[id]` |
+| 40 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
+| 41 | Function - Trả lời yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply to customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Trả lời] |
+| 42 | Function - Xóa yêu cầu của khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC delete customer request function (Admin) | Tại Menu ứng dụng: 1. Click [Hỗ trợ khách hàng] 2. Click [Xóa yêu cầu] |
+| 42.1 | Function - Export lịch sử chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC export chat history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Click [Export lịch sử] |
+| 42.2 | Function - Tìm kiếm trong chat (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC search in chat function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] 3. Sử dụng ô tìm kiếm trong chat |
+| 42.3 | Function - Quản lý SLA và phân công (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC SLA and assignment management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] 2. Click [Cài đặt SLA] |
+| 42.4 | Layout - Quản lý hỗ trợ - liên hệ (Admin) | [Layout Quản lý Hỗ trợ - Liên hệ Admin](8.%20Quản%20lý%20hỗ%20trợ%20-%20liên%20hệ%20(Admin).md) | GUI chức năng Quản lý hỗ trợ - liên hệ Admin | Tại Menu ứng dụng phía Admin: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/admin/support` |
+| **9. XỬ LÝ PHẢN HỒI - KHIẾU NẠI** |
+| 43 | Function - Hiển thị danh sách phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC display complaints list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] hoặc truy cập `/admin/complaints` |
+| 44 | Function - Xem chi tiết phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC view complaint details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem] hoặc truy cập `/admin/complaints/[id]` |
+| 45 | Function - Trả lời phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC reply complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Trả lời] hoặc truy cập `/admin/complaints/[id]/reply` |
+| 46 | Function - Cập nhật trạng thái xử lý phản hồi (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC update complaint status function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Cập nhật trạng thái] |
+| 47 | Function - Phân loại khiếu nại (Admin) | Xử lý phản hồi Admin | Check GUI and FUNC classify complaint function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] 2. Click [Xem chi tiết] 3. Click [Phân loại] |
+| 47.1 | Layout - Xử lý phản hồi - khiếu nại (Admin) | [Layout Xử lý Phản hồi - Khiếu nại Admin](9.%20Xử%20lý%20phản%20hồi%20-%20khiếu%20nại%20(Admin).md) | GUI chức năng Xử lý phản hồi - khiếu nại Admin | Tại Menu ứng dụng phía Admin: 1. Click [Xử lý phản hồi] hoặc truy cập `/admin/complaints` |
+| **10. BÁO CÁO VÀ THỐNG KÊ** |
+| 48 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem doanh thu] hoặc truy cập `/admin/reports/revenue` |
+| 49 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem chi phí] hoặc truy cập `/admin/reports` |
+| 50 | Function - Xem báo cáo lợi nhuận (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view profit report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Xem lợi nhuận] hoặc truy cập `/admin/reports/profit` |
+| 51 | Function - Xem sản phẩm bán chạy (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view top products report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Sản phẩm bán chạy] hoặc truy cập `/admin/reports/top-products` |
+| 52 | Function - Xem thống kê khách hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view customers statistics function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê khách hàng] hoặc truy cập `/admin/reports/customers` |
+| 53 | Function - Xem báo cáo tồn kho (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view inventory report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo tồn kho] hoặc truy cập `/admin/reports/inventory` |
+| 54 | Function - Tạo báo cáo tùy chỉnh (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC create custom report function (Admin) | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo nâng cao] hoặc truy cập `/admin/reports/advanced` |
+| 54.1 | Layout - Báo cáo và thống kê (Admin) | [Layout Báo cáo và Thống kê Admin](10.%20Báo%20cáo%20và%20thống%20kê%20(Admin).md) | GUI chức năng Báo cáo và thống kê Admin | Tại Menu ứng dụng: 1. Click [Báo cáo & Thống kê] hoặc truy cập `/admin/reports` |
+| **11. QUẢN LÝ ĐÁNH GIÁ** |
+| 55 | Function - Xem đánh giá sản phẩm (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC product review management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] hoặc truy cập `/admin/reviews` |
+| 56 | Function - Xem chi tiết đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC view review details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] hoặc truy cập `/admin/reviews/[id]` |
+| 57 | Function - Duyệt đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC approve review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Duyệt] |
+| 58 | Function - Từ chối đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reject review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Từ chối] |
+| 59 | Function - Xóa đánh giá sản phẩm (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC delete product review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xóa đánh giá] |
+| 60 | Function - Phản hồi đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reply to review function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] 3. Click [Phản hồi] |
+| 60.1 | Layout - Quản lý đánh giá (Admin) | [Layout Quản lý Đánh giá Admin](11.%20Quản%20lý%20đánh%20giá%20(Admin).md) | GUI chức năng Quản lý đánh giá Admin | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý đánh giá] hoặc truy cập `/admin/reviews` |
+| **12. CÀI ĐẶT HỆ THỐNG** |
+| 61 | Function - Cài đặt chính sách giảm giá sản phẩm (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC product discount policy function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Giảm giá sản phẩm] hoặc truy cập `/admin/settings/product-discounts` |
+| 62 | Function - Cài đặt chính sách giảm giá toàn bộ (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC global discount policy function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Giảm giá toàn bộ] hoặc truy cập `/admin/settings/global-discounts` |
+| 63 | Function - Cài đặt thanh toán (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC payment settings function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Cài đặt thanh toán] hoặc truy cập `/admin/settings/payments` |
+| 64 | Function - Cài đặt thông tin shop (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC shop information function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] 2. Click [Thông tin shop] hoặc truy cập `/admin/settings/shop` |
+| 65 | Function - Cài đặt chung (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC general settings function (Admin) | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] hoặc truy cập `/admin/settings` |
+| 65.1 | Layout - Cài đặt hệ thống (Admin) | [Layout Cài đặt Hệ thống Admin](12.%20Cài%20đặt%20hệ%20thống%20(Admin).md) | GUI chức năng Cài đặt hệ thống Admin | Tại Menu ứng dụng: 1. Click [Cài đặt hệ thống] hoặc truy cập `/admin/settings` |
+| **13. QUẢN LÝ BÀI VIẾT** |
+| 66 | Function - Hiển thị danh sách bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC display posts list function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] hoặc truy cập `/admin/posts` |
+| 67 | Function - Xem chi tiết bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC view post details function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem] hoặc truy cập `/admin/posts/[id]` |
+| 68 | Function - Xóa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xóa] |
+| 69 | Function - Chỉnh sửa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC edit post function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Chỉnh sửa] |
+| 70 | Function - Xóa bình luận (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete comment function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Xóa bình luận] |
+| 71 | Function - Khóa tài khoản đăng bài (Admin) | Quản lý bài viết Admin | Check GUI and FUNC ban user posting function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem chi tiết] 3. Click [Khóa tài khoản] |
+| 72 | Function - Tìm kiếm và lọc bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC search and filter posts function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Sử dụng bộ lọc và tìm kiếm |
+| 72.1 | Layout - Quản lý bài viết (Admin) | [Layout Quản lý Bài viết Admin](13.%20Quản%20lý%20bài%20viết%20(Admin).md) | GUI chức năng Quản lý bài viết Admin | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý bài viết] hoặc truy cập `/admin/posts` |
+| **14. BẢO MẬT** |
+| 73 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
+| 74 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
+| 75 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện và cảnh báo |
+| 76 | Function - Auto logout khi hết hạn (Admin) | Bảo mật Admin | Check GUI and FUNC auto logout on timeout function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] - Hệ thống tự động đăng xuất khi timeout |
+| 76.1 | Layout - Bảo mật (Admin) | [Layout Bảo mật Admin](14.%20Bảo%20mật%20(Admin).md) | GUI chức năng Bảo mật Admin | Tại Menu ứng dụng phía Admin: 1. Click [Bảo mật] hoặc truy cập `/admin/security` |
+| **15. THÔNG BÁO** |
+| 77 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý thông báo] hoặc truy cập `/admin/notifications` |
+| 77.1 | Layout - Thông báo (Admin) | [Layout Thông báo Admin](15.%20Thông%20báo%20(Admin).md) | GUI chức năng Thông báo Admin | Tại Menu ứng dụng phía Admin: 1. Click [Quản lý thông báo] hoặc truy cập `/admin/notifications` |
 
 ---
 
-### Check FUNC: Khôi phục mật khẩu
+## GHI CHÚ QUAN TRỌNG
 
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Mở trang khôi phục mật khẩu | 1. Truy cập /admin/auth/forgot-password | Hiển thị trang với icon Shield, tiêu đề "Khôi phục mật khẩu", mô tả, 3 phương thức khôi phục (Email, SMS, Câu hỏi bảo mật), nút "Tiếp tục", link đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Chọn phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức Email | Hiển thị trường nhập Email, radio button Email được chọn (có dấu chấm trắng trong vòng tròn xanh) | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-03** | Chọn phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức SMS | Hiển thị trường nhập Số điện thoại, radio button SMS được chọn | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-04** | Chọn phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức Câu hỏi bảo mật | Hiển thị 3 câu hỏi bảo mật với các trường nhập câu trả lời, radio button Câu hỏi bảo mật được chọn | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-05** | Gửi mã xác thực qua Email thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Email<br>3. Nhập email hợp lệ<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Mã xác thực đã được gửi", chuyển sang màn hình nhập mã xác thực | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-06** | Gửi mã xác thực qua SMS thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức SMS<br>3. Nhập số điện thoại hợp lệ<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Mã xác thực đã được gửi", chuyển sang màn hình nhập mã xác thực | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-07** | Trả lời câu hỏi bảo mật thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Câu hỏi bảo mật<br>3. Nhập đúng câu trả lời cho 3 câu hỏi<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Xác thực thành công", chuyển sang màn hình đặt mật khẩu mới | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-08** | Gửi mã - Email không tồn tại | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Nhập email không tồn tại<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-09** | Gửi mã - Thiếu email | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Để trống email<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Vui lòng nhập email", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-10** | Xác thực mã thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực<br>3. Nhập mã xác thực đúng<br>4. Nhấn "Xác thực" | Hiển thị thông báo "Mã xác thực hợp lệ", chuyển sang màn hình đặt mật khẩu mới | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-11** | Xác thực mã - Mã sai | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực<br>3. Nhập mã xác thực sai<br>4. Nhấn "Xác thực" | Hiển thị thông báo lỗi "Mã xác thực không đúng" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-12** | Đặt lại mật khẩu thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới hợp lệ (≥8 ký tự, có chữ hoa, số)<br>4. Nhập xác nhận mật khẩu khớp<br>5. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo "Mật khẩu đã được đặt lại thành công", chuyển sang màn hình hoàn thành | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-13** | Đặt lại mật khẩu - Mật khẩu quá ngắn | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu < 8 ký tự<br>4. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 8 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-14** | Đặt lại mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới<br>4. Nhập xác nhận mật khẩu khác<br>5. Nhấn "Đặt lại mật khẩu" | Hiển thị Alert với icon AlertCircle, mô tả "Mật khẩu xác nhận không khớp", nút "Đặt lại mật khẩu" bị disabled | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-15** | Hiển thị độ mạnh mật khẩu | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới | Hiển thị thanh progress và label độ mạnh mật khẩu (Yếu/Trung bình/Mạnh) với màu tương ứng (đỏ/vàng/xanh) | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-16** | Hiển thị yêu cầu mật khẩu | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới | Hiển thị danh sách yêu cầu mật khẩu với các dấu chấm màu xanh khi đạt yêu cầu, màu xám khi chưa đạt: "Ít nhất 8 ký tự", "Có ít nhất 1 chữ hoa", "Có ít nhất 1 chữ số", "Có ít nhất 1 ký tự đặc biệt" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-17** | Nhấn nút Đăng nhập ngay | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành khôi phục mật khẩu<br>3. Nhấn "Đăng nhập ngay" | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-18** | Nhấn link Quay lại | 1. Truy cập /admin/auth/forgot-password<br>2. Ở màn hình nhập mã xác thực<br>3. Nhấn "Quay lại" | Quay lại màn hình chọn phương thức khôi phục | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-19** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức và nhập thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-20** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức và nhập thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Có lỗi xảy ra khi gửi mã xác thực" | | Untested | 11/15/2015 | |
+### Về Routes:
+- Tất cả routes được xác định dựa trên cấu trúc thư mục `src/app/admin/`
+- Routes có thể truy cập trực tiếp qua URL hoặc thông qua menu navigation
+- Routes động (có `[id]`) cần thay thế `[id]` bằng ID thực tế khi test
+- Ví dụ: `/admin/products/1` thay vì `/admin/products/[id]`
 
----
+### Về Pre-Condition:
+- Pre-Condition mô tả các bước điều hướng từ menu hoặc URL trực tiếp
+- Có thể kết hợp cả hai cách: click menu hoặc truy cập URL trực tiếp
+- Tất cả chức năng Admin yêu cầu đăng nhập trước khi truy cập
+- Admin cần có quyền truy cập các chức năng tương ứng
 
-### Function: Đổi mật khẩu
+### Về Test Cases:
+- Mỗi function có thể có nhiều test case con (GUI test, Functional test, Validation test, Integration test, etc.)
+- Cần bổ sung thêm các test case chi tiết cho từng function trong các sheet riêng
+- Test cases cần bao gồm: Test ID, Test Description, Pre-Condition, Test Steps, Test Data, Expected Result, Actual Result, Status, Priority
+- Các loại test case cần có:
+  - **GUI Test**: Kiểm tra giao diện, layout, responsive
+  - **Functional Test**: Kiểm tra chức năng hoạt động đúng
+  - **Validation Test**: Kiểm tra validation input, error handling
+  - **Boundary Test**: Kiểm tra giá trị biên
+  - **Negative Test**: Kiểm tra các trường hợp lỗi
+  - **Integration Test**: Kiểm tra tích hợp giữa các module
 
-#### Check GUI: Đổi mật khẩu
+### Về Test Data:
+- Cần chuẩn bị test data cho các trường hợp:
+  - Tài khoản Admin hợp lệ và không hợp lệ
+  - Sản phẩm có hàng và hết hàng
+  - Đơn hàng ở các trạng thái khác nhau
+  - Khách hàng với các hạng thành viên khác nhau
+  - Đánh giá ở các trạng thái khác nhau (Chờ duyệt, Đã duyệt, Từ chối)
 
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra nút Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" với icon Key trong card "Thông tin tài khoản", variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra modal Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút Đổi mật khẩu<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | | Pass | 11/15/2015 | |
-| **GUI-DMK-03** | Kiểm tra trường Mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu hiện tại | Hiển thị label "Mật khẩu hiện tại", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-04** | Kiểm tra trường Mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu mới | Hiển thị label "Mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-05** | Kiểm tra trường Xác nhận mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-06** | Kiểm tra nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-DMK-07** | Kiểm tra nút Đổi mật khẩu trong modal | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" | | Pass | 11/15/2015 | |
+### Về Test Environment:
+- **Development Environment**: `http://localhost:3000`
+- **Staging Environment**: `https://staging.modelshop.com`
+- **Production Environment**: `https://modelshop.com`
+- Cần test trên các trình duyệt: Chrome, Firefox, Safari, Edge
+- Cần test trên các thiết bị: Desktop, Tablet, Mobile
 
----
-
-### Check FUNC: Đổi mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Mở modal đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút "Đổi mật khẩu" | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả, 3 trường nhập (Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới), nút Hủy, nút Đổi mật khẩu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu thành công | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới hợp lệ (≥6 ký tự)<br>5. Nhập xác nhận mật khẩu khớp<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo "Đổi mật khẩu thành công", modal đóng, form được reset | | Untested | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu - Thiếu mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Để trống mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu hiện tại", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu - Mật khẩu hiện tại sai | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DMK-05** | Đổi mật khẩu - Thiếu mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Để trống mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu mới", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-06** | Đổi mật khẩu - Mật khẩu mới quá ngắn | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới < 6 ký tự<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu mới phải có ít nhất 6 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-07** | Đổi mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-08** | Hiển thị/ẩn mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-09** | Hiển thị/ẩn mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu mới<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-10** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập xác nhận mật khẩu<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-11** | Nhấn nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhấn nút "Hủy" | Modal đóng, form được reset về trạng thái ban đầu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-12** | Đóng modal bằng cách click bên ngoài | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Click bên ngoài modal | Modal đóng, form được reset | | Pass | 11/15/2015 | |
-| **FUNC-DMK-13** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập đầy đủ thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DMK-14** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập đầy đủ thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+### Về Priority:
+- **P0 - Critical**: Các chức năng cốt lõi (Đăng nhập, Quản lý đơn hàng, Quản lý sản phẩm)
+- **P1 - High**: Các chức năng quan trọng (Quản lý tồn kho, Quản lý khách hàng, Báo cáo)
+- **P2 - Medium**: Các chức năng hỗ trợ (Quản lý đánh giá, Quản lý bài viết, Hỗ trợ)
+- **P3 - Low**: Các chức năng bổ sung (Thông báo, Cài đặt hệ thống)
 
 ---
 
-### Function: Cập nhật thông tin cá nhân
+## THỐNG KÊ TEST CASE
 
-#### Check GUI: Cập nhật thông tin cá nhân
+**Tổng số chức năng Admin:** 78 functions
 
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTTCN-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/account<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý tài khoản" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/account<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý thông tin cá nhân và cài đặt tài khoản" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-03** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/account<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit ở header, chỉ hiển thị khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-04** | Kiểm tra nút Lưu thay đổi | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Lưu | Hiển thị nút "Lưu thay đổi" với icon Save ở header, chỉ hiển thị khi ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-05** | Kiểm tra nút Hủy | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X variant outline ở header, chỉ hiển thị khi ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-06** | Kiểm tra card Thông tin cá nhân | 1. Truy cập /admin/account<br>2. Kiểm tra card | Hiển thị card "Thông tin cá nhân" với icon User, tiêu đề "Thông tin cá nhân", mô tả "Thông tin cơ bản của tài khoản quản trị" | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-07** | Kiểm tra Avatar | 1. Truy cập /admin/account<br>2. Kiểm tra Avatar | Hiển thị Avatar với kích thước h-20 w-20, có AvatarImage hoặc AvatarFallback hiển thị chữ cái đầu của họ tên | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-08** | Kiểm tra Badge Role | 1. Truy cập /admin/account<br>2. Kiểm tra Badge | Hiển thị Badge với icon Shield, text hiển thị role (VD: "Super Admin"), variant secondary | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-09** | Kiểm tra trường Họ và tên | 1. Truy cập /admin/account<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-10** | Kiểm tra trường Email | 1. Truy cập /admin/account<br>2. Kiểm tra trường Email | Hiển thị label "Email", input type email, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-11** | Kiểm tra trường Số điện thoại | 1. Truy cập /admin/account<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-12** | Kiểm tra trường Địa chỉ | 1. Truy cập /admin/account<br>2. Kiểm tra trường Địa chỉ | Hiển thị label "Địa chỉ", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-13** | Kiểm tra trường Ngày sinh | 1. Truy cập /admin/account<br>2. Kiểm tra trường Ngày sinh | Hiển thị label "Ngày sinh", input type date, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-14** | Kiểm tra card Thông tin tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra card | Hiển thị card "Thông tin tài khoản" với icon Shield, tiêu đề "Thông tin tài khoản", mô tả "Thông tin bảo mật và hoạt động tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-15** | Kiểm tra thông tin Email đăng nhập | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin Email | Hiển thị icon Mail, label "Email đăng nhập", hiển thị email hiện tại màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-16** | Kiểm tra thông tin Ngày tạo tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Ngày tạo tài khoản", hiển thị ngày tạo định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-17** | Kiểm tra thông tin Lần đăng nhập cuối | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Lần đăng nhập cuối", hiển thị thời gian đăng nhập cuối định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-18** | Kiểm tra Separator | 1. Truy cập /admin/account<br>2. Kiểm tra Separator | Hiển thị Separator giữa các phần thông tin trong card | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cập nhật thông tin cá nhân
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTTCN-01** | Mở trang quản lý tài khoản | 1. Truy cập /admin/account | Hiển thị trang với tiêu đề "Quản lý tài khoản", mô tả, nút Chỉnh sửa, 2 card (Thông tin cá nhân, Thông tin tài khoản), các trường thông tin được điền sẵn, nút Đổi mật khẩu, nút Đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-02** | Bật chế độ chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn nút "Chỉnh sửa" | Các trường trong card "Thông tin cá nhân" (Họ tên, Email, SĐT, Địa chỉ, Ngày sinh) được kích hoạt (disabled=false), nút Chỉnh sửa biến mất, hiển thị nút "Lưu thay đổi" và nút "Hủy" | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-03** | Cập nhật thông tin thành công | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin (Họ tên, Email, SĐT, Địa chỉ, Ngày sinh)<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo "Cập nhật thông tin thành công", các trường chuyển về chế độ disabled, nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại, thông tin được cập nhật | | Untested | 11/15/2015 | |
-| **FUNC-CTTCN-04** | Cập nhật - Thiếu Họ tên | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa họ tên<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Họ tên không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-05** | Cập nhật - Thiếu Email | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa email<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Email không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-06** | Cập nhật - Thiếu Số điện thoại | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa số điện thoại<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Số điện thoại không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-07** | Cập nhật - Email không hợp lệ | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Nhập email không đúng định dạng<br>4. Nhấn "Lưu thay đổi" | Trình duyệt hiển thị cảnh báo validation hoặc thông báo lỗi "Email không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-08** | Hủy chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Hủy" | Các trường được reset về giá trị ban đầu, chuyển về chế độ xem (disabled=true), nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-CTTCN-10** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
-
----
-
-### Function: Đăng xuất
-
-#### Check GUI: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DX-01** | Kiểm tra nút Đăng xuất | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" với icon LogOut trong card "Thông tin tài khoản", variant destructive, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DX-02** | Kiểm tra AlertDialog xác nhận | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Kiểm tra dialog | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng.", nút "Hủy" và nút "Đăng xuất" | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Mở dialog xác nhận đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất" | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả, nút "Hủy" (AlertDialogCancel), nút "Đăng xuất" (AlertDialogAction) | | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Đăng xuất thành công | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo "Đăng xuất thành công", chuyển đến trang /admin/auth/login, token và session bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-DX-03** | Hủy đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Hủy" trong dialog | Dialog đóng, vẫn ở trang /admin/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-04** | Đóng dialog bằng cách click bên ngoài | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Click bên ngoài dialog | Dialog đóng, vẫn ở trang /admin/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-05** | Kiểm tra xóa token sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra localStorage/sessionStorage | Token bị xóa khỏi localStorage/sessionStorage | | Untested | 11/15/2015 | |
-| **FUNC-DX-06** | Kiểm tra xóa session sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra session | Session bị xóa trên server | | Untested | 11/15/2015 | |
-| **FUNC-DX-07** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Tắt kết nối mạng<br>4. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", có thể vẫn đăng xuất ở phía client | | Untested | 11/15/2015 | |
-| **FUNC-DX-08** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Server trả về lỗi 500<br>4. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", có thể vẫn đăng xuất ở phía client | | Untested | 11/15/2015 | |
+**Phân loại theo 15 mục chức năng:**
+1. **Quản lý tài khoản:** 7 functions (1-4.3)
+2. **Quản lý sản phẩm:** 9 functions (5-9.3)
+3. **Quản lý tồn kho:** 8 functions (10-16.1)
+4. **Quản lý đơn hàng:** 8 functions (17-23.1)
+5. **Quản lý người dùng:** 6 functions (24-28.1)
+6. **Yêu cầu đặt hàng:** 5 functions (29-32.1)
+7. **Xử lý đặt trước:** 6 functions (33-37.1)
+8. **Quản lý hỗ trợ - liên hệ:** 9 functions (38-42.4)
+9. **Xử lý phản hồi - khiếu nại:** 6 functions (43-47.1)
+10. **Báo cáo và thống kê:** 8 functions (48-54.1)
+11. **Quản lý đánh giá:** 7 functions (55-60.1)
+12. **Cài đặt hệ thống:** 6 functions (61-65.1)
+13. **Quản lý bài viết:** 8 functions (66-72.1)
+14. **Bảo mật:** 5 functions (73-76.1)
+15. **Thông báo:** 2 functions (77-77.1)
 
 ---
 
 **Người tạo:** Testing Team  
-**Ngày cập nhật:** 11/15/2015  
+**Ngày cập nhật:** 2025-01-20  
 **Phiên bản:** 1.0
 
