@@ -1,11 +1,12 @@
-# Test Case Template - Chức năng xem trang cá nhân người lạ (User)
+# Test Case Template - Chức năng bảo mật (User)
 
 ## Module Code
-**Model Management Store: Chức năng xem trang cá nhân người lạ User**
+**Model Management Store: Chức năng bảo mật User**
 
 ## Test Requirement
-1. Hiển thị danh sách bài viết
-2. Xem chi tiết các ảnh
+1. Khôi phục mật khẩu
+2. Lịch sử đăng nhập
+3. Xóa phiên đăng nhập
 
 ---
 
@@ -25,117 +26,138 @@
 
 ## Test Cases
 
-### Function: Hiển thị danh sách bài viết
+### Function: Khôi phục mật khẩu
 
-#### Check GUI: Hiển thị danh sách bài viết
+#### Check GUI: Khôi phục mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-HTDS-BV-01** | Kiểm tra tiêu đề trang | 1. Truy cập trang cá nhân người lạ<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader, CardTitle text-2xl với tên người dùng | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-02** | Kiểm tra thông tin cá nhân | 1. Truy cập trang cá nhân<br>2. Kiểm tra thông tin | Hiển thị Card với Avatar h-16 w-16, CardTitle, CardDescription với bio, Badge variant secondary với số bài viết, người theo dõi, đang theo dõi | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-03** | Kiểm tra avatar người dùng | 1. Xem thông tin cá nhân<br>2. Kiểm tra avatar | Hiển thị Avatar h-16 w-16 với AvatarImage và AvatarFallback là ký tự đầu của tên | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-04** | Kiểm tra tên người dùng | 1. Xem thông tin cá nhân<br>2. Kiểm tra tên | Hiển thị CardTitle text-2xl với tên người dùng | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-05** | Kiểm tra bio | 1. Xem thông tin cá nhân<br>2. Kiểm tra bio | Hiển thị CardDescription với bio của người dùng | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-06** | Kiểm tra badge số bài viết | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "{số} bài viết" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-07** | Kiểm tra badge số người theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "{số} người theo dõi", format số với toLocaleString() | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-08** | Kiểm tra badge đang theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "Đang theo dõi {số}" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-09** | Kiểm tra nút Theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra nút | Hiển thị nút "+ Theo dõi" variant default, có thể click để theo dõi/bỏ theo dõi | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-10** | Kiểm tra nút Nhắn tin | 1. Xem thông tin cá nhân<br>2. Kiểm tra nút | Hiển thị nút "Nhắn tin" variant outline, có thể click để mở chat | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-11** | Kiểm tra tab danh mục | 1. Xem trang cá nhân<br>2. Kiểm tra tab | Hiển thị TabsList với TabsTrigger: "Bài viết" (icon ImageIcon), "Ảnh" (icon Camera), "Video" (icon VideoIcon) | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-12** | Kiểm tra ô tìm kiếm | 1. Xem trang cá nhân<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search absolute left-3 top-3, placeholder "Tìm bài viết/ảnh/video...", className pl-9 | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-13** | Kiểm tra bộ lọc thời gian | 1. Xem trang cá nhân<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[160px], options: "Tất cả", "Tuần này", "Tháng này", "Năm nay" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-14** | Kiểm tra bộ lọc sắp xếp | 1. Xem trang cá nhân<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[200px], options: "Mới nhất", "Nhiều like nhất", "Nhiều bình luận nhất" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-15** | Kiểm tra bộ lọc danh mục (tab Ảnh) | 1. Chọn tab "Ảnh"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[200px], options: "Tất cả", "Gunpla", "Action Figures", "Model Kits", "Khác" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-16** | Kiểm tra nút Lọc | 1. Xem trang cá nhân<br>2. Kiểm tra nút | Hiển thị nút "Lọc" variant outline với icon Filter h-4 w-4 | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-17** | Kiểm tra card bài viết | 1. Xem tab "Bài viết"<br>2. Kiểm tra card | Hiển thị Card trong grid grid-cols-1 md:grid-cols-2 gap-4, có hình ảnh cover, CardHeader, CardContent | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-18** | Kiểm tra hình ảnh bài viết | 1. Xem card bài viết<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh w-full h-40 md:h-48 object-cover trong div overflow-hidden | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-19** | Kiểm tra tiêu đề bài viết | 1. Xem card bài viết<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle text-base line-clamp-1 với tiêu đề bài viết | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-20** | Kiểm tra nội dung tóm tắt | 1. Xem card bài viết<br>2. Kiểm tra nội dung | Hiển thị CardDescription line-clamp-2 với nội dung tóm tắt | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-21** | Kiểm tra thời gian đăng | 1. Xem card bài viết<br>2. Kiểm tra thời gian | Hiển thị text-xs text-muted-foreground với thời gian đăng | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-22** | Kiểm tra số lượng like | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng like với icon Heart h-4 w-4, text-sm | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-23** | Kiểm tra số lượng bình luận | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng bình luận với icon MessageSquare h-4 w-4, text-sm | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-24** | Kiểm tra số lượng chia sẻ | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng chia sẻ với icon Share2 h-4 w-4, text-sm | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-25** | Kiểm tra tags bài viết | 1. Xem card bài viết<br>2. Kiểm tra tags | Hiển thị Badge variant secondary text-xs với các tags, flex flex-wrap gap-1 | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BV-26** | Kiểm tra phân trang | 1. Xem danh sách bài viết<br>2. Kiểm tra phân trang | Hiển thị phân trang nếu có nhiều bài viết, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
+| **GUI-KPMK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle text-2xl font-bold "Quên mật khẩu" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-02** | Kiểm tra icon Mail | 1. Truy cập trang khôi phục<br>2. Kiểm tra icon | Hiển thị icon Mail h-6 w-6 text-primary trong div h-12 w-12 rounded-full bg-primary/10 | | Pass | 11/15/2015 | |
+| **GUI-KPMK-03** | Kiểm tra mô tả chức năng | 1. Truy cập trang khôi phục<br>2. Kiểm tra mô tả | Hiển thị CardDescription "Nhập email của bạn để nhận link khôi phục mật khẩu" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-04** | Kiểm tra form khôi phục | 1. Truy cập trang khôi phục<br>2. Kiểm tra form | Hiển thị form với Label "Email", Input type="email" placeholder "Nhập email của bạn", required | | Pass | 11/15/2015 | |
+| **GUI-KPMK-05** | Kiểm tra nút Gửi link khôi phục | 1. Truy cập trang khôi phục<br>2. Kiểm tra nút | Hiển thị nút "Gửi link khôi phục" type submit, className w-full, disabled khi isLoading | | Pass | 11/15/2015 | |
+| **GUI-KPMK-06** | Kiểm tra nút Quay lại đăng nhập | 1. Truy cập trang khôi phục<br>2. Kiểm tra nút | Hiển thị link "Quay lại đăng nhập" với icon ArrowLeft h-4 w-4, href="/user/auth/login" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-07** | Kiểm tra card trạng thái gửi | 1. Gửi email thành công<br>2. Kiểm tra card | Hiển thị Card với CardHeader text-center, icon CheckCircle h-6 w-6 text-green-600 trong div bg-green-100, CardTitle "Email đã được gửi" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-08** | Kiểm tra thông báo gửi | 1. Gửi email thành công<br>2. Kiểm tra thông báo | Hiển thị CardDescription "Chúng tôi đã gửi link khôi phục mật khẩu đến email của bạn" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-09** | Kiểm tra hướng dẫn | 1. Gửi email thành công<br>2. Kiểm tra hướng dẫn | Hiển thị text-sm text-muted-foreground với hướng dẫn kiểm tra hộp thư và thư mục spam | | Pass | 11/15/2015 | |
+| **GUI-KPMK-10** | Kiểm tra nút Gửi lại email | 1. Gửi email thành công<br>2. Kiểm tra nút | Hiển thị nút "Gửi lại email" variant outline className w-full | | Pass | 11/15/2015 | |
+| **GUI-KPMK-11** | Kiểm tra nút Quay lại đăng nhập (sau khi gửi) | 1. Gửi email thành công<br>2. Kiểm tra nút | Hiển thị nút "Quay lại đăng nhập" với icon ArrowLeft h-4 w-4 mr-2, href="/user/auth/login" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-12** | Kiểm tra link Đăng ký | 1. Truy cập trang khôi phục<br>2. Kiểm tra link | Hiển thị text "Chưa có tài khoản?" với link "Đăng ký ngay" href="/user/auth/register" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-13** | Kiểm tra layout trang | 1. Truy cập trang khôi phục<br>2. Kiểm tra layout | Trang có min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 p-4, Card w-full max-w-md | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách bài viết
+### Check FUNC: Khôi phục mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-HTDS-BV-01** | Hiển thị trang cá nhân | 1. Click vào tên tác giả từ bài viết<br>2. Xem trang cá nhân | Hiển thị trang cá nhân với đầy đủ thông tin: avatar, tên, bio, số bài viết, người theo dõi, đang theo dõi, nút theo dõi, nút nhắn tin | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-02** | Hiển thị danh sách bài viết | 1. Chọn tab "Bài viết"<br>2. Xem danh sách | Hiển thị danh sách bài viết công khai với đầy đủ thông tin: hình ảnh cover, tiêu đề, nội dung tóm tắt, thời gian đăng, số lượng like/bình luận/chia sẻ, tags | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-03** | Lọc theo thời gian - Tất cả | 1. Chọn bộ lọc thời gian "Tất cả"<br>2. Xem danh sách | Hiển thị tất cả bài viết không giới hạn thời gian | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-04** | Lọc theo thời gian - Tuần này | 1. Chọn bộ lọc thời gian "Tuần này"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong tuần này | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-05** | Lọc theo thời gian - Tháng này | 1. Chọn bộ lọc thời gian "Tháng này"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong tháng này | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-06** | Lọc theo thời gian - Năm nay | 1. Chọn bộ lọc thời gian "Năm nay"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong năm nay | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-07** | Sắp xếp theo Mới nhất | 1. Chọn sắp xếp "Mới nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo thời gian đăng mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-08** | Sắp xếp theo Nhiều like nhất | 1. Chọn sắp xếp "Nhiều like nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-09** | Sắp xếp theo Nhiều bình luận nhất | 1. Chọn sắp xếp "Nhiều bình luận nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo số lượng bình luận giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-10** | Tìm kiếm bài viết | 1. Nhập từ khóa vào ô tìm kiếm<br>2. Xem kết quả | Danh sách được lọc, chỉ hiển thị bài viết có tiêu đề hoặc nội dung chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-11** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn bộ lọc thời gian và sắp xếp | Danh sách được lọc và sắp xếp theo tất cả tiêu chí, chỉ hiển thị bài viết thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-12** | Theo dõi người dùng | 1. Nhấn nút "+ Theo dõi"<br>2. Kiểm tra trạng thái | Người dùng được theo dõi, nút chuyển thành "Bỏ theo dõi", số lượng người theo dõi tăng, hiển thị toast "Đã theo dõi" | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-13** | Bỏ theo dõi người dùng | 1. Nhấn nút "Bỏ theo dõi"<br>2. Kiểm tra trạng thái | Người dùng được bỏ theo dõi, nút chuyển thành "+ Theo dõi", số lượng người theo dõi giảm, hiển thị toast "Đã bỏ theo dõi" | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-14** | Nhắn tin cho người dùng | 1. Nhấn nút "Nhắn tin"<br>2. Kiểm tra hành động | Mở trang chat hoặc modal chat với người dùng, có thể gửi tin nhắn | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-15** | Xem chi tiết bài viết | 1. Click vào card bài viết hoặc tiêu đề<br>2. Xem chi tiết | Chuyển đến trang chi tiết bài viết với đầy đủ nội dung, hình ảnh, video, bình luận | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-16** | Hiển thị khi không có bài viết | 1. Xem trang cá nhân không có bài viết<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có bài viết nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-17** | Tìm kiếm real-time | 1. Nhập từ khóa vào ô tìm kiếm<br>2. Xem kết quả | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BV-18** | Chuyển đổi tab | 1. Chọn tab "Bài viết", "Ảnh", hoặc "Video"<br>2. Xem nội dung | Nội dung được thay đổi theo tab đã chọn, bộ lọc danh mục chỉ hiển thị ở tab "Ảnh" | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-01** | Gửi link khôi phục thành công | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Nhấn "Gửi link khôi phục" | Email được gửi thành công, hiển thị card trạng thái gửi, toast "Email khôi phục mật khẩu đã được gửi!", token khôi phục được tạo và lưu trữ an toàn | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-02** | Gửi link với email trống | 1. Truy cập trang khôi phục<br>2. Để trống email<br>3. Nhấn "Gửi link khôi phục" | Hiển thị toast lỗi "Vui lòng nhập email", không gửi email | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-03** | Gửi link với email không tồn tại | 1. Nhập email không tồn tại trong hệ thống<br>2. Nhấn "Gửi link khôi phục" | Hệ thống kiểm tra và hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" hoặc vẫn hiển thị thành công để bảo mật | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-04** | Gửi link với email không hợp lệ | 1. Nhập email không đúng định dạng<br>2. Nhấn "Gửi link khôi phục" | Input type="email" tự động validate, không cho phép submit nếu email không hợp lệ | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-05** | Tạo token khôi phục | 1. Gửi link khôi phục thành công<br>2. Kiểm tra token | Token khôi phục được tạo duy nhất, có thời hạn sử dụng (1 giờ), chỉ sử dụng một lần, được mã hóa và lưu trữ an toàn | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-06** | Chặn spam yêu cầu khôi phục | 1. Gửi nhiều yêu cầu khôi phục liên tiếp<br>2. Kiểm tra hệ thống | Hệ thống ghi lại thời gian yêu cầu, chặn yêu cầu quá thường xuyên, hiển thị thông báo "Vui lòng đợi trước khi gửi lại" | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-07** | Gửi lại email | 1. Gửi email thành công<br>2. Nhấn "Gửi lại email" | Email được gửi lại, token mới được tạo, thời gian hết hạn được reset | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-08** | Quay lại đăng nhập | 1. Nhấn link "Quay lại đăng nhập"<br>2. Kiểm tra điều hướng | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-09** | Loading state khi gửi | 1. Nhập email<br>2. Nhấn "Gửi link khôi phục"<br>3. Kiểm tra loading | Nút hiển thị "Đang gửi..." và disabled trong khi gửi | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-10** | Xử lý lỗi khi gửi email | 1. Gửi email<br>2. Giả lập lỗi server<br>3. Kiểm tra xử lý | Hiển thị toast lỗi "Có lỗi xảy ra, vui lòng thử lại", không hiển thị card trạng thái gửi | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết các ảnh
+### Function: Lịch sử đăng nhập
 
-#### Check GUI: Xem chi tiết các ảnh
+#### Check GUI: Lịch sử đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XCT-A-01** | Kiểm tra tab Ảnh | 1. Chọn tab "Ảnh"<br>2. Kiểm tra tab | Hiển thị TabsTrigger value="photos" với icon Camera h-4 w-4, text "Ảnh" | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-02** | Kiểm tra gallery ảnh | 1. Chọn tab "Ảnh"<br>2. Kiểm tra gallery | Hiển thị grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 với các button chứa ảnh | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-03** | Kiểm tra card ảnh | 1. Xem gallery ảnh<br>2. Kiểm tra card | Hiển thị button relative group aspect-square overflow-hidden rounded-lg border với ảnh bên trong | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-04** | Kiểm tra ảnh mô hình | 1. Xem card ảnh<br>2. Kiểm tra ảnh | Hiển thị ảnh h-full w-full object-cover transition-transform group-hover:scale-105 | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-05** | Kiểm tra overlay khi hover | 1. Hover vào card ảnh<br>2. Kiểm tra overlay | Hiển thị overlay absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-06** | Kiểm tra thông tin ảnh khi hover | 1. Hover vào card ảnh<br>2. Kiểm tra thông tin | Hiển thị thông tin absolute bottom-2 left-2 right-2 text-white text-xs opacity-0 group-hover:opacity-100 với tên ảnh, số like, số bình luận | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-07** | Kiểm tra modal xem ảnh | 1. Click vào ảnh<br>2. Kiểm tra modal | Hiển thị Dialog với DialogContent max-w-3xl, DialogHeader, DialogTitle, DialogDescription | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-08** | Kiểm tra ảnh phóng to trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra ảnh | Hiển thị ảnh trong div aspect-video w-full overflow-hidden rounded-lg border với object-cover | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-09** | Kiểm tra thông tin chi tiết trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra thông tin | Hiển thị DialogTitle với tên ảnh, số like (icon Heart), số bình luận (icon MessageSquare), DialogDescription với thời gian upload | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-10** | Kiểm tra danh sách bình luận trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra bình luận | Hiển thị Label "Bình luận", danh sách bình luận text-sm text-muted-foreground với tên người dùng và nội dung | | Pass | 11/15/2015 | |
-| **GUI-XCT-A-11** | Kiểm tra nút đóng modal | 1. Mở modal xem ảnh<br>2. Kiểm tra nút | Có thể đóng modal bằng cách click overlay hoặc nút đóng | | Pass | 11/15/2015 | |
+| **GUI-LSDN-01** | Kiểm tra tiêu đề tab | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Lịch sử đăng nhập" với icon Clock h-5 w-5 | | Pass | 11/15/2015 | |
+| **GUI-LSDN-02** | Kiểm tra mô tả chức năng | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Kiểm tra mô tả | Hiển thị CardDescription "Xem lịch sử đăng nhập gần đây" | | Pass | 11/15/2015 | |
+| **GUI-LSDN-03** | Kiểm tra bộ lọc thời gian | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Kiểm tra bộ lọc | Hiển thị Select với Label "Thời gian", options: "Tất cả", "Tuần này", "Tháng này", "3 tháng gần đây" | | Pass | 11/15/2015 | |
+| **GUI-LSDN-04** | Kiểm tra bộ lọc thiết bị | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Kiểm tra bộ lọc | Hiển thị Select với Label "Thiết bị", options: "Tất cả", "Desktop", "Mobile", "Tablet" | | Pass | 11/15/2015 | |
+| **GUI-LSDN-05** | Kiểm tra bộ lọc trạng thái | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Kiểm tra bộ lọc | Hiển thị Select với Label "Trạng thái", options: "Tất cả", "Thành công", "Thất bại" | | Pass | 11/15/2015 | |
+| **GUI-LSDN-06** | Kiểm tra card đăng nhập | 1. Xem danh sách lịch sử<br>2. Kiểm tra card | Hiển thị Card border-dashed với CardContent p-4 grid md:grid-cols-5 gap-2 text-sm | | Pass | 11/15/2015 | |
+| **GUI-LSDN-07** | Kiểm tra thời gian đăng nhập | 1. Xem card đăng nhập<br>2. Kiểm tra thời gian | Hiển thị thời gian với font-medium, địa chỉ IP text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-LSDN-08** | Kiểm tra thiết bị và hệ điều hành | 1. Xem card đăng nhập<br>2. Kiểm tra thiết bị | Hiển thị tên thiết bị, hệ điều hành text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-LSDN-09** | Kiểm tra trình duyệt và vị trí | 1. Xem card đăng nhập<br>2. Kiểm tra trình duyệt | Hiển thị tên trình duyệt, vị trí text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-LSDN-10** | Kiểm tra badge trạng thái | 1. Xem card đăng nhập<br>2. Kiểm tra badge | Hiển thị Badge variant secondary nếu thành công, variant destructive nếu thất bại, text "Thành công" hoặc "Thất bại" | | Pass | 11/15/2015 | |
+| **GUI-LSDN-11** | Kiểm tra lý do thất bại | 1. Xem đăng nhập thất bại<br>2. Kiểm tra lý do | Hiển thị lý do thất bại text-muted-foreground trong ngoặc đơn nếu có | | Pass | 11/15/2015 | |
+| **GUI-LSDN-12** | Kiểm tra ID đăng nhập | 1. Xem card đăng nhập<br>2. Kiểm tra ID | Hiển thị ID text-right text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-LSDN-13** | Kiểm tra icon thiết bị | 1. Xem card đăng nhập<br>2. Kiểm tra icon | Hiển thị icon Smartphone nếu là mobile, icon Monitor nếu là desktop, h-5 w-5 text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-LSDN-14** | Kiểm tra badge Hiện tại | 1. Xem đăng nhập hiện tại<br>2. Kiểm tra badge | Hiển thị Badge variant default text "Hiện tại" nếu là phiên hiện tại | | Pass | 11/15/2015 | |
+| **GUI-LSDN-15** | Kiểm tra icon trạng thái | 1. Xem card đăng nhập<br>2. Kiểm tra icon | Hiển thị icon CheckCircle nếu thành công, icon XCircle nếu thất bại, trong Badge | | Pass | 11/15/2015 | |
+| **GUI-LSDN-16** | Kiểm tra phân trang | 1. Xem danh sách lịch sử<br>2. Kiểm tra phân trang | Hiển thị phân trang nếu có nhiều đăng nhập, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết các ảnh
+### Check FUNC: Lịch sử đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XCT-A-01** | Hiển thị gallery ảnh | 1. Chọn tab "Ảnh"<br>2. Xem gallery | Hiển thị gallery ảnh mô hình với grid layout, mỗi ảnh có hover effect, hiển thị thông tin khi hover | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-02** | Lọc ảnh theo thời gian | 1. Chọn tab "Ảnh"<br>2. Chọn bộ lọc thời gian | Gallery được lọc theo thời gian đã chọn, chỉ hiển thị ảnh trong khoảng thời gian đó | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-03** | Lọc ảnh theo danh mục | 1. Chọn tab "Ảnh"<br>2. Chọn bộ lọc danh mục | Gallery được lọc theo danh mục đã chọn (Gunpla, Action Figures, Model Kits, Khác), chỉ hiển thị ảnh thuộc danh mục đó | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-04** | Sắp xếp ảnh theo Mới nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Mới nhất" | Gallery được sắp xếp theo thời gian upload mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-05** | Sắp xếp ảnh theo Nhiều like nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Nhiều like nhất" | Gallery được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-06** | Sắp xếp ảnh theo Cũ nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Cũ nhất" | Gallery được sắp xếp theo thời gian upload cũ nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-07** | Mở modal xem ảnh chi tiết | 1. Click vào ảnh trong gallery<br>2. Xem modal | Mở modal hiển thị ảnh phóng to, thông tin chi tiết (tên, số like, số bình luận, thời gian upload), danh sách bình luận | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-08** | Đóng modal xem ảnh | 1. Mở modal xem ảnh<br>2. Click overlay hoặc nút đóng | Modal đóng, quay lại gallery | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-09** | Tìm kiếm ảnh | 1. Chọn tab "Ảnh"<br>2. Nhập từ khóa vào ô tìm kiếm | Gallery được lọc, chỉ hiển thị ảnh có tên hoặc thông tin chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-10** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn bộ lọc thời gian, danh mục và sắp xếp | Gallery được lọc và sắp xếp theo tất cả tiêu chí, chỉ hiển thị ảnh thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-11** | Hiển thị khi không có ảnh | 1. Xem trang cá nhân không có ảnh<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có ảnh nào" hoặc gallery trống | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-12** | Tương tác với ảnh trong modal | 1. Mở modal xem ảnh<br>2. Tương tác với ảnh | Có thể like, bình luận, chia sẻ ảnh từ modal, số lượng được cập nhật real-time | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-13** | Xem video trong tab Video | 1. Chọn tab "Video"<br>2. Xem danh sách | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 với Card chứa thumbnail, duration, tiêu đề, thời gian upload, số like, số bình luận | | Pass | 11/15/2015 | |
-| **FUNC-XCT-A-14** | Phân trang gallery ảnh | 1. Xem gallery có nhiều ảnh<br>2. Kiểm tra phân trang | Hiển thị phân trang, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-01** | Hiển thị lịch sử đăng nhập | 1. Truy cập tab "Lịch sử đăng nhập"<br>2. Xem danh sách | Hiển thị danh sách các lần đăng nhập với đầy đủ thông tin: thời gian, địa chỉ IP, thiết bị, hệ điều hành, trình duyệt, vị trí, trạng thái, lý do thất bại (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-02** | Lọc theo thời gian - Tất cả | 1. Chọn bộ lọc thời gian "Tất cả"<br>2. Xem danh sách | Hiển thị tất cả lịch sử đăng nhập không giới hạn thời gian | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-03** | Lọc theo thời gian - Tuần này | 1. Chọn bộ lọc thời gian "Tuần này"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập trong tuần này | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-04** | Lọc theo thời gian - Tháng này | 1. Chọn bộ lọc thời gian "Tháng này"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập trong tháng này | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-05** | Lọc theo thời gian - 3 tháng gần đây | 1. Chọn bộ lọc thời gian "3 tháng gần đây"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập trong 3 tháng gần đây | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-06** | Lọc theo thiết bị - Desktop | 1. Chọn bộ lọc thiết bị "Desktop"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập từ thiết bị Desktop | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-07** | Lọc theo thiết bị - Mobile | 1. Chọn bộ lọc thiết bị "Mobile"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập từ thiết bị Mobile | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-08** | Lọc theo thiết bị - Tablet | 1. Chọn bộ lọc thiết bị "Tablet"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập từ thiết bị Tablet | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-09** | Lọc theo trạng thái - Thành công | 1. Chọn bộ lọc trạng thái "Thành công"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập thành công | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-10** | Lọc theo trạng thái - Thất bại | 1. Chọn bộ lọc trạng thái "Thất bại"<br>2. Xem danh sách | Chỉ hiển thị các lần đăng nhập thất bại với lý do | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-11** | Kết hợp nhiều bộ lọc | 1. Chọn bộ lọc thời gian, thiết bị và trạng thái<br>2. Xem danh sách | Danh sách được lọc theo tất cả tiêu chí, chỉ hiển thị đăng nhập thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-12** | Phát hiện đăng nhập lạ | 1. Có đăng nhập từ thiết bị mới hoặc vị trí mới<br>2. Kiểm tra hệ thống | Hệ thống tự động phát hiện và đánh dấu đăng nhập lạ, gửi thông báo qua email/SMS để cảnh báo người dùng | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-13** | Sắp xếp theo thời gian mới nhất | 1. Xem danh sách lịch sử<br>2. Kiểm tra sắp xếp | Danh sách được sắp xếp theo thời gian đăng nhập mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-14** | Hiển thị khi không có lịch sử | 1. Xem tài khoản không có lịch sử đăng nhập<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có lịch sử đăng nhập" hoặc danh sách trống | | Pass | 11/15/2015 | |
+| **FUNC-LSDN-15** | Cập nhật real-time | 1. Xem danh sách lịch sử<br>2. Có đăng nhập mới | Danh sách được cập nhật real-time, đăng nhập mới xuất hiện trong danh sách | | Pass | 11/15/2015 | |
 
 ---
 
-### Check VALIDATION: Chức năng xem trang cá nhân người lạ
+### Function: Xóa phiên đăng nhập
+
+#### Check GUI: Xóa phiên đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **VALID-XTCPNL-01** | Truy cập trang cá nhân không tồn tại | 1. Truy cập URL với ID người dùng không tồn tại<br>2. Kiểm tra hiển thị | Hiển thị thông báo lỗi "Người dùng không tồn tại" hoặc trang 404 | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-02** | Truy cập trang cá nhân bị chặn | 1. Truy cập trang cá nhân của người dùng đã chặn mình<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Bạn không thể xem trang cá nhân này" hoặc chặn truy cập | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-03** | Tìm kiếm với từ khóa đặc biệt | 1. Nhập từ khóa có ký tự đặc biệt<br>2. Tìm kiếm | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-04** | Theo dõi chính mình | 1. Truy cập trang cá nhân của chính mình<br>2. Kiểm tra nút theo dõi | Nút "Theo dõi" không hiển thị hoặc bị vô hiệu hóa, hiển thị thông báo "Đây là trang cá nhân của bạn" | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-05** | Xem ảnh không tồn tại | 1. Click vào ảnh không tồn tại<br>2. Kiểm tra modal | Hiển thị thông báo lỗi "Ảnh không tồn tại" hoặc không mở modal | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-06** | Lọc với giá trị không hợp lệ | 1. Chọn bộ lọc với giá trị không hợp lệ<br>2. Kiểm tra kết quả | Hệ thống xử lý an toàn, không gây lỗi, hiển thị danh sách mặc định | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-07** | Tìm kiếm với từ khóa rỗng | 1. Để trống ô tìm kiếm<br>2. Xem kết quả | Hiển thị tất cả nội dung, không lọc | | Pass | 11/15/2015 | |
-| **VALID-XTCPNL-08** | Xem trang cá nhân khi chưa đăng nhập | 1. Chưa đăng nhập<br>2. Truy cập trang cá nhân | Hiển thị trang cá nhân công khai hoặc yêu cầu đăng nhập tùy cài đặt quyền riêng tư | | Pass | 11/15/2015 | |
+| **GUI-XPDN-01** | Kiểm tra tiêu đề tab | 1. Truy cập tab "Phiên đăng nhập"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Phiên đăng nhập hiện tại" với icon Globe h-5 w-5 | | Pass | 11/15/2015 | |
+| **GUI-XPDN-02** | Kiểm tra mô tả chức năng | 1. Truy cập tab "Phiên đăng nhập"<br>2. Kiểm tra mô tả | Hiển thị CardDescription "Quản lý các phiên đăng nhập đang hoạt động" | | Pass | 11/15/2015 | |
+| **GUI-XPDN-03** | Kiểm tra card phiên hiện tại | 1. Xem phiên đăng nhập<br>2. Kiểm tra card | Hiển thị card với flex items-center justify-between p-4 border rounded-lg | | Pass | 11/15/2015 | |
+| **GUI-XPDN-04** | Kiểm tra thông tin thiết bị | 1. Xem card phiên<br>2. Kiểm tra thông tin | Hiển thị icon thiết bị, tên thiết bị font-medium, badge "Hiện tại" nếu là phiên hiện tại, browser và OS text-sm text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-XPDN-05** | Kiểm tra thông tin vị trí và IP | 1. Xem card phiên<br>2. Kiểm tra thông tin | Hiển thị vị trí với icon MapPin h-3 w-3, IP với icon Globe h-3 w-3, thời gian hoạt động với icon Clock h-3 w-3, text-xs text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-XPDN-06** | Kiểm tra nút Kết thúc | 1. Xem phiên không phải hiện tại<br>2. Kiểm tra nút | Hiển thị nút "Kết thúc" variant destructive size sm với icon Trash2 h-4 w-4, chỉ hiển thị cho phiên không phải hiện tại | | Pass | 11/15/2015 | |
+| **GUI-XPDN-07** | Kiểm tra nút Đăng xuất tất cả | 1. Xem danh sách phiên<br>2. Kiểm tra nút | Hiển thị nút "Kết thúc tất cả" variant destructive với icon Trash2 h-4 w-4 mr-2 | | Pass | 11/15/2015 | |
+| **GUI-XPDN-08** | Kiểm tra modal xác nhận | 1. Nhấn nút "Kết thúc"<br>2. Kiểm tra modal | Hiển thị modal với DialogTitle "Xác nhận xóa phiên đăng nhập", DialogDescription "Bạn có chắc chắn muốn xóa phiên đăng nhập này?", Card hiển thị thông tin phiên | | Pass | 11/15/2015 | |
+| **GUI-XPDN-09** | Kiểm tra nút Xác nhận xóa | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận xóa" variant destructive | | Pass | 11/15/2015 | |
+| **GUI-XPDN-10** | Kiểm tra nút Hủy trong modal | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Xóa phiên đăng nhập
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-XPDN-01** | Hiển thị phiên đăng nhập | 1. Truy cập tab "Phiên đăng nhập"<br>2. Xem danh sách | Hiển thị danh sách tất cả phiên đăng nhập đang hoạt động với đầy đủ thông tin: thiết bị, hệ điều hành, trình duyệt, vị trí, IP, thời gian hoạt động, trạng thái | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-02** | Xóa phiên đăng nhập | 1. Xem phiên không phải hiện tại<br>2. Nhấn nút "Kết thúc"<br>3. Xác nhận xóa | Hiển thị modal xác nhận với thông tin phiên, sau khi xác nhận, phiên được xóa, hiển thị toast "Đã kết thúc phiên đăng nhập", phiên biến mất khỏi danh sách, thiết bị được đăng xuất | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-03** | Hủy xóa phiên | 1. Nhấn nút "Kết thúc"<br>2. Nhấn nút "Hủy" trong modal | Modal đóng, không xóa phiên, phiên vẫn còn | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-04** | Đăng xuất tất cả thiết bị | 1. Nhấn nút "Kết thúc tất cả"<br>2. Xác nhận | Tất cả thiết bị khác được đăng xuất, chỉ còn phiên hiện tại, hiển thị toast "Đã kết thúc tất cả phiên đăng nhập khác", thông báo được gửi đến các thiết bị | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-05** | Không thể xóa phiên hiện tại | 1. Xem phiên hiện tại<br>2. Kiểm tra nút | Nút "Kết thúc" không hiển thị cho phiên hiện tại, chỉ hiển thị badge "Hiện tại" | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-06** | Cập nhật trạng thái phiên | 1. Xem danh sách phiên<br>2. Có phiên không hoạt động hoặc hết hạn | Trạng thái phiên được cập nhật, phiên không hoạt động hoặc hết hạn được đánh dấu, tự động đăng xuất (auto logout), cảnh báo trước khi hết hạn | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-07** | Sắp xếp theo thời gian hoạt động | 1. Xem danh sách phiên<br>2. Kiểm tra sắp xếp | Danh sách được sắp xếp theo thời gian hoạt động mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-08** | Đóng modal bằng click overlay | 1. Mở modal xác nhận<br>2. Click vào overlay | Modal đóng, không xóa phiên | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-09** | Hiển thị khi không có phiên | 1. Xem tài khoản không có phiên đăng nhập<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có phiên đăng nhập nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
+| **FUNC-XPDN-10** | Cảnh báo trước khi hết hạn | 1. Xem phiên sắp hết hạn<br>2. Kiểm tra cảnh báo | Hệ thống cảnh báo trước khi phiên hết hạn, hiển thị thông báo hoặc badge cảnh báo | | Pass | 11/15/2015 | |
+
+---
+
+### Check VALIDATION: Chức năng bảo mật
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **VALID-BM-01** | Khôi phục mật khẩu với email không hợp lệ | 1. Nhập email không đúng định dạng<br>2. Gửi link khôi phục | Input type="email" tự động validate, không cho phép submit, hiển thị thông báo lỗi trình duyệt | | Pass | 11/15/2015 | |
+| **VALID-BM-02** | Khôi phục mật khẩu quá thường xuyên | 1. Gửi nhiều yêu cầu khôi phục liên tiếp<br>2. Kiểm tra hệ thống | Hệ thống chặn spam, hiển thị thông báo "Bạn đã gửi yêu cầu quá thường xuyên, vui lòng đợi X phút" | | Pass | 11/15/2015 | |
+| **VALID-BM-03** | Token khôi phục hết hạn | 1. Sử dụng link khôi phục đã hết hạn<br>2. Kiểm tra xử lý | Hiển thị thông báo lỗi "Link khôi phục đã hết hạn, vui lòng yêu cầu lại" | | Pass | 11/15/2015 | |
+| **VALID-BM-04** | Token khôi phục đã sử dụng | 1. Sử dụng link khôi phục đã được sử dụng<br>2. Kiểm tra xử lý | Hiển thị thông báo lỗi "Link khôi phục đã được sử dụng, vui lòng yêu cầu lại" | | Pass | 11/15/2015 | |
+| **VALID-BM-05** | Xóa phiên với giá trị không hợp lệ | 1. Thử xóa phiên không tồn tại<br>2. Kiểm tra xử lý | Hệ thống xử lý an toàn, không gây lỗi, hiển thị thông báo "Phiên không tồn tại" | | Pass | 11/15/2015 | |
+| **VALID-BM-06** | Lọc lịch sử với giá trị không hợp lệ | 1. Chọn bộ lọc với giá trị không hợp lệ<br>2. Kiểm tra kết quả | Hệ thống xử lý an toàn, không gây lỗi, hiển thị danh sách mặc định | | Pass | 11/15/2015 | |
+| **VALID-BM-07** | Xem lịch sử khi chưa đăng nhập | 1. Chưa đăng nhập<br>2. Truy cập trang lịch sử | Yêu cầu đăng nhập, chuyển đến trang đăng nhập | | Pass | 11/15/2015 | |
+| **VALID-BM-08** | Xem phiên đăng nhập khi chưa đăng nhập | 1. Chưa đăng nhập<br>2. Truy cập trang phiên đăng nhập | Yêu cầu đăng nhập, chuyển đến trang đăng nhập | | Pass | 11/15/2015 | |
 
