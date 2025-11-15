@@ -1,10 +1,10 @@
-# BLACKBOX TEST CASE - QUẢN LÝ TÀI KHOẢN (ADMIN)
+# BLACKBOX TEST CASE - QUẢN LÝ TÀI KHOẢN ADMIN
 
-## HEADER SECTION
+## THÔNG TIN CHUNG
 
-**Module Code:** Quản lý tài khoản Admin
+**Module:** Quản lý tài khoản Admin
 
-**Test requirement:**
+**Các chức năng kiểm thử:**
 1. Đăng nhập
 2. Đăng ký
 3. Đổi mật khẩu
@@ -12,212 +12,219 @@
 5. Khôi phục mật khẩu
 6. Đăng xuất
 
-**Tester:** [Tên tester]
+**Người kiểm thử:** [Tên tester]
 
-**Summary Statistics:**
+**Thống kê:**
 
-| Pass | Fail | Untested | N/A | Number of Test cases |
-|------|------|----------|-----|---------------------|
-| 163 | 0 | 0 | 0 | 163 |
-
----
-
-## TEST CASE TABLE
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Test-case rate | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|----------------|--------|-----------|------|
-| **Function: Đăng nhập** |
-| **Check GUI: Đăng nhập** |
-| GUI-DangNhap-01 | Check Header Icon | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra icon Shield ở header | Status: visible, có icon Shield trong div h-12 w-12 rounded-full bg-primary/10 | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-02 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Đăng nhập Admin" (text-2xl font-bold) | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-03 | Check [Mô tả chức năng] Text | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra mô tả | Status: visible, Text: "Đăng nhập vào hệ thống quản trị" | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-04 | Check [Email Admin] Label và Input | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra label và input Email | Status: visible, Label: "Email Admin", Input type: email, placeholder: "admin@modelshop.com", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-05 | Check [Mật khẩu] Label và Input | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra label và input Mật khẩu | Status: visible, Label: "Mật khẩu", Input type: password, placeholder: "Nhập mật khẩu", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-06 | Check [Ghi nhớ đăng nhập] Checkbox | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra checkbox | Status: visible, enable, có id="remember", Label: "Ghi nhớ đăng nhập" (text-sm) | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-07 | Check [Quên mật khẩu?] Link | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra link | Status: visible, enable, Text: "Quên mật khẩu?", link đến `/admin/auth/forgot-password`, text-sm text-primary hover:underline | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-08 | Check [Đăng nhập Admin] Button | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra nút submit | Status: visible, enable, Text: "Đăng nhập Admin", type: submit, className: "w-full" | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-09 | Check Separator "Hoặc" | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra separator | Status: visible, có Separator với text "Hoặc" ở giữa (text-xs uppercase) | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-10 | Check [Đăng nhập với tài khoản khách hàng] Link | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra link | Status: visible, enable, có icon ArrowLeft, Text: "Đăng nhập với tài khoản khách hàng", link đến `/user/auth/login`, text-sm text-primary hover:underline | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-11 | Check Footer Text | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra text ở footer | Status: visible, Text: "Chỉ dành cho quản trị viên được ủy quyền" (text-sm text-muted-foreground) | Pass | Pass | 11/15/2025 | |
-| GUI-DangNhap-12 | Check Background và Layout | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra background và layout | Status: visible, có min-h-screen, flex items-center justify-center, bg-gradient-to-br from-primary/5 to-secondary/5, Card w-full max-w-md | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Đăng nhập** |
-| FUNC-DangNhap-01 | Mở màn hình đăng nhập | 1. Truy cập `/admin/auth/login` hoặc click [Đăng nhập] từ menu | Hiển thị màn hình với Card centered, icon Shield, tiêu đề "Đăng nhập Admin", form với 2 input (Email Admin, Mật khẩu), checkbox "Ghi nhớ đăng nhập", link "Quên mật khẩu?", nút "Đăng nhập Admin", separator "Hoặc", và link "Đăng nhập với tài khoản khách hàng" | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-02 | Đăng nhập với email và mật khẩu hợp lệ | 1. Truy cập `/admin/auth/login`<br>2. Nhập email hợp lệ (ví dụ: "admin@modelshop.com")<br>3. Nhập mật khẩu hợp lệ<br>4. Click nút [Đăng nhập Admin] hoặc nhấn Enter | Form submit, xử lý đăng nhập, nếu thành công: chuyển đến trang dashboard admin, tạo phiên đăng nhập, lưu token xác thực | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-03 | Đăng nhập với email không tồn tại | 1. Truy cập `/admin/auth/login`<br>2. Nhập email không tồn tại (ví dụ: "nonexist@test.com")<br>3. Nhập mật khẩu bất kỳ<br>4. Click [Đăng nhập Admin] | Hiển thị thông báo lỗi (toast hoặc inline): "Email hoặc mật khẩu không đúng", form không submit, vẫn ở trang đăng nhập | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-04 | Đăng nhập với mật khẩu sai | 1. Truy cập `/admin/auth/login`<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Click [Đăng nhập Admin] | Hiển thị thông báo lỗi: "Email hoặc mật khẩu không đúng", form không submit, vẫn ở trang đăng nhập | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-05 | Đăng nhập không nhập email | 1. Truy cập `/admin/auth/login`<br>2. Để trống ô Email<br>3. Nhập mật khẩu<br>4. Click [Đăng nhập Admin] | Browser validation hiển thị: "Please fill out this field" (do input có required), form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-06 | Đăng nhập không nhập mật khẩu | 1. Truy cập `/admin/auth/login`<br>2. Nhập email<br>3. Để trống ô Mật khẩu<br>4. Click [Đăng nhập Admin] | Browser validation hiển thị: "Please fill out this field" (do input có required), form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-07 | Đăng nhập với email không đúng định dạng | 1. Truy cập `/admin/auth/login`<br>2. Nhập email không đúng định dạng (ví dụ: "invalid-email")<br>3. Nhập mật khẩu<br>4. Click [Đăng nhập Admin] | Browser validation hiển thị: "Please include an '@' in the email address" (do input type="email"), form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-08 | Ghi nhớ đăng nhập - Check checkbox | 1. Truy cập `/admin/auth/login`<br>2. Check checkbox [Ghi nhớ đăng nhập]<br>3. Nhập email và mật khẩu hợp lệ<br>4. Click [Đăng nhập Admin] | Checkbox được check, đăng nhập thành công, token được lưu vào localStorage/cookie với thời hạn dài hơn | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-09 | Ghi nhớ đăng nhập - Không check checkbox | 1. Truy cập `/admin/auth/login`<br>2. Không check checkbox [Ghi nhớ đăng nhập]<br>3. Nhập email và mật khẩu hợp lệ<br>4. Click [Đăng nhập Admin] | Checkbox không được check, đăng nhập thành công, token được lưu vào sessionStorage với thời hạn ngắn hơn | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-10 | Click link [Quên mật khẩu?] | 1. Truy cập `/admin/auth/login`<br>2. Click link [Quên mật khẩu?] | Chuyển đến trang `/admin/auth/forgot-password` | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-11 | Click link [Đăng nhập với tài khoản khách hàng] | 1. Truy cập `/admin/auth/login`<br>2. Click link [Đăng nhập với tài khoản khách hàng] | Chuyển đến trang `/user/auth/login` | Pass | Pass | 11/15/2025 | |
-| FUNC-DangNhap-12 | Submit form bằng phím Enter | 1. Truy cập `/admin/auth/login`<br>2. Nhập email và mật khẩu<br>3. Nhấn phím Enter trong ô Mật khẩu | Form được submit, xử lý đăng nhập như khi click nút [Đăng nhập Admin] | Pass | Pass | 11/15/2025 | |
-| **Function: Đăng ký** |
-| **Check GUI: Đăng ký** |
-| GUI-DangKy-01 | Check Header Icon | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra icon Shield ở header | Status: visible, có icon Shield trong div h-12 w-12 rounded-full bg-primary/10 | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-02 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Đăng ký tài khoản Admin" (text-2xl font-bold) | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-03 | Check [Mô tả chức năng] Text | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra mô tả | Status: visible, Text: "Tạo tài khoản quản trị viên mới cho hệ thống Model Shop" | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-04 | Check [Họ và tên] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Họ và tên | Status: visible, Label có icon User, Text: "Họ và tên *", Input type: text, placeholder: "Nhập họ và tên", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-05 | Check [Email công ty] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Email | Status: visible, Label có icon Mail, Text: "Email công ty *", Input type: email, placeholder: "admin@modelshop.com", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-06 | Check [Số điện thoại] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Số điện thoại | Status: visible, Label có icon Phone, Text: "Số điện thoại *", Input type: tel, placeholder: "Nhập số điện thoại", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-07 | Check [Mã nhân viên] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Mã nhân viên | Status: visible, Label có icon Key, Text: "Mã nhân viên *", Input type: text, placeholder: "EMP001", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-08 | Check [Phòng ban] Label và Select | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và select Phòng ban | Status: visible, Label có icon Building, Text: "Phòng ban *", Select có options: Ban Giám đốc, Phòng Kinh doanh, Phòng Marketing, Phòng Kho, Phòng Chăm sóc khách hàng, Phòng IT, Phòng Nhân sự, Phòng Tài chính | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-09 | Check [Chức vụ] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Chức vụ | Status: visible, Label có icon Shield, Text: "Chức vụ *", Input type: text, placeholder: "Nhập chức vụ", required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-10 | Check [Mật khẩu] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Mật khẩu | Status: visible, Label: "Mật khẩu *", Input type: password (có thể toggle), placeholder: "Nhập mật khẩu", có nút Eye/EyeOff, có text hint: "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số" | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-11 | Check [Xác nhận mật khẩu] Label và Input | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra label và input Xác nhận mật khẩu | Status: visible, Label: "Xác nhận mật khẩu *", Input type: password (có thể toggle), placeholder: "Nhập lại mật khẩu", có nút Eye/EyeOff, required | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-12 | Check [Điều khoản sử dụng] Checkbox | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra checkbox | Status: visible, enable, có id="agreeTerms", Label: "Tôi đồng ý với [Điều khoản sử dụng Admin] và [Chính sách bảo mật]" (có links đến /admin/terms và /admin/privacy) | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-13 | Check [Đăng ký tài khoản Admin] Button | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra nút submit | Status: visible, enable, Text: "Đăng ký tài khoản Admin" (hoặc "Đang tạo tài khoản..." khi loading), type: submit, className: "w-full", disabled khi isLoading | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-14 | Check Separator "Hoặc" | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra separator | Status: visible, có Separator với text "Hoặc" ở giữa (text-xs uppercase) | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-15 | Check [Đăng nhập với tài khoản admin hiện có] Link | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra link | Status: visible, enable, có icon Shield, Text: "Đăng nhập với tài khoản admin hiện có", link đến `/admin/auth/login`, text-sm text-primary hover:underline | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-16 | Check [Đăng ký tài khoản khách hàng] Link | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra link | Status: visible, enable, Text: "Chưa có tài khoản khách hàng? [Đăng ký tài khoản khách hàng]", link đến `/user/auth/register` | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-17 | Check Footer Warning Text | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra text cảnh báo ở footer | Status: visible, Text: "⚠️ Chỉ dành cho nhân viên được ủy quyền" và "Tài khoản admin cần được xác thực bởi quản trị viên cấp cao" (text-sm text-muted-foreground) | Pass | Pass | 11/15/2025 | |
-| GUI-DangKy-18 | Check Background và Layout | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra background và layout | Status: visible, có min-h-screen, flex items-center justify-center, bg-gradient-to-br from-primary/5 to-secondary/5, Card w-full max-w-2xl | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Đăng ký** |
-| FUNC-DangKy-01 | Mở màn hình đăng ký | 1. Truy cập `/admin/auth/register` hoặc click [Đăng ký] từ trang đăng nhập | Hiển thị màn hình với Card centered, icon Shield, tiêu đề "Đăng ký tài khoản Admin", form với các trường: Họ và tên, Email công ty, Số điện thoại, Mã nhân viên, Phòng ban, Chức vụ, Mật khẩu, Xác nhận mật khẩu, checkbox Điều khoản, nút submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-02 | Đăng ký với thông tin hợp lệ đầy đủ | 1. Truy cập `/admin/auth/register`<br>2. Điền đầy đủ: Họ và tên, Email công ty, Số điện thoại, Mã nhân viên, Phòng ban, Chức vụ<br>3. Nhập mật khẩu >= 8 ký tự, có chữ hoa, chữ thường, số<br>4. Nhập xác nhận mật khẩu khớp<br>5. Check [Điều khoản sử dụng]<br>6. Click [Đăng ký tài khoản Admin] | Form validate thành công, nút hiển thị "Đang tạo tài khoản..." (isLoading), sau 2s hiển thị toast.success "Đăng ký tài khoản admin thành công!", chuyển đến `/admin/auth/login` | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-03 | Đăng ký thiếu Họ và tên | 1. Truy cập `/admin/auth/register`<br>2. Để trống Họ và tên<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Họ tên không được để trống", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-04 | Đăng ký thiếu Email | 1. Truy cập `/admin/auth/register`<br>2. Để trống Email<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Email không được để trống", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-05 | Đăng ký với Email không hợp lệ (không có @) | 1. Truy cập `/admin/auth/register`<br>2. Nhập email không có @ (ví dụ: "invalid-email")<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Email không hợp lệ", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-06 | Đăng ký thiếu Số điện thoại | 1. Truy cập `/admin/auth/register`<br>2. Để trống Số điện thoại<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Số điện thoại không được để trống", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-07 | Đăng ký thiếu Phòng ban | 1. Truy cập `/admin/auth/register`<br>2. Không chọn Phòng ban<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Vui lòng chọn phòng ban", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-08 | Đăng ký thiếu Chức vụ | 1. Truy cập `/admin/auth/register`<br>2. Để trống Chức vụ<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Chức vụ không được để trống", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-09 | Đăng ký thiếu Mã nhân viên | 1. Truy cập `/admin/auth/register`<br>2. Để trống Mã nhân viên<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Mã nhân viên không được để trống", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-10 | Đăng ký với mật khẩu < 8 ký tự | 1. Truy cập `/admin/auth/register`<br>2. Nhập mật khẩu < 8 ký tự (ví dụ: "1234567")<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Mật khẩu phải có ít nhất 8 ký tự", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-11 | Đăng ký với mật khẩu không có chữ hoa, chữ thường và số | 1. Truy cập `/admin/auth/register`<br>2. Nhập mật khẩu không đủ điều kiện (ví dụ: "12345678" - chỉ có số)<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-12 | Đăng ký với mật khẩu và xác nhận không khớp | 1. Truy cập `/admin/auth/register`<br>2. Nhập mật khẩu và xác nhận mật khẩu khác nhau<br>3. Điền các trường khác<br>4. Click [Đăng ký] | Hiển thị toast.error "Mật khẩu xác nhận không khớp", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-13 | Đăng ký không check điều khoản | 1. Truy cập `/admin/auth/register`<br>2. Điền đầy đủ thông tin hợp lệ<br>3. Không check checkbox [Điều khoản sử dụng]<br>4. Click [Đăng ký] | Hiển thị toast.error "Vui lòng đồng ý với điều khoản sử dụng", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-14 | Toggle hiển thị mật khẩu | 1. Truy cập `/admin/auth/register`<br>2. Nhập mật khẩu<br>3. Click nút Eye trong ô Mật khẩu | Mật khẩu chuyển từ type="password" sang type="text", icon chuyển từ Eye sang EyeOff | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-15 | Toggle hiển thị xác nhận mật khẩu | 1. Truy cập `/admin/auth/register`<br>2. Nhập xác nhận mật khẩu<br>3. Click nút Eye trong ô Xác nhận mật khẩu | Xác nhận mật khẩu chuyển từ type="password" sang type="text", icon chuyển từ Eye sang EyeOff | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-16 | Click link [Đăng nhập với tài khoản admin hiện có] | 1. Truy cập `/admin/auth/register`<br>2. Click link [Đăng nhập với tài khoản admin hiện có] | Chuyển đến trang `/admin/auth/login` | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-17 | Click link [Đăng ký tài khoản khách hàng] | 1. Truy cập `/admin/auth/register`<br>2. Click link [Đăng ký tài khoản khách hàng] | Chuyển đến trang `/user/auth/register` | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-18 | Click link [Điều khoản sử dụng Admin] | 1. Truy cập `/admin/auth/register`<br>2. Click link [Điều khoản sử dụng Admin] trong checkbox | Mở trang `/admin/terms` (trong tab mới hoặc cùng tab) | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-19 | Click link [Chính sách bảo mật] | 1. Truy cập `/admin/auth/register`<br>2. Click link [Chính sách bảo mật] trong checkbox | Mở trang `/admin/privacy` (trong tab mới hoặc cùng tab) | Pass | Pass | 11/15/2025 | |
-| FUNC-DangKy-20 | Loading state khi đăng ký | 1. Truy cập `/admin/auth/register`<br>2. Điền đầy đủ thông tin hợp lệ<br>3. Click [Đăng ký tài khoản Admin] | Nút hiển thị "Đang tạo tài khoản..." với icon Loader2 animate-spin, nút bị disabled (isLoading = true) | Pass | Pass | 11/15/2025 | |
-| **Function: Đổi mật khẩu** |
-| **Check GUI: Đổi mật khẩu** |
-| GUI-DoiMK-01 | Check Card "Thông tin tài khoản" | 1. Truy cập `/admin/account`<br>2. Kiểm tra Card "Thông tin tài khoản" | Status: visible, có CardTitle với icon Shield "Thông tin tài khoản", CardDescription "Thông tin bảo mật và hoạt động tài khoản" | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-02 | Check Nút [Đổi mật khẩu] trong Card | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút [Đổi mật khẩu] trong Card "Thông tin tài khoản" | Status: visible, enable, có icon Key, Text: "Đổi mật khẩu", variant outline, className: "w-full justify-start", là DialogTrigger | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-03 | Check Dialog "Đổi mật khẩu" | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra Dialog | Status: visible, có DialogContent, DialogHeader với DialogTitle "Đổi mật khẩu" và DialogDescription "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-04 | Check [Mật khẩu hiện tại] Label và Input | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra ô Mật khẩu hiện tại | Status: visible, Label: "Mật khẩu hiện tại", Input type: password (có thể toggle), có nút Eye/EyeOff ở bên phải, relative positioning | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-05 | Check [Mật khẩu mới] Label và Input | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra ô Mật khẩu mới | Status: visible, Label: "Mật khẩu mới", Input type: password (có thể toggle), có nút Eye/EyeOff ở bên phải, relative positioning | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-06 | Check [Xác nhận mật khẩu mới] Label và Input | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra ô Xác nhận mật khẩu mới | Status: visible, Label: "Xác nhận mật khẩu mới", Input type: password (có thể toggle), có nút Eye/EyeOff ở bên phải, relative positioning | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-07 | Check Nút [Hủy] trong Dialog | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra nút Hủy | Status: visible, enable, variant outline, Text: "Hủy", onClick đóng Dialog | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-08 | Check Nút [Đổi mật khẩu] trong Dialog | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra nút Đổi mật khẩu | Status: visible, enable, Text: "Đổi mật khẩu", onClick xử lý đổi mật khẩu | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-09 | Check Nút Toggle Show/Hide cho Mật khẩu hiện tại | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra nút Eye trong ô Mật khẩu hiện tại | Status: visible, enable, variant ghost size sm, absolute right-0 top-0, icon Eye/EyeOff, onClick toggle showCurrentPassword | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-10 | Check Nút Toggle Show/Hide cho Mật khẩu mới | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra nút Eye trong ô Mật khẩu mới | Status: visible, enable, variant ghost size sm, absolute right-0 top-0, icon Eye/EyeOff, onClick toggle showNewPassword | Pass | Pass | 11/15/2025 | |
-| GUI-DoiMK-11 | Check Nút Toggle Show/Hide cho Xác nhận mật khẩu | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Kiểm tra nút Eye trong ô Xác nhận mật khẩu mới | Status: visible, enable, variant ghost size sm, absolute right-0 top-0, icon Eye/EyeOff, onClick toggle showConfirmPassword | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Đổi mật khẩu** |
-| FUNC-DoiMK-01 | Mở Dialog đổi mật khẩu | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu] trong Card "Thông tin tài khoản" | Mở Dialog với DialogTitle "Đổi mật khẩu", DialogDescription, form với 3 input trống (Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới), nút Hủy và Đổi mật khẩu | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-02 | Đổi mật khẩu với thông tin hợp lệ | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới >= 6 ký tự<br>5. Nhập xác nhận mật khẩu khớp<br>6. Click nút [Đổi mật khẩu] | Form validate thành công, xử lý đổi mật khẩu, reset form (currentPassword, newPassword, confirmPassword = ""), đóng Dialog (setIsChangePasswordOpen(false)), hiển thị toast.success "Đổi mật khẩu thành công" | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-03 | Đổi mật khẩu thiếu mật khẩu hiện tại | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Để trống Mật khẩu hiện tại<br>4. Nhập mật khẩu mới và xác nhận<br>5. Click [Đổi mật khẩu] | Hiển thị toast.error "Vui lòng nhập mật khẩu hiện tại", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-04 | Đổi mật khẩu thiếu mật khẩu mới | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu hiện tại<br>4. Để trống Mật khẩu mới<br>5. Click [Đổi mật khẩu] | Hiển thị toast.error "Vui lòng nhập mật khẩu mới", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-05 | Đổi mật khẩu với mật khẩu mới < 6 ký tự | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới < 6 ký tự (ví dụ: "12345")<br>5. Click [Đổi mật khẩu] | Hiển thị toast.error "Mật khẩu mới phải có ít nhất 6 ký tự", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-06 | Đổi mật khẩu với mật khẩu mới và xác nhận không khớp | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Click [Đổi mật khẩu] | Hiển thị toast.error "Mật khẩu xác nhận không khớp", form không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-07 | Toggle hiển thị mật khẩu hiện tại | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu hiện tại<br>4. Click nút Eye trong ô Mật khẩu hiện tại | Input chuyển từ type="password" sang type="text", icon chuyển từ Eye sang EyeOff, mật khẩu hiển thị dạng text | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-08 | Toggle hiển thị mật khẩu mới | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập mật khẩu mới<br>4. Click nút Eye trong ô Mật khẩu mới | Input chuyển từ type="password" sang type="text", icon chuyển từ Eye sang EyeOff, mật khẩu hiển thị dạng text | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-09 | Toggle hiển thị xác nhận mật khẩu | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập xác nhận mật khẩu<br>4. Click nút Eye trong ô Xác nhận mật khẩu mới | Input chuyển từ type="password" sang type="text", icon chuyển từ Eye sang EyeOff, mật khẩu hiển thị dạng text | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-10 | Click nút [Hủy] trong Dialog | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Nhập một số thông tin<br>4. Click nút [Hủy] | Dialog đóng (setIsChangePasswordOpen(false)), form không được submit, thông tin đã nhập bị mất | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-11 | Đóng Dialog bằng cách click bên ngoài | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Click bên ngoài Dialog | Dialog đóng (onOpenChange), form không được submit | Pass | Pass | 11/15/2025 | |
-| FUNC-DoiMK-12 | Reset form sau khi đổi mật khẩu thành công | 1. Truy cập `/admin/account`<br>2. Click nút [Đổi mật khẩu]<br>3. Đổi mật khẩu thành công<br>4. Mở lại Dialog | Form hiển thị với các trường trống (currentPassword, newPassword, confirmPassword = "") | Pass | Pass | 11/15/2025 | |
-| **Function: Quản lý thông tin cá nhân** |
-| **Check GUI: Quản lý thông tin cá nhân** |
-| GUI-QLTT-01 | Check Header Title và Description | 1. Truy cập `/admin/account`<br>2. Kiểm tra header | Status: visible, Title: "Quản lý tài khoản" (text-3xl font-bold), Description: "Quản lý thông tin cá nhân và cài đặt tài khoản" | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-02 | Check Nút [Chỉnh sửa] ở Header | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút [Chỉnh sửa] (khi !isEditing) | Status: visible, enable, có icon Edit, Text: "Chỉnh sửa", onClick toggle isEditing | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-03 | Check Nút [Hủy] và [Lưu thay đổi] ở Header | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Kiểm tra các nút | Status: visible, có nút [Hủy] (icon X, variant outline) và [Lưu thay đổi] (icon Save), chỉ hiển thị khi isEditing = true | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-04 | Check Card "Thông tin cá nhân" | 1. Truy cập `/admin/account`<br>2. Kiểm tra Card "Thông tin cá nhân" | Status: visible, có CardTitle với icon User "Thông tin cá nhân", CardDescription "Thông tin cơ bản của tài khoản quản trị" | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-05 | Check Avatar và Thông tin cơ bản | 1. Truy cập `/admin/account`<br>2. Kiểm tra Avatar và thông tin | Status: visible, có Avatar h-20 w-20, hiển thị AvatarImage hoặc AvatarFallback (chữ cái đầu của fullName), fullName (text-lg font-semibold), Badge với icon Shield và role | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-06 | Check Separator | 1. Truy cập `/admin/account`<br>2. Kiểm tra Separator trong Card | Status: visible, có Separator giữa Avatar và form | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-07 | Check [Họ và tên] Label và Input | 1. Truy cập `/admin/account`<br>2. Kiểm tra ô Họ và tên | Status: visible, Label: "Họ và tên", Input disabled khi !isEditing, value từ editForm.fullName | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-08 | Check [Email] Label và Input | 1. Truy cập `/admin/account`<br>2. Kiểm tra ô Email | Status: visible, Label: "Email", Input type: email, disabled khi !isEditing, value từ editForm.email | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-09 | Check [Số điện thoại] Label và Input | 1. Truy cập `/admin/account`<br>2. Kiểm tra ô Số điện thoại | Status: visible, Label: "Số điện thoại", Input disabled khi !isEditing, value từ editForm.phone | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-10 | Check [Địa chỉ] Label và Input | 1. Truy cập `/admin/account`<br>2. Kiểm tra ô Địa chỉ | Status: visible, Label: "Địa chỉ", Input disabled khi !isEditing, value từ editForm.address | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-11 | Check [Ngày sinh] Label và Input | 1. Truy cập `/admin/account`<br>2. Kiểm tra ô Ngày sinh | Status: visible, Label: "Ngày sinh", Input type: date, disabled khi !isEditing, value từ editForm.dateOfBirth | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-12 | Check Card "Thông tin tài khoản" | 1. Truy cập `/admin/account`<br>2. Kiểm tra Card "Thông tin tài khoản" | Status: visible, có CardTitle với icon Shield "Thông tin tài khoản", CardDescription "Thông tin bảo mật và hoạt động tài khoản" | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-13 | Check Thông tin Email đăng nhập | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin Email | Status: visible, có icon Mail, label "Email đăng nhập", hiển thị userInfo.email | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-14 | Check Thông tin Ngày tạo tài khoản | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin Ngày tạo | Status: visible, có icon Calendar, label "Ngày tạo tài khoản", hiển thị userInfo.createdAt (format vi-VN) | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-15 | Check Thông tin Lần đăng nhập cuối | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin Lần đăng nhập cuối | Status: visible, có icon Calendar, label "Lần đăng nhập cuối", hiển thị userInfo.lastLogin (format vi-VN) | Pass | Pass | 11/15/2025 | |
-| GUI-QLTT-16 | Check Nút [Đăng xuất] | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút [Đăng xuất] | Status: visible, enable, có icon LogOut, Text: "Đăng xuất", variant destructive, className: "w-full justify-start", là AlertDialogTrigger | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Quản lý thông tin cá nhân** |
-| FUNC-QLTT-01 | Mở màn hình quản lý tài khoản | 1. Truy cập `/admin/account` | Hiển thị header "Quản lý tài khoản", 2 Cards (Thông tin cá nhân, Thông tin tài khoản), form với thông tin hiện tại đã điền sẵn, các input disabled (!isEditing), nút [Chỉnh sửa] ở header | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-02 | Click nút [Chỉnh sửa] | 1. Truy cập `/admin/account`<br>2. Click nút [Chỉnh sửa] | isEditing = true, các input (fullName, email, phone, address, dateOfBirth) được enable, nút [Chỉnh sửa] ẩn, hiển thị nút [Hủy] và [Lưu thay đổi] | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-03 | Cập nhật thông tin với dữ liệu hợp lệ | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Sửa Họ và tên, Số điện thoại, Địa chỉ, Ngày sinh<br>4. Click [Lưu thay đổi] | Form validate thành công (fullName, email, phone không trống), update userInfo với editForm, setIsEditing(false), hiển thị toast.success "Cập nhật thông tin thành công", các input lại disabled | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-04 | Cập nhật thiếu Họ và tên | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Xóa Họ và tên<br>4. Click [Lưu thay đổi] | Hiển thị toast.error "Họ tên không được để trống", form không submit, vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-05 | Cập nhật thiếu Email | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Xóa Email<br>4. Click [Lưu thay đổi] | Hiển thị toast.error "Email không được để trống", form không submit, vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-06 | Cập nhật thiếu Số điện thoại | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Xóa Số điện thoại<br>4. Click [Lưu thay đổi] | Hiển thị toast.error "Số điện thoại không được để trống", form không submit, vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-07 | Cập nhật Họ và tên | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Sửa Họ và tên<br>4. Click [Lưu thay đổi] | Họ và tên được cập nhật, userInfo.fullName = editForm.fullName, AvatarFallback cập nhật theo tên mới, hiển thị toast.success | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-08 | Cập nhật Số điện thoại | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Sửa Số điện thoại<br>4. Click [Lưu thay đổi] | Số điện thoại được cập nhật, userInfo.phone = editForm.phone, hiển thị toast.success | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-09 | Cập nhật Địa chỉ | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Sửa Địa chỉ<br>4. Click [Lưu thay đổi] | Địa chỉ được cập nhật, userInfo.address = editForm.address, hiển thị toast.success | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-10 | Cập nhật Ngày sinh | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Chọn Ngày sinh mới<br>4. Click [Lưu thay đổi] | Ngày sinh được cập nhật, userInfo.dateOfBirth = editForm.dateOfBirth, hiển thị toast.success | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-11 | Click nút [Hủy] khi đang chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Sửa một số thông tin<br>4. Click nút [Hủy] | editForm được reset về giá trị ban đầu từ userInfo, setIsEditing(false), các input lại disabled, nút [Chỉnh sửa] hiển thị lại, không lưu thay đổi | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-12 | Input disabled khi không ở chế độ chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Kiểm tra các input (không click Chỉnh sửa) | Tất cả input (fullName, email, phone, address, dateOfBirth) đều disabled (!isEditing), không thể nhập liệu | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-13 | Input enabled khi ở chế độ chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Click [Chỉnh sửa]<br>3. Kiểm tra các input | Tất cả input (fullName, email, phone, address, dateOfBirth) đều enabled (isEditing = true), có thể nhập liệu | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-14 | Hiển thị thông tin tài khoản (read-only) | 1. Truy cập `/admin/account`<br>2. Kiểm tra Card "Thông tin tài khoản" | Hiển thị: Email đăng nhập (userInfo.email), Ngày tạo tài khoản (format vi-VN), Lần đăng nhập cuối (format vi-VN), các thông tin này không thể chỉnh sửa | Pass | Pass | 11/15/2025 | |
-| FUNC-QLTT-15 | Avatar hiển thị ảnh hoặc fallback | 1. Truy cập `/admin/account`<br>2. Kiểm tra Avatar | Nếu userInfo.avatar có giá trị: hiển thị AvatarImage, nếu không: hiển thị AvatarFallback với chữ cái đầu của fullName (ví dụ: "NV" cho "Nguyễn Văn Admin") | Pass | Pass | 11/15/2025 | |
-| **Function: Khôi phục mật khẩu** |
-| **Check GUI: Khôi phục mật khẩu** |
-| GUI-KhoiPhucMK-01 | Check Header Icon và Title | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra header | Status: visible, có icon Shield trong div h-12 w-12 bg-blue-100 rounded-full, Title: "Khôi phục mật khẩu" (text-3xl font-bold), Description: "Chọn phương thức khôi phục mật khẩu của bạn" | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-02 | Check Card "Khôi phục mật khẩu" | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra Card | Status: visible, có CardTitle với icon Lock "Khôi phục mật khẩu", CardDescription thay đổi theo step | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-03 | Check Step 1 - Phương thức Email | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra phương thức Email | Status: visible, có radio button (w-4 h-4 rounded-full border-2), icon Mail, Text: "Email" và "Gửi mã xác thực qua email", có Input Email khi chọn | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-04 | Check Step 1 - Phương thức SMS | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra phương thức SMS | Status: visible, có radio button, icon Phone, Text: "SMS" và "Gửi mã xác thực qua SMS", có Input Số điện thoại khi chọn | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-05 | Check Step 1 - Phương thức Câu hỏi bảo mật | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra phương thức Câu hỏi bảo mật | Status: visible, có radio button, icon MessageSquare, Text: "Câu hỏi bảo mật" và "Trả lời câu hỏi bảo mật", có 3 Input câu hỏi khi chọn | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-06 | Check Step 1 - Nút [Tiếp tục] | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra nút | Status: visible, enable, có icon Key hoặc Loader2 (khi loading), Text: "Đang xử lý..." hoặc "Tiếp tục", className: "w-full", disabled khi isLoading | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-07 | Check Step 2 - Alert và Input Mã xác thực | 1. Truy cập `/admin/auth/forgot-password`<br>2. Chọn phương thức và click Tiếp tục<br>3. Kiểm tra Step 2 | Status: visible, có Alert với icon Mail và AlertDescription, Input "Mã xác thực" với placeholder "Nhập mã xác thực 6 chữ số", maxLength=6 | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-08 | Check Step 2 - Nút [Xác thực] | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Kiểm tra nút | Status: visible, enable, có icon CheckCircle hoặc Loader2, Text: "Đang xác thực..." hoặc "Xác thực", className: "w-full" | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-09 | Check Step 2 - Nút [Quay lại] | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Kiểm tra nút | Status: visible, enable, có icon ArrowLeft, Text: "Quay lại", variant link, onClick setStep(1) | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-10 | Check Step 3 - Alert và Input Mật khẩu mới | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Kiểm tra form | Status: visible, có Alert với icon CheckCircle, Input "Mật khẩu mới" type="password", Input "Xác nhận mật khẩu" type="password" | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-11 | Check Step 3 - Password Strength Indicator | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu mới<br>4. Kiểm tra indicator | Status: visible, có Progress bar (bg-gray-200 rounded-full h-2) với màu thay đổi (red/yellow/green), label "Yếu"/"Trung bình"/"Mạnh" | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-12 | Check Step 3 - Yêu cầu mật khẩu | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Kiểm tra danh sách yêu cầu | Status: visible, có Label "Yêu cầu mật khẩu", danh sách với các item: "Ít nhất 8 ký tự", "Có ít nhất 1 chữ hoa", "Có ít nhất 1 chữ số", "Có ít nhất 1 ký tự đặc biệt", mỗi item có dot indicator (green/gray) | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-13 | Check Step 3 - Nút [Đặt lại mật khẩu] | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Kiểm tra nút | Status: visible, enable (khi password hợp lệ), có icon Lock hoặc Loader2, Text: "Đang đặt lại..." hoặc "Đặt lại mật khẩu", className: "w-full", disabled khi không hợp lệ | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-14 | Check Step 4 - Success Screen | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 4<br>3. Kiểm tra màn hình | Status: visible, có icon CheckCircle trong div h-16 w-16 bg-green-100, Title "Khôi phục mật khẩu thành công", Description, nút "Đăng nhập ngay" (icon User) và "Quay về trang chủ" (icon ArrowLeft) | Pass | Pass | 11/15/2025 | |
-| GUI-KhoiPhucMK-15 | Check Footer Link "Đăng nhập" | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra footer | Status: visible, enable, Text: "Bạn có tài khoản? [Đăng nhập]", variant link | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Khôi phục mật khẩu** |
-| FUNC-KhoiPhucMK-01 | Mở màn hình khôi phục mật khẩu | 1. Truy cập `/admin/auth/forgot-password` hoặc click [Quên mật khẩu?] từ trang đăng nhập | Hiển thị màn hình với header icon Shield, title "Khôi phục mật khẩu", Card với 3 phương thức (Email, SMS, Câu hỏi bảo mật), step = 1 | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-02 | Chọn phương thức Email | 1. Truy cập `/admin/auth/forgot-password`<br>2. Click vào phương thức Email | Radio button Email được chọn (border-blue-600 bg-blue-600), hiển thị Input Email với placeholder "Nhập email của bạn" | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-03 | Chọn phương thức SMS | 1. Truy cập `/admin/auth/forgot-password`<br>2. Click vào phương thức SMS | Radio button SMS được chọn, hiển thị Input Số điện thoại với placeholder "Nhập số điện thoại của bạn" | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-04 | Chọn phương thức Câu hỏi bảo mật | 1. Truy cập `/admin/auth/forgot-password`<br>2. Click vào phương thức Câu hỏi bảo mật | Radio button Câu hỏi bảo mật được chọn, hiển thị 3 Input câu hỏi với label và text câu hỏi | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-05 | Gửi mã xác thực qua Email | 1. Truy cập `/admin/auth/forgot-password`<br>2. Chọn Email, nhập email hợp lệ<br>3. Click [Tiếp tục] | isLoading = true, nút hiển thị "Đang xử lý...", sau 2s hiển thị toast.success "Mã xác thực đã được gửi", setStep(2) | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-06 | Gửi mã xác thực thiếu email | 1. Truy cập `/admin/auth/forgot-password`<br>2. Chọn Email, không nhập email<br>3. Click [Tiếp tục] | Hiển thị toast.error "Vui lòng nhập email", không chuyển step | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-07 | Trả lời câu hỏi bảo mật | 1. Truy cập `/admin/auth/forgot-password`<br>2. Chọn Câu hỏi bảo mật<br>3. Trả lời đầy đủ 3 câu hỏi<br>4. Click [Tiếp tục] | isLoading = true, sau 2s hiển thị toast.success "Xác thực thành công", setStep(3) | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-08 | Trả lời câu hỏi bảo mật thiếu câu trả lời | 1. Truy cập `/admin/auth/forgot-password`<br>2. Chọn Câu hỏi bảo mật<br>3. Không trả lời đầy đủ<br>4. Click [Tiếp tục] | Hiển thị toast.error "Vui lòng trả lời đầy đủ các câu hỏi bảo mật", không chuyển step | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-09 | Xác thực mã OTP hợp lệ | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Nhập mã xác thực hợp lệ<br>4. Click [Xác thực] | isLoading = true, sau 1s hiển thị toast.success "Mã xác thực hợp lệ", setStep(3) | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-10 | Xác thực mã OTP sai | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Nhập mã xác thực sai<br>4. Click [Xác thực] | Hiển thị toast.error "Mã xác thực không đúng", vẫn ở Step 2 | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-11 | Xác thực mã OTP thiếu | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Không nhập mã<br>4. Click [Xác thực] | Hiển thị toast.error "Vui lòng nhập mã xác thực", không chuyển step | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-12 | Đặt mật khẩu mới hợp lệ | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu mới >= 8 ký tự, có chữ hoa, số, ký tự đặc biệt<br>4. Nhập xác nhận khớp<br>5. Click [Đặt lại mật khẩu] | Password strength indicator hiển thị "Mạnh" (green), tất cả yêu cầu đều check (green), isLoading = true, sau 2s hiển thị toast.success "Mật khẩu đã được đặt lại thành công", setStep(4) | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-13 | Đặt mật khẩu mới không khớp | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu mới và xác nhận khác nhau<br>4. Click [Đặt lại mật khẩu] | Hiển thị Alert với icon AlertCircle "Mật khẩu xác nhận không khớp", nút bị disabled, không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-14 | Đặt mật khẩu mới < 8 ký tự | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu < 8 ký tự<br>4. Click [Đặt lại mật khẩu] | Password strength indicator hiển thị "Yếu" (red), yêu cầu "Ít nhất 8 ký tự" chưa check, hiển thị toast.error "Mật khẩu phải có ít nhất 8 ký tự", không submit | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-15 | Password Strength Indicator - Yếu | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu < 6 ký tự | Progress bar màu đỏ, width 33%, label "Yếu" màu đỏ | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-16 | Password Strength Indicator - Trung bình | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu 6-7 ký tự | Progress bar màu vàng, width 67%, label "Trung bình" màu vàng | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-17 | Password Strength Indicator - Mạnh | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu >= 8 ký tự, có chữ hoa và số | Progress bar màu xanh, width 100%, label "Mạnh" màu xanh | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-18 | Yêu cầu mật khẩu - Real-time validation | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Nhập mật khẩu từng ký tự | Các dot indicator cập nhật real-time: "Ít nhất 8 ký tự" (green khi >= 8), "Có ít nhất 1 chữ hoa" (green khi có [A-Z]), "Có ít nhất 1 chữ số" (green khi có [0-9]), "Có ít nhất 1 ký tự đặc biệt" (green khi có [!@#$%^&*]) | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-19 | Click [Quay lại] ở Step 2 | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 2<br>3. Click [Quay lại] | setStep(1), quay về màn hình chọn phương thức | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-20 | Click [Quay lại] ở Step 3 | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 3<br>3. Click [Quay lại] | setStep(2), quay về màn hình nhập mã xác thực | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-21 | Click [Đăng nhập ngay] ở Step 4 | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 4<br>3. Click [Đăng nhập ngay] | Chuyển đến trang đăng nhập admin | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-22 | Click [Quay về trang chủ] ở Step 4 | 1. Truy cập `/admin/auth/forgot-password`<br>2. Ở Step 4<br>3. Click [Quay về trang chủ] | Chuyển về trang chủ | Pass | Pass | 11/15/2025 | |
-| FUNC-KhoiPhucMK-23 | Click link [Đăng nhập] ở footer | 1. Truy cập `/admin/auth/forgot-password`<br>2. Click link [Đăng nhập] ở footer | Chuyển đến trang đăng nhập admin | Pass | Pass | 11/15/2025 | |
-| **Function: Đăng xuất** |
-| **Check GUI: Đăng xuất** |
-| GUI-DangXuat-01 | Check Nút [Đăng xuất] trong Card | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút [Đăng xuất] trong Card "Thông tin tài khoản" | Status: visible, enable, có icon LogOut, Text: "Đăng xuất", variant destructive, className: "w-full justify-start", là AlertDialogTrigger | Pass | Pass | 11/15/2025 | |
-| GUI-DangXuat-02 | Check AlertDialog "Xác nhận đăng xuất" | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Kiểm tra AlertDialog | Status: visible, có AlertDialogContent, AlertDialogHeader với AlertDialogTitle "Xác nhận đăng xuất" và AlertDialogDescription "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?" | Pass | Pass | 11/15/2025 | |
-| GUI-DangXuat-03 | Check Nút [Hủy] trong AlertDialog | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Kiểm tra nút Hủy | Status: visible, enable, là AlertDialogCancel, variant outline, Text: "Hủy", onClick đóng AlertDialog | Pass | Pass | 11/15/2025 | |
-| GUI-DangXuat-04 | Check Nút [Đăng xuất] trong AlertDialog | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Kiểm tra nút Đăng xuất | Status: visible, enable, là AlertDialogAction, variant default, Text: "Đăng xuất", onClick xử lý đăng xuất | Pass | Pass | 11/15/2025 | |
-| **Check FUNC: Đăng xuất** |
-| FUNC-DangXuat-01 | Mở AlertDialog xác nhận đăng xuất | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất] trong Card "Thông tin tài khoản" | Mở AlertDialog với AlertDialogTitle "Xác nhận đăng xuất", AlertDialogDescription "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?", nút [Hủy] và [Đăng xuất] | Pass | Pass | 11/15/2025 | |
-| FUNC-DangXuat-02 | Đăng xuất thành công | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Click nút [Đăng xuất] trong AlertDialog | Xử lý đăng xuất: localStorage.removeItem("adminToken"), chuyển đến `/admin/auth/login` (window.location.href), hiển thị toast.success "Đăng xuất thành công" | Pass | Pass | 11/15/2025 | |
-| FUNC-DangXuat-03 | Hủy đăng xuất | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Click nút [Hủy] | AlertDialog đóng (onOpenChange), không đăng xuất, vẫn ở trang `/admin/account`, token vẫn còn trong localStorage | Pass | Pass | 11/15/2025 | |
-| FUNC-DangXuat-04 | Đóng AlertDialog bằng cách click bên ngoài | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Click bên ngoài AlertDialog | AlertDialog đóng (onOpenChange), không đăng xuất, vẫn ở trang hiện tại | Pass | Pass | 11/15/2025 | |
-| FUNC-DangXuat-05 | Đóng AlertDialog bằng phím ESC | 1. Truy cập `/admin/account`<br>2. Click nút [Đăng xuất]<br>3. Nhấn phím ESC | AlertDialog đóng, không đăng xuất, vẫn ở trang hiện tại | Pass | Pass | 11/15/2025 | |
+| Pass | Fail | Untested | N/A | Tổng số test case |
+|------|------|----------|-----|-------------------|
+| 163  | 0    | 0        | 0   | 163               |
 
 ---
 
-## GHI CHÚ
+## 1. CHỨC NĂNG ĐĂNG NHẬP
 
-- Tất cả test cases cần được thực hiện trên môi trường test
-- Routes động (có `[id]`) cần thay thế bằng ID thực tế khi test
-- Các test case GUI kiểm tra giao diện và trạng thái của các thành phần
-- Các test case FUNC kiểm tra chức năng và logic nghiệp vụ
-- Captcha được hiển thị sau 3 lần đăng nhập sai
-- Token khôi phục mật khẩu có thời hạn sử dụng (thường 1 giờ) và chỉ dùng được 1 lần
-- Email không thể thay đổi sau khi đăng ký để đảm bảo tính bảo mật
-- Cần cập nhật cột Result, Test date sau khi thực hiện test
+### 1.1. Kiểm thử giao diện
 
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| GUI-DN-01 | Kiểm tra biểu tượng header | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra biểu tượng Shield | Hiển thị biểu tượng Shield trong vòng tròn | Pass | Pass | 11/15/2025 | |
+| GUI-DN-02 | Kiểm tra tiêu đề trang | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" | Pass | Pass | 11/15/2025 | |
+| GUI-DN-03 | Kiểm tra mô tả chức năng | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | Pass | Pass | 11/15/2025 | |
+| GUI-DN-04 | Kiểm tra trường Email | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DN-05 | Kiểm tra trường Mật khẩu | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DN-06 | Kiểm tra checkbox Ghi nhớ | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra checkbox | Hiển thị checkbox "Ghi nhớ đăng nhập" có thể tích chọn | Pass | Pass | 11/15/2025 | |
+| GUI-DN-07 | Kiểm tra link Quên mật khẩu | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra link | Hiển thị link "Quên mật khẩu?" dẫn đến `/admin/auth/forgot-password` | Pass | Pass | 11/15/2025 | |
+| GUI-DN-08 | Kiểm tra nút Đăng nhập | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra nút submit | Hiển thị nút "Đăng nhập Admin" có thể nhấn | Pass | Pass | 11/15/2025 | |
+| GUI-DN-09 | Kiểm tra dấu phân cách | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra separator | Hiển thị dấu phân cách với chữ "Hoặc" | Pass | Pass | 11/15/2025 | |
+| GUI-DN-10 | Kiểm tra link chuyển đổi | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản khách hàng" có icon mũi tên, dẫn đến `/user/auth/login` | Pass | Pass | 11/15/2025 | |
+| GUI-DN-11 | Kiểm tra văn bản footer | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra text footer | Hiển thị "Chỉ dành cho quản trị viên được ủy quyền" | Pass | Pass | 11/15/2025 | |
+| GUI-DN-12 | Kiểm tra bố cục trang | 1. Truy cập `/admin/auth/login`<br>2. Kiểm tra layout | Form được căn giữa màn hình với nền gradient, card có độ rộng tối đa | Pass | Pass | 11/15/2025 | |
+
+### 1.2. Kiểm thử chức năng
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| FUNC-DN-01 | Mở trang đăng nhập | 1. Truy cập `/admin/auth/login` | Hiển thị form đăng nhập với đầy đủ các thành phần: icon, tiêu đề, 2 trường nhập (Email, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-02 | Đăng nhập thành công | 1. Truy cập `/admin/auth/login`<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập | Hệ thống xác thực thông tin, chuyển đến trang dashboard admin, tạo phiên đăng nhập và lưu token | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-03 | Đăng nhập với email không tồn tại | 1. Truy cập `/admin/auth/login`<br>2. Nhập email không tồn tại<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-04 | Đăng nhập với mật khẩu sai | 1. Truy cập `/admin/auth/login`<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-05 | Đăng nhập thiếu email | 1. Truy cập `/admin/auth/login`<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field", form không được gửi | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-06 | Đăng nhập thiếu mật khẩu | 1. Truy cập `/admin/auth/login`<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field", form không được gửi | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-07 | Đăng nhập với email sai định dạng | 1. Truy cập `/admin/auth/login`<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address", form không được gửi | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-08 | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập `/admin/auth/login`<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, token được lưu với thời hạn dài hơn | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-09 | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập `/admin/auth/login`<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, token được lưu với thời hạn ngắn hơn | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-10 | Nhấn link Quên mật khẩu | 1. Truy cập `/admin/auth/login`<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang `/admin/auth/forgot-password` | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-11 | Nhấn link chuyển sang User | 1. Truy cập `/admin/auth/login`<br>2. Nhấn "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang `/user/auth/login` | Pass | Pass | 11/15/2025 | |
+| FUNC-DN-12 | Submit form bằng phím Enter | 1. Truy cập `/admin/auth/login`<br>2. Nhập thông tin<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút | Pass | Pass | 11/15/2025 | |
+
+---
+
+## 2. CHỨC NĂNG ĐĂNG KÝ
+
+### 2.1. Kiểm thử giao diện
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| GUI-DK-01 | Kiểm tra biểu tượng header | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra icon | Hiển thị biểu tượng Shield | Pass | Pass | 11/15/2025 | |
+| GUI-DK-02 | Kiểm tra tiêu đề | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra tiêu đề | Hiển thị "Đăng ký tài khoản Admin" | Pass | Pass | 11/15/2025 | |
+| GUI-DK-03 | Kiểm tra mô tả | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra mô tả | Hiển thị "Tạo tài khoản quản trị viên mới cho hệ thống Model Shop" | Pass | Pass | 11/15/2025 | |
+| GUI-DK-04 | Kiểm tra trường Họ và tên | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Họ và tên *" với icon User, input text có placeholder, bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-05 | Kiểm tra trường Email | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Email công ty *" với icon Mail, input email có placeholder, bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-06 | Kiểm tra trường Số điện thoại | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Số điện thoại *" với icon Phone, input tel có placeholder, bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-07 | Kiểm tra trường Mã nhân viên | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Mã nhân viên *" với icon Key, input text có placeholder "EMP001", bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-08 | Kiểm tra dropdown Phòng ban | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra select | Hiển thị label "Phòng ban *" với icon Building, select có các lựa chọn: Ban Giám đốc, Phòng Kinh doanh, Phòng Marketing, Phòng Kho, Phòng Chăm sóc khách hàng, Phòng IT, Phòng Nhân sự, Phòng Tài chính | Pass | Pass | 11/15/2025 | |
+| GUI-DK-09 | Kiểm tra trường Chức vụ | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Chức vụ *" với icon Shield, input text có placeholder, bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-10 | Kiểm tra trường Mật khẩu | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Mật khẩu *", input password có nút hiện/ẩn, gợi ý "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số" | Pass | Pass | 11/15/2025 | |
+| GUI-DK-11 | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra input | Hiển thị label "Xác nhận mật khẩu *", input password có nút hiện/ẩn, bắt buộc nhập | Pass | Pass | 11/15/2025 | |
+| GUI-DK-12 | Kiểm tra checkbox Điều khoản | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Tôi đồng ý với Điều khoản sử dụng Admin và Chính sách bảo mật" (có links) | Pass | Pass | 11/15/2025 | |
+| GUI-DK-13 | Kiểm tra nút Đăng ký | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra nút | Hiển thị nút "Đăng ký tài khoản Admin", khi đang xử lý hiển thị "Đang tạo tài khoản..." | Pass | Pass | 11/15/2025 | |
+| GUI-DK-14 | Kiểm tra separator | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra separator | Hiển thị dấu phân cách với chữ "Hoặc" | Pass | Pass | 11/15/2025 | |
+| GUI-DK-15 | Kiểm tra link Đăng nhập Admin | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản admin hiện có" với icon Shield, dẫn đến `/admin/auth/login` | Pass | Pass | 11/15/2025 | |
+| GUI-DK-16 | Kiểm tra link Đăng ký User | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra link | Hiển thị "Chưa có tài khoản khách hàng? Đăng ký tài khoản khách hàng", dẫn đến `/user/auth/register` | Pass | Pass | 11/15/2025 | |
+| GUI-DK-17 | Kiểm tra cảnh báo footer | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra footer | Hiển thị "⚠️ Chỉ dành cho nhân viên được ủy quyền" và "Tài khoản admin cần được xác thực bởi quản trị viên cấp cao" | Pass | Pass | 11/15/2025 | |
+| GUI-DK-18 | Kiểm tra bố cục | 1. Truy cập `/admin/auth/register`<br>2. Kiểm tra layout | Form được căn giữa với nền gradient, card có độ rộng tối đa | Pass | Pass | 11/15/2025 | |
+
+### 2.2. Kiểm thử chức năng
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| FUNC-DK-01 | Mở trang đăng ký | 1. Truy cập `/admin/auth/register` | Hiển thị form đăng ký với đầy đủ các trường: Họ tên, Email, SĐT, Mã NV, Phòng ban, Chức vụ, Mật khẩu, Xác nhận MK, Checkbox điều khoản | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-02 | Đăng ký thành công | 1. Điền đầy đủ thông tin hợp lệ<br>2. Mật khẩu ≥8 ký tự, có chữ hoa, thường, số<br>3. Xác nhận mật khẩu khớp<br>4. Tích checkbox điều khoản<br>5. Nhấn Đăng ký | Nút hiển thị "Đang tạo tài khoản...", sau đó thông báo "Đăng ký tài khoản admin thành công!", chuyển đến trang đăng nhập | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-03 | Đăng ký thiếu Họ và tên | 1. Để trống Họ và tên<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Họ tên không được để trống", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-04 | Đăng ký thiếu Email | 1. Để trống Email<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Email không được để trống", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-05 | Email không hợp lệ | 1. Nhập email không có @ (VD: "invalid-email")<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Email không hợp lệ", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-06 | Đăng ký thiếu SĐT | 1. Để trống Số điện thoại<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Số điện thoại không được để trống", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-07 | Đăng ký thiếu Phòng ban | 1. Không chọn Phòng ban<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Vui lòng chọn phòng ban", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-08 | Đăng ký thiếu Chức vụ | 1. Để trống Chức vụ<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Chức vụ không được để trống", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-09 | Đăng ký thiếu Mã nhân viên | 1. Để trống Mã nhân viên<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Mã nhân viên không được để trống", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-10 | Mật khẩu quá ngắn | 1. Nhập mật khẩu <8 ký tự (VD: "1234567")<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Mật khẩu phải có ít nhất 8 ký tự", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-11 | Mật khẩu không đủ điều kiện | 1. Nhập mật khẩu không có chữ hoa/thường/số (VD: "12345678")<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-12 | Xác nhận mật khẩu không khớp | 1. Nhập mật khẩu và xác nhận khác nhau<br>2. Điền các trường khác<br>3. Nhấn Đăng ký | Hiển thị lỗi "Mật khẩu xác nhận không khớp", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-13 | Không đồng ý điều khoản | 1. Điền đầy đủ thông tin hợp lệ<br>2. Không tích checkbox điều khoản<br>3. Nhấn Đăng ký | Hiển thị lỗi "Vui lòng đồng ý với điều khoản sử dụng", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-14 | Hiện/ẩn mật khẩu | 1. Nhập mật khẩu<br>2. Nhấn nút con mắt trong trường Mật khẩu | Mật khẩu chuyển từ ẩn sang hiện, icon chuyển từ Eye sang EyeOff | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-15 | Hiện/ẩn xác nhận mật khẩu | 1. Nhập xác nhận mật khẩu<br>2. Nhấn nút con mắt | Mật khẩu chuyển từ ẩn sang hiện, icon thay đổi | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-16 | Nhấn link Đăng nhập Admin | 1. Nhấn "Đăng nhập với tài khoản admin hiện có" | Chuyển đến `/admin/auth/login` | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-17 | Nhấn link Đăng ký User | 1. Nhấn "Đăng ký tài khoản khách hàng" | Chuyển đến `/user/auth/register` | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-18 | Nhấn link Điều khoản | 1. Nhấn "Điều khoản sử dụng Admin" | Mở trang `/admin/terms` | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-19 | Nhấn link Chính sách | 1. Nhấn "Chính sách bảo mật" | Mở trang `/admin/privacy` | Pass | Pass | 11/15/2025 | |
+| FUNC-DK-20 | Trạng thái loading | 1. Điền thông tin hợp lệ<br>2. Nhấn Đăng ký<br>3. Quan sát nút | Nút hiển thị "Đang tạo tài khoản..." với icon loading, nút bị vô hiệu hóa | Pass | Pass | 11/15/2025 | |
+
+---
+
+## 3. CHỨC NĂNG ĐỔI MẬT KHẨU
+
+### 3.1. Kiểm thử giao diện
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| GUI-DMK-01 | Kiểm tra Card Thông tin tài khoản | 1. Truy cập `/admin/account`<br>2. Kiểm tra card | Hiển thị card "Thông tin tài khoản" với icon Shield và mô tả | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-02 | Kiểm tra nút Đổi mật khẩu | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút trong card | Hiển thị nút "Đổi mật khẩu" với icon Key, full width | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-03 | Kiểm tra Dialog | 1. Nhấn nút Đổi mật khẩu<br>2. Kiểm tra dialog | Hiển thị dialog với tiêu đề "Đổi mật khẩu" và mô tả hướng dẫn | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-04 | Kiểm tra trường Mật khẩu hiện tại | 1. Mở dialog<br>2. Kiểm tra input | Hiển thị label "Mật khẩu hiện tại", input password có nút hiện/ẩn | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-05 | Kiểm tra trường Mật khẩu mới | 1. Mở dialog<br>2. Kiểm tra input | Hiển thị label "Mật khẩu mới", input password có nút hiện/ẩn | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-06 | Kiểm tra trường Xác nhận MK mới | 1. Mở dialog<br>2. Kiểm tra input | Hiển thị label "Xác nhận mật khẩu mới", input password có nút hiện/ẩn | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-07 | Kiểm tra nút Hủy | 1. Mở dialog<br>2. Kiểm tra nút | Hiển thị nút "Hủy", có thể nhấn để đóng dialog | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-08 | Kiểm tra nút Đổi mật khẩu | 1. Mở dialog<br>2. Kiểm tra nút submit | Hiển thị nút "Đổi mật khẩu", có thể nhấn để xử lý | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-09 | Kiểm tra nút hiện/ẩn MK hiện tại | 1. Mở dialog<br>2. Kiểm tra nút con mắt | Hiển thị nút với icon Eye/EyeOff ở góc phải trường MK hiện tại | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-10 | Kiểm tra nút hiện/ẩn MK mới | 1. Mở dialog<br>2. Kiểm tra nút | Hiển thị nút với icon Eye/EyeOff ở góc phải trường MK mới | Pass | Pass | 11/15/2025 | |
+| GUI-DMK-11 | Kiểm tra nút hiện/ẩn Xác nhận MK | 1. Mở dialog<br>2. Kiểm tra nút | Hiển thị nút với icon Eye/EyeOff ở góc phải trường Xác nhận MK | Pass | Pass | 11/15/2025 | |
+
+### 3.2. Kiểm thử chức năng
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| FUNC-DMK-01 | Mở dialog đổi mật khẩu | 1. Truy cập `/admin/account`<br>2. Nhấn nút Đổi mật khẩu | Hiển thị dialog với 3 trường nhập trống, nút Hủy và Đổi mật khẩu | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-02 | Đổi mật khẩu thành công | 1. Mở dialog<br>2. Nhập mật khẩu hiện tại đúng<br>3. Nhập mật khẩu mới ≥6 ký tự<br>4. Nhập xác nhận khớp<br>5. Nhấn Đổi mật khẩu | Form được reset, dialog đóng, thông báo "Đổi mật khẩu thành công" | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-03 | Thiếu mật khẩu hiện tại | 1. Mở dialog<br>2. Để trống MK hiện tại<br>3. Nhập MK mới và xác nhận<br>4. Nhấn Đổi mật khẩu | Hiển thị lỗi "Vui lòng nhập mật khẩu hiện tại", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-04 | Thiếu mật khẩu mới | 1. Mở dialog<br>2. Nhập MK hiện tại<br>3. Để trống MK mới<br>4. Nhấn Đổi mật khẩu | Hiển thị lỗi "Vui lòng nhập mật khẩu mới", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-05 | Mật khẩu mới quá ngắn | 1. Mở dialog<br>2. Nhập MK hiện tại<br>3. Nhập MK mới <6 ký tự<br>4. Nhấn Đổi mật khẩu | Hiển thị lỗi "Mật khẩu mới phải có ít nhất 6 ký tự", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-06 | Xác nhận không khớp | 1. Mở dialog<br>2. Nhập MK hiện tại<br>3. Nhập MK mới<br>4. Nhập xác nhận khác<br>5. Nhấn Đổi mật khẩu | Hiển thị lỗi "Mật khẩu xác nhận không khớp", không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-07 | Hiện/ẩn MK hiện tại | 1. Mở dialog<br>2. Nhập MK hiện tại<br>3. Nhấn nút con mắt | Input chuyển từ ẩn sang hiện, icon thay đổi | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-08 | Hiện/ẩn MK mới | 1. Mở dialog<br>2. Nhập MK mới<br>3. Nhấn nút con mắt | Input chuyển từ ẩn sang hiện, icon thay đổi | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-09 | Hiện/ẩn Xác nhận MK | 1. Mở dialog<br>2. Nhập xác nhận MK<br>3. Nhấn nút con mắt | Input chuyển từ ẩn sang hiện, icon thay đổi | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-10 | Nhấn nút Hủy | 1. Mở dialog<br>2. Nhập thông tin<br>3. Nhấn Hủy | Dialog đóng, thông tin không được lưu | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-11 | Đóng dialog bằng click ngoài | 1. Mở dialog<br>2. Click bên ngoài dialog | Dialog đóng, không gửi form | Pass | Pass | 11/15/2025 | |
+| FUNC-DMK-12 | Reset form sau khi thành công | 1. Đổi mật khẩu thành công<br>2. Mở lại dialog | Tất cả các trường đều trống | Pass | Pass | 11/15/2025 | |
+
+---
+
+## 4. CHỨC NĂNG QUẢN LÝ THÔNG TIN CÁ NHÂN
+
+### 4.1. Kiểm thử giao diện
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| GUI-QLTT-01 | Kiểm tra Header | 1. Truy cập `/admin/account`<br>2. Kiểm tra header | Hiển thị tiêu đề "Quản lý tài khoản" và mô tả | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-02 | Kiểm tra nút Chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút (chế độ xem) | Hiển thị nút "Chỉnh sửa" với icon Edit | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-03 | Kiểm tra nút Hủy và Lưu | 1. Nhấn Chỉnh sửa<br>2. Kiểm tra các nút | Hiển thị nút "Hủy" với icon X và "Lưu thay đổi" với icon Save | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-04 | Kiểm tra Card Thông tin cá nhân | 1. Truy cập `/admin/account`<br>2. Kiểm tra card | Hiển thị card với icon User, tiêu đề "Thông tin cá nhân" và mô tả | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-05 | Kiểm tra Avatar và thông tin | 1. Truy cập `/admin/account`<br>2. Kiểm tra phần avatar | Hiển thị avatar (ảnh hoặc chữ cái đầu), họ tên, badge vai trò với icon Shield | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-06 | Kiểm tra Separator | 1. Truy cập `/admin/account`<br>2. Kiểm tra | Hiển thị đường phân cách giữa avatar và form | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-07 | Kiểm tra trường Họ và tên | 1. Truy cập `/admin/account`<br>2. Kiểm tra input | Hiển thị label "Họ và tên", input bị khóa khi không chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-08 | Kiểm tra trường Email | 1. Truy cập `/admin/account`<br>2. Kiểm tra input | Hiển thị label "Email", input type email bị khóa khi không chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-09 | Kiểm tra trường SĐT | 1. Truy cập `/admin/account`<br>2. Kiểm tra input | Hiển thị label "Số điện thoại", input bị khóa khi không chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-10 | Kiểm tra trường Địa chỉ | 1. Truy cập `/admin/account`<br>2. Kiểm tra input | Hiển thị label "Địa chỉ", input bị khóa khi không chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-11 | Kiểm tra trường Ngày sinh | 1. Truy cập `/admin/account`<br>2. Kiểm tra input | Hiển thị label "Ngày sinh", input date bị khóa khi không chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-12 | Kiểm tra Card Thông tin tài khoản | 1. Truy cập `/admin/account`<br>2. Kiểm tra card | Hiển thị card với icon Shield, tiêu đề "Thông tin tài khoản" và mô tả | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-13 | Kiểm tra Email đăng nhập | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin | Hiển thị icon Mail, label "Email đăng nhập" và email | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-14 | Kiểm tra Ngày tạo tài khoản | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Ngày tạo tài khoản" và ngày (định dạng tiếng Việt) | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-15 | Kiểm tra Lần đăng nhập cuối | 1. Truy cập `/admin/account`<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Lần đăng nhập cuối" và thời gian (định dạng tiếng Việt) | Pass | Pass | 11/15/2025 | |
+| GUI-QLTT-16 | Kiểm tra nút Đăng xuất | 1. Truy cập `/admin/account`<br>2. Kiểm tra nút | Hiển thị nút "Đăng xuất" với icon LogOut, màu đỏ, full width | Pass | Pass | 11/15/2025 | |
+
+### 4.2. Kiểm thử chức năng
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| FUNC-QLTT-01 | Mở trang quản lý tài khoản | 1. Truy cập `/admin/account` | Hiển thị 2 card, form với thông tin đã điền, các input bị khóa, nút Chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-02 | Nhấn nút Chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Nhấn Chỉnh sửa | Các input được mở khóa, nút Chỉnh sửa ẩn, hiển thị nút Hủy và Lưu | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-03 | Cập nhật thành công | 1. Nhấn Chỉnh sửa<br>2. Sửa thông tin (tên, SĐT, địa chỉ, ngày sinh)<br>3. Nhấn Lưu thay đổi | Thông tin được cập nhật, các input bị khóa lại, thông báo "Cập nhật thông tin thành công" | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-04 | Cập nhật thiếu Họ và tên | 1. Nhấn Chỉnh sửa<br>2. Xóa Họ và tên<br>3. Nhấn Lưu | Hiển thị lỗi "Họ tên không được để trống", vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-05 | Cập nhật thiếu Email | 1. Nhấn Chỉnh sửa<br>2. Xóa Email<br>3. Nhấn Lưu | Hiển thị lỗi "Email không được để trống", vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-06 | Cập nhật thiếu SĐT | 1. Nhấn Chỉnh sửa<br>2. Xóa SĐT<br>3. Nhấn Lưu | Hiển thị lỗi "Số điện thoại không được để trống", vẫn ở chế độ chỉnh sửa | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-07 | Cập nhật Họ và tên | 1. Nhấn Chỉnh sửa<br>2. Sửa Họ và tên<br>3. Nhấn Lưu | Họ tên được cập nhật, avatar cập nhật chữ cái đầu, thông báo thành công | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-08 | Cập nhật SĐT | 1. Nhấn Chỉnh sửa<br>2. Sửa SĐT<br>3. Nhấn Lưu | SĐT được cập nhật, thông báo thành công | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-09 | Cập nhật Địa chỉ | 1. Nhấn Chỉnh sửa<br>2. Sửa Địa chỉ<br>3. Nhấn Lưu | Địa chỉ được cập nhật, thông báo thành công | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-10 | Cập nhật Ngày sinh | 1. Nhấn Chỉnh sửa<br>2. Chọn Ngày sinh mới<br>3. Nhấn Lưu | Ngày sinh được cập nhật, thông báo thành công | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-11 | Nhấn nút Hủy | 1. Nhấn Chỉnh sửa<br>2. Sửa thông tin<br>3. Nhấn Hủy | Thông tin khôi phục về ban đầu, các input bị khóa, nút Chỉnh sửa hiển thị lại | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-12 | Input khóa khi không chỉnh sửa | 1. Truy cập `/admin/account`<br>2. Kiểm tra các input | Tất cả input bị khóa, không thể nhập | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-13 | Input mở khi chỉnh sửa | 1. Nhấn Chỉnh sửa<br>2. Kiểm tra các input | Tất cả input được mở, có thể nhập liệu | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-14 | Hiển thị thông tin tài khoản | 1. Truy cập `/admin/account`<br>2. Xem card Thông tin tài khoản | Hiển thị Email, Ngày tạo, Lần đăng nhập cuối (định dạng tiếng Việt), không thể sửa | Pass | Pass | 11/15/2025 | |
+| FUNC-QLTT-15 | Avatar hiển thị | 1. Truy cập `/admin/account`<br>2. Kiểm tra avatar | Nếu có ảnh: hiển thị ảnh, nếu không: hiển thị chữ cái đầu của tên | Pass | Pass | 11/15/2025 | |
+
+---
+
+## 5. CHỨC NĂNG KHÔI PHỤC MẬT KHẨU
+
+### 5.1. Kiểm thử giao diện
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| GUI-KPMK-01 | Kiểm tra Header | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra header | Hiển thị icon Shield, tiêu đề "Khôi phục mật khẩu", mô tả "Chọn phương thức khôi phục mật khẩu của bạn" | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-02 | Kiểm tra Card | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra card | Hiển thị card với icon Lock, tiêu đề "Khôi phục mật khẩu", mô tả thay đổi theo bước | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-03 | Kiểm tra phương thức Email | 1. Vào trang khôi phục<br>2. Xem phương thức Email | Hiển thị radio button, icon Mail, text "Email" và "Gửi mã xác thực qua email", input Email khi chọn | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-04 | Kiểm tra phương thức SMS | 1. Vào trang khôi phục<br>2. Xem phương thức SMS | Hiển thị radio button, icon Phone, text "SMS" và "Gửi mã xác thực qua SMS", input SĐT khi chọn | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-05 | Kiểm tra phương thức Câu hỏi | 1. Vào trang khôi phục<br>2. Xem phương thức Câu hỏi bảo mật | Hiển thị radio button, icon MessageSquare, text "Câu hỏi bảo mật" và "Trả lời câu hỏi bảo mật", 3 input câu hỏi khi chọn | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-06 | Kiểm tra nút Tiếp tục (Bước 1) | 1. Ở bước 1<br>2. Kiểm tra nút | Hiển thị nút "Tiếp tục" với icon Key (hoặc Loader2 khi loading), full width | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-07 | Kiểm tra Alert và Input OTP (Bước 2) | 1. Chuyển sang bước 2<br>2. Kiểm tra | Hiển thị Alert với icon Mail, input "Mã xác thực" với placeholder "Nhập mã xác thực 6 chữ số", maxLength=6 | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-08 | Kiểm tra nút Xác thực (Bước 2) | 1. Ở bước 2<br>2. Kiểm tra nút | Hiển thị nút "Xác thực" với icon CheckCircle (hoặc Loader2), full width | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-09 | Kiểm tra nút Quay lại (Bước 2) | 1. Ở bước 2<br>2. Kiểm tra nút | Hiển thị nút "Quay lại" với icon ArrowLeft | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-10 | Kiểm tra Form MK mới (Bước 3) | 1. Chuyển sang bước 3<br>2. Kiểm tra | Hiển thị Alert thành công, input "Mật khẩu mới" và "Xác nhận mật khẩu" type password | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-11 | Kiểm tra thanh Độ mạnh MK | 1. Ở bước 3<br>2. Nhập mật khẩu<br>3. Kiểm tra thanh | Hiển thị thanh progress màu thay đổi (đỏ/vàng/xanh), label "Yếu"/"Trung bình"/"Mạnh" | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-12 | Kiểm tra Yêu cầu mật khẩu | 1. Ở bước 3<br>2. Kiểm tra danh sách | Hiển thị label "Yêu cầu mật khẩu", danh sách: "Ít nhất 8 ký tự", "Có ít nhất 1 chữ hoa", "Có ít nhất 1 chữ số", "Có ít nhất 1 ký tự đặc biệt", mỗi item có chấm màu (xanh khi đạt) | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-13 | Kiểm tra nút Đặt lại MK (Bước 3) | 1. Ở bước 3<br>2. Kiểm tra nút | Hiển thị nút "Đặt lại mật khẩu" với icon Lock (hoặc Loader2), full width, khóa khi chưa hợp lệ | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-14 | Kiểm tra màn hình Thành công (Bước 4) | 1. Chuyển sang bước 4<br>2. Kiểm tra | Hiển thị icon CheckCircle lớn, tiêu đề "Khôi phục mật khẩu thành công", mô tả, nút "Đăng nhập ngay" (icon User) và "Quay về trang chủ" (icon ArrowLeft) | Pass | Pass | 11/15/2025 | |
+| GUI-KPMK-15 | Kiểm tra link Footer | 1. Truy cập trang<br>2. Kiểm tra footer | Hiển thị "Bạn có tài khoản? Đăng nhập" | Pass | Pass | 11/15/2025 | |
+
+### 5.2. Kiểm thử chức năng
+
+| ID | Mô tả | Các bước thực hiện | Kết quả mong đợi | Mức độ | Kết quả | Ngày test | Ghi chú |
+|----|-------|-------------------|------------------|--------|---------|-----------|---------|
+| FUNC-KPMK-01 | Mở trang khôi phục | 1. Truy cập `/admin/auth/forgot-password` | Hiển thị màn hình bước 1 với 3 phương thức: Email, SMS, Câu hỏi bảo mật | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-02 | Chọn phương thức Email | 1. Nhấn vào phương thức Email | Radio button Email được chọn, hiển thị input Email | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-03 | Chọn phương thức SMS | 1. Nhấn vào phương thức SMS | Radio button SMS được chọn, hiển thị input SĐT | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-04 | Chọn phương thức Câu hỏi | 1. Nhấn vào phương thức Câu hỏi bảo mật | Radio button được chọn, hiển thị 3 input câu hỏi | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-05 | Gửi mã qua Email | 1. Chọn Email<br>2. Nhập email hợp lệ<br>3. Nhấn Tiếp tục | Nút hiển thị "Đang xử lý...", sau 2s thông báo "Mã xác thực đã được gửi", chuyển sang bước 2 | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-06 | Gửi mã thiếu email | 1. Chọn Email<br>2. Không nhập email<br>3. Nhấn Tiếp tục | Hiển thị lỗi "Vui lòng nhập email", không chuyển bước | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-07 | Trả lời câu hỏi bảo mật | 1. Chọn Câu hỏi<br>2. Trả lời đầy đủ 3 câu<br>3. Nhấn Tiếp tục | Xử lý 2s, thông báo "Xác thực thành công", chuyển sang bước 3 | Pass | Pass | 11/15/2025 | |
+| FUNC-KPMK-08 | Trả lời thiếu câu hỏi | 1. Chọn Câu hỏi<br>2. Không trả lời đầy đủ<br>3. Nhấn Tiếp tục | Hiển thị lỗi "Vui lòng trả lời đầy đủ các câu hỏi bảo mật", không chuyển bước | Pass | Pass |
