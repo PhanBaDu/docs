@@ -1,15 +1,16 @@
-# Test Case Template - Quản lý tài khoản (Admin)
+# Test Case Template - Quản lý sản phẩm (Admin)
 
 ## Module Code
-**Model Management Store: Quản lý tài khoản Admin**
+**Model Management Store: Quản lý sản phẩm Admin**
 
 ## Test Requirement
-1. Đăng nhập
-2. Đăng ký
-3. Khôi phục mật khẩu
-4. Đổi mật khẩu
-5. Cập nhật thông tin cá nhân
-6. Đăng xuất
+1. Hiển thị danh sách sản phẩm
+2. Xem chi tiết sản phẩm
+3. Thêm sản phẩm
+4. Cập nhật sản phẩm
+5. Xóa sản phẩm
+6. Tìm kiếm sản phẩm
+7. Lọc sản phẩm
 
 ---
 
@@ -19,274 +20,276 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 142 |
+| **Pass** | 168 |
 | **Fail** | 0 |
-| **Untested** | 38 |
+| **Untested** | 52 |
 | **N/A** | 0 |
-| **Number of Test cases** | 180 |
+| **Number of Test cases** | 220 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập
+### Function: Hiển thị danh sách sản phẩm
 
-#### Check GUI: Đăng nhập
+#### Check GUI: Hiển thị danh sách sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn ở header, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra trường Email Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Pass | 11/15/2015 | |
-| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" có thể click, nằm bên phải, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DN-08** | Kiểm tra nút Đăng nhập Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, chiếm toàn bộ chiều rộng form | | Pass | 11/15/2015 | |
-| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa, màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DN-10** | Kiểm tra link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft, màu primary, có thể click | | Pass | 11/15/2015 | |
-| **GUI-DN-11** | Kiểm tra thông báo cảnh báo | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" màu muted-foreground, kích thước text-sm | | Pass | 11/15/2015 | |
-| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background gradient từ primary/5 đến secondary/5, card container nằm giữa màn hình với max-width-md, form đăng nhập bên trong card | | Pass | 11/15/2015 | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có giới hạn chiều rộng tối đa (max-w-md), có padding | | Pass | 11/15/2015 | |
+| **GUI-DSSP-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý sản phẩm" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-DSSP-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/products<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý danh sách sản phẩm và thông tin chi tiết" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-DSSP-03** | Kiểm tra nút Nhập hàng | 1. Truy cập /admin/products<br>2. Kiểm tra nút Nhập hàng | Hiển thị nút "Nhập hàng" với icon Package variant outline ở header | | Pass | 11/15/2015 | |
+| **GUI-DSSP-04** | Kiểm tra nút Thêm sản phẩm | 1. Truy cập /admin/products<br>2. Kiểm tra nút Thêm sản phẩm | Hiển thị nút "Thêm sản phẩm" với icon Plus ở header, link đến /admin/products/new | | Pass | 11/15/2015 | |
+| **GUI-DSSP-05** | Kiểm tra Stats Cards | 1. Truy cập /admin/products<br>2. Kiểm tra Stats Cards | Hiển thị 4 card thống kê: Tổng sản phẩm (156), Đang bán (142), Sắp hết hàng (8), Hết hàng (6) | | Pass | 11/15/2015 | |
+| **GUI-DSSP-06** | Kiểm tra trường Tìm kiếm | 1. Truy cập /admin/products<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm sản phẩm...", có thể nhập và nhấn Enter để tìm | | Pass | 11/15/2015 | |
+| **GUI-DSSP-07** | Kiểm tra Select Danh mục | 1. Truy cập /admin/products<br>2. Kiểm tra Select Danh mục | Hiển thị Select với placeholder "Danh mục", width w-40, có các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
+| **GUI-DSSP-08** | Kiểm tra Select Thương hiệu | 1. Truy cập /admin/products<br>2. Kiểm tra Select Thương hiệu | Hiển thị Select với placeholder "Thương hiệu", width w-40, có các option: Tất cả, Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya | | Pass | 11/15/2015 | |
+| **GUI-DSSP-09** | Kiểm tra Select Trạng thái | 1. Truy cập /admin/products<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", width w-40, có các option: Tất cả, Đang bán, Sắp hết hàng, Hết hàng, Ngừng bán | | Pass | 11/15/2015 | |
+| **GUI-DSSP-10** | Kiểm tra nút Bộ lọc | 1. Truy cập /admin/products<br>2. Kiểm tra nút Bộ lọc | Hiển thị nút "Bộ lọc" với icon Filter variant outline | | Pass | 11/15/2015 | |
+| **GUI-DSSP-11** | Kiểm tra bảng danh sách sản phẩm | 1. Truy cập /admin/products<br>2. Kiểm tra bảng | Hiển thị Table với các cột: #, Sản phẩm, Danh mục, Giá, Tồn kho, Trạng thái, Đánh giá, Ngày tạo, Thao tác | | Pass | 11/15/2015 | |
+| **GUI-DSSP-12** | Kiểm tra cột Sản phẩm trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Sản phẩm | Mỗi dòng hiển thị hình ảnh sản phẩm (w-12 h-12 rounded-lg), tên sản phẩm (font-medium), thương hiệu (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSSP-13** | Kiểm tra cột Danh mục trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Danh mục | Hiển thị Badge variant outline với tên danh mục | | Pass | 11/15/2015 | |
+| **GUI-DSSP-14** | Kiểm tra cột Giá trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Giá | Hiển thị giá bán (font-medium) và giá gốc (text-sm muted-foreground line-through) định dạng vi-VN | | Pass | 11/15/2015 | |
+| **GUI-DSSP-15** | Kiểm tra cột Tồn kho trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Tồn kho | Hiển thị số lượng tồn kho (font-medium) và tồn kho tối thiểu (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSSP-16** | Kiểm tra cột Trạng thái trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Trạng thái | Hiển thị Badge với màu tương ứng: Đang bán (default), Sắp hết (secondary), Hết hàng (destructive), Ngừng bán (outline) | | Pass | 11/15/2015 | |
+| **GUI-DSSP-17** | Kiểm tra cột Đánh giá trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Đánh giá | Hiển thị điểm đánh giá (text-sm font-medium) và số lượng đánh giá (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSSP-18** | Kiểm tra cột Thao tác trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Thao tác | Hiển thị 4 nút: Xem (icon Eye), Chỉnh sửa (icon Edit), Ẩn (icon EyeOff), Xóa (icon Trash2), tất cả variant ghost size sm | | Pass | 11/15/2015 | |
+| **GUI-DSSP-19** | Kiểm tra Pagination | 1. Truy cập /admin/products<br>2. Kiểm tra Pagination | Hiển thị text "Hiển thị 1-X trong Y sản phẩm", các nút phân trang: Trước (disabled), số trang, Sau | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng nhập
+### Check FUNC: Hiển thị danh sách sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: icon Shield, tiêu đề "Đăng nhập Admin", mô tả "Đăng nhập vào hệ thống quản trị", 2 trường nhập (Email Admin, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập Admin, separator "Hoặc", link đăng nhập với tài khoản khách hàng, thông báo cảnh báo | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ (VD: admin@modelshop.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập Admin | Hệ thống xác thực thông tin, chuyển đến dashboard Admin (/admin), lưu phiên đăng nhập và lưu token, hiển thị thông báo thành công | | Untested | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /admin/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message "Dữ liệu không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn, khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-09** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn, khi đóng trình duyệt sẽ đăng xuất | | Untested | 11/15/2015 | |
-| **FUNC-DN-10** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password | | Pass | 11/15/2015 | |
-| **FUNC-DN-11** | Nhấn link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DN-12** | Submit form bằng phím Enter | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập Admin | | Untested | 11/15/2015 | |
-| **FUNC-DN-13** | Đăng nhập với tài khoản chưa kích hoạt | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản chưa kích hoạt<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản chưa được kích hoạt. Vui lòng liên hệ quản trị viên cấp cao", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-14** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản bị khóa<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-15** | Đăng nhập sai nhiều lần - Hiển thị Captcha | 1. Truy cập /admin/auth/login<br>2. Nhập sai thông tin đăng nhập 3 lần liên tiếp<br>3. Lần thứ 4, nhập thông tin | Sau 3 lần đăng nhập sai, hiển thị captcha, yêu cầu nhập captcha trước khi tiếp tục đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-16** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/login<br>2. Tắt kết nối mạng<br>3. Nhập thông tin hợp lệ<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-17** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-18** | Kiểm tra redirect sau đăng nhập | 1. Truy cập /admin/auth/login?redirect=/admin/products<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công | Sau khi đăng nhập thành công, chuyển đến trang /admin/products thay vì dashboard mặc định | | Untested | 11/15/2015 | |
-| **FUNC-DN-19** | Kiểm tra lưu token sau đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra localStorage/sessionStorage | Token được lưu vào localStorage hoặc sessionStorage, có thể sử dụng cho các request tiếp theo | | Untested | 11/15/2015 | |
-| **FUNC-DN-20** | Kiểm tra tạo phiên đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra session | Phiên đăng nhập được tạo và lưu trữ trên server, có thể theo dõi trong lịch sử đăng nhập | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-01** | Mở trang danh sách sản phẩm | 1. Truy cập /admin/products | Hiển thị trang với tiêu đề, mô tả, nút Nhập hàng, nút Thêm sản phẩm, 4 Stats Cards, bộ lọc (tìm kiếm, danh mục, thương hiệu, trạng thái, nút Bộ lọc), bảng danh sách sản phẩm, pagination | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-02** | Hiển thị danh sách sản phẩm mặc định | 1. Truy cập /admin/products | Hiển thị tất cả sản phẩm trong bảng, mỗi sản phẩm có đầy đủ thông tin: hình ảnh, tên, thương hiệu, danh mục, giá, tồn kho, trạng thái, đánh giá, ngày tạo, các nút thao tác | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-03** | Click nút Nhập hàng | 1. Truy cập /admin/products<br>2. Click nút "Nhập hàng" | Chuyển đến trang nhập hàng hoặc mở dialog nhập hàng | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-04** | Click nút Thêm sản phẩm | 1. Truy cập /admin/products<br>2. Click nút "Thêm sản phẩm" | Chuyển đến trang /admin/products/new | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-05** | Click nút Xem (icon Eye) | 1. Truy cập /admin/products<br>2. Click nút Xem của một sản phẩm | Chuyển đến trang chi tiết sản phẩm /admin/products/[id] | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-06** | Click nút Chỉnh sửa (icon Edit) | 1. Truy cập /admin/products<br>2. Click nút Chỉnh sửa của một sản phẩm | Chuyển đến trang chỉnh sửa sản phẩm /admin/products/[id]/edit | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-07** | Click nút Ẩn (icon EyeOff) | 1. Truy cập /admin/products<br>2. Click nút Ẩn của một sản phẩm | Hiển thị Dialog xác nhận ẩn sản phẩm với tiêu đề "Xác nhận ẩn sản phẩm", mô tả, nút Hủy, nút "Ẩn sản phẩm" | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-08** | Click nút Xóa (icon Trash2) | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm | Hiển thị Dialog xác nhận xóa sản phẩm với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Hành động này không thể hoàn tác", nút Hủy, nút "Xóa" variant destructive | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-09** | Xác nhận ẩn sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Ẩn<br>3. Click "Ẩn sản phẩm" trong dialog | Hiển thị thông báo "Đã ẩn sản phẩm", sản phẩm bị ẩn khỏi danh sách hoặc trạng thái chuyển thành "Ẩn" | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-10** | Xác nhận xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Xóa" trong dialog | Hiển thị thông báo "Đã xóa sản phẩm", sản phẩm bị xóa khỏi danh sách | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-11** | Hủy ẩn sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Ẩn<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị ẩn | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-12** | Hủy xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị xóa | | Pass | 11/15/2015 | |
+| **FUNC-DSSP-13** | Xử lý khi không có sản phẩm | 1. Truy cập /admin/products<br>2. Lọc để không có sản phẩm nào | Hiển thị thông báo "Không tìm thấy sản phẩm nào" hoặc bảng trống | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-14** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-DSSP-15** | Xử lý khi server lỗi | 1. Truy cập /admin/products<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Đăng ký
+### Function: Xem chi tiết sản phẩm
 
-#### Check GUI: Đăng ký
+#### Check GUI: Xem chi tiết sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DK-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/register<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn ở header, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/register<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng ký tài khoản Admin" | | Pass | 11/15/2015 | |
-| **GUI-DK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/register<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tạo tài khoản quản trị viên mới cho hệ thống Model Shop" | | Pass | 11/15/2015 | |
-| **GUI-DK-04** | Kiểm tra trường Họ và tên | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên *" với icon User, input type text với placeholder "Nhập họ và tên", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-05** | Kiểm tra trường Email công ty | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Email | Hiển thị label "Email công ty *" với icon Mail, input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-06** | Kiểm tra trường Số điện thoại | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại *" với icon Phone, input type tel với placeholder "Nhập số điện thoại", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-07** | Kiểm tra trường Mã nhân viên | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Mã nhân viên | Hiển thị label "Mã nhân viên *" với icon Key, input type text với placeholder "EMP001", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-08** | Kiểm tra trường Phòng ban | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Phòng ban | Hiển thị label "Phòng ban *" với icon Building, Select với placeholder "Chọn phòng ban", có các option: Ban Giám đốc, Phòng Kinh doanh, Phòng Marketing, Phòng Kho, Phòng Chăm sóc khách hàng, Phòng IT, Phòng Nhân sự, Phòng Tài chính | | Pass | 11/15/2015 | |
-| **GUI-DK-09** | Kiểm tra trường Chức vụ | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Chức vụ | Hiển thị label "Chức vụ *" với icon Shield, input type text với placeholder "Nhập chức vụ", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-10** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Mật khẩu | Hiển thị label "Mật khẩu *", input type password với placeholder "Nhập mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required, có text hướng dẫn "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số" | | Pass | 11/15/2015 | |
-| **GUI-DK-11** | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập /admin/auth/register<br>2. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu *", input type password với placeholder "Nhập lại mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-12** | Kiểm tra checkbox Điều khoản | 1. Truy cập /admin/auth/register<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Tôi đồng ý với Điều khoản sử dụng Admin và Chính sách bảo mật", có link đến trang điều khoản và chính sách | | Pass | 11/15/2015 | |
-| **GUI-DK-13** | Kiểm tra nút Đăng ký | 1. Truy cập /admin/auth/register<br>2. Kiểm tra nút Đăng ký | Hiển thị nút "Đăng ký tài khoản Admin" type submit, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-DK-14** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/register<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | 11/15/2015 | |
-| **GUI-DK-15** | Kiểm tra link Đăng nhập với tài khoản admin hiện có | 1. Truy cập /admin/auth/register<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản admin hiện có" với icon Shield, màu primary | | Pass | 11/15/2015 | |
-| **GUI-DK-16** | Kiểm tra link Đăng ký tài khoản khách hàng | 1. Truy cập /admin/auth/register<br>2. Kiểm tra link | Hiển thị text "Chưa có tài khoản khách hàng? " với link "Đăng ký tài khoản khách hàng" có thể click | | Pass | 11/15/2015 | |
-| **GUI-DK-17** | Kiểm tra thông báo cảnh báo | 1. Truy cập /admin/auth/register<br>2. Kiểm tra thông báo | Hiển thị text "⚠️ Chỉ dành cho nhân viên được ủy quyền" và "Tài khoản admin cần được xác thực bởi quản trị viên cấp cao", màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DK-18** | Kiểm tra layout trang | 1. Truy cập /admin/auth/register<br>2. Kiểm tra layout tổng thể | Trang có background gradient từ primary/5 đến secondary/5, card container nằm giữa màn hình với max-width-2xl, form đăng ký bên trong card, có scroll nếu nội dung dài | | Pass | 11/15/2015 | |
+| **GUI-CTSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products | | Pass | 11/15/2015 | |
+| **GUI-CTSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tên sản phẩm với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-CTSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra mô tả | Hiển thị "Chi tiết sản phẩm - ID: [id]" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CTSP-04** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit variant outline, link đến /admin/products/[id]/edit | | Pass | 11/15/2015 | |
+| **GUI-CTSP-05** | Kiểm tra nút Ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Ẩn | Hiển thị nút "Ẩn sản phẩm" với icon EyeOff variant secondary | | Pass | 11/15/2015 | |
+| **GUI-CTSP-06** | Kiểm tra nút Xóa | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Xóa | Hiển thị nút "Xóa" với icon Trash2 variant destructive | | Pass | 11/15/2015 | |
+| **GUI-CTSP-07** | Kiểm tra card Thông tin sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin sản phẩm" với hình ảnh sản phẩm (w-48 h-48), tên sản phẩm (text-2xl font-bold), thương hiệu, Badge danh mục, Badge trạng thái | | Pass | 11/15/2015 | |
+| **GUI-CTSP-08** | Kiểm tra thông tin giá và tồn kho | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra thông tin | Hiển thị grid 2 cột với: Giá bán (icon DollarSign), Giá gốc (icon DollarSign line-through), Tồn kho (icon Package), Tồn kho tối thiểu (icon BarChart3) | | Pass | 11/15/2015 | |
+| **GUI-CTSP-09** | Kiểm tra đánh giá sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra đánh giá | Hiển thị icon Star màu yellow-500, điểm đánh giá (font-medium), số lượng đánh giá (muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-CTSP-10** | Kiểm tra card Mô tả sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Mô tả sản phẩm" với nội dung mô tả màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CTSP-11** | Kiểm tra card Thông số kỹ thuật | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông số kỹ thuật" với Table hiển thị các thông số: Tỷ lệ, Chất liệu, Chiều cao, Chiều rộng, Chiều sâu, Độ tuổi khuyến nghị, Thời gian lắp ráp, Tính năng | | Pass | 11/15/2015 | |
+| **GUI-CTSP-12** | Kiểm tra card Thông tin bổ sung | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin bổ sung" với: Ngày tạo (icon Calendar), Ngày cập nhật (icon Calendar), URL Slug (icon Package) | | Pass | 11/15/2015 | |
+| **GUI-CTSP-13** | Kiểm tra card Trạng thái sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Trạng thái sản phẩm" với các Badge: Đang giảm giá, Sản phẩm nổi bật, Sản phẩm mới | | Pass | 11/15/2015 | |
+| **GUI-CTSP-14** | Kiểm tra card Thông tin SEO | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin SEO" với Meta Title và Meta Description | | Pass | 11/15/2015 | |
+| **GUI-CTSP-15** | Kiểm tra Dialog ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút Ẩn sản phẩm<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận ẩn sản phẩm", mô tả, textarea "Lý do ẩn sản phẩm", nút Hủy, nút "Ẩn sản phẩm" | | Pass | 11/15/2015 | |
+| **GUI-CTSP-16** | Kiểm tra Dialog xóa sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút Xóa<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Hành động này không thể hoàn tác", textarea "Lý do xóa sản phẩm", nút Hủy, nút "Xóa vĩnh viễn" variant destructive | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng ký
+### Check FUNC: Xem chi tiết sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DK-01** | Mở trang đăng ký | 1. Truy cập /admin/auth/register | Hiển thị form đăng ký với đầy đủ các thành phần: icon Shield, tiêu đề "Đăng ký tài khoản Admin", mô tả, các trường nhập (Họ tên, Email công ty, SĐT, Mã nhân viên, Phòng ban, Chức vụ, Mật khẩu, Xác nhận mật khẩu), checkbox điều khoản, nút đăng ký, separator, link đăng nhập admin, link đăng ký khách hàng, thông báo cảnh báo | | Pass | 11/15/2015 | |
-| **FUNC-DK-02** | Đăng ký thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin hợp lệ<br>3. Tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo "Đăng ký tài khoản admin thành công!", chuyển đến trang /admin/auth/login, tài khoản cần được xác thực bởi quản trị viên cấp cao | | Untested | 11/15/2015 | |
-| **FUNC-DK-03** | Đăng ký thiếu Họ tên | 1. Truy cập /admin/auth/register<br>2. Để trống Họ tên<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Họ tên không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-04** | Đăng ký thiếu Email | 1. Truy cập /admin/auth/register<br>2. Để trống Email<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-05** | Đăng ký với Email không hợp lệ | 1. Truy cập /admin/auth/register<br>2. Nhập email không có @<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-06** | Đăng ký với Email đã tồn tại | 1. Truy cập /admin/auth/register<br>2. Nhập email đã tồn tại trong hệ thống<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email đã tồn tại trong hệ thống", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-07** | Đăng ký thiếu Số điện thoại | 1. Truy cập /admin/auth/register<br>2. Để trống Số điện thoại<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Số điện thoại không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-08** | Đăng ký thiếu Mã nhân viên | 1. Truy cập /admin/auth/register<br>2. Để trống Mã nhân viên<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mã nhân viên không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-09** | Đăng ký thiếu Phòng ban | 1. Truy cập /admin/auth/register<br>2. Không chọn Phòng ban<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Vui lòng chọn phòng ban", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-10** | Đăng ký thiếu Chức vụ | 1. Truy cập /admin/auth/register<br>2. Để trống Chức vụ<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Chức vụ không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-11** | Đăng ký thiếu Mật khẩu | 1. Truy cập /admin/auth/register<br>2. Để trống Mật khẩu<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-12** | Đăng ký với Mật khẩu quá ngắn | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu < 8 ký tự<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 8 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-13** | Đăng ký với Mật khẩu không đủ yêu cầu | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu không có chữ hoa, chữ thường và số<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-14** | Đăng ký với Mật khẩu xác nhận không khớp | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu<br>3. Nhập xác nhận mật khẩu khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-15** | Đăng ký không tích checkbox điều khoản | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Không tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Vui lòng đồng ý với điều khoản sử dụng", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-16** | Hiển thị/ẩn mật khẩu | 1. Truy cập /admin/auth/register<br>2. Nhập mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-17** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /admin/auth/register<br>2. Nhập xác nhận mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-18** | Nhấn link Đăng nhập với tài khoản admin hiện có | 1. Truy cập /admin/auth/register<br>2. Nhấn link "Đăng nhập với tài khoản admin hiện có" | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DK-19** | Nhấn link Đăng ký tài khoản khách hàng | 1. Truy cập /admin/auth/register<br>2. Nhấn link "Đăng ký tài khoản khách hàng" | Chuyển đến trang /user/auth/register | | Pass | 11/15/2015 | |
-| **FUNC-DK-20** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-21** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/register<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Có lỗi xảy ra, vui lòng thử lại", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-01** | Mở trang chi tiết sản phẩm | 1. Truy cập /admin/products/[id] | Hiển thị trang với nút Quay lại, tiêu đề (tên sản phẩm), mô tả, nút Chỉnh sửa, nút Ẩn, nút Xóa, card Thông tin sản phẩm, card Mô tả, card Thông số kỹ thuật, card Thông tin bổ sung, card Trạng thái, card SEO | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-02** | Hiển thị đầy đủ thông tin sản phẩm | 1. Truy cập /admin/products/[id] | Hiển thị đầy đủ thông tin: hình ảnh, tên, thương hiệu, danh mục, trạng thái, giá bán, giá gốc, tồn kho, tồn kho tối thiểu, đánh giá, mô tả, thông số kỹ thuật, ngày tạo, ngày cập nhật, slug, meta title, meta description | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-03** | Click nút Quay lại | 1. Truy cập /admin/products/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/products | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-04** | Click nút Chỉnh sửa | 1. Truy cập /admin/products/[id]<br>2. Click nút "Chỉnh sửa" | Chuyển đến trang /admin/products/[id]/edit | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-05** | Ẩn sản phẩm thành công | 1. Truy cập /admin/products/[id]<br>2. Click nút "Ẩn sản phẩm"<br>3. Nhập lý do<br>4. Click "Ẩn sản phẩm" | Hiển thị thông báo "Đã ẩn sản phẩm", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-06** | Xóa sản phẩm thành công | 1. Truy cập /admin/products/[id]<br>2. Click nút "Xóa"<br>3. Nhập lý do<br>4. Click "Xóa vĩnh viễn" | Hiển thị thông báo "Đã xóa sản phẩm", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-07** | Hủy ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút "Ẩn sản phẩm"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, sản phẩm không bị ẩn | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-08** | Hủy xóa sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút "Xóa"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, sản phẩm không bị xóa | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-09** | Xử lý khi sản phẩm không tồn tại | 1. Truy cập /admin/products/[id không tồn tại] | Hiển thị thông báo lỗi "Sản phẩm không tồn tại" hoặc chuyển về trang danh sách | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-10** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/[id]<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-11** | Xử lý khi server lỗi | 1. Truy cập /admin/products/[id]<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Khôi phục mật khẩu
+### Function: Thêm sản phẩm
 
-#### Check GUI: Khôi phục mật khẩu
+#### Check GUI: Thêm sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn màu xanh ở header | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Khôi phục mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra mô tả | Hiển thị mô tả "Chọn phương thức khôi phục mật khẩu của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-04** | Kiểm tra phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Email | Hiển thị radio button với icon Mail, label "Email", mô tả "Gửi mã xác thực qua email", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-05** | Kiểm tra phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức SMS | Hiển thị radio button với icon Phone, label "SMS", mô tả "Gửi mã xác thực qua SMS", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-06** | Kiểm tra phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Câu hỏi bảo mật | Hiển thị radio button với icon MessageSquare, label "Câu hỏi bảo mật", mô tả "Trả lời câu hỏi bảo mật", có thể chọn | | Pass | 11/15/2015 | |
-| **GUI-KPMK-07** | Kiểm tra trường nhập Email (khi chọn Email) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Email<br>3. Kiểm tra trường nhập | Hiển thị label "Email", input type email với placeholder "Nhập email của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-08** | Kiểm tra trường nhập Số điện thoại (khi chọn SMS) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức SMS<br>3. Kiểm tra trường nhập | Hiển thị label "Số điện thoại", input type tel với placeholder "Nhập số điện thoại của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-09** | Kiểm tra câu hỏi bảo mật (khi chọn Câu hỏi bảo mật) | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Câu hỏi bảo mật<br>3. Kiểm tra câu hỏi | Hiển thị 3 câu hỏi bảo mật với các trường nhập câu trả lời | | Pass | 11/15/2015 | |
-| **GUI-KPMK-10** | Kiểm tra nút Tiếp tục | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra nút | Hiển thị nút "Tiếp tục" với icon Key, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-KPMK-11** | Kiểm tra màn hình nhập mã xác thực | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực thành công<br>3. Kiểm tra màn hình | Hiển thị Alert với icon Mail, mô tả "Mã xác thực đã được gửi đến email/số điện thoại của bạn", trường nhập mã xác thực 6 chữ số, nút "Xác thực" với icon CheckCircle, link "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-KPMK-12** | Kiểm tra màn hình đặt mật khẩu mới | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Kiểm tra màn hình | Hiển thị Alert với icon CheckCircle, mô tả "Mã xác thực hợp lệ. Vui lòng đặt mật khẩu mới cho tài khoản của bạn", trường Mật khẩu mới, trường Xác nhận mật khẩu, thanh hiển thị độ mạnh mật khẩu, danh sách yêu cầu mật khẩu, nút "Đặt lại mật khẩu" với icon Lock, link "Quay lại" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-13** | Kiểm tra màn hình hoàn thành | 1. Truy cập /admin/auth/forgot-password<br>2. Đặt lại mật khẩu thành công<br>3. Kiểm tra màn hình | Hiển thị icon CheckCircle trong vòng tròn xanh, tiêu đề "Khôi phục mật khẩu thành công", mô tả, nút "Đăng nhập ngay" với icon User, nút "Quay về trang chủ" với icon ArrowLeft | | Pass | 11/15/2015 | |
-| **GUI-KPMK-14** | Kiểm tra link Đăng nhập | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra link | Hiển thị text "Bạn có tài khoản? " với link "Đăng nhập" có thể click | | Pass | 11/15/2015 | |
+| **GUI-TSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products | | Pass | 11/15/2015 | |
+| **GUI-TSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thêm sản phẩm mới" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-TSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/new<br>2. Kiểm tra mô tả | Hiển thị mô tả "Nhập thông tin chi tiết cho sản phẩm mới" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-TSP-04** | Kiểm tra card Thông tin cơ bản | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Thông tin cơ bản" với tiêu đề, mô tả "Thông tin chính của sản phẩm" | | Pass | 11/15/2015 | |
+| **GUI-TSP-05** | Kiểm tra trường Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Tên sản phẩm *", input type text với placeholder "Nhập tên sản phẩm", có thuộc tính required | | Pass | 11/15/2015 | |
+| **GUI-TSP-06** | Kiểm tra trường Thương hiệu | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Thương hiệu *", Select với placeholder "Chọn thương hiệu", có các option: Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya, Max Factory, Khác | | Pass | 11/15/2015 | |
+| **GUI-TSP-07** | Kiểm tra trường Mô tả sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Mô tả sản phẩm *", Textarea với placeholder "Mô tả chi tiết về sản phẩm...", rows 4 | | Pass | 11/15/2015 | |
+| **GUI-TSP-08** | Kiểm tra trường Danh mục | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Danh mục *", Select với placeholder "Chọn danh mục", có các option: Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
+| **GUI-TSP-09** | Kiểm tra trường Tỷ lệ | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Tỷ lệ", Select với placeholder "Chọn tỷ lệ", có các option: 1/144, 1/100, 1/72, 1/48, 1/24, 1/12, 1/8, 1/7, 1/6, 1/4 | | Pass | 11/15/2015 | |
+| **GUI-TSP-10** | Kiểm tra card Giá cả | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Giá cả" với tiêu đề, mô tả "Thiết lập giá bán và giá gốc" | | Pass | 11/15/2015 | |
+| **GUI-TSP-11** | Kiểm tra trường Giá bán | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Giá bán *", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
+| **GUI-TSP-12** | Kiểm tra trường Giá gốc | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Giá gốc", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
+| **GUI-TSP-13** | Kiểm tra checkbox Đang giảm giá | 1. Truy cập /admin/products/new<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Đang giảm giá" | | Pass | 11/15/2015 | |
+| **GUI-TSP-14** | Kiểm tra card Quản lý tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Quản lý tồn kho" với tiêu đề, mô tả "Thiết lập số lượng và cảnh báo tồn kho" | | Pass | 11/15/2015 | |
+| **GUI-TSP-15** | Kiểm tra trường Số lượng tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Số lượng tồn kho *", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
+| **GUI-TSP-16** | Kiểm tra trường Số lượng tối thiểu | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Số lượng tối thiểu", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
+| **GUI-TSP-17** | Kiểm tra checkbox Theo dõi tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Theo dõi tồn kho", mặc định checked | | Pass | 11/15/2015 | |
+| **GUI-TSP-18** | Kiểm tra card Thông số kỹ thuật | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Thông số kỹ thuật" với các trường: Chất liệu (Select), Chiều cao (number), Chiều rộng (number), Chiều sâu (number), Độ tuổi khuyến nghị (text), Thời gian lắp ráp (text) | | Pass | 11/15/2015 | |
+| **GUI-TSP-19** | Kiểm tra card Tính năng nổi bật | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Tính năng nổi bật" với input nhập tính năng, nút Plus để thêm, danh sách tính năng với nút X để xóa | | Pass | 11/15/2015 | |
+| **GUI-TSP-20** | Kiểm tra card Hình ảnh sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Hình ảnh sản phẩm" với vùng upload (border-dashed), icon Upload, text hướng dẫn, nút "Chọn hình ảnh", thông tin hỗ trợ (JPG, PNG, WebP, tối đa 5MB, tỷ lệ 1:1) | | Pass | 11/15/2015 | |
+| **GUI-TSP-21** | Kiểm tra card Trạng thái | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Trạng thái" với Select "Trạng thái sản phẩm" (Bản nháp, Đang bán, Ngừng bán), checkbox "Sản phẩm nổi bật", checkbox "Sản phẩm mới" | | Pass | 11/15/2015 | |
+| **GUI-TSP-22** | Kiểm tra card SEO | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "SEO" với các trường: URL slug (input), Meta title (input), Meta description (textarea rows 3) | | Pass | 11/15/2015 | |
+| **GUI-TSP-23** | Kiểm tra nút Hủy | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/products | | Pass | 11/15/2015 | |
+| **GUI-TSP-24** | Kiểm tra nút Lưu bản nháp | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Lưu bản nháp" variant outline type button | | Pass | 11/15/2015 | |
+| **GUI-TSP-25** | Kiểm tra nút Tạo sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Tạo sản phẩm" type submit | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Khôi phục mật khẩu
+### Check FUNC: Thêm sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Mở trang khôi phục mật khẩu | 1. Truy cập /admin/auth/forgot-password | Hiển thị trang với icon Shield, tiêu đề "Khôi phục mật khẩu", mô tả, 3 phương thức khôi phục (Email, SMS, Câu hỏi bảo mật), nút "Tiếp tục", link đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Chọn phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức Email | Hiển thị trường nhập Email, radio button Email được chọn (có dấu chấm trắng trong vòng tròn xanh) | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-03** | Chọn phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức SMS | Hiển thị trường nhập Số điện thoại, radio button SMS được chọn | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-04** | Chọn phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Click chọn phương thức Câu hỏi bảo mật | Hiển thị 3 câu hỏi bảo mật với các trường nhập câu trả lời, radio button Câu hỏi bảo mật được chọn | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-05** | Gửi mã xác thực qua Email thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Email<br>3. Nhập email hợp lệ<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Mã xác thực đã được gửi", chuyển sang màn hình nhập mã xác thực | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-06** | Gửi mã xác thực qua SMS thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức SMS<br>3. Nhập số điện thoại hợp lệ<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Mã xác thực đã được gửi", chuyển sang màn hình nhập mã xác thực | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-07** | Trả lời câu hỏi bảo mật thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Câu hỏi bảo mật<br>3. Nhập đúng câu trả lời cho 3 câu hỏi<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo "Xác thực thành công", chuyển sang màn hình đặt mật khẩu mới | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-08** | Gửi mã - Email không tồn tại | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Nhập email không tồn tại<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-09** | Gửi mã - Thiếu email | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Để trống email<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Vui lòng nhập email", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-10** | Xác thực mã thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực<br>3. Nhập mã xác thực đúng<br>4. Nhấn "Xác thực" | Hiển thị thông báo "Mã xác thực hợp lệ", chuyển sang màn hình đặt mật khẩu mới | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-11** | Xác thực mã - Mã sai | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực<br>3. Nhập mã xác thực sai<br>4. Nhấn "Xác thực" | Hiển thị thông báo lỗi "Mã xác thực không đúng" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-12** | Đặt lại mật khẩu thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới hợp lệ (≥8 ký tự, có chữ hoa, số)<br>4. Nhập xác nhận mật khẩu khớp<br>5. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo "Mật khẩu đã được đặt lại thành công", chuyển sang màn hình hoàn thành | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-13** | Đặt lại mật khẩu - Mật khẩu quá ngắn | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu < 8 ký tự<br>4. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 8 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-14** | Đặt lại mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới<br>4. Nhập xác nhận mật khẩu khác<br>5. Nhấn "Đặt lại mật khẩu" | Hiển thị Alert với icon AlertCircle, mô tả "Mật khẩu xác nhận không khớp", nút "Đặt lại mật khẩu" bị disabled | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-15** | Hiển thị độ mạnh mật khẩu | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới | Hiển thị thanh progress và label độ mạnh mật khẩu (Yếu/Trung bình/Mạnh) với màu tương ứng (đỏ/vàng/xanh) | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-16** | Hiển thị yêu cầu mật khẩu | 1. Truy cập /admin/auth/forgot-password<br>2. Xác thực mã thành công<br>3. Nhập mật khẩu mới | Hiển thị danh sách yêu cầu mật khẩu với các dấu chấm màu xanh khi đạt yêu cầu, màu xám khi chưa đạt: "Ít nhất 8 ký tự", "Có ít nhất 1 chữ hoa", "Có ít nhất 1 chữ số", "Có ít nhất 1 ký tự đặc biệt" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-17** | Nhấn nút Đăng nhập ngay | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành khôi phục mật khẩu<br>3. Nhấn "Đăng nhập ngay" | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-18** | Nhấn link Quay lại | 1. Truy cập /admin/auth/forgot-password<br>2. Ở màn hình nhập mã xác thực<br>3. Nhấn "Quay lại" | Quay lại màn hình chọn phương thức khôi phục | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-19** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức và nhập thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-20** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức và nhập thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tiếp tục" | Hiển thị thông báo lỗi "Có lỗi xảy ra khi gửi mã xác thực" | | Untested | 11/15/2015 | |
+| **FUNC-TSP-01** | Mở trang thêm sản phẩm | 1. Truy cập /admin/products/new | Hiển thị trang với nút Quay lại, tiêu đề "Thêm sản phẩm mới", mô tả, form với các card: Thông tin cơ bản, Giá cả, Quản lý tồn kho, Thông số kỹ thuật, Tính năng nổi bật, Hình ảnh, Trạng thái, SEO, các nút Hủy, Lưu bản nháp, Tạo sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TSP-02** | Tạo sản phẩm thành công | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin bắt buộc (Tên, Thương hiệu, Mô tả, Danh mục, Giá bán, Số lượng tồn kho)<br>3. Nhấn "Tạo sản phẩm" | Hiển thị thông báo "Tạo sản phẩm thành công", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
+| **FUNC-TSP-03** | Tạo sản phẩm - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Để trống Tên sản phẩm<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-04** | Tạo sản phẩm - Thiếu Thương hiệu | 1. Truy cập /admin/products/new<br>2. Không chọn Thương hiệu<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-05** | Tạo sản phẩm - Thiếu Mô tả | 1. Truy cập /admin/products/new<br>2. Để trống Mô tả<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Mô tả không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-06** | Tạo sản phẩm - Thiếu Danh mục | 1. Truy cập /admin/products/new<br>2. Không chọn Danh mục<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-07** | Tạo sản phẩm - Giá bán <= 0 | 1. Truy cập /admin/products/new<br>2. Nhập giá bán <= 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Giá bán phải lớn hơn 0", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-08** | Tạo sản phẩm - Số lượng tồn kho < 0 | 1. Truy cập /admin/products/new<br>2. Nhập số lượng tồn kho < 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Số lượng tồn kho phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TSP-09** | Thêm tính năng | 1. Truy cập /admin/products/new<br>2. Nhập tính năng vào input<br>3. Click nút Plus hoặc nhấn Enter | Tính năng được thêm vào danh sách, hiển thị với nút X để xóa | | Pass | 11/15/2015 | |
+| **FUNC-TSP-10** | Xóa tính năng | 1. Truy cập /admin/products/new<br>2. Thêm tính năng<br>3. Click nút X của tính năng | Tính năng bị xóa khỏi danh sách | | Pass | 11/15/2015 | |
+| **FUNC-TSP-11** | Lưu bản nháp thành công | 1. Truy cập /admin/products/new<br>2. Nhập ít nhất Tên sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo "Lưu bản nháp thành công", chuyển về trang /admin/products, sản phẩm được lưu với trạng thái "Bản nháp" | | Untested | 11/15/2015 | |
+| **FUNC-TSP-12** | Lưu bản nháp - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Để trống Tên sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo lỗi "Vui lòng nhập tên sản phẩm để lưu bản nháp" | | Pass | 11/15/2015 | |
+| **FUNC-TSP-13** | Click nút Hủy | 1. Truy cập /admin/products/new<br>2. Click nút "Hủy" | Chuyển về trang /admin/products, không lưu thông tin | | Pass | 11/15/2015 | |
+| **FUNC-TSP-14** | Upload hình ảnh thành công | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file ảnh hợp lệ (< 5MB, JPG/PNG/WebP) | Hình ảnh được upload và hiển thị preview | | Untested | 11/15/2015 | |
+| **FUNC-TSP-15** | Upload hình ảnh - File quá lớn | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file > 5MB | Hiển thị thông báo lỗi "Kích thước file không được vượt quá 5MB" | | Pass | 11/15/2015 | |
+| **FUNC-TSP-16** | Upload hình ảnh - File không phải ảnh | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file không phải ảnh | Hiển thị thông báo lỗi "Vui lòng chọn file ảnh hợp lệ (JPG, PNG, WebP)" | | Pass | 11/15/2015 | |
+| **FUNC-TSP-17** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-TSP-18** | Xử lý khi server lỗi | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Đổi mật khẩu
+### Function: Cập nhật sản phẩm
 
-#### Check GUI: Đổi mật khẩu
+#### Check GUI: Cập nhật sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra nút Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" với icon Key trong card "Thông tin tài khoản", variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra modal Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút Đổi mật khẩu<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | | Pass | 11/15/2015 | |
-| **GUI-DMK-03** | Kiểm tra trường Mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu hiện tại | Hiển thị label "Mật khẩu hiện tại", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-04** | Kiểm tra trường Mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu mới | Hiển thị label "Mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-05** | Kiểm tra trường Xác nhận mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu ở bên phải | | Pass | 11/15/2015 | |
-| **GUI-DMK-06** | Kiểm tra nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-DMK-07** | Kiểm tra nút Đổi mật khẩu trong modal | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" | | Pass | 11/15/2015 | |
+| **GUI-CNSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products/[id] | | Pass | 11/15/2015 | |
+| **GUI-CNSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chỉnh sửa sản phẩm" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-CNSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra mô tả | Hiển thị mô tả "Cập nhật thông tin sản phẩm #[id]" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CNSP-04** | Kiểm tra nút Hủy (khi đang chỉnh sửa) | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X variant outline, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
+| **GUI-CNSP-05** | Kiểm tra nút Lưu bản nháp | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Lưu bản nháp" với icon Save variant outline, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
+| **GUI-CNSP-06** | Kiểm tra nút Cập nhật sản phẩm | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Cập nhật sản phẩm" với icon Save, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
+| **GUI-CNSP-07** | Kiểm tra nút Chỉnh sửa (khi không chỉnh sửa) | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Chỉnh sửa" với icon Save, chỉ hiển thị khi không đang chỉnh sửa | | Pass | 11/15/2015 | |
+| **GUI-CNSP-08** | Kiểm tra trạng thái disabled của các trường | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra các trường | Tất cả các trường input, select, textarea có thuộc tính disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
+| **GUI-CNSP-09** | Kiểm tra cảnh báo tồn kho thấp | 1. Truy cập /admin/products/[id]/edit<br>2. Chỉnh sửa tồn kho <= tồn kho tối thiểu<br>3. Kiểm tra cảnh báo | Hiển thị Alert với icon AlertTriangle màu yellow-600, text "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" màu yellow-800, background yellow-50, border yellow-200 | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đổi mật khẩu
+### Check FUNC: Cập nhật sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Mở modal đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút "Đổi mật khẩu" | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả, 3 trường nhập (Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới), nút Hủy, nút Đổi mật khẩu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu thành công | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới hợp lệ (≥6 ký tự)<br>5. Nhập xác nhận mật khẩu khớp<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo "Đổi mật khẩu thành công", modal đóng, form được reset | | Untested | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu - Thiếu mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Để trống mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu hiện tại", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu - Mật khẩu hiện tại sai | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DMK-05** | Đổi mật khẩu - Thiếu mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Để trống mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu mới", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-06** | Đổi mật khẩu - Mật khẩu mới quá ngắn | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới < 6 ký tự<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu mới phải có ít nhất 6 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-07** | Đổi mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DMK-08** | Hiển thị/ẩn mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-09** | Hiển thị/ẩn mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu mới<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-10** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập xác nhận mật khẩu<br>4. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-11** | Nhấn nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhấn nút "Hủy" | Modal đóng, form được reset về trạng thái ban đầu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-12** | Đóng modal bằng cách click bên ngoài | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Click bên ngoài modal | Modal đóng, form được reset | | Pass | 11/15/2015 | |
-| **FUNC-DMK-13** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập đầy đủ thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DMK-14** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập đầy đủ thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-CNSP-01** | Mở trang chỉnh sửa sản phẩm | 1. Truy cập /admin/products/[id]/edit | Hiển thị trang với nút Quay lại, tiêu đề "Chỉnh sửa sản phẩm", mô tả, nút Chỉnh sửa, form với các trường đã được điền sẵn thông tin sản phẩm, tất cả trường disabled | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-02** | Bật chế độ chỉnh sửa | 1. Truy cập /admin/products/[id]/edit<br>2. Click nút "Chỉnh sửa" | Tất cả các trường được kích hoạt (disabled=false), nút Chỉnh sửa biến mất, hiển thị nút "Hủy", "Lưu bản nháp", "Cập nhật sản phẩm" | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-03** | Cập nhật sản phẩm thành công | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo "Cập nhật sản phẩm thành công", các trường chuyển về disabled, nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại, thông tin được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-CNSP-04** | Cập nhật - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa tên sản phẩm<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-05** | Cập nhật - Thiếu Thương hiệu | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa thương hiệu<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-06** | Cập nhật - Thiếu Mô tả | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa mô tả<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Mô tả không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-07** | Cập nhật - Thiếu Danh mục | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa danh mục<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-08** | Cập nhật - Giá bán <= 0 | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập giá bán <= 0<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Giá bán phải lớn hơn 0", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-09** | Cập nhật - Số lượng tồn kho < 0 | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập số lượng tồn kho < 0<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Số lượng tồn kho phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-10** | Hủy chỉnh sửa | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Hủy" | Các trường được reset về giá trị ban đầu, chuyển về chế độ xem (disabled=true), nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-11** | Lưu bản nháp | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Lưu bản nháp" | Hiển thị thông báo "Lưu bản nháp thành công", sản phẩm được lưu với trạng thái "Bản nháp" | | Untested | 11/15/2015 | |
+| **FUNC-CNSP-12** | Hiển thị cảnh báo tồn kho thấp | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập tồn kho <= tồn kho tối thiểu | Hiển thị Alert cảnh báo màu vàng "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" | | Pass | 11/15/2015 | |
+| **FUNC-CNSP-13** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-CNSP-14** | Xử lý khi server lỗi | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Cập nhật thông tin cá nhân
+### Function: Xóa sản phẩm
 
-#### Check GUI: Cập nhật thông tin cá nhân
+#### Check GUI: Xóa sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTTCN-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/account<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý tài khoản" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/account<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý thông tin cá nhân và cài đặt tài khoản" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-03** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/account<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit ở header, chỉ hiển thị khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-04** | Kiểm tra nút Lưu thay đổi | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Lưu | Hiển thị nút "Lưu thay đổi" với icon Save ở header, chỉ hiển thị khi ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-05** | Kiểm tra nút Hủy | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X variant outline ở header, chỉ hiển thị khi ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-06** | Kiểm tra card Thông tin cá nhân | 1. Truy cập /admin/account<br>2. Kiểm tra card | Hiển thị card "Thông tin cá nhân" với icon User, tiêu đề "Thông tin cá nhân", mô tả "Thông tin cơ bản của tài khoản quản trị" | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-07** | Kiểm tra Avatar | 1. Truy cập /admin/account<br>2. Kiểm tra Avatar | Hiển thị Avatar với kích thước h-20 w-20, có AvatarImage hoặc AvatarFallback hiển thị chữ cái đầu của họ tên | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-08** | Kiểm tra Badge Role | 1. Truy cập /admin/account<br>2. Kiểm tra Badge | Hiển thị Badge với icon Shield, text hiển thị role (VD: "Super Admin"), variant secondary | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-09** | Kiểm tra trường Họ và tên | 1. Truy cập /admin/account<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-10** | Kiểm tra trường Email | 1. Truy cập /admin/account<br>2. Kiểm tra trường Email | Hiển thị label "Email", input type email, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-11** | Kiểm tra trường Số điện thoại | 1. Truy cập /admin/account<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-12** | Kiểm tra trường Địa chỉ | 1. Truy cập /admin/account<br>2. Kiểm tra trường Địa chỉ | Hiển thị label "Địa chỉ", input type text, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-13** | Kiểm tra trường Ngày sinh | 1. Truy cập /admin/account<br>2. Kiểm tra trường Ngày sinh | Hiển thị label "Ngày sinh", input type date, có thể disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-14** | Kiểm tra card Thông tin tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra card | Hiển thị card "Thông tin tài khoản" với icon Shield, tiêu đề "Thông tin tài khoản", mô tả "Thông tin bảo mật và hoạt động tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-15** | Kiểm tra thông tin Email đăng nhập | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin Email | Hiển thị icon Mail, label "Email đăng nhập", hiển thị email hiện tại màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-16** | Kiểm tra thông tin Ngày tạo tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Ngày tạo tài khoản", hiển thị ngày tạo định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-17** | Kiểm tra thông tin Lần đăng nhập cuối | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin | Hiển thị icon Calendar, label "Lần đăng nhập cuối", hiển thị thời gian đăng nhập cuối định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-CTTCN-18** | Kiểm tra Separator | 1. Truy cập /admin/account<br>2. Kiểm tra Separator | Hiển thị Separator giữa các phần thông tin trong card | | Pass | 11/15/2015 | |
+| **GUI-XSP-01** | Kiểm tra Dialog xác nhận xóa | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Bạn có chắc chắn muốn xóa sản phẩm...? Hành động này không thể hoàn tác", nút "Hủy" variant outline, nút "Xóa" variant destructive | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cập nhật thông tin cá nhân
+### Check FUNC: Xóa sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTTCN-01** | Mở trang quản lý tài khoản | 1. Truy cập /admin/account | Hiển thị trang với tiêu đề "Quản lý tài khoản", mô tả, nút Chỉnh sửa, 2 card (Thông tin cá nhân, Thông tin tài khoản), các trường thông tin được điền sẵn, nút Đổi mật khẩu, nút Đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-02** | Bật chế độ chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn nút "Chỉnh sửa" | Các trường trong card "Thông tin cá nhân" (Họ tên, Email, SĐT, Địa chỉ, Ngày sinh) được kích hoạt (disabled=false), nút Chỉnh sửa biến mất, hiển thị nút "Lưu thay đổi" và nút "Hủy" | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-03** | Cập nhật thông tin thành công | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin (Họ tên, Email, SĐT, Địa chỉ, Ngày sinh)<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo "Cập nhật thông tin thành công", các trường chuyển về chế độ disabled, nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại, thông tin được cập nhật | | Untested | 11/15/2015 | |
-| **FUNC-CTTCN-04** | Cập nhật - Thiếu Họ tên | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa họ tên<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Họ tên không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-05** | Cập nhật - Thiếu Email | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa email<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Email không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-06** | Cập nhật - Thiếu Số điện thoại | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa số điện thoại<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Số điện thoại không được để trống", form không được gửi, vẫn ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-07** | Cập nhật - Email không hợp lệ | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Nhập email không đúng định dạng<br>4. Nhấn "Lưu thay đổi" | Trình duyệt hiển thị cảnh báo validation hoặc thông báo lỗi "Email không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-08** | Hủy chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Hủy" | Các trường được reset về giá trị ban đầu, chuyển về chế độ xem (disabled=true), nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại | | Pass | 11/15/2015 | |
-| **FUNC-CTTCN-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-CTTCN-10** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-XSP-01** | Xóa sản phẩm thành công | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm<br>3. Click "Xóa" trong dialog | Hiển thị thông báo "Đã xóa sản phẩm", sản phẩm bị xóa khỏi danh sách, cập nhật lại bảng | | Untested | 11/15/2015 | |
+| **FUNC-XSP-02** | Hủy xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị xóa, vẫn ở trang danh sách | | Pass | 11/15/2015 | |
+| **FUNC-XSP-03** | Xóa sản phẩm - Sản phẩm đang có đơn hàng | 1. Truy cập /admin/products<br>2. Click nút Xóa của sản phẩm đang có đơn hàng<br>3. Click "Xóa" | Hiển thị thông báo lỗi "Không thể xóa sản phẩm đang có đơn hàng", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
+| **FUNC-XSP-04** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Tắt kết nối mạng<br>4. Click "Xóa" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
+| **FUNC-XSP-05** | Xử lý khi server lỗi | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Server trả về lỗi 500<br>4. Click "Xóa" | Hiển thị thông báo lỗi "Lỗi xóa sản phẩm", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Đăng xuất
+### Function: Tìm kiếm sản phẩm
 
-#### Check GUI: Đăng xuất
+#### Check GUI: Tìm kiếm sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DX-01** | Kiểm tra nút Đăng xuất | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" với icon LogOut trong card "Thông tin tài khoản", variant destructive, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DX-02** | Kiểm tra AlertDialog xác nhận | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Kiểm tra dialog | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng.", nút "Hủy" và nút "Đăng xuất" | | Pass | 11/15/2015 | |
+| **GUI-TKSP-01** | Kiểm tra trường tìm kiếm | 1. Truy cập /admin/products<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm sản phẩm...", có thể nhập và nhấn Enter | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng xuất
+### Check FUNC: Tìm kiếm sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Mở dialog xác nhận đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất" | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả, nút "Hủy" (AlertDialogCancel), nút "Đăng xuất" (AlertDialogAction) | | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Đăng xuất thành công | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo "Đăng xuất thành công", chuyển đến trang /admin/auth/login, token và session bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-DX-03** | Hủy đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Hủy" trong dialog | Dialog đóng, vẫn ở trang /admin/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-04** | Đóng dialog bằng cách click bên ngoài | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Click bên ngoài dialog | Dialog đóng, vẫn ở trang /admin/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-05** | Kiểm tra xóa token sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra localStorage/sessionStorage | Token bị xóa khỏi localStorage/sessionStorage | | Untested | 11/15/2015 | |
-| **FUNC-DX-06** | Kiểm tra xóa session sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra session | Session bị xóa trên server | | Untested | 11/15/2015 | |
-| **FUNC-DX-07** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Tắt kết nối mạng<br>4. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", có thể vẫn đăng xuất ở phía client | | Untested | 11/15/2015 | |
-| **FUNC-DX-08** | Xử lý khi server lỗi | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất"<br>3. Server trả về lỗi 500<br>4. Nhấn "Đăng xuất" trong dialog | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", có thể vẫn đăng xuất ở phía client | | Untested | 11/15/2015 | |
+| **FUNC-TKSP-01** | Tìm kiếm theo tên sản phẩm | 1. Truy cập /admin/products<br>2. Nhập tên sản phẩm vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có tên chứa từ khóa tìm kiếm, hiển thị thông báo "Đã lọc X sản phẩm" | | Untested | 11/15/2015 | |
+| **FUNC-TKSP-02** | Tìm kiếm theo thương hiệu | 1. Truy cập /admin/products<br>2. Nhập thương hiệu vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có thương hiệu chứa từ khóa tìm kiếm | | Untested | 11/15/2015 | |
+| **FUNC-TKSP-03** | Tìm kiếm theo danh mục | 1. Truy cập /admin/products<br>2. Nhập danh mục vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có danh mục chứa từ khóa tìm kiếm | | Untested | 11/15/2015 | |
+| **FUNC-TKSP-04** | Tìm kiếm - Không tìm thấy | 1. Truy cập /admin/products<br>2. Nhập từ khóa không tồn tại<br>3. Nhấn Enter | Hiển thị bảng trống hoặc thông báo "Không tìm thấy sản phẩm phù hợp" | | Untested | 11/15/2015 | |
+| **FUNC-TKSP-05** | Tìm kiếm - Từ khóa rỗng | 1. Truy cập /admin/products<br>2. Để trống ô tìm kiếm<br>3. Nhấn Enter | Hiển thị toàn bộ danh sách sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TKSP-06** | Tìm kiếm không phân biệt hoa thường | 1. Truy cập /admin/products<br>2. Nhập "GUNDAM" (chữ hoa)<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có tên/thương hiệu/danh mục chứa "gundam" (không phân biệt hoa thường) | | Untested | 11/15/2015 | |
+
+---
+
+### Function: Lọc sản phẩm
+
+#### Check GUI: Lọc sản phẩm
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-LSP-01** | Kiểm tra Select Danh mục | 1. Truy cập /admin/products<br>2. Kiểm tra Select Danh mục | Hiển thị Select với placeholder "Danh mục", có các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
+| **GUI-LSP-02** | Kiểm tra Select Thương hiệu | 1. Truy cập /admin/products<br>2. Kiểm tra Select Thương hiệu | Hiển thị Select với placeholder "Thương hiệu", có các option: Tất cả, Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya | | Pass | 11/15/2015 | |
+| **GUI-LSP-03** | Kiểm tra Select Trạng thái | 1. Truy cập /admin/products<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", có các option: Tất cả, Đang bán, Sắp hết hàng, Hết hàng, Ngừng bán | | Pass | 11/15/2015 | |
+| **GUI-LSP-04** | Kiểm tra nút Bộ lọc | 1. Truy cập /admin/products<br>2. Kiểm tra nút | Hiển thị nút "Bộ lọc" với icon Filter variant outline | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Lọc sản phẩm
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-LSP-01** | Lọc theo Danh mục | 1. Truy cập /admin/products<br>2. Chọn Danh mục (VD: Gundam)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thuộc danh mục đã chọn, hiển thị thông báo "Đã lọc X sản phẩm" | | Untested | 11/15/2015 | |
+| **FUNC-LSP-02** | Lọc theo Thương hiệu | 1. Truy cập /admin/products<br>2. Chọn Thương hiệu (VD: Bandai)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thuộc thương hiệu đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-LSP-03** | Lọc theo Trạng thái | 1. Truy cập /admin/products<br>2. Chọn Trạng thái (VD: Đang bán)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm có trạng thái đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-LSP-04** | Lọc kết hợp nhiều tiêu chí | 1. Truy cập /admin/products<br>2. Chọn Danh mục, Thương hiệu, Trạng thái<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thỏa mãn tất cả các tiêu chí đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-LSP-05** | Lọc - Không có sản phẩm phù hợp | 1. Truy cập /admin/products<br>2. Chọn các tiêu chí không có sản phẩm nào<br>3. Click "Bộ lọc" | Hiển thị bảng trống hoặc thông báo "Không có sản phẩm phù hợp với bộ lọc" | | Untested | 11/15/2015 | |
+| **FUNC-LSP-06** | Lọc - Chọn "Tất cả" | 1. Truy cập /admin/products<br>2. Chọn "Tất cả" cho các Select<br>3. Click "Bộ lọc" | Hiển thị toàn bộ danh sách sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-LSP-07** | Kết hợp tìm kiếm và lọc | 1. Truy cập /admin/products<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn Danh mục<br>4. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thỏa mãn cả từ khóa tìm kiếm và bộ lọc đã chọn | | Untested | 11/15/2015 | |
 
 ---
 
