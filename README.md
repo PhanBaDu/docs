@@ -1,218 +1,151 @@
-# SE04_TEST REPORT V2.0
+# BLACKBOX TEST CASE - BÁO CÁO VÀ THỐNG KÊ (ADMIN)
 
 ## HEADER SECTION
 
-**Project Name:** Xây dựng hệ thống quản lý đặt hàng sản phẩm mô hình
+**Module Code:** Báo cáo và thống kê Admin
 
-**Project Code:** SE04
+**Test requirement:**
+1. Xem báo cáo doanh thu
+2. Xem báo cáo chi phí
+3. Xem báo cáo lợi nhuận
+4. Xem sản phẩm bán chạy
+5. Xem thống kê khách hàng
+6. Xem báo cáo tồn kho
+7. Tạo báo cáo tùy chỉnh
 
-**Document Code:** SE04_Test Report_v2.0
+**Tester:** [Tên tester]
 
-**Creator:** [Tên người tạo]
-
-**Reviewer/Approver:** [Tên người review/phê duyệt]
-
-**Issue Date:** [Ngày phát hành]
-
-**Notes:** [Ghi chú]
-
----
-
-## TEST CASE SUMMARY TABLE
-
-| No | Module code | Pass | Fail | Untested | N/A | Number of test cases |
-|----|-------------|------|------|----------|-----|---------------------|
-| **ADMIN MODULES** |
-| 1 | Quản lý tài khoản Admin | 0 | 0 | 129 | 0 | 129 |
-| 2 | Quản lý đơn hàng Admin | 0 | 0 | 102 | 0 | 102 |
-| 3 | Quản lý người dùng Admin | 0 | 0 | 87 | 0 | 87 |
-| 4 | Quản lý sản phẩm Admin | 0 | 0 | 83 | 0 | 83 |
-| 5 | Quản lý tồn kho Admin | 0 | 0 | 88 | 0 | 88 |
-| 6 | Quản lý đánh giá Admin | 0 | 0 | 75 | 0 | 75 |
-| 7 | Quản lý hỗ trợ Admin | 0 | 0 | 87 | 0 | 87 |
-| 8 | Xử lý phản hồi Admin | 0 | 0 | 80 | 0 | 80 |
-| 9 | Xử lý đặt trước Admin | 0 | 0 | 75 | 0 | 75 |
-| 10 | Yêu cầu đặt hàng Admin | 0 | 0 | 54 | 0 | 54 |
-| 11 | Quản lý bài viết Admin | 0 | 0 | 84 | 0 | 84 |
-| 12 | Báo cáo và thống kê Admin | 0 | 0 | 86 | 0 | 86 |
-| 13 | Cài đặt hệ thống Admin | 0 | 0 | 77 | 0 | 77 |
-| 14 | Bảo mật Admin | 0 | 0 | 43 | 0 | 43 |
-| 15 | Thông báo Admin | 0 | 0 | 30 | 0 | 30 |
-| **Sub total (Admin)** | | **0** | **0** | **1,174** | **0** | **1,174** |
-| **USER MODULES** |
-| 16 | Quản lý tài khoản User | 0 | 0 | 123 | 0 | 123 |
-| 17 | Hiển thị sản phẩm User | 0 | 0 | 63 | 0 | 63 |
-| 18 | Tìm kiếm sản phẩm User | 0 | 0 | 41 | 0 | 41 |
-| 19 | Bộ lọc sản phẩm User | 0 | 0 | 39 | 0 | 39 |
-| 20 | Quản lý giỏ hàng User | 0 | 0 | 84 | 0 | 84 |
-| 21 | Thanh toán đơn hàng User | 0 | 0 | 67 | 0 | 67 |
-| 22 | Quản lý đơn hàng User | 0 | 0 | 72 | 0 | 72 |
-| 23 | Đánh giá sản phẩm User | 0 | 0 | 58 | 0 | 58 |
-| 24 | Hỗ trợ - liên hệ User | 0 | 0 | 70 | 0 | 70 |
-| 25 | Khuyến mãi User | 0 | 0 | 52 | 0 | 52 |
-| 26 | Danh sách yêu thích User | 0 | 0 | 61 | 0 | 61 |
-| 27 | Đặt trước sản phẩm User | 0 | 0 | 73 | 0 | 73 |
-| 28 | Yêu cầu đặt hàng User | 0 | 0 | 67 | 0 | 67 |
-| 29 | Vận chuyển User | 0 | 0 | 65 | 0 | 65 |
-| 30 | Thông báo User | 0 | 0 | 67 | 0 | 67 |
-| 31 | Tạo - hiển thị bài viết User | 0 | 0 | 84 | 0 | 84 |
-| 32 | Tương tác bài viết User | 0 | 0 | 71 | 0 | 71 |
-| 33 | Xem trang cá nhân User | 0 | 0 | 74 | 0 | 74 |
-| 34 | Bảo mật User | 0 | 0 | 48 | 0 | 48 |
-| 35 | Cài đặt User | 0 | 0 | 58 | 0 | 58 |
-| **Sub total (User)** | | **0** | **0** | **1,336** | **0** | **1,336** |
-| **GRAND TOTAL** | | **0** | **0** | **2,510** | **0** | **2,510** |
+**Summary Statistics:**
+- Pass: 0
+- Failed: 0
+- Untested: [Số lượng test cases]
+- N/A: 0
+- Number of Test cases: [Tổng số test cases]
 
 ---
 
-## COVERAGE SUMMARY
+## TEST CASE TABLE
 
-**Test coverage:** 0.00 %
-
-**Test successful coverage:** 0.00 %
-
----
-
-## NOTES
-
-- Tất cả test cases hiện tại đang ở trạng thái "Untested" vì chưa được thực hiện test
-- Số lượng test cases được tính dựa trên các file test case đã tạo trong thư mục BlackBox_Admin và BlackBox_User
-- Test coverage và Test successful coverage sẽ được cập nhật sau khi thực hiện test
-- Tổng số test cases: 2,510 cases
-  - Admin: 1,174 test cases (15 modules)
-  - User: 1,336 test cases (20 modules)
-
----
-
-## MODULE DETAILS
-
-### ADMIN MODULES
-
-1. **Quản lý tài khoản Admin** (129 test cases)
-   - Đăng nhập, Đăng ký, Đổi mật khẩu, Quản lý thông tin cá nhân, Khôi phục mật khẩu, Đăng xuất
-
-2. **Quản lý đơn hàng Admin** (102 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Cập nhật, Xóa, Xác nhận, In đơn hàng, Tạo đơn hàng mới
-
-3. **Quản lý người dùng Admin** (87 test cases)
-   - Tạo, Hiển thị danh sách, Xem chi tiết, Xóa, Cập nhật người dùng
-
-4. **Quản lý sản phẩm Admin** (83 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Thêm, Cập nhật, Xóa sản phẩm
-
-5. **Quản lý tồn kho Admin** (88 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Cập nhật, Nhập hàng mới, Cảnh báo, Kiểm kê, Nhập kho
-
-6. **Quản lý đánh giá Admin** (75 test cases)
-   - Xem đánh giá, Xem chi tiết, Duyệt, Từ chối, Xóa, Phản hồi đánh giá
-
-7. **Quản lý hỗ trợ Admin** (87 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Chat hỗ trợ, Trả lời, Xóa, Export lịch sử, Tìm kiếm, Quản lý SLA
-
-8. **Xử lý phản hồi Admin** (80 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Trả lời, Cập nhật trạng thái, Phân loại khiếu nại
-
-9. **Xử lý đặt trước Admin** (75 test cases)
-   - Hiển thị danh sách, Xem chi tiết, Xử lý, Cập nhật trạng thái, Thông báo có hàng
-
-10. **Yêu cầu đặt hàng Admin** (54 test cases)
-    - Hiển thị danh sách, Xem chi tiết, Xử lý, Cập nhật trạng thái
-
-11. **Quản lý bài viết Admin** (84 test cases)
-    - Hiển thị danh sách, Xem chi tiết, Chỉnh sửa, Xóa, Xóa bình luận, Khóa tài khoản, Tìm kiếm và lọc
-
-12. **Báo cáo và thống kê Admin** (86 test cases)
-    - Báo cáo doanh thu, Chi phí, Lợi nhuận, Sản phẩm bán chạy, Thống kê khách hàng, Báo cáo tồn kho, Báo cáo tùy chỉnh
-
-13. **Cài đặt hệ thống Admin** (77 test cases)
-    - Chính sách giảm giá sản phẩm, Chính sách giảm giá toàn bộ, Cài đặt thanh toán, Thông tin shop
-
-14. **Bảo mật Admin** (43 test cases)
-    - Khôi phục mật khẩu, Lịch sử đăng nhập, Xóa phiên đăng nhập, Phát hiện đăng nhập lạ, Auto logout
-
-15. **Thông báo Admin** (30 test cases)
-    - Quản lý thông báo
-
-### USER MODULES
-
-1. **Quản lý tài khoản User** (123 test cases)
-   - Đăng nhập, Đăng ký, Đổi mật khẩu, Cập nhật thông tin, Quản lý địa chỉ, Quản lý thanh toán, Xem hạng thành viên, Khôi phục mật khẩu
-
-2. **Hiển thị sản phẩm User** (63 test cases)
-   - Hiển thị danh sách, Xem chi tiết sản phẩm
-
-3. **Tìm kiếm sản phẩm User** (41 test cases)
-   - Tìm kiếm và lọc sản phẩm
-
-4. **Bộ lọc sản phẩm User** (39 test cases)
-   - Bộ lọc và phân loại sản phẩm
-
-5. **Quản lý giỏ hàng User** (84 test cases)
-   - Thêm sản phẩm, Hiển thị giỏ hàng, Xóa sản phẩm, Cập nhật số lượng, Áp dụng mã giảm giá, Thực hiện thanh toán
-
-6. **Thanh toán đơn hàng User** (67 test cases)
-   - Chọn phương thức thanh toán, Thanh toán COD, Thanh toán VNPAY, Xác nhận đơn hàng
-
-7. **Quản lý đơn hàng User** (72 test cases)
-   - Xem thông tin, Xem chi tiết, Theo dõi, Hủy đơn hàng, Đánh giá, Đặt lại, Yêu cầu đổi/trả hàng
-
-8. **Đánh giá sản phẩm User** (58 test cases)
-   - Để lại đánh giá, Xem đánh giá sản phẩm
-
-9. **Hỗ trợ - liên hệ User** (70 test cases)
-   - Gửi yêu cầu hỗ trợ, Chat hỗ trợ, Quản lý yêu cầu, FAQ, Thông tin liên hệ, Export lịch sử, Tìm kiếm trong chat
-
-10. **Khuyến mãi User** (52 test cases)
-    - Xem danh sách, Xem chi tiết, Áp dụng mã giảm giá
-
-11. **Danh sách yêu thích User** (61 test cases)
-    - Xem danh sách, Thêm vào yêu thích, Xóa khỏi yêu thích
-
-12. **Đặt trước sản phẩm User** (73 test cases)
-    - Đặt trước sản phẩm, Xem danh sách, Hủy đặt trước, Xem chi tiết, Quản lý trạng thái
-
-13. **Yêu cầu đặt hàng User** (67 test cases)
-    - Gửi yêu cầu, Xem chi tiết yêu cầu
-
-14. **Vận chuyển User** (65 test cases)
-    - Chọn phương thức vận chuyển
-
-15. **Thông báo User** (67 test cases)
-    - Xem thông báo
-
-16. **Tạo - hiển thị bài viết User** (84 test cases)
-    - Tạo bài viết, Hiển thị danh sách, Xem chi tiết, Chỉnh sửa bài viết
-
-17. **Tương tác bài viết User** (71 test cases)
-    - Like, Bình luận, Chia sẻ bài viết
-
-18. **Xem trang cá nhân User** (74 test cases)
-    - Xem trang cá nhân người lạ
-
-19. **Bảo mật User** (48 test cases)
-    - Lịch sử đăng nhập, Quản lý phiên đăng nhập, Phát hiện đăng nhập lạ, Auto logout
-
-20. **Cài đặt User** (58 test cases)
-    - Cài đặt tài khoản
+| ID | Test Case Description | Test Case Procedure | Expected Output | Test-case rate | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|----------------|--------|-----------|------|
+| **Function: Xem báo cáo doanh thu** |
+| **Check GUI: Xem báo cáo doanh thu** |
+| GUI-BaoCaoDT-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo doanh thu" | | | | |
+| GUI-BaoCaoDT-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | | | |
+| GUI-BaoCaoDT-03 | Check [Bộ lọc kênh] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc kênh] | Status: visible, enable, Options: Tất cả, COD, Banking, E-wallet | | | | |
+| GUI-BaoCaoDT-04 | Check [Biểu đồ doanh thu] Chart | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng doanh thu | | | | |
+| GUI-BaoCaoDT-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | | | |
+| GUI-BaoCaoDT-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | | | |
+| GUI-BaoCaoDT-07 | Check [Export] Button | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra nút [Export] | Status: visible, enable | | | | |
+| **Check FUNC: Xem báo cáo doanh thu** |
+| FUNC-BaoCaoDT-01 | Mở màn hình báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue` hoặc click [Báo cáo & Thống kê] > [Xem doanh thu] | Hiển thị màn hình báo cáo doanh thu với đầy đủ thông tin | | | | |
+| FUNC-BaoCaoDT-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-BaoCaoDT-03 | Lọc báo cáo theo kênh thanh toán | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn kênh từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo kênh đã chọn | | | | |
+| FUNC-BaoCaoDT-04 | Lọc báo cáo theo thời gian tùy chỉnh | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn "Tùy chỉnh"<br>3. Chọn khoảng ngày<br>4. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng ngày đã chọn | | | | |
+| FUNC-BaoCaoDT-05 | Hiển thị biểu đồ doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng doanh thu chính xác, trực quan | | | | |
+| FUNC-BaoCaoDT-06 | Hiển thị tổng doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card tổng doanh thu | Hiển thị tổng doanh thu chính xác theo bộ lọc | | | | |
+| FUNC-BaoCaoDT-07 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | | | |
+| FUNC-BaoCaoDT-08 | Export báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Click [Export] | File Excel/PDF được tải xuống với báo cáo doanh thu | | | | |
+| **Function: Xem báo cáo chi phí** |
+| **Check GUI: Xem báo cáo chi phí** |
+| GUI-BaoCaoCP-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo chi phí" | | | | |
+| GUI-BaoCaoCP-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | | | |
+| GUI-BaoCaoCP-03 | Check [Bộ lọc loại chi phí] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc loại chi phí] | Status: visible, enable, Options: Tất cả, Nhập hàng, Vận chuyển, Marketing, Khác | | | | |
+| GUI-BaoCaoCP-04 | Check [Biểu đồ chi phí] Chart | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng chi phí | | | | |
+| GUI-BaoCaoCP-05 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | | | |
+| GUI-BaoCaoCP-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Loại chi phí, Số tiền, Mô tả | | | | |
+| **Check FUNC: Xem báo cáo chi phí** |
+| FUNC-BaoCaoCP-01 | Mở màn hình báo cáo chi phí | 1. Truy cập `/admin/reports/expenses` hoặc click [Báo cáo & Thống kê] > [Xem chi phí] | Hiển thị màn hình báo cáo chi phí với đầy đủ thông tin | | | | |
+| FUNC-BaoCaoCP-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-BaoCaoCP-03 | Lọc báo cáo theo loại chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn loại chi phí từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo loại chi phí đã chọn | | | | |
+| FUNC-BaoCaoCP-04 | Hiển thị biểu đồ chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng chi phí chính xác, trực quan | | | | |
+| FUNC-BaoCaoCP-05 | Hiển thị tổng chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card tổng chi phí | Hiển thị tổng chi phí chính xác theo bộ lọc | | | | |
+| FUNC-BaoCaoCP-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Loại chi phí, Số tiền, Mô tả | | | | |
+| **Function: Xem báo cáo lợi nhuận** |
+| **Check GUI: Xem báo cáo lợi nhuận** |
+| GUI-BaoCaoLN-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo lợi nhuận" | | | | |
+| GUI-BaoCaoLN-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | | | |
+| GUI-BaoCaoLN-03 | Check [Biểu đồ lợi nhuận] Chart | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng lợi nhuận | | | | |
+| GUI-BaoCaoLN-04 | Check [Tổng lợi nhuận] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | | | |
+| GUI-BaoCaoLN-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | | | |
+| GUI-BaoCaoLN-06 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | | | | |
+| GUI-BaoCaoLN-07 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | | | |
+| **Check FUNC: Xem báo cáo lợi nhuận** |
+| FUNC-BaoCaoLN-01 | Mở màn hình báo cáo lợi nhuận | 1. Truy cập `/admin/reports/profit` hoặc click [Báo cáo & Thống kê] > [Xem lợi nhuận] | Hiển thị màn hình báo cáo lợi nhuận với đầy đủ thông tin | | | | |
+| FUNC-BaoCaoLN-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/profit`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-BaoCaoLN-03 | Hiển thị biểu đồ lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng lợi nhuận chính xác, trực quan | | | | |
+| FUNC-BaoCaoLN-04 | Tính toán lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tổng lợi nhuận | Tổng lợi nhuận = Tổng doanh thu - Tổng chi phí (tính toán chính xác) | | | | |
+| FUNC-BaoCaoLN-05 | Hiển thị tổng doanh thu và chi phí | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra các card | Hiển thị tổng doanh thu và tổng chi phí chính xác theo bộ lọc | | | | |
+| FUNC-BaoCaoLN-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | | | |
+| **Function: Xem sản phẩm bán chạy** |
+| **Check GUI: Xem sản phẩm bán chạy** |
+| GUI-SPBC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Sản phẩm bán chạy" | | | | |
+| GUI-SPBC-02 | Check [Khoảng thời gian] Select | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra dropdown [Khoảng thời gian] | Status: visible, enable, Options: Hôm nay, Tuần, Tháng, Năm | | | | |
+| GUI-SPBC-03 | Check [Bảng xếp hạng] Table | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, SL bán, Doanh thu, Tỷ trọng | | | | |
+| GUI-SPBC-04 | Check [Biểu đồ tỉ trọng] Chart | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Pie/Donut, Hiển thị tỷ trọng doanh thu | | | | |
+| **Check FUNC: Xem sản phẩm bán chạy** |
+| FUNC-SPBC-01 | Mở màn hình sản phẩm bán chạy | 1. Truy cập `/admin/reports/top-products` hoặc click [Báo cáo & Thống kê] > [Sản phẩm bán chạy] | Hiển thị màn hình sản phẩm bán chạy với đầy đủ thông tin | | | | |
+| FUNC-SPBC-02 | Lọc theo khoảng thời gian | 1. Truy cập `/admin/reports/top-products`<br>2. Chọn khoảng thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng xếp hạng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-SPBC-03 | Hiển thị bảng xếp hạng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, SL bán, Doanh thu, Tỷ trọng, xếp hạng theo doanh số | | | | |
+| FUNC-SPBC-04 | Hiển thị biểu đồ tỉ trọng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tỷ trọng doanh thu của từng sản phẩm chính xác, trực quan | | | | |
+| FUNC-SPBC-05 | Xếp hạng theo doanh thu | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo doanh thu từ cao xuống thấp | | | | |
+| FUNC-SPBC-06 | Xếp hạng theo số lượng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo số lượng bán từ cao xuống thấp | | | | |
+| **Function: Xem thống kê khách hàng** |
+| **Check GUI: Xem thống kê khách hàng** |
+| GUI-TKKH-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Thống kê khách hàng" | | | | |
+| GUI-TKKH-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Tuần, Tháng, Quý, Năm | | | | |
+| GUI-TKKH-03 | Check [Chỉ số tổng quan] Cards | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Status: visible, Hiển thị: Khách mới, Khách VIP, AOV, Tần suất mua | | | | |
+| GUI-TKKH-04 | Check [Bảng khách hàng] Table | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Status: visible, Columns: Tên, Email, Số đơn, Tổng chi tiêu, Hạng | | | | |
+| **Check FUNC: Xem thống kê khách hàng** |
+| FUNC-TKKH-01 | Mở màn hình thống kê khách hàng | 1. Truy cập `/admin/reports/customers` hoặc click [Báo cáo & Thống kê] > [Thống kê khách hàng] | Hiển thị màn hình thống kê khách hàng với đầy đủ thông tin | | | | |
+| FUNC-TKKH-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/customers`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Chỉ số tổng quan và bảng được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-TKKH-03 | Hiển thị chỉ số tổng quan | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Hiển thị đầy đủ: Khách mới, Khách VIP, AOV (Average Order Value), Tần suất mua, tính toán chính xác | | | | |
+| FUNC-TKKH-04 | Hiển thị bảng khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Tên, Email, Số đơn, Tổng chi tiêu, Hạng thành viên | | | | |
+| FUNC-TKKH-05 | Tính toán KPI khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra chỉ số | KPI được tính toán chính xác theo bộ lọc: Khách mới, Khách VIP, AOV, Tần suất mua | | | | |
+| **Function: Xem báo cáo tồn kho** |
+| **Check GUI: Xem báo cáo tồn kho** |
+| GUI-BaoCaoTK-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo tồn kho" | | | | |
+| GUI-BaoCaoTK-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | | | |
+| GUI-BaoCaoTK-03 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Còn hàng, Sắp hết, Hết hàng | | | | |
+| GUI-BaoCaoTK-04 | Check [Bảng báo cáo] Table | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | | | |
+| GUI-BaoCaoTK-05 | Check [Biểu đồ tồn kho] Chart | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Bar, Hiển thị tình trạng tồn kho | | | | |
+| **Check FUNC: Xem báo cáo tồn kho** |
+| FUNC-BaoCaoTK-01 | Mở màn hình báo cáo tồn kho | 1. Truy cập `/admin/reports/inventory` hoặc click [Báo cáo & Thống kê] > [Báo cáo tồn kho] | Hiển thị màn hình báo cáo tồn kho với đầy đủ thông tin | | | | |
+| FUNC-BaoCaoTK-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | | | |
+| FUNC-BaoCaoTK-03 | Lọc theo trạng thái | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn trạng thái từ dropdown<br>3. Kiểm tra kết quả | Bảng được cập nhật theo trạng thái đã chọn | | | | |
+| FUNC-BaoCaoTK-04 | Hiển thị bảng báo cáo | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | | | |
+| FUNC-BaoCaoTK-05 | Hiển thị cảnh báo sản phẩm sắp hết | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Sản phẩm sắp hết được đánh dấu và cảnh báo rõ ràng | | | | |
+| FUNC-BaoCaoTK-06 | Hiển thị biểu đồ tồn kho | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tình trạng tồn kho chính xác, trực quan | | | | |
+| **Function: Tạo báo cáo tùy chỉnh** |
+| **Check GUI: Tạo báo cáo tùy chỉnh** |
+| GUI-BaoCaoTC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo nâng cao" | | | | |
+| GUI-BaoCaoTC-02 | Check [Form tạo báo cáo] Form | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra form | Status: visible, Hiển thị form tạo báo cáo tùy chỉnh | | | | |
+| GUI-BaoCaoTC-03 | Check [Loại báo cáo] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Doanh thu, Chi phí, Lợi nhuận, Sản phẩm, Khách hàng, Tồn kho | | | | |
+| GUI-BaoCaoTC-04 | Check [Khoảng thời gian] Date Range | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra date range | Status: visible, enable, Type: date range | | | | |
+| GUI-BaoCaoTC-05 | Check [Bộ lọc bổ sung] Checkbox Group | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra checkbox group | Status: visible, enable, Options: Theo sản phẩm, Theo khách hàng, Theo kênh thanh toán | | | | |
+| GUI-BaoCaoTC-06 | Check [Định dạng xuất] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Excel, PDF, CSV | | | | |
+| GUI-BaoCaoTC-07 | Check [Tạo báo cáo] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Tạo báo cáo] | Status: visible, enable | | | | |
+| GUI-BaoCaoTC-08 | Check [Hủy] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Hủy] | Status: visible, enable | | | | |
+| **Check FUNC: Tạo báo cáo tùy chỉnh** |
+| FUNC-BaoCaoTC-01 | Mở màn hình tạo báo cáo tùy chỉnh | 1. Truy cập `/admin/reports/advanced` hoặc click [Báo cáo & Thống kê] > [Báo cáo nâng cao] | Hiển thị form tạo báo cáo tùy chỉnh với các trường trống | | | | |
+| FUNC-BaoCaoTC-02 | Tạo báo cáo tùy chỉnh thành công | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn loại báo cáo<br>3. Chọn khoảng thời gian<br>4. Chọn bộ lọc bổ sung (nếu có)<br>5. Chọn định dạng xuất<br>6. Click [Tạo báo cáo] | Báo cáo được tạo thành công, file được tải xuống với định dạng đã chọn, thông báo xác nhận | | | | | |
+| FUNC-BaoCaoTC-03 | Tạo báo cáo không chọn loại báo cáo | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn loại báo cáo<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn loại báo cáo" | | | | |
+| FUNC-BaoCaoTC-04 | Tạo báo cáo không chọn khoảng thời gian | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn khoảng thời gian<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn khoảng thời gian" | | | | |
+| FUNC-BaoCaoTC-05 | Tạo báo cáo với bộ lọc bổ sung | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn bộ lọc bổ sung<br>3. Click [Tạo báo cáo] | Báo cáo được tạo với bộ lọc bổ sung đã chọn | | | | |
+| FUNC-BaoCaoTC-06 | Export báo cáo Excel | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng Excel<br>3. Click [Tạo báo cáo] | File Excel được tải xuống với báo cáo đầy đủ | | | | |
+| FUNC-BaoCaoTC-07 | Export báo cáo PDF | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng PDF<br>3. Click [Tạo báo cáo] | File PDF được tải xuống với báo cáo đầy đủ | | | | |
+| FUNC-BaoCaoTC-08 | Click nút Hủy | 1. Truy cập `/admin/reports/advanced`<br>2. Điền một số thông tin<br>3. Click [Hủy] | Form được reset, không tạo báo cáo | | | | |
 
 ---
 
-## TEST EXECUTION STATUS
+## GHI CHÚ
 
-**Status:** Not Started
-
-**Last Updated:** [Ngày cập nhật]
-
-**Next Steps:**
-1. Bắt đầu thực hiện test cho từng module
-2. Cập nhật kết quả test vào bảng Test Case Summary
-3. Tính toán lại Test coverage và Test successful coverage sau mỗi đợt test
-4. Báo cáo các lỗi phát hiện được trong quá trình test
-
----
-
-**Document Version:** 2.0  
-**Last Modified:** [Ngày chỉnh sửa]  
-**Prepared by:** [Tên người soạn]  
-**Approved by:** [Tên người phê duyệt]
+- Tất cả test cases cần được thực hiện trên môi trường test
+- Routes động (có `[id]`) cần thay thế bằng ID thực tế khi test
+- Các test case GUI kiểm tra giao diện và trạng thái của các thành phần
+- Các test case FUNC kiểm tra chức năng và logic nghiệp vụ
+- Tất cả báo cáo có thể được export ra file Excel, PDF, hoặc CSV
+- Biểu đồ được hiển thị dưới dạng Line, Bar, Pie, hoặc Donut tùy theo loại báo cáo
+- Số liệu được tính toán theo thời gian thực từ dữ liệu trong hệ thống
+- Cần cập nhật cột Result, Test date sau khi thực hiện test
 
