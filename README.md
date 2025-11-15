@@ -1,14 +1,16 @@
-# Test Case Template - Quản lý tài khoản (Admin)
+# Test Case Template - Quản lý đơn hàng (Admin)
 
 ## Module Code
-**Model Management Store: Quản lý tài khoản Admin**
+**Model Management Store: Quản lý đơn hàng Admin**
 
 ## Test Requirement
-1. Đăng nhập
-2. Khôi phục mật khẩu
-3. Đổi mật khẩu
-4. Quản lý thông tin cá nhân
-5. Đăng xuất
+1. Hiển thị danh sách đơn hàng
+2. Xem chi tiết đơn hàng
+3. Cập nhật đơn hàng
+4. Xóa đơn hàng
+5. Xác nhận đơn hàng
+6. In đơn hàng
+7. Tạo đơn hàng mới
 
 ---
 
@@ -18,218 +20,246 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 94 |
+| **Pass** | 99 |
 | **Fail** | 0 |
-| **Untested** | 31 |
+| **Untested** | 22 |
 | **N/A** | 0 |
-| **Number of Test cases** | 125 |
+| **Number of Test cases** | 121 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập
+### Function: Hiển thị danh sách đơn hàng
 
-#### Check GUI: Đăng nhập
+#### Check GUI: Hiển thị danh sách đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra biểu tượng Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra biểu tượng Shield | Hiển thị biểu tượng Shield trong vùng header, nằm trong vòng tròn | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra trường Email | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Pass | 11/15/2015 | |
-| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" có thể click, nằm bên phải | | Pass | 11/15/2015 | |
-| **GUI-DN-08** | Kiểm tra nút Đăng nhập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, chiếm toàn bộ chiều rộng form | | Pass | 11/15/2015 | |
-| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | 11/15/2015 | |
-| **GUI-DN-10** | Kiểm tra link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link chuyển User | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft bên trái, có thể click | | Pass | 11/15/2015 | |
-| **GUI-DN-11** | Kiểm tra thông báo quyền truy cập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo cuối trang | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" ở cuối trang, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background, card container nằm giữa màn hình, form đăng nhập bên trong card | | Pass | 11/15/2015 | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có giới hạn chiều rộng tối đa | | Pass | 11/15/2015 | |
+| **GUI-DSDH-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý đơn hàng" | | Pass | 11/15/2015 | |
+| **GUI-DSDH-02** | Kiểm tra mô tả trang | 1. Truy cập /admin/orders<br>2. Kiểm tra mô tả | Hiển thị mô tả "Xử lý và theo dõi tất cả đơn hàng" | | Pass | 11/15/2015 | |
+| **GUI-DSDH-03** | Kiểm tra nút In báo cáo | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In báo cáo | Hiển thị nút "In báo cáo" với icon Printer | | Pass | 11/15/2015 | |
+| **GUI-DSDH-04** | Kiểm tra nút Bộ lọc nâng cao | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Bộ lọc nâng cao | Hiển thị nút "Bộ lọc nâng cao" với icon Filter | | Pass | 11/15/2015 | |
+| **GUI-DSDH-05** | Kiểm tra thẻ thống kê trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra các thẻ thống kê | Hiển thị 5 thẻ thống kê: Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy, mỗi thẻ có icon và số lượng tương ứng | | Pass | 11/15/2015 | |
+| **GUI-DSDH-06** | Kiểm tra ô tìm kiếm | 1. Truy cập /admin/orders<br>2. Kiểm tra ô tìm kiếm | Hiển thị ô tìm kiếm với icon Search bên trái, placeholder "Tìm kiếm đơn hàng, khách hàng..." | | Pass | 11/15/2015 | |
+| **GUI-DSDH-07** | Kiểm tra dropdown lọc trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra dropdown lọc trạng thái | Hiển thị dropdown Select với các tùy chọn: Tất cả, Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy, mỗi tùy chọn có số lượng trong ngoặc | | Pass | 11/15/2015 | |
+| **GUI-DSDH-08** | Kiểm tra dropdown lọc phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Kiểm tra dropdown lọc thanh toán | Hiển thị dropdown Select với các tùy chọn: Tất cả, COD, Banking, Credit Card, E-wallet | | Pass | 11/15/2015 | |
+| **GUI-DSDH-09** | Kiểm tra bộ lọc ngày tháng | 1. Truy cập /admin/orders<br>2. Kiểm tra bộ lọc ngày | Hiển thị 2 input date với text "đến" ở giữa | | Pass | 11/15/2015 | |
+| **GUI-DSDH-10** | Kiểm tra nút Áp dụng bộ lọc | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Áp dụng | Hiển thị nút "Áp dụng" với icon Filter | | Pass | 11/15/2015 | |
+| **GUI-DSDH-11** | Kiểm tra bảng danh sách đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra bảng | Hiển thị bảng với các cột: Mã đơn hàng, Khách hàng, Sản phẩm, Tổng tiền, Thanh toán, Trạng thái, Ngày tạo, Thao tác | | Pass | 11/15/2015 | |
+| **GUI-DSDH-12** | Kiểm tra badge trạng thái đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra badge trạng thái | Mỗi đơn hàng hiển thị badge trạng thái với icon và text tương ứng (Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-13** | Kiểm tra nút Xem chi tiết | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Xem | Mỗi hàng có nút với icon Eye để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-DSDH-14** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Cập nhật | Mỗi hàng có nút với icon Edit để cập nhật trạng thái | | Pass | 11/15/2015 | |
+| **GUI-DSDH-15** | Kiểm tra nút In đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In | Mỗi hàng có nút với icon Printer để in đơn hàng | | Pass | 11/15/2015 | |
+| **GUI-DSDH-16** | Kiểm tra nút Hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Hủy | Các đơn hàng chưa giao hoặc chưa hủy có nút với icon AlertTriangle để hủy đơn hàng | | Pass | 11/15/2015 | |
+| **GUI-DSDH-17** | Kiểm tra phân trang | 1. Truy cập /admin/orders<br>2. Kiểm tra phân trang | Hiển thị thông tin "Hiển thị 1-5 trong 156 đơn hàng", các nút Trước, số trang, nút Sau | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng nhập
+### Check FUNC: Hiển thị danh sách đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: biểu tượng Shield, tiêu đề "Đăng nhập Admin", mô tả "Đăng nhập vào hệ thống quản trị", 2 trường nhập (Email Admin, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập, separator "Hoặc", link chuyển User | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ (VD: admin@modelshop.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập | Hệ thống xác thực thông tin, chuyển đến trang dashboard admin (/admin), lưu phiên đăng nhập và lưu token, hiển thị thông báo thành công | | Untested | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /admin/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Đăng nhập với email không có @ | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu ký tự @ (VD: "adminmodelshop.com")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-09** | Đăng nhập với email thiếu domain | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu domain (VD: "admin@")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-10** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn, khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-11** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn, khi đóng trình duyệt sẽ đăng xuất | | Untested | 11/15/2015 | |
-| **FUNC-DN-12** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password | | Pass | 11/15/2015 | |
-| **FUNC-DN-13** | Nhấn link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DN-14** | Submit form bằng phím Enter | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-15** | Đăng nhập với tài khoản chưa kích hoạt | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản chưa kích hoạt<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email để kích hoạt tài khoản", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-16** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản bị khóa<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-17** | Đăng nhập sai nhiều lần - Hiển thị Captcha | 1. Truy cập /admin/auth/login<br>2. Nhập sai thông tin đăng nhập 3 lần liên tiếp<br>3. Lần thứ 4, nhập thông tin | Sau 3 lần đăng nhập sai, hiển thị captcha, yêu cầu nhập captcha trước khi tiếp tục đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-18** | Đăng nhập với captcha đúng | 1. Truy cập /admin/auth/login<br>2. Đăng nhập sai 3 lần để hiển thị captcha<br>3. Nhập captcha đúng<br>4. Nhập thông tin đăng nhập đúng<br>5. Nhấn Đăng nhập | Xác thực captcha thành công, xử lý đăng nhập bình thường, chuyển đến trang dashboard | | Untested | 11/15/2015 | |
-| **FUNC-DN-19** | Đăng nhập với captcha sai | 1. Truy cập /admin/auth/login<br>2. Đăng nhập sai 3 lần để hiển thị captcha<br>3. Nhập captcha sai<br>4. Nhập thông tin đăng nhập đúng<br>5. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Captcha không đúng", không xử lý đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-20** | Tạm khóa tài khoản sau nhiều lần đăng nhập sai | 1. Truy cập /admin/auth/login<br>2. Đăng nhập sai quá số lần cho phép (VD: 5 lần)<br>3. Thử đăng nhập lại | Tài khoản bị tạm khóa trong một khoảng thời gian (VD: 15 phút), hiển thị thông báo "Tài khoản đã bị tạm khóa do đăng nhập sai nhiều lần. Vui lòng thử lại sau X phút" | | Untested | 11/15/2015 | |
-| **FUNC-DN-21** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/auth/login<br>2. Tắt kết nối mạng<br>3. Nhập thông tin hợp lệ<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-22** | Xử lý khi server lỗi | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-23** | Kiểm tra redirect sau đăng nhập | 1. Truy cập /admin/auth/login?redirect=/admin/orders<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công | Sau khi đăng nhập thành công, chuyển đến trang /admin/orders thay vì dashboard mặc định | | Untested | 11/15/2015 | |
-| **FUNC-DN-24** | Kiểm tra lưu token sau đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra localStorage/sessionStorage | Token được lưu vào localStorage hoặc sessionStorage, có thể sử dụng cho các request tiếp theo | | Untested | 11/15/2015 | |
-| **FUNC-DN-25** | Kiểm tra tạo phiên đăng nhập | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra session | Phiên đăng nhập được tạo và lưu trữ trên server, có thể theo dõi trong lịch sử đăng nhập | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-01** | Mở trang danh sách đơn hàng | 1. Truy cập /admin/orders | Hiển thị trang với tiêu đề, mô tả, thẻ thống kê, bộ lọc, bảng danh sách đơn hàng, phân trang | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-02** | Tìm kiếm đơn hàng theo mã | 1. Truy cập /admin/orders<br>2. Nhập mã đơn hàng vào ô tìm kiếm<br>3. Nhấn Enter hoặc click Áp dụng | Bảng hiển thị các đơn hàng có mã khớp với từ khóa tìm kiếm | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-03** | Tìm kiếm đơn hàng theo tên khách hàng | 1. Truy cập /admin/orders<br>2. Nhập tên khách hàng vào ô tìm kiếm<br>3. Nhấn Enter hoặc click Áp dụng | Bảng hiển thị các đơn hàng của khách hàng có tên khớp với từ khóa | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-04** | Lọc đơn hàng theo trạng thái | 1. Truy cập /admin/orders<br>2. Chọn trạng thái từ dropdown<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng có trạng thái đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-05** | Lọc đơn hàng theo phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Chọn phương thức thanh toán từ dropdown<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng có phương thức thanh toán đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-06** | Lọc đơn hàng theo khoảng thời gian | 1. Truy cập /admin/orders<br>2. Chọn ngày bắt đầu và ngày kết thúc<br>3. Nhấn Áp dụng | Bảng chỉ hiển thị các đơn hàng được tạo trong khoảng thời gian đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-07** | Click nút Xem chi tiết | 1. Truy cập /admin/orders<br>2. Click nút Eye trên một đơn hàng | Chuyển đến trang chi tiết đơn hàng /admin/orders/[id] | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-08** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/orders<br>2. Click nút Edit trên một đơn hàng | Chuyển đến trang /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-09** | Click nút In đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Printer trên một đơn hàng | Mở modal in đơn hàng với thông tin đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-10** | Phân trang - Chuyển trang | 1. Truy cập /admin/orders<br>2. Click nút số trang hoặc nút Sau | Bảng hiển thị các đơn hàng của trang tiếp theo | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-11** | Phân trang - Quay lại trang trước | 1. Truy cập /admin/orders<br>2. Đang ở trang 2<br>3. Click nút Trước | Bảng hiển thị các đơn hàng của trang trước | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-12** | Hiển thị số lượng đơn hàng theo trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra các thẻ thống kê | Các thẻ thống kê hiển thị số lượng chính xác đơn hàng theo từng trạng thái | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-13** | Sắp xếp đơn hàng | 1. Truy cập /admin/orders<br>2. Click vào header cột để sắp xếp | Bảng sắp xếp đơn hàng theo cột đã chọn (tăng dần/giảm dần) | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Khôi phục mật khẩu
+### Function: Xem chi tiết đơn hàng
 
-#### Check GUI: Khôi phục mật khẩu
+#### Check GUI: Xem chi tiết đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra biểu tượng Shield header | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra biểu tượng Shield | Hiển thị biểu tượng Shield trong vòng tròn ở header | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Khôi phục mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra mô tả | Hiển thị mô tả "Chọn phương thức khôi phục mật khẩu của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-04** | Kiểm tra phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Email | Hiển thị radio button "Email" với mô tả "Gửi mã xác thực qua email", có icon Mail | | Pass | 11/15/2015 | |
-| **GUI-KPMK-05** | Kiểm tra phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức SMS | Hiển thị radio button "SMS" với mô tả "Gửi mã xác thực qua SMS", có icon Phone | | Pass | 11/15/2015 | |
-| **GUI-KPMK-06** | Kiểm tra phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra phương thức Câu hỏi bảo mật | Hiển thị radio button "Câu hỏi bảo mật" với mô tả "Trả lời câu hỏi bảo mật", có icon MessageSquare | | Pass | 11/15/2015 | |
-| **GUI-KPMK-07** | Kiểm tra trường nhập Email | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Email<br>3. Kiểm tra trường nhập | Hiển thị label "Email", input type email với placeholder "Nhập email của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-08** | Kiểm tra trường nhập Số điện thoại | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức SMS<br>3. Kiểm tra trường nhập | Hiển thị label "Số điện thoại", input type tel với placeholder "Nhập số điện thoại của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-09** | Kiểm tra câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức Câu hỏi bảo mật<br>3. Kiểm tra câu hỏi | Hiển thị 3 câu hỏi bảo mật với các input để nhập câu trả lời | | Pass | 11/15/2015 | |
-| **GUI-KPMK-10** | Kiểm tra nút Tiếp tục | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra nút Tiếp tục | Hiển thị nút "Tiếp tục" với icon Key, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-KPMK-11** | Kiểm tra bước nhập mã xác thực | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn phương thức và nhập thông tin<br>3. Nhấn Tiếp tục<br>4. Kiểm tra bước 2 | Hiển thị alert thông báo mã đã gửi, trường nhập "Mã xác thực" với placeholder "Nhập mã xác thực 6 chữ số", nút "Xác thực" với icon CheckCircle | | Pass | 11/15/2015 | |
-| **GUI-KPMK-12** | Kiểm tra bước đặt mật khẩu mới | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành bước xác thực<br>3. Kiểm tra bước 3 | Hiển thị alert xác nhận, trường "Mật khẩu mới", trường "Xác nhận mật khẩu", progress bar độ mạnh mật khẩu, danh sách yêu cầu mật khẩu, nút "Đặt lại mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-13** | Kiểm tra bước hoàn thành | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành đặt mật khẩu mới<br>3. Kiểm tra bước 4 | Hiển thị icon CheckCircle trong vòng tròn xanh, tiêu đề "Khôi phục mật khẩu thành công", mô tả, nút "Đăng nhập ngay", nút "Quay về trang chủ" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-14** | Kiểm tra link Đăng nhập | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra link cuối trang | Hiển thị text "Bạn có tài khoản?" với link "Đăng nhập" | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chi tiết đơn hàng" và mã đơn hàng | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-03** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Xác nhận | Nếu đơn hàng ở trạng thái pending, hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-04** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Cập nhật | Hiển thị nút "Cập nhật trạng thái" với icon Edit | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-05** | Kiểm tra nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút In | Hiển thị nút "In đơn hàng" với icon Printer | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-06** | Kiểm tra nút Hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Hủy | Nếu đơn hàng chưa giao và chưa hủy, hiển thị nút "Hủy đơn hàng" với icon XCircle | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-07** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin đơn hàng | Hiển thị card với tiêu đề "Thông tin đơn hàng", các thông tin: Mã đơn hàng, Ngày tạo, Trạng thái, Tổng tiền | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-08** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin khách hàng | Hiển thị card với tiêu đề "Thông tin khách hàng", các thông tin: Tên, Email, Số điện thoại, Địa chỉ giao hàng | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-09** | Kiểm tra card Danh sách sản phẩm | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Danh sách sản phẩm | Hiển thị card với tiêu đề "Danh sách sản phẩm", bảng với các cột: Sản phẩm, Số lượng, Đơn giá, Thành tiền, tổng cộng ở cuối | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-10** | Kiểm tra card Lịch sử cập nhật | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Lịch sử | Hiển thị card với tiêu đề "Lịch sử cập nhật", danh sách các mốc thời gian với mô tả và người thực hiện | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-11** | Kiểm tra card Thông tin thanh toán | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin thanh toán | Hiển thị card với tiêu đề "Thông tin thanh toán", các thông tin: Phương thức thanh toán, Trạng thái thanh toán | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-12** | Kiểm tra card Thông tin vận chuyển | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Thông tin vận chuyển | Hiển thị card với tiêu đề "Thông tin vận chuyển", các thông tin: Đơn vị vận chuyển, Mã vận đơn, Dự kiến giao hàng | | Pass | 11/15/2015 | |
+| **GUI-XCTDH-13** | Kiểm tra card Ghi chú | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card Ghi chú | Nếu có ghi chú, hiển thị card với tiêu đề "Ghi chú" và nội dung ghi chú | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Khôi phục mật khẩu
+### Check FUNC: Xem chi tiết đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Mở trang khôi phục mật khẩu | 1. Truy cập /admin/auth/forgot-password | Hiển thị trang khôi phục mật khẩu với biểu tượng Shield, tiêu đề, mô tả, 3 phương thức khôi phục (Email, SMS, Câu hỏi bảo mật) | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Chọn phương thức Email | 1. Truy cập /admin/auth/forgot-password<br>2. Click vào phương thức Email | Radio button Email được chọn, hiển thị trường nhập Email | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-03** | Chọn phương thức SMS | 1. Truy cập /admin/auth/forgot-password<br>2. Click vào phương thức SMS | Radio button SMS được chọn, hiển thị trường nhập Số điện thoại | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-04** | Chọn phương thức Câu hỏi bảo mật | 1. Truy cập /admin/auth/forgot-password<br>2. Click vào phương thức Câu hỏi bảo mật | Radio button Câu hỏi bảo mật được chọn, hiển thị 3 câu hỏi bảo mật với các trường nhập | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-05** | Gửi mã xác thực qua Email - Thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Nhập email hợp lệ<br>4. Nhấn Tiếp tục | Hiển thị thông báo "Mã xác thực đã được gửi", chuyển sang bước 2 (nhập mã xác thực) | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-06** | Gửi mã xác thực qua Email - Email không tồn tại | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Nhập email không tồn tại<br>4. Nhấn Tiếp tục | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-07** | Gửi mã xác thực - Thiếu email | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Email<br>3. Để trống email<br>4. Nhấn Tiếp tục | Hiển thị thông báo lỗi "Vui lòng nhập email" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-08** | Xác thực mã OTP - Thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực thành công<br>3. Nhập mã OTP đúng<br>4. Nhấn Xác thực | Hiển thị thông báo "Mã xác thực hợp lệ", chuyển sang bước 3 (đặt mật khẩu mới) | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-09** | Xác thực mã OTP - Mã sai | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực thành công<br>3. Nhập mã OTP sai<br>4. Nhấn Xác thực | Hiển thị thông báo lỗi "Mã xác thực không đúng" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-10** | Xác thực mã OTP - Mã hết hạn | 1. Truy cập /admin/auth/forgot-password<br>2. Gửi mã xác thực<br>3. Đợi mã hết hạn<br>4. Nhập mã OTP<br>5. Nhấn Xác thực | Hiển thị thông báo lỗi "Mã xác thực đã hết hạn. Vui lòng yêu cầu mã mới" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-11** | Trả lời câu hỏi bảo mật - Thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Câu hỏi bảo mật<br>3. Nhập đúng câu trả lời cho 3 câu hỏi<br>4. Nhấn Tiếp tục | Hiển thị thông báo "Xác thực thành công", chuyển sang bước 3 (đặt mật khẩu mới) | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-12** | Trả lời câu hỏi bảo mật - Sai câu trả lời | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Câu hỏi bảo mật<br>3. Nhập sai câu trả lời<br>4. Nhấn Tiếp tục | Hiển thị thông báo lỗi "Câu trả lời không đúng" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-13** | Trả lời câu hỏi bảo mật - Thiếu câu trả lời | 1. Truy cập /admin/auth/forgot-password<br>2. Chọn Câu hỏi bảo mật<br>3. Để trống một hoặc nhiều câu trả lời<br>4. Nhấn Tiếp tục | Hiển thị thông báo lỗi "Vui lòng trả lời đầy đủ các câu hỏi bảo mật" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-14** | Đặt mật khẩu mới - Thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành xác thực<br>3. Nhập mật khẩu mới hợp lệ (≥8 ký tự, có chữ hoa, số)<br>4. Nhập lại mật khẩu khớp<br>5. Nhấn Đặt lại mật khẩu | Hiển thị thông báo "Mật khẩu đã được đặt lại thành công", chuyển sang bước 4 (hoàn thành) | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-15** | Đặt mật khẩu mới - Mật khẩu quá ngắn | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành xác thực<br>3. Nhập mật khẩu < 8 ký tự<br>4. Nhấn Đặt lại mật khẩu | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 8 ký tự" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-16** | Đặt mật khẩu mới - Mật khẩu không khớp | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành xác thực<br>3. Nhập mật khẩu mới<br>4. Nhập xác nhận mật khẩu khác<br>5. Nhấn Đặt lại mật khẩu | Hiển thị alert "Mật khẩu xác nhận không khớp", nút Đặt lại mật khẩu bị disable | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-17** | Kiểm tra độ mạnh mật khẩu | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành xác thực<br>3. Nhập mật khẩu mới<br>4. Quan sát progress bar | Progress bar hiển thị độ mạnh mật khẩu (Yếu/Trung bình/Mạnh) với màu tương ứng, danh sách yêu cầu hiển thị trạng thái từng điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-18** | Quay lại bước trước | 1. Truy cập /admin/auth/forgot-password<br>2. Đến bước 2 hoặc 3<br>3. Nhấn nút Quay lại | Quay lại bước trước đó, giữ nguyên thông tin đã nhập | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-19** | Nhấn nút Đăng nhập ngay | 1. Truy cập /admin/auth/forgot-password<br>2. Hoàn thành khôi phục mật khẩu<br>3. Nhấn "Đăng nhập ngay" | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-20** | Nhấn link Đăng nhập ở cuối trang | 1. Truy cập /admin/auth/forgot-password<br>2. Nhấn link "Đăng nhập" ở cuối trang | Chuyển đến trang /admin/auth/login | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-01** | Mở trang chi tiết đơn hàng | 1. Truy cập /admin/orders/[id] | Hiển thị đầy đủ thông tin đơn hàng: thông tin đơn hàng, khách hàng, danh sách sản phẩm, lịch sử cập nhật, thông tin thanh toán, vận chuyển | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-02** | Click nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/orders | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-03** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng ở trạng thái pending<br>3. Click "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển sang "Đã xác nhận" | | Untested | 11/15/2015 | |
+| **FUNC-XCTDH-04** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Click "Cập nhật trạng thái" | Chuyển đến trang /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-05** | Click nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click "In đơn hàng" | Hiển thị thông báo "Đã gửi lệnh in", mở cửa sổ in hoặc tải file PDF | | Untested | 11/15/2015 | |
+| **FUNC-XCTDH-06** | Hủy đơn hàng - Mở dialog | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng" | Mở Dialog với tiêu đề "Xác nhận hủy đơn hàng", mô tả, trường nhập lý do hủy, 2 nút (Hủy, Xác nhận hủy) | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-07** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng" | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-08** | Hủy đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", chuyển về trang /admin/orders, trạng thái đơn hàng chuyển sang "Đã hủy" | | Untested | 11/15/2015 | |
+| **FUNC-XCTDH-09** | Hủy dialog hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Click nút "Hủy" trong dialog | Dialog đóng, không hủy đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-10** | Hiển thị hình ảnh sản phẩm | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra danh sách sản phẩm | Mỗi sản phẩm hiển thị hình ảnh thumbnail, tên sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-XCTDH-11** | Tính tổng tiền đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra tổng tiền | Tổng tiền được tính đúng bằng tổng thành tiền của tất cả sản phẩm | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đổi mật khẩu
+### Function: Cập nhật đơn hàng
 
-#### Check GUI: Đổi mật khẩu
+#### Check GUI: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra nút Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" với icon Key trong card "Thông tin tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra modal Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút Đổi mật khẩu<br>3. Kiểm tra modal | Hiển thị modal với tiêu đề "Đổi mật khẩu", mô tả "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | | Pass | 11/15/2015 | |
-| **GUI-DMK-03** | Kiểm tra trường Mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu hiện tại | Hiển thị label "Mật khẩu hiện tại", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-04** | Kiểm tra trường Mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu mới | Hiển thị label "Mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-05** | Kiểm tra trường Xác nhận mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-06** | Kiểm tra nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" | | Pass | 11/15/2015 | |
-| **GUI-DMK-07** | Kiểm tra nút Đổi mật khẩu trong modal | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" | | Pass | 11/15/2015 | |
+| **GUI-CNDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
+| **GUI-CNDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cập nhật trạng thái đơn hàng" và mã đơn hàng | | Pass | 11/15/2015 | |
+| **GUI-CNDH-03** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thông tin đơn hàng | Hiển thị card với tiêu đề "Thông tin đơn hàng", các thông tin: Mã đơn hàng, Khách hàng, Tổng tiền, Ngày tạo | | Pass | 11/15/2015 | |
+| **GUI-CNDH-04** | Kiểm tra card Trạng thái hiện tại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Trạng thái hiện tại | Hiển thị card với tiêu đề "Trạng thái hiện tại", badge trạng thái với icon, text trạng thái, thời gian cập nhật lần cuối | | Pass | 11/15/2015 | |
+| **GUI-CNDH-05** | Kiểm tra dropdown chọn trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra dropdown | Hiển thị Select với placeholder "Chọn trạng thái mới...", các tùy chọn trạng thái (loại trừ trạng thái hiện tại) | | Pass | 11/15/2015 | |
+| **GUI-CNDH-06** | Kiểm tra preview trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Kiểm tra preview | Hiển thị alert với badge trạng thái mới và text "Trạng thái mới sẽ được áp dụng" | | Pass | 11/15/2015 | |
+| **GUI-CNDH-07** | Kiểm tra trường Lý do thay đổi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra trường Lý do | Hiển thị card với tiêu đề "Lý do thay đổi", textarea với placeholder "Nhập lý do thay đổi trạng thái..." | | Pass | 11/15/2015 | |
+| **GUI-CNDH-08** | Kiểm tra card Thời gian cập nhật | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thời gian | Hiển thị card với tiêu đề "Thời gian cập nhật", icon Clock, thời gian thực hiện thay đổi | | Pass | 11/15/2015 | |
+| **GUI-CNDH-09** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Thông tin khách hàng | Hiển thị card với tiêu đề "Thông tin khách hàng", các thông tin: Tên, Email, Số điện thoại | | Pass | 11/15/2015 | |
+| **GUI-CNDH-10** | Kiểm tra checkbox Thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra checkbox | Hiển thị checkbox "Gửi thông báo cho khách hàng" với mô tả, mặc định được tích | | Pass | 11/15/2015 | |
+| **GUI-CNDH-11** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Cập nhật | Hiển thị nút "Cập nhật trạng thái" với icon Save, bị disable khi chưa chọn trạng thái hoặc chưa nhập lý do | | Pass | 11/15/2015 | |
+| **GUI-CNDH-12** | Kiểm tra nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X | | Pass | 11/15/2015 | |
+| **GUI-CNDH-13** | Kiểm tra card Lưu ý | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card Lưu ý | Hiển thị card với tiêu đề "Lưu ý", danh sách các lưu ý về thay đổi trạng thái | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đổi mật khẩu
+### Check FUNC: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Mở modal Đổi mật khẩu | 1. Truy cập /admin/account<br>2. Nhấn nút "Đổi mật khẩu" | Modal Đổi mật khẩu mở ra, hiển thị 3 trường nhập (Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới), 2 nút (Hủy, Đổi mật khẩu) | | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu thành công | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới hợp lệ (≥6 ký tự)<br>5. Nhập lại mật khẩu mới khớp<br>6. Nhấn Đổi mật khẩu | Hiển thị thông báo "Đổi mật khẩu thành công", modal đóng, form được reset | | Untested | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu - Mật khẩu hiện tại sai | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng", không đổi mật khẩu | | Untested | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu - Thiếu mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Để trống mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu hiện tại" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-05** | Đổi mật khẩu - Thiếu mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Để trống mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu mới" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-06** | Đổi mật khẩu - Mật khẩu mới quá ngắn | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới < 6 ký tự<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu mới phải có ít nhất 6 ký tự" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-07** | Đổi mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-08** | Hiển thị/ẩn mật khẩu hiện tại | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-09** | Hiển thị/ẩn mật khẩu mới | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu mới<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-10** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập xác nhận mật khẩu<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-11** | Đóng modal bằng nút Hủy | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhấn nút Hủy | Modal đóng, form được reset về trạng thái ban đầu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-12** | Đóng modal bằng click bên ngoài | 1. Truy cập /admin/account<br>2. Mở modal Đổi mật khẩu<br>3. Click bên ngoài modal | Modal đóng | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-01** | Mở trang cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status | Hiển thị trang với thông tin đơn hàng, trạng thái hiện tại, form chọn trạng thái mới, nhập lý do | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-02** | Chọn trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click dropdown chọn trạng thái<br>3. Chọn một trạng thái | Dropdown hiển thị trạng thái đã chọn, hiển thị preview trạng thái mới | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-03** | Cập nhật trạng thái - Thiếu trạng thái | 1. Truy cập /admin/orders/[id]/update-status<br>2. Nhập lý do<br>3. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng chọn trạng thái mới", nút Cập nhật bị disable | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-04** | Cập nhật trạng thái - Thiếu lý do | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Để trống lý do<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng nhập lý do thay đổi trạng thái", nút Cập nhật bị disable | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-05** | Cập nhật trạng thái thành công | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", nếu có tích checkbox thông báo thì hiển thị "Đã gửi thông báo cho khách hàng", chuyển về trang chi tiết đơn hàng | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-06** | Cập nhật trạng thái với thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Tích checkbox thông báo<br>5. Click "Cập nhật trạng thái" | Cập nhật thành công, gửi email và SMS thông báo cho khách hàng về thay đổi trạng thái | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-07** | Cập nhật trạng thái không thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do<br>4. Bỏ tích checkbox thông báo<br>5. Click "Cập nhật trạng thái" | Cập nhật thành công, không gửi thông báo cho khách hàng | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-08** | Click nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click nút "Hủy" | Chuyển về trang chi tiết đơn hàng, không lưu thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-09** | Click nút Quay lại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click nút "Quay lại" | Chuyển về trang chi tiết đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-10** | Lọc trạng thái không hiển thị trạng thái hiện tại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra dropdown trạng thái | Dropdown chỉ hiển thị các trạng thái khác trạng thái hiện tại | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-11** | Ghi nhận lịch sử thay đổi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Cập nhật trạng thái thành công<br>3. Xem trang chi tiết đơn hàng | Lịch sử cập nhật ghi nhận thay đổi trạng thái với thời gian, lý do, người thực hiện | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Quản lý thông tin cá nhân
+### Function: Xóa đơn hàng
 
-#### Check GUI: Quản lý thông tin cá nhân
+#### Check GUI: Xóa đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-QLTT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/account<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-02** | Kiểm tra mô tả trang | 1. Truy cập /admin/account<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý thông tin cá nhân và cài đặt tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-03** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/account<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit | | Pass | 11/15/2015 | |
-| **GUI-QLTT-04** | Kiểm tra Avatar | 1. Truy cập /admin/account<br>2. Kiểm tra Avatar | Hiển thị Avatar với fallback là chữ cái đầu của họ tên, có badge role "Super Admin" với icon Shield | | Pass | 11/15/2015 | |
-| **GUI-QLTT-05** | Kiểm tra card Thông tin cá nhân | 1. Truy cập /admin/account<br>2. Kiểm tra card Thông tin cá nhân | Hiển thị card "Thông tin cá nhân" với icon User, mô tả "Thông tin cơ bản của tài khoản quản trị" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-06** | Kiểm tra trường Họ và tên | 1. Truy cập /admin/account<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-07** | Kiểm tra trường Email | 1. Truy cập /admin/account<br>2. Kiểm tra trường Email | Hiển thị label "Email", input type email hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-08** | Kiểm tra trường Số điện thoại | 1. Truy cập /admin/account<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-09** | Kiểm tra trường Địa chỉ | 1. Truy cập /admin/account<br>2. Kiểm tra trường Địa chỉ | Hiển thị label "Địa chỉ", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-10** | Kiểm tra trường Ngày sinh | 1. Truy cập /admin/account<br>2. Kiểm tra trường Ngày sinh | Hiển thị label "Ngày sinh", input type date hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-11** | Kiểm tra card Thông tin tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra card Thông tin tài khoản | Hiển thị card "Thông tin tài khoản" với icon Shield, mô tả "Thông tin bảo mật và hoạt động tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-12** | Kiểm tra thông tin Email đăng nhập | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin Email đăng nhập | Hiển thị icon Mail, label "Email đăng nhập", giá trị email hiện tại | | Pass | 11/15/2015 | |
-| **GUI-QLTT-13** | Kiểm tra thông tin Ngày tạo tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin Ngày tạo | Hiển thị icon Calendar, label "Ngày tạo tài khoản", giá trị ngày tạo định dạng Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-QLTT-14** | Kiểm tra thông tin Lần đăng nhập cuối | 1. Truy cập /admin/account<br>2. Kiểm tra thông tin Lần đăng nhập cuối | Hiển thị icon Calendar, label "Lần đăng nhập cuối", giá trị thời gian định dạng Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-QLTT-15** | Kiểm tra nút Lưu thay đổi | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Lưu | Hiển thị nút "Lưu thay đổi" với icon Save | | Pass | 11/15/2015 | |
-| **GUI-QLTT-16** | Kiểm tra nút Hủy khi chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X | | Pass | 11/15/2015 | |
+| **GUI-XDH-01** | Kiểm tra nút Hủy đơn hàng trong danh sách | 1. Truy cập /admin/orders<br>2. Kiểm tra nút Hủy | Các đơn hàng chưa giao và chưa hủy có nút với icon AlertTriangle | | Pass | 11/15/2015 | |
+| **GUI-XDH-02** | Kiểm tra modal xác nhận hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Hủy đơn hàng<br>3. Kiểm tra modal | Hiển thị modal với tiêu đề xác nhận, mô tả, trường nhập lý do hủy, 2 nút (Hủy, Xác nhận hủy) | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Quản lý thông tin cá nhân
+### Check FUNC: Xóa đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLTT-01** | Mở trang Quản lý tài khoản | 1. Truy cập /admin/account | Hiển thị trang với tiêu đề "Quản lý tài khoản", 2 card (Thông tin cá nhân, Thông tin tài khoản), nút Chỉnh sửa, nút Đổi mật khẩu, nút Đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-02** | Bật chế độ chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn nút "Chỉnh sửa" | Tất cả các trường input trong card "Thông tin cá nhân" được enable, nút "Chỉnh sửa" biến thành "Hủy" và "Lưu thay đổi" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-03** | Cập nhật thông tin thành công | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin (Họ tên, SĐT, Địa chỉ, Ngày sinh)<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo "Cập nhật thông tin thành công", các trường được disable lại, thông tin mới được hiển thị | | Untested | 11/15/2015 | |
-| **FUNC-QLTT-04** | Cập nhật thông tin - Thiếu Họ tên | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa họ tên<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Họ tên không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-05** | Cập nhật thông tin - Thiếu Email | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa email<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Email không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-06** | Cập nhật thông tin - Thiếu Số điện thoại | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa số điện thoại<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Số điện thoại không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-07** | Hủy chỉnh sửa | 1. Truy cập /admin/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa một số thông tin<br>4. Nhấn Hủy | Các trường quay về giá trị ban đầu, chế độ chỉnh sửa tắt, nút "Hủy" và "Lưu" biến thành "Chỉnh sửa" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-08** | Xem thông tin tài khoản | 1. Truy cập /admin/account<br>2. Kiểm tra card Thông tin tài khoản | Hiển thị đầy đủ: Email đăng nhập, Ngày tạo tài khoản, Lần đăng nhập cuối | | Pass | 11/15/2015 | |
+| **FUNC-XDH-01** | Hủy đơn hàng từ danh sách | 1. Truy cập /admin/orders<br>2. Click nút Hủy trên một đơn hàng<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", đơn hàng biến mất khỏi danh sách hoặc chuyển sang trạng thái "Đã hủy" | | Untested | 11/15/2015 | |
+| **FUNC-XDH-02** | Hủy đơn hàng từ chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Click "Hủy đơn hàng"<br>3. Nhập lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", chuyển về trang danh sách, đơn hàng chuyển sang trạng thái "Đã hủy" | | Untested | 11/15/2015 | |
+| **FUNC-XDH-03** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng" | | Pass | 11/15/2015 | |
+| **FUNC-XDH-04** | Hủy dialog hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Click nút "Hủy" trong modal | Modal đóng, không hủy đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-XDH-05** | Không hiển thị nút Hủy cho đơn đã giao | 1. Truy cập /admin/orders<br>2. Tìm đơn hàng đã giao<br>3. Kiểm tra nút Hủy | Đơn hàng đã giao không có nút Hủy | | Pass | 11/15/2015 | |
+| **FUNC-XDH-06** | Không hiển thị nút Hủy cho đơn đã hủy | 1. Truy cập /admin/orders<br>2. Tìm đơn hàng đã hủy<br>3. Kiểm tra nút Hủy | Đơn hàng đã hủy không có nút Hủy | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đăng xuất
+### Function: Xác nhận đơn hàng
 
-#### Check GUI: Đăng xuất
+#### Check GUI: Xác nhận đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DX-01** | Kiểm tra nút Đăng xuất | 1. Truy cập /admin/account<br>2. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" với icon LogOut trong card "Thông tin tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-DX-02** | Kiểm tra modal xác nhận đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Kiểm tra modal | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng." | | Pass | 11/15/2015 | |
-| **GUI-DX-03** | Kiểm tra nút Hủy trong modal | 1. Truy cập /admin/account<br>2. Mở modal đăng xuất<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" | | Pass | 11/15/2015 | |
-| **GUI-DX-04** | Kiểm tra nút Đăng xuất trong modal | 1. Truy cập /admin/account<br>2. Mở modal đăng xuất<br>3. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" để xác nhận | | Pass | 11/15/2015 | |
+| **GUI-XNDH-01** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Xác nhận | Nếu đơn hàng ở trạng thái pending, hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng xuất
+### Check FUNC: Xác nhận đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Mở modal xác nhận đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút "Đăng xuất" | Modal AlertDialog hiển thị với tiêu đề "Xác nhận đăng xuất", mô tả, 2 nút (Hủy, Đăng xuất) | | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Đăng xuất thành công | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Nhấn "Đăng xuất" trong modal | Hiển thị thông báo "Đăng xuất thành công", chuyển đến trang /admin/auth/login, phiên đăng nhập bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-DX-03** | Hủy đăng xuất | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Nhấn "Hủy" trong modal | Modal đóng, vẫn ở trang /admin/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-04** | Đóng modal bằng click bên ngoài | 1. Truy cập /admin/account<br>2. Nhấn nút Đăng xuất<br>3. Click bên ngoài modal | Modal đóng, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-05** | Kiểm tra xóa token sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra localStorage/sessionStorage | Token bị xóa khỏi localStorage/sessionStorage | | Untested | 11/15/2015 | |
-| **FUNC-DX-06** | Kiểm tra xóa session sau đăng xuất | 1. Truy cập /admin/account<br>2. Đăng xuất thành công<br>3. Kiểm tra session | Session bị xóa trên server | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-01** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng ở trạng thái pending<br>3. Click "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển sang "Đã xác nhận", nút Xác nhận biến mất | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-02** | Không hiển thị nút Xác nhận cho đơn đã xác nhận | 1. Truy cập /admin/orders/[id]<br>2. Đơn hàng đã xác nhận<br>3. Kiểm tra nút Xác nhận | Không hiển thị nút "Xác nhận đơn hàng" | | Pass | 11/15/2015 | |
+| **FUNC-XNDH-03** | Ghi nhận lịch sử xác nhận | 1. Truy cập /admin/orders/[id]<br>2. Xác nhận đơn hàng thành công<br>3. Kiểm tra lịch sử | Lịch sử cập nhật ghi nhận "Đơn hàng được xác nhận" với thời gian và người thực hiện | | Untested | 11/15/2015 | |
+
+---
+
+### Function: In đơn hàng
+
+#### Check GUI: In đơn hàng
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-IDH-01** | Kiểm tra nút In đơn hàng trong danh sách | 1. Truy cập /admin/orders<br>2. Kiểm tra nút In | Mỗi hàng có nút với icon Printer | | Pass | 11/15/2015 | |
+| **GUI-IDH-02** | Kiểm tra nút In đơn hàng trong chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút In | Hiển thị nút "In đơn hàng" với icon Printer | | Pass | 11/15/2015 | |
+| **GUI-IDH-03** | Kiểm tra modal in đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra modal | Hiển thị modal với thông tin đơn hàng để in | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: In đơn hàng
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-IDH-01** | In đơn hàng từ danh sách | 1. Truy cập /admin/orders<br>2. Click nút Printer trên một đơn hàng | Mở modal in đơn hàng với đầy đủ thông tin, có thể in hoặc tải PDF | | Untested | 11/15/2015 | |
+| **FUNC-IDH-02** | In đơn hàng từ chi tiết | 1. Truy cập /admin/orders/[id]<br>2. Click "In đơn hàng" | Hiển thị thông báo "Đã gửi lệnh in", mở cửa sổ in hoặc tải file PDF | | Untested | 11/15/2015 | |
+| **FUNC-IDH-03** | Đóng modal in đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click nút đóng modal | Modal đóng, không in đơn hàng | | Pass | 11/15/2015 | |
+
+---
+
+### Function: Tạo đơn hàng mới
+
+#### Check GUI: Tạo đơn hàng mới
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-TDHM-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft | | Pass | 11/15/2015 | |
+| **GUI-TDHM-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đơn hàng mới" và mô tả "Xử lý các đơn hàng mới cần được xác nhận" | | Pass | 11/15/2015 | |
+| **GUI-TDHM-03** | Kiểm tra thẻ thống kê | 1. Truy cập /admin/orders/new<br>2. Kiểm tra các thẻ | Hiển thị 4 thẻ: Tổng đơn hàng mới, Ưu tiên cao, Ưu tiên trung bình, Ưu tiên thấp, mỗi thẻ có icon và số lượng | | Pass | 11/15/2015 | |
+| **GUI-TDHM-04** | Kiểm tra bộ lọc ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra dropdown ưu tiên | Hiển thị Select với các tùy chọn: Tất cả, Cao, Trung bình, Thấp | | Pass | 11/15/2015 | |
+| **GUI-TDHM-05** | Kiểm tra bộ lọc thời gian | 1. Truy cập /admin/orders/new<br>2. Kiểm tra dropdown thời gian | Hiển thị Select với các tùy chọn: Hôm nay, 3 ngày qua, 1 tuần qua, 1 tháng qua | | Pass | 11/15/2015 | |
+| **GUI-TDHM-06** | Kiểm tra nút Sắp xếp theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Sắp xếp | Hiển thị nút "Sắp xếp theo ưu tiên" với icon Package | | Pass | 11/15/2015 | |
+| **GUI-TDHM-07** | Kiểm tra nút Xác nhận hàng loạt | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Xác nhận | Hiển thị nút "Xác nhận hàng loạt" với icon CheckCircle và số lượng đơn đã chọn | | Pass | 11/15/2015 | |
+| **GUI-TDHM-08** | Kiểm tra checkbox chọn đơn hàng | 1. Truy cập /admin/orders/new<br>2. Kiểm tra checkbox | Mỗi hàng có checkbox để chọn đơn hàng, header có checkbox để chọn tất cả | | Pass | 11/15/2015 | |
+| **GUI-TDHM-09** | Kiểm tra bảng đơn hàng mới | 1. Truy cập /admin/orders/new<br>2. Kiểm tra bảng | Hiển thị bảng với các cột: Checkbox, Mã đơn hàng, Khách hàng, Tổng tiền, Thời gian tạo, Ưu tiên, Thời gian chờ, Thao tác | | Pass | 11/15/2015 | |
+| **GUI-TDHM-10** | Kiểm tra badge ưu tiên | 1. Truy cập /admin/orders/new<br>2. Kiểm tra badge ưu tiên | Mỗi đơn hàng hiển thị badge ưu tiên với icon và text (Cao, Trung bình, Thấp) | | Pass | 11/15/2015 | |
+| **GUI-TDHM-11** | Kiểm tra nút Xem chi tiết | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Xem | Mỗi hàng có nút với icon Eye để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-TDHM-12** | Kiểm tra nút Đánh dấu đã xem | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Đánh dấu | Mỗi hàng có nút với icon CheckCircle để đánh dấu đã xem | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Tạo đơn hàng mới
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-TDHM-01** | Mở trang đơn hàng mới | 1. Truy cập /admin/orders/new | Hiển thị trang với tiêu đề, thẻ thống kê, bộ lọc, bảng danh sách đơn hàng mới | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-02** | Lọc đơn hàng theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Chọn mức ưu tiên từ dropdown<br>3. Kiểm tra bảng | Bảng chỉ hiển thị các đơn hàng có mức ưu tiên đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-03** | Lọc đơn hàng theo thời gian | 1. Truy cập /admin/orders/new<br>2. Chọn khoảng thời gian từ dropdown<br>3. Kiểm tra bảng | Bảng chỉ hiển thị các đơn hàng trong khoảng thời gian đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-04** | Chọn một đơn hàng | 1. Truy cập /admin/orders/new<br>2. Tích checkbox một đơn hàng | Checkbox được tích, nút Xác nhận hàng loạt hiển thị số lượng (1) | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-05** | Chọn tất cả đơn hàng | 1. Truy cập /admin/orders/new<br>2. Tích checkbox ở header | Tất cả checkbox được tích, nút Xác nhận hàng loạt hiển thị số lượng tất cả | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-06** | Bỏ chọn tất cả đơn hàng | 1. Truy cập /admin/orders/new<br>2. Đã chọn tất cả<br>3. Bỏ tích checkbox ở header | Tất cả checkbox bị bỏ tích, nút Xác nhận hàng loạt bị disable | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-07** | Xác nhận hàng loạt - Chưa chọn đơn | 1. Truy cập /admin/orders/new<br>2. Không chọn đơn hàng nào<br>3. Click "Xác nhận hàng loạt" | Hiển thị thông báo lỗi "Vui lòng chọn ít nhất một đơn hàng", nút bị disable | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-08** | Xác nhận hàng loạt thành công | 1. Truy cập /admin/orders/new<br>2. Chọn một hoặc nhiều đơn hàng<br>3. Click "Xác nhận hàng loạt" | Hiển thị thông báo "Xác nhận hàng loạt thành công cho X đơn hàng", các đơn hàng đã chọn biến mất khỏi danh sách | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-09** | Đánh dấu đơn hàng đã xem | 1. Truy cập /admin/orders/new<br>2. Click nút CheckCircle trên một đơn hàng | Hiển thị thông báo "Đã đánh dấu đơn hàng đã xem", đơn hàng có thể thay đổi trạng thái hiển thị | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-10** | Sắp xếp theo ưu tiên | 1. Truy cập /admin/orders/new<br>2. Click "Sắp xếp theo ưu tiên" | Hiển thị thông báo "Đã sắp xếp theo mức độ ưu tiên", bảng sắp xếp đơn hàng theo thứ tự ưu tiên (Cao -> Trung bình -> Thấp) | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-11** | Click nút Xem chi tiết | 1. Truy cập /admin/orders/new<br>2. Click nút Eye trên một đơn hàng | Chuyển đến trang chi tiết đơn hàng /admin/orders/[id] | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-12** | Click nút Quay lại | 1. Truy cập /admin/orders/new<br>2. Click nút "Quay lại" | Chuyển về trang /admin/orders | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-13** | Hiển thị thời gian chờ | 1. Truy cập /admin/orders/new<br>2. Kiểm tra cột Thời gian chờ | Mỗi đơn hàng hiển thị thời gian chờ từ lúc tạo đến hiện tại (VD: "2 giờ 15 phút") | | Pass | 11/15/2015 | |
 
 ---
 
