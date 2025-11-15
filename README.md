@@ -1,16 +1,14 @@
-# Test Case Template - Chức năng thanh toán đơn hàng (User)
+# Test Case Template - Chức năng vận chuyển (User)
 
 ## Module Code
-**Model Management Store: Chức năng thanh toán đơn hàng User**
+**Model Management Store: Chức năng vận chuyển User**
 
 ## Test Requirement
-1. Chọn phương thức thanh toán
-2. Nhập thông tin giao hàng
-3. Xác nhận đơn hàng
-4. Xử lý thanh toán COD
-5. Xử lý thanh toán Banking
-6. Xử lý thanh toán E-wallet
-7. Theo dõi trạng thái thanh toán
+1. Hiển thị các đơn vị vận chuyển
+2. Chọn nhà vận chuyển
+3. Tính phí vận chuyển
+4. Theo dõi trạng thái vận chuyển
+5. Xem thông tin giao hàng
 
 ---
 
@@ -20,201 +18,170 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 134 |
+| **Pass** | 118 |
 | **Fail** | 0 |
-| **Untested** | 36 |
+| **Untested** | 32 |
 | **N/A** | 0 |
-| **Number of Test cases** | 170 |
+| **Number of Test cases** | 150 |
 
 ---
 
 ## Test Cases
 
-### Function: Chọn phương thức thanh toán
+### Function: Hiển thị các đơn vị vận chuyển
 
-#### Check GUI: Chọn phương thức thanh toán
+#### Check GUI: Hiển thị các đơn vị vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CPTTT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/checkout<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thanh toán" với mô tả "Xác nhận thông tin và hoàn tất đơn hàng" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-02** | Kiểm tra badge số lượng sản phẩm | 1. Truy cập /user/checkout<br>2. Kiểm tra badge | Hiển thị badge variant secondary với text "X sản phẩm" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-03** | Kiểm tra card Thanh toán | 1. Truy cập /user/checkout<br>2. Kiểm tra card | Hiển thị card với tiêu đề "Thanh toán" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-04** | Kiểm tra radio button COD | 1. Truy cập /user/checkout<br>2. Kiểm tra radio | Hiển thị radio button với label "Thanh toán khi nhận hàng (COD)", icon Package, mô tả "Thanh toán bằng tiền mặt khi nhận hàng" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-05** | Kiểm tra radio button Banking | 1. Truy cập /user/checkout<br>2. Kiểm tra radio | Hiển thị radio button với label "Chuyển khoản ngân hàng", icon CreditCard, mô tả "Chuyển khoản qua ngân hàng" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-06** | Kiểm tra radio button E-wallet | 1. Truy cập /user/checkout<br>2. Kiểm tra radio | Hiển thị radio button với label "Ví điện tử (MoMo, ZaloPay, VNPay)", icon Smartphone, mô tả "Thanh toán qua ví điện tử" | | Pass | 11/15/2015 | |
-| **GUI-CPTTT-07** | Kiểm tra thông báo bảo mật | 1. Truy cập /user/checkout<br>2. Kiểm tra thông báo | Hiển thị text "Thanh toán an toàn và bảo mật" với icon Shield, màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-01** | Kiểm tra tiêu đề vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra tiêu đề | Hiển thị text "Vận chuyển:" với icon Truck | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-02** | Kiểm tra card Vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra card | Hiển thị card với icon Truck, tiêu đề "Vận chuyển" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-03** | Kiểm tra radio button Giao hàng tiêu chuẩn | 1. Truy cập /user/cart<br>2. Kiểm tra radio | Hiển thị radio button với label "Giao hàng tiêu chuẩn", thời gian "3-5 ngày làm việc", phí "30.000 VNĐ" hoặc "Miễn phí" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-04** | Kiểm tra radio button Giao hàng nhanh | 1. Truy cập /user/cart<br>2. Kiểm tra radio | Hiển thị radio button với label "Giao hàng nhanh", thời gian "1-2 ngày làm việc", phí "50.000 VNĐ" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-05** | Kiểm tra card Đơn vị vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra card | Hiển thị card với icon Truck, tiêu đề "Đơn vị vận chuyển" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-06** | Kiểm tra radio button GHTK | 1. Truy cập /user/cart<br>2. Kiểm tra radio | Hiển thị radio button với label "Giao hàng tiết kiệm", thời gian "3-5 ngày", phí (miễn phí nếu đơn >= 500.000 hoặc 30.000 VNĐ), mô tả "Tiêu chuẩn, tiết kiệm chi phí" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-07** | Kiểm tra radio button GHN | 1. Truy cập /user/cart<br>2. Kiểm tra radio | Hiển thị radio button với label "Giao hàng nhanh (GHN)", thời gian "1-2 ngày", phí "50.000 VNĐ", mô tả "Nhanh, ổn định nội thành" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-08** | Kiểm tra radio button J&T | 1. Truy cập /user/cart<br>2. Kiểm tra radio | Hiển thị radio button với label "J&T Express", thời gian "2-4 ngày", phí (miễn phí nếu đơn >= 500.000 hoặc 30.000 VNĐ), mô tả "Phủ rộng toàn quốc" | | Pass | 11/15/2015 | |
+| **GUI-HTDDVC-09** | Kiểm tra điều kiện miễn phí | 1. Truy cập /user/cart<br>2. Kiểm tra thông báo | Hiển thị text "Điều kiện miễn phí: đơn từ 500.000 VNĐ với phương thức tiêu chuẩn" với màu muted-foreground | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Chọn phương thức thanh toán
+### Check FUNC: Hiển thị các đơn vị vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CPTTT-01** | Chọn phương thức COD | 1. Truy cập /user/checkout<br>2. Chọn radio button COD<br>3. Kiểm tra kết quả | Radio button COD được chọn, phương thức thanh toán được cập nhật thành "cod" | | Pass | 11/15/2015 | |
-| **FUNC-CPTTT-02** | Chọn phương thức Banking | 1. Truy cập /user/checkout<br>2. Chọn radio button Banking<br>3. Kiểm tra kết quả | Radio button Banking được chọn, phương thức thanh toán được cập nhật thành "bank" | | Pass | 11/15/2015 | |
-| **FUNC-CPTTT-03** | Chọn phương thức E-wallet | 1. Truy cập /user/checkout<br>2. Chọn radio button E-wallet<br>3. Kiểm tra kết quả | Radio button E-wallet được chọn, phương thức thanh toán được cập nhật thành "ewallet" | | Pass | 11/15/2015 | |
-| **FUNC-CPTTT-04** | Chỉ chọn một phương thức tại một thời điểm | 1. Truy cập /user/checkout<br>2. Chọn COD<br>3. Chọn Banking<br>4. Kiểm tra kết quả | Chỉ Banking được chọn, COD bị bỏ chọn, chỉ một phương thức được chọn tại một thời điểm | | Pass | 11/15/2015 | |
-| **FUNC-CPTTT-05** | Phương thức mặc định | 1. Truy cập /user/checkout<br>2. Kiểm tra phương thức mặc định | COD được chọn mặc định khi mở trang | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-01** | Hiển thị danh sách đơn vị vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra danh sách | Hiển thị đầy đủ các đơn vị: GHTK, GHN, J&T Express với thông tin: tên, thời gian giao hàng, phí vận chuyển, dịch vụ đặc biệt | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-02** | Hiển thị thông tin chi tiết đơn vị | 1. Truy cập /user/cart<br>2. Chọn một đơn vị<br>3. Kiểm tra thông tin | Hiển thị thông tin chi tiết: phạm vi hoạt động, thời gian giao hàng theo khu vực, phí vận chuyển theo trọng lượng và khoảng cách, dịch vụ đặc biệt | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-03** | Cập nhật thông tin real-time | 1. Truy cập /user/cart<br>2. Thay đổi địa chỉ giao hàng<br>3. Kiểm tra thông tin | Thông tin đơn vị vận chuyển được cập nhật real-time, phí vận chuyển được tính lại | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-04** | Hiển thị điều kiện miễn phí | 1. Truy cập /user/cart<br>2. Kiểm tra điều kiện | Hiển thị rõ ràng: giá trị đơn hàng tối thiểu 500.000 VNĐ, khu vực áp dụng, thời gian hiệu lực | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-05** | Tự động tính phí dựa trên điều kiện | 1. Truy cập /user/cart<br>2. Tạm tính >= 500.000 VNĐ<br>3. Chọn giao hàng tiêu chuẩn<br>4. Kiểm tra phí | Phí vận chuyển hiển thị "Miễn phí" cho phương thức tiêu chuẩn | | Pass | 11/15/2015 | |
+| **FUNC-HTDDVC-06** | Tự động tính phí dựa trên điều kiện - Đơn < 500.000 | 1. Truy cập /user/cart<br>2. Tạm tính < 500.000 VNĐ<br>3. Chọn giao hàng tiêu chuẩn<br>4. Kiểm tra phí | Phí vận chuyển = 30.000 VNĐ cho phương thức tiêu chuẩn | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Nhập thông tin giao hàng
+### Function: Chọn nhà vận chuyển
 
-#### Check GUI: Nhập thông tin giao hàng
+#### Check GUI: Chọn nhà vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-NTTTGH-01** | Kiểm tra card Địa chỉ giao hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra card | Hiển thị card với tiêu đề "Địa chỉ giao hàng", mô tả "Thông tin người nhận" | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-02** | Kiểm tra checkbox Sử dụng địa chỉ đã lưu | 1. Truy cập /user/checkout<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Sử dụng địa chỉ đã lưu", có thể click | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-03** | Kiểm tra input Họ và tên | 1. Truy cập /user/checkout<br>2. Kiểm tra input | Hiển thị Input với label "Họ và tên", placeholder "Nguyễn Văn A", có thể nhập text | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-04** | Kiểm tra input Số điện thoại | 1. Truy cập /user/checkout<br>2. Kiểm tra input | Hiển thị Input với label "Số điện thoại", placeholder "0123456789", có thể nhập số | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-05** | Kiểm tra input Địa chỉ | 1. Truy cập /user/checkout<br>2. Kiểm tra input | Hiển thị Input với label "Địa chỉ", placeholder "123 Đường ABC, Quận 1, TP.HCM", có thể nhập text | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-06** | Kiểm tra dropdown Tỉnh/Thành phố | 1. Truy cập /user/checkout<br>2. Kiểm tra dropdown | Hiển thị Select với label "Tỉnh/Thành", các option: TP.HCM, Hà Nội, ... | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-07** | Kiểm tra input Quận/Huyện | 1. Truy cập /user/checkout<br>2. Kiểm tra input | Hiển thị Input với label "Quận/Huyện", placeholder "Quận 1", có thể nhập text | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-08** | Kiểm tra dropdown Phường/Xã | 1. Truy cập /user/checkout<br>2. Kiểm tra dropdown | Hiển thị Select với label "Phường/Xã", các option: Phường Bến Nghé, Phường Đa Kao, ... | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-09** | Kiểm tra textarea Ghi chú giao hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra textarea | Hiển thị Textarea với label "Ghi chú giao hàng", placeholder "Ví dụ: gọi trước khi giao, hẹn giờ...", rows=3 | | Pass | 11/15/2015 | |
-| **GUI-NTTTGH-10** | Kiểm tra checkbox Lưu địa chỉ mặc định | 1. Truy cập /user/checkout<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Lưu địa chỉ này làm mặc định", có thể click | | Pass | 11/15/2015 | |
+| **GUI-CNVC-01** | Kiểm tra radio group đơn vị | 1. Truy cập /user/cart<br>2. Kiểm tra radio group | Hiển thị nhóm radio button với các option: GHTK, GHN, J&T Express, chỉ có thể chọn một | | Pass | 11/15/2015 | |
+| **GUI-CNVC-02** | Kiểm tra logo đơn vị | 1. Truy cập /user/cart<br>2. Chọn một đơn vị<br>3. Kiểm tra logo | Hiển thị logo của đơn vị vận chuyển đã chọn (nếu có) | | Pass | 11/15/2015 | |
+| **GUI-CNVC-03** | Kiểm tra thông tin đơn vị đã chọn | 1. Truy cập /user/cart<br>2. Chọn một đơn vị<br>3. Kiểm tra thông tin | Hiển thị card với thông tin: tên đơn vị, thời gian giao hàng, phí vận chuyển, dịch vụ đặc biệt | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Nhập thông tin giao hàng
+### Check FUNC: Chọn nhà vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-NTTTGH-01** | Nhập thông tin giao hàng | 1. Truy cập /user/checkout<br>2. Nhập đầy đủ thông tin: Họ tên, SĐT, Địa chỉ, Tỉnh/Thành, Quận/Huyện, Phường/Xã<br>3. Kiểm tra kết quả | Thông tin được lưu, có thể sử dụng khi đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-02** | Sử dụng địa chỉ đã lưu | 1. Truy cập /user/checkout<br>2. Tích checkbox "Sử dụng địa chỉ đã lưu"<br>3. Kiểm tra kết quả | Thông tin địa chỉ đã lưu được tự động điền vào các trường, các trường có thể bị disabled hoặc readonly | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-03** | Lưu địa chỉ mới làm mặc định | 1. Truy cập /user/checkout<br>2. Nhập địa chỉ mới<br>3. Tích checkbox "Lưu địa chỉ này làm mặc định"<br>4. Đặt hàng thành công<br>5. Kiểm tra kết quả | Địa chỉ mới được lưu làm mặc định, hiển thị khi đặt hàng lần sau | | Untested | 11/15/2015 | |
-| **FUNC-NTTTGH-04** | Validation Họ và tên - Để trống | 1. Truy cập /user/checkout<br>2. Để trống Họ và tên<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Họ và tên là bắt buộc", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-05** | Validation Số điện thoại - Để trống | 1. Truy cập /user/checkout<br>2. Để trống Số điện thoại<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Số điện thoại là bắt buộc", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-06** | Validation Số điện thoại - Định dạng không hợp lệ | 1. Truy cập /user/checkout<br>2. Nhập SĐT không đúng định dạng (VD: "abc")<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Số điện thoại không hợp lệ", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-07** | Validation Địa chỉ - Để trống | 1. Truy cập /user/checkout<br>2. Để trống Địa chỉ<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Địa chỉ là bắt buộc", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-08** | Validation Tỉnh/Thành phố - Chưa chọn | 1. Truy cập /user/checkout<br>2. Chưa chọn Tỉnh/Thành phố<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Vui lòng chọn Tỉnh/Thành phố", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-09** | Validation Quận/Huyện - Để trống | 1. Truy cập /user/checkout<br>2. Để trống Quận/Huyện<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Quận/Huyện là bắt buộc", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-10** | Validation Phường/Xã - Chưa chọn | 1. Truy cập /user/checkout<br>2. Chưa chọn Phường/Xã<br>3. Click "Đặt hàng"<br>4. Kiểm tra validation | Hiển thị cảnh báo "Vui lòng chọn Phường/Xã", không cho phép đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-11** | Validation real-time | 1. Truy cập /user/checkout<br>2. Nhập thông tin không hợp lệ<br>3. Quan sát validation | Validation được thực hiện real-time khi nhập, hiển thị cảnh báo ngay lập tức | | Pass | 11/15/2015 | |
-| **FUNC-NTTTGH-12** | Nhập Ghi chú giao hàng | 1. Truy cập /user/checkout<br>2. Nhập ghi chú vào textarea<br>3. Kiểm tra kết quả | Ghi chú được lưu, có thể sử dụng khi đặt hàng, không bắt buộc | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-01** | Chọn đơn vị GHTK | 1. Truy cập /user/cart<br>2. Chọn radio button "Giao hàng tiết kiệm"<br>3. Kiểm tra kết quả | Radio button GHTK được chọn, thông tin đơn vị được hiển thị, phí vận chuyển được cập nhật, tổng tiền được tính lại | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-02** | Chọn đơn vị GHN | 1. Truy cập /user/cart<br>2. Chọn radio button "Giao hàng nhanh (GHN)"<br>3. Kiểm tra kết quả | Radio button GHN được chọn, thông tin đơn vị được hiển thị, phí vận chuyển = 50.000 VNĐ, tổng tiền được tính lại | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-03** | Chọn đơn vị J&T | 1. Truy cập /user/cart<br>2. Chọn radio button "J&T Express"<br>3. Kiểm tra kết quả | Radio button J&T được chọn, thông tin đơn vị được hiển thị, phí vận chuyển được cập nhật, tổng tiền được tính lại | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-04** | Chỉ chọn một đơn vị tại một thời điểm | 1. Truy cập /user/cart<br>2. Chọn GHTK<br>3. Chọn GHN<br>4. Kiểm tra kết quả | Chỉ GHN được chọn, GHTK bị bỏ chọn, chỉ một đơn vị được chọn tại một thời điểm | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-05** | Hiển thị thông tin đơn vị đã chọn | 1. Truy cập /user/cart<br>2. Chọn một đơn vị<br>3. Kiểm tra thông tin | Hiển thị đầy đủ: logo (nếu có), tên đơn vị, thời gian giao hàng, phí vận chuyển, dịch vụ đặc biệt | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-06** | So sánh các đơn vị | 1. Truy cập /user/cart<br>2. Xem danh sách đơn vị<br>3. Kiểm tra so sánh | Có thể so sánh các đơn vị về: thời gian giao hàng, phí vận chuyển, phạm vi hoạt động, dịch vụ đặc biệt, thông tin được hiển thị rõ ràng | | Pass | 11/15/2015 | |
+| **FUNC-CNVC-07** | Cập nhật thông tin real-time khi chọn đơn vị | 1. Truy cập /user/cart<br>2. Chọn đơn vị<br>3. Quan sát cập nhật | Thông tin đơn vị được cập nhật ngay lập tức, phí vận chuyển được tính lại, tổng tiền được cập nhật | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xác nhận đơn hàng
+### Function: Tính phí vận chuyển
 
-#### Check GUI: Xác nhận đơn hàng
+#### Check GUI: Tính phí vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XNDH-01** | Kiểm tra card Đơn hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra card | Hiển thị card với tiêu đề "Đơn hàng", mô tả "Kiểm tra lại sản phẩm" | | Pass | 11/15/2015 | |
-| **GUI-XNDH-02** | Kiểm tra danh sách sản phẩm | 1. Truy cập /user/checkout<br>2. Kiểm tra danh sách | Hiển thị danh sách sản phẩm với tên, số lượng, giá tổng cho mỗi sản phẩm | | Pass | 11/15/2015 | |
-| **GUI-XNDH-03** | Kiểm tra Tạm tính | 1. Truy cập /user/checkout<br>2. Kiểm tra tạm tính | Hiển thị "Tạm tính" với giá trị tổng tiền sản phẩm | | Pass | 11/15/2015 | |
-| **GUI-XNDH-04** | Kiểm tra Phí vận chuyển | 1. Truy cập /user/checkout<br>2. Kiểm tra phí | Hiển thị "Phí vận chuyển" với giá trị phí vận chuyển | | Pass | 11/15/2015 | |
-| **GUI-XNDH-05** | Kiểm tra Giảm giá | 1. Truy cập /user/checkout<br>2. Có mã giảm giá<br>3. Kiểm tra giảm giá | Hiển thị "Giảm giá" với số tiền giảm màu đỏ | | Pass | 11/15/2015 | |
-| **GUI-XNDH-06** | Kiểm tra Tổng cộng | 1. Truy cập /user/checkout<br>2. Kiểm tra tổng | Hiển thị "Tổng" với font semibold text-lg, giá trị tổng tiền thanh toán | | Pass | 11/15/2015 | |
-| **GUI-XNDH-07** | Kiểm tra checkbox Xác nhận điều khoản | 1. Truy cập /user/checkout<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Tôi đồng ý với điều khoản và điều kiện", có thể click | | Pass | 11/15/2015 | |
-| **GUI-XNDH-08** | Kiểm tra nút Đặt hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra nút | Hiển thị nút "Đặt hàng" chiếm toàn bộ chiều rộng, disabled khi chưa tích checkbox điều khoản | | Pass | 11/15/2015 | |
-| **GUI-XNDH-09** | Kiểm tra thông báo điều khoản | 1. Truy cập /user/checkout<br>2. Kiểm tra thông báo | Hiển thị text "Bằng việc đặt hàng, bạn đồng ý với điều khoản & chính sách của cửa hàng." với màu muted-foreground, text-center | | Pass | 11/15/2015 | |
+| **GUI-TPVC-01** | Kiểm tra card Tính phí vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra card | Hiển thị card với tiêu đề "Tính phí vận chuyển" | | Pass | 11/15/2015 | |
+| **GUI-TPVC-02** | Kiểm tra input Địa chỉ giao hàng | 1. Truy cập /user/cart<br>2. Kiểm tra input | Hiển thị Input với label "Địa chỉ giao hàng", placeholder "Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành", có thể nhập text | | Pass | 11/15/2015 | |
+| **GUI-TPVC-03** | Kiểm tra input Trọng lượng | 1. Truy cập /user/cart<br>2. Kiểm tra input | Hiển thị Input với label "Trọng lượng (kg)", giá trị readonly, hiển thị tổng trọng lượng sản phẩm | | Pass | 11/15/2015 | |
+| **GUI-TPVC-04** | Kiểm tra input Khoảng cách | 1. Truy cập /user/cart<br>2. Kiểm tra input | Hiển thị Input với label "Khoảng cách (km)", giá trị readonly, hiển thị khoảng cách từ kho đến địa chỉ | | Pass | 11/15/2015 | |
+| **GUI-TPVC-05** | Kiểm tra Phí cơ bản | 1. Truy cập /user/cart<br>2. Kiểm tra phí | Hiển thị "Phí cơ bản" với giá trị (VD: 10.000 VNĐ) | | Pass | 11/15/2015 | |
+| **GUI-TPVC-06** | Kiểm tra Phí theo trọng lượng | 1. Truy cập /user/cart<br>2. Kiểm tra phí | Hiển thị "Phí theo trọng lượng" với giá trị (VD: 8.000 VNĐ) | | Pass | 11/15/2015 | |
+| **GUI-TPVC-07** | Kiểm tra Phí theo khoảng cách | 1. Truy cập /user/cart<br>2. Kiểm tra phí | Hiển thị "Phí theo khoảng cách" với giá trị (VD: 12.000 VNĐ) | | Pass | 11/15/2015 | |
+| **GUI-TPVC-08** | Kiểm tra Phí dịch vụ | 1. Truy cập /user/cart<br>2. Kiểm tra phí | Hiển thị "Phí dịch vụ" với giá trị (VD: 0 VNĐ) | | Pass | 11/15/2015 | |
+| **GUI-TPVC-09** | Kiểm tra Tổng phí vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra tổng phí | Hiển thị "Tổng phí vận chuyển (ước tính)" với font medium, giá trị tổng phí hoặc "Miễn phí" | | Pass | 11/15/2015 | |
+| **GUI-TPVC-10** | Kiểm tra thông báo miễn phí | 1. Truy cập /user/cart<br>2. Đơn >= 500.000 VNĐ<br>3. Chọn tiêu chuẩn<br>4. Kiểm tra thông báo | Hiển thị "Miễn phí" thay vì số tiền khi đủ điều kiện | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xác nhận đơn hàng
+### Check FUNC: Tính phí vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XNDH-01** | Hiển thị thông tin đơn hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: danh sách sản phẩm, Tạm tính, Phí vận chuyển, Giảm giá (nếu có), Tổng cộng | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-02** | Tính toán tóm tắt đơn hàng | 1. Truy cập /user/checkout<br>2. Thay đổi phương thức vận chuyển, áp dụng mã giảm giá<br>3. Kiểm tra tóm tắt | Tóm tắt được tính toán lại: Tạm tính, Phí vận chuyển, Giảm giá, Tổng cộng, tất cả được cập nhật real-time | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-03** | Tích checkbox Xác nhận điều khoản | 1. Truy cập /user/checkout<br>2. Tích checkbox "Tôi đồng ý với điều khoản và điều kiện"<br>3. Kiểm tra nút Đặt hàng | Checkbox được tích, nút "Đặt hàng" được kích hoạt (không còn disabled) | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-04** | Bỏ tích checkbox Xác nhận điều khoản | 1. Truy cập /user/checkout<br>2. Bỏ tích checkbox<br>3. Kiểm tra nút Đặt hàng | Checkbox bị bỏ tích, nút "Đặt hàng" bị disabled | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-05** | Click nút Đặt hàng - Chưa tích điều khoản | 1. Truy cập /user/checkout<br>2. Chưa tích checkbox điều khoản<br>3. Click "Đặt hàng" | Nút bị disabled, không thể click, không đặt hàng | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-06** | Click nút Đặt hàng - Đã tích điều khoản | 1. Truy cập /user/checkout<br>2. Đã tích checkbox điều khoản<br>3. Nhập đầy đủ thông tin<br>4. Click "Đặt hàng"<br>5. Kiểm tra kết quả | Đơn hàng được tạo, chuyển đến bước xử lý thanh toán theo phương thức đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-XNDH-07** | Kiểm tra tính hợp lệ trước khi đặt hàng | 1. Truy cập /user/checkout<br>2. Thiếu thông tin giao hàng<br>3. Tích checkbox điều khoản<br>4. Click "Đặt hàng"<br>5. Kiểm tra kết quả | Hiển thị cảnh báo về thông tin thiếu, không đặt hàng, yêu cầu nhập đầy đủ thông tin | | Pass | 11/15/2015 | |
-| **FUNC-XNDH-08** | Kiểm tra tồn kho trước khi đặt hàng | 1. Truy cập /user/checkout<br>2. Sản phẩm trong giỏ hết hàng<br>3. Click "Đặt hàng"<br>4. Kiểm tra kết quả | Hiển thị cảnh báo "Sản phẩm '[Tên]' đã hết hàng", không đặt hàng, yêu cầu xóa sản phẩm hết hàng | | Untested | 11/15/2015 | |
+| **FUNC-TPVC-01** | Tính phí vận chuyển tự động | 1. Truy cập /user/cart<br>2. Nhập địa chỉ giao hàng<br>3. Kiểm tra phí | Phí vận chuyển được tính tự động dựa trên: địa chỉ, trọng lượng, khoảng cách, công thức: Phí cơ bản + Phí theo trọng lượng + Phí theo khoảng cách + Phí dịch vụ | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-02** | Tính phí theo địa chỉ | 1. Truy cập /user/cart<br>2. Nhập địa chỉ A<br>3. Kiểm tra phí<br>4. Nhập địa chỉ B<br>5. Kiểm tra phí | Phí vận chuyển được tính lại khi thay đổi địa chỉ, khoảng cách được cập nhật, phí theo khoảng cách được tính lại | | Untested | 11/15/2015 | |
+| **FUNC-TPVC-03** | Tính phí theo trọng lượng | 1. Truy cập /user/cart<br>2. Thêm/xóa sản phẩm<br>3. Kiểm tra phí | Phí vận chuyển được tính lại khi thay đổi trọng lượng, phí theo trọng lượng được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-04** | Tính phí theo khoảng cách | 1. Truy cập /user/cart<br>2. Thay đổi địa chỉ giao hàng<br>3. Kiểm tra phí | Phí vận chuyển được tính lại khi thay đổi khoảng cách, phí theo khoảng cách được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-TPVC-05** | Kiểm tra điều kiện miễn phí - Đủ điều kiện | 1. Truy cập /user/cart<br>2. Tạm tính >= 500.000 VNĐ<br>3. Chọn giao hàng tiêu chuẩn<br>4. Kiểm tra phí | Phí vận chuyển = 0, hiển thị "Miễn phí", tổng phí vận chuyển = 0 | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-06** | Kiểm tra điều kiện miễn phí - Không đủ điều kiện | 1. Truy cập /user/cart<br>2. Tạm tính < 500.000 VNĐ<br>3. Chọn giao hàng tiêu chuẩn<br>4. Kiểm tra phí | Phí vận chuyển = 30.000 VNĐ (tiêu chuẩn) hoặc 50.000 VNĐ (nhanh), không miễn phí | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-07** | Cập nhật phí real-time khi thay đổi địa chỉ | 1. Truy cập /user/cart<br>2. Nhập địa chỉ<br>3. Thay đổi địa chỉ<br>4. Quan sát phí | Phí vận chuyển được tính lại ngay lập tức khi thay đổi địa chỉ, tổng tiền được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-TPVC-08** | Cập nhật phí real-time khi thay đổi trọng lượng | 1. Truy cập /user/cart<br>2. Thay đổi số lượng sản phẩm<br>3. Quan sát phí | Phí vận chuyển được tính lại ngay lập tức khi thay đổi trọng lượng, tổng tiền được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-09** | Cập nhật phí real-time khi thay đổi đơn vị | 1. Truy cập /user/cart<br>2. Chọn đơn vị vận chuyển<br>3. Thay đổi đơn vị<br>4. Quan sát phí | Phí vận chuyển được tính lại ngay lập tức khi thay đổi đơn vị, tổng tiền được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-10** | Hiển thị chi tiết phí vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra chi tiết phí | Hiển thị đầy đủ: Phí cơ bản, Phí theo trọng lượng, Phí theo khoảng cách, Phí dịch vụ, Tổng phí vận chuyển | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-11** | Tính phí với đơn vị GHTK | 1. Truy cập /user/cart<br>2. Chọn GHTK<br>3. Kiểm tra phí | Phí vận chuyển được tính theo công thức của GHTK, hiển thị chi tiết phí | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-12** | Tính phí với đơn vị GHN | 1. Truy cập /user/cart<br>2. Chọn GHN<br>3. Kiểm tra phí | Phí vận chuyển = 50.000 VNĐ (cố định cho GHN), hiển thị chi tiết phí | | Pass | 11/15/2015 | |
+| **FUNC-TPVC-13** | Tính phí với đơn vị J&T | 1. Truy cập /user/cart<br>2. Chọn J&T<br>3. Kiểm tra phí | Phí vận chuyển được tính theo công thức của J&T, hiển thị chi tiết phí | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xử lý thanh toán COD
+### Function: Theo dõi trạng thái vận chuyển
 
-#### Check GUI: Xử lý thanh toán COD
+#### Check GUI: Theo dõi trạng thái vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XLTTCOD-01** | Kiểm tra loading spinner | 1. Truy cập /user/checkout<br>2. Chọn COD<br>3. Click "Đặt hàng"<br>4. Kiểm tra loading | Hiển thị loading spinner với thông báo "Vui lòng chờ trong giây lát..." | | Pass | 11/15/2015 | |
-| **GUI-XLTTCOD-02** | Kiểm tra thông báo thành công | 1. Truy cập /user/checkout<br>2. Đặt hàng COD thành công<br>3. Kiểm tra thông báo | Hiển thị card với tiêu đề "Đơn hàng đã được đặt thành công", thông tin đơn hàng, mã đơn hàng | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-01** | Kiểm tra tiêu đề theo dõi | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Theo dõi vận chuyển" hoặc "Theo dõi đơn hàng #[id]" | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-02** | Kiểm tra mã đơn hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra mã | Hiển thị mã đơn hàng với format rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-03** | Kiểm tra mã vận đơn | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra mã | Hiển thị "Mã vận đơn: [Mã]" với font mono | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-04** | Kiểm tra đơn vị vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra đơn vị | Hiển thị "Đơn vị vận chuyển: [Tên đơn vị]" | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-05** | Kiểm tra badge trạng thái hiện tại | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra badge | Hiển thị badge trạng thái vận chuyển với màu sắc và text: Đã nhận hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-06** | Kiểm tra Timeline vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra timeline | Hiển thị timeline các trạng thái: Đã nhận hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng, với thời gian cụ thể | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-07** | Kiểm tra thời gian cập nhật | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra thời gian | Hiển thị "Thời gian cập nhật: [Thời gian]" cho mỗi mốc trong timeline | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-08** | Kiểm tra vị trí hiện tại | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra vị trí | Hiển thị "Vị trí hiện tại: [Vị trí]" (nếu có) | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-09** | Kiểm tra thời gian dự kiến | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra thời gian | Hiển thị "Thời gian giao hàng dự kiến: [Thời gian]" | | Pass | 11/15/2015 | |
+| **GUI-TDTTVC-10** | Kiểm tra nút Liên hệ hỗ trợ | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra nút | Hiển thị nút "Liên hệ hỗ trợ" variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xử lý thanh toán COD
+### Check FUNC: Theo dõi trạng thái vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XLTTCOD-01** | Đặt hàng COD thành công | 1. Truy cập /user/checkout<br>2. Chọn COD<br>3. Nhập đầy đủ thông tin<br>4. Tích checkbox điều khoản<br>5. Click "Đặt hàng"<br>6. Kiểm tra kết quả | Hiển thị loading, sau đó hiển thị thông báo "Đơn hàng đã được đặt thành công", đơn hàng được tạo với trạng thái "Chờ xử lý", gửi thông báo xác nhận đến người dùng, chuyển đến trang theo dõi đơn hàng | | Untested | 11/15/2015 | |
-| **FUNC-XLTTCOD-02** | Đơn hàng COD không cần thanh toán trước | 1. Truy cập /user/checkout<br>2. Đặt hàng COD thành công<br>3. Kiểm tra trạng thái thanh toán | Trạng thái thanh toán = "Chờ thanh toán", người dùng sẽ thanh toán khi nhận hàng | | Pass | 11/15/2015 | |
+| **FUNC-TDTTVC-01** | Hiển thị trạng thái vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra trạng thái | Hiển thị trạng thái hiện tại: Đã nhận hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng, với badge màu sắc tương ứng | | Pass | 11/15/2015 | |
+| **FUNC-TDTTVC-02** | Hiển thị timeline vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra timeline | Hiển thị timeline các mốc: Đã nhận hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng, với thời gian cụ thể, sắp xếp theo thời gian mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-TDTTVC-03** | Cập nhật trạng thái real-time | 1. Truy cập /user/orders/track/[id]<br>2. Trạng thái vận chuyển thay đổi<br>3. Kiểm tra cập nhật | Trạng thái được cập nhật ngay lập tức, timeline được cập nhật với mốc mới, thời gian cập nhật được hiển thị | | Untested | 11/15/2015 | |
+| **FUNC-TDTTVC-04** | Đồng bộ với hệ thống đơn vị vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Trạng thái thay đổi trong hệ thống đơn vị<br>3. Kiểm tra đồng bộ | Thông tin được đồng bộ liên tục từ hệ thống đơn vị vận chuyển, hiển thị ngay lập tức khi có thay đổi | | Untested | 11/15/2015 | |
+| **FUNC-TDTTVC-05** | Hiển thị vị trí hiện tại | 1. Truy cập /user/orders/track/[id]<br>2. Đơn hàng đang vận chuyển<br>3. Kiểm tra vị trí | Hiển thị vị trí hiện tại của đơn hàng (nếu đơn vị hỗ trợ), cập nhật real-time | | Untested | 11/15/2015 | |
+| **FUNC-TDTTVC-06** | Thông báo cập nhật real-time | 1. Truy cập /user/orders/track/[id]<br>2. Trạng thái vận chuyển thay đổi<br>3. Kiểm tra thông báo | Hiển thị thông báo notification real-time khi có thay đổi trạng thái, có thể gửi qua email, SMS, push notification | | Untested | 11/15/2015 | |
+| **FUNC-TDTTVC-07** | Click nút Liên hệ hỗ trợ | 1. Truy cập /user/orders/track/[id]<br>2. Click nút "Liên hệ hỗ trợ" | Chuyển đến trang /user/support | | Pass | 11/15/2015 | |
+| **FUNC-TDTTVC-08** | Theo dõi hành trình đơn hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra hành trình | Hiển thị đầy đủ hành trình từ khi nhận hàng đến khi giao hàng, mỗi mốc có thời gian và mô tả cụ thể | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xử lý thanh toán Banking
+### Function: Xem thông tin giao hàng
 
-#### Check GUI: Xử lý thanh toán Banking
+#### Check GUI: Xem thông tin giao hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XLTTBANK-01** | Kiểm tra form chuyển khoản | 1. Truy cập /user/checkout<br>2. Chọn Banking<br>3. Click "Đặt hàng"<br>4. Kiểm tra form | Hiển thị form với tiêu đề "Thông tin chuyển khoản", các trường: Số tài khoản, Tên chủ tài khoản, Ngân hàng, Nội dung chuyển khoản | | Pass | 11/15/2015 | |
-| **GUI-XLTTBANK-02** | Kiểm tra input Số tài khoản | 1. Truy cập /user/checkout<br>2. Mở form chuyển khoản<br>3. Kiểm tra input | Hiển thị Input với label "Số tài khoản ngân hàng", có thể nhập số | | Pass | 11/15/2015 | |
-| **GUI-XLTTBANK-03** | Kiểm tra input Tên chủ tài khoản | 1. Truy cập /user/checkout<br>2. Mở form chuyển khoản<br>3. Kiểm tra input | Hiển thị Input với label "Tên chủ tài khoản", có thể nhập text | | Pass | 11/15/2015 | |
-| **GUI-XLTTBANK-04** | Kiểm tra dropdown Ngân hàng | 1. Truy cập /user/checkout<br>2. Mở form chuyển khoản<br>3. Kiểm tra dropdown | Hiển thị Select với label "Tên ngân hàng", các option: Vietcombank, BIDV, Agribank, ... | | Pass | 11/15/2015 | |
-| **GUI-XLTTBANK-05** | Kiểm tra input Nội dung chuyển khoản | 1. Truy cập /user/checkout<br>2. Mở form chuyển khoản<br>3. Kiểm tra input | Hiển thị Input với label "Nội dung chuyển khoản", có thể nhập text, hiển thị mã đơn hàng mặc định | | Pass | 11/15/2015 | |
+| **GUI-XTTTGH-01** | Kiểm tra tiêu đề thông tin | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thông tin vận chuyển" hoặc "Thông tin giao hàng" | | Pass | 11/15/2015 | |
+| **GUI-XTTTGH-02** | Kiểm tra card Phí vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra card | Hiển thị card với thông tin phí vận chuyển: Miễn phí điều kiện, Phí tiêu chuẩn, Phí giao hàng nhanh | | Pass | 11/15/2015 | |
+| **GUI-XTTTGH-03** | Kiểm tra card Thời gian giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra card | Hiển thị card với thông tin: TP.HCM (1-2 ngày), Các tỉnh khác (3-5 ngày), Vùng sâu vùng xa (5-7 ngày) | | Pass | 11/15/2015 | |
+| **GUI-XTTTGH-04** | Kiểm tra card Địa chỉ giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra card | Hiển thị card với thông tin: Tên người nhận, Số điện thoại, Địa chỉ chi tiết, Ghi chú giao hàng | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xử lý thanh toán Banking
+### Check FUNC: Xem thông tin giao hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XLTTBANK-01** | Đặt hàng Banking | 1. Truy cập /user/checkout<br>2. Chọn Banking<br>3. Click "Đặt hàng"<br>4. Kiểm tra kết quả | Hiển thị form chuyển khoản với thông tin: số tài khoản, tên chủ tài khoản, ngân hàng, nội dung chuyển khoản (mã đơn hàng), hướng dẫn thanh toán | | Untested | 11/15/2015 | |
-| **FUNC-XLTTBANK-02** | Hiển thị thông tin chuyển khoản | 1. Truy cập /user/checkout<br>2. Đặt hàng Banking<br>3. Kiểm tra thông tin | Hiển thị đầy đủ thông tin chuyển khoản: số tài khoản, tên chủ tài khoản, ngân hàng, số tiền, nội dung chuyển khoản | | Pass | 11/15/2015 | |
-| **FUNC-XLTTBANK-03** | Xác nhận thanh toán Banking | 1. Truy cập /user/checkout<br>2. Đặt hàng Banking<br>3. Thực hiện chuyển khoản<br>4. Xác nhận thanh toán<br>5. Kiểm tra kết quả | Đơn hàng được xác nhận sau khi xác nhận thanh toán, trạng thái đơn hàng chuyển thành "Đã thanh toán" | | Untested | 11/15/2015 | |
-
----
-
-### Function: Xử lý thanh toán E-wallet
-
-#### Check GUI: Xử lý thanh toán E-wallet
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XLTTEW-01** | Kiểm tra QR Code | 1. Truy cập /user/checkout<br>2. Chọn E-wallet<br>3. Click "Đặt hàng"<br>4. Kiểm tra QR | Hiển thị hình ảnh mã QR thanh toán với số tiền và thông tin đơn hàng | | Pass | 11/15/2015 | |
-| **GUI-XLTTEW-02** | Kiểm tra link thanh toán | 1. Truy cập /user/checkout<br>2. Chọn E-wallet<br>3. Click "Đặt hàng"<br>4. Kiểm tra link | Hiển thị nút "Thanh toán qua ví điện tử" với link đến trang thanh toán của ví | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xử lý thanh toán E-wallet
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XLTTEW-01** | Đặt hàng E-wallet | 1. Truy cập /user/checkout<br>2. Chọn E-wallet<br>3. Click "Đặt hàng"<br>4. Kiểm tra kết quả | Hiển thị mã QR hoặc link thanh toán, người dùng có thể quét QR hoặc click link để thanh toán | | Untested | 11/15/2015 | |
-| **FUNC-XLTTEW-02** | Thanh toán E-wallet thành công | 1. Truy cập /user/checkout<br>2. Đặt hàng E-wallet<br>3. Thanh toán qua ví điện tử thành công<br>4. Kiểm tra kết quả | Đơn hàng được tự động xác nhận, trạng thái đơn hàng chuyển thành "Đã thanh toán", trạng thái thanh toán = "Đã thanh toán", chuyển đến trang theo dõi đơn hàng | | Untested | 11/15/2015 | |
-| **FUNC-XLTTEW-03** | Thanh toán E-wallet thất bại | 1. Truy cập /user/checkout<br>2. Đặt hàng E-wallet<br>3. Thanh toán thất bại<br>4. Kiểm tra kết quả | Hiển thị thông báo lỗi "Thanh toán thất bại", đơn hàng được giữ ở trạng thái "Chờ thanh toán", có thể thử lại | | Untested | 11/15/2015 | |
-
----
-
-### Function: Theo dõi trạng thái thanh toán
-
-#### Check GUI: Theo dõi trạng thái thanh toán
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TDTTTT-01** | Kiểm tra trạng thái đơn hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra trạng thái | Hiển thị "Trạng thái đơn hàng:" với badge trạng thái (Chờ xử lý, Đang chuẩn bị, Đang giao hàng, Đã giao hàng, Đã hủy) | | Pass | 11/15/2015 | |
-| **GUI-TDTTTT-02** | Kiểm tra trạng thái thanh toán | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra trạng thái | Hiển thị "Trạng thái thanh toán:" với badge trạng thái (Chờ thanh toán, Đã thanh toán, Thanh toán thất bại) | | Pass | 11/15/2015 | |
-| **GUI-TDTTTT-03** | Kiểm tra timeline lịch sử trạng thái | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra timeline | Hiển thị timeline các thay đổi trạng thái theo thời gian, bao gồm cả trạng thái thanh toán | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Theo dõi trạng thái thanh toán
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TDTTTT-01** | Hiển thị trạng thái thanh toán | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra trạng thái | Hiển thị trạng thái thanh toán hiện tại: Chờ thanh toán, Đã thanh toán, Thanh toán thất bại, với badge màu sắc tương ứng | | Pass | 11/15/2015 | |
-| **FUNC-TDTTTT-02** | Cập nhật trạng thái thanh toán real-time | 1. Truy cập /user/orders/track/[id]<br>2. Trạng thái thanh toán thay đổi<br>3. Kiểm tra cập nhật | Trạng thái thanh toán được cập nhật ngay lập tức, badge được cập nhật màu sắc và text | | Untested | 11/15/2015 | |
-| **FUNC-TDTTTT-03** | Hiển thị lịch sử trạng thái thanh toán | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra timeline | Timeline hiển thị các mốc: Chờ thanh toán, Đã thanh toán, Thanh toán thất bại, với thời gian cụ thể | | Pass | 11/15/2015 | |
-| **FUNC-TDTTTT-04** | Thông báo cập nhật trạng thái thanh toán | 1. Truy cập /user/orders/track/[id]<br>2. Trạng thái thanh toán thay đổi<br>3. Kiểm tra thông báo | Hiển thị thông báo notification real-time khi trạng thái thanh toán thay đổi, có thể gửi qua email, SMS, push notification | | Untested | 11/15/2015 | |
-| **FUNC-TDTTTT-05** | Xử lý lỗi thanh toán | 1. Truy cập /user/checkout<br>2. Thanh toán thất bại<br>3. Kiểm tra xử lý | Hiển thị thông báo lỗi cụ thể, hướng dẫn khắc phục, đơn hàng được giữ ở trạng thái "Chờ thanh toán" để thử lại | | Untested | 11/15/2015 | |
+| **FUNC-XTTTGH-01** | Hiển thị thông tin giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: phí vận chuyển, thời gian giao hàng, địa chỉ giao hàng, các thông tin liên quan | | Pass | 11/15/2015 | |
+| **FUNC-XTTTGH-02** | Hiển thị phí vận chuyển | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra phí | Hiển thị: Miễn phí cho đơn từ 500.000 VNĐ, Phí tiêu chuẩn 30.000 VNĐ cho đơn dưới 500.000 VNĐ, Phí giao hàng nhanh 50.000 VNĐ | | Pass | 11/15/2015 | |
+| **FUNC-XTTTGH-03** | Hiển thị thời gian giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra thời gian | Hiển thị: TP.HCM (1-2 ngày làm việc), Các tỉnh khác (3-5 ngày làm việc), Vùng sâu vùng xa (5-7 ngày làm việc) | | Pass | 11/15/2015 | |
+| **FUNC-XTTTGH-04** | Hiển thị địa chỉ giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra địa chỉ | Hiển thị đầy đủ: Tên người nhận, Số điện thoại, Địa chỉ chi tiết, Ghi chú giao hàng (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-XTTTGH-05** | Cập nhật thông tin real-time | 1. Truy cập /user/orders/track/[id]<br>2. Thông tin giao hàng thay đổi<br>3. Kiểm tra cập nhật | Thông tin được cập nhật real-time từ hệ thống đơn vị vận chuyển, hiển thị ngay lập tức khi có thay đổi | | Untested | 11/15/2015 | |
+| **FUNC-XTTTGH-06** | Hiển thị điều kiện giao hàng | 1. Truy cập /user/orders/track/[id]<br>2. Kiểm tra điều kiện | Hiển thị rõ ràng: phạm vi giao hàng, thời gian giao hàng theo khu vực, phí vận chuyển, điều kiện đặc biệt | | Pass | 11/15/2015 | |
+| **FUNC-XTTTGH-07** | Hiển thị thông tin trong chi tiết đơn hàng | 1. Truy cập /user/account/orders/[id]<br>2. Kiểm tra thông tin giao hàng | Hiển thị card "Thông tin giao hàng" với đầy đủ: Tên người nhận, Số điện thoại, Địa chỉ, Ghi chú | | Pass | 11/15/2015 | |
 
 ---
 
