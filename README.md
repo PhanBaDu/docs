@@ -18,9 +18,9 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 0 |
+| **Pass** | 20 |
 | **Fail** | 0 |
-| **Untested** | 38 |
+| **Untested** | 18 |
 | **N/A** | 0 |
 | **Number of Test cases** | 38 |
 
@@ -34,19 +34,19 @@
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra biểu tượng Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra biểu tượng Shield | Hiển thị biểu tượng Shield trong vùng header, nằm trong vòng tròn với background primary/10 | | Untested | | |
-| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" với font size 2xl, font bold | | Untested | | |
-| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | | Untested | | |
-| **GUI-DN-04** | Kiểm tra trường Email | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", thuộc tính required | | Untested | | |
-| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", thuộc tính required | | Untested | | |
-| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Untested | | |
-| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" màu primary, có hover underline, nằm bên phải | | Untested | | |
-| **GUI-DN-08** | Kiểm tra nút Đăng nhập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, full width, màu primary | | Untested | | |
-| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, uppercase, text-muted-foreground | | Untested | | |
-| **GUI-DN-10** | Kiểm tra link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link chuyển User | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft, màu primary, hover underline | | Untested | | |
-| **GUI-DN-11** | Kiểm tra thông báo quyền truy cập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo cuối trang | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" màu muted-foreground, text-sm | | Untested | | |
-| **GUI-DN-12** | Kiểm tra background gradient | 1. Truy cập /admin/auth/login<br>2. Kiểm tra background | Hiển thị background gradient từ primary/5 đến secondary/5 | | Untested | | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container với max-width md, centered, có padding | | Untested | | |
+| **GUI-DN-01** | Kiểm tra biểu tượng Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra biểu tượng Shield | Hiển thị biểu tượng Shield trong vùng header, nằm trong vòng tròn | | Pass | | |
+| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" | | Pass | | |
+| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" | | Pass | | |
+| **GUI-DN-04** | Kiểm tra trường Email | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin", input type email với placeholder "admin@modelshop.com", có thuộc tính required | | Pass | | |
+| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", có thuộc tính required | | Pass | | |
+| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Pass | | |
+| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" có thể click, nằm bên phải | | Pass | | |
+| **GUI-DN-08** | Kiểm tra nút Đăng nhập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, chiếm toàn bộ chiều rộng form | | Pass | | |
+| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | | |
+| **GUI-DN-10** | Kiểm tra link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link chuyển User | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft bên trái, có thể click | | Pass | | |
+| **GUI-DN-11** | Kiểm tra thông báo quyền truy cập | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo cuối trang | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" ở cuối trang, căn giữa | | Pass | | |
+| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background, card container nằm giữa màn hình, form đăng nhập bên trong card | | Pass | | |
+| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có giới hạn chiều rộng tối đa | | Pass | | |
 
 ---
 
@@ -54,19 +54,19 @@
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: biểu tượng Shield, tiêu đề, mô tả, 2 trường nhập (Email, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập, separator, link chuyển User | | Untested | | |
+| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: biểu tượng Shield, tiêu đề "Đăng nhập Admin", mô tả "Đăng nhập vào hệ thống quản trị", 2 trường nhập (Email Admin, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập, separator "Hoặc", link chuyển User | | Pass | | |
 | **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ (VD: admin@modelshop.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập | Hệ thống xác thực thông tin, chuyển đến trang dashboard admin (/admin), lưu phiên đăng nhập và lưu token, hiển thị thông báo thành công | | Untested | | |
 | **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /admin/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | | |
 | **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Untested | | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Untested | | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message, form không được gửi | | Untested | | |
-| **FUNC-DN-08** | Đăng nhập với email không có @ | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu ký tự @ (VD: "adminmodelshop.com")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Untested | | |
-| **FUNC-DN-09** | Đăng nhập với email thiếu domain | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu domain (VD: "admin@")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Untested | | |
-| **FUNC-DN-10** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn (VD: 30 ngày), khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | | |
-| **FUNC-DN-11** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn (VD: session), khi đóng trình duyệt sẽ đăng xuất | | Untested | | |
-| **FUNC-DN-12** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password | | Untested | | |
-| **FUNC-DN-13** | Nhấn link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login | | Untested | | |
+| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | | |
+| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | | |
+| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message, form không được gửi | | Pass | | |
+| **FUNC-DN-08** | Đăng nhập với email không có @ | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu ký tự @ (VD: "adminmodelshop.com")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Pass | | |
+| **FUNC-DN-09** | Đăng nhập với email thiếu domain | 1. Truy cập /admin/auth/login<br>2. Nhập email thiếu domain (VD: "admin@")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo validation, form không được gửi | | Pass | | |
+| **FUNC-DN-10** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn, khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | | |
+| **FUNC-DN-11** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn, khi đóng trình duyệt sẽ đăng xuất | | Untested | | |
+| **FUNC-DN-12** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password | | Pass | | |
+| **FUNC-DN-13** | Nhấn link chuyển sang User | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login | | Pass | | |
 | **FUNC-DN-14** | Submit form bằng phím Enter | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập | | Untested | | |
 | **FUNC-DN-15** | Đăng nhập với tài khoản chưa kích hoạt | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản chưa kích hoạt<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email để kích hoạt tài khoản", không chuyển trang | | Untested | | |
 | **FUNC-DN-16** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /admin/auth/login<br>2. Nhập email tài khoản bị khóa<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên", không chuyển trang | | Untested | | |
