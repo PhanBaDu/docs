@@ -1,17 +1,13 @@
-# BLACKBOX TEST CASE - BÁO CÁO VÀ THỐNG KÊ (ADMIN)
+# BLACKBOX TEST CASE - BẢO MẬT (ADMIN)
 
 ## HEADER SECTION
 
-**Module Code:** Báo cáo và thống kê Admin
+**Module Code:** Bảo mật Admin
 
 **Test requirement:**
-1. Xem báo cáo doanh thu
-2. Xem báo cáo chi phí
-3. Xem báo cáo lợi nhuận
-4. Xem sản phẩm bán chạy
-5. Xem thống kê khách hàng
-6. Xem báo cáo tồn kho
-7. Tạo báo cáo tùy chỉnh
+1. Khôi phục mật khẩu
+2. Lịch sử đăng nhập
+3. Xóa phiên đăng nhập
 
 **Tester:** [Tên tester]
 
@@ -19,7 +15,7 @@
 
 | Pass | Fail | Untested | N/A | Number of Test cases |
 |------|------|----------|-----|---------------------|
-| 86 | 0 | 0 | 0 | 86 |
+| 43 | 0 | 0 | 0 | 43 |
 
 ---
 
@@ -27,113 +23,58 @@
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Test-case rate | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|----------------|--------|-----------|------|
-| **Function: Xem báo cáo doanh thu** |
-| **Check GUI: Xem báo cáo doanh thu** |
-| GUI-BaoCaoDT-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo doanh thu" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-03 | Check [Bộ lọc kênh] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc kênh] | Status: visible, enable, Options: Tất cả, COD, Banking, E-wallet | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-04 | Check [Biểu đồ doanh thu] Chart | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng doanh thu | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-07 | Check [Export] Button | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra nút [Export] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo doanh thu** |
-| FUNC-BaoCaoDT-01 | Mở màn hình báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue` hoặc click [Báo cáo & Thống kê] > [Xem doanh thu] | Hiển thị màn hình báo cáo doanh thu với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-03 | Lọc báo cáo theo kênh thanh toán | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn kênh từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo kênh đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-04 | Lọc báo cáo theo thời gian tùy chỉnh | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn "Tùy chỉnh"<br>3. Chọn khoảng ngày<br>4. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng ngày đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-05 | Hiển thị biểu đồ doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng doanh thu chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-06 | Hiển thị tổng doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card tổng doanh thu | Hiển thị tổng doanh thu chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-07 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-08 | Export báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Click [Export] | File Excel/PDF được tải xuống với báo cáo doanh thu | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo chi phí** |
-| **Check GUI: Xem báo cáo chi phí** |
-| GUI-BaoCaoCP-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo chi phí" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-03 | Check [Bộ lọc loại chi phí] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc loại chi phí] | Status: visible, enable, Options: Tất cả, Nhập hàng, Vận chuyển, Marketing, Khác | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-04 | Check [Biểu đồ chi phí] Chart | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng chi phí | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-05 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Loại chi phí, Số tiền, Mô tả | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo chi phí** |
-| FUNC-BaoCaoCP-01 | Mở màn hình báo cáo chi phí | 1. Truy cập `/admin/reports/expenses` hoặc click [Báo cáo & Thống kê] > [Xem chi phí] | Hiển thị màn hình báo cáo chi phí với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-03 | Lọc báo cáo theo loại chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn loại chi phí từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo loại chi phí đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-04 | Hiển thị biểu đồ chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng chi phí chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-05 | Hiển thị tổng chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card tổng chi phí | Hiển thị tổng chi phí chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Loại chi phí, Số tiền, Mô tả | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo lợi nhuận** |
-| **Check GUI: Xem báo cáo lợi nhuận** |
-| GUI-BaoCaoLN-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo lợi nhuận" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-03 | Check [Biểu đồ lợi nhuận] Chart | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng lợi nhuận | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-04 | Check [Tổng lợi nhuận] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-06 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | | |
-| GUI-BaoCaoLN-07 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo lợi nhuận** |
-| FUNC-BaoCaoLN-01 | Mở màn hình báo cáo lợi nhuận | 1. Truy cập `/admin/reports/profit` hoặc click [Báo cáo & Thống kê] > [Xem lợi nhuận] | Hiển thị màn hình báo cáo lợi nhuận với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/profit`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-03 | Hiển thị biểu đồ lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng lợi nhuận chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-04 | Tính toán lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tổng lợi nhuận | Tổng lợi nhuận = Tổng doanh thu - Tổng chi phí (tính toán chính xác) | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-05 | Hiển thị tổng doanh thu và chi phí | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra các card | Hiển thị tổng doanh thu và tổng chi phí chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | Pass | 11/15/2025 | |
-| **Function: Xem sản phẩm bán chạy** |
-| **Check GUI: Xem sản phẩm bán chạy** |
-| GUI-SPBC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Sản phẩm bán chạy" | | Pass | 11/15/2025 | |
-| GUI-SPBC-02 | Check [Khoảng thời gian] Select | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra dropdown [Khoảng thời gian] | Status: visible, enable, Options: Hôm nay, Tuần, Tháng, Năm | | Pass | 11/15/2025 | |
-| GUI-SPBC-03 | Check [Bảng xếp hạng] Table | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, SL bán, Doanh thu, Tỷ trọng | | Pass | 11/15/2025 | |
-| GUI-SPBC-04 | Check [Biểu đồ tỉ trọng] Chart | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Pie/Donut, Hiển thị tỷ trọng doanh thu | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem sản phẩm bán chạy** |
-| FUNC-SPBC-01 | Mở màn hình sản phẩm bán chạy | 1. Truy cập `/admin/reports/top-products` hoặc click [Báo cáo & Thống kê] > [Sản phẩm bán chạy] | Hiển thị màn hình sản phẩm bán chạy với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-SPBC-02 | Lọc theo khoảng thời gian | 1. Truy cập `/admin/reports/top-products`<br>2. Chọn khoảng thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng xếp hạng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-SPBC-03 | Hiển thị bảng xếp hạng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, SL bán, Doanh thu, Tỷ trọng, xếp hạng theo doanh số | | Pass | 11/15/2025 | |
-| FUNC-SPBC-04 | Hiển thị biểu đồ tỉ trọng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tỷ trọng doanh thu của từng sản phẩm chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-SPBC-05 | Xếp hạng theo doanh thu | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo doanh thu từ cao xuống thấp | | Pass | 11/15/2025 | |
-| FUNC-SPBC-06 | Xếp hạng theo số lượng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo số lượng bán từ cao xuống thấp | | Pass | 11/15/2025 | |
-| **Function: Xem thống kê khách hàng** |
-| **Check GUI: Xem thống kê khách hàng** |
-| GUI-TKKH-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Thống kê khách hàng" | | Pass | 11/15/2025 | |
-| GUI-TKKH-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Tuần, Tháng, Quý, Năm | | Pass | 11/15/2025 | |
-| GUI-TKKH-03 | Check [Chỉ số tổng quan] Cards | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Status: visible, Hiển thị: Khách mới, Khách VIP, AOV, Tần suất mua | | Pass | 11/15/2025 | |
-| GUI-TKKH-04 | Check [Bảng khách hàng] Table | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Status: visible, Columns: Tên, Email, Số đơn, Tổng chi tiêu, Hạng | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem thống kê khách hàng** |
-| FUNC-TKKH-01 | Mở màn hình thống kê khách hàng | 1. Truy cập `/admin/reports/customers` hoặc click [Báo cáo & Thống kê] > [Thống kê khách hàng] | Hiển thị màn hình thống kê khách hàng với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-TKKH-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/customers`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Chỉ số tổng quan và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-TKKH-03 | Hiển thị chỉ số tổng quan | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Hiển thị đầy đủ: Khách mới, Khách VIP, AOV (Average Order Value), Tần suất mua, tính toán chính xác | | Pass | 11/15/2025 | |
-| FUNC-TKKH-04 | Hiển thị bảng khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Tên, Email, Số đơn, Tổng chi tiêu, Hạng thành viên | | Pass | 11/15/2025 | |
-| FUNC-TKKH-05 | Tính toán KPI khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra chỉ số | KPI được tính toán chính xác theo bộ lọc: Khách mới, Khách VIP, AOV, Tần suất mua | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo tồn kho** |
-| **Check GUI: Xem báo cáo tồn kho** |
-| GUI-BaoCaoTK-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo tồn kho" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-03 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Còn hàng, Sắp hết, Hết hàng | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-04 | Check [Bảng báo cáo] Table | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-05 | Check [Biểu đồ tồn kho] Chart | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Bar, Hiển thị tình trạng tồn kho | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo tồn kho** |
-| FUNC-BaoCaoTK-01 | Mở màn hình báo cáo tồn kho | 1. Truy cập `/admin/reports/inventory` hoặc click [Báo cáo & Thống kê] > [Báo cáo tồn kho] | Hiển thị màn hình báo cáo tồn kho với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-03 | Lọc theo trạng thái | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn trạng thái từ dropdown<br>3. Kiểm tra kết quả | Bảng được cập nhật theo trạng thái đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-04 | Hiển thị bảng báo cáo | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-05 | Hiển thị cảnh báo sản phẩm sắp hết | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Sản phẩm sắp hết được đánh dấu và cảnh báo rõ ràng | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-06 | Hiển thị biểu đồ tồn kho | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tình trạng tồn kho chính xác, trực quan | | Pass | 11/15/2025 | |
-| **Function: Tạo báo cáo tùy chỉnh** |
-| **Check GUI: Tạo báo cáo tùy chỉnh** |
-| GUI-BaoCaoTC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo nâng cao" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-02 | Check [Form tạo báo cáo] Form | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra form | Status: visible, Hiển thị form tạo báo cáo tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-03 | Check [Loại báo cáo] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Doanh thu, Chi phí, Lợi nhuận, Sản phẩm, Khách hàng, Tồn kho | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-04 | Check [Khoảng thời gian] Date Range | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra date range | Status: visible, enable, Type: date range | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-05 | Check [Bộ lọc bổ sung] Checkbox Group | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra checkbox group | Status: visible, enable, Options: Theo sản phẩm, Theo khách hàng, Theo kênh thanh toán | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-06 | Check [Định dạng xuất] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Excel, PDF, CSV | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-07 | Check [Tạo báo cáo] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Tạo báo cáo] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-08 | Check [Hủy] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Hủy] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Tạo báo cáo tùy chỉnh** |
-| FUNC-BaoCaoTC-01 | Mở màn hình tạo báo cáo tùy chỉnh | 1. Truy cập `/admin/reports/advanced` hoặc click [Báo cáo & Thống kê] > [Báo cáo nâng cao] | Hiển thị form tạo báo cáo tùy chỉnh với các trường trống | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-02 | Tạo báo cáo tùy chỉnh thành công | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn loại báo cáo<br>3. Chọn khoảng thời gian<br>4. Chọn bộ lọc bổ sung (nếu có)<br>5. Chọn định dạng xuất<br>6. Click [Tạo báo cáo] | Báo cáo được tạo thành công, file được tải xuống với định dạng đã chọn, thông báo xác nhận | | Pass | 11/15/2025 | | |
-| FUNC-BaoCaoTC-03 | Tạo báo cáo không chọn loại báo cáo | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn loại báo cáo<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn loại báo cáo" | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-04 | Tạo báo cáo không chọn khoảng thời gian | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn khoảng thời gian<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn khoảng thời gian" | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-05 | Tạo báo cáo với bộ lọc bổ sung | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn bộ lọc bổ sung<br>3. Click [Tạo báo cáo] | Báo cáo được tạo với bộ lọc bổ sung đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-06 | Export báo cáo Excel | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng Excel<br>3. Click [Tạo báo cáo] | File Excel được tải xuống với báo cáo đầy đủ | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-07 | Export báo cáo PDF | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng PDF<br>3. Click [Tạo báo cáo] | File PDF được tải xuống với báo cáo đầy đủ | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-08 | Click nút Hủy | 1. Truy cập `/admin/reports/advanced`<br>2. Điền một số thông tin<br>3. Click [Hủy] | Form được reset, không tạo báo cáo | | Pass | 11/15/2025 | |
+| **Function: Khôi phục mật khẩu** |
+| **Check GUI: Khôi phục mật khẩu** |
+| GUI-KhoiPhucMK-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Khôi phục mật khẩu Admin" | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-02 | Check [Mô tả chức năng] Text | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra mô tả | Status: visible, Text: "Gửi link khôi phục qua email/SMS" | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-03 | Check [Form khôi phục] Form | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra form | Status: visible, Hiển thị form nhập email | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-04 | Check [Ô nhập email] Input | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra ô [Email] | Status: visible, enable, Type: email | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-05 | Check [Gửi link khôi phục] Button | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra nút [Gửi link khôi phục] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-06 | Check [Quay lại đăng nhập] Button | 1. Truy cập `/admin/auth/forgot-password`<br>2. Kiểm tra nút [Quay lại đăng nhập] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-KhoiPhucMK-07 | Check [Thông báo thành công] Toast | 1. Truy cập `/admin/auth/forgot-password`<br>2. Gửi link thành công<br>3. Kiểm tra toast | Status: visible, Text: "Email khôi phục mật khẩu đã được gửi!" | | Pass | 11/15/2025 | |
+| **Check FUNC: Khôi phục mật khẩu** |
+| FUNC-KhoiPhucMK-01 | Mở màn hình khôi phục mật khẩu | 1. Truy cập `/admin/auth/forgot-password` hoặc click [Quên mật khẩu?] từ trang đăng nhập | Hiển thị màn hình khôi phục mật khẩu với form nhập email | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-02 | Gửi link khôi phục với email hợp lệ | 1. Truy cập `/admin/auth/forgot-password`<br>2. Nhập email hợp lệ đã đăng ký<br>3. Click [Gửi link khôi phục] | Email khôi phục được gửi thành công, token được tạo (1 lần, có thời hạn), thông báo thành công hiển thị | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-03 | Gửi link khôi phục với email không tồn tại | 1. Truy cập `/admin/auth/forgot-password`<br>2. Nhập email không tồn tại<br>3. Click [Gửi link khôi phục] | Hiển thị thông báo lỗi: "Email không tồn tại trong hệ thống" | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-04 | Gửi link khôi phục với email không đúng định dạng | 1. Truy cập `/admin/auth/forgot-password`<br>2. Nhập email không đúng định dạng<br>3. Click [Gửi link khôi phục] | Hiển thị thông báo lỗi: "Email không đúng định dạng" | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-05 | Tạo token khôi phục | 1. Truy cập `/admin/auth/forgot-password`<br>2. Gửi link khôi phục thành công | Token được tạo, chỉ sử dụng được 1 lần, có thời hạn sử dụng | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-06 | Gửi yêu cầu khôi phục quá thường xuyên | 1. Truy cập `/admin/auth/forgot-password`<br>2. Gửi link khôi phục nhiều lần liên tiếp | Hiển thị thông báo: "Vui lòng đợi X phút trước khi yêu cầu lại" | | Pass | 11/15/2025 | |
+| FUNC-KhoiPhucMK-07 | Click nút Quay lại đăng nhập | 1. Truy cập `/admin/auth/forgot-password`<br>2. Click [Quay lại đăng nhập] | Chuyển về trang đăng nhập | | Pass | 11/15/2025 | |
+| **Function: Lịch sử đăng nhập** |
+| **Check GUI: Lịch sử đăng nhập** |
+| GUI-LSDN-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Lịch sử đăng nhập Admin" | | Pass | 11/15/2025 | |
+| GUI-LSDN-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Tất cả, Tuần này, Tháng này, 3 tháng gần đây | | Pass | 11/15/2025 | |
+| GUI-LSDN-03 | Check [Bộ lọc thiết bị] Select | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra dropdown [Bộ lọc thiết bị] | Status: visible, enable, Options: Tất cả, Desktop, Mobile, Tablet | | Pass | 11/15/2025 | |
+| GUI-LSDN-04 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Thành công, Thất bại | | Pass | 11/15/2025 | |
+| GUI-LSDN-05 | Check [Bảng lịch sử] Table | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra bảng | Status: visible, Columns: Thời gian, IP, Thiết bị, OS, Trình duyệt, Vị trí, Trạng thái | | Pass | 11/15/2025 | |
+| GUI-LSDN-06 | Check [Badge đăng nhập lạ] Badge | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra badge | Status: visible, Hiển thị badge "Đăng nhập lạ" cho các phiên đăng nhập từ thiết bị mới hoặc vị trí mới | | Pass | 11/15/2025 | |
+| GUI-LSDN-07 | Check [Phân trang] Pagination | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra phân trang | Status: visible, enable | | Pass | 11/15/2025 | |
+| **Check FUNC: Lịch sử đăng nhập** |
+| FUNC-LSDN-01 | Mở màn hình lịch sử đăng nhập | 1. Truy cập `/admin/security/login-history` hoặc click [Bảo mật] > [Lịch sử đăng nhập] | Hiển thị màn hình lịch sử đăng nhập với đầy đủ thông tin | | Pass | 11/15/2025 | |
+| FUNC-LSDN-02 | Hiển thị lịch sử đăng nhập | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Thời gian, IP, Thiết bị, OS, Trình duyệt, Vị trí, Trạng thái | | Pass | 11/15/2025 | |
+| FUNC-LSDN-03 | Lọc theo thời gian | 1. Truy cập `/admin/security/login-history`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Danh sách được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
+| FUNC-LSDN-04 | Lọc theo thiết bị | 1. Truy cập `/admin/security/login-history`<br>2. Chọn thiết bị từ dropdown<br>3. Kiểm tra kết quả | Danh sách được cập nhật theo thiết bị đã chọn | | Pass | 11/15/2025 | |
+| FUNC-LSDN-05 | Lọc theo trạng thái | 1. Truy cập `/admin/security/login-history`<br>2. Chọn trạng thái từ dropdown<br>3. Kiểm tra kết quả | Danh sách được cập nhật theo trạng thái đã chọn | | Pass | 11/15/2025 | |
+| FUNC-LSDN-06 | Phát hiện đăng nhập lạ | 1. Truy cập `/admin/security/login-history`<br>2. Kiểm tra các phiên đăng nhập | Đăng nhập từ thiết bị mới hoặc vị trí mới được đánh dấu với badge "Đăng nhập lạ" | | Pass | 11/15/2025 | |
+| FUNC-LSDN-07 | Gửi thông báo đăng nhập lạ | 1. Truy cập `/admin/security/login-history`<br>2. Có đăng nhập lạ mới<br>3. Kiểm tra thông báo | Thông báo được gửi qua email/SMS để cảnh báo admin về đăng nhập lạ | | Pass | 11/15/2025 | |
+| FUNC-LSDN-08 | Phân trang lịch sử đăng nhập | 1. Truy cập `/admin/security/login-history`<br>2. Click nút phân trang | Hiển thị trang tiếp theo của lịch sử đăng nhập | | Pass | 11/15/2025 | |
+| **Function: Xóa phiên đăng nhập** |
+| **Check GUI: Xóa phiên đăng nhập** |
+| GUI-XoaPDN-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Quản lý phiên đăng nhập Admin" | | Pass | 11/15/2025 | |
+| GUI-XoaPDN-02 | Check [Phiên hiện tại] Card | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra card | Status: visible, Hiển thị: Thiết bị, Thời gian, IP, Vị trí | | Pass | 11/15/2025 | |
+| GUI-XoaPDN-03 | Check [Danh sách phiên khác] List | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra danh sách | Status: visible, Hiển thị: Thiết bị, OS, Trình duyệt, Hoạt động cuối, Trạng thái | | Pass | 11/15/2025 | |
+| GUI-XoaPDN-04 | Check [Xóa phiên] Button | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra nút [Xóa phiên] trong mỗi phiên | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-XoaPDN-05 | Check [Đăng xuất tất cả thiết bị] Button | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra nút [Đăng xuất tất cả thiết bị] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-XoaPDN-06 | Check [Modal xác nhận] Dialog | 1. Truy cập `/admin/security/sessions`<br>2. Click [Xóa phiên] hoặc [Đăng xuất tất cả]<br>3. Kiểm tra modal | Status: visible, Hiển thị form xác nhận | | Pass | 11/15/2025 | |
+| **Check FUNC: Xóa phiên đăng nhập** |
+| FUNC-XoaPDN-01 | Mở màn hình quản lý phiên đăng nhập | 1. Truy cập `/admin/security/sessions` hoặc click [Bảo mật] > [Quản lý phiên đăng nhập] | Hiển thị màn hình với phiên hiện tại và danh sách phiên khác | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-02 | Xem phiên hiện tại | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra card phiên hiện tại | Hiển thị đầy đủ: Thiết bị, Thời gian, IP, Vị trí | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-03 | Xem danh sách phiên khác | 1. Truy cập `/admin/security/sessions`<br>2. Kiểm tra danh sách | Hiển thị đầy đủ: Thiết bị, OS, Trình duyệt, Hoạt động cuối, Trạng thái | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-04 | Xóa một phiên đăng nhập | 1. Truy cập `/admin/security/sessions`<br>2. Click [Xóa phiên] trên một phiên<br>3. Xác nhận xóa | Phiên được xóa thành công, thiết bị bị đăng xuất, log bảo mật được lưu, thông báo xác nhận | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-05 | Đăng xuất tất cả thiết bị | 1. Truy cập `/admin/security/sessions`<br>2. Click [Đăng xuất tất cả thiết bị]<br>3. Xác nhận | Tất cả phiên trừ phiên hiện tại bị vô hiệu hóa, thông báo được gửi, log bảo mật được lưu, thông báo xác nhận | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-06 | Hủy xóa phiên | 1. Truy cập `/admin/security/sessions`<br>2. Click [Xóa phiên]<br>3. Click [Hủy] trong modal | Modal được đóng, phiên không bị xóa | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-07 | Auto logout khi hết hạn | 1. Truy cập `/admin/security/sessions`<br>2. Chờ phiên hết hạn<br>3. Kiểm tra trạng thái | Phiên tự động đăng xuất khi hết hạn (timeout), log bảo mật được lưu | | Pass | 11/15/2025 | |
+| FUNC-XoaPDN-08 | Cảnh báo trước khi hết hạn | 1. Truy cập `/admin/security/sessions`<br>2. Phiên sắp hết hạn<br>3. Kiểm tra cảnh báo | Hiển thị cảnh báo trước khi phiên hết hạn (ví dụ: "Phiên sẽ hết hạn sau X phút") | | Pass | 11/15/2025 | |
 
 ---
 
@@ -143,8 +84,10 @@
 - Routes động (có `[id]`) cần thay thế bằng ID thực tế khi test
 - Các test case GUI kiểm tra giao diện và trạng thái của các thành phần
 - Các test case FUNC kiểm tra chức năng và logic nghiệp vụ
-- Tất cả báo cáo có thể được export ra file Excel, PDF, hoặc CSV
-- Biểu đồ được hiển thị dưới dạng Line, Bar, Pie, hoặc Donut tùy theo loại báo cáo
-- Số liệu được tính toán theo thời gian thực từ dữ liệu trong hệ thống
+- Token khôi phục mật khẩu chỉ sử dụng được 1 lần và có thời hạn sử dụng
+- Hệ thống tự động phát hiện và đánh dấu đăng nhập lạ (từ thiết bị mới hoặc vị trí mới)
+- Thông báo được gửi qua email/SMS khi có đăng nhập lạ
+- Hệ thống tự động đăng xuất phiên khi hết hạn (timeout) và cảnh báo trước khi hết hạn
+- Khi xóa phiên, log bảo mật được lưu để theo dõi
 - Cần cập nhật cột Result, Test date sau khi thực hiện test
 
