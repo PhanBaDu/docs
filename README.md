@@ -1,17 +1,15 @@
-# BLACKBOX TEST CASE - BÁO CÁO VÀ THỐNG KÊ (ADMIN)
+# BLACKBOX TEST CASE - ĐẶT TRƯỚC SẢN PHẨM (USER)
 
 ## HEADER SECTION
 
-**Module Code:** Báo cáo và thống kê Admin
+**Module Code:** Đặt trước sản phẩm User
 
 **Test requirement:**
-1. Xem báo cáo doanh thu
-2. Xem báo cáo chi phí
-3. Xem báo cáo lợi nhuận
-4. Xem sản phẩm bán chạy
-5. Xem thống kê khách hàng
-6. Xem báo cáo tồn kho
-7. Tạo báo cáo tùy chỉnh
+1. Danh sách sản phẩm đã đặt trước
+2. Đặt trước sản phẩm
+3. Xem chi tiết đặt trước
+4. Hủy đặt trước
+5. Quản lý trạng thái đặt trước
 
 **Tester:** [Tên tester]
 
@@ -19,7 +17,7 @@
 
 | Pass | Fail | Untested | N/A | Number of Test cases |
 |------|------|----------|-----|---------------------|
-| 86 | 0 | 0 | 0 | 86 |
+| 73 | 0 | 0 | 0 | 73 |
 
 ---
 
@@ -27,113 +25,94 @@
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Test-case rate | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|----------------|--------|-----------|------|
-| **Function: Xem báo cáo doanh thu** |
-| **Check GUI: Xem báo cáo doanh thu** |
-| GUI-BaoCaoDT-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo doanh thu" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-03 | Check [Bộ lọc kênh] Select | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra dropdown [Bộ lọc kênh] | Status: visible, enable, Options: Tất cả, COD, Banking, E-wallet | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-04 | Check [Biểu đồ doanh thu] Chart | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng doanh thu | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | Pass | 11/15/2025 | |
-| GUI-BaoCaoDT-07 | Check [Export] Button | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra nút [Export] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo doanh thu** |
-| FUNC-BaoCaoDT-01 | Mở màn hình báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue` hoặc click [Báo cáo & Thống kê] > [Xem doanh thu] | Hiển thị màn hình báo cáo doanh thu với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-03 | Lọc báo cáo theo kênh thanh toán | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn kênh từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo kênh đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-04 | Lọc báo cáo theo thời gian tùy chỉnh | 1. Truy cập `/admin/reports/revenue`<br>2. Chọn "Tùy chỉnh"<br>3. Chọn khoảng ngày<br>4. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng ngày đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-05 | Hiển thị biểu đồ doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng doanh thu chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-06 | Hiển thị tổng doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra card tổng doanh thu | Hiển thị tổng doanh thu chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-07 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/revenue`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoDT-08 | Export báo cáo doanh thu | 1. Truy cập `/admin/reports/revenue`<br>2. Click [Export] | File Excel/PDF được tải xuống với báo cáo doanh thu | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo chi phí** |
-| **Check GUI: Xem báo cáo chi phí** |
-| GUI-BaoCaoCP-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo chi phí" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-03 | Check [Bộ lọc loại chi phí] Select | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra dropdown [Bộ lọc loại chi phí] | Status: visible, enable, Options: Tất cả, Nhập hàng, Vận chuyển, Marketing, Khác | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-04 | Check [Biểu đồ chi phí] Chart | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng chi phí | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-05 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoCP-06 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Loại chi phí, Số tiền, Mô tả | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo chi phí** |
-| FUNC-BaoCaoCP-01 | Mở màn hình báo cáo chi phí | 1. Truy cập `/admin/reports/expenses` hoặc click [Báo cáo & Thống kê] > [Xem chi phí] | Hiển thị màn hình báo cáo chi phí với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-03 | Lọc báo cáo theo loại chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Chọn loại chi phí từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo loại chi phí đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-04 | Hiển thị biểu đồ chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng chi phí chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-05 | Hiển thị tổng chi phí | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra card tổng chi phí | Hiển thị tổng chi phí chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoCP-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/expenses`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Loại chi phí, Số tiền, Mô tả | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo lợi nhuận** |
-| **Check GUI: Xem báo cáo lợi nhuận** |
-| GUI-BaoCaoLN-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo lợi nhuận" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-03 | Check [Biểu đồ lợi nhuận] Chart | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Line/Bar, Hiển thị xu hướng lợi nhuận | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-04 | Check [Tổng lợi nhuận] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-05 | Check [Tổng doanh thu] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | |
-| GUI-BaoCaoLN-06 | Check [Tổng chi phí] Card | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra card | Status: visible, Hiển thị số tiền VNĐ | | Pass | 11/15/2025 | | |
-| GUI-BaoCaoLN-07 | Check [Bảng chi tiết] Table | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Status: visible, Columns: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo lợi nhuận** |
-| FUNC-BaoCaoLN-01 | Mở màn hình báo cáo lợi nhuận | 1. Truy cập `/admin/reports/profit` hoặc click [Báo cáo & Thống kê] > [Xem lợi nhuận] | Hiển thị màn hình báo cáo lợi nhuận với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-02 | Lọc báo cáo theo thời gian | 1. Truy cập `/admin/reports/profit`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Biểu đồ và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-03 | Hiển thị biểu đồ lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị xu hướng lợi nhuận chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-04 | Tính toán lợi nhuận | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra tổng lợi nhuận | Tổng lợi nhuận = Tổng doanh thu - Tổng chi phí (tính toán chính xác) | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-05 | Hiển thị tổng doanh thu và chi phí | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra các card | Hiển thị tổng doanh thu và tổng chi phí chính xác theo bộ lọc | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoLN-06 | Hiển thị bảng chi tiết | 1. Truy cập `/admin/reports/profit`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Ngày, Doanh thu, Chi phí, Lợi nhuận, Tỷ suất lợi nhuận | | Pass | 11/15/2025 | |
-| **Function: Xem sản phẩm bán chạy** |
-| **Check GUI: Xem sản phẩm bán chạy** |
-| GUI-SPBC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Sản phẩm bán chạy" | | Pass | 11/15/2025 | |
-| GUI-SPBC-02 | Check [Khoảng thời gian] Select | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra dropdown [Khoảng thời gian] | Status: visible, enable, Options: Hôm nay, Tuần, Tháng, Năm | | Pass | 11/15/2025 | |
-| GUI-SPBC-03 | Check [Bảng xếp hạng] Table | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, SL bán, Doanh thu, Tỷ trọng | | Pass | 11/15/2025 | |
-| GUI-SPBC-04 | Check [Biểu đồ tỉ trọng] Chart | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Pie/Donut, Hiển thị tỷ trọng doanh thu | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem sản phẩm bán chạy** |
-| FUNC-SPBC-01 | Mở màn hình sản phẩm bán chạy | 1. Truy cập `/admin/reports/top-products` hoặc click [Báo cáo & Thống kê] > [Sản phẩm bán chạy] | Hiển thị màn hình sản phẩm bán chạy với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-SPBC-02 | Lọc theo khoảng thời gian | 1. Truy cập `/admin/reports/top-products`<br>2. Chọn khoảng thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng xếp hạng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-SPBC-03 | Hiển thị bảng xếp hạng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, SL bán, Doanh thu, Tỷ trọng, xếp hạng theo doanh số | | Pass | 11/15/2025 | |
-| FUNC-SPBC-04 | Hiển thị biểu đồ tỉ trọng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tỷ trọng doanh thu của từng sản phẩm chính xác, trực quan | | Pass | 11/15/2025 | |
-| FUNC-SPBC-05 | Xếp hạng theo doanh thu | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo doanh thu từ cao xuống thấp | | Pass | 11/15/2025 | |
-| FUNC-SPBC-06 | Xếp hạng theo số lượng | 1. Truy cập `/admin/reports/top-products`<br>2. Kiểm tra bảng | Sản phẩm được xếp hạng theo số lượng bán từ cao xuống thấp | | Pass | 11/15/2025 | |
-| **Function: Xem thống kê khách hàng** |
-| **Check GUI: Xem thống kê khách hàng** |
-| GUI-TKKH-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Thống kê khách hàng" | | Pass | 11/15/2025 | |
-| GUI-TKKH-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Tuần, Tháng, Quý, Năm | | Pass | 11/15/2025 | |
-| GUI-TKKH-03 | Check [Chỉ số tổng quan] Cards | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Status: visible, Hiển thị: Khách mới, Khách VIP, AOV, Tần suất mua | | Pass | 11/15/2025 | |
-| GUI-TKKH-04 | Check [Bảng khách hàng] Table | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Status: visible, Columns: Tên, Email, Số đơn, Tổng chi tiêu, Hạng | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem thống kê khách hàng** |
-| FUNC-TKKH-01 | Mở màn hình thống kê khách hàng | 1. Truy cập `/admin/reports/customers` hoặc click [Báo cáo & Thống kê] > [Thống kê khách hàng] | Hiển thị màn hình thống kê khách hàng với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-TKKH-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/customers`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Chỉ số tổng quan và bảng được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-TKKH-03 | Hiển thị chỉ số tổng quan | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra cards | Hiển thị đầy đủ: Khách mới, Khách VIP, AOV (Average Order Value), Tần suất mua, tính toán chính xác | | Pass | 11/15/2025 | |
-| FUNC-TKKH-04 | Hiển thị bảng khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Tên, Email, Số đơn, Tổng chi tiêu, Hạng thành viên | | Pass | 11/15/2025 | |
-| FUNC-TKKH-05 | Tính toán KPI khách hàng | 1. Truy cập `/admin/reports/customers`<br>2. Kiểm tra chỉ số | KPI được tính toán chính xác theo bộ lọc: Khách mới, Khách VIP, AOV, Tần suất mua | | Pass | 11/15/2025 | |
-| **Function: Xem báo cáo tồn kho** |
-| **Check GUI: Xem báo cáo tồn kho** |
-| GUI-BaoCaoTK-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo tồn kho" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-02 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-03 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Còn hàng, Sắp hết, Hết hàng | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-04 | Check [Bảng báo cáo] Table | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Status: visible, Columns: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTK-05 | Check [Biểu đồ tồn kho] Chart | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Status: visible, Type: Bar, Hiển thị tình trạng tồn kho | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem báo cáo tồn kho** |
-| FUNC-BaoCaoTK-01 | Mở màn hình báo cáo tồn kho | 1. Truy cập `/admin/reports/inventory` hoặc click [Báo cáo & Thống kê] > [Báo cáo tồn kho] | Hiển thị màn hình báo cáo tồn kho với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-02 | Lọc theo thời gian | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn thời gian từ dropdown<br>3. Kiểm tra kết quả | Bảng và biểu đồ được cập nhật theo khoảng thời gian đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-03 | Lọc theo trạng thái | 1. Truy cập `/admin/reports/inventory`<br>2. Chọn trạng thái từ dropdown<br>3. Kiểm tra kết quả | Bảng được cập nhật theo trạng thái đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-04 | Hiển thị bảng báo cáo | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Hiển thị đầy đủ: Sản phẩm, Tồn kho hiện tại, Tồn kho tối thiểu, Trạng thái, Cảnh báo | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-05 | Hiển thị cảnh báo sản phẩm sắp hết | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra bảng | Sản phẩm sắp hết được đánh dấu và cảnh báo rõ ràng | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTK-06 | Hiển thị biểu đồ tồn kho | 1. Truy cập `/admin/reports/inventory`<br>2. Kiểm tra biểu đồ | Biểu đồ hiển thị tình trạng tồn kho chính xác, trực quan | | Pass | 11/15/2025 | |
-| **Function: Tạo báo cáo tùy chỉnh** |
-| **Check GUI: Tạo báo cáo tùy chỉnh** |
-| GUI-BaoCaoTC-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Báo cáo nâng cao" | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-02 | Check [Form tạo báo cáo] Form | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra form | Status: visible, Hiển thị form tạo báo cáo tùy chỉnh | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-03 | Check [Loại báo cáo] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Doanh thu, Chi phí, Lợi nhuận, Sản phẩm, Khách hàng, Tồn kho | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-04 | Check [Khoảng thời gian] Date Range | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra date range | Status: visible, enable, Type: date range | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-05 | Check [Bộ lọc bổ sung] Checkbox Group | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra checkbox group | Status: visible, enable, Options: Theo sản phẩm, Theo khách hàng, Theo kênh thanh toán | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-06 | Check [Định dạng xuất] Select | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra dropdown | Status: visible, enable, Options: Excel, PDF, CSV | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-07 | Check [Tạo báo cáo] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Tạo báo cáo] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-BaoCaoTC-08 | Check [Hủy] Button | 1. Truy cập `/admin/reports/advanced`<br>2. Kiểm tra nút [Hủy] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Tạo báo cáo tùy chỉnh** |
-| FUNC-BaoCaoTC-01 | Mở màn hình tạo báo cáo tùy chỉnh | 1. Truy cập `/admin/reports/advanced` hoặc click [Báo cáo & Thống kê] > [Báo cáo nâng cao] | Hiển thị form tạo báo cáo tùy chỉnh với các trường trống | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-02 | Tạo báo cáo tùy chỉnh thành công | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn loại báo cáo<br>3. Chọn khoảng thời gian<br>4. Chọn bộ lọc bổ sung (nếu có)<br>5. Chọn định dạng xuất<br>6. Click [Tạo báo cáo] | Báo cáo được tạo thành công, file được tải xuống với định dạng đã chọn, thông báo xác nhận | | Pass | 11/15/2025 | | |
-| FUNC-BaoCaoTC-03 | Tạo báo cáo không chọn loại báo cáo | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn loại báo cáo<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn loại báo cáo" | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-04 | Tạo báo cáo không chọn khoảng thời gian | 1. Truy cập `/admin/reports/advanced`<br>2. Không chọn khoảng thời gian<br>3. Click [Tạo báo cáo] | Hiển thị thông báo lỗi: "Vui lòng chọn khoảng thời gian" | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-05 | Tạo báo cáo với bộ lọc bổ sung | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn bộ lọc bổ sung<br>3. Click [Tạo báo cáo] | Báo cáo được tạo với bộ lọc bổ sung đã chọn | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-06 | Export báo cáo Excel | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng Excel<br>3. Click [Tạo báo cáo] | File Excel được tải xuống với báo cáo đầy đủ | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-07 | Export báo cáo PDF | 1. Truy cập `/admin/reports/advanced`<br>2. Chọn định dạng PDF<br>3. Click [Tạo báo cáo] | File PDF được tải xuống với báo cáo đầy đủ | | Pass | 11/15/2025 | |
-| FUNC-BaoCaoTC-08 | Click nút Hủy | 1. Truy cập `/admin/reports/advanced`<br>2. Điền một số thông tin<br>3. Click [Hủy] | Form được reset, không tạo báo cáo | | Pass | 11/15/2025 | |
+| **Function: Danh sách sản phẩm đã đặt trước** |
+| **Check GUI: Danh sách sản phẩm đã đặt trước** |
+| GUI-DanhSachDT-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Đặt trước sản phẩm" | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-02 | Check [Tab trạng thái] Tabs | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tabs | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-03 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/user/borrow`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-04 | Check [Bộ lọc loại sản phẩm] Select | 1. Truy cập `/user/borrow`<br>2. Kiểm tra dropdown [Bộ lọc loại sản phẩm] | Status: visible, enable, Options: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-05 | Check [Tìm kiếm đặt trước] Input | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ô [Tìm kiếm] | Status: visible, enable, Type: text, Placeholder: "Tìm kiếm đặt trước" | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-06 | Check [Mã đặt trước] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra mã trên mỗi card | Status: visible, Hiển thị mã định danh đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-07 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tên sản phẩm | Status: visible, Hiển thị tên sản phẩm đã đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-08 | Check [Số lượng] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra số lượng | Status: visible, Hiển thị số lượng đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-09 | Check [Giá dự kiến] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra giá dự kiến | Status: visible, Hiển thị giá dự kiến của sản phẩm | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-10 | Check [Tổng tiền] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-11 | Check [Tiền cọc] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc đã đặt | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-12 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-13 | Check [Trạng thái] Badge | 1. Truy cập `/user/borrow`<br>2. Kiểm tra badge trạng thái | Status: visible, Hiển thị trạng thái xử lý | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-14 | Check [Mức độ ưu tiên] Badge | 1. Truy cập `/user/borrow`<br>2. Kiểm tra badge ưu tiên | Status: visible, Hiển thị mức độ ưu tiên | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-15 | Check [Ngày tạo] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ngày tạo | Status: visible, Hiển thị ngày tạo đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-16 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-17 | Check [Xem chi tiết] Button | 1. Truy cập `/user/borrow`<br>2. Kiểm tra nút [Xem chi tiết] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-18 | Check [Hủy đặt trước] Button | 1. Truy cập `/user/borrow`<br>2. Kiểm tra nút [Hủy đặt trước] | Status: visible, enable (nếu được phép hủy) | | Pass | 11/15/2025 | |
+| **Check FUNC: Danh sách sản phẩm đã đặt trước** |
+| FUNC-DanhSachDT-01 | Mở màn hình danh sách đặt trước | 1. Truy cập `/user/borrow` hoặc click [Đặt trước mô hình] | Hiển thị danh sách sản phẩm đã đặt trước với đầy đủ thông tin | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-02 | Lọc đặt trước theo trạng thái - Chờ xử lý | 1. Truy cập `/user/borrow`<br>2. Click tab [Chờ xử lý] hoặc chọn từ dropdown | Hiển thị chỉ đặt trước có trạng thái "Chờ xử lý" | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-03 | Lọc đặt trước theo trạng thái - Đã xác nhận | 1. Truy cập `/user/borrow`<br>2. Click tab [Đã xác nhận] | Hiển thị chỉ đặt trước có trạng thái "Đã xác nhận" | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-04 | Lọc đặt trước theo loại sản phẩm | 1. Truy cập `/user/borrow`<br>2. Chọn loại sản phẩm từ dropdown | Hiển thị chỉ đặt trước thuộc loại sản phẩm đã chọn | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-05 | Tìm kiếm đặt trước | 1. Truy cập `/user/borrow`<br>2. Nhập từ khóa vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị đặt trước chứa từ khóa (tên sản phẩm, mã đặt trước) | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-06 | Sắp xếp đặt trước theo thời gian | 1. Truy cập `/user/borrow` | Danh sách được sắp xếp theo thời gian tạo mới nhất | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-07 | Theo dõi trạng thái qua tab | 1. Truy cập `/user/borrow`<br>2. Sử dụng các tab trạng thái để lọc | Trạng thái được cập nhật real-time khi admin xử lý | | Pass | 11/15/2025 | |
+| **Function: Đặt trước sản phẩm** |
+| **Check GUI: Đặt trước sản phẩm** |
+| GUI-DatTruocSP-01 | Check [Đặt trước sản phẩm] Button | 1. Truy cập `/user/products/[id]` với sản phẩm chưa ra mắt<br>2. Kiểm tra nút [Đặt trước sản phẩm] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-02 | Check [Form đặt trước] Form | 1. Truy cập `/user/products/[id]`<br>2. Click [Đặt trước sản phẩm]<br>3. Kiểm tra form | Status: visible, Hiển thị form nhập thông tin đặt trước | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-03 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tên | Status: visible, Hiển thị tên sản phẩm muốn đặt trước | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-04 | Check [Số lượng] Input | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra input | Status: visible, enable, Type: number, Min: 1 | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-05 | Check [Giá dự kiến] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra giá | Status: visible, Hiển thị giá dự kiến của sản phẩm | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-06 | Check [Tổng tiền] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước (tự động tính) | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-07 | Check [Tiền cọc] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc cần đặt (thường 20% tổng giá) | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-08 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-09 | Check [Phương thức thanh toán] Select | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra dropdown | Status: visible, enable, Options: COD, Banking, MoMo, Credit Card | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-10 | Check [Địa chỉ giao hàng] Textarea | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra textarea | Status: visible, enable, Type: textarea | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-11 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-12 | Check [Ghi chú] Textarea | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra textarea | Status: visible, enable, Type: textarea, Optional | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-13 | Check [Mức độ ưu tiên] Select | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra dropdown | Status: visible, enable, Options: Thấp, Trung bình, Cao | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-14 | Check [Xác nhận đặt trước] Button | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra nút [Xác nhận đặt trước] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-15 | Check [Hủy] Button | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra nút [Hủy] | Status: visible, enable | | Pass | 11/15/2025 | |
+| **Check FUNC: Đặt trước sản phẩm** |
+| FUNC-DatTruocSP-01 | Mở form đặt trước sản phẩm | 1. Truy cập `/user/products/[id]` với sản phẩm chưa ra mắt<br>2. Click [Đặt trước sản phẩm] | Hiển thị form đặt trước với thông tin sản phẩm đã điền sẵn | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-02 | Tạo đặt trước thiếu Số lượng | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không nhập số lượng<br>4. Click [Xác nhận đặt trước] | Hiển thị thông báo lỗi: "Số lượng là bắt buộc" | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-03 | Tạo đặt trước thiếu Phương thức thanh toán | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không chọn phương thức thanh toán<br>4. Click [Xác nhận đặt trước] | Hiển thị thông báo lỗi: "Vui lòng chọn phương thức thanh toán" | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-04 | Tạo đặt trước thiếu Địa chỉ giao hàng | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không nhập địa chỉ<br>4. Click [Xác nhận đặt trước] | Hiển thị thông báo lỗi: "Địa chỉ giao hàng là bắt buộc" | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-05 | Tính toán giá tiền real-time | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Thay đổi số lượng | Tổng tiền, tiền cọc, và số tiền còn lại được tính lại real-time | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-06 | Tạo đặt trước với thông tin hợp lệ | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Điền đầy đủ thông tin<br>4. Click [Xác nhận đặt trước] | Đặt trước được tạo thành công, gửi đến admin, hiển thị thông báo xác nhận | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-07 | Chọn phương thức thanh toán | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Chọn phương thức từ dropdown | Phương thức thanh toán được chọn, ảnh hưởng đến cách thanh toán tiền cọc | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-08 | Chọn mức độ ưu tiên | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Chọn mức độ ưu tiên | Mức độ ưu tiên được chọn | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-09 | Click nút Hủy | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Điền một số thông tin<br>4. Click [Hủy] | Form được đóng, không lưu thông tin | | Pass | 11/15/2025 | |
+| **Function: Xem chi tiết đặt trước** |
+| **Check GUI: Xem chi tiết đặt trước** |
+| GUI-ChiTietDT-01 | Check [Mã đặt trước] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra mã | Status: visible, Hiển thị mã định danh đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-02 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tên | Status: visible, Hiển thị tên sản phẩm đã đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-03 | Check [Số lượng] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra số lượng | Status: visible, Hiển thị số lượng đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-04 | Check [Giá dự kiến] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra giá | Status: visible, Hiển thị giá dự kiến | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-05 | Check [Tổng tiền] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-06 | Check [Tiền cọc] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc đã đặt | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-07 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-08 | Check [Trạng thái] Badge | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra badge | Status: visible, Hiển thị trạng thái xử lý | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-09 | Check [Phương thức thanh toán] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra phương thức | Status: visible, Hiển thị phương thức thanh toán đã chọn | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-10 | Check [Địa chỉ giao hàng] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra địa chỉ | Status: visible, Hiển thị địa chỉ giao hàng | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-11 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-12 | Check [Ghi chú] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra ghi chú | Status: visible, Hiển thị ghi chú về đặt trước (nếu có) | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-13 | Check [Nhân viên phụ trách] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra nhân viên | Status: visible, Hiển thị tên nhân viên phụ trách (nếu có) | | Pass | 11/15/2025 | |
+| **Check FUNC: Xem chi tiết đặt trước** |
+| FUNC-ChiTietDT-01 | Mở màn hình chi tiết đặt trước | 1. Truy cập `/user/borrow/[id]` hoặc click [Xem chi tiết] từ danh sách | Hiển thị đầy đủ thông tin chi tiết về đặt trước | | Pass | 11/15/2025 | |
+| FUNC-ChiTietDT-02 | Hiển thị timeline trạng thái | 1. Truy cập `/user/borrow/[id]` | Hiển thị timeline các thay đổi trạng thái theo thời gian | | Pass | 11/15/2025 | |
+| **Function: Hủy đặt trước** |
+| **Check GUI: Hủy đặt trước** |
+| GUI-HuyDT-01 | Check [Hủy đặt trước] Button | 1. Truy cập `/user/borrow/[id]` với đặt trước có thể hủy<br>2. Kiểm tra nút [Hủy đặt trước] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-HuyDT-02 | Check [Modal xác nhận] Dialog | 1. Truy cập `/user/borrow/[id]`<br>2. Click [Hủy đặt trước]<br>3. Kiểm tra modal | Status: visible, Hiển thị form xác nhận hủy | | Pass | 11/15/2025 | |
+| **Check FUNC: Hủy đặt trước** |
+| FUNC-HuyDT-01 | Hủy đặt trước thành công | 1. Truy cập `/user/borrow/[id]` với đặt trước chưa được xác nhận<br>2. Click [Hủy đặt trước]<br>3. Xác nhận hủy | Đặt trước được hủy thành công, trạng thái "Đã hủy", hoàn tiền cọc (nếu đã thanh toán), thông báo xác nhận | | Pass | 11/15/2025 | |
+| FUNC-HuyDT-02 | Không thể hủy đặt trước đã xác nhận | 1. Truy cập `/user/borrow/[id]` với đặt trước đã được admin xác nhận<br>2. Kiểm tra nút [Hủy đặt trước] | Nút [Hủy đặt trước] không hiển thị hoặc bị vô hiệu hóa | | Pass | 11/15/2025 | |
+| FUNC-HuyDT-03 | Hoàn tiền cọc khi hủy đặt trước | 1. Truy cập `/user/borrow/[id]` với đặt trước đã thanh toán cọc<br>2. Hủy đặt trước thành công | Tiền cọc được hoàn lại, thông báo xác nhận | | Pass | 11/15/2025 | |
+| **Function: Quản lý trạng thái đặt trước** |
+| **Check GUI: Quản lý trạng thái đặt trước** |
+| GUI-QLTrangThaiDT-01 | Check [Tab trạng thái] Tabs | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tabs | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| **Check FUNC: Quản lý trạng thái đặt trước** |
+| FUNC-QLTrangThaiDT-01 | Lọc đặt trước theo trạng thái | 1. Truy cập `/user/borrow`<br>2. Click tab trạng thái hoặc chọn từ dropdown | Hiển thị chỉ đặt trước có trạng thái đã chọn | | Pass | 11/15/2025 | |
+| FUNC-QLTrangThaiDT-02 | Cập nhật trạng thái real-time | 1. Truy cập `/user/borrow`<br>2. Đợi admin cập nhật trạng thái | Trạng thái được cập nhật real-time, thông báo khi có thay đổi | | Pass | 11/15/2025 | |
+| FUNC-QLTrangThaiDT-03 | Theo dõi tiến độ xử lý | 1. Truy cập `/user/borrow`<br>2. Sử dụng tab trạng thái để theo dõi | Người dùng có thể theo dõi tiến độ xử lý dễ dàng qua các tab | | Pass | 11/15/2025 | |
 
 ---
 
@@ -143,8 +122,8 @@
 - Routes động (có `[id]`) cần thay thế bằng ID thực tế khi test
 - Các test case GUI kiểm tra giao diện và trạng thái của các thành phần
 - Các test case FUNC kiểm tra chức năng và logic nghiệp vụ
-- Tất cả báo cáo có thể được export ra file Excel, PDF, hoặc CSV
-- Biểu đồ được hiển thị dưới dạng Line, Bar, Pie, hoặc Donut tùy theo loại báo cáo
-- Số liệu được tính toán theo thời gian thực từ dữ liệu trong hệ thống
+- Đặt trước chỉ dành cho sản phẩm chưa ra mắt
+- Tiền cọc thường là 20% tổng giá
+- Chỉ có thể hủy đặt trước khi chưa được admin xác nhận
 - Cần cập nhật cột Result, Test date sau khi thực hiện test
 
