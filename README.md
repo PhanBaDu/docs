@@ -1,15 +1,15 @@
-# BLACKBOX TEST CASE - TẠO - HIỂN THỊ BÀI VIẾT (USER)
+# BLACKBOX TEST CASE - ĐẶT TRƯỚC SẢN PHẨM (USER)
 
 ## HEADER SECTION
 
-**Module Code:** Tạo - hiển thị bài viết User
+**Module Code:** Đặt trước sản phẩm User
 
 **Test requirement:**
-1. Hiển thị danh sách bài viết
-2. Xem chi tiết bài viết
-3. Tạo bài viết
-4. Chỉnh sửa bài viết
-5. Xóa bài viết
+1. Danh sách sản phẩm đã đặt trước
+2. Đặt trước sản phẩm
+3. Xem chi tiết đặt trước
+4. Hủy đặt trước
+5. Quản lý trạng thái đặt trước
 
 **Tester:** [Tên tester]
 
@@ -17,7 +17,7 @@
 
 | Pass | Fail | Untested | N/A | Number of Test cases |
 |------|------|----------|-----|---------------------|
-| 84 | 0 | 0 | 0 | 84 |
+| 73 | 0 | 0 | 0 | 73 |
 
 ---
 
@@ -25,105 +25,94 @@
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Test-case rate | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|----------------|--------|-----------|------|
-| **Function: Hiển thị danh sách bài viết** |
-| **Check GUI: Hiển thị danh sách bài viết** |
-| GUI-DanhSachBV-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/user/community`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Cộng đồng mô hình" | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-02 | Check [Tab danh mục] Tabs | 1. Truy cập `/user/community`<br>2. Kiểm tra tabs | Status: visible, enable, Options: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Khác | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-03 | Check [Bộ lọc danh mục] Select | 1. Truy cập `/user/community`<br>2. Kiểm tra dropdown [Bộ lọc danh mục] | Status: visible, enable, Options: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Khác | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-04 | Check [Bộ lọc thời gian] Select | 1. Truy cập `/user/community`<br>2. Kiểm tra dropdown [Bộ lọc thời gian] | Status: visible, enable, Options: Hôm nay, Tuần này, Tháng này, Tất cả | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-05 | Check [Bộ lọc sắp xếp] Select | 1. Truy cập `/user/community`<br>2. Kiểm tra dropdown [Sắp xếp] | Status: visible, enable, Options: Mới nhất, Nhiều like nhất, Nhiều bình luận nhất | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-06 | Check [Tìm kiếm bài viết] Input | 1. Truy cập `/user/community`<br>2. Kiểm tra ô [Tìm kiếm] | Status: visible, enable, Type: text, Placeholder: "Tìm kiếm bài viết" | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-07 | Check [Card bài viết] Card | 1. Truy cập `/user/community`<br>2. Kiểm tra card | Status: visible, Hiển thị thông tin bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-08 | Check [Ảnh đại diện tác giả] Avatar | 1. Truy cập `/user/community`<br>2. Kiểm tra avatar | Status: visible, Hiển thị ảnh đại diện người đăng | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-09 | Check [Tên tác giả] Text | 1. Truy cập `/user/community`<br>2. Kiểm tra tên | Status: visible, Hiển thị tên người đăng bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-10 | Check [Thời gian đăng] Text | 1. Truy cập `/user/community`<br>2. Kiểm tra thời gian | Status: visible, Hiển thị thời gian bài viết được đăng | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-11 | Check [Tiêu đề bài viết] Text | 1. Truy cập `/user/community`<br>2. Kiểm tra tiêu đề | Status: visible, Hiển thị tiêu đề bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-12 | Check [Nội dung tóm tắt] Text | 1. Truy cập `/user/community`<br>2. Kiểm tra nội dung | Status: visible, Hiển thị nội dung tóm tắt bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-13 | Check [Hình ảnh bài viết] Image | 1. Truy cập `/user/community`<br>2. Kiểm tra hình ảnh | Status: visible, Hiển thị hình ảnh mô hình trong bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-14 | Check [Video bài viết] Video | 1. Truy cập `/user/community`<br>2. Kiểm tra video | Status: visible, Hiển thị video mô hình trong bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-15 | Check [Số lượng like] Badge | 1. Truy cập `/user/community`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng người thích bài viết | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-16 | Check [Số lượng bình luận] Badge | 1. Truy cập `/user/community`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng bình luận | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-17 | Check [Số lượng chia sẻ] Badge | 1. Truy cập `/user/community`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng người chia sẻ | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-18 | Check [Nút like] Button | 1. Truy cập `/user/community`<br>2. Kiểm tra nút [Like] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-19 | Check [Nút bình luận] Button | 1. Truy cập `/user/community`<br>2. Kiểm tra nút [Bình luận] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-20 | Check [Nút chia sẻ] Button | 1. Truy cập `/user/community`<br>2. Kiểm tra nút [Chia sẻ] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-21 | Check [Nút xem chi tiết] Button | 1. Truy cập `/user/community`<br>2. Kiểm tra nút [Xem chi tiết] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-DanhSachBV-22 | Check [Phân trang] Pagination | 1. Truy cập `/user/community`<br>2. Kiểm tra phân trang | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Hiển thị danh sách bài viết** |
-| FUNC-DanhSachBV-01 | Mở màn hình danh sách bài viết | 1. Truy cập `/user/community` hoặc click [Cộng đồng] | Hiển thị danh sách bài viết cộng đồng với đầy đủ thông tin | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-02 | Lọc bài viết theo danh mục - Gundam | 1. Truy cập `/user/community`<br>2. Click tab [Gundam] hoặc chọn từ dropdown | Hiển thị chỉ bài viết về Gundam | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-03 | Lọc bài viết theo thời gian - Tuần này | 1. Truy cập `/user/community`<br>2. Chọn [Tuần này] từ dropdown | Hiển thị chỉ bài viết trong tuần này | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-04 | Sắp xếp theo mới nhất | 1. Truy cập `/user/community`<br>2. Chọn [Mới nhất] từ dropdown | Danh sách được sắp xếp theo thời gian đăng mới nhất | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-05 | Sắp xếp theo nhiều like nhất | 1. Truy cập `/user/community`<br>2. Chọn [Nhiều like nhất] từ dropdown | Danh sách được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-06 | Sắp xếp theo nhiều bình luận nhất | 1. Truy cập `/user/community`<br>2. Chọn [Nhiều bình luận nhất] từ dropdown | Danh sách được sắp xếp theo số lượng bình luận giảm dần | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-07 | Tìm kiếm bài viết | 1. Truy cập `/user/community`<br>2. Nhập từ khóa vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị bài viết chứa từ khóa (tiêu đề hoặc nội dung) | | Pass | 11/15/2025 | |
-| FUNC-DanhSachBV-08 | Phân trang danh sách bài viết | 1. Truy cập `/user/community`<br>2. Scroll xuống hoặc click phân trang | Hiển thị trang tiếp theo của danh sách | | Pass | 11/15/2025 | |
-| **Function: Xem chi tiết bài viết** |
-| **Check GUI: Xem chi tiết bài viết** |
-| GUI-ChiTietBV-01 | Check [Thông tin tác giả] Card | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra card tác giả | Status: visible, Hiển thị: Avatar, Tên, Số bài viết | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-02 | Check [Nút theo dõi] Button | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nút [Theo dõi] | Status: visible, enable, Options: Theo dõi, Bỏ theo dõi | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-03 | Check [Nội dung bài viết] Text | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nội dung | Status: visible, Hiển thị nội dung đầy đủ bài viết | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-04 | Check [Hình ảnh bài viết] Gallery | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra gallery | Status: visible, Hiển thị bộ sưu tập hình ảnh mô hình | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-05 | Check [Video bài viết] Video | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra video | Status: visible, Hiển thị video mô hình | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-06 | Check [Số lượng like] Badge | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng người thích | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-07 | Check [Số lượng bình luận] Badge | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng bình luận | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-08 | Check [Số lượng chia sẻ] Badge | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra badge | Status: visible, Hiển thị số lượng người chia sẻ | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-09 | Check [Nút like] Button | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nút [Like] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-10 | Check [Nút bình luận] Button | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nút [Bình luận] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-11 | Check [Nút chia sẻ] Button | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nút [Chia sẻ] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-12 | Check [Danh sách bình luận] List | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra danh sách | Status: visible, Hiển thị danh sách bình luận | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-13 | Check [Form bình luận] Form | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra form | Status: visible, Hiển thị form viết bình luận mới | | Pass | 11/15/2025 | |
-| GUI-ChiTietBV-14 | Check [Nút quay lại] Button | 1. Truy cập `/user/community/[id]`<br>2. Kiểm tra nút [Quay lại] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Xem chi tiết bài viết** |
-| FUNC-ChiTietBV-01 | Mở màn hình chi tiết bài viết | 1. Truy cập `/user/community/[id]` hoặc click [Xem chi tiết] từ danh sách | Hiển thị đầy đủ thông tin chi tiết về bài viết | | Pass | 11/15/2025 | |
-| FUNC-ChiTietBV-02 | Theo dõi tác giả | 1. Truy cập `/user/community/[id]`<br>2. Click nút [Theo dõi] | Tác giả được thêm vào danh sách theo dõi, nút chuyển thành [Bỏ theo dõi] | | Pass | 11/15/2025 | |
-| FUNC-ChiTietBV-03 | Bỏ theo dõi tác giả | 1. Truy cập `/user/community/[id]` với tác giả đã theo dõi<br>2. Click nút [Bỏ theo dõi] | Tác giả bị xóa khỏi danh sách theo dõi, nút chuyển thành [Theo dõi] | | Pass | 11/15/2025 | |
-| FUNC-ChiTietBV-04 | Xem gallery hình ảnh | 1. Truy cập `/user/community/[id]`<br>2. Click vào hình ảnh | Hiển thị gallery với khả năng zoom và chuyển ảnh | | Pass | 11/15/2025 | |
-| FUNC-ChiTietBV-05 | Xem video bài viết | 1. Truy cập `/user/community/[id]`<br>2. Click play video | Video được phát | | Pass | 11/15/2025 | |
-| FUNC-ChiTietBV-06 | Click nút Quay lại | 1. Truy cập `/user/community/[id]`<br>2. Click [Quay lại] | Quay về trang danh sách bài viết | | Pass | 11/15/2025 | |
-| **Function: Tạo bài viết** |
-| **Check GUI: Tạo bài viết** |
-| GUI-TaoBV-01 | Check [Tạo bài viết] Button | 1. Truy cập `/user/community`<br>2. Kiểm tra nút [Tạo bài viết] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-TaoBV-02 | Check [Form tạo bài viết] Form | 1. Truy cập `/user/community`<br>2. Click [Tạo bài viết]<br>3. Kiểm tra form | Status: visible, Hiển thị form nhập thông tin bài viết | | Pass | 11/15/2025 | |
-| GUI-TaoBV-03 | Check [Tiêu đề bài viết] Input | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra ô [Tiêu đề] | Status: visible, enable, Type: text | | Pass | 11/15/2025 | |
-| GUI-TaoBV-04 | Check [Nội dung bài viết] Textarea | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra textarea | Status: visible, enable, Type: textarea | | Pass | 11/15/2025 | |
-| GUI-TaoBV-05 | Check [Danh mục] Select | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra dropdown | Status: visible, enable, Options: Gundam, Figure, Mô hình xe, Máy bay, Khác | | Pass | 11/15/2025 | |
-| GUI-TaoBV-06 | Check [Upload hình ảnh] File Input | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra file input | Status: visible, enable, Type: file, Accept: image/* | | Pass | 11/15/2025 | |
-| GUI-TaoBV-07 | Check [Upload video] File Input | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra file input | Status: visible, enable, Type: file, Accept: video/* | | Pass | 11/15/2025 | |
-| GUI-TaoBV-08 | Check [Danh sách file đã upload] List | 1. Truy cập `/user/community`<br>2. Upload file<br>3. Kiểm tra danh sách | Status: visible, Hiển thị file đã upload với nút xóa | | Pass | 11/15/2025 | |
-| GUI-TaoBV-09 | Check [Đăng bài] Button | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra nút [Đăng bài] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-TaoBV-10 | Check [Hủy] Button | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Kiểm tra nút [Hủy] | Status: visible, enable | | Pass | 11/15/2025 | |
-| **Check FUNC: Tạo bài viết** |
-| FUNC-TaoBV-01 | Mở form tạo bài viết | 1. Truy cập `/user/community`<br>2. Click [Tạo bài viết] | Hiển thị form tạo bài viết với các trường trống | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-02 | Tạo bài viết thiếu Tiêu đề | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Không nhập Tiêu đề<br>4. Click [Đăng bài] | Hiển thị thông báo lỗi: "Tiêu đề bài viết là bắt buộc" | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-03 | Tạo bài viết thiếu Nội dung | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Không nhập Nội dung<br>4. Click [Đăng bài] | Hiển thị thông báo lỗi: "Nội dung bài viết là bắt buộc" | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-04 | Tạo bài viết thiếu Danh mục | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Không chọn Danh mục<br>4. Click [Đăng bài] | Hiển thị thông báo lỗi: "Vui lòng chọn danh mục" | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-05 | Tạo bài viết với thông tin hợp lệ | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Điền đầy đủ thông tin<br>4. Click [Đăng bài] | Bài viết được tạo thành công, hiển thị trên danh sách, thông báo xác nhận | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-06 | Upload hình ảnh bài viết | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Click [Upload hình ảnh]<br>4. Chọn file ảnh | Ảnh được upload thành công, hiển thị trong danh sách file đã upload | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-07 | Upload video bài viết | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Click [Upload video]<br>4. Chọn file video | Video được upload thành công, hiển thị trong danh sách file đã upload | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-08 | Upload file không đúng định dạng | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Upload file .txt | Hiển thị thông báo lỗi: "File không đúng định dạng" | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-09 | Upload file quá lớn | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Upload file > giới hạn | Hiển thị thông báo lỗi: "File quá lớn" | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-10 | Xóa file đã upload | 1. Truy cập `/user/community`<br>2. Upload file<br>3. Click nút xóa trên file | File bị xóa khỏi danh sách | | Pass | 11/15/2025 | |
-| FUNC-TaoBV-11 | Click nút Hủy | 1. Truy cập `/user/community`<br>2. Mở form tạo bài viết<br>3. Điền một số thông tin<br>4. Click [Hủy] | Form được đóng, không lưu thông tin | | Pass | 11/15/2025 | |
-| **Function: Chỉnh sửa bài viết** |
-| **Check GUI: Chỉnh sửa bài viết** |
-| GUI-ChinhSuaBV-01 | Check [Chỉnh sửa] Button | 1. Truy cập `/user/community/[id]` với bài viết của mình<br>2. Kiểm tra nút [Chỉnh sửa] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-ChinhSuaBV-02 | Check [Form chỉnh sửa] Form | 1. Truy cập `/user/community/[id]`<br>2. Click [Chỉnh sửa]<br>3. Kiểm tra form | Status: visible, Hiển thị form với thông tin hiện tại đã điền sẵn | | Pass | 11/15/2025 | |
-| **Check FUNC: Chỉnh sửa bài viết** |
-| FUNC-ChiTietBV-01 | Mở form chỉnh sửa bài viết | 1. Truy cập `/user/community/[id]` với bài viết của mình<br>2. Click [Chỉnh sửa] | Hiển thị form chỉnh sửa với thông tin hiện tại đã điền sẵn | | Pass | 11/15/2025 | |
-| FUNC-ChinhSuaBV-02 | Chỉnh sửa tiêu đề bài viết | 1. Truy cập `/user/community/[id]`<br>2. Mở form chỉnh sửa<br>3. Sửa tiêu đề<br>4. Click [Lưu] | Tiêu đề được cập nhật, thông báo xác nhận | | Pass | 11/15/2025 | |
-| FUNC-ChinhSuaBV-03 | Chỉnh sửa nội dung bài viết | 1. Truy cập `/user/community/[id]`<br>2. Mở form chỉnh sửa<br>3. Sửa nội dung<br>4. Click [Lưu] | Nội dung được cập nhật, thông báo xác nhận | | Pass | 11/15/2025 | |
-| FUNC-ChinhSuaBV-04 | Chỉnh sửa danh mục bài viết | 1. Truy cập `/user/community/[id]`<br>2. Mở form chỉnh sửa<br>3. Chọn danh mục mới<br>4. Click [Lưu] | Danh mục được cập nhật | | Pass | 11/15/2025 | |
-| FUNC-ChinhSuaBV-05 | Chỉnh sửa hình ảnh bài viết | 1. Truy cập `/user/community/[id]`<br>2. Mở form chỉnh sửa<br>3. Upload hình ảnh mới hoặc xóa hình cũ<br>4. Click [Lưu] | Hình ảnh được cập nhật | | Pass | 11/15/2025 | |
-| FUNC-ChinhSuaBV-06 | Không thể chỉnh sửa bài viết của người khác | 1. Truy cập `/user/community/[id]` với bài viết của người khác<br>2. Kiểm tra nút [Chỉnh sửa] | Nút [Chỉnh sửa] không hiển thị hoặc bị vô hiệu hóa | | Pass | 11/15/2025 | |
-| **Function: Xóa bài viết** |
-| **Check GUI: Xóa bài viết** |
-| GUI-XoaBV-01 | Check [Xóa bài viết] Button | 1. Truy cập `/user/community/[id]` với bài viết của mình<br>2. Kiểm tra nút [Xóa bài viết] | Status: visible, enable | | Pass | 11/15/2025 | |
-| GUI-XoaBV-02 | Check [Modal xác nhận] Dialog | 1. Truy cập `/user/community/[id]`<br>2. Click [Xóa bài viết]<br>3. Kiểm tra modal | Status: visible, Hiển thị form xác nhận xóa | | Pass | 11/15/2025 | |
-| **Check FUNC: Xóa bài viết** |
-| FUNC-XoaBV-01 | Xóa bài viết thành công | 1. Truy cập `/user/community/[id]` với bài viết của mình<br>2. Click [Xóa bài viết]<br>3. Xác nhận xóa | Bài viết bị xóa, chuyển về trang danh sách, thông báo xác nhận | | Pass | 11/15/2025 | |
-| FUNC-XoaBV-02 | Hủy xóa bài viết | 1. Truy cập `/user/community/[id]`<br>2. Click [Xóa bài viết]<br>3. Click [Hủy] trong modal | Modal được đóng, bài viết không bị xóa | | Pass | 11/15/2025 | |
-| FUNC-XoaBV-03 | Không thể xóa bài viết của người khác | 1. Truy cập `/user/community/[id]` với bài viết của người khác<br>2. Kiểm tra nút [Xóa bài viết] | Nút [Xóa bài viết] không hiển thị hoặc bị vô hiệu hóa | | Pass | 11/15/2025 | |
+| **Function: Danh sách sản phẩm đã đặt trước** |
+| **Check GUI: Danh sách sản phẩm đã đặt trước** |
+| GUI-DanhSachDT-01 | Check [Tiêu đề trang] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tiêu đề | Status: visible, Text: "Đặt trước sản phẩm" | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-02 | Check [Tab trạng thái] Tabs | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tabs | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-03 | Check [Bộ lọc trạng thái] Select | 1. Truy cập `/user/borrow`<br>2. Kiểm tra dropdown [Bộ lọc trạng thái] | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-04 | Check [Bộ lọc loại sản phẩm] Select | 1. Truy cập `/user/borrow`<br>2. Kiểm tra dropdown [Bộ lọc loại sản phẩm] | Status: visible, enable, Options: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-05 | Check [Tìm kiếm đặt trước] Input | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ô [Tìm kiếm] | Status: visible, enable, Type: text, Placeholder: "Tìm kiếm đặt trước" | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-06 | Check [Mã đặt trước] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra mã trên mỗi card | Status: visible, Hiển thị mã định danh đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-07 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tên sản phẩm | Status: visible, Hiển thị tên sản phẩm đã đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-08 | Check [Số lượng] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra số lượng | Status: visible, Hiển thị số lượng đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-09 | Check [Giá dự kiến] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra giá dự kiến | Status: visible, Hiển thị giá dự kiến của sản phẩm | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-10 | Check [Tổng tiền] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-11 | Check [Tiền cọc] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc đã đặt | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-12 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-13 | Check [Trạng thái] Badge | 1. Truy cập `/user/borrow`<br>2. Kiểm tra badge trạng thái | Status: visible, Hiển thị trạng thái xử lý | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-14 | Check [Mức độ ưu tiên] Badge | 1. Truy cập `/user/borrow`<br>2. Kiểm tra badge ưu tiên | Status: visible, Hiển thị mức độ ưu tiên | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-15 | Check [Ngày tạo] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ngày tạo | Status: visible, Hiển thị ngày tạo đặt trước | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-16 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/borrow`<br>2. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-17 | Check [Xem chi tiết] Button | 1. Truy cập `/user/borrow`<br>2. Kiểm tra nút [Xem chi tiết] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DanhSachDT-18 | Check [Hủy đặt trước] Button | 1. Truy cập `/user/borrow`<br>2. Kiểm tra nút [Hủy đặt trước] | Status: visible, enable (nếu được phép hủy) | | Pass | 11/15/2025 | |
+| **Check FUNC: Danh sách sản phẩm đã đặt trước** |
+| FUNC-DanhSachDT-01 | Mở màn hình danh sách đặt trước | 1. Truy cập `/user/borrow` hoặc click [Đặt trước mô hình] | Hiển thị danh sách sản phẩm đã đặt trước với đầy đủ thông tin | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-02 | Lọc đặt trước theo trạng thái - Chờ xử lý | 1. Truy cập `/user/borrow`<br>2. Click tab [Chờ xử lý] hoặc chọn từ dropdown | Hiển thị chỉ đặt trước có trạng thái "Chờ xử lý" | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-03 | Lọc đặt trước theo trạng thái - Đã xác nhận | 1. Truy cập `/user/borrow`<br>2. Click tab [Đã xác nhận] | Hiển thị chỉ đặt trước có trạng thái "Đã xác nhận" | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-04 | Lọc đặt trước theo loại sản phẩm | 1. Truy cập `/user/borrow`<br>2. Chọn loại sản phẩm từ dropdown | Hiển thị chỉ đặt trước thuộc loại sản phẩm đã chọn | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-05 | Tìm kiếm đặt trước | 1. Truy cập `/user/borrow`<br>2. Nhập từ khóa vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị đặt trước chứa từ khóa (tên sản phẩm, mã đặt trước) | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-06 | Sắp xếp đặt trước theo thời gian | 1. Truy cập `/user/borrow` | Danh sách được sắp xếp theo thời gian tạo mới nhất | | Pass | 11/15/2025 | |
+| FUNC-DanhSachDT-07 | Theo dõi trạng thái qua tab | 1. Truy cập `/user/borrow`<br>2. Sử dụng các tab trạng thái để lọc | Trạng thái được cập nhật real-time khi admin xử lý | | Pass | 11/15/2025 | |
+| **Function: Đặt trước sản phẩm** |
+| **Check GUI: Đặt trước sản phẩm** |
+| GUI-DatTruocSP-01 | Check [Đặt trước sản phẩm] Button | 1. Truy cập `/user/products/[id]` với sản phẩm chưa ra mắt<br>2. Kiểm tra nút [Đặt trước sản phẩm] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-02 | Check [Form đặt trước] Form | 1. Truy cập `/user/products/[id]`<br>2. Click [Đặt trước sản phẩm]<br>3. Kiểm tra form | Status: visible, Hiển thị form nhập thông tin đặt trước | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-03 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tên | Status: visible, Hiển thị tên sản phẩm muốn đặt trước | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-04 | Check [Số lượng] Input | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra input | Status: visible, enable, Type: number, Min: 1 | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-05 | Check [Giá dự kiến] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra giá | Status: visible, Hiển thị giá dự kiến của sản phẩm | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-06 | Check [Tổng tiền] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước (tự động tính) | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-07 | Check [Tiền cọc] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc cần đặt (thường 20% tổng giá) | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-08 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-09 | Check [Phương thức thanh toán] Select | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra dropdown | Status: visible, enable, Options: COD, Banking, MoMo, Credit Card | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-10 | Check [Địa chỉ giao hàng] Textarea | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra textarea | Status: visible, enable, Type: textarea | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-11 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-12 | Check [Ghi chú] Textarea | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra textarea | Status: visible, enable, Type: textarea, Optional | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-13 | Check [Mức độ ưu tiên] Select | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra dropdown | Status: visible, enable, Options: Thấp, Trung bình, Cao | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-14 | Check [Xác nhận đặt trước] Button | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra nút [Xác nhận đặt trước] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-DatTruocSP-15 | Check [Hủy] Button | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Kiểm tra nút [Hủy] | Status: visible, enable | | Pass | 11/15/2025 | |
+| **Check FUNC: Đặt trước sản phẩm** |
+| FUNC-DatTruocSP-01 | Mở form đặt trước sản phẩm | 1. Truy cập `/user/products/[id]` với sản phẩm chưa ra mắt<br>2. Click [Đặt trước sản phẩm] | Hiển thị form đặt trước với thông tin sản phẩm đã điền sẵn | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-02 | Tạo đặt trước thiếu Số lượng | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không nhập số lượng (quantity = 0 hoặc null)<br>4. Click [Xác nhận đặt trước] | Validate: if (!quantity || quantity < 1), Hiển thị toast error (toast.error): "Số lượng là bắt buộc" hoặc "Vui lòng nhập số lượng", Form không được submit, Dialog/Modal không đóng | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-03 | Tạo đặt trước thiếu Phương thức thanh toán | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không chọn phương thức thanh toán (paymentMethod = "" hoặc null)<br>4. Click [Xác nhận đặt trước] | Validate: if (!paymentMethod), Hiển thị toast error (toast.error): "Vui lòng chọn phương thức thanh toán", Form không được submit, Dialog/Modal không đóng | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-04 | Tạo đặt trước thiếu Địa chỉ giao hàng | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Không nhập địa chỉ (shippingAddress = "" hoặc null)<br>4. Click [Xác nhận đặt trước] | Validate: if (!shippingAddress || shippingAddress.trim() === ""), Hiển thị toast error (toast.error): "Địa chỉ giao hàng là bắt buộc", Form không được submit, Dialog/Modal không đóng | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-05 | Tính toán giá tiền real-time | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Thay đổi số lượng (onChange input hoặc click +/-) | Tổng tiền = price * quantity (tự động tính), Tiền cọc = totalPrice * 0.2 (20% tổng giá, hoặc theo quy định), Số tiền còn lại = totalPrice - deposit, Tất cả các giá trị được cập nhật real-time khi quantity thay đổi, UI hiển thị các giá trị đã format (toLocaleString("vi-VN") + " VNĐ") | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-06 | Tạo đặt trước với thông tin hợp lệ | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước (Dialog hoặc Modal)<br>3. Điền đầy đủ thông tin (Số lượng, Phương thức thanh toán, Địa chỉ giao hàng, có thể thêm Ghi chú, Mức độ ưu tiên)<br>4. Click [Xác nhận đặt trước] | Form được submit, Đặt trước được tạo thành công, Dialog/Modal được đóng, Hiển thị toast success (toast.success): "Đặt trước sản phẩm thành công" hoặc tương tự, Gửi đến admin để xử lý, Chuyển đến trang `/user/borrow` để xem danh sách đặt trước (nếu có), Form được reset | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-07 | Chọn phương thức thanh toán | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Chọn phương thức từ dropdown | Phương thức thanh toán được chọn, ảnh hưởng đến cách thanh toán tiền cọc | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-08 | Chọn mức độ ưu tiên | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Chọn mức độ ưu tiên | Mức độ ưu tiên được chọn | | Pass | 11/15/2025 | |
+| FUNC-DatTruocSP-09 | Click nút Hủy | 1. Truy cập `/user/products/[id]`<br>2. Mở form đặt trước<br>3. Điền một số thông tin<br>4. Click [Hủy] | Form được đóng, không lưu thông tin | | Pass | 11/15/2025 | |
+| **Function: Xem chi tiết đặt trước** |
+| **Check GUI: Xem chi tiết đặt trước** |
+| GUI-ChiTietDT-01 | Check [Mã đặt trước] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra mã | Status: visible, Hiển thị mã định danh đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-02 | Check [Tên sản phẩm] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tên | Status: visible, Hiển thị tên sản phẩm đã đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-03 | Check [Số lượng] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra số lượng | Status: visible, Hiển thị số lượng đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-04 | Check [Giá dự kiến] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra giá | Status: visible, Hiển thị giá dự kiến | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-05 | Check [Tổng tiền] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tổng tiền | Status: visible, Hiển thị tổng tiền đặt trước | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-06 | Check [Tiền cọc] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra tiền cọc | Status: visible, Hiển thị số tiền cọc đã đặt | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-07 | Check [Số tiền còn lại] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra số tiền còn lại | Status: visible, Hiển thị số tiền còn lại cần thanh toán | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-08 | Check [Trạng thái] Badge | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra badge | Status: visible, Hiển thị trạng thái xử lý | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-09 | Check [Phương thức thanh toán] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra phương thức | Status: visible, Hiển thị phương thức thanh toán đã chọn | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-10 | Check [Địa chỉ giao hàng] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra địa chỉ | Status: visible, Hiển thị địa chỉ giao hàng | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-11 | Check [Ngày giao dự kiến] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra ngày giao | Status: visible, Hiển thị thời gian giao hàng dự kiến | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-12 | Check [Ghi chú] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra ghi chú | Status: visible, Hiển thị ghi chú về đặt trước (nếu có) | | Pass | 11/15/2025 | |
+| GUI-ChiTietDT-13 | Check [Nhân viên phụ trách] Text | 1. Truy cập `/user/borrow/[id]`<br>2. Kiểm tra nhân viên | Status: visible, Hiển thị tên nhân viên phụ trách (nếu có) | | Pass | 11/15/2025 | |
+| **Check FUNC: Xem chi tiết đặt trước** |
+| FUNC-ChiTietDT-01 | Mở màn hình chi tiết đặt trước | 1. Truy cập `/user/borrow/[id]` hoặc click [Xem chi tiết] từ danh sách | Hiển thị đầy đủ thông tin chi tiết về đặt trước | | Pass | 11/15/2025 | |
+| FUNC-ChiTietDT-02 | Hiển thị timeline trạng thái | 1. Truy cập `/user/borrow/[id]` | Hiển thị timeline các thay đổi trạng thái theo thời gian | | Pass | 11/15/2025 | |
+| **Function: Hủy đặt trước** |
+| **Check GUI: Hủy đặt trước** |
+| GUI-HuyDT-01 | Check [Hủy đặt trước] Button | 1. Truy cập `/user/borrow/[id]` với đặt trước có thể hủy<br>2. Kiểm tra nút [Hủy đặt trước] | Status: visible, enable | | Pass | 11/15/2025 | |
+| GUI-HuyDT-02 | Check [Modal xác nhận] Dialog | 1. Truy cập `/user/borrow/[id]`<br>2. Click [Hủy đặt trước]<br>3. Kiểm tra modal | Status: visible, Hiển thị form xác nhận hủy | | Pass | 11/15/2025 | |
+| **Check FUNC: Hủy đặt trước** |
+| FUNC-HuyDT-01 | Hủy đặt trước thành công | 1. Truy cập `/user/borrow/[id]` với đặt trước chưa được xác nhận<br>2. Click [Hủy đặt trước]<br>3. Xác nhận hủy | Đặt trước được hủy thành công, trạng thái "Đã hủy", hoàn tiền cọc (nếu đã thanh toán), thông báo xác nhận | | Pass | 11/15/2025 | |
+| FUNC-HuyDT-02 | Không thể hủy đặt trước đã xác nhận | 1. Truy cập `/user/borrow/[id]` với đặt trước đã được admin xác nhận<br>2. Kiểm tra nút [Hủy đặt trước] | Nút [Hủy đặt trước] không hiển thị hoặc bị vô hiệu hóa | | Pass | 11/15/2025 | |
+| FUNC-HuyDT-03 | Hoàn tiền cọc khi hủy đặt trước | 1. Truy cập `/user/borrow/[id]` với đặt trước đã thanh toán cọc<br>2. Hủy đặt trước thành công | Tiền cọc được hoàn lại, thông báo xác nhận | | Pass | 11/15/2025 | |
+| **Function: Quản lý trạng thái đặt trước** |
+| **Check GUI: Quản lý trạng thái đặt trước** |
+| GUI-QLTrangThaiDT-01 | Check [Tab trạng thái] Tabs | 1. Truy cập `/user/borrow`<br>2. Kiểm tra tabs | Status: visible, enable, Options: Tất cả, Chờ xử lý, Đã xác nhận, Đang chuẩn bị, Đã giao, Đã hủy | | Pass | 11/15/2025 | |
+| **Check FUNC: Quản lý trạng thái đặt trước** |
+| FUNC-QLTrangThaiDT-01 | Lọc đặt trước theo trạng thái | 1. Truy cập `/user/borrow`<br>2. Click tab trạng thái hoặc chọn từ dropdown | Hiển thị chỉ đặt trước có trạng thái đã chọn | | Pass | 11/15/2025 | |
+| FUNC-QLTrangThaiDT-02 | Cập nhật trạng thái real-time | 1. Truy cập `/user/borrow`<br>2. Đợi admin cập nhật trạng thái | Trạng thái được cập nhật real-time, thông báo khi có thay đổi | | Pass | 11/15/2025 | |
+| FUNC-QLTrangThaiDT-03 | Theo dõi tiến độ xử lý | 1. Truy cập `/user/borrow`<br>2. Sử dụng tab trạng thái để theo dõi | Người dùng có thể theo dõi tiến độ xử lý dễ dàng qua các tab | | Pass | 11/15/2025 | |
 
 ---
 
@@ -133,6 +122,8 @@
 - Routes động (có `[id]`) cần thay thế bằng ID thực tế khi test
 - Các test case GUI kiểm tra giao diện và trạng thái của các thành phần
 - Các test case FUNC kiểm tra chức năng và logic nghiệp vụ
-- Chỉ người tạo bài viết mới có thể chỉnh sửa và xóa bài viết
+- Đặt trước chỉ dành cho sản phẩm chưa ra mắt
+- Tiền cọc thường là 20% tổng giá
+- Chỉ có thể hủy đặt trước khi chưa được admin xác nhận
 - Cần cập nhật cột Result, Test date sau khi thực hiện test
 
