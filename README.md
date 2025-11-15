@@ -1,14 +1,11 @@
-# Test Case Template - Tương tác bài viết (User)
+# Test Case Template - Chức năng xem trang cá nhân người lạ (User)
 
 ## Module Code
-**Model Management Store: Tương tác bài viết User**
+**Model Management Store: Chức năng xem trang cá nhân người lạ User**
 
 ## Test Requirement
-1. Hiển thị danh sách bình luận
-2. Hiển thị số lượng like
-3. Tạo bình luận
-4. Xóa bình luận
-5. Chỉnh sửa bình luận
+1. Hiển thị danh sách bài viết
+2. Xem chi tiết các ảnh
 
 ---
 
@@ -28,189 +25,117 @@
 
 ## Test Cases
 
-### Function: Hiển thị danh sách bình luận
+### Function: Hiển thị danh sách bài viết
 
-#### Check GUI: Hiển thị danh sách bình luận
+#### Check GUI: Hiển thị danh sách bài viết
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-HTDS-BL-01** | Kiểm tra tab Bình luận | 1. Xem chi tiết bài viết<br>2. Kiểm tra tab | Hiển thị tab "Bình luận" trong TabsList, có thể chọn để xem danh sách bình luận | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-02** | Kiểm tra số lượng bình luận | 1. Xem tab "Bình luận"<br>2. Kiểm tra số lượng | Hiển thị Badge với tổng số bình luận, cập nhật khi có bình luận mới | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-03** | Kiểm tra bộ lọc bình luận | 1. Xem tab "Bình luận"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Tất cả", "Gần đây", "Phổ biến", "Gây tranh cãi" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-04** | Kiểm tra bộ lọc sắp xếp | 1. Xem tab "Bình luận"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Mới nhất", "Cũ nhất", "Nhiều like nhất", "Nhiều trả lời nhất" | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-05** | Kiểm tra ô tìm kiếm | 1. Xem tab "Bình luận"<br>2. Kiểm tra tìm kiếm | Hiển thị Input với placeholder "Tìm kiếm bình luận..." | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-06** | Kiểm tra card bình luận | 1. Xem danh sách bình luận<br>2. Kiểm tra card | Hiển thị card với CardContent p-4, chứa avatar, tên người dùng, thời gian, nội dung, hình ảnh (nếu có), số lượng tương tác, nút hành động | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-07** | Kiểm tra avatar người bình luận | 1. Xem card bình luận<br>2. Kiểm tra avatar | Hiển thị avatar w-8 h-8 rounded-full với hình ảnh hoặc fallback | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-08** | Kiểm tra badge rank | 1. Xem card bình luận<br>2. Kiểm tra badge | Hiển thị Badge variant outline text-xs với rank của người dùng | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-09** | Kiểm tra thời gian bình luận | 1. Xem card bình luận<br>2. Kiểm tra thời gian | Hiển thị thời gian với icon Clock h-3 w-3, format ngày Việt Nam, text-sm text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-10** | Kiểm tra nội dung bình luận | 1. Xem card bình luận<br>2. Kiểm tra nội dung | Hiển thị nội dung với text-muted-foreground, đầy đủ không bị cắt | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-11** | Kiểm tra hình ảnh đính kèm | 1. Xem bình luận có hình ảnh<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh w-20 h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 trong flex gap-2 | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-12** | Kiểm tra số lượng like bình luận | 1. Xem card bình luận<br>2. Kiểm tra số lượng | Hiển thị số lượng like với icon ThumbsUp h-4 w-4, có thể click để like | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-13** | Kiểm tra số lượng dislike | 1. Xem card bình luận<br>2. Kiểm tra số lượng | Hiển thị số lượng dislike với icon ThumbsDown h-4 w-4, có thể click để dislike | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-14** | Kiểm tra số lượng phản hồi | 1. Xem card bình luận<br>2. Kiểm tra số lượng | Hiển thị số lượng phản hồi với text "Trả lời (X)", có thể click để xem phản hồi | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-15** | Kiểm tra nút Like bình luận | 1. Xem card bình luận<br>2. Kiểm tra nút | Hiển thị nút với icon ThumbsUp, variant ghost size sm, text-red-500 nếu đã like | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-16** | Kiểm tra nút Phản hồi | 1. Xem card bình luận<br>2. Kiểm tra nút | Hiển thị nút "Trả lời" với icon Reply h-4 w-4, variant ghost size sm | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-17** | Kiểm tra nút Chỉnh sửa | 1. Xem bình luận của mình<br>2. Kiểm tra nút | Hiển thị nút với icon Edit h-4 w-4, variant ghost size sm, chỉ hiển thị cho bình luận của mình | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-18** | Kiểm tra nút Xóa | 1. Xem bình luận của mình<br>2. Kiểm tra nút | Hiển thị nút với icon Trash2 h-4 w-4, variant ghost size sm, chỉ hiển thị cho bình luận của mình | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-19** | Kiểm tra nút Báo cáo | 1. Xem bình luận<br>2. Kiểm tra nút | Hiển thị nút với icon Flag h-4 w-4, variant ghost size sm, có thể báo cáo bình luận | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-20** | Kiểm tra phản hồi bình luận | 1. Xem bình luận có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phản hồi trong div ml-8 space-y-3, bg-muted rounded-lg, với avatar, tên, nội dung, số lượng like/dislike | | Pass | 11/15/2015 | |
-| **GUI-HTDS-BL-21** | Kiểm tra phân trang | 1. Xem danh sách bình luận<br>2. Kiểm tra phân trang | Hiển thị phân trang nếu có nhiều bình luận, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-01** | Kiểm tra tiêu đề trang | 1. Truy cập trang cá nhân người lạ<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader, CardTitle text-2xl với tên người dùng | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-02** | Kiểm tra thông tin cá nhân | 1. Truy cập trang cá nhân<br>2. Kiểm tra thông tin | Hiển thị Card với Avatar h-16 w-16, CardTitle, CardDescription với bio, Badge variant secondary với số bài viết, người theo dõi, đang theo dõi | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-03** | Kiểm tra avatar người dùng | 1. Xem thông tin cá nhân<br>2. Kiểm tra avatar | Hiển thị Avatar h-16 w-16 với AvatarImage và AvatarFallback là ký tự đầu của tên | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-04** | Kiểm tra tên người dùng | 1. Xem thông tin cá nhân<br>2. Kiểm tra tên | Hiển thị CardTitle text-2xl với tên người dùng | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-05** | Kiểm tra bio | 1. Xem thông tin cá nhân<br>2. Kiểm tra bio | Hiển thị CardDescription với bio của người dùng | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-06** | Kiểm tra badge số bài viết | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "{số} bài viết" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-07** | Kiểm tra badge số người theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "{số} người theo dõi", format số với toLocaleString() | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-08** | Kiểm tra badge đang theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra badge | Hiển thị Badge variant secondary với text "Đang theo dõi {số}" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-09** | Kiểm tra nút Theo dõi | 1. Xem thông tin cá nhân<br>2. Kiểm tra nút | Hiển thị nút "+ Theo dõi" variant default, có thể click để theo dõi/bỏ theo dõi | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-10** | Kiểm tra nút Nhắn tin | 1. Xem thông tin cá nhân<br>2. Kiểm tra nút | Hiển thị nút "Nhắn tin" variant outline, có thể click để mở chat | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-11** | Kiểm tra tab danh mục | 1. Xem trang cá nhân<br>2. Kiểm tra tab | Hiển thị TabsList với TabsTrigger: "Bài viết" (icon ImageIcon), "Ảnh" (icon Camera), "Video" (icon VideoIcon) | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-12** | Kiểm tra ô tìm kiếm | 1. Xem trang cá nhân<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search absolute left-3 top-3, placeholder "Tìm bài viết/ảnh/video...", className pl-9 | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-13** | Kiểm tra bộ lọc thời gian | 1. Xem trang cá nhân<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[160px], options: "Tất cả", "Tuần này", "Tháng này", "Năm nay" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-14** | Kiểm tra bộ lọc sắp xếp | 1. Xem trang cá nhân<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[200px], options: "Mới nhất", "Nhiều like nhất", "Nhiều bình luận nhất" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-15** | Kiểm tra bộ lọc danh mục (tab Ảnh) | 1. Chọn tab "Ảnh"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-[200px], options: "Tất cả", "Gunpla", "Action Figures", "Model Kits", "Khác" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-16** | Kiểm tra nút Lọc | 1. Xem trang cá nhân<br>2. Kiểm tra nút | Hiển thị nút "Lọc" variant outline với icon Filter h-4 w-4 | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-17** | Kiểm tra card bài viết | 1. Xem tab "Bài viết"<br>2. Kiểm tra card | Hiển thị Card trong grid grid-cols-1 md:grid-cols-2 gap-4, có hình ảnh cover, CardHeader, CardContent | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-18** | Kiểm tra hình ảnh bài viết | 1. Xem card bài viết<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh w-full h-40 md:h-48 object-cover trong div overflow-hidden | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-19** | Kiểm tra tiêu đề bài viết | 1. Xem card bài viết<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle text-base line-clamp-1 với tiêu đề bài viết | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-20** | Kiểm tra nội dung tóm tắt | 1. Xem card bài viết<br>2. Kiểm tra nội dung | Hiển thị CardDescription line-clamp-2 với nội dung tóm tắt | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-21** | Kiểm tra thời gian đăng | 1. Xem card bài viết<br>2. Kiểm tra thời gian | Hiển thị text-xs text-muted-foreground với thời gian đăng | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-22** | Kiểm tra số lượng like | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng like với icon Heart h-4 w-4, text-sm | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-23** | Kiểm tra số lượng bình luận | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng bình luận với icon MessageSquare h-4 w-4, text-sm | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-24** | Kiểm tra số lượng chia sẻ | 1. Xem card bài viết<br>2. Kiểm tra số lượng | Hiển thị số lượng chia sẻ với icon Share2 h-4 w-4, text-sm | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-25** | Kiểm tra tags bài viết | 1. Xem card bài viết<br>2. Kiểm tra tags | Hiển thị Badge variant secondary text-xs với các tags, flex flex-wrap gap-1 | | Pass | 11/15/2015 | |
+| **GUI-HTDS-BV-26** | Kiểm tra phân trang | 1. Xem danh sách bài viết<br>2. Kiểm tra phân trang | Hiển thị phân trang nếu có nhiều bài viết, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách bình luận
+### Check FUNC: Hiển thị danh sách bài viết
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-HTDS-BL-01** | Mở tab Bình luận | 1. Xem chi tiết bài viết<br>2. Chọn tab "Bình luận" | Hiển thị danh sách tất cả bình luận, có form tạo bình luận, bộ lọc, ô tìm kiếm | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-02** | Hiển thị danh sách bình luận | 1. Chọn tab "Bình luận" | Hiển thị danh sách với đầy đủ thông tin: avatar, tên người dùng, rank, thời gian, nội dung, hình ảnh (nếu có), số lượng like/dislike/phản hồi, phản hồi (nếu có) | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-03** | Sắp xếp theo mới nhất | 1. Chọn tab "Bình luận"<br>2. Chọn sắp xếp "Mới nhất" | Danh sách được sắp xếp theo thời gian đăng mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-04** | Sắp xếp theo cũ nhất | 1. Chọn tab "Bình luận"<br>2. Chọn sắp xếp "Cũ nhất" | Danh sách được sắp xếp theo thời gian đăng cũ nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-05** | Sắp xếp theo nhiều like nhất | 1. Chọn tab "Bình luận"<br>2. Chọn sắp xếp "Nhiều like nhất" | Danh sách được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-06** | Sắp xếp theo nhiều trả lời nhất | 1. Chọn tab "Bình luận"<br>2. Chọn sắp xếp "Nhiều trả lời nhất" | Danh sách được sắp xếp theo số lượng phản hồi giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-07** | Lọc theo Gần đây | 1. Chọn tab "Bình luận"<br>2. Chọn bộ lọc "Gần đây" | Chỉ hiển thị các bình luận được đăng trong 24 giờ qua | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-08** | Lọc theo Phổ biến | 1. Chọn tab "Bình luận"<br>2. Chọn bộ lọc "Phổ biến" | Chỉ hiển thị các bình luận có số lượng like > 5 | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-09** | Lọc theo Gây tranh cãi | 1. Chọn tab "Bình luận"<br>2. Chọn bộ lọc "Gây tranh cãi" | Chỉ hiển thị các bình luận có dislike > 0 | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-10** | Tìm kiếm theo nội dung | 1. Chọn tab "Bình luận"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị bình luận có nội dung chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-11** | Tìm kiếm theo tên người dùng | 1. Chọn tab "Bình luận"<br>2. Nhập tên người dùng vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị bình luận của người dùng có tên chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-12** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn bộ lọc và sắp xếp | Danh sách được lọc và sắp xếp theo tất cả tiêu chí, chỉ hiển thị bình luận thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-13** | Hiển thị phản hồi bình luận | 1. Xem bình luận có phản hồi<br>2. Kiểm tra hiển thị | Hiển thị phản hồi trong div ml-8, với đầy đủ thông tin: avatar, tên, nội dung, số lượng like/dislike | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-14** | Hiển thị khi không có bình luận | 1. Xem bài viết không có bình luận<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có bình luận nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-15** | Tìm kiếm real-time | 1. Chọn tab "Bình luận"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
-| **FUNC-HTDS-BL-16** | Cập nhật số lượng bình luận | 1. Xem danh sách bình luận<br>2. Có bình luận mới | Số lượng bình luận được cập nhật real-time, bình luận mới xuất hiện trong danh sách | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-01** | Hiển thị trang cá nhân | 1. Click vào tên tác giả từ bài viết<br>2. Xem trang cá nhân | Hiển thị trang cá nhân với đầy đủ thông tin: avatar, tên, bio, số bài viết, người theo dõi, đang theo dõi, nút theo dõi, nút nhắn tin | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-02** | Hiển thị danh sách bài viết | 1. Chọn tab "Bài viết"<br>2. Xem danh sách | Hiển thị danh sách bài viết công khai với đầy đủ thông tin: hình ảnh cover, tiêu đề, nội dung tóm tắt, thời gian đăng, số lượng like/bình luận/chia sẻ, tags | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-03** | Lọc theo thời gian - Tất cả | 1. Chọn bộ lọc thời gian "Tất cả"<br>2. Xem danh sách | Hiển thị tất cả bài viết không giới hạn thời gian | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-04** | Lọc theo thời gian - Tuần này | 1. Chọn bộ lọc thời gian "Tuần này"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong tuần này | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-05** | Lọc theo thời gian - Tháng này | 1. Chọn bộ lọc thời gian "Tháng này"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong tháng này | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-06** | Lọc theo thời gian - Năm nay | 1. Chọn bộ lọc thời gian "Năm nay"<br>2. Xem danh sách | Chỉ hiển thị các bài viết được đăng trong năm nay | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-07** | Sắp xếp theo Mới nhất | 1. Chọn sắp xếp "Mới nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo thời gian đăng mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-08** | Sắp xếp theo Nhiều like nhất | 1. Chọn sắp xếp "Nhiều like nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-09** | Sắp xếp theo Nhiều bình luận nhất | 1. Chọn sắp xếp "Nhiều bình luận nhất"<br>2. Xem danh sách | Danh sách được sắp xếp theo số lượng bình luận giảm dần | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-10** | Tìm kiếm bài viết | 1. Nhập từ khóa vào ô tìm kiếm<br>2. Xem kết quả | Danh sách được lọc, chỉ hiển thị bài viết có tiêu đề hoặc nội dung chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-11** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn bộ lọc thời gian và sắp xếp | Danh sách được lọc và sắp xếp theo tất cả tiêu chí, chỉ hiển thị bài viết thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-12** | Theo dõi người dùng | 1. Nhấn nút "+ Theo dõi"<br>2. Kiểm tra trạng thái | Người dùng được theo dõi, nút chuyển thành "Bỏ theo dõi", số lượng người theo dõi tăng, hiển thị toast "Đã theo dõi" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-13** | Bỏ theo dõi người dùng | 1. Nhấn nút "Bỏ theo dõi"<br>2. Kiểm tra trạng thái | Người dùng được bỏ theo dõi, nút chuyển thành "+ Theo dõi", số lượng người theo dõi giảm, hiển thị toast "Đã bỏ theo dõi" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-14** | Nhắn tin cho người dùng | 1. Nhấn nút "Nhắn tin"<br>2. Kiểm tra hành động | Mở trang chat hoặc modal chat với người dùng, có thể gửi tin nhắn | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-15** | Xem chi tiết bài viết | 1. Click vào card bài viết hoặc tiêu đề<br>2. Xem chi tiết | Chuyển đến trang chi tiết bài viết với đầy đủ nội dung, hình ảnh, video, bình luận | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-16** | Hiển thị khi không có bài viết | 1. Xem trang cá nhân không có bài viết<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có bài viết nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-17** | Tìm kiếm real-time | 1. Nhập từ khóa vào ô tìm kiếm<br>2. Xem kết quả | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-BV-18** | Chuyển đổi tab | 1. Chọn tab "Bài viết", "Ảnh", hoặc "Video"<br>2. Xem nội dung | Nội dung được thay đổi theo tab đã chọn, bộ lọc danh mục chỉ hiển thị ở tab "Ảnh" | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Hiển thị số lượng like
+### Function: Xem chi tiết các ảnh
 
-#### Check GUI: Hiển thị số lượng like
+#### Check GUI: Xem chi tiết các ảnh
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-HT-SLL-01** | Kiểm tra badge số lượng like | 1. Xem chi tiết bài viết<br>2. Kiểm tra badge | Hiển thị Badge với số lượng like, có thể click để xem danh sách, bg-pink-100 text-pink-800 cursor-pointer | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-02** | Kiểm tra nút Like | 1. Xem chi tiết bài viết<br>2. Kiểm tra nút | Hiển thị nút "Like" hoặc "Unlike" với icon Heart, variant outline hoặc default tùy trạng thái, fill-red-500 nếu đã like | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-03** | Kiểm tra icon Heart | 1. Xem chi tiết bài viết<br>2. Kiểm tra icon | Hiển thị icon Heart h-4 w-4, fill-current nếu đã like | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-04** | Kiểm tra tab Người thích | 1. Xem chi tiết bài viết<br>2. Kiểm tra tab | Hiển thị tab "Người thích" trong TabsList, có thể chọn để xem danh sách | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-05** | Kiểm tra modal danh sách người like | 1. Click vào badge số lượng like<br>2. Kiểm tra modal | Hiển thị modal với DialogTitle "Danh sách người đã like", DialogDescription, danh sách người dùng | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-06** | Kiểm tra avatar người like | 1. Xem modal danh sách người like<br>2. Kiểm tra avatar | Hiển thị Avatar h-6 w-6 với hình ảnh hoặc fallback | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-07** | Kiểm tra tên người like | 1. Xem modal danh sách người like<br>2. Kiểm tra tên | Hiển thị tên người dùng với font-medium | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-08** | Kiểm tra thời gian like | 1. Xem modal danh sách người like<br>2. Kiểm tra thời gian | Hiển thị thời gian like với text-xs text-muted-foreground, format "vừa xong" hoặc ngày giờ | | Pass | 11/15/2015 | |
-| **GUI-HT-SLL-09** | Kiểm tra nút Đóng modal | 1. Mở modal danh sách người like<br>2. Kiểm tra nút | Hiển thị nút "Đóng" trong DialogFooter | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-01** | Kiểm tra tab Ảnh | 1. Chọn tab "Ảnh"<br>2. Kiểm tra tab | Hiển thị TabsTrigger value="photos" với icon Camera h-4 w-4, text "Ảnh" | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-02** | Kiểm tra gallery ảnh | 1. Chọn tab "Ảnh"<br>2. Kiểm tra gallery | Hiển thị grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 với các button chứa ảnh | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-03** | Kiểm tra card ảnh | 1. Xem gallery ảnh<br>2. Kiểm tra card | Hiển thị button relative group aspect-square overflow-hidden rounded-lg border với ảnh bên trong | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-04** | Kiểm tra ảnh mô hình | 1. Xem card ảnh<br>2. Kiểm tra ảnh | Hiển thị ảnh h-full w-full object-cover transition-transform group-hover:scale-105 | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-05** | Kiểm tra overlay khi hover | 1. Hover vào card ảnh<br>2. Kiểm tra overlay | Hiển thị overlay absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-06** | Kiểm tra thông tin ảnh khi hover | 1. Hover vào card ảnh<br>2. Kiểm tra thông tin | Hiển thị thông tin absolute bottom-2 left-2 right-2 text-white text-xs opacity-0 group-hover:opacity-100 với tên ảnh, số like, số bình luận | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-07** | Kiểm tra modal xem ảnh | 1. Click vào ảnh<br>2. Kiểm tra modal | Hiển thị Dialog với DialogContent max-w-3xl, DialogHeader, DialogTitle, DialogDescription | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-08** | Kiểm tra ảnh phóng to trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra ảnh | Hiển thị ảnh trong div aspect-video w-full overflow-hidden rounded-lg border với object-cover | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-09** | Kiểm tra thông tin chi tiết trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra thông tin | Hiển thị DialogTitle với tên ảnh, số like (icon Heart), số bình luận (icon MessageSquare), DialogDescription với thời gian upload | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-10** | Kiểm tra danh sách bình luận trong modal | 1. Mở modal xem ảnh<br>2. Kiểm tra bình luận | Hiển thị Label "Bình luận", danh sách bình luận text-sm text-muted-foreground với tên người dùng và nội dung | | Pass | 11/15/2015 | |
+| **GUI-XCT-A-11** | Kiểm tra nút đóng modal | 1. Mở modal xem ảnh<br>2. Kiểm tra nút | Có thể đóng modal bằng cách click overlay hoặc nút đóng | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị số lượng like
+### Check FUNC: Xem chi tiết các ảnh
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-HT-SLL-01** | Hiển thị số lượng like | 1. Xem chi tiết bài viết | Hiển thị số lượng like chính xác, cập nhật real-time khi có thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-02** | Like bài viết | 1. Xem chi tiết bài viết<br>2. Nhấn nút "Like" | Bài viết được like, số lượng like tăng, nút chuyển thành "Unlike", icon Heart fill-red-500, người dùng được thêm vào danh sách người like, hiển thị toast "Đã thích bài viết" | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-03** | Unlike bài viết | 1. Xem chi tiết bài viết đã like<br>2. Nhấn nút "Unlike" | Bài viết được unlike, số lượng like giảm, nút chuyển thành "Like", icon Heart không fill, người dùng được xóa khỏi danh sách người like | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-04** | Xem danh sách người like | 1. Click vào badge số lượng like<br>2. Xem danh sách | Mở modal hiển thị danh sách đầy đủ người đã like với avatar, tên, rank, thời gian like | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-05** | Chặn spam like | 1. Like bài viết nhiều lần liên tiếp<br>2. Kiểm tra hệ thống | Hệ thống chặn spam like, mỗi user chỉ được like 1 lần cho mỗi bài viết, không cho phép like lại nếu đã like | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-06** | Chặn bom like | 1. Nhiều user like trong thời gian ngắn<br>2. Kiểm tra hệ thống | Hệ thống phát hiện và chặn hành vi bom like, có thể giới hạn số lượng like trong khoảng thời gian nhất định | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-07** | Cập nhật số lượng real-time | 1. Xem chi tiết bài viết<br>2. Có người khác like | Số lượng like được cập nhật real-time, không cần refresh trang | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-08** | Đóng modal danh sách | 1. Mở modal danh sách người like<br>2. Nhấn nút "Đóng" hoặc click overlay | Modal đóng, quay lại trang chi tiết | | Pass | 11/15/2015 | |
-| **FUNC-HT-SLL-09** | Xem tab Người thích | 1. Chọn tab "Người thích"<br>2. Xem danh sách | Hiển thị danh sách người đã like với CardTitle "Người thích bài viết", CardDescription số lượng, danh sách với avatar, tên, rank, nút "Xem trang cá nhân" | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-01** | Hiển thị gallery ảnh | 1. Chọn tab "Ảnh"<br>2. Xem gallery | Hiển thị gallery ảnh mô hình với grid layout, mỗi ảnh có hover effect, hiển thị thông tin khi hover | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-02** | Lọc ảnh theo thời gian | 1. Chọn tab "Ảnh"<br>2. Chọn bộ lọc thời gian | Gallery được lọc theo thời gian đã chọn, chỉ hiển thị ảnh trong khoảng thời gian đó | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-03** | Lọc ảnh theo danh mục | 1. Chọn tab "Ảnh"<br>2. Chọn bộ lọc danh mục | Gallery được lọc theo danh mục đã chọn (Gunpla, Action Figures, Model Kits, Khác), chỉ hiển thị ảnh thuộc danh mục đó | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-04** | Sắp xếp ảnh theo Mới nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Mới nhất" | Gallery được sắp xếp theo thời gian upload mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-05** | Sắp xếp ảnh theo Nhiều like nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Nhiều like nhất" | Gallery được sắp xếp theo số lượng like giảm dần | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-06** | Sắp xếp ảnh theo Cũ nhất | 1. Chọn tab "Ảnh"<br>2. Chọn sắp xếp "Cũ nhất" | Gallery được sắp xếp theo thời gian upload cũ nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-07** | Mở modal xem ảnh chi tiết | 1. Click vào ảnh trong gallery<br>2. Xem modal | Mở modal hiển thị ảnh phóng to, thông tin chi tiết (tên, số like, số bình luận, thời gian upload), danh sách bình luận | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-08** | Đóng modal xem ảnh | 1. Mở modal xem ảnh<br>2. Click overlay hoặc nút đóng | Modal đóng, quay lại gallery | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-09** | Tìm kiếm ảnh | 1. Chọn tab "Ảnh"<br>2. Nhập từ khóa vào ô tìm kiếm | Gallery được lọc, chỉ hiển thị ảnh có tên hoặc thông tin chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-10** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn bộ lọc thời gian, danh mục và sắp xếp | Gallery được lọc và sắp xếp theo tất cả tiêu chí, chỉ hiển thị ảnh thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-11** | Hiển thị khi không có ảnh | 1. Xem trang cá nhân không có ảnh<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Chưa có ảnh nào" hoặc gallery trống | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-12** | Tương tác với ảnh trong modal | 1. Mở modal xem ảnh<br>2. Tương tác với ảnh | Có thể like, bình luận, chia sẻ ảnh từ modal, số lượng được cập nhật real-time | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-13** | Xem video trong tab Video | 1. Chọn tab "Video"<br>2. Xem danh sách | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 với Card chứa thumbnail, duration, tiêu đề, thời gian upload, số like, số bình luận | | Pass | 11/15/2015 | |
+| **FUNC-XCT-A-14** | Phân trang gallery ảnh | 1. Xem gallery có nhiều ảnh<br>2. Kiểm tra phân trang | Hiển thị phân trang, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Tạo bình luận
-
-#### Check GUI: Tạo bình luận
+### Check VALIDATION: Chức năng xem trang cá nhân người lạ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TBL-01** | Kiểm tra form bình luận | 1. Xem tab "Bình luận"<br>2. Kiểm tra form | Hiển thị Card với CardTitle "Viết bình luận", CardContent chứa form | | Pass | 11/15/2015 | |
-| **GUI-TBL-02** | Kiểm tra avatar người dùng | 1. Xem form bình luận<br>2. Kiểm tra avatar | Hiển thị avatar của người dùng hiện tại (nếu có) | | Pass | 11/15/2015 | |
-| **GUI-TBL-03** | Kiểm tra ô nhập bình luận | 1. Xem form bình luận<br>2. Kiểm tra ô nhập | Hiển thị Label "Nội dung bình luận", Textarea với placeholder "Viết bình luận của bạn...", rows 4, required | | Pass | 11/15/2015 | |
-| **GUI-TBL-04** | Kiểm tra upload hình ảnh | 1. Xem form bình luận<br>2. Kiểm tra upload | Hiển thị Label "Hình ảnh (tối đa 5 ảnh)", Input type="file" accept="image/*" multiple, nút "Chọn ảnh" với icon Image | | Pass | 11/15/2015 | |
-| **GUI-TBL-05** | Kiểm tra preview hình ảnh | 1. Upload hình ảnh<br>2. Kiểm tra preview | Hiển thị preview hình ảnh w-20 h-20 object-cover rounded-lg với nút xóa absolute -top-2 -right-2 | | Pass | 11/15/2015 | |
-| **GUI-TBL-06** | Kiểm tra nút Gửi bình luận | 1. Xem form bình luận<br>2. Kiểm tra nút | Hiển thị nút "Gửi bình luận" với icon Send h-4 w-4, variant default | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Tạo bình luận
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TBL-01** | Tạo bình luận thành công | 1. Xem tab "Bình luận"<br>2. Nhập nội dung bình luận<br>3. Nhấn "Gửi bình luận" | Bình luận được tạo thành công, hiển thị trong danh sách, số lượng bình luận tăng, form được reset, hiển thị toast "Đã thêm bình luận" | | Pass | 11/15/2015 | |
-| **FUNC-TBL-02** | Tạo bình luận thiếu nội dung | 1. Xem tab "Bình luận"<br>2. Để trống nội dung<br>3. Nhấn "Gửi bình luận" | Hiển thị toast lỗi "Vui lòng nhập nội dung bình luận", không gửi bình luận | | Pass | 11/15/2015 | |
-| **FUNC-TBL-03** | Upload hình ảnh đính kèm | 1. Xem form bình luận<br>2. Chọn hình ảnh để upload | Hình ảnh được upload, hiển thị preview, có thể xóa từng ảnh, tối đa 5 ảnh | | Pass | 11/15/2015 | |
-| **FUNC-TBL-04** | Tạo bình luận với hình ảnh | 1. Nhập nội dung bình luận<br>2. Upload hình ảnh<br>3. Gửi bình luận | Bình luận được tạo với hình ảnh đính kèm, hiển thị trong danh sách với hình ảnh | | Pass | 11/15/2015 | |
-| **FUNC-TBL-05** | Xóa hình ảnh đã upload | 1. Upload hình ảnh<br>2. Nhấn nút xóa hình ảnh | Hình ảnh được xóa khỏi preview, có thể upload lại | | Pass | 11/15/2015 | |
-| **FUNC-TBL-06** | Chặn spam comment | 1. Gửi nhiều bình luận liên tiếp trong thời gian ngắn<br>2. Kiểm tra hệ thống | Hệ thống chặn spam comment, giới hạn số lần bình luận trong khoảng thời gian nhất định, hiển thị thông báo nếu vượt quá giới hạn | | Pass | 11/15/2015 | |
-| **FUNC-TBL-07** | Chặn bom comment | 1. Nhiều user bình luận cùng lúc<br>2. Kiểm tra hệ thống | Hệ thống phát hiện và chặn hành vi bom comment, có thể giới hạn số lượng bình luận trong khoảng thời gian nhất định | | Pass | 11/15/2015 | |
-| **FUNC-TBL-08** | Tạo bình luận với nội dung dài | 1. Nhập nội dung bình luận rất dài<br>2. Gửi bình luận | Bình luận được tạo thành công, nội dung được hiển thị đầy đủ hoặc có "Xem thêm" | | Pass | 11/15/2015 | |
-
----
-
-### Function: Xóa bình luận
-
-#### Check GUI: Xóa bình luận
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XBL-01** | Kiểm tra nút Xóa bình luận | 1. Xem bình luận của mình<br>2. Kiểm tra nút | Hiển thị nút với icon Trash2 h-4 w-4, variant ghost size sm, chỉ hiển thị cho bình luận của mình | | Pass | 11/15/2015 | |
-| **GUI-XBL-02** | Kiểm tra modal xác nhận | 1. Nhấn nút "Xóa"<br>2. Kiểm tra modal | Hiển thị modal với DialogTitle "Xác nhận xóa bình luận", DialogDescription "Bạn có chắc chắn muốn xóa bình luận này?", Card hiển thị thông tin bình luận | | Pass | 11/15/2015 | |
-| **GUI-XBL-03** | Kiểm tra thông tin bình luận trong modal | 1. Mở modal xác nhận<br>2. Kiểm tra thông tin | Hiển thị nội dung bình luận, thời gian đăng, số lượng like/phản hồi | | Pass | 11/15/2015 | |
-| **GUI-XBL-04** | Kiểm tra nút Xác nhận xóa | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận xóa" variant destructive | | Pass | 11/15/2015 | |
-| **GUI-XBL-05** | Kiểm tra nút Hủy trong modal | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xóa bình luận
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XBL-01** | Xóa bình luận | 1. Xem bình luận của mình<br>2. Nhấn nút "Xóa"<br>3. Xác nhận xóa | Hiển thị modal xác nhận với thông tin bình luận, sau khi xác nhận, bình luận được xóa, hiển thị toast "Đã xóa bình luận", bình luận biến mất khỏi danh sách, số lượng bình luận giảm | | Pass | 11/15/2015 | |
-| **FUNC-XBL-02** | Hủy xóa bình luận | 1. Nhấn nút "Xóa"<br>2. Nhấn nút "Hủy" trong modal | Modal đóng, không xóa bình luận, bình luận vẫn còn | | Pass | 11/15/2015 | |
-| **FUNC-XBL-03** | Xử lý dữ liệu liên quan | 1. Xóa bình luận có like và phản hồi<br>2. Kiểm tra dữ liệu | Tất cả dữ liệu liên quan được xóa: like, dislike, phản hồi, thông báo được gửi đến người tương tác | | Pass | 11/15/2015 | |
-| **FUNC-XBL-04** | Xóa bình luận không phải của mình | 1. Xem bình luận của người khác<br>2. Kiểm tra nút xóa | Nút "Xóa" không hiển thị, không thể xóa bình luận của người khác | | Pass | 11/15/2015 | |
-| **FUNC-XBL-05** | Đóng modal bằng click overlay | 1. Mở modal xác nhận<br>2. Click vào overlay | Modal đóng, không xóa bình luận | | Pass | 11/15/2015 | |
-
----
-
-### Function: Chỉnh sửa bình luận
-
-#### Check GUI: Chỉnh sửa bình luận
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CSBL-01** | Kiểm tra nút Chỉnh sửa | 1. Xem bình luận của mình<br>2. Kiểm tra nút | Hiển thị nút với icon Edit h-4 w-4, variant ghost size sm, chỉ hiển thị cho bình luận của mình | | Pass | 11/15/2015 | |
-| **GUI-CSBL-02** | Kiểm tra form chỉnh sửa | 1. Nhấn nút "Chỉnh sửa"<br>2. Kiểm tra form | Hiển thị Textarea với nội dung hiện tại, có thể chỉnh sửa, rows 3 | | Pass | 11/15/2015 | |
-| **GUI-CSBL-03** | Kiểm tra nút Lưu | 1. Mở form chỉnh sửa<br>2. Kiểm tra nút | Hiển thị nút "Lưu" với icon CheckCircle h-4 w-4, variant default size sm | | Pass | 11/15/2015 | |
-| **GUI-CSBL-04** | Kiểm tra nút Hủy | 1. Mở form chỉnh sửa<br>2. Kiểm tra nút | Hiển thị nút "Hủy" với icon XCircle h-4 w-4, variant outline size sm | | Pass | 11/15/2015 | |
-| **GUI-CSBL-05** | Kiểm tra badge Đã chỉnh sửa | 1. Xem bình luận đã chỉnh sửa<br>2. Kiểm tra badge | Hiển thị text "Đã chỉnh sửa" với text-sm text-muted-foreground, sau thời gian đăng | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Chỉnh sửa bình luận
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CSBL-01** | Mở form chỉnh sửa | 1. Xem bình luận của mình<br>2. Nhấn nút "Chỉnh sửa" | Form chỉnh sửa được hiển thị với nội dung hiện tại đã điền sẵn, có thể chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-02** | Chỉnh sửa bình luận thành công | 1. Mở form chỉnh sửa<br>2. Sửa nội dung<br>3. Nhấn "Lưu" | Bình luận được cập nhật, hiển thị toast "Đã cập nhật bình luận", form chỉnh sửa đóng, nội dung mới được hiển thị, badge "Đã chỉnh sửa" xuất hiện, lịch sử chỉnh sửa được lưu | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-03** | Hủy chỉnh sửa | 1. Mở form chỉnh sửa<br>2. Sửa nội dung<br>3. Nhấn "Hủy" | Form chỉnh sửa đóng, nội dung không thay đổi, không lưu các chỉnh sửa | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-04** | Chỉnh sửa với nội dung trống | 1. Mở form chỉnh sửa<br>2. Xóa hết nội dung<br>3. Nhấn "Lưu" | Hiển thị toast lỗi "Vui lòng nhập nội dung", không cập nhật bình luận | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-05** | Lưu lịch sử chỉnh sửa | 1. Chỉnh sửa bình luận<br>2. Lưu thay đổi<br>3. Kiểm tra lịch sử | Lịch sử chỉnh sửa được lưu với thời gian, nội dung thay đổi, có thể xem timeline | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-06** | Thông báo cho người tương tác | 1. Chỉnh sửa bình luận có người like/phản hồi<br>2. Lưu thay đổi<br>3. Kiểm tra thông báo | Thông báo được gửi đến người tương tác về việc cập nhật bình luận | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-07** | Chỉnh sửa bình luận không phải của mình | 1. Xem bình luận của người khác<br>2. Kiểm tra nút chỉnh sửa | Nút "Chỉnh sửa" không hiển thị, không thể chỉnh sửa bình luận của người khác | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-08** | Thêm hình ảnh khi chỉnh sửa | 1. Mở form chỉnh sửa<br>2. Thêm hình ảnh mới | Hình ảnh mới được thêm vào, hiển thị preview, có thể xóa | | Pass | 11/15/2015 | |
-| **FUNC-CSBL-09** | Xóa hình ảnh khi chỉnh sửa | 1. Mở form chỉnh sửa<br>2. Xóa hình ảnh hiện tại | Hình ảnh được xóa khỏi bình luận, preview được cập nhật | | Pass | 11/15/2015 | |
-
----
-
-### Check VALIDATION: Tương tác bài viết
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **VALID-TTBV-01** | Tạo bình luận với nội dung quá dài | 1. Nhập nội dung bình luận rất dài (>5000 ký tự)<br>2. Gửi bình luận | Hiển thị cảnh báo hoặc tự động cắt nội dung, không cho phép gửi nếu vượt quá giới hạn | | Pass | 11/15/2015 | |
-| **VALID-TTBV-02** | Upload hình ảnh không đúng định dạng | 1. Chọn file không phải hình ảnh<br>2. Upload | Hiển thị thông báo lỗi "File không đúng định dạng", không upload | | Pass | 11/15/2015 | |
-| **VALID-TTBV-03** | Upload hình ảnh quá lớn | 1. Chọn hình ảnh > 5MB<br>2. Upload | Hiển thị thông báo lỗi "File quá lớn", không upload | | Pass | 11/15/2015 | |
-| **VALID-TTBV-04** | Upload quá nhiều hình ảnh | 1. Upload > 5 hình ảnh<br>2. Kiểm tra | Hệ thống chỉ cho phép tối đa 5 hình ảnh, hiển thị cảnh báo nếu vượt quá | | Pass | 11/15/2015 | |
-| **VALID-TTBV-05** | Like nhiều lần cùng một bài viết | 1. Like bài viết<br>2. Thử like lại | Hệ thống chặn, không cho phép like lại, hiển thị thông báo "Bạn đã like bài viết này rồi" | | Pass | 11/15/2015 | |
-| **VALID-TTBV-06** | Gửi bình luận spam | 1. Gửi nhiều bình luận giống nhau liên tiếp<br>2. Kiểm tra hệ thống | Hệ thống chặn spam, giới hạn số lần bình luận trong khoảng thời gian, hiển thị thông báo "Bạn đã bình luận quá nhiều, vui lòng đợi" | | Pass | 11/15/2015 | |
-| **VALID-TTBV-07** | Tìm kiếm với từ khóa đặc biệt | 1. Nhập từ khóa có ký tự đặc biệt<br>2. Tìm kiếm | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
-| **VALID-TTBV-08** | Chỉnh sửa bình luận với nội dung trống | 1. Mở form chỉnh sửa<br>2. Xóa hết nội dung<br>3. Lưu | Hiển thị thông báo lỗi "Nội dung bình luận không được để trống", không lưu | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-01** | Truy cập trang cá nhân không tồn tại | 1. Truy cập URL với ID người dùng không tồn tại<br>2. Kiểm tra hiển thị | Hiển thị thông báo lỗi "Người dùng không tồn tại" hoặc trang 404 | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-02** | Truy cập trang cá nhân bị chặn | 1. Truy cập trang cá nhân của người dùng đã chặn mình<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Bạn không thể xem trang cá nhân này" hoặc chặn truy cập | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-03** | Tìm kiếm với từ khóa đặc biệt | 1. Nhập từ khóa có ký tự đặc biệt<br>2. Tìm kiếm | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-04** | Theo dõi chính mình | 1. Truy cập trang cá nhân của chính mình<br>2. Kiểm tra nút theo dõi | Nút "Theo dõi" không hiển thị hoặc bị vô hiệu hóa, hiển thị thông báo "Đây là trang cá nhân của bạn" | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-05** | Xem ảnh không tồn tại | 1. Click vào ảnh không tồn tại<br>2. Kiểm tra modal | Hiển thị thông báo lỗi "Ảnh không tồn tại" hoặc không mở modal | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-06** | Lọc với giá trị không hợp lệ | 1. Chọn bộ lọc với giá trị không hợp lệ<br>2. Kiểm tra kết quả | Hệ thống xử lý an toàn, không gây lỗi, hiển thị danh sách mặc định | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-07** | Tìm kiếm với từ khóa rỗng | 1. Để trống ô tìm kiếm<br>2. Xem kết quả | Hiển thị tất cả nội dung, không lọc | | Pass | 11/15/2015 | |
+| **VALID-XTCPNL-08** | Xem trang cá nhân khi chưa đăng nhập | 1. Chưa đăng nhập<br>2. Truy cập trang cá nhân | Hiển thị trang cá nhân công khai hoặc yêu cầu đăng nhập tùy cài đặt quyền riêng tư | | Pass | 11/15/2015 | |
 
