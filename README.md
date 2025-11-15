@@ -1,17 +1,15 @@
-# Test Case Template - Quản lý tài khoản (User)
+# Test Case Template - Chức năng hiển thị sản phẩm (User)
 
 ## Module Code
-**Model Management Store: Quản lý tài khoản User**
+**Model Management Store: Chức năng hiển thị sản phẩm User**
 
 ## Test Requirement
-1. Đăng nhập
-2. Đăng ký
-3. Khôi phục mật khẩu
-4. Đổi mật khẩu
-5. Cập nhật thông tin cá nhân
-6. Quản lý địa chỉ
-7. Xem hạng thành viên
-8. Đăng xuất
+1. Hiển thị danh sách sản phẩm
+2. Xem chi tiết sản phẩm
+3. Chuyển đổi chế độ xem (Grid/List)
+4. Xem hình ảnh sản phẩm
+5. Xem thông số kỹ thuật sản phẩm
+6. Xem mô tả sản phẩm
 
 ---
 
@@ -21,272 +19,138 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 156 |
+| **Pass** | 128 |
 | **Fail** | 0 |
-| **Untested** | 42 |
+| **Untested** | 34 |
 | **N/A** | 0 |
-| **Number of Test cases** | 198 |
+| **Number of Test cases** | 162 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập
+### Function: Hiển thị danh sách sản phẩm
 
-#### Check GUI: Đăng nhập
+#### Check GUI: Hiển thị danh sách sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập" | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra mô tả chức năng | 1. Truy cập /user/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào tài khoản của bạn để tiếp tục mua sắm" | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra trường Email | 1. Truy cập /user/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email", input type email với placeholder "Nhập email của bạn", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra trường Mật khẩu | 1. Truy cập /user/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu", input type password với placeholder "Nhập mật khẩu", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /user/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Ghi nhớ đăng nhập" có thể tích chọn, nằm bên trái | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra link Quên mật khẩu | 1. Truy cập /user/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" có thể click, nằm bên phải | | Pass | 11/15/2015 | |
-| **GUI-DN-07** | Kiểm tra nút Đăng nhập | 1. Truy cập /user/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập" type submit, chiếm toàn bộ chiều rộng form | | Pass | 11/15/2015 | |
-| **GUI-DN-08** | Kiểm tra separator "Hoặc" | 1. Truy cập /user/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | 11/15/2015 | |
-| **GUI-DN-09** | Kiểm tra nút Đăng nhập với Google | 1. Truy cập /user/auth/login<br>2. Kiểm tra nút Google | Hiển thị nút "Đăng nhập với Google" variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DN-10** | Kiểm tra nút Đăng nhập với Facebook | 1. Truy cập /user/auth/login<br>2. Kiểm tra nút Facebook | Hiển thị nút "Đăng nhập với Facebook" variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DN-11** | Kiểm tra link Đăng ký | 1. Truy cập /user/auth/login<br>2. Kiểm tra link đăng ký | Hiển thị text "Chưa có tài khoản? " với link "Đăng ký ngay" có thể click | | Pass | 11/15/2015 | |
-| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /user/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background gradient, card container nằm giữa màn hình, form đăng nhập bên trong card | | Pass | 11/15/2015 | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /user/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có giới hạn chiều rộng tối đa | | Pass | 11/15/2015 | |
+| **GUI-HTS-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/products<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Danh sách mô hình" | | Pass | 11/15/2015 | |
+| **GUI-HTS-02** | Kiểm tra mô tả chức năng | 1. Truy cập /user/products<br>2. Kiểm tra mô tả | Hiển thị mô tả "Khám phá bộ sưu tập mô hình đa dạng với nhiều thể loại và thương hiệu nổi tiếng" | | Pass | 11/15/2015 | |
+| **GUI-HTS-03** | Kiểm tra ô tìm kiếm | 1. Truy cập /user/products<br>2. Kiểm tra ô tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm mô hình theo tên, thương hiệu, thể loại..." | | Pass | 11/15/2015 | |
+| **GUI-HTS-04** | Kiểm tra bộ lọc thể loại | 1. Truy cập /user/products<br>2. Kiểm tra dropdown thể loại | Hiển thị Select với label "Bộ lọc:", các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
+| **GUI-HTS-05** | Kiểm tra bộ lọc thương hiệu | 1. Truy cập /user/products<br>2. Kiểm tra dropdown thương hiệu | Hiển thị Select với các option: Tất cả, Bandai, Good Smile Company, Tamiya, Hasegawa, Kotobukiya, Max Factory | | Pass | 11/15/2015 | |
+| **GUI-HTS-06** | Kiểm tra sắp xếp sản phẩm | 1. Truy cập /user/products<br>2. Kiểm tra dropdown sắp xếp | Hiển thị Select với các option: Liên quan, Giá thấp, Giá cao, Đánh giá, Mới nhất | | Pass | 11/15/2015 | |
+| **GUI-HTS-07** | Kiểm tra slider khoảng giá | 1. Truy cập /user/products<br>2. Kiểm tra slider giá | Hiển thị Slider với label "Khoảng giá", giá trị từ 0 đến 5.000.000 VNĐ, hiển thị giá trị hiện tại | | Pass | 11/15/2015 | |
+| **GUI-HTS-08** | Kiểm tra nút chế độ Grid | 1. Truy cập /user/products<br>2. Kiểm tra nút Grid | Hiển thị nút với icon Grid3X3, có thể click để chuyển sang chế độ Grid | | Pass | 11/15/2015 | |
+| **GUI-HTS-09** | Kiểm tra nút chế độ List | 1. Truy cập /user/products<br>2. Kiểm tra nút List | Hiển thị nút với icon List, có thể click để chuyển sang chế độ List | | Pass | 11/15/2015 | |
+| **GUI-HTS-10** | Kiểm tra tóm tắt kết quả | 1. Truy cập /user/products<br>2. Kiểm tra tóm tắt | Hiển thị text "Hiển thị X trong tổng số Y mô hình" | | Pass | 11/15/2015 | |
+| **GUI-HTS-11** | Kiểm tra card sản phẩm - Grid mode | 1. Truy cập /user/products<br>2. Chọn chế độ Grid<br>3. Kiểm tra card sản phẩm | Hiển thị sản phẩm dạng grid với: hình ảnh, badge trạng thái, nút yêu thích, tên sản phẩm, thông tin cơ bản, đánh giá, giá, tình trạng kho, nút Xem, nút Mua | | Pass | 11/15/2015 | |
+| **GUI-HTS-12** | Kiểm tra hình ảnh sản phẩm | 1. Truy cập /user/products<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh sản phẩm với kích thước phù hợp, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-HTS-13** | Kiểm tra badge trạng thái | 1. Truy cập /user/products<br>2. Kiểm tra badge | Hiển thị badge "Mới" (màu xanh), "Bán chạy" (màu cam), "Giảm giá -X%" (màu đỏ) nếu có | | Pass | 11/15/2015 | |
+| **GUI-HTS-14** | Kiểm tra nút yêu thích | 1. Truy cập /user/products<br>2. Kiểm tra nút yêu thích | Hiển thị nút icon Heart ở góc trên bên phải card, có thể click để thêm/xóa yêu thích | | Pass | 11/15/2015 | |
+| **GUI-HTS-15** | Kiểm tra tên sản phẩm | 1. Truy cập /user/products<br>2. Kiểm tra tên sản phẩm | Hiển thị tên sản phẩm với font semibold, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-HTS-16** | Kiểm tra thông tin cơ bản | 1. Truy cập /user/products<br>2. Kiểm tra thông tin | Hiển thị format "Thương hiệu • Series • Tỷ lệ" với màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-HTS-17** | Kiểm tra đánh giá | 1. Truy cập /user/products<br>2. Kiểm tra đánh giá | Hiển thị icon Star màu vàng, điểm đánh giá, số lượng đánh giá trong ngoặc | | Pass | 11/15/2015 | |
+| **GUI-HTS-18** | Kiểm tra giá sản phẩm | 1. Truy cập /user/products<br>2. Kiểm tra giá | Hiển thị giá hiện tại với font bold màu primary, giá gốc gạch ngang nếu có giảm giá | | Pass | 11/15/2015 | |
+| **GUI-HTS-19** | Kiểm tra tình trạng kho | 1. Truy cập /user/products<br>2. Kiểm tra tình trạng | Hiển thị "Còn hàng (X)" màu xanh hoặc "Hết hàng" màu đỏ | | Pass | 11/15/2015 | |
+| **GUI-HTS-20** | Kiểm tra nút Xem | 1. Truy cập /user/products<br>2. Kiểm tra nút Xem | Hiển thị nút "Xem" variant outline với icon Package, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-HTS-21** | Kiểm tra nút Mua | 1. Truy cập /user/products<br>2. Kiểm tra nút Mua | Hiển thị nút "Mua" với icon ShoppingCart, disabled khi hết hàng | | Pass | 11/15/2015 | |
+| **GUI-HTS-22** | Kiểm tra thông báo không có kết quả | 1. Truy cập /user/products<br>2. Áp dụng bộ lọc không có kết quả<br>3. Kiểm tra thông báo | Hiển thị card với icon Package, text "Không tìm thấy mô hình", "Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm", nút "Xóa bộ lọc" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng nhập
+### Check FUNC: Hiển thị danh sách sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /user/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: tiêu đề "Đăng nhập", mô tả "Đăng nhập vào tài khoản của bạn để tiếp tục mua sắm", 2 trường nhập (Email, Mật khẩu), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập, separator "Hoặc", nút đăng nhập Google/Facebook, link đăng ký | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /user/auth/login<br>2. Nhập email hợp lệ (VD: user@email.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập | Hệ thống xác thực thông tin, chuyển đến trang chủ user (/user), lưu phiên đăng nhập và lưu token, hiển thị thông báo thành công | | Untested | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /user/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /user/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Email hoặc mật khẩu không đúng", không chuyển trang, vẫn ở trang đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /user/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /user/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /user/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /user/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn, khi đóng trình duyệt và mở lại vẫn còn đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-09** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /user/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn, khi đóng trình duyệt sẽ đăng xuất | | Untested | 11/15/2015 | |
-| **FUNC-DN-10** | Nhấn link Quên mật khẩu | 1. Truy cập /user/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /user/auth/forgot-password | | Pass | 11/15/2015 | |
-| **FUNC-DN-11** | Nhấn link Đăng ký | 1. Truy cập /user/auth/login<br>2. Nhấn link "Đăng ký ngay" | Chuyển đến trang /user/auth/register | | Pass | 11/15/2015 | |
-| **FUNC-DN-12** | Submit form bằng phím Enter | 1. Truy cập /user/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-13** | Đăng nhập với tài khoản chưa kích hoạt | 1. Truy cập /user/auth/login<br>2. Nhập email tài khoản chưa kích hoạt<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email để kích hoạt tài khoản", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-14** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /user/auth/login<br>2. Nhập email tài khoản bị khóa<br>3. Nhập mật khẩu đúng<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-15** | Đăng nhập sai nhiều lần - Hiển thị Captcha | 1. Truy cập /user/auth/login<br>2. Nhập sai thông tin đăng nhập 3 lần liên tiếp<br>3. Lần thứ 4, nhập thông tin | Sau 3 lần đăng nhập sai, hiển thị captcha, yêu cầu nhập captcha trước khi tiếp tục đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-16** | Đăng nhập với captcha đúng | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần để hiển thị captcha<br>3. Nhập captcha đúng<br>4. Nhập thông tin đăng nhập đúng<br>5. Nhấn Đăng nhập | Xác thực captcha thành công, xử lý đăng nhập bình thường, chuyển đến trang chủ | | Untested | 11/15/2015 | |
-| **FUNC-DN-17** | Đăng nhập với captcha sai | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần để hiển thị captcha<br>3. Nhập captcha sai<br>4. Nhập thông tin đăng nhập đúng<br>5. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Captcha không đúng", không xử lý đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-18** | Tạm khóa tài khoản sau nhiều lần đăng nhập sai | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai quá số lần cho phép (VD: 5 lần)<br>3. Thử đăng nhập lại | Tài khoản bị tạm khóa trong một khoảng thời gian (VD: 15 phút), hiển thị thông báo "Tài khoản đã bị tạm khóa do đăng nhập sai nhiều lần. Vui lòng thử lại sau X phút" | | Untested | 11/15/2015 | |
-| **FUNC-DN-19** | Xử lý khi mất kết nối mạng | 1. Truy cập /user/auth/login<br>2. Tắt kết nối mạng<br>3. Nhập thông tin hợp lệ<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-20** | Xử lý khi server lỗi | 1. Truy cập /user/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng nhập | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", không chuyển trang | | Untested | 11/15/2015 | |
-| **FUNC-DN-21** | Kiểm tra redirect sau đăng nhập | 1. Truy cập /user/auth/login?redirect=/user/products<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công | Sau khi đăng nhập thành công, chuyển đến trang /user/products thay vì trang chủ mặc định | | Untested | 11/15/2015 | |
-| **FUNC-DN-22** | Kiểm tra lưu token sau đăng nhập | 1. Truy cập /user/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra localStorage/sessionStorage | Token được lưu vào localStorage hoặc sessionStorage, có thể sử dụng cho các request tiếp theo | | Untested | 11/15/2015 | |
-| **FUNC-DN-23** | Kiểm tra tạo phiên đăng nhập | 1. Truy cập /user/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Đăng nhập thành công<br>4. Kiểm tra session | Phiên đăng nhập được tạo và lưu trữ trên server, có thể theo dõi trong lịch sử đăng nhập | | Untested | 11/15/2015 | |
-| **FUNC-DN-24** | Đăng nhập với Google | 1. Truy cập /user/auth/login<br>2. Nhấn nút "Đăng nhập với Google" | Mở popup hoặc chuyển hướng đến trang xác thực Google, sau khi xác thực thành công chuyển về trang chủ | | Untested | 11/15/2015 | |
-| **FUNC-DN-25** | Đăng nhập với Facebook | 1. Truy cập /user/auth/login<br>2. Nhấn nút "Đăng nhập với Facebook" | Mở popup hoặc chuyển hướng đến trang xác thực Facebook, sau khi xác thực thành công chuyển về trang chủ | | Untested | 11/15/2015 | |
+| **FUNC-HTS-01** | Mở trang danh sách sản phẩm | 1. Truy cập /user/products | Hiển thị trang với tiêu đề, mô tả, ô tìm kiếm, bộ lọc, danh sách sản phẩm dạng grid, tóm tắt kết quả | | Pass | 11/15/2015 | |
+| **FUNC-HTS-02** | Hiển thị danh sách sản phẩm mặc định | 1. Truy cập /user/products<br>2. Không áp dụng bộ lọc | Hiển thị tất cả sản phẩm có sẵn, sắp xếp theo mặc định (liên quan) | | Pass | 11/15/2015 | |
+| **FUNC-HTS-03** | Tìm kiếm sản phẩm theo tên | 1. Truy cập /user/products<br>2. Nhập tên sản phẩm vào ô tìm kiếm<br>3. Kiểm tra kết quả | Hiển thị danh sách sản phẩm có tên chứa từ khóa tìm kiếm, cập nhật tóm tắt kết quả | | Pass | 11/15/2015 | |
+| **FUNC-HTS-04** | Tìm kiếm sản phẩm theo thương hiệu | 1. Truy cập /user/products<br>2. Nhập tên thương hiệu vào ô tìm kiếm<br>3. Kiểm tra kết quả | Hiển thị danh sách sản phẩm của thương hiệu đó | | Pass | 11/15/2015 | |
+| **FUNC-HTS-05** | Tìm kiếm sản phẩm theo thể loại | 1. Truy cập /user/products<br>2. Nhập tên thể loại vào ô tìm kiếm<br>3. Kiểm tra kết quả | Hiển thị danh sách sản phẩm thuộc thể loại đó | | Pass | 11/15/2015 | |
+| **FUNC-HTS-06** | Tìm kiếm không có kết quả | 1. Truy cập /user/products<br>2. Nhập từ khóa không tồn tại<br>3. Kiểm tra kết quả | Hiển thị thông báo "Không tìm thấy mô hình", nút "Xóa bộ lọc" | | Pass | 11/15/2015 | |
+| **FUNC-HTS-07** | Lọc theo thể loại | 1. Truy cập /user/products<br>2. Chọn thể loại từ dropdown<br>3. Kiểm tra kết quả | Hiển thị chỉ sản phẩm thuộc thể loại đã chọn, cập nhật tóm tắt kết quả | | Pass | 11/15/2015 | |
+| **FUNC-HTS-08** | Lọc theo thương hiệu | 1. Truy cập /user/products<br>2. Chọn thương hiệu từ dropdown<br>3. Kiểm tra kết quả | Hiển thị chỉ sản phẩm của thương hiệu đã chọn, cập nhật tóm tắt kết quả | | Pass | 11/15/2015 | |
+| **FUNC-HTS-09** | Lọc theo khoảng giá | 1. Truy cập /user/products<br>2. Điều chỉnh slider khoảng giá<br>3. Kiểm tra kết quả | Hiển thị chỉ sản phẩm có giá trong khoảng đã chọn, cập nhật tóm tắt kết quả | | Pass | 11/15/2015 | |
+| **FUNC-HTS-10** | Sắp xếp theo giá thấp đến cao | 1. Truy cập /user/products<br>2. Chọn "Giá thấp" từ dropdown sắp xếp<br>3. Kiểm tra kết quả | Danh sách sản phẩm được sắp xếp theo giá tăng dần | | Pass | 11/15/2015 | |
+| **FUNC-HTS-11** | Sắp xếp theo giá cao đến thấp | 1. Truy cập /user/products<br>2. Chọn "Giá cao" từ dropdown sắp xếp<br>3. Kiểm tra kết quả | Danh sách sản phẩm được sắp xếp theo giá giảm dần | | Pass | 11/15/2015 | |
+| **FUNC-HTS-12** | Sắp xếp theo đánh giá | 1. Truy cập /user/products<br>2. Chọn "Đánh giá" từ dropdown sắp xếp<br>3. Kiểm tra kết quả | Danh sách sản phẩm được sắp xếp theo điểm đánh giá giảm dần | | Pass | 11/15/2015 | |
+| **FUNC-HTS-13** | Sắp xếp theo mới nhất | 1. Truy cập /user/products<br>2. Chọn "Mới nhất" từ dropdown sắp xếp<br>3. Kiểm tra kết quả | Danh sách sản phẩm được sắp xếp theo sản phẩm mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-HTS-14** | Chuyển sang chế độ Grid | 1. Truy cập /user/products<br>2. Click nút Grid<br>3. Kiểm tra hiển thị | Sản phẩm hiển thị dạng grid (lưới), mỗi sản phẩm là một card riêng biệt | | Pass | 11/15/2015 | |
+| **FUNC-HTS-15** | Chuyển sang chế độ List | 1. Truy cập /user/products<br>2. Click nút List<br>3. Kiểm tra hiển thị | Sản phẩm hiển thị dạng list (danh sách), các sản phẩm xếp theo hàng dọc | | Pass | 11/15/2015 | |
+| **FUNC-HTS-16** | Thêm sản phẩm vào yêu thích | 1. Truy cập /user/products<br>2. Click nút Heart trên sản phẩm<br>3. Kiểm tra kết quả | Icon Heart chuyển sang màu đỏ (filled), hiển thị thông báo "Đã thêm vào danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-HTS-17** | Xóa sản phẩm khỏi yêu thích | 1. Truy cập /user/products<br>2. Click nút Heart trên sản phẩm đã yêu thích<br>3. Kiểm tra kết quả | Icon Heart chuyển về màu xám (unfilled), hiển thị thông báo "Đã xóa khỏi danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-HTS-18** | Thêm sản phẩm vào giỏ hàng | 1. Truy cập /user/products<br>2. Click nút "Mua" trên sản phẩm còn hàng<br>3. Kiểm tra kết quả | Hiển thị thông báo "Đã thêm '[Tên sản phẩm]' vào giỏ hàng", sản phẩm được thêm vào giỏ hàng | | Untested | 11/15/2015 | |
+| **FUNC-HTS-19** | Thêm sản phẩm hết hàng vào giỏ hàng | 1. Truy cập /user/products<br>2. Click nút "Mua" trên sản phẩm hết hàng | Nút "Mua" bị disabled, không thể click | | Pass | 11/15/2015 | |
+| **FUNC-HTS-20** | Click nút Xem chi tiết | 1. Truy cập /user/products<br>2. Click nút "Xem" trên sản phẩm<br>3. Kiểm tra kết quả | Chuyển đến trang chi tiết sản phẩm /user/products/[id] | | Pass | 11/15/2015 | |
+| **FUNC-HTS-21** | Click vào tên sản phẩm | 1. Truy cập /user/products<br>2. Click vào tên sản phẩm<br>3. Kiểm tra kết quả | Chuyển đến trang chi tiết sản phẩm /user/products/[id] | | Pass | 11/15/2015 | |
+| **FUNC-HTS-22** | Click vào hình ảnh sản phẩm | 1. Truy cập /user/products<br>2. Click vào hình ảnh sản phẩm<br>3. Kiểm tra kết quả | Chuyển đến trang chi tiết sản phẩm /user/products/[id] | | Pass | 11/15/2015 | |
+| **FUNC-HTS-23** | Xóa bộ lọc | 1. Truy cập /user/products<br>2. Áp dụng một số bộ lọc<br>3. Click nút "Xóa bộ lọc" | Tất cả bộ lọc được reset về mặc định, hiển thị lại tất cả sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-HTS-24** | Kết hợp nhiều bộ lọc | 1. Truy cập /user/products<br>2. Chọn thể loại, thương hiệu, khoảng giá<br>3. Kiểm tra kết quả | Hiển thị chỉ sản phẩm thỏa mãn tất cả điều kiện lọc | | Pass | 11/15/2015 | |
+| **FUNC-HTS-25** | Tìm kiếm real-time | 1. Truy cập /user/products<br>2. Nhập từ khóa vào ô tìm kiếm<br>3. Quan sát kết quả | Danh sách sản phẩm được cập nhật ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đăng ký
+### Function: Xem chi tiết sản phẩm
 
-#### Check GUI: Đăng ký
+#### Check GUI: Xem chi tiết sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/auth/register<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng ký tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-DK-02** | Kiểm tra mô tả chức năng | 1. Truy cập /user/auth/register<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tạo tài khoản mới để bắt đầu mua sắm tại Model Shop" | | Pass | 11/15/2015 | |
-| **GUI-DK-03** | Kiểm tra Avatar upload | 1. Truy cập /user/auth/register<br>2. Kiểm tra Avatar | Hiển thị Avatar với icon User2 làm fallback, có nút Camera để upload ảnh | | Pass | 11/15/2015 | |
-| **GUI-DK-04** | Kiểm tra trường Họ và tên | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên *" với icon User, input type text với placeholder "Nhập họ và tên", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-05** | Kiểm tra trường Email | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Email | Hiển thị label "Email *" với icon Mail, input type email với placeholder "Nhập email", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-06** | Kiểm tra trường Số điện thoại | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại *" với icon Phone, input type tel với placeholder "Nhập số điện thoại", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-07** | Kiểm tra trường Giới tính | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Giới tính | Hiển thị label "Giới tính" với icon User2, Select với placeholder "Chọn giới tính", có các option: Nam, Nữ, Khác | | Pass | 11/15/2015 | |
-| **GUI-DK-08** | Kiểm tra trường Ngày sinh | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Ngày sinh | Hiển thị label "Ngày sinh" với icon Calendar, input type date | | Pass | 11/15/2015 | |
-| **GUI-DK-09** | Kiểm tra trường Địa chỉ | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Địa chỉ | Hiển thị label "Địa chỉ" với icon MapPin, input type text với placeholder "Nhập địa chỉ" | | Pass | 11/15/2015 | |
-| **GUI-DK-10** | Kiểm tra trường Mật khẩu | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Mật khẩu | Hiển thị label "Mật khẩu *", input type password với placeholder "Nhập mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-11** | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu *", input type password với placeholder "Nhập lại mật khẩu", có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu, có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-DK-12** | Kiểm tra checkbox Điều khoản | 1. Truy cập /user/auth/register<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật", có link đến trang điều khoản | | Pass | 11/15/2015 | |
-| **GUI-DK-13** | Kiểm tra thông tin bảo mật | 1. Truy cập /user/auth/register<br>2. Kiểm tra thông tin bảo mật | Hiển thị card thông tin bảo mật với icon ℹ, nội dung: "Mật khẩu phải có ít nhất 6 ký tự", "Thông tin cá nhân được bảo mật tuyệt đối", "Ảnh đại diện sẽ được hiển thị công khai" | | Pass | 11/15/2015 | |
-| **GUI-DK-14** | Kiểm tra nút Đăng ký | 1. Truy cập /user/auth/register<br>2. Kiểm tra nút Đăng ký | Hiển thị nút "Đăng ký tài khoản" type submit, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-DK-15** | Kiểm tra separator "Hoặc" | 1. Truy cập /user/auth/register<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, chữ in hoa | | Pass | 11/15/2015 | |
-| **GUI-DK-16** | Kiểm tra nút Đăng ký với Google | 1. Truy cập /user/auth/register<br>2. Kiểm tra nút Google | Hiển thị nút "Đăng ký với Google" variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DK-17** | Kiểm tra nút Đăng ký với Facebook | 1. Truy cập /user/auth/register<br>2. Kiểm tra nút Facebook | Hiển thị nút "Đăng ký với Facebook" variant outline, chiếm toàn bộ chiều rộng | | Pass | 11/15/2015 | |
-| **GUI-DK-18** | Kiểm tra link Đăng nhập | 1. Truy cập /user/auth/register<br>2. Kiểm tra link đăng nhập | Hiển thị text "Đã có tài khoản? " với link "Đăng nhập ngay" có thể click | | Pass | 11/15/2015 | |
-| **GUI-DK-19** | Kiểm tra layout trang | 1. Truy cập /user/auth/register<br>2. Kiểm tra layout tổng thể | Trang có background gradient, card container nằm giữa màn hình, form đăng ký bên trong card, có scroll nếu nội dung dài | | Pass | 11/15/2015 | |
+| **GUI-CTSP-01** | Kiểm tra Breadcrumb | 1. Truy cập /user/products/[id]<br>2. Kiểm tra breadcrumb | Hiển thị "Trang chủ / Mô hình / Tên sản phẩm" với các link có thể click | | Pass | 11/15/2015 | |
+| **GUI-CTSP-02** | Kiểm tra gallery hình ảnh | 1. Truy cập /user/products/[id]<br>2. Kiểm tra gallery | Hiển thị hình ảnh chính lớn, 3 hình ảnh phụ nhỏ bên dưới, có thể click để thay đổi hình chính | | Pass | 11/15/2015 | |
+| **GUI-CTSP-03** | Kiểm tra badge trạng thái | 1. Truy cập /user/products/[id]<br>2. Kiểm tra badge | Hiển thị badge "Mới", "Bán chạy", "Giảm giá -X%" nếu có | | Pass | 11/15/2015 | |
+| **GUI-CTSP-04** | Kiểm tra tên sản phẩm | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tên | Hiển thị tên sản phẩm với font size 3xl, font bold | | Pass | 11/15/2015 | |
+| **GUI-CTSP-05** | Kiểm tra thông tin cơ bản | 1. Truy cập /user/products/[id]<br>2. Kiểm tra thông tin | Hiển thị format "Thương hiệu • Series • Tỷ lệ" với màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CTSP-06** | Kiểm tra đánh giá | 1. Truy cập /user/products/[id]<br>2. Kiểm tra đánh giá | Hiển thị icon Star màu vàng, điểm đánh giá, số lượng đánh giá trong ngoặc | | Pass | 11/15/2015 | |
+| **GUI-CTSP-07** | Kiểm tra giá sản phẩm | 1. Truy cập /user/products/[id]<br>2. Kiểm tra giá | Hiển thị giá hiện tại với font size 3xl, font bold màu primary, giá gốc gạch ngang nếu có giảm giá | | Pass | 11/15/2015 | |
+| **GUI-CTSP-08** | Kiểm tra tình trạng kho | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tình trạng | Hiển thị icon CheckCircle màu xanh, text "Còn hàng (X sản phẩm)" hoặc màu đỏ "Hết hàng" | | Pass | 11/15/2015 | |
+| **GUI-CTSP-09** | Kiểm tra chọn số lượng | 1. Truy cập /user/products/[id]<br>2. Kiểm tra số lượng | Hiển thị nút giảm (-), ô input số lượng, nút tăng (+), giới hạn theo tồn kho | | Pass | 11/15/2015 | |
+| **GUI-CTSP-10** | Kiểm tra nút Thêm vào giỏ hàng | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị nút "Thêm vào giỏ hàng" size lg với icon ShoppingCart, disabled khi hết hàng | | Pass | 11/15/2015 | |
+| **GUI-CTSP-11** | Kiểm tra nút Yêu thích | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị nút variant outline với icon Heart, có thể click để thêm/xóa yêu thích | | Pass | 11/15/2015 | |
+| **GUI-CTSP-12** | Kiểm tra nút Chia sẻ | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị nút variant outline với icon Share2, có thể click để chia sẻ | | Pass | 11/15/2015 | |
+| **GUI-CTSP-13** | Kiểm tra nút Mua ngay | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị nút "Mua ngay" size lg chiếm toàn bộ chiều rộng, disabled khi hết hàng | | Pass | 11/15/2015 | |
+| **GUI-CTSP-14** | Kiểm tra card Tính năng nổi bật | 1. Truy cập /user/products/[id]<br>2. Kiểm tra card | Hiển thị card với tiêu đề "Tính năng nổi bật", danh sách các tính năng với icon CheckCircle màu xanh | | Pass | 11/15/2015 | |
+| **GUI-CTSP-15** | Kiểm tra card Thông tin vận chuyển | 1. Truy cập /user/products/[id]<br>2. Kiểm tra card | Hiển thị card với icon Truck, Shield, RotateCcw và các thông tin về vận chuyển, bảo hành, đổi trả | | Pass | 11/15/2015 | |
+| **GUI-CTSP-16** | Kiểm tra Tab Mô tả | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tab | Hiển thị tab "Mô tả" trong TabsList, có thể click để xem nội dung mô tả | | Pass | 11/15/2015 | |
+| **GUI-CTSP-17** | Kiểm tra Tab Thông số kỹ thuật | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tab | Hiển thị tab "Thông số kỹ thuật" trong TabsList, có thể click để xem thông số | | Pass | 11/15/2015 | |
+| **GUI-CTSP-18** | Kiểm tra Tab Đánh giá | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tab | Hiển thị tab "Đánh giá" trong TabsList, có thể click để xem đánh giá | | Pass | 11/15/2015 | |
+| **GUI-CTSP-19** | Kiểm tra Tab Vận chuyển | 1. Truy cập /user/products/[id]<br>2. Kiểm tra tab | Hiển thị tab "Vận chuyển" trong TabsList, có thể click để xem thông tin vận chuyển | | Pass | 11/15/2015 | |
+| **GUI-CTSP-20** | Kiểm tra nội dung Tab Mô tả | 1. Truy cập /user/products/[id]<br>2. Click tab Mô tả<br>3. Kiểm tra nội dung | Hiển thị card với tiêu đề "Mô tả sản phẩm", nội dung mô tả chi tiết với line-height relaxed | | Pass | 11/15/2015 | |
+| **GUI-CTSP-21** | Kiểm tra nội dung Tab Thông số | 1. Truy cập /user/products/[id]<br>2. Click tab Thông số<br>3. Kiểm tra nội dung | Hiển thị card với grid 2 cột, các thông số: Tỷ lệ, Chiều cao, Chất liệu, Số phần, Độ khó, Độ tuổi | | Pass | 11/15/2015 | |
+| **GUI-CTSP-22** | Kiểm tra nội dung Tab Đánh giá | 1. Truy cập /user/products/[id]<br>2. Click tab Đánh giá<br>3. Kiểm tra nội dung | Hiển thị card với tiêu đề "Đánh giá sản phẩm", mô tả số lượng đánh giá, danh sách đánh giá với tên người dùng, điểm, bình luận, ngày, badge "Đã mua" | | Pass | 11/15/2015 | |
+| **GUI-CTSP-23** | Kiểm tra nội dung Tab Vận chuyển | 1. Truy cập /user/products/[id]<br>2. Click tab Vận chuyển<br>3. Kiểm tra nội dung | Hiển thị card với thông tin về phí vận chuyển, thời gian giao hàng, chính sách giao hàng | | Pass | 11/15/2015 | |
+| **GUI-CTSP-24** | Kiểm tra card Khuyến mãi đặc biệt | 1. Truy cập /user/products/[id]<br>2. Kiểm tra card khuyến mãi | Hiển thị card với tiêu đề "Khuyến mãi đặc biệt", mã giảm giá, mức giảm, giá gốc, giá sau giảm, thời gian áp dụng, điều kiện, nút "Áp dụng mã" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng ký
+### Check FUNC: Xem chi tiết sản phẩm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DK-01** | Mở trang đăng ký | 1. Truy cập /user/auth/register | Hiển thị form đăng ký với đầy đủ các thành phần: tiêu đề, mô tả, Avatar upload, các trường nhập (Họ tên, Email, SĐT, Giới tính, Ngày sinh, Địa chỉ, Mật khẩu, Xác nhận mật khẩu), checkbox điều khoản, thông tin bảo mật, nút đăng ký, separator, nút đăng ký Google/Facebook, link đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-DK-02** | Đăng ký thành công với thông tin hợp lệ | 1. Truy cập /user/auth/register<br>2. Điền đầy đủ thông tin hợp lệ<br>3. Tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo "Đăng ký tài khoản thành công!", chuyển đến trang /user/auth/login, email xác nhận được gửi (nếu có) | | Untested | 11/15/2015 | |
-| **FUNC-DK-03** | Đăng ký thiếu Họ tên | 1. Truy cập /user/auth/register<br>2. Để trống Họ tên<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Họ tên không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-04** | Đăng ký thiếu Email | 1. Truy cập /user/auth/register<br>2. Để trống Email<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-05** | Đăng ký với Email không hợp lệ | 1. Truy cập /user/auth/register<br>2. Nhập email không có @<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-06** | Đăng ký với Email đã tồn tại | 1. Truy cập /user/auth/register<br>2. Nhập email đã tồn tại trong hệ thống<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email đã tồn tại trong hệ thống", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-07** | Đăng ký thiếu Số điện thoại | 1. Truy cập /user/auth/register<br>2. Để trống Số điện thoại<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Số điện thoại không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-08** | Đăng ký với Số điện thoại không hợp lệ | 1. Truy cập /user/auth/register<br>2. Nhập số điện thoại không đúng định dạng (VD: 123)<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Số điện thoại không hợp lệ", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-09** | Đăng ký thiếu Mật khẩu | 1. Truy cập /user/auth/register<br>2. Để trống Mật khẩu<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-10** | Đăng ký với Mật khẩu quá ngắn | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu < 6 ký tự<br>3. Điền các trường khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 6 ký tự", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-11** | Đăng ký với Mật khẩu xác nhận không khớp | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu<br>3. Nhập xác nhận mật khẩu khác<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-12** | Đăng ký không tích checkbox điều khoản | 1. Truy cập /user/auth/register<br>2. Điền đầy đủ thông tin<br>3. Không tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Vui lòng đồng ý với điều khoản sử dụng", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DK-13** | Upload Avatar thành công | 1. Truy cập /user/auth/register<br>2. Click nút Camera<br>3. Chọn file ảnh hợp lệ (< 5MB)<br>4. Kiểm tra preview | Avatar được hiển thị preview, file được lưu vào form data | | Pass | 11/15/2015 | |
-| **FUNC-DK-14** | Upload Avatar quá lớn | 1. Truy cập /user/auth/register<br>2. Click nút Camera<br>3. Chọn file ảnh > 5MB | Hiển thị thông báo lỗi "Kích thước ảnh không được vượt quá 5MB" | | Pass | 11/15/2015 | |
-| **FUNC-DK-15** | Upload Avatar không phải file ảnh | 1. Truy cập /user/auth/register<br>2. Click nút Camera<br>3. Chọn file không phải ảnh | Hiển thị thông báo lỗi "Vui lòng chọn file ảnh hợp lệ" | | Pass | 11/15/2015 | |
-| **FUNC-DK-16** | Hiển thị/ẩn mật khẩu | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-17** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /user/auth/register<br>2. Nhập xác nhận mật khẩu<br>3. Click icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DK-18** | Kiểm tra email trùng lặp real-time | 1. Truy cập /user/auth/register<br>2. Nhập email đã tồn tại<br>3. Rời khỏi trường email | Hiển thị cảnh báo ngay lập tức "Email đã tồn tại trong hệ thống" mà không cần submit form | | Untested | 11/15/2015 | |
-| **FUNC-DK-19** | Nhấn link Đăng nhập | 1. Truy cập /user/auth/register<br>2. Nhấn link "Đăng nhập ngay" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-DK-20** | Nhấn link Điều khoản sử dụng | 1. Truy cập /user/auth/register<br>2. Nhấn link "Điều khoản sử dụng" | Mở trang /terms trong tab mới hoặc chuyển đến trang điều khoản | | Pass | 11/15/2015 | |
-| **FUNC-DK-21** | Nhấn link Chính sách bảo mật | 1. Truy cập /user/auth/register<br>2. Nhấn link "Chính sách bảo mật" | Mở trang /privacy trong tab mới hoặc chuyển đến trang chính sách | | Pass | 11/15/2015 | |
-| **FUNC-DK-22** | Đăng ký với Google | 1. Truy cập /user/auth/register<br>2. Nhấn nút "Đăng ký với Google" | Mở popup hoặc chuyển hướng đến trang xác thực Google, sau khi xác thực thành công tạo tài khoản và chuyển về trang chủ | | Untested | 11/15/2015 | |
-| **FUNC-DK-23** | Đăng ký với Facebook | 1. Truy cập /user/auth/register<br>2. Nhấn nút "Đăng ký với Facebook" | Mở popup hoặc chuyển hướng đến trang xác thực Facebook, sau khi xác thực thành công tạo tài khoản và chuyển về trang chủ | | Untested | 11/15/2015 | |
-| **FUNC-DK-24** | Xử lý khi mất kết nối mạng | 1. Truy cập /user/auth/register<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-DK-25** | Xử lý khi server lỗi | 1. Truy cập /user/auth/register<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Có lỗi xảy ra, vui lòng thử lại", form không được gửi | | Untested | 11/15/2015 | |
-
----
-
-### Function: Khôi phục mật khẩu
-
-#### Check GUI: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra icon Mail header | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra icon Mail | Hiển thị icon Mail trong vòng tròn ở header | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quên mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-03** | Kiểm tra mô tả chức năng | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra mô tả | Hiển thị mô tả "Nhập email của bạn để nhận link khôi phục mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-04** | Kiểm tra trường nhập Email | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra trường nhập | Hiển thị label "Email", input type email với placeholder "Nhập email của bạn" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-05** | Kiểm tra nút Gửi link khôi phục | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra nút | Hiển thị nút "Gửi link khôi phục" type submit, chiếm toàn bộ chiều rộng, có thể disabled khi đang loading | | Pass | 11/15/2015 | |
-| **GUI-KPMK-06** | Kiểm tra link Quay lại đăng nhập | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra link | Hiển thị link "Quay lại đăng nhập" với icon ArrowLeft, có thể click | | Pass | 11/15/2015 | |
-| **GUI-KPMK-07** | Kiểm tra link Đăng ký | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra link đăng ký | Hiển thị text "Chưa có tài khoản? " với link "Đăng ký ngay" có thể click | | Pass | 11/15/2015 | |
-| **GUI-KPMK-08** | Kiểm tra màn hình Email đã gửi | 1. Truy cập /user/auth/forgot-password<br>2. Gửi email thành công<br>3. Kiểm tra màn hình | Hiển thị icon CheckCircle trong vòng tròn xanh, tiêu đề "Email đã được gửi", mô tả "Chúng tôi đã gửi link khôi phục mật khẩu đến email của bạn", nút "Gửi lại email", nút "Quay lại đăng nhập" | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Mở trang khôi phục mật khẩu | 1. Truy cập /user/auth/forgot-password | Hiển thị trang với icon Mail, tiêu đề "Quên mật khẩu", mô tả, trường nhập Email, nút "Gửi link khôi phục", link quay lại đăng nhập, link đăng ký | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Gửi email khôi phục thành công | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Nhấn "Gửi link khôi phục" | Hiển thị thông báo "Email khôi phục mật khẩu đã được gửi!", chuyển sang màn hình "Email đã được gửi" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-03** | Gửi email - Email không tồn tại | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email không tồn tại<br>3. Nhấn "Gửi link khôi phục" | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-04** | Gửi email - Thiếu email | 1. Truy cập /user/auth/forgot-password<br>2. Để trống email<br>3. Nhấn "Gửi link khôi phục" | Hiển thị thông báo lỗi "Vui lòng nhập email", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-05** | Gửi email - Email không hợp lệ | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email không đúng định dạng<br>3. Nhấn "Gửi link khôi phục" | Trình duyệt hiển thị cảnh báo validation hoặc thông báo lỗi "Email không hợp lệ" | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-06** | Nhấn link Quay lại đăng nhập | 1. Truy cập /user/auth/forgot-password<br>2. Nhấn link "Quay lại đăng nhập" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-07** | Nhấn link Đăng ký | 1. Truy cập /user/auth/forgot-password<br>2. Nhấn link "Đăng ký ngay" | Chuyển đến trang /user/auth/register | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-08** | Gửi lại email | 1. Truy cập /user/auth/forgot-password<br>2. Gửi email thành công<br>3. Nhấn "Gửi lại email" | Quay lại màn hình nhập email, có thể gửi lại email khôi phục | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Tắt kết nối mạng<br>4. Nhấn "Gửi link khôi phục" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-KPMK-10** | Xử lý khi server lỗi | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Server trả về lỗi 500<br>4. Nhấn "Gửi link khôi phục" | Hiển thị thông báo lỗi "Có lỗi xảy ra, vui lòng thử lại" | | Untested | 11/15/2015 | |
-
----
-
-### Function: Đổi mật khẩu
-
-#### Check GUI: Đổi mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra nút Đổi mật khẩu | 1. Truy cập /user/account<br>2. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" với icon Key trong card "Thông tin tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra modal Đổi mật khẩu | 1. Truy cập /user/account<br>2. Nhấn nút Đổi mật khẩu<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | | Pass | 11/15/2015 | |
-| **GUI-DMK-03** | Kiểm tra trường Mật khẩu hiện tại | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu hiện tại | Hiển thị label "Mật khẩu hiện tại", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-04** | Kiểm tra trường Mật khẩu mới | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Mật khẩu mới | Hiển thị label "Mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-05** | Kiểm tra trường Xác nhận mật khẩu mới | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra trường Xác nhận mật khẩu | Hiển thị label "Xác nhận mật khẩu mới", input type password, có nút icon Eye/EyeOff để hiển thị/ẩn mật khẩu | | Pass | 11/15/2015 | |
-| **GUI-DMK-06** | Kiểm tra nút Hủy | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-DMK-07** | Kiểm tra nút Đổi mật khẩu trong modal | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Kiểm tra nút Đổi mật khẩu | Hiển thị nút "Đổi mật khẩu" | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đổi mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Mở modal Đổi mật khẩu | 1. Truy cập /user/account<br>2. Nhấn nút "Đổi mật khẩu" | Modal Dialog mở ra, hiển thị 3 trường nhập (Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới), 2 nút (Hủy, Đổi mật khẩu) | | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu thành công | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới hợp lệ (≥6 ký tự)<br>5. Nhập lại mật khẩu mới khớp<br>6. Nhấn Đổi mật khẩu | Hiển thị thông báo "Đổi mật khẩu thành công", modal đóng, form được reset | | Untested | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu - Mật khẩu hiện tại sai | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng", không đổi mật khẩu | | Untested | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu - Thiếu mật khẩu hiện tại | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Để trống mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu hiện tại" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-05** | Đổi mật khẩu - Thiếu mật khẩu mới | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Để trống mật khẩu mới<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Vui lòng nhập mật khẩu mới" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-06** | Đổi mật khẩu - Mật khẩu mới quá ngắn | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới < 6 ký tự<br>5. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu mới phải có ít nhất 6 ký tự" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-07** | Đổi mật khẩu - Mật khẩu xác nhận không khớp | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Nhấn Đổi mật khẩu | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp" | | Pass | 11/15/2015 | |
-| **FUNC-DMK-08** | Hiển thị/ẩn mật khẩu hiện tại | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu hiện tại<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-09** | Hiển thị/ẩn mật khẩu mới | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập mật khẩu mới<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-10** | Hiển thị/ẩn xác nhận mật khẩu | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhập xác nhận mật khẩu<br>4. Nhấn icon Eye | Input chuyển từ type password sang type text, hiển thị mật khẩu, icon chuyển thành EyeOff | | Pass | 11/15/2015 | |
-| **FUNC-DMK-11** | Đóng modal bằng nút Hủy | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Nhấn nút Hủy | Modal đóng, form được reset về trạng thái ban đầu | | Pass | 11/15/2015 | |
-| **FUNC-DMK-12** | Đóng modal bằng click bên ngoài | 1. Truy cập /user/account<br>2. Mở modal Đổi mật khẩu<br>3. Click bên ngoài modal | Modal đóng | | Pass | 11/15/2015 | |
-
----
-
-### Function: Cập nhật thông tin cá nhân
-
-#### Check GUI: Cập nhật thông tin cá nhân
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-QLTT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/account<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Tài khoản của tôi" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-02** | Kiểm tra mô tả trang | 1. Truy cập /user/account<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý thông tin cá nhân và theo dõi hoạt động" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-03** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /user/account<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit | | Pass | 11/15/2015 | |
-| **GUI-QLTT-04** | Kiểm tra Avatar | 1. Truy cập /user/account<br>2. Kiểm tra Avatar | Hiển thị Avatar với fallback là chữ cái đầu của họ tên, có badge rank (VD: Gold) với icon Crown | | Pass | 11/15/2015 | |
-| **GUI-QLTT-05** | Kiểm tra card Thông tin cá nhân | 1. Truy cập /user/account<br>2. Kiểm tra card Thông tin cá nhân | Hiển thị card "Thông tin cá nhân" với icon User, mô tả "Thông tin cơ bản của tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-06** | Kiểm tra trường Họ và tên | 1. Truy cập /user/account<br>2. Kiểm tra trường Họ và tên | Hiển thị label "Họ và tên", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-07** | Kiểm tra trường Email | 1. Truy cập /user/account<br>2. Kiểm tra trường Email | Hiển thị label "Email", input type email hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-08** | Kiểm tra trường Số điện thoại | 1. Truy cập /user/account<br>2. Kiểm tra trường Số điện thoại | Hiển thị label "Số điện thoại", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-09** | Kiểm tra trường Ngày sinh | 1. Truy cập /user/account<br>2. Kiểm tra trường Ngày sinh | Hiển thị label "Ngày sinh", input type date hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-10** | Kiểm tra trường Địa chỉ | 1. Truy cập /user/account<br>2. Kiểm tra trường Địa chỉ | Hiển thị label "Địa chỉ", input text hiển thị giá trị hiện tại, disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-QLTT-11** | Kiểm tra card Thông tin tài khoản | 1. Truy cập /user/account<br>2. Kiểm tra card Thông tin tài khoản | Hiển thị card "Thông tin tài khoản" với icon Crown | | Pass | 11/15/2015 | |
-| **GUI-QLTT-12** | Kiểm tra thông tin Email đăng nhập | 1. Truy cập /user/account<br>2. Kiểm tra thông tin Email đăng nhập | Hiển thị icon Mail, label "Email đăng nhập", giá trị email hiện tại | | Pass | 11/15/2015 | |
-| **GUI-QLTT-13** | Kiểm tra thông tin Thành viên từ | 1. Truy cập /user/account<br>2. Kiểm tra thông tin Thành viên từ | Hiển thị icon Calendar, label "Thành viên từ", giá trị ngày tạo định dạng Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-QLTT-14** | Kiểm tra thông tin Lần đăng nhập cuối | 1. Truy cập /user/account<br>2. Kiểm tra thông tin Lần đăng nhập cuối | Hiển thị icon Calendar, label "Lần đăng nhập cuối", giá trị thời gian định dạng Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-QLTT-15** | Kiểm tra nút Lưu thay đổi | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Lưu | Hiển thị nút "Lưu thay đổi" với icon Save | | Pass | 11/15/2015 | |
-| **GUI-QLTT-16** | Kiểm tra nút Hủy khi chỉnh sửa | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X | | Pass | 11/15/2015 | |
-| **GUI-QLTT-17** | Kiểm tra card Thống kê hoạt động | 1. Truy cập /user/account<br>2. Kiểm tra card Thống kê | Hiển thị card "Thống kê hoạt động" với icon Star, mô tả "Tổng quan về hoạt động mua sắm của bạn" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-18** | Kiểm tra thống kê Đơn hàng | 1. Truy cập /user/account<br>2. Kiểm tra thống kê Đơn hàng | Hiển thị icon ShoppingBag, số lượng đơn hàng, text "Đơn hàng" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-19** | Kiểm tra thống kê Mô hình yêu thích | 1. Truy cập /user/account<br>2. Kiểm tra thống kê Yêu thích | Hiển thị icon Heart, số lượng mô hình yêu thích, text "Mô hình yêu thích" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-20** | Kiểm tra thống kê Điểm tích lũy | 1. Truy cập /user/account<br>2. Kiểm tra thống kê Điểm | Hiển thị icon Crown, số điểm tích lũy, text "Điểm tích lũy" | | Pass | 11/15/2015 | |
-| **GUI-QLTT-21** | Kiểm tra card Thông tin thành viên | 1. Truy cập /user/account<br>2. Kiểm tra card Thành viên | Hiển thị card "Thông tin thành viên" với icon Crown | | Pass | 11/15/2015 | |
-| **GUI-QLTT-22** | Kiểm tra badge Hạng thành viên | 1. Truy cập /user/account<br>2. Kiểm tra badge Rank | Hiển thị badge với hạng thành viên (VD: Gold) và icon Crown, có màu tương ứng với hạng | | Pass | 11/15/2015 | |
-| **GUI-QLTT-23** | Kiểm tra thông tin Tổng chi tiêu | 1. Truy cập /user/account<br>2. Kiểm tra Tổng chi tiêu | Hiển thị label "Tổng chi tiêu:" với giá trị định dạng VNĐ | | Pass | 11/15/2015 | |
-| **GUI-QLTT-24** | Kiểm tra thông tin Điểm tích lũy | 1. Truy cập /user/account<br>2. Kiểm tra Điểm tích lũy | Hiển thị label "Điểm tích lũy:" với giá trị số điểm | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cập nhật thông tin cá nhân
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLTT-01** | Mở trang Quản lý tài khoản | 1. Truy cập /user/account | Hiển thị trang với tiêu đề "Tài khoản của tôi", các card (Thông tin cá nhân, Thống kê hoạt động, Thông tin tài khoản, Thông tin thành viên), nút Chỉnh sửa, nút Đổi mật khẩu, nút Đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-02** | Bật chế độ chỉnh sửa | 1. Truy cập /user/account<br>2. Nhấn nút "Chỉnh sửa" | Tất cả các trường input trong card "Thông tin cá nhân" được enable, nút "Chỉnh sửa" biến thành "Hủy" và "Lưu thay đổi" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-03** | Cập nhật thông tin thành công | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa thông tin (Họ tên, SĐT, Địa chỉ, Ngày sinh)<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo "Cập nhật thông tin thành công", các trường được disable lại, thông tin mới được hiển thị | | Untested | 11/15/2015 | |
-| **FUNC-QLTT-04** | Cập nhật thông tin - Thiếu Họ tên | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa họ tên<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Họ tên không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-05** | Cập nhật thông tin - Thiếu Email | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa email<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Email không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-06** | Cập nhật thông tin - Thiếu Số điện thoại | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Xóa số điện thoại<br>4. Nhấn Lưu thay đổi | Hiển thị thông báo lỗi "Số điện thoại không được để trống" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-07** | Hủy chỉnh sửa | 1. Truy cập /user/account<br>2. Nhấn Chỉnh sửa<br>3. Sửa một số thông tin<br>4. Nhấn Hủy | Các trường quay về giá trị ban đầu, chế độ chỉnh sửa tắt, nút "Hủy" và "Lưu" biến thành "Chỉnh sửa" | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-08** | Xem thông tin tài khoản | 1. Truy cập /user/account<br>2. Kiểm tra card Thông tin tài khoản | Hiển thị đầy đủ: Email đăng nhập, Thành viên từ, Lần đăng nhập cuối | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-09** | Xem thống kê hoạt động | 1. Truy cập /user/account<br>2. Kiểm tra card Thống kê hoạt động | Hiển thị đầy đủ: Số đơn hàng, Số mô hình yêu thích, Điểm tích lũy | | Pass | 11/15/2015 | |
-| **FUNC-QLTT-10** | Xem thông tin thành viên | 1. Truy cập /user/account<br>2. Kiểm tra card Thông tin thành viên | Hiển thị đầy đủ: Hạng thành viên với badge, Giảm giá %, Tổng chi tiêu, Điểm tích lũy | | Pass | 11/15/2015 | |
-
----
-
-### Function: Đăng xuất
-
-#### Check GUI: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DX-01** | Kiểm tra nút Đăng xuất | 1. Truy cập /user/account<br>2. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" với icon LogOut variant destructive trong card "Thông tin tài khoản" | | Pass | 11/15/2015 | |
-| **GUI-DX-02** | Kiểm tra modal xác nhận đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút Đăng xuất<br>3. Kiểm tra modal | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng." | | Pass | 11/15/2015 | |
-| **GUI-DX-03** | Kiểm tra nút Hủy trong modal | 1. Truy cập /user/account<br>2. Mở modal đăng xuất<br>3. Kiểm tra nút Hủy | Hiển thị nút "Hủy" (AlertDialogCancel) | | Pass | 11/15/2015 | |
-| **GUI-DX-04** | Kiểm tra nút Đăng xuất trong modal | 1. Truy cập /user/account<br>2. Mở modal đăng xuất<br>3. Kiểm tra nút Đăng xuất | Hiển thị nút "Đăng xuất" (AlertDialogAction) để xác nhận | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Mở modal xác nhận đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút "Đăng xuất" | Modal AlertDialog hiển thị với tiêu đề "Xác nhận đăng xuất", mô tả, 2 nút (Hủy, Đăng xuất) | | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Đăng xuất thành công | 1. Truy cập /user/account<br>2. Nhấn nút Đăng xuất<br>3. Nhấn "Đăng xuất" trong modal | Hiển thị thông báo "Đăng xuất thành công", chuyển đến trang /user/auth/login, phiên đăng nhập bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-DX-03** | Hủy đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút Đăng xuất<br>3. Nhấn "Hủy" trong modal | Modal đóng, vẫn ở trang /user/account, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-04** | Đóng modal bằng click bên ngoài | 1. Truy cập /user/account<br>2. Nhấn nút Đăng xuất<br>3. Click bên ngoài modal | Modal đóng, không đăng xuất | | Pass | 11/15/2015 | |
-| **FUNC-DX-05** | Kiểm tra xóa token sau đăng xuất | 1. Truy cập /user/account<br>2. Đăng xuất thành công<br>3. Kiểm tra localStorage/sessionStorage | Token bị xóa khỏi localStorage/sessionStorage | | Untested | 11/15/2015 | |
-| **FUNC-DX-06** | Kiểm tra xóa session sau đăng xuất | 1. Truy cập /user/account<br>2. Đăng xuất thành công<br>3. Kiểm tra session | Session bị xóa trên server | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-01** | Mở trang chi tiết sản phẩm | 1. Truy cập /user/products/[id] | Hiển thị trang với breadcrumb, gallery hình ảnh, thông tin sản phẩm, các tab chi tiết | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-02** | Click vào hình ảnh phụ | 1. Truy cập /user/products/[id]<br>2. Click vào hình ảnh phụ<br>3. Kiểm tra kết quả | Hình ảnh chính được thay đổi thành hình ảnh đã click, hình ảnh được click có border highlight | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-03** | Tăng số lượng sản phẩm | 1. Truy cập /user/products/[id]<br>2. Click nút tăng (+)<br>3. Kiểm tra kết quả | Số lượng tăng lên 1, không thể tăng quá tồn kho | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-04** | Giảm số lượng sản phẩm | 1. Truy cập /user/products/[id]<br>2. Click nút giảm (-)<br>3. Kiểm tra kết quả | Số lượng giảm xuống 1, không thể giảm dưới 1 | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-05** | Nhập số lượng trực tiếp | 1. Truy cập /user/products/[id]<br>2. Nhập số lượng vào ô input<br>3. Kiểm tra kết quả | Số lượng được cập nhật, không thể nhập quá tồn kho hoặc dưới 1 | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-06** | Thêm vào giỏ hàng từ chi tiết | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng<br>3. Click "Thêm vào giỏ hàng" | Hiển thị thông báo "Đã thêm X '[Tên sản phẩm]' vào giỏ hàng", sản phẩm được thêm với số lượng đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-07** | Mua ngay | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng<br>3. Click "Mua ngay" | Chuyển đến trang thanh toán với sản phẩm đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-08** | Thêm vào yêu thích từ chi tiết | 1. Truy cập /user/products/[id]<br>2. Click nút Heart<br>3. Kiểm tra kết quả | Icon Heart chuyển sang màu đỏ (filled), hiển thị thông báo "Đã thêm vào danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-09** | Xóa khỏi yêu thích từ chi tiết | 1. Truy cập /user/products/[id]<br>2. Click nút Heart trên sản phẩm đã yêu thích<br>3. Kiểm tra kết quả | Icon Heart chuyển về màu xám (unfilled), hiển thị thông báo "Đã xóa khỏi danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-10** | Chia sẻ sản phẩm | 1. Truy cập /user/products/[id]<br>2. Click nút Chia sẻ<br>3. Kiểm tra kết quả | Mở dialog hoặc menu chia sẻ với các tùy chọn: Facebook, Twitter, Email, Copy link | | Untested | 11/15/2015 | |
+| **FUNC-CTSP-11** | Chuyển đổi giữa các tab | 1. Truy cập /user/products/[id]<br>2. Click các tab khác nhau<br>3. Kiểm tra kết quả | Nội dung tab được thay đổi tương ứng, tab được chọn có highlight | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-12** | Xem đánh giá khách hàng | 1. Truy cập /user/products/[id]<br>2. Click tab Đánh giá<br>3. Kiểm tra nội dung | Hiển thị danh sách đánh giá với đầy đủ thông tin: tên người dùng, điểm đánh giá (sao), bình luận, ngày đánh giá, badge "Đã mua" nếu xác minh | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-13** | Đánh giá hữu ích | 1. Truy cập /user/products/[id]<br>2. Click tab Đánh giá<br>3. Click "Hữu ích" trên một đánh giá | Số lượng "Hữu ích" tăng lên, nút có trạng thái active | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-14** | Đánh giá không hữu ích | 1. Truy cập /user/products/[id]<br>2. Click tab Đánh giá<br>3. Click "Không hữu ích" trên một đánh giá | Số lượng "Không hữu ích" tăng lên, nút có trạng thái active | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-15** | Báo cáo đánh giá | 1. Truy cập /user/products/[id]<br>2. Click tab Đánh giá<br>3. Click "Báo cáo" trên một đánh giá<br>4. Điền thông tin và gửi | Mở dialog báo cáo với các lý do: Spam, Ngôn từ không phù hợp, Sai sự thật, Khác. Sau khi gửi hiển thị thông báo "Đã gửi báo cáo đánh giá" | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-16** | Áp dụng mã giảm giá sản phẩm | 1. Truy cập /user/products/[id]<br>2. Click "Áp dụng mã" trong card khuyến mãi<br>3. Kiểm tra kết quả | Hiển thị thông báo "Áp dụng mã giảm giá sản phẩm thành công", nút chuyển thành "Xóa mã", hiển thị thông báo đã áp dụng mã | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-17** | Xóa mã giảm giá sản phẩm | 1. Truy cập /user/products/[id]<br>2. Áp dụng mã giảm giá<br>3. Click "Xóa mã" | Hiển thị thông báo "Đã xóa mã giảm giá sản phẩm", nút chuyển về "Áp dụng mã", thông báo đã áp dụng mã biến mất | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-18** | Click breadcrumb Trang chủ | 1. Truy cập /user/products/[id]<br>2. Click "Trang chủ" trong breadcrumb | Chuyển đến trang /user | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-19** | Click breadcrumb Mô hình | 1. Truy cập /user/products/[id]<br>2. Click "Mô hình" trong breadcrumb | Chuyển đến trang /user/products | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-20** | Thêm sản phẩm hết hàng vào giỏ hàng | 1. Truy cập /user/products/[id] (sản phẩm hết hàng)<br>2. Click "Thêm vào giỏ hàng" | Nút bị disabled, không thể click, không có thông báo | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-21** | Mua ngay sản phẩm hết hàng | 1. Truy cập /user/products/[id] (sản phẩm hết hàng)<br>2. Click "Mua ngay" | Nút bị disabled, không thể click, không chuyển trang | | Pass | 11/15/2015 | |
+| **FUNC-CTSP-22** | Xem hình ảnh full size | 1. Truy cập /user/products/[id]<br>2. Click vào hình ảnh chính<br>3. Kiểm tra kết quả | Mở lightbox hoặc modal hiển thị hình ảnh full size, có thể zoom và xem chi tiết | | Untested | 11/15/2015 | |
 
 ---
 
