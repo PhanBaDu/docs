@@ -1,14 +1,14 @@
-# Test Case Template - Chức năng đặt trước sản phẩm (User)
+# Test Case Template - Chức năng thông báo (User)
 
 ## Module Code
-**Model Management Store: Chức năng đặt trước sản phẩm User**
+**Model Management Store: Chức năng thông báo User**
 
 ## Test Requirement
-1. Danh sách sản phẩm đã đặt trước
-2. Đặt trước sản phẩm
-3. Xem chi tiết đặt trước
-4. Hủy đặt trước
-5. Quản lý trạng thái đặt trước
+1. Hiển thị danh sách thông báo
+2. Thông báo giảm giá
+3. Cập nhật đơn hàng
+4. Thông báo có hàng
+5. Quản lý trạng thái thông báo
 
 ---
 
@@ -28,193 +28,180 @@
 
 ## Test Cases
 
-### Function: Danh sách sản phẩm đã đặt trước
+### Function: Hiển thị danh sách thông báo
 
-#### Check GUI: Danh sách sản phẩm đã đặt trước
+#### Check GUI: Hiển thị danh sách thông báo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSSPDDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập trang đặt trước sản phẩm<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đặt trước sản phẩm" với icon Package h-8 w-8, text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-02** | Kiểm tra mô tả trang | 1. Truy cập trang đặt trước sản phẩm<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đặt trước các sản phẩm sắp ra mắt với ưu đãi đặc biệt" với text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-03** | Kiểm tra tab Đơn đặt trước của tôi | 1. Truy cập trang đặt trước sản phẩm<br>2. Kiểm tra tab | Hiển thị tab "Đơn đặt trước của tôi" trong TabsList grid-cols-2 | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-04** | Kiểm tra tiêu đề danh sách | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Đơn đặt trước của tôi" với CardDescription "Theo dõi trạng thái các đơn đặt trước" | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-05** | Kiểm tra ô tìm kiếm | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search bên trái, placeholder "Tìm kiếm đơn đặt trước...", pl-10 w-64 | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-06** | Kiểm tra bộ lọc trạng thái | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Tất cả", "Chờ xử lý", "Đã xác nhận", "Đang chuẩn bị", "Đã giao", "Đã hủy" | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-07** | Kiểm tra card đặt trước | 1. Xem danh sách đặt trước<br>2. Kiểm tra card | Hiển thị card với CardContent p-4, chứa hình ảnh sản phẩm, tên sản phẩm, mã đặt trước, badge trạng thái, thông tin chi tiết | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-08** | Kiểm tra hình ảnh sản phẩm | 1. Xem card đặt trước<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh sản phẩm w-16 h-16 object-cover rounded-lg | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-09** | Kiểm tra mã đặt trước | 1. Xem card đặt trước<br>2. Kiểm tra mã | Hiển thị mã đặt trước với format "#PRE001" hoặc "PO-202401-001", text-sm text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-10** | Kiểm tra badge trạng thái | 1. Xem card đặt trước<br>2. Kiểm tra badge | Hiển thị badge với màu: Chờ xử lý (yellow-500), Đã xác nhận (blue-500), Đang chuẩn bị (orange-500), Đã giao (green-500), Đã hủy (red-500), có icon tương ứng | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-11** | Kiểm tra thông tin chi tiết | 1. Xem card đặt trước<br>2. Kiểm tra thông tin | Hiển thị grid grid-cols-1 md:grid-cols-2 gap-4 với: Số lượng, Giá dự kiến, Đã cọc, Còn lại, Phương thức thanh toán (icon CreditCard), Dự kiến giao (icon Calendar), Nhân viên (icon User) | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-12** | Kiểm tra ghi chú | 1. Xem đặt trước có ghi chú<br>2. Kiểm tra ghi chú | Hiển thị phần ghi chú với background bg-muted rounded-lg, icon FileText, tiêu đề "Ghi chú:", nội dung ghi chú | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-13** | Kiểm tra lịch sử xử lý | 1. Xem card đặt trước<br>2. Kiểm tra lịch sử | Hiển thị phần "Lịch sử xử lý:" với timeline, mỗi event có dot, action, timestamp, staff và note | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-14** | Kiểm tra nút Xem chi tiết | 1. Xem card đặt trước<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết" với icon Eye, variant outline size sm, flex-1 | | Pass | 11/15/2015 | |
-| **GUI-DSSPDDT-15** | Kiểm tra nút Hủy đặt trước | 1. Xem đặt trước chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy đặt trước" với icon XCircle, variant destructive size sm, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-01** | Kiểm tra tiêu đề trang | 1. Truy cập trang thông báo<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thông báo" với icon Bell h-8 w-8, text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-02** | Kiểm tra mô tả trang | 1. Truy cập trang thông báo<br>2. Kiểm tra mô tả | Hiển thị mô tả "[Số] thông báo chưa đọc" hoặc "Tất cả thông báo đã được đọc" với text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-03** | Kiểm tra số thông báo chưa đọc | 1. Truy cập trang thông báo<br>2. Kiểm tra badge | Hiển thị số thông báo chưa đọc trong header hoặc badge, cập nhật real-time | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-04** | Kiểm tra tab loại thông báo | 1. Truy cập trang thông báo<br>2. Kiểm tra tab | Hiển thị TabsList với các tab: "Tất cả", "Đơn hàng" (icon Package), "Khuyến mãi" (icon Percent), "Yêu thích" (icon Heart), "Đánh giá" (icon Star), "Hệ thống" (icon AlertCircle), "Hỗ trợ" (icon MessageSquare), mỗi tab hiển thị số lượng | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-05** | Kiểm tra ô tìm kiếm | 1. Truy cập trang thông báo<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search bên trái, placeholder "Tìm kiếm thông báo...", pl-10 | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-06** | Kiểm tra bộ lọc loại | 1. Truy cập trang thông báo<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-40, các option: "Tất cả loại", "Đơn hàng", "Khuyến mãi", "Yêu thích", "Đánh giá", "Hệ thống", "Hỗ trợ" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-07** | Kiểm tra bộ lọc mức độ ưu tiên | 1. Truy cập trang thông báo<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-40, các option: "Tất cả mức độ", "Cao", "Trung bình", "Thấp" | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-08** | Kiểm tra nút Đánh dấu tất cả đã đọc | 1. Truy cập trang thông báo<br>2. Kiểm tra nút | Hiển thị nút "Đánh dấu tất cả đã đọc" với icon CheckCheck, variant outline, chỉ hiển thị khi có thông báo chưa đọc | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-09** | Kiểm tra nút Xóa đã đọc | 1. Truy cập trang thông báo<br>2. Kiểm tra nút | Hiển thị nút "Xóa đã đọc" với icon Trash2, variant outline | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-10** | Kiểm tra card thông báo | 1. Xem danh sách thông báo<br>2. Kiểm tra card | Hiển thị card với CardContent p-6, border-primary nếu chưa đọc, chứa icon loại, tiêu đề, nội dung, badge trạng thái, badge mức độ ưu tiên, thời gian | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-11** | Kiểm tra icon loại thông báo | 1. Xem card thông báo<br>2. Kiểm tra icon | Hiển thị icon loại trong div p-2 rounded-full bg-primary/10 (chưa đọc) hoặc bg-muted (đã đọc), icon Package/Tag/Heart/Star/AlertCircle/MessageSquare tùy loại | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-12** | Kiểm tra badge trạng thái đọc | 1. Xem card thông báo<br>2. Kiểm tra badge | Hiển thị dot w-2 h-2 bg-primary rounded-full nếu chưa đọc, không hiển thị nếu đã đọc | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-13** | Kiểm tra badge mức độ ưu tiên | 1. Xem card thông báo<br>2. Kiểm tra badge | Hiển thị badge với màu: Cao (red-500), Trung bình (yellow-500), Thấp (gray-500) | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-14** | Kiểm tra nút Đánh dấu đã đọc | 1. Xem thông báo chưa đọc<br>2. Kiểm tra nút | Hiển thị nút với icon CheckCircle, variant ghost size sm, chỉ hiển thị khi chưa đọc | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-15** | Kiểm tra nút Xóa thông báo | 1. Xem card thông báo<br>2. Kiểm tra nút | Hiển thị nút với icon XCircle, variant ghost size sm, text-red-600 hover:text-red-700 | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-16** | Kiểm tra nút hành động | 1. Xem thông báo có actionUrl<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết"/"Mua ngay"/"Theo dõi" với variant outline size sm, link đến actionUrl | | Pass | 11/15/2015 | |
+| **GUI-HTDS-TB-17** | Kiểm tra phân trang | 1. Xem danh sách thông báo<br>2. Kiểm tra phân trang | Hiển thị phân trang nếu có nhiều thông báo, có thể điều hướng giữa các trang | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Danh sách sản phẩm đã đặt trước
+### Check FUNC: Hiển thị danh sách thông báo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSSPDDT-01** | Mở tab Đơn đặt trước của tôi | 1. Truy cập trang đặt trước sản phẩm<br>2. Chọn tab "Đơn đặt trước của tôi" | Hiển thị danh sách tất cả đơn đặt trước, có ô tìm kiếm và bộ lọc trạng thái | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-02** | Hiển thị danh sách đặt trước | 1. Chọn tab "Đơn đặt trước của tôi" | Hiển thị danh sách với đầy đủ thông tin: hình ảnh, tên sản phẩm, mã đặt trước, số lượng, giá dự kiến, tiền cọc, số tiền còn lại, trạng thái, phương thức thanh toán, ngày giao dự kiến, nhân viên, ghi chú, lịch sử xử lý | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-03** | Sắp xếp theo thời gian mới nhất | 1. Chọn tab "Đơn đặt trước của tôi" | Danh sách được sắp xếp theo thời gian tạo mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-04** | Tìm kiếm theo tên sản phẩm | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhập tên sản phẩm vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị đặt trước có tên sản phẩm chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-05** | Tìm kiếm theo mã đặt trước | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhập mã đặt trước vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị đặt trước có mã chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-06** | Lọc theo trạng thái - Chờ xử lý | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn bộ lọc "Chờ xử lý" | Chỉ hiển thị các đặt trước có trạng thái "Chờ xử lý" | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-07** | Lọc theo trạng thái - Đã xác nhận | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn bộ lọc "Đã xác nhận" | Chỉ hiển thị các đặt trước có trạng thái "Đã xác nhận" | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-08** | Lọc theo trạng thái - Đang chuẩn bị | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn bộ lọc "Đang chuẩn bị" | Chỉ hiển thị các đặt trước có trạng thái "Đang chuẩn bị" | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-09** | Lọc theo trạng thái - Đã giao | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn bộ lọc "Đã giao" | Chỉ hiển thị các đặt trước có trạng thái "Đã giao" | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-10** | Lọc theo trạng thái - Đã hủy | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn bộ lọc "Đã hủy" | Chỉ hiển thị các đặt trước có trạng thái "Đã hủy" | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-11** | Kết hợp tìm kiếm và lọc | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn bộ lọc trạng thái | Danh sách được lọc theo cả từ khóa và trạng thái, chỉ hiển thị đặt trước thỏa mãn cả hai điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-12** | Hiển thị khi không có đặt trước | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Không có đặt trước nào | Hiển thị thông báo "Chưa có đơn đặt trước nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-13** | Hiển thị lịch sử xử lý | 1. Xem card đặt trước<br>2. Kiểm tra lịch sử | Hiển thị timeline lịch sử xử lý với các event: action, timestamp, staff, note, mỗi event có dot và được sắp xếp theo thời gian | | Pass | 11/15/2015 | |
-| **FUNC-DSSPDDT-14** | Tìm kiếm real-time | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-01** | Mở trang thông báo | 1. Truy cập trang thông báo từ sidebar menu | Hiển thị danh sách tất cả thông báo, có tab loại, ô tìm kiếm, bộ lọc | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-02** | Hiển thị danh sách thông báo | 1. Truy cập trang thông báo | Hiển thị danh sách với đầy đủ thông tin: icon loại, tiêu đề, nội dung, thời gian, trạng thái đọc, mức độ ưu tiên, nút hành động (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-03** | Sắp xếp theo thời gian mới nhất | 1. Truy cập trang thông báo | Danh sách được sắp xếp theo thời gian mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-04** | Tìm kiếm theo tiêu đề | 1. Truy cập trang thông báo<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị thông báo có tiêu đề chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-05** | Tìm kiếm theo nội dung | 1. Truy cập trang thông báo<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị thông báo có nội dung chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-06** | Lọc theo loại - Đơn hàng | 1. Chọn tab "Đơn hàng" hoặc bộ lọc loại "Đơn hàng" | Chỉ hiển thị các thông báo loại "Đơn hàng" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-07** | Lọc theo loại - Khuyến mãi | 1. Chọn tab "Khuyến mãi" hoặc bộ lọc loại "Khuyến mãi" | Chỉ hiển thị các thông báo loại "Khuyến mãi" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-08** | Lọc theo loại - Yêu thích | 1. Chọn tab "Yêu thích" hoặc bộ lọc loại "Yêu thích" | Chỉ hiển thị các thông báo loại "Yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-09** | Lọc theo loại - Đánh giá | 1. Chọn tab "Đánh giá" hoặc bộ lọc loại "Đánh giá" | Chỉ hiển thị các thông báo loại "Đánh giá" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-10** | Lọc theo loại - Hệ thống | 1. Chọn tab "Hệ thống" hoặc bộ lọc loại "Hệ thống" | Chỉ hiển thị các thông báo loại "Hệ thống" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-11** | Lọc theo loại - Hỗ trợ | 1. Chọn tab "Hỗ trợ" hoặc bộ lọc loại "Hỗ trợ" | Chỉ hiển thị các thông báo loại "Hỗ trợ" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-12** | Lọc theo mức độ ưu tiên - Cao | 1. Chọn bộ lọc mức độ ưu tiên "Cao" | Chỉ hiển thị các thông báo có mức độ ưu tiên "Cao" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-13** | Lọc theo mức độ ưu tiên - Trung bình | 1. Chọn bộ lọc mức độ ưu tiên "Trung bình" | Chỉ hiển thị các thông báo có mức độ ưu tiên "Trung bình" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-14** | Lọc theo mức độ ưu tiên - Thấp | 1. Chọn bộ lọc mức độ ưu tiên "Thấp" | Chỉ hiển thị các thông báo có mức độ ưu tiên "Thấp" | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-15** | Kết hợp tìm kiếm và lọc | 1. Nhập từ khóa tìm kiếm<br>2. Chọn tab loại và bộ lọc mức độ ưu tiên | Danh sách được lọc theo cả từ khóa, loại và mức độ ưu tiên, chỉ hiển thị thông báo thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-16** | Hiển thị khi không có thông báo | 1. Chọn tab loại không có thông báo<br>2. Kiểm tra hiển thị | Hiển thị thông báo "Không có thông báo nào" với icon Bell, tiêu đề và mô tả phù hợp | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-17** | Tìm kiếm real-time | 1. Truy cập trang thông báo<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
+| **FUNC-HTDS-TB-18** | Cập nhật số lượng trong tab | 1. Xem danh sách thông báo<br>2. Kiểm tra số lượng | Số lượng thông báo được hiển thị chính xác trong mỗi tab, cập nhật khi có thay đổi | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đặt trước sản phẩm
+### Function: Thông báo giảm giá
 
-#### Check GUI: Đặt trước sản phẩm
+#### Check GUI: Thông báo giảm giá
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DTSP-01** | Kiểm tra tab Sản phẩm đặt trước | 1. Truy cập trang đặt trước sản phẩm<br>2. Kiểm tra tab | Hiển thị tab "Sản phẩm đặt trước" trong TabsList | | Pass | 11/15/2015 | |
-| **GUI-DTSP-02** | Kiểm tra tiêu đề danh sách sản phẩm | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Sản phẩm có thể đặt trước" với CardDescription "Các sản phẩm sắp ra mắt với ưu đãi đặt trước" | | Pass | 11/15/2015 | |
-| **GUI-DTSP-03** | Kiểm tra card sản phẩm | 1. Xem danh sách sản phẩm<br>2. Kiểm tra card | Hiển thị card với hover:shadow-lg transition-shadow, chứa hình ảnh, badge trạng thái, thông tin sản phẩm | | Pass | 11/15/2015 | |
-| **GUI-DTSP-04** | Kiểm tra badge trạng thái sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra badge | Hiển thị badge "Có thể đặt trước" (green-500), "Hết chỗ đặt trước" (red-500), "Sắp ra mắt" (blue-500) ở góc trên trái | | Pass | 11/15/2015 | |
-| **GUI-DTSP-05** | Kiểm tra badge giảm giá | 1. Xem sản phẩm có giảm giá<br>2. Kiểm tra badge | Hiển thị badge "Giảm [Số] VNĐ" variant secondary ở góc trên phải | | Pass | 11/15/2015 | |
-| **GUI-DTSP-06** | Kiểm tra giá dự kiến | 1. Xem card sản phẩm<br>2. Kiểm tra giá | Hiển thị "Giá dự kiến: [Giá] VNĐ" với font-bold text-primary | | Pass | 11/15/2015 | |
-| **GUI-DTSP-07** | Kiểm tra giá gốc | 1. Xem sản phẩm có giá gốc<br>2. Kiểm tra giá | Hiển thị "Giá gốc: [Giá] VNĐ" với line-through text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DTSP-08** | Kiểm tra tiền cọc cần thiết | 1. Xem card sản phẩm<br>2. Kiểm tra cọc | Hiển thị "Cọc cần thiết: [Số] VNĐ" với font-medium text-orange-600 | | Pass | 11/15/2015 | |
-| **GUI-DTSP-09** | Kiểm tra ngày ra mắt | 1. Xem card sản phẩm<br>2. Kiểm tra ngày | Hiển thị "Ra mắt: [Ngày]" với icon Calendar, format ngày Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-DTSP-10** | Kiểm tra hết hạn đặt trước | 1. Xem card sản phẩm<br>2. Kiểm tra ngày | Hiển thị "Hết hạn đặt trước: [Ngày]" với icon Clock, format ngày Việt Nam | | Pass | 11/15/2015 | |
-| **GUI-DTSP-11** | Kiểm tra tính năng sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra tính năng | Hiển thị "Tính năng:" với danh sách badge variant outline text-xs | | Pass | 11/15/2015 | |
-| **GUI-DTSP-12** | Kiểm tra nút Đặt trước ngay | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "Đặt trước ngay" với icon ShoppingCart, variant default, disabled nếu hết chỗ | | Pass | 11/15/2015 | |
-| **GUI-DTSP-13** | Kiểm tra form đặt trước | 1. Nhấn nút "Đặt trước ngay"<br>2. Kiểm tra form | Hiển thị form/modal với các trường: Tên sản phẩm, Số lượng, Giá dự kiến, Tổng tiền, Tiền cọc, Số tiền còn lại, Phương thức thanh toán, Địa chỉ giao hàng, Ngày giao dự kiến, Ghi chú, Mức độ ưu tiên | | Pass | 11/15/2015 | |
-| **GUI-DTSP-14** | Kiểm tra tính toán giá tiền | 1. Mở form đặt trước<br>2. Nhập số lượng<br>3. Kiểm tra tính toán | Tổng tiền, tiền cọc (20%), số tiền còn lại được tính toán và hiển thị real-time | | Pass | 11/15/2015 | |
-| **GUI-DTSP-15** | Kiểm tra nút Xác nhận đặt trước | 1. Mở form đặt trước<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận đặt trước" variant default | | Pass | 11/15/2015 | |
+| **GUI-TBGG-01** | Kiểm tra icon khuyến mãi | 1. Xem thông báo giảm giá<br>2. Kiểm tra icon | Hiển thị icon Percent hoặc Tag trong div p-2 rounded-full, màu green-500 | | Pass | 11/15/2015 | |
+| **GUI-TBGG-02** | Kiểm tra tiêu đề khuyến mãi | 1. Xem thông báo giảm giá<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề thông báo khuyến mãi với font-semibold | | Pass | 11/15/2015 | |
+| **GUI-TBGG-03** | Kiểm tra nội dung khuyến mãi | 1. Xem thông báo giảm giá<br>2. Kiểm tra nội dung | Hiển thị nội dung chi tiết khuyến mãi với text-sm text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-TBGG-04** | Kiểm tra phần trăm giảm giá | 1. Xem thông báo giảm giá<br>2. Kiểm tra phần trăm | Hiển thị phần trăm giảm giá trong metadata hoặc nội dung, format rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-TBGG-05** | Kiểm tra thời gian áp dụng | 1. Xem thông báo giảm giá<br>2. Kiểm tra thời gian | Hiển thị thời gian bắt đầu và kết thúc khuyến mãi trong nội dung | | Pass | 11/15/2015 | |
+| **GUI-TBGG-06** | Kiểm tra ngày hết hạn | 1. Xem thông báo giảm giá<br>2. Kiểm tra ngày | Hiển thị ngày hết hạn với icon AlertCircle, format ngày Việt Nam | | Pass | 11/15/2015 | |
+| **GUI-TBGG-07** | Kiểm tra nút Mua ngay | 1. Xem thông báo giảm giá<br>2. Kiểm tra nút | Hiển thị nút "Mua ngay" với variant outline size sm, link đến trang sản phẩm khuyến mãi | | Pass | 11/15/2015 | |
+| **GUI-TBGG-08** | Kiểm tra nút Xem chi tiết | 1. Xem thông báo giảm giá<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết" với variant outline size sm, link đến trang chi tiết khuyến mãi | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đặt trước sản phẩm
+### Check FUNC: Thông báo giảm giá
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DTSP-01** | Mở tab Sản phẩm đặt trước | 1. Truy cập trang đặt trước sản phẩm<br>2. Chọn tab "Sản phẩm đặt trước" | Hiển thị danh sách sản phẩm có thể đặt trước, có ô tìm kiếm và bộ lọc danh mục | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-02** | Hiển thị danh sách sản phẩm | 1. Chọn tab "Sản phẩm đặt trước" | Hiển thị danh sách sản phẩm với đầy đủ thông tin: hình ảnh, tên, thương hiệu, series, scale, mô tả, giá dự kiến, giá gốc (nếu có), tiền cọc, ngày ra mắt, hết hạn đặt trước, tính năng | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-03** | Đặt trước sản phẩm | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Nhấn nút "Đặt trước ngay"<br>3. Điền form và xác nhận | Mở form/modal đặt trước với thông tin sản phẩm đã điền sẵn, sau khi xác nhận, đặt trước được tạo thành công, hiển thị toast "Đã tạo đơn đặt trước thành công", đặt trước xuất hiện trong tab "Đơn đặt trước của tôi" | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-04** | Tính toán giá tiền tự động | 1. Mở form đặt trước<br>2. Nhập số lượng<br>3. Quan sát tính toán | Tổng tiền = Số lượng × Giá dự kiến, Tiền cọc = Tổng tiền × 20%, Số tiền còn lại = Tổng tiền - Tiền cọc, cập nhật real-time khi thay đổi số lượng | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-05** | Chọn phương thức thanh toán | 1. Mở form đặt trước<br>2. Chọn phương thức thanh toán | Phương thức được chọn từ Select: COD, Banking, MoMo, Credit Card, có thể thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-06** | Nhập địa chỉ giao hàng | 1. Mở form đặt trước<br>2. Nhập địa chỉ | Địa chỉ được nhập vào Textarea, có thể nhập nhiều dòng | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-07** | Chọn ngày giao dự kiến | 1. Mở form đặt trước<br>2. Chọn ngày | Ngày được chọn từ date picker, hiển thị format ngày Việt Nam | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-08** | Nhập ghi chú | 1. Mở form đặt trước<br>2. Nhập ghi chú | Ghi chú được nhập vào Textarea, optional | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-09** | Chọn mức độ ưu tiên | 1. Mở form đặt trước<br>2. Chọn mức độ ưu tiên | Mức độ ưu tiên được chọn từ Select: Thấp, Trung bình, Cao, mặc định là "Trung bình" | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-10** | Đặt trước sản phẩm hết chỗ | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Xem sản phẩm hết chỗ<br>3. Nhấn nút | Nút hiển thị "Hết chỗ đặt trước" và bị disabled, không thể đặt trước | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-11** | Đặt trước với đầy đủ thông tin | 1. Mở form đặt trước<br>2. Nhập đầy đủ: số lượng, phương thức thanh toán, địa chỉ, ngày giao, ghi chú, mức độ ưu tiên<br>3. Xác nhận | Đặt trước được tạo với đầy đủ thông tin, hiển thị trong danh sách với tất cả thông tin đã nhập | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-12** | Đặt trước chỉ với thông tin bắt buộc | 1. Mở form đặt trước<br>2. Chỉ nhập số lượng và địa chỉ<br>3. Xác nhận | Đặt trước được tạo thành công với chỉ thông tin bắt buộc, các trường optional để trống hoặc mặc định | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-13** | Tìm kiếm sản phẩm đặt trước | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Nhập từ khóa tìm kiếm | Danh sách được lọc, chỉ hiển thị sản phẩm có tên/thương hiệu/series chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-DTSP-14** | Lọc theo danh mục | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Chọn danh mục trong bộ lọc | Chỉ hiển thị sản phẩm thuộc danh mục đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-TBGG-01** | Hiển thị thông báo khuyến mãi | 1. Chọn tab "Khuyến mãi"<br>2. Xem thông báo | Hiển thị thông báo khuyến mãi với đầy đủ thông tin: phần trăm giảm giá, thời gian áp dụng, danh sách sản phẩm (nếu có), ngày hết hạn | | Pass | 11/15/2015 | |
+| **FUNC-TBGG-02** | Truy cập sản phẩm khuyến mãi | 1. Xem thông báo giảm giá<br>2. Nhấn nút "Mua ngay" | Chuyển hướng đến trang sản phẩm hoặc danh mục sản phẩm được áp dụng khuyến mãi, trang hiển thị đầy đủ thông tin khuyến mãi | | Pass | 11/15/2015 | |
+| **FUNC-TBGG-03** | Xem chi tiết khuyến mãi | 1. Xem thông báo giảm giá<br>2. Nhấn nút "Xem chi tiết" | Chuyển hướng đến trang chi tiết khuyến mãi với đầy đủ thông tin: điều kiện, sản phẩm áp dụng, thời gian | | Pass | 11/15/2015 | |
+| **FUNC-TBGG-04** | Theo dõi thời gian khuyến mãi | 1. Xem thông báo giảm giá<br>2. Kiểm tra thời gian | Hiển thị thời gian còn lại của khuyến mãi, cập nhật real-time, cảnh báo khi sắp hết hạn | | Pass | 11/15/2015 | |
+| **FUNC-TBGG-05** | Hiển thị danh sách sản phẩm áp dụng | 1. Xem thông báo giảm giá có danh sách sản phẩm<br>2. Kiểm tra danh sách | Hiển thị danh sách sản phẩm được áp dụng khuyến mãi, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết đặt trước
+### Function: Cập nhật đơn hàng
 
-#### Check GUI: Xem chi tiết đặt trước
+#### Check GUI: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XCTDT-01** | Kiểm tra modal/trang chi tiết | 1. Nhấn nút "Xem chi tiết"<br>2. Kiểm tra modal/trang | Hiển thị modal hoặc trang chi tiết với đầy đủ thông tin đặt trước | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-02** | Kiểm tra thông tin cơ bản | 1. Xem chi tiết đặt trước<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: mã đặt trước, tên sản phẩm, số lượng, giá dự kiến, tổng tiền, tiền cọc, số tiền còn lại, trạng thái, mức độ ưu tiên | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-03** | Kiểm tra phương thức thanh toán | 1. Xem chi tiết đặt trước<br>2. Kiểm tra phương thức | Hiển thị phương thức thanh toán với icon CreditCard | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-04** | Kiểm tra địa chỉ giao hàng | 1. Xem chi tiết đặt trước<br>2. Kiểm tra địa chỉ | Hiển thị địa chỉ giao hàng đầy đủ | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-05** | Kiểm tra ngày tạo | 1. Xem chi tiết đặt trước<br>2. Kiểm tra ngày | Hiển thị ngày tạo với format ngày Việt Nam, icon Calendar | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-06** | Kiểm tra ngày giao dự kiến | 1. Xem chi tiết đặt trước<br>2. Kiểm tra ngày | Hiển thị ngày giao dự kiến với format ngày Việt Nam, icon Clock | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-07** | Kiểm tra nhân viên phụ trách | 1. Xem chi tiết đặt trước<br>2. Kiểm tra nhân viên | Hiển thị tên nhân viên phụ trách với icon User | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-08** | Kiểm tra ghi chú | 1. Xem chi tiết đặt trước có ghi chú<br>2. Kiểm tra ghi chú | Hiển thị ghi chú với background bg-muted rounded-lg, icon FileText | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-09** | Kiểm tra lịch sử xử lý | 1. Xem chi tiết đặt trước<br>2. Kiểm tra lịch sử | Hiển thị timeline lịch sử xử lý với các event: action, timestamp, staff, note, mỗi event có dot và được sắp xếp theo thời gian | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-10** | Kiểm tra nút Quay lại | 1. Xem chi tiết đặt trước<br>2. Kiểm tra nút | Hiển thị nút "Quay lại" để quay lại danh sách | | Pass | 11/15/2015 | |
-| **GUI-XCTDT-11** | Kiểm tra nút Hủy đặt trước | 1. Xem chi tiết đặt trước chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy đặt trước" variant destructive, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
+| **GUI-CNDH-01** | Kiểm tra icon đơn hàng | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra icon | Hiển thị icon Package trong div p-2 rounded-full, màu blue-500 | | Pass | 11/15/2015 | |
+| **GUI-CNDH-02** | Kiểm tra tiêu đề cập nhật | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề thông báo đơn hàng với font-semibold, ví dụ "Đơn hàng đã được xác nhận" | | Pass | 11/15/2015 | |
+| **GUI-CNDH-03** | Kiểm tra nội dung cập nhật | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra nội dung | Hiển thị nội dung chi tiết cập nhật với mã đơn hàng, trạng thái mới | | Pass | 11/15/2015 | |
+| **GUI-CNDH-04** | Kiểm tra mã đơn hàng | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra mã | Hiển thị mã đơn hàng trong nội dung hoặc metadata, format rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-CNDH-05** | Kiểm tra badge trạng thái mới | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra badge | Hiển thị badge trạng thái mới: "Xác nhận" (blue), "Đang giao" (orange), "Đã giao" (green) | | Pass | 11/15/2015 | |
+| **GUI-CNDH-06** | Kiểm tra thời gian cập nhật | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra thời gian | Hiển thị thời gian cập nhật trạng thái với icon Calendar, format ngày giờ Việt Nam | | Pass | 11/15/2015 | |
+| **GUI-CNDH-07** | Kiểm tra nút Xem chi tiết đơn hàng | 1. Xem thông báo cập nhật đơn hàng<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết" hoặc "Theo dõi" với variant outline size sm, link đến trang chi tiết đơn hàng | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết đặt trước
+### Check FUNC: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XCTDT-01** | Mở chi tiết đặt trước | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhấn nút "Xem chi tiết" | Mở modal hoặc trang chi tiết với đầy đủ thông tin đặt trước | | Pass | 11/15/2015 | |
-| **FUNC-XCTDT-02** | Hiển thị chi tiết đầy đủ | 1. Xem chi tiết đặt trước | Hiển thị đầy đủ: mã đặt trước, tên sản phẩm, số lượng, giá dự kiến, tổng tiền, tiền cọc, số tiền còn lại, trạng thái, mức độ ưu tiên, phương thức thanh toán, địa chỉ giao hàng, ngày tạo, ngày giao dự kiến, nhân viên phụ trách, ghi chú, lịch sử xử lý | | Pass | 11/15/2015 | |
-| **FUNC-XCTDT-03** | Hiển thị lịch sử xử lý | 1. Xem chi tiết đặt trước | Hiển thị timeline lịch sử xử lý với các event được sắp xếp theo thời gian, mỗi event có: action, timestamp, staff, note | | Pass | 11/15/2015 | |
-| **FUNC-XCTDT-04** | Quay lại danh sách | 1. Xem chi tiết đặt trước<br>2. Nhấn nút "Quay lại" | Quay lại trang danh sách đặt trước, giữ nguyên trạng thái lọc và tìm kiếm | | Pass | 11/15/2015 | |
-| **FUNC-XCTDT-05** | Đóng modal bằng click overlay | 1. Mở modal chi tiết<br>2. Click vào overlay | Modal đóng, quay lại danh sách | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-01** | Hiển thị cập nhật đơn hàng | 1. Chọn tab "Đơn hàng"<br>2. Xem thông báo | Hiển thị thông báo cập nhật trạng thái đơn hàng với đầy đủ thông tin: mã đơn hàng, trạng thái mới, thời gian cập nhật, thông tin giao hàng (nếu có), dự kiến nhận hàng (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-02** | Truy cập chi tiết đơn hàng | 1. Xem thông báo cập nhật đơn hàng<br>2. Nhấn nút "Xem chi tiết" | Chuyển hướng đến trang chi tiết đơn hàng, trang hiển thị đầy đủ thông tin cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-03** | Theo dõi đơn hàng | 1. Xem thông báo cập nhật đơn hàng<br>2. Nhấn nút "Theo dõi" | Chuyển hướng đến trang theo dõi đơn hàng với thông tin tiến độ giao hàng | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-04** | Theo dõi tiến độ giao hàng | 1. Xem thông báo đơn hàng đang giao<br>2. Kiểm tra thông tin | Hiển thị thông tin chi tiết về tiến độ giao hàng: vị trí hiện tại, thời gian dự kiến nhận hàng, thông tin liên hệ shipper, cập nhật real-time | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-05** | Thông báo đơn hàng đã giao | 1. Xem thông báo đơn hàng đã giao<br>2. Kiểm tra thông tin | Hiển thị thông báo "Đơn hàng đã giao" với thông tin: mã đơn hàng, thời gian giao, có thể đánh giá sản phẩm | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Hủy đặt trước
+### Function: Thông báo có hàng
 
-#### Check GUI: Hủy đặt trước
+#### Check GUI: Thông báo có hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-HDT-01** | Kiểm tra nút Hủy đặt trước | 1. Xem đặt trước chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy đặt trước" với icon XCircle, variant destructive size sm, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
-| **GUI-HDT-02** | Kiểm tra modal xác nhận | 1. Nhấn nút "Hủy đặt trước"<br>2. Kiểm tra modal | Hiển thị modal với tiêu đề "Xác nhận hủy đặt trước", mô tả "Bạn có chắc chắn muốn hủy đặt trước?", thông tin hoàn cọc | | Pass | 11/15/2015 | |
-| **GUI-HDT-03** | Kiểm tra thông tin hoàn cọc | 1. Mở modal xác nhận<br>2. Kiểm tra thông tin | Hiển thị thông tin: số tiền cọc sẽ được hoàn, thời gian hoàn dự kiến, trạng thái hoàn cọc | | Pass | 11/15/2015 | |
-| **GUI-HDT-04** | Kiểm tra nút Xác nhận | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận" variant destructive, thực hiện hủy khi nhấn | | Pass | 11/15/2015 | |
-| **GUI-HDT-05** | Kiểm tra nút Hủy trong modal | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, đóng modal khi nhấn | | Pass | 11/15/2015 | |
+| **GUI-TBCH-01** | Kiểm tra icon có hàng | 1. Xem thông báo có hàng<br>2. Kiểm tra icon | Hiển thị icon Package hoặc Heart trong div p-2 rounded-full, màu red-500 (yêu thích) hoặc blue-500 (đặt trước) | | Pass | 11/15/2015 | |
+| **GUI-TBCH-02** | Kiểm tra tiêu đề có hàng | 1. Xem thông báo có hàng<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề thông báo có hàng với font-semibold, ví dụ "Sản phẩm yêu thích đã có hàng" | | Pass | 11/15/2015 | |
+| **GUI-TBCH-03** | Kiểm tra nội dung có hàng | 1. Xem thông báo có hàng<br>2. Kiểm tra nội dung | Hiển thị nội dung chi tiết có hàng với tên sản phẩm, loại thông báo | | Pass | 11/15/2015 | |
+| **GUI-TBCH-04** | Kiểm tra tên sản phẩm | 1. Xem thông báo có hàng<br>2. Kiểm tra tên | Hiển thị tên sản phẩm trong nội dung hoặc metadata, format rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-TBCH-05** | Kiểm tra badge loại thông báo | 1. Xem thông báo có hàng<br>2. Kiểm tra badge | Hiển thị badge loại: "Đặt trước", "Yêu cầu", "Yêu thích" | | Pass | 11/15/2015 | |
+| **GUI-TBCH-06** | Kiểm tra số lượng có sẵn | 1. Xem thông báo có hàng<br>2. Kiểm tra số lượng | Hiển thị số lượng sản phẩm có sẵn trong nội dung | | Pass | 11/15/2015 | |
+| **GUI-TBCH-07** | Kiểm tra giá sản phẩm | 1. Xem thông báo có hàng<br>2. Kiểm tra giá | Hiển thị giá hiện tại của sản phẩm trong nội dung | | Pass | 11/15/2015 | |
+| **GUI-TBCH-08** | Kiểm tra thời gian có hàng | 1. Xem thông báo có hàng<br>2. Kiểm tra thời gian | Hiển thị thời gian sản phẩm có hàng trở lại với icon Calendar, format ngày giờ Việt Nam | | Pass | 11/15/2015 | |
+| **GUI-TBCH-09** | Kiểm tra nút Mua ngay | 1. Xem thông báo có hàng<br>2. Kiểm tra nút | Hiển thị nút "Mua ngay" với variant outline size sm, link đến trang sản phẩm | | Pass | 11/15/2015 | |
+| **GUI-TBCH-10** | Kiểm tra nút Xem sản phẩm | 1. Xem thông báo có hàng<br>2. Kiểm tra nút | Hiển thị nút "Xem sản phẩm" với variant outline size sm, link đến trang chi tiết sản phẩm | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hủy đặt trước
+### Check FUNC: Thông báo có hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-HDT-01** | Hủy đặt trước chờ xử lý | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Nhấn nút "Hủy đặt trước" trên đặt trước chờ xử lý<br>3. Xác nhận hủy | Hiển thị modal xác nhận với thông tin hoàn cọc, sau khi xác nhận, đặt trước được hủy, hiển thị toast "Đã hủy đơn đặt trước", đặt trước biến mất khỏi danh sách hoặc chuyển sang trạng thái "Đã hủy", yêu cầu hoàn cọc được tạo tự động | | Pass | 11/15/2015 | |
-| **FUNC-HDT-02** | Hủy đặt trước trong modal | 1. Nhấn nút "Hủy đặt trước"<br>2. Nhấn nút "Hủy" trong modal | Modal đóng, không hủy đặt trước, đặt trước vẫn còn trong danh sách | | Pass | 11/15/2015 | |
-| **FUNC-HDT-03** | Hủy đặt trước đã xử lý | 1. Xem đặt trước đã được xử lý (đã xác nhận/đang chuẩn bị)<br>2. Kiểm tra nút hủy | Nút "Hủy đặt trước" không hiển thị, không thể hủy đặt trước đã xử lý | | Pass | 11/15/2015 | |
-| **FUNC-HDT-04** | Hủy đặt trước từ trang chi tiết | 1. Xem chi tiết đặt trước chờ xử lý<br>2. Nhấn nút "Hủy đặt trước"<br>3. Xác nhận | Đặt trước được hủy, quay lại danh sách, đặt trước biến mất hoặc chuyển sang trạng thái "Đã hủy" | | Pass | 11/15/2015 | |
-| **FUNC-HDT-05** | Xử lý hoàn cọc tự động | 1. Hủy đặt trước thành công<br>2. Kiểm tra hoàn cọc | Yêu cầu hoàn cọc được tạo tự động, trạng thái hoàn cọc được cập nhật, thông tin hoàn cọc được hiển thị trong modal xác nhận | | Pass | 11/15/2015 | |
-| **FUNC-HDT-06** | Đóng modal bằng click overlay | 1. Mở modal xác nhận<br>2. Click vào overlay | Modal đóng, không hủy đặt trước | | Pass | 11/15/2015 | |
+| **FUNC-TBCH-01** | Hiển thị thông báo có hàng | 1. Chọn tab "Yêu thích" hoặc "Hệ thống"<br>2. Xem thông báo | Hiển thị thông báo có hàng với đầy đủ thông tin: tên sản phẩm, loại thông báo, số lượng có sẵn, giá sản phẩm, thời gian có hàng | | Pass | 11/15/2015 | |
+| **FUNC-TBCH-02** | Truy cập sản phẩm có hàng | 1. Xem thông báo có hàng<br>2. Nhấn nút "Mua ngay" hoặc "Xem sản phẩm" | Chuyển hướng đến trang sản phẩm, trang hiển thị đầy đủ thông tin và trạng thái "Có hàng" | | Pass | 11/15/2015 | |
+| **FUNC-TBCH-03** | Cập nhật trạng thái sản phẩm | 1. Sản phẩm được nhập về<br>2. Kiểm tra thông báo | Trạng thái sản phẩm được cập nhật từ "Hết hàng" hoặc "Đặt trước" thành "Có hàng", thông báo được gửi đến tất cả người dùng quan tâm qua kênh đã chọn (push, email, SMS) | | Pass | 11/15/2015 | |
+| **FUNC-TBCH-04** | Gửi thông báo qua kênh đã chọn | 1. Người dùng đã cài đặt kênh nhận thông báo<br>2. Sản phẩm có hàng | Thông báo được gửi qua kênh đã chọn (push notification, email, hoặc SMS), người dùng nhận được thông báo kịp thời | | Pass | 11/15/2015 | |
+| **FUNC-TBCH-05** | Thông báo sản phẩm đặt trước có hàng | 1. Xem thông báo sản phẩm đặt trước có hàng<br>2. Kiểm tra thông tin | Hiển thị thông báo với loại "Đặt trước", thông tin sản phẩm, có thể mua ngay hoặc hoàn tất đơn đặt trước | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Quản lý trạng thái đặt trước
+### Function: Quản lý trạng thái thông báo
 
-#### Check GUI: Quản lý trạng thái đặt trước
+#### Check GUI: Quản lý trạng thái thông báo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-QLTTDT-01** | Kiểm tra badge trạng thái Chờ xử lý | 1. Xem đặt trước chờ xử lý<br>2. Kiểm tra badge | Hiển thị badge "Chờ xử lý" với màu yellow-500, icon Clock | | Pass | 11/15/2015 | |
-| **GUI-QLTTDT-02** | Kiểm tra badge trạng thái Đã xác nhận | 1. Xem đặt trước đã xác nhận<br>2. Kiểm tra badge | Hiển thị badge "Đã xác nhận" với màu blue-500, icon CheckCircle | | Pass | 11/15/2015 | |
-| **GUI-QLTTDT-03** | Kiểm tra badge trạng thái Đang chuẩn bị | 1. Xem đặt trước đang chuẩn bị<br>2. Kiểm tra badge | Hiển thị badge "Đang chuẩn bị" với màu orange-500, icon Package | | Pass | 11/15/2015 | |
-| **GUI-QLTTDT-04** | Kiểm tra badge trạng thái Đã giao | 1. Xem đặt trước đã giao<br>2. Kiểm tra badge | Hiển thị badge "Đã giao" với màu green-500, icon CheckCircle | | Pass | 11/15/2015 | |
-| **GUI-QLTTDT-05** | Kiểm tra badge trạng thái Đã hủy | 1. Xem đặt trước đã hủy<br>2. Kiểm tra badge | Hiển thị badge "Đã hủy" với màu red-500, icon XCircle | | Pass | 11/15/2015 | |
-| **GUI-QLTTDT-06** | Kiểm tra thời gian cập nhật | 1. Xem đặt trước<br>2. Kiểm tra thời gian | Hiển thị thời gian cập nhật cuối với format ngày giờ Việt Nam | | Pass | 11/15/2015 | |
+| **GUI-QLTT-TB-01** | Kiểm tra số thông báo chưa đọc | 1. Truy cập trang thông báo<br>2. Kiểm tra badge | Hiển thị số lượng thông báo chưa đọc trong header, cập nhật real-time | | Pass | 11/15/2015 | |
+| **GUI-QLTT-TB-02** | Kiểm tra nút Đánh dấu tất cả đã đọc | 1. Truy cập trang thông báo<br>2. Kiểm tra nút | Hiển thị nút "Đánh dấu tất cả đã đọc" với icon CheckCheck, variant outline, chỉ hiển thị khi có thông báo chưa đọc | | Pass | 11/15/2015 | |
+| **GUI-QLTT-TB-03** | Kiểm tra nút Xóa tất cả | 1. Truy cập trang thông báo<br>2. Kiểm tra nút | Hiển thị nút "Xóa tất cả" hoặc "Xóa đã đọc" với icon Trash2, variant outline | | Pass | 11/15/2015 | |
+| **GUI-QLTT-TB-04** | Kiểm tra nút Đánh dấu đã đọc | 1. Xem thông báo chưa đọc<br>2. Kiểm tra nút | Hiển thị nút với icon CheckCircle, variant ghost size sm, chỉ hiển thị khi chưa đọc | | Pass | 11/15/2015 | |
+| **GUI-QLTT-TB-05** | Kiểm tra badge trạng thái đọc | 1. Xem card thông báo<br>2. Kiểm tra badge | Hiển thị dot w-2 h-2 bg-primary rounded-full nếu chưa đọc, không hiển thị nếu đã đọc, card có border-primary nếu chưa đọc | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Quản lý trạng thái đặt trước
+### Check FUNC: Quản lý trạng thái thông báo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLTTDT-01** | Theo dõi trạng thái real-time | 1. Xem danh sách đặt trước<br>2. Admin thay đổi trạng thái | Trạng thái đặt trước được cập nhật real-time, badge thay đổi màu và icon tương ứng, hiển thị thông báo khi có thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-QLTTDT-02** | Lọc theo trạng thái qua bộ lọc | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Chọn trạng thái trong bộ lọc | Danh sách được lọc, chỉ hiển thị đặt trước có trạng thái đã chọn, cập nhật ngay lập tức | | Pass | 11/15/2015 | |
-| **FUNC-QLTTDT-03** | Hiển thị thông tin trạng thái | 1. Xem đặt trước<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: badge trạng thái với màu và icon, thời gian cập nhật, nhân viên xử lý (nếu có), ghi chú (nếu có) | | Pass | 11/15/2015 | |
-| **FUNC-QLTTDT-04** | Cập nhật trạng thái tự động | 1. Xem danh sách đặt trước<br>2. Đợi admin xử lý | Hệ thống tự động cập nhật trạng thái khi admin xử lý, không cần refresh trang | | Pass | 11/15/2015 | |
-| **FUNC-QLTTDT-05** | Thông báo thay đổi trạng thái | 1. Đặt trước có thay đổi trạng thái<br>2. Kiểm tra thông báo | Hiển thị toast hoặc notification thông báo thay đổi trạng thái, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
-| **FUNC-QLTTDT-06** | Hiển thị số lượng theo trạng thái | 1. Chọn tab "Đơn đặt trước của tôi"<br>2. Kiểm tra số lượng | Số lượng đặt trước được hiển thị chính xác cho từng trạng thái trong bộ lọc | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-01** | Đánh dấu thông báo đã đọc | 1. Xem thông báo chưa đọc<br>2. Nhấn nút "Đánh dấu đã đọc" | Trạng thái thông báo được cập nhật thành "Đã đọc", dot biến mất, border-primary biến mất, số lượng thông báo chưa đọc giảm, hiển thị toast "Đã đánh dấu là đã đọc" | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-02** | Đánh dấu tất cả đã đọc | 1. Truy cập trang thông báo<br>2. Nhấn nút "Đánh dấu tất cả đã đọc" | Tất cả thông báo chưa đọc được đánh dấu là đã đọc, số lượng thông báo chưa đọc về 0, hiển thị toast "Đã đánh dấu tất cả thông báo là đã đọc" | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-03** | Xóa thông báo | 1. Xem thông báo<br>2. Nhấn nút "Xóa" | Thông báo được xóa khỏi danh sách, danh sách được cập nhật, hiển thị toast "Đã xóa thông báo" | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-04** | Xóa tất cả thông báo đã đọc | 1. Truy cập trang thông báo<br>2. Nhấn nút "Xóa đã đọc" | Tất cả thông báo đã đọc được xóa, chỉ còn lại thông báo chưa đọc, danh sách được cập nhật, hiển thị toast "Đã xóa tất cả thông báo đã đọc" | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-05** | Cập nhật số lượng thông báo | 1. Có thông báo mới hoặc thay đổi trạng thái<br>2. Kiểm tra số lượng | Số lượng thông báo chưa đọc được cập nhật chính xác và hiển thị real-time, badge số lượng được cập nhật kịp thời | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-06** | Tự động đánh dấu đã đọc khi xem | 1. Xem chi tiết thông báo<br>2. Kiểm tra trạng thái | Thông báo được tự động đánh dấu là đã đọc khi người dùng xem chi tiết (tùy cài đặt) | | Pass | 11/15/2015 | |
+| **FUNC-QLTT-TB-07** | Cập nhật real-time khi có thông báo mới | 1. Đang ở trang thông báo<br>2. Có thông báo mới | Thông báo mới xuất hiện trong danh sách real-time, số lượng chưa đọc tăng, có thể có notification popup | | Pass | 11/15/2015 | |
 
 ---
 
-### Check VALIDATION: Đặt trước sản phẩm
+### Check VALIDATION: Thông báo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **VALID-DTSP-01** | Đặt trước thiếu số lượng | 1. Mở form đặt trước<br>2. Để trống số lượng<br>3. Xác nhận | Hiển thị thông báo lỗi "Vui lòng nhập số lượng", không tạo đặt trước | | Pass | 11/15/2015 | |
-| **VALID-DTSP-02** | Đặt trước số lượng = 0 | 1. Mở form đặt trước<br>2. Nhập số lượng = 0<br>3. Xác nhận | Hiển thị thông báo lỗi "Số lượng phải lớn hơn 0", không tạo đặt trước | | Pass | 11/15/2015 | |
-| **VALID-DTSP-03** | Đặt trước số lượng âm | 1. Mở form đặt trước<br>2. Nhập số lượng < 0<br>3. Xác nhận | Hệ thống tự động chuyển về 1 hoặc hiển thị lỗi, không cho nhập số âm | | Pass | 11/15/2015 | |
-| **VALID-DTSP-04** | Đặt trước thiếu địa chỉ giao hàng | 1. Mở form đặt trước<br>2. Để trống địa chỉ<br>3. Xác nhận | Hiển thị thông báo lỗi "Vui lòng nhập địa chỉ giao hàng", không tạo đặt trước | | Pass | 11/15/2015 | |
-| **VALID-DTSP-05** | Hủy đặt trước đã xử lý | 1. Xem đặt trước đã được xử lý<br>2. Thử hủy đặt trước | Nút "Hủy đặt trước" không hiển thị, không thể hủy đặt trước đã xử lý | | Pass | 11/15/2015 | |
-| **VALID-DTSP-06** | Đặt trước sản phẩm hết chỗ | 1. Chọn tab "Sản phẩm đặt trước"<br>2. Xem sản phẩm hết chỗ<br>3. Thử đặt trước | Nút bị disabled, hiển thị "Hết chỗ đặt trước", không thể đặt trước | | Pass | 11/15/2015 | |
-| **VALID-DTSP-07** | Đặt trước với ngày giao quá khứ | 1. Mở form đặt trước<br>2. Chọn ngày giao trong quá khứ<br>3. Xác nhận | Hiển thị thông báo lỗi "Ngày giao phải là ngày tương lai", không tạo đặt trước | | Pass | 11/15/2015 | |
-| **VALID-DTSP-08** | Tính toán giá với số lượng lớn | 1. Mở form đặt trước<br>2. Nhập số lượng rất lớn (>1000)<br>3. Quan sát tính toán | Hệ thống tính toán chính xác, hiển thị tổng tiền, tiền cọc, số tiền còn lại đúng | | Pass | 11/15/2015 | |
+| **VALID-TB-01** | Tìm kiếm với từ khóa đặc biệt | 1. Truy cập trang thông báo<br>2. Nhập từ khóa có ký tự đặc biệt | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
+| **VALID-TB-02** | Xóa thông báo không tồn tại | 1. Thử xóa thông báo đã bị xóa<br>2. Kiểm tra lỗi | Hệ thống xử lý an toàn, không gây lỗi, hiển thị thông báo phù hợp | | Pass | 11/15/2015 | |
+| **VALID-TB-03** | Đánh dấu đã đọc thông báo đã đọc | 1. Xem thông báo đã đọc<br>2. Thử đánh dấu lại | Hệ thống xử lý an toàn, không gây lỗi, trạng thái không thay đổi | | Pass | 11/15/2015 | |
+| **VALID-TB-04** | Hiển thị thông báo với nội dung dài | 1. Xem thông báo có nội dung rất dài<br>2. Kiểm tra hiển thị | Nội dung được hiển thị đầy đủ hoặc được cắt với "Xem thêm", không bị lỗi layout | | Pass | 11/15/2015 | |
+| **VALID-TB-05** | Phân trang với số lượng lớn | 1. Có nhiều thông báo (>100)<br>2. Kiểm tra phân trang | Phân trang hoạt động chính xác, có thể điều hướng giữa các trang, hiển thị số trang chính xác | | Pass | 11/15/2015 | |
 
