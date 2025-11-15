@@ -1,14 +1,14 @@
-# Test Case Template - Chức năng đánh giá nâng cao - đánh giá sản phẩm sau khi mua hàng (User)
+# Test Case Template - Chức năng danh sách sản phẩm yêu thích (User)
 
 ## Module Code
-**Model Management Store: Chức năng đánh giá nâng cao - đánh giá sản phẩm sau khi mua hàng User**
+**Model Management Store: Chức năng danh sách sản phẩm yêu thích User**
 
 ## Test Requirement
-1. Đánh giá sản phẩm
-2. Viết review
-3. Xem đánh giá
-4. Quản lý đánh giá của tôi
-5. Tương tác với đánh giá
+1. Thêm vào danh sách yêu thích
+2. Hiển thị danh sách yêu thích
+3. Quản lý danh sách yêu thích
+4. Tìm kiếm và lọc sản phẩm yêu thích
+5. Thao tác với sản phẩm yêu thích
 
 ---
 
@@ -18,238 +18,201 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 140 |
+| **Pass** | 132 |
 | **Fail** | 0 |
-| **Untested** | 40 |
+| **Untested** | 38 |
 | **N/A** | 0 |
-| **Number of Test cases** | 180 |
+| **Number of Test cases** | 170 |
 
 ---
 
 ## Test Cases
 
-### Function: Đánh giá sản phẩm
+### Function: Thêm vào danh sách yêu thích
 
-#### Check GUI: Đánh giá sản phẩm
+#### Check GUI: Thêm vào danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DGSP-01** | Kiểm tra tiêu đề đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đánh giá sách" với font-bold text-3xl | | Pass | 11/15/2015 | |
-| **GUI-DGSP-02** | Kiểm tra mô tả trang | 1. Truy cập /user/reviews<br>2. Kiểm tra mô tả | Hiển thị mô tả "Chia sẻ trải nghiệm và đọc đánh giá từ cộng đồng" với màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DGSP-03** | Kiểm tra icon đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra icon | Hiển thị icon Star trong tab "Chờ đánh giá" | | Pass | 11/15/2015 | |
-| **GUI-DGSP-04** | Kiểm tra tab Chờ đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra tab | Hiển thị tab "Chờ đánh giá" với số lượng sản phẩm chờ đánh giá trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-DGSP-05** | Kiểm tra card sản phẩm chờ đánh giá | 1. Truy cập /user/reviews<br>2. Chọn tab "Chờ đánh giá"<br>3. Kiểm tra card | Hiển thị card sản phẩm với layout flex gap-4, chứa hình ảnh, tên sản phẩm, tác giả, ngày mua | | Pass | 11/15/2015 | |
-| **GUI-DGSP-06** | Kiểm tra hình ảnh sản phẩm | 1. Truy cập /user/reviews<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh sản phẩm với kích thước w-16 h-20, object-cover rounded | | Pass | 11/15/2015 | |
-| **GUI-DGSP-07** | Kiểm tra tên sản phẩm | 1. Truy cập /user/reviews<br>2. Kiểm tra tên | Hiển thị tên sản phẩm với font-semibold text-sm, line-clamp-2 | | Pass | 11/15/2015 | |
-| **GUI-DGSP-08** | Kiểm tra tác giả | 1. Truy cập /user/reviews<br>2. Kiểm tra tác giả | Hiển thị tên tác giả với text-xs text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DGSP-09** | Kiểm tra ngày mua | 1. Truy cập /user/reviews<br>2. Kiểm tra ngày mua | Hiển thị "Mua ngày: [Ngày]" với format ngày Việt Nam, text-xs text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DGSP-10** | Kiểm tra nút Viết đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra nút | Hiển thị nút "Viết đánh giá" với icon Star, size sm, variant default, chiếm toàn bộ chiều rộng card | | Pass | 11/15/2015 | |
-| **GUI-DGSP-11** | Kiểm tra badge Đã đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra sản phẩm đã đánh giá | Hiển thị badge với icon CheckCircle, text "Đã đánh giá", text-xs text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DGSP-12** | Kiểm tra grid layout | 1. Truy cập /user/reviews<br>2. Kiểm tra layout | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cho danh sách sản phẩm | | Pass | 11/15/2015 | |
-| **GUI-DGSP-13** | Kiểm tra nút Quay lại | 1. Truy cập /user/reviews<br>2. Kiểm tra nút | Hiển thị nút "Quay lại" với icon ArrowLeft, variant ghost, link đến /user/products | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-01** | Kiểm tra nút yêu thích trên trang sản phẩm | 1. Truy cập /user/products<br>2. Kiểm tra nút yêu thích | Hiển thị nút với icon Heart, có thể click, khi đã yêu thích có màu fill-red-500 text-red-500 | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-02** | Kiểm tra nút yêu thích trên trang chi tiết sản phẩm | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút yêu thích | Hiển thị nút "Yêu thích" với icon Heart, variant outline size lg, khi đã yêu thích icon có màu fill-red-500 text-red-500 | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-03** | Kiểm tra nút yêu thích trên trang giỏ hàng | 1. Truy cập /user/cart<br>2. Kiểm tra nút yêu thích | Hiển thị nút với icon Heart, variant ghost, khi đã yêu thích có màu fill-red-500 text-red-500 | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-04** | Kiểm tra trạng thái chưa yêu thích | 1. Xem sản phẩm chưa yêu thích<br>2. Kiểm tra icon | Icon Heart không có fill, màu text mặc định | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-05** | Kiểm tra trạng thái đã yêu thích | 1. Xem sản phẩm đã yêu thích<br>2. Kiểm tra icon | Icon Heart có fill-red-500 text-red-500 | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-06** | Kiểm tra số lượng yêu thích trên header | 1. Truy cập bất kỳ trang nào<br>2. Kiểm tra badge số lượng | Hiển thị badge với số lượng sản phẩm trong danh sách yêu thích (nếu có) | | Pass | 11/15/2015 | |
+| **GUI-TVDSYT-07** | Kiểm tra animation khi click | 1. Click nút yêu thích<br>2. Quan sát animation | Có hiệu ứng animation khi click, icon thay đổi màu mượt mà | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đánh giá sản phẩm
+### Check FUNC: Thêm vào danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DGSP-01** | Mở trang đánh giá | 1. Truy cập /user/reviews | Hiển thị trang đánh giá với tiêu đề "Đánh giá sách", mô tả, 3 tabs (Chờ đánh giá, Đánh giá của tôi, Tất cả đánh giá), danh sách sản phẩm chờ đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-02** | Hiển thị sản phẩm chờ đánh giá | 1. Truy cập /user/reviews<br>2. Chọn tab "Chờ đánh giá" | Hiển thị danh sách các sản phẩm đã mua nhưng chưa đánh giá, mỗi card hiển thị hình ảnh, tên, tác giả, ngày mua, nút "Viết đánh giá" | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-03** | Hiển thị sản phẩm đã đánh giá | 1. Truy cập /user/reviews<br>2. Chọn tab "Chờ đánh giá" | Hiển thị sản phẩm đã đánh giá với badge "Đã đánh giá" và icon CheckCircle, không hiển thị nút "Viết đánh giá" | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-04** | Xác thực quyền đánh giá - Đã mua | 1. Truy cập /user/reviews<br>2. Kiểm tra sản phẩm đã mua | Hệ thống kiểm tra lịch sử mua hàng, chỉ hiển thị sản phẩm đã mua trong danh sách chờ đánh giá, hiển thị nút "Viết đánh giá" | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-05** | Xác thực quyền đánh giá - Chưa mua | 1. Truy cập /user/reviews<br>2. Kiểm tra sản phẩm chưa mua | Sản phẩm chưa mua không xuất hiện trong danh sách chờ đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-06** | Nhấn nút Viết đánh giá | 1. Truy cập /user/reviews<br>2. Chọn tab "Chờ đánh giá"<br>3. Nhấn nút "Viết đánh giá" | Mở modal viết đánh giá với thông tin sản phẩm đã chọn, form nhập điểm đánh giá và nhận xét | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-07** | Hiển thị danh sách rỗng | 1. Truy cập /user/reviews<br>2. Chọn tab "Chờ đánh giá"<br>3. Không có sản phẩm chờ đánh giá | Hiển thị thông báo "Không có sản phẩm nào chờ đánh giá" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-08** | Kiểm tra số lượng sản phẩm chờ đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra tab | Tab "Chờ đánh giá" hiển thị số lượng chính xác sản phẩm có thể đánh giá trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-09** | Nhấn nút Quay lại | 1. Truy cập /user/reviews<br>2. Nhấn nút "Quay lại" | Chuyển đến trang /user/products | | Pass | 11/15/2015 | |
-| **FUNC-DGSP-10** | Kiểm tra responsive layout | 1. Truy cập /user/reviews<br>2. Thay đổi kích thước màn hình | Layout tự động điều chỉnh: 1 cột trên mobile, 2 cột trên tablet, 3 cột trên desktop | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-01** | Thêm sản phẩm vào yêu thích từ trang sản phẩm | 1. Truy cập /user/products<br>2. Click nút yêu thích trên sản phẩm chưa yêu thích | Sản phẩm được thêm vào danh sách yêu thích, icon chuyển sang màu đỏ, hiển thị toast "Đã thêm vào danh sách yêu thích", số lượng yêu thích tăng lên | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-02** | Thêm sản phẩm vào yêu thích từ trang chi tiết | 1. Truy cập /user/products/[id]<br>2. Click nút "Yêu thích" | Sản phẩm được thêm vào danh sách yêu thích, icon chuyển sang màu đỏ, hiển thị toast "Đã thêm vào danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-03** | Thêm sản phẩm vào yêu thích từ giỏ hàng | 1. Truy cập /user/cart<br>2. Click nút yêu thích trên sản phẩm trong giỏ | Sản phẩm được thêm vào danh sách yêu thích, icon chuyển sang màu đỏ, hiển thị toast "Đã thêm vào danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-04** | Xóa sản phẩm khỏi yêu thích | 1. Click nút yêu thích trên sản phẩm đã yêu thích | Sản phẩm được xóa khỏi danh sách yêu thích, icon quay về màu mặc định, hiển thị toast "Đã xóa khỏi danh sách yêu thích", số lượng yêu thích giảm đi | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-05** | Cập nhật trạng thái đồng bộ | 1. Thêm sản phẩm vào yêu thích ở trang A<br>2. Chuyển sang trang B<br>3. Kiểm tra trạng thái | Trạng thái yêu thích được đồng bộ trên tất cả các trang, icon hiển thị đúng trạng thái | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-06** | Thêm nhiều sản phẩm vào yêu thích | 1. Thêm lần lượt nhiều sản phẩm vào yêu thích | Tất cả sản phẩm được thêm thành công, số lượng yêu thích tăng tương ứng, mỗi sản phẩm có toast xác nhận riêng | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-07** | Kiểm tra sản phẩm đã có trong yêu thích | 1. Thêm sản phẩm vào yêu thích<br>2. Thêm lại cùng sản phẩm | Hệ thống không thêm trùng, hoặc tự động xóa nếu đã có, hiển thị thông báo phù hợp | | Pass | 11/15/2015 | |
+| **FUNC-TVDSYT-08** | Thêm sản phẩm khi chưa đăng nhập | 1. Đăng xuất<br>2. Thử thêm sản phẩm vào yêu thích | Hiển thị thông báo yêu cầu đăng nhập, chuyển đến trang đăng nhập, sau khi đăng nhập có thể thêm yêu thích | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Viết review
+### Function: Hiển thị danh sách yêu thích
 
-#### Check GUI: Viết review
+#### Check GUI: Hiển thị danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-VR-01** | Kiểm tra modal viết review | 1. Truy cập /user/reviews<br>2. Nhấn nút "Viết đánh giá"<br>3. Kiểm tra modal | Hiển thị modal với background overlay đen 50%, card container max-w-2xl, max-h-[90vh] overflow-y-auto | | Pass | 11/15/2015 | |
-| **GUI-VR-02** | Kiểm tra tiêu đề modal | 1. Mở modal viết review<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Viết đánh giá" với CardTitle | | Pass | 11/15/2015 | |
-| **GUI-VR-03** | Kiểm tra mô tả modal | 1. Mở modal viết review<br>2. Kiểm tra mô tả | Hiển thị mô tả "Chia sẻ trải nghiệm của bạn về "[Tên sản phẩm]"" với CardDescription | | Pass | 11/15/2015 | |
-| **GUI-VR-04** | Kiểm tra thông tin sản phẩm | 1. Mở modal viết review<br>2. Kiểm tra thông tin | Hiển thị layout flex gap-4 với hình ảnh sản phẩm w-20 h-24, tên sản phẩm font-semibold, ngày mua | | Pass | 11/15/2015 | |
-| **GUI-VR-05** | Kiểm tra hệ thống sao | 1. Mở modal viết review<br>2. Kiểm tra sao | Hiển thị 5 ngôi sao với icon Star, có thể click để chọn điểm từ 1-5, sao được chọn có màu fill-yellow-400 text-yellow-400 | | Pass | 11/15/2015 | |
-| **GUI-VR-06** | Kiểm tra label Đánh giá của bạn | 1. Mở modal viết review<br>2. Kiểm tra label | Hiển thị label "Đánh giá của bạn *" với dấu sao bắt buộc | | Pass | 11/15/2015 | |
-| **GUI-VR-07** | Kiểm tra mô tả điểm đánh giá | 1. Mở modal viết review<br>2. Chọn điểm đánh giá<br>3. Kiểm tra mô tả | Hiển thị text mô tả tương ứng: "Rất không hài lòng" (1 sao), "Không hài lòng" (2 sao), "Bình thường" (3 sao), "Hài lòng" (4 sao), "Rất hài lòng" (5 sao) | | Pass | 11/15/2015 | |
-| **GUI-VR-08** | Kiểm tra ô nhập nhận xét | 1. Mở modal viết review<br>2. Kiểm tra textarea | Hiển thị label "Nhận xét chi tiết *", textarea với placeholder "Chia sẻ trải nghiệm của bạn về cuốn sách này...", rows 4 | | Pass | 11/15/2015 | |
-| **GUI-VR-09** | Kiểm tra đếm ký tự | 1. Mở modal viết review<br>2. Nhập nhận xét<br>3. Kiểm tra đếm | Hiển thị "[Số]/500 ký tự" với text-xs text-muted-foreground, cập nhật real-time khi nhập | | Pass | 11/15/2015 | |
-| **GUI-VR-10** | Kiểm tra nút Hủy | 1. Mở modal viết review<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, đóng modal khi nhấn | | Pass | 11/15/2015 | |
-| **GUI-VR-11** | Kiểm tra nút Gửi đánh giá | 1. Mở modal viết review<br>2. Kiểm tra nút | Hiển thị nút "Gửi đánh giá" variant default, gửi đánh giá khi nhấn | | Pass | 11/15/2015 | |
-| **GUI-VR-12** | Kiểm tra upload ảnh | 1. Mở modal viết review<br>2. Kiểm tra upload | Hiển thị nút "Upload ảnh" với file input, hỗ trợ định dạng ảnh (jpg, png, webp) | | Pass | 11/15/2015 | |
-| **GUI-VR-13** | Kiểm tra upload video | 1. Mở modal viết review<br>2. Kiểm tra upload | Hiển thị nút "Upload video" với file input, hỗ trợ định dạng video (mp4, webm) | | Pass | 11/15/2015 | |
-| **GUI-VR-14** | Kiểm tra danh sách file đã upload | 1. Mở modal viết review<br>2. Upload file<br>3. Kiểm tra danh sách | Hiển thị danh sách file đã upload với preview, có nút xóa từng file | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/wishlist<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Danh sách yêu thích" với text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-02** | Kiểm tra icon trang | 1. Truy cập /user/wishlist<br>2. Kiểm tra icon | Hiển thị icon Heart với màu red-500 hoặc trong component | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-03** | Kiểm tra số lượng sản phẩm | 1. Truy cập /user/wishlist<br>2. Kiểm tra số lượng | Hiển thị "[Số] sách trong danh sách yêu thích của bạn" với text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-04** | Kiểm tra grid layout | 1. Truy cập /user/wishlist<br>2. Kiểm tra layout | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-05** | Kiểm tra card sản phẩm | 1. Xem danh sách yêu thích<br>2. Kiểm tra card | Hiển thị card với hover:shadow-lg transition-shadow, chứa hình ảnh, thông tin sản phẩm | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-06** | Kiểm tra hình ảnh sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh với aspect-[3/4], object-cover, rounded-t-lg, có hiệu ứng hover:scale-105 | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-07** | Kiểm tra tên sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra tên | Hiển thị tên sản phẩm với font-semibold text-sm line-clamp-2 | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-08** | Kiểm tra tác giả/thương hiệu | 1. Xem card sản phẩm<br>2. Kiểm tra tác giả | Hiển thị tác giả/thương hiệu với text-xs text-muted-foreground, có icon User | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-09** | Kiểm tra giá sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra giá | Hiển thị giá với font-bold text-primary, format VNĐ, có giá gốc line-through nếu có giảm giá | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-10** | Kiểm tra đánh giá | 1. Xem card sản phẩm<br>2. Kiểm tra đánh giá | Hiển thị 5 ngôi sao, sao được chọn có fill-yellow-400 text-yellow-400, có số lượng đánh giá trong ngoặc đơn | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-11** | Kiểm tra trạng thái kho | 1. Xem card sản phẩm<br>2. Kiểm tra trạng thái | Hiển thị "Còn hàng ([Số])" màu green-600 hoặc "Hết hàng" màu red-600 với text-xs | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-12** | Kiểm tra ngày thêm | 1. Xem card sản phẩm<br>2. Kiểm tra ngày | Hiển thị "Thêm vào: [Ngày]" với format ngày Việt Nam, text-xs text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-13** | Kiểm tra badge sản phẩm | 1. Xem card sản phẩm<br>2. Kiểm tra badge | Hiển thị badge "Mới" (green-500), "Bán chạy" (orange-500), "-X%" (red-500) ở góc trên trái | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-14** | Kiểm tra nút xóa khỏi yêu thích | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút với icon Heart fill-red-500, variant ghost size sm, absolute top-2 right-2 | | Pass | 11/15/2015 | |
+| **GUI-HTDSYT-15** | Kiểm tra nút Quay lại | 1. Truy cập /user/wishlist<br>2. Kiểm tra nút | Hiển thị nút "Tiếp tục mua sắm" với icon ArrowLeft, variant ghost, link đến /user/products | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Viết review
+### Check FUNC: Hiển thị danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-VR-01** | Mở modal viết review | 1. Truy cập /user/reviews<br>2. Nhấn nút "Viết đánh giá" | Mở modal với thông tin sản phẩm đã chọn, form trống sẵn sàng nhập | | Pass | 11/15/2015 | |
-| **FUNC-VR-02** | Chọn điểm đánh giá 1 sao | 1. Mở modal viết review<br>2. Click vào sao thứ 1 | Sao thứ 1 được chọn, hiển thị màu vàng, mô tả "Rất không hài lòng" | | Pass | 11/15/2015 | |
-| **FUNC-VR-03** | Chọn điểm đánh giá 5 sao | 1. Mở modal viết review<br>2. Click vào sao thứ 5 | Tất cả 5 sao được chọn, hiển thị màu vàng, mô tả "Rất hài lòng" | | Pass | 11/15/2015 | |
-| **FUNC-VR-04** | Thay đổi điểm đánh giá | 1. Mở modal viết review<br>2. Chọn 3 sao<br>3. Click vào sao thứ 5 | Điểm đánh giá thay đổi từ 3 sao sang 5 sao, mô tả cập nhật tương ứng | | Pass | 11/15/2015 | |
-| **FUNC-VR-05** | Nhập nhận xét chi tiết | 1. Mở modal viết review<br>2. Nhập nhận xét vào textarea | Nhận xét được nhập và hiển thị trong textarea, đếm ký tự cập nhật real-time | | Pass | 11/15/2015 | |
-| **FUNC-VR-06** | Kiểm tra giới hạn ký tự | 1. Mở modal viết review<br>2. Nhập quá 500 ký tự | Hệ thống giới hạn nhập ở 500 ký tự, hiển thị "500/500 ký tự", không cho nhập thêm | | Pass | 11/15/2015 | |
-| **FUNC-VR-07** | Gửi đánh giá thành công | 1. Mở modal viết review<br>2. Chọn điểm đánh giá (VD: 5 sao)<br>3. Nhập nhận xét<br>4. Nhấn "Gửi đánh giá" | Đánh giá được gửi thành công, modal đóng, hiển thị toast "Đánh giá đã được gửi thành công", đánh giá xuất hiện trong tab "Đánh giá của tôi" với trạng thái "Đang chờ duyệt" | | Pass | 11/15/2015 | |
-| **FUNC-VR-08** | Gửi đánh giá thiếu điểm | 1. Mở modal viết review<br>2. Không chọn điểm đánh giá<br>3. Nhập nhận xét<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng chọn điểm đánh giá", không gửi đánh giá, modal vẫn mở | | Pass | 11/15/2015 | |
-| **FUNC-VR-09** | Gửi đánh giá thiếu nhận xét | 1. Mở modal viết review<br>2. Chọn điểm đánh giá<br>3. Để trống nhận xét<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng viết nhận xét", không gửi đánh giá, modal vẫn mở | | Pass | 11/15/2015 | |
-| **FUNC-VR-10** | Gửi đánh giá nhận xét chỉ có khoảng trắng | 1. Mở modal viết review<br>2. Chọn điểm đánh giá<br>3. Nhập chỉ khoảng trắng<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng viết nhận xét", không gửi đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-VR-11** | Upload ảnh thành công | 1. Mở modal viết review<br>2. Nhấn "Upload ảnh"<br>3. Chọn file ảnh hợp lệ | File ảnh được upload, hiển thị trong danh sách file đã upload với preview, có nút xóa | | Pass | 11/15/2015 | |
-| **FUNC-VR-12** | Upload video thành công | 1. Mở modal viết review<br>2. Nhấn "Upload video"<br>3. Chọn file video hợp lệ | File video được upload, hiển thị trong danh sách file đã upload với preview, có nút xóa | | Pass | 11/15/2015 | |
-| **FUNC-VR-13** | Upload file không hợp lệ | 1. Mở modal viết review<br>2. Upload file không đúng định dạng | Hiển thị thông báo lỗi "Định dạng file không được hỗ trợ", file không được upload | | Pass | 11/15/2015 | |
-| **FUNC-VR-14** | Upload file quá kích thước | 1. Mở modal viết review<br>2. Upload file vượt quá giới hạn (VD: >10MB) | Hiển thị thông báo lỗi "File quá lớn. Kích thước tối đa: 10MB", file không được upload | | Pass | 11/15/2015 | |
-| **FUNC-VR-15** | Xóa file đã upload | 1. Mở modal viết review<br>2. Upload file<br>3. Nhấn nút xóa file | File được xóa khỏi danh sách, không còn trong preview | | Pass | 11/15/2015 | |
-| **FUNC-VR-16** | Nhấn nút Hủy | 1. Mở modal viết review<br>2. Nhập một số thông tin<br>3. Nhấn "Hủy" | Modal đóng, không lưu thông tin đã nhập, quay lại trang đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-VR-17** | Đóng modal bằng click overlay | 1. Mở modal viết review<br>2. Click vào vùng overlay đen | Modal đóng, quay lại trang đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-VR-18** | Gửi đánh giá với ảnh/video | 1. Mở modal viết review<br>2. Chọn điểm, nhập nhận xét<br>3. Upload ảnh/video<br>4. Nhấn "Gửi đánh giá" | Đánh giá được gửi kèm file đính kèm, hiển thị trong đánh giá của tôi với file đính kèm | | Pass | 11/15/2015 | |
-| **FUNC-VR-19** | Kiểm tra trạng thái đang chờ duyệt | 1. Gửi đánh giá thành công<br>2. Kiểm tra tab "Đánh giá của tôi" | Đánh giá hiển thị với badge "Đang chờ duyệt", chưa hiển thị công khai | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-01** | Mở trang danh sách yêu thích | 1. Truy cập /user/wishlist | Hiển thị trang với tiêu đề "Danh sách yêu thích", số lượng sản phẩm, danh sách sản phẩm yêu thích | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-02** | Hiển thị danh sách sản phẩm | 1. Truy cập /user/wishlist<br>2. Có sản phẩm trong yêu thích | Hiển thị danh sách tất cả sản phẩm yêu thích với đầy đủ thông tin: hình ảnh, tên, tác giả, giá, đánh giá, trạng thái kho, ngày thêm | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-03** | Hiển thị thông tin chi tiết sản phẩm | 1. Xem danh sách yêu thích<br>2. Kiểm tra thông tin | Mỗi sản phẩm hiển thị đầy đủ: hình ảnh, tên, tác giả/thương hiệu, giá (có giá gốc nếu giảm), đánh giá, số lượng đánh giá, trạng thái kho, ngày thêm | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-04** | Hiển thị số lượng sản phẩm chính xác | 1. Truy cập /user/wishlist<br>2. Kiểm tra số lượng | Số lượng hiển thị chính xác với số sản phẩm thực tế trong danh sách, cập nhật tự động khi có thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-05** | Hiển thị khi danh sách trống | 1. Truy cập /user/wishlist<br>2. Không có sản phẩm yêu thích | Hiển thị icon Heart, tiêu đề "Danh sách yêu thích trống", mô tả "Bạn chưa có sách nào trong danh sách yêu thích", nút "Khám phá sách" link đến /user/products | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-06** | Cập nhật real-time thông tin sản phẩm | 1. Xem danh sách yêu thích<br>2. Giá/thông tin sản phẩm thay đổi | Thông tin sản phẩm được cập nhật real-time để phản ánh đúng tình trạng hiện tại (giá, trạng thái kho) | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-07** | Hiển thị sản phẩm đã xóa khỏi shop | 1. Sản phẩm trong yêu thích bị xóa khỏi shop<br>2. Xem danh sách yêu thích | Sản phẩm vẫn hiển thị với badge "Sản phẩm không còn bán" hoặc tự động xóa khỏi danh sách yêu thích | | Pass | 11/15/2015 | |
+| **FUNC-HTDSYT-08** | Kiểm tra responsive layout | 1. Truy cập /user/wishlist<br>2. Thay đổi kích thước màn hình | Layout tự động điều chỉnh: 1 cột mobile, 2 cột tablet, 3 cột desktop, 4 cột xl | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem đánh giá
+### Function: Quản lý danh sách yêu thích
 
-#### Check GUI: Xem đánh giá
+#### Check GUI: Quản lý danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XDG-01** | Kiểm tra tab Tất cả đánh giá | 1. Truy cập /user/reviews<br>2. Kiểm tra tab | Hiển thị tab "Tất cả đánh giá" trong TabsList | | Pass | 11/15/2015 | |
-| **GUI-XDG-02** | Kiểm tra ô tìm kiếm | 1. Truy cập /user/reviews<br>2. Chọn tab "Tất cả đánh giá"<br>3. Kiểm tra tìm kiếm | Hiển thị input tìm kiếm với icon Search bên trái, placeholder "Tìm kiếm đánh giá...", pl-10 | | Pass | 11/15/2015 | |
-| **GUI-XDG-03** | Kiểm tra bộ lọc điểm đánh giá | 1. Chọn tab "Tất cả đánh giá"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Tất cả", "5 sao", "4 sao", "3 sao", "2 sao", "1 sao" | | Pass | 11/15/2015 | |
-| **GUI-XDG-04** | Kiểm tra sắp xếp | 1. Chọn tab "Tất cả đánh giá"<br>2. Kiểm tra sắp xếp | Hiển thị Select với trigger w-32, các option: "Mới nhất", "Hữu ích nhất", "Điểm cao nhất" | | Pass | 11/15/2015 | |
-| **GUI-XDG-05** | Kiểm tra card đánh giá | 1. Chọn tab "Tất cả đánh giá"<br>2. Kiểm tra card | Hiển thị card đánh giá với layout flex gap-4, chứa hình ảnh sản phẩm, thông tin đánh giá | | Pass | 11/15/2015 | |
-| **GUI-XDG-06** | Kiểm tra hình ảnh sản phẩm trong đánh giá | 1. Xem danh sách đánh giá<br>2. Kiểm tra hình ảnh | Hiển thị hình ảnh sản phẩm w-16 h-20, object-cover rounded | | Pass | 11/15/2015 | |
-| **GUI-XDG-07** | Kiểm tra tên sản phẩm | 1. Xem danh sách đánh giá<br>2. Kiểm tra tên | Hiển thị tên sản phẩm với font-semibold text-sm | | Pass | 11/15/2015 | |
-| **GUI-XDG-08** | Kiểm tra điểm đánh giá | 1. Xem danh sách đánh giá<br>2. Kiểm tra điểm | Hiển thị 5 ngôi sao, sao được chọn có màu fill-yellow-400 text-yellow-400, sao không chọn có màu text-gray-300 | | Pass | 11/15/2015 | |
-| **GUI-XDG-09** | Kiểm tra ngày đánh giá | 1. Xem danh sách đánh giá<br>2. Kiểm tra ngày | Hiển thị ngày đánh giá với format ngày Việt Nam, text-xs text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-XDG-10** | Kiểm tra badge Đã mua | 1. Xem danh sách đánh giá<br>2. Kiểm tra badge | Hiển thị badge "Đã mua" variant secondary, text-xs cho đánh giá từ khách đã mua | | Pass | 11/15/2015 | |
-| **GUI-XDG-11** | Kiểm tra nội dung đánh giá | 1. Xem danh sách đánh giá<br>2. Kiểm tra nội dung | Hiển thị nội dung đánh giá với text-sm text-muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-XDG-12** | Kiểm tra nút Hữu ích | 1. Xem danh sách đánh giá<br>2. Kiểm tra nút | Hiển thị nút "Hữu ích" với icon ThumbsUp, variant ghost size sm, hiển thị số lượt trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-XDG-13** | Kiểm tra ảnh đính kèm | 1. Xem đánh giá có ảnh<br>2. Kiểm tra ảnh | Hiển thị ảnh đính kèm với kích thước phù hợp, có thể click để xem to | | Pass | 11/15/2015 | |
-| **GUI-XDG-14** | Kiểm tra video đính kèm | 1. Xem đánh giá có video<br>2. Kiểm tra video | Hiển thị video đính kèm với player, có thể phát video | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-01** | Kiểm tra nút xóa sản phẩm | 1. Truy cập /user/wishlist<br>2. Kiểm tra nút xóa | Hiển thị nút với icon Heart fill-red-500, variant ghost size sm, absolute top-2 right-2 trên card | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-02** | Kiểm tra nút thêm vào giỏ hàng | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "Mua" với icon ShoppingCart, size sm, flex-1, disabled nếu hết hàng | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-03** | Kiểm tra nút thêm tất cả vào giỏ hàng | 1. Truy cập /user/wishlist<br>2. Kiểm tra nút | Hiển thị nút "Thêm tất cả vào giỏ" với icon ShoppingCart, variant outline, disabled nếu không có sản phẩm còn hàng | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-04** | Kiểm tra nút xóa tất cả | 1. Truy cập /user/wishlist<br>2. Kiểm tra nút | Hiển thị nút "Xóa tất cả" với icon Trash2, variant outline, màu text-red-600 hover:text-red-700 | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-05** | Kiểm tra modal xác nhận xóa | 1. Nhấn nút xóa tất cả<br>2. Kiểm tra modal | Hiển thị modal xác nhận với tiêu đề, mô tả, nút "Xác nhận" và "Hủy" | | Pass | 11/15/2015 | |
+| **GUI-QLDSYT-06** | Kiểm tra nút Xem chi tiết | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "Chi tiết" với icon BookOpen, variant outline size sm, link đến /user/products/[id] | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem đánh giá
+### Check FUNC: Quản lý danh sách yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XDG-01** | Mở tab Tất cả đánh giá | 1. Truy cập /user/reviews<br>2. Chọn tab "Tất cả đánh giá" | Hiển thị danh sách tất cả đánh giá đã được duyệt, có bộ lọc và sắp xếp | | Pass | 11/15/2015 | |
-| **FUNC-XDG-02** | Hiển thị danh sách đánh giá | 1. Chọn tab "Tất cả đánh giá" | Hiển thị danh sách đánh giá với đầy đủ thông tin: hình ảnh sản phẩm, tên sản phẩm, điểm đánh giá, ngày đánh giá, nội dung, số lượt hữu ích | | Pass | 11/15/2015 | |
-| **FUNC-XDG-03** | Chỉ hiển thị đánh giá đã duyệt | 1. Chọn tab "Tất cả đánh giá" | Chỉ hiển thị các đánh giá có trạng thái "Đã duyệt", không hiển thị đánh giá "Đang chờ duyệt" hoặc "Từ chối" | | Pass | 11/15/2015 | |
-| **FUNC-XDG-04** | Tìm kiếm đánh giá theo tên sản phẩm | 1. Chọn tab "Tất cả đánh giá"<br>2. Nhập tên sản phẩm vào ô tìm kiếm | Danh sách đánh giá được lọc theo tên sản phẩm, chỉ hiển thị đánh giá có tên sản phẩm chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-XDG-05** | Tìm kiếm đánh giá theo nội dung | 1. Chọn tab "Tất cả đánh giá"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách đánh giá được lọc theo nội dung, chỉ hiển thị đánh giá có nội dung chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-XDG-06** | Lọc đánh giá theo 5 sao | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn bộ lọc "5 sao" | Chỉ hiển thị các đánh giá có điểm 5 sao | | Pass | 11/15/2015 | |
-| **FUNC-XDG-07** | Lọc đánh giá theo 1 sao | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn bộ lọc "1 sao" | Chỉ hiển thị các đánh giá có điểm 1 sao | | Pass | 11/15/2015 | |
-| **FUNC-XDG-08** | Lọc đánh giá - Tất cả | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn bộ lọc "Tất cả" | Hiển thị tất cả đánh giá không phân biệt điểm | | Pass | 11/15/2015 | |
-| **FUNC-XDG-09** | Sắp xếp theo Mới nhất | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn sắp xếp "Mới nhất" | Danh sách đánh giá được sắp xếp theo ngày đánh giá mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-XDG-10** | Sắp xếp theo Hữu ích nhất | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn sắp xếp "Hữu ích nhất" | Danh sách đánh giá được sắp xếp theo số lượt hữu ích giảm dần | | Pass | 11/15/2015 | |
-| **FUNC-XDG-11** | Sắp xếp theo Điểm cao nhất | 1. Chọn tab "Tất cả đánh giá"<br>2. Chọn sắp xếp "Điểm cao nhất" | Danh sách đánh giá được sắp xếp theo điểm đánh giá giảm dần (5 sao trước) | | Pass | 11/15/2015 | |
-| **FUNC-XDG-12** | Kết hợp tìm kiếm và lọc | 1. Chọn tab "Tất cả đánh giá"<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn bộ lọc điểm | Danh sách đánh giá được lọc theo cả từ khóa và điểm đánh giá | | Pass | 11/15/2015 | |
-| **FUNC-XDG-13** | Hiển thị đánh giá không có kết quả | 1. Chọn tab "Tất cả đánh giá"<br>2. Tìm kiếm/lọc không có kết quả | Hiển thị thông báo "Không tìm thấy đánh giá nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-XDG-14** | Nhấn nút Hữu ích | 1. Chọn tab "Tất cả đánh giá"<br>2. Nhấn nút "Hữu ích" | Số lượt hữu ích tăng lên, hiển thị toast "Cảm ơn bạn đã đánh giá hữu ích", nút chuyển sang trạng thái đã nhấn | | Pass | 11/15/2015 | |
-| **FUNC-XDG-15** | Xem ảnh đính kèm | 1. Xem đánh giá có ảnh<br>2. Click vào ảnh | Mở lightbox hoặc modal hiển thị ảnh to, có thể zoom và xem chi tiết | | Pass | 11/15/2015 | |
-| **FUNC-XDG-16** | Phát video đính kèm | 1. Xem đánh giá có video<br>2. Click phát video | Video được phát trong player, có controls để play/pause/volume | | Pass | 11/15/2015 | |
-| **FUNC-XDG-17** | Hiển thị đánh giá từ trang chi tiết sản phẩm | 1. Truy cập /user/products/[id]<br>2. Xem phần đánh giá | Hiển thị danh sách đánh giá của sản phẩm đó, có thể lọc và sắp xếp | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-01** | Xóa sản phẩm khỏi danh sách | 1. Truy cập /user/wishlist<br>2. Nhấn nút xóa trên card sản phẩm | Sản phẩm được xóa khỏi danh sách, card biến mất, hiển thị toast "Đã xóa khỏi danh sách yêu thích", số lượng giảm đi | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-02** | Thêm sản phẩm vào giỏ hàng | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Mua" trên sản phẩm còn hàng | Sản phẩm được thêm vào giỏ hàng, hiển thị toast "Đã thêm "[Tên sản phẩm]" vào giỏ hàng" | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-03** | Thêm sản phẩm hết hàng vào giỏ | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Mua" trên sản phẩm hết hàng | Nút bị disabled, không thể thêm vào giỏ hàng, hiển thị thông báo "Sản phẩm đã hết hàng" | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-04** | Thêm tất cả vào giỏ hàng | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Thêm tất cả vào giỏ" | Tất cả sản phẩm còn hàng được thêm vào giỏ hàng, hiển thị toast "Đã thêm [Số] sách vào giỏ hàng" | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-05** | Thêm tất cả khi không có sản phẩm còn hàng | 1. Truy cập /user/wishlist<br>2. Tất cả sản phẩm hết hàng<br>3. Nhấn nút "Thêm tất cả vào giỏ" | Nút bị disabled, hiển thị toast "Không có sách nào còn hàng" | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-06** | Xóa tất cả sản phẩm | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Xóa tất cả"<br>3. Xác nhận xóa | Hiển thị modal xác nhận, sau khi xác nhận, tất cả sản phẩm bị xóa, hiển thị toast "Đã xóa tất cả sách khỏi danh sách yêu thích", hiển thị thông báo danh sách trống | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-07** | Hủy xóa tất cả | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Xóa tất cả"<br>3. Hủy trong modal | Modal đóng, không xóa sản phẩm, danh sách vẫn giữ nguyên | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-08** | Xem chi tiết sản phẩm | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Chi tiết" | Chuyển đến trang /user/products/[id] với thông tin chi tiết sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-09** | Click vào hình ảnh sản phẩm | 1. Truy cập /user/wishlist<br>2. Click vào hình ảnh | Chuyển đến trang chi tiết sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-QLDSYT-10** | Click vào tên sản phẩm | 1. Truy cập /user/wishlist<br>2. Click vào tên sản phẩm | Chuyển đến trang chi tiết sản phẩm | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Quản lý đánh giá của tôi
+### Function: Tìm kiếm và lọc sản phẩm yêu thích
 
-#### Check GUI: Quản lý đánh giá của tôi
+#### Check GUI: Tìm kiếm và lọc sản phẩm yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-QLDG-01** | Kiểm tra tab Đánh giá của tôi | 1. Truy cập /user/reviews<br>2. Kiểm tra tab | Hiển thị tab "Đánh giá của tôi" với số lượng đánh giá trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-QLDG-02** | Kiểm tra card đánh giá của tôi | 1. Chọn tab "Đánh giá của tôi"<br>2. Kiểm tra card | Hiển thị card đánh giá với layout flex gap-4, chứa hình ảnh sản phẩm, thông tin đánh giá, nút chỉnh sửa/xóa | | Pass | 11/15/2015 | |
-| **GUI-QLDG-03** | Kiểm tra nút Chỉnh sửa | 1. Chọn tab "Đánh giá của tôi"<br>2. Kiểm tra nút | Hiển thị nút chỉnh sửa với icon Edit, variant ghost size sm | | Pass | 11/15/2015 | |
-| **GUI-QLDG-04** | Kiểm tra nút Xóa | 1. Chọn tab "Đánh giá của tôi"<br>2. Kiểm tra nút | Hiển thị nút xóa với icon Trash2, variant ghost size sm, màu text-red-600 hover:text-red-700 | | Pass | 11/15/2015 | |
-| **GUI-QLDG-05** | Kiểm tra badge trạng thái | 1. Chọn tab "Đánh giá của tôi"<br>2. Kiểm tra badge | Hiển thị badge trạng thái: "Đã gửi", "Đang chờ duyệt", "Đã duyệt", "Từ chối" với màu tương ứng | | Pass | 11/15/2015 | |
-| **GUI-QLDG-06** | Kiểm tra thông báo chưa có đánh giá | 1. Chọn tab "Đánh giá của tôi"<br>2. Không có đánh giá | Hiển thị icon MessageSquare, tiêu đề "Chưa có đánh giá nào", mô tả "Bạn chưa viết đánh giá nào cho sách đã mua" | | Pass | 11/15/2015 | |
-| **GUI-QLDG-07** | Kiểm tra số lượt hữu ích | 1. Chọn tab "Đánh giá của tôi"<br>2. Kiểm tra số lượt | Hiển thị "[Số] người thấy hữu ích" với icon ThumbsUp, text-xs text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-TKLC-01** | Kiểm tra ô tìm kiếm | 1. Truy cập /user/wishlist<br>2. Kiểm tra ô tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm trong danh sách yêu thích...", pl-10 | | Pass | 11/15/2015 | |
+| **GUI-TKLC-02** | Kiểm tra bộ lọc danh mục | 1. Truy cập /user/wishlist<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-48, các option: "Tất cả", "Kỹ năng sống", "Tâm lý học", "Lịch sử", v.v. | | Pass | 11/15/2015 | |
+| **GUI-TKLC-03** | Kiểm tra sắp xếp | 1. Truy cập /user/wishlist<br>2. Kiểm tra sắp xếp | Hiển thị Select với trigger w-48, các option: "Ngày thêm", "Giá", "Tên sách", "Năm xuất bản", "Đánh giá" | | Pass | 11/15/2015 | |
+| **GUI-TKLC-04** | Kiểm tra nút đảo ngược thứ tự | 1. Truy cập /user/wishlist<br>2. Kiểm tra nút | Hiển thị nút với icon SortAsc hoặc SortDesc, variant outline size sm, thay đổi icon theo thứ tự | | Pass | 11/15/2015 | |
+| **GUI-TKLC-05** | Kiểm tra số lượng kết quả | 1. Truy cập /user/wishlist<br>2. Tìm kiếm/lọc<br>3. Kiểm tra số lượng | Hiển thị "Hiển thị [Số] trong tổng số [Số] sách" với text-sm text-muted-foreground | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Quản lý đánh giá của tôi
+### Check FUNC: Tìm kiếm và lọc sản phẩm yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLDG-01** | Mở tab Đánh giá của tôi | 1. Truy cập /user/reviews<br>2. Chọn tab "Đánh giá của tôi" | Hiển thị danh sách tất cả đánh giá mà người dùng đã viết, sắp xếp theo thời gian mới nhất | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-02** | Hiển thị danh sách đánh giá của tôi | 1. Chọn tab "Đánh giá của tôi" | Hiển thị đầy đủ thông tin: hình ảnh sản phẩm, tên sản phẩm, điểm đánh giá, ngày đánh giá, nội dung, trạng thái, số lượt hữu ích | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-03** | Hiển thị trạng thái Đang chờ duyệt | 1. Chọn tab "Đánh giá của tôi"<br>2. Xem đánh giá vừa gửi | Hiển thị badge "Đang chờ duyệt" cho đánh giá mới gửi, chưa được admin duyệt | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-04** | Hiển thị trạng thái Đã duyệt | 1. Chọn tab "Đánh giá của tôi"<br>2. Xem đánh giá đã được duyệt | Hiển thị badge "Đã duyệt" cho đánh giá đã được admin phê duyệt, đánh giá này hiển thị công khai | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-05** | Hiển thị trạng thái Từ chối | 1. Chọn tab "Đánh giá của tôi"<br>2. Xem đánh giá bị từ chối | Hiển thị badge "Từ chối" cho đánh giá bị admin từ chối, đánh giá không hiển thị công khai | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-06** | Chỉnh sửa đánh giá | 1. Chọn tab "Đánh giá của tôi"<br>2. Nhấn nút "Chỉnh sửa" | Mở modal chỉnh sửa với thông tin đánh giá hiện tại đã điền sẵn, cho phép thay đổi điểm đánh giá, nội dung, file đính kèm | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-07** | Lưu chỉnh sửa đánh giá | 1. Chỉnh sửa đánh giá<br>2. Thay đổi điểm và nội dung<br>3. Nhấn "Gửi đánh giá" | Đánh giá được cập nhật, hiển thị thông báo thành công, trạng thái chuyển về "Đang chờ duyệt", hiển thị thời gian chỉnh sửa cuối cùng | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-08** | Xóa đánh giá | 1. Chọn tab "Đánh giá của tôi"<br>2. Nhấn nút "Xóa"<br>3. Xác nhận xóa | Hiển thị dialog xác nhận "Bạn có chắc muốn xóa đánh giá này?", sau khi xác nhận, đánh giá bị xóa, hiển thị toast "Đã xóa đánh giá", danh sách được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-09** | Hủy xóa đánh giá | 1. Chọn tab "Đánh giá của tôi"<br>2. Nhấn nút "Xóa"<br>3. Hủy xóa | Dialog đóng, đánh giá không bị xóa, vẫn hiển thị trong danh sách | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-10** | Chỉnh sửa đánh giá đã duyệt | 1. Chọn tab "Đánh giá của tôi"<br>2. Chỉnh sửa đánh giá đã duyệt | Cho phép chỉnh sửa đánh giá đã duyệt, sau khi lưu, trạng thái chuyển về "Đang chờ duyệt" để admin xem xét lại | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-11** | Không cho chỉnh sửa đánh giá đã từ chối | 1. Chọn tab "Đánh giá của tôi"<br>2. Xem đánh giá bị từ chối | Đánh giá bị từ chối vẫn có thể chỉnh sửa, sau khi chỉnh sửa và gửi lại, trạng thái chuyển về "Đang chờ duyệt" | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-12** | Hiển thị số lượt hữu ích | 1. Chọn tab "Đánh giá của tôi"<br>2. Xem đánh giá | Hiển thị số lượt người dùng khác đánh dấu đánh giá là hữu ích | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-13** | Sắp xếp theo thời gian mới nhất | 1. Chọn tab "Đánh giá của tôi" | Danh sách đánh giá được sắp xếp theo thời gian đánh giá mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-14** | Hiển thị khi chưa có đánh giá | 1. Chọn tab "Đánh giá của tôi"<br>2. Chưa có đánh giá nào | Hiển thị thông báo "Chưa có đánh giá nào" với icon MessageSquare, mô tả "Bạn chưa viết đánh giá nào cho sách đã mua" | | Pass | 11/15/2015 | |
-| **FUNC-QLDG-15** | Kiểm tra lịch sử chỉnh sửa | 1. Chỉnh sửa đánh giá nhiều lần<br>2. Kiểm tra lịch sử | Hệ thống lưu lại lịch sử chỉnh sửa, hiển thị thời gian chỉnh sửa cuối cùng | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-01** | Tìm kiếm theo tên sản phẩm | 1. Truy cập /user/wishlist<br>2. Nhập tên sản phẩm vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị sản phẩm có tên chứa từ khóa, cập nhật số lượng kết quả | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-02** | Tìm kiếm theo tác giả | 1. Truy cập /user/wishlist<br>2. Nhập tên tác giả vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị sản phẩm có tác giả chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-03** | Tìm kiếm theo danh mục | 1. Truy cập /user/wishlist<br>2. Nhập tên danh mục vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị sản phẩm có danh mục chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-04** | Tìm kiếm không có kết quả | 1. Truy cập /user/wishlist<br>2. Nhập từ khóa không có trong danh sách | Hiển thị thông báo "Không tìm thấy sách", icon Heart, nút "Xóa bộ lọc" | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-05** | Lọc theo danh mục | 1. Truy cập /user/wishlist<br>2. Chọn danh mục trong bộ lọc | Danh sách được lọc, chỉ hiển thị sản phẩm thuộc danh mục đã chọn, cập nhật số lượng kết quả | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-06** | Lọc - Tất cả | 1. Truy cập /user/wishlist<br>2. Chọn "Tất cả" trong bộ lọc | Hiển thị tất cả sản phẩm không phân biệt danh mục | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-07** | Sắp xếp theo Ngày thêm | 1. Truy cập /user/wishlist<br>2. Chọn sắp xếp "Ngày thêm" | Danh sách được sắp xếp theo ngày thêm, mới nhất hoặc cũ nhất tùy thứ tự | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-08** | Sắp xếp theo Giá | 1. Truy cập /user/wishlist<br>2. Chọn sắp xếp "Giá" | Danh sách được sắp xếp theo giá, tăng dần hoặc giảm dần tùy thứ tự | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-09** | Sắp xếp theo Tên sách | 1. Truy cập /user/wishlist<br>2. Chọn sắp xếp "Tên sách" | Danh sách được sắp xếp theo tên sách A-Z hoặc Z-A tùy thứ tự | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-10** | Sắp xếp theo Đánh giá | 1. Truy cập /user/wishlist<br>2. Chọn sắp xếp "Đánh giá" | Danh sách được sắp xếp theo điểm đánh giá, cao nhất hoặc thấp nhất tùy thứ tự | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-11** | Đảo ngược thứ tự sắp xếp | 1. Truy cập /user/wishlist<br>2. Chọn sắp xếp<br>3. Nhấn nút đảo ngược | Thứ tự sắp xếp được đảo ngược (tăng dần ↔ giảm dần), icon thay đổi giữa SortAsc và SortDesc | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-12** | Kết hợp tìm kiếm và lọc | 1. Truy cập /user/wishlist<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn danh mục | Danh sách được lọc theo cả từ khóa và danh mục, chỉ hiển thị sản phẩm thỏa mãn cả hai điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-13** | Xóa bộ lọc | 1. Truy cập /user/wishlist<br>2. Áp dụng tìm kiếm/lọc<br>3. Nhấn nút "Xóa bộ lọc" | Tất cả bộ lọc và tìm kiếm được xóa, hiển thị lại toàn bộ danh sách yêu thích | | Pass | 11/15/2015 | |
+| **FUNC-TKLC-14** | Tìm kiếm real-time | 1. Truy cập /user/wishlist<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc ngay khi nhập, không cần nhấn Enter hoặc nút tìm kiếm | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Tương tác với đánh giá
+### Function: Thao tác với sản phẩm yêu thích
 
-#### Check GUI: Tương tác với đánh giá
+#### Check GUI: Thao tác với sản phẩm yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TT-01** | Kiểm tra nút Hữu ích | 1. Xem đánh giá<br>2. Kiểm tra nút | Hiển thị nút "Hữu ích" với icon ThumbsUp, variant ghost size sm, hiển thị số lượt trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-TT-02** | Kiểm tra nút Không hữu ích | 1. Xem đánh giá<br>2. Kiểm tra nút | Hiển thị nút "Không hữu ích" với icon ThumbsDown, variant ghost size sm, hiển thị số lượt trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-TT-03** | Kiểm tra nút Báo cáo | 1. Xem đánh giá<br>2. Kiểm tra nút | Hiển thị nút "Báo cáo" với icon Flag, variant ghost size sm | | Pass | 11/15/2015 | |
-| **GUI-TT-04** | Kiểm tra modal báo cáo | 1. Nhấn nút "Báo cáo"<br>2. Kiểm tra modal | Hiển thị modal với tiêu đề "Báo cáo đánh giá", có Select lý do báo cáo, Textarea mô tả, nút "Gửi báo cáo" và "Hủy" | | Pass | 11/15/2015 | |
-| **GUI-TT-05** | Kiểm tra Select lý do báo cáo | 1. Mở modal báo cáo<br>2. Kiểm tra Select | Hiển thị Select với các option: "Nội dung không phù hợp", "Spam", "Thông tin sai lệch", "Vi phạm quy định", "Khác" | | Pass | 11/15/2015 | |
-| **GUI-TT-06** | Kiểm tra Textarea mô tả | 1. Mở modal báo cáo<br>2. Kiểm tra Textarea | Hiển thị Textarea với label "Mô tả chi tiết", placeholder "Nhập mô tả về lý do báo cáo..." | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-01** | Kiểm tra nút Chia sẻ | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "Chia sẻ" với icon Share2, variant outline size sm, flex-1 | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-02** | Kiểm tra nút So sánh | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "So sánh" với icon Scale, variant outline size sm, flex-1 | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-03** | Kiểm tra nút Thông báo giá | 1. Xem card sản phẩm<br>2. Kiểm tra nút | Hiển thị nút "Thông báo giá" với icon Bell, variant outline size sm, flex-1 | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-04** | Kiểm tra modal chia sẻ | 1. Nhấn nút "Chia sẻ"<br>2. Kiểm tra modal | Hiển thị modal với tiêu đề "Chia sẻ sản phẩm", mô tả, input link readonly, các nút chia sẻ Facebook/Twitter/Email | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-05** | Kiểm tra modal so sánh | 1. Nhấn nút "So sánh"<br>2. Kiểm tra modal | Hiển thị modal với tiêu đề "So sánh sản phẩm", danh sách sản phẩm đang so sánh, nút "Xóa danh sách" và "Đóng" | | Pass | 11/15/2015 | |
+| **GUI-TTVSPYT-06** | Kiểm tra modal thông báo giá | 1. Nhấn nút "Thông báo giá"<br>2. Kiểm tra modal | Hiển thị modal với tiêu đề "Đăng ký thông báo giá", input Email, input Mức giá mong muốn, Textarea Ghi chú, nút "Hủy" và "Đăng ký" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Tương tác với đánh giá
+### Check FUNC: Thao tác với sản phẩm yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TT-01** | Đánh dấu hữu ích | 1. Xem đánh giá<br>2. Nhấn nút "Hữu ích" | Số lượt hữu ích tăng lên, nút chuyển sang trạng thái đã nhấn (màu khác), hiển thị toast "Cảm ơn bạn đã đánh giá hữu ích", lựa chọn được lưu lại | | Pass | 11/15/2015 | |
-| **FUNC-TT-02** | Bỏ đánh dấu hữu ích | 1. Đã đánh dấu hữu ích<br>2. Nhấn lại nút "Hữu ích" | Số lượt hữu ích giảm đi, nút quay về trạng thái ban đầu, lựa chọn được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-TT-03** | Đánh dấu không hữu ích | 1. Xem đánh giá<br>2. Nhấn nút "Không hữu ích" | Số lượt không hữu ích tăng lên, nút chuyển sang trạng thái đã nhấn, lựa chọn được lưu lại | | Pass | 11/15/2015 | |
-| **FUNC-TT-04** | Bỏ đánh dấu không hữu ích | 1. Đã đánh dấu không hữu ích<br>2. Nhấn lại nút "Không hữu ích" | Số lượt không hữu ích giảm đi, nút quay về trạng thái ban đầu | | Pass | 11/15/2015 | |
-| **FUNC-TT-05** | Chuyển từ hữu ích sang không hữu ích | 1. Đã đánh dấu hữu ích<br>2. Nhấn nút "Không hữu ích" | Số lượt hữu ích giảm, số lượt không hữu ích tăng, nút hữu ích quay về trạng thái ban đầu, nút không hữu ích chuyển sang trạng thái đã nhấn | | Pass | 11/15/2015 | |
-| **FUNC-TT-06** | Mở modal báo cáo | 1. Xem đánh giá<br>2. Nhấn nút "Báo cáo" | Mở modal báo cáo với Select lý do và Textarea mô tả | | Pass | 11/15/2015 | |
-| **FUNC-TT-07** | Gửi báo cáo thành công | 1. Mở modal báo cáo<br>2. Chọn lý do báo cáo<br>3. Nhập mô tả<br>4. Nhấn "Gửi báo cáo" | Báo cáo được gửi thành công, modal đóng, hiển thị toast "Báo cáo đã được gửi. Cảm ơn bạn đã phản hồi", báo cáo được gửi đến admin để xem xét | | Pass | 11/15/2015 | |
-| **FUNC-TT-08** | Gửi báo cáo thiếu lý do | 1. Mở modal báo cáo<br>2. Không chọn lý do<br>3. Nhấn "Gửi báo cáo" | Hiển thị thông báo lỗi "Vui lòng chọn lý do báo cáo", không gửi báo cáo | | Pass | 11/15/2015 | |
-| **FUNC-TT-09** | Gửi báo cáo thiếu mô tả | 1. Mở modal báo cáo<br>2. Chọn lý do<br>3. Để trống mô tả<br>4. Nhấn "Gửi báo cáo" | Hiển thị thông báo lỗi "Vui lòng nhập mô tả chi tiết", không gửi báo cáo | | Pass | 11/15/2015 | |
-| **FUNC-TT-10** | Hủy báo cáo | 1. Mở modal báo cáo<br>2. Nhấn nút "Hủy" | Modal đóng, không gửi báo cáo | | Pass | 11/15/2015 | |
-| **FUNC-TT-11** | Đóng modal bằng click overlay | 1. Mở modal báo cáo<br>2. Click vào overlay | Modal đóng, không gửi báo cáo | | Pass | 11/15/2015 | |
-| **FUNC-TT-12** | Hiển thị trạng thái tương tác | 1. Xem đánh giá đã tương tác<br>2. Kiểm tra trạng thái | Nút hữu ích/không hữu ích hiển thị trạng thái đã nhấn, cập nhật real-time khi có thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-TT-13** | Báo cáo đánh giá của chính mình | 1. Xem đánh giá của chính mình<br>2. Nhấn nút "Báo cáo" | Cho phép báo cáo đánh giá của chính mình, báo cáo được gửi đến admin | | Pass | 11/15/2015 | |
-| **FUNC-TT-14** | Báo cáo nhiều lần cùng một đánh giá | 1. Đã báo cáo đánh giá<br>2. Báo cáo lại | Cho phép báo cáo nhiều lần, mỗi báo cáo được gửi riêng đến admin | | Pass | 11/15/2015 | |
-| **FUNC-TT-15** | Kiểm tra cập nhật real-time số lượt | 1. Xem đánh giá<br>2. Người khác đánh dấu hữu ích | Số lượt hữu ích được cập nhật real-time mà không cần refresh trang | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-01** | Xem chi tiết sản phẩm | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Chi tiết" | Chuyển đến trang /user/products/[id] với đầy đủ thông tin sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-02** | Chia sẻ sản phẩm | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Chia sẻ" | Mở modal chia sẻ với link sản phẩm readonly, các nút chia sẻ Facebook/Twitter/Email | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-03** | Sao chép link chia sẻ | 1. Mở modal chia sẻ<br>2. Click vào input link | Link được sao chép vào clipboard, hiển thị toast "Đã sao chép link" | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-04** | Chia sẻ qua Facebook | 1. Mở modal chia sẻ<br>2. Nhấn nút "Facebook" | Mở cửa sổ chia sẻ Facebook với link sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-05** | Chia sẻ qua Twitter | 1. Mở modal chia sẻ<br>2. Nhấn nút "Twitter" | Mở cửa sổ chia sẻ Twitter với link sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-06** | Chia sẻ qua Email | 1. Mở modal chia sẻ<br>2. Nhấn nút "Email" | Mở ứng dụng email với link sản phẩm trong nội dung | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-07** | Đóng modal chia sẻ | 1. Mở modal chia sẻ<br>2. Nhấn nút "Đóng" | Modal đóng, quay lại trang danh sách yêu thích | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-08** | Thêm sản phẩm vào so sánh | 1. Truy cập /user/wishlist<br>2. Nhấn nút "So sánh" trên sản phẩm | Sản phẩm được thêm vào danh sách so sánh, mở modal so sánh hiển thị sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-09** | Thêm nhiều sản phẩm vào so sánh | 1. Truy cập /user/wishlist<br>2. Nhấn nút "So sánh" trên nhiều sản phẩm | Tất cả sản phẩm được thêm vào danh sách so sánh, modal hiển thị grid các sản phẩm | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-10** | Xóa danh sách so sánh | 1. Mở modal so sánh<br>2. Nhấn nút "Xóa danh sách" | Danh sách so sánh được xóa, modal hiển thị "Chưa có sản phẩm nào" | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-11** | Đóng modal so sánh | 1. Mở modal so sánh<br>2. Nhấn nút "Đóng" | Modal đóng, danh sách so sánh vẫn được lưu | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-12** | Đăng ký thông báo giá | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Thông báo giá"<br>3. Nhập email và mức giá<br>4. Nhấn "Đăng ký" | Đăng ký thành công, modal đóng, hiển thị toast "Đã đăng ký thông báo giá" | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-13** | Đăng ký thông báo giá thiếu email | 1. Mở modal thông báo giá<br>2. Không nhập email<br>3. Nhấn "Đăng ký" | Hiển thị thông báo lỗi "Vui lòng nhập email", không đăng ký | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-14** | Đăng ký thông báo giá email sai định dạng | 1. Mở modal thông báo giá<br>2. Nhập email sai định dạng<br>3. Nhấn "Đăng ký" | Hiển thị thông báo lỗi "Email không hợp lệ", không đăng ký | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-15** | Hủy đăng ký thông báo giá | 1. Mở modal thông báo giá<br>2. Nhấn nút "Hủy" | Modal đóng, không đăng ký thông báo | | Pass | 11/15/2015 | |
+| **FUNC-TTVSPYT-16** | Đóng modal bằng click overlay | 1. Mở bất kỳ modal nào<br>2. Click vào overlay | Modal đóng, quay lại trang danh sách yêu thích | | Pass | 11/15/2015 | |
 
 ---
 
-### Check VALIDATION: Đánh giá sản phẩm
+### Check VALIDATION: Danh sách sản phẩm yêu thích
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **VALID-DGSP-01** | Đánh giá với điểm 0 | 1. Mở modal viết review<br>2. Không chọn điểm<br>3. Nhập nhận xét<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng chọn điểm đánh giá", không gửi đánh giá | | Pass | 11/15/2015 | |
-| **VALID-DGSP-02** | Đánh giá với nhận xét rỗng | 1. Mở modal viết review<br>2. Chọn điểm<br>3. Để trống nhận xét<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng viết nhận xét", không gửi đánh giá | | Pass | 11/15/2015 | |
-| **VALID-DGSP-03** | Đánh giá với nhận xét chỉ khoảng trắng | 1. Mở modal viết review<br>2. Chọn điểm<br>3. Nhập chỉ khoảng trắng<br>4. Nhấn "Gửi đánh giá" | Hiển thị toast lỗi "Vui lòng viết nhận xét", không gửi đánh giá | | Pass | 11/15/2015 | |
-| **VALID-DGSP-04** | Đánh giá với nhận xét quá dài | 1. Mở modal viết review<br>2. Chọn điểm<br>3. Nhập nhận xét > 500 ký tự | Hệ thống giới hạn ở 500 ký tự, không cho nhập thêm, hiển thị "500/500 ký tự" | | Pass | 11/15/2015 | |
-| **VALID-DGSP-05** | Upload file ảnh không hợp lệ | 1. Mở modal viết review<br>2. Upload file không phải ảnh | Hiển thị thông báo lỗi "Định dạng file không được hỗ trợ. Chỉ chấp nhận: jpg, png, webp", file không được upload | | Pass | 11/15/2015 | |
-| **VALID-DGSP-06** | Upload file video không hợp lệ | 1. Mở modal viết review<br>2. Upload file không phải video | Hiển thị thông báo lỗi "Định dạng file không được hỗ trợ. Chỉ chấp nhận: mp4, webm", file không được upload | | Pass | 11/15/2015 | |
-| **VALID-DGSP-07** | Upload file quá kích thước | 1. Mở modal viết review<br>2. Upload file > 10MB | Hiển thị thông báo lỗi "File quá lớn. Kích thước tối đa: 10MB cho ảnh, 50MB cho video", file không được upload | | Pass | 11/15/2015 | |
-| **VALID-DGSP-08** | Upload quá nhiều file | 1. Mở modal viết review<br>2. Upload nhiều file vượt quá giới hạn (VD: >5 ảnh) | Hiển thị thông báo lỗi "Số lượng file tối đa: 5 ảnh và 1 video", file thừa không được upload | | Pass | 11/15/2015 | |
-| **VALID-DGSP-09** | Báo cáo thiếu lý do | 1. Mở modal báo cáo<br>2. Không chọn lý do<br>3. Nhấn "Gửi báo cáo" | Hiển thị thông báo lỗi "Vui lòng chọn lý do báo cáo", không gửi báo cáo | | Pass | 11/15/2015 | |
-| **VALID-DGSP-10** | Báo cáo thiếu mô tả | 1. Mở modal báo cáo<br>2. Chọn lý do<br>3. Để trống mô tả<br>4. Nhấn "Gửi báo cáo" | Hiển thị thông báo lỗi "Vui lòng nhập mô tả chi tiết", không gửi báo cáo | | Pass | 11/15/2015 | |
+| **VALID-DSYT-01** | Thêm sản phẩm khi chưa đăng nhập | 1. Đăng xuất<br>2. Thử thêm sản phẩm vào yêu thích | Hiển thị thông báo yêu cầu đăng nhập, chuyển đến trang đăng nhập | | Pass | 11/15/2015 | |
+| **VALID-DSYT-02** | Xóa tất cả không có xác nhận | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Xóa tất cả" | Hiển thị modal xác nhận trước khi xóa, không xóa ngay lập tức | | Pass | 11/15/2015 | |
+| **VALID-DSYT-03** | Thêm sản phẩm hết hàng vào giỏ | 1. Truy cập /user/wishlist<br>2. Nhấn nút "Mua" trên sản phẩm hết hàng | Nút bị disabled, không thể thêm vào giỏ hàng | | Pass | 11/15/2015 | |
+| **VALID-DSYT-04** | Đăng ký thông báo giá thiếu email | 1. Mở modal thông báo giá<br>2. Để trống email<br>3. Nhấn "Đăng ký" | Hiển thị thông báo lỗi "Vui lòng nhập email", không đăng ký | | Pass | 11/15/2015 | |
+| **VALID-DSYT-05** | Đăng ký thông báo giá email sai | 1. Mở modal thông báo giá<br>2. Nhập email sai định dạng<br>3. Nhấn "Đăng ký" | Hiển thị thông báo lỗi "Email không hợp lệ", không đăng ký | | Pass | 11/15/2015 | |
+| **VALID-DSYT-06** | Đăng ký thông báo giá giá không hợp lệ | 1. Mở modal thông báo giá<br>2. Nhập giá không phải số<br>3. Nhấn "Đăng ký" | Hiển thị thông báo lỗi "Mức giá không hợp lệ", không đăng ký | | Pass | 11/15/2015 | |
+| **VALID-DSYT-07** | Tìm kiếm với từ khóa đặc biệt | 1. Truy cập /user/wishlist<br>2. Nhập từ khóa có ký tự đặc biệt | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
+| **VALID-DSYT-08** | Tìm kiếm với từ khóa rất dài | 1. Truy cập /user/wishlist<br>2. Nhập từ khóa rất dài (>100 ký tự) | Hệ thống xử lý bình thường, không gây lỗi, lọc kết quả nếu có | | Pass | 11/15/2015 | |
 
