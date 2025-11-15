@@ -1,14 +1,14 @@
-# Test Case Template - Chức năng hỗ trợ - liên hệ (User)
+# Test Case Template - Chức năng yêu cầu đặt hàng (User)
 
 ## Module Code
-**Model Management Store: Chức năng hỗ trợ - liên hệ User**
+**Model Management Store: Chức năng yêu cầu đặt hàng User**
 
 ## Test Requirement
-1. Chat hỗ trợ
-2. Gửi phản hồi/khiếu nại
-3. Quản lý yêu cầu hỗ trợ
-4. Câu hỏi thường gặp
-5. Thông tin liên hệ
+1. Yêu cầu tìm mô hình
+2. Xem danh sách yêu cầu
+3. Xem chi tiết yêu cầu
+4. Hủy yêu cầu
+5. Quản lý trạng thái yêu cầu
 
 ---
 
@@ -18,207 +18,197 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 140 |
+| **Pass** | 130 |
 | **Fail** | 0 |
 | **Untested** | 40 |
 | **N/A** | 0 |
-| **Number of Test cases** | 180 |
+| **Number of Test cases** | 170 |
 
 ---
 
 ## Test Cases
 
-### Function: Chat hỗ trợ
+### Function: Yêu cầu tìm mô hình
 
-#### Check GUI: Chat hỗ trợ
+#### Check GUI: Yêu cầu tìm mô hình
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CH-01** | Kiểm tra tiêu đề chat | 1. Truy cập /user/support<br>2. Chọn tab "Chat trực tiếp"<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chat trực tiếp với nhân viên hỗ trợ" với icon MessageSquare, CardTitle | | Pass | 11/15/2015 | |
-| **GUI-CH-02** | Kiểm tra mô tả chat | 1. Chọn tab "Chat trực tiếp"<br>2. Kiểm tra mô tả | Hiển thị mô tả "Nhân viên hỗ trợ sẽ phản hồi trong vài phút" với CardDescription | | Pass | 11/15/2015 | |
-| **GUI-CH-03** | Kiểm tra khu vực tin nhắn | 1. Chọn tab "Chat trực tiếp"<br>2. Kiểm tra khu vực | Hiển thị container h-96 overflow-y-auto border rounded-lg p-4 space-y-4 chứa danh sách tin nhắn | | Pass | 11/15/2015 | |
-| **GUI-CH-04** | Kiểm tra tin nhắn người dùng | 1. Xem tin nhắn từ user<br>2. Kiểm tra hiển thị | Tin nhắn hiển thị bên phải (justify-end), background bg-primary text-primary-foreground, max-w-xs lg:max-w-md, có thời gian gửi | | Pass | 11/15/2015 | |
-| **GUI-CH-05** | Kiểm tra tin nhắn hỗ trợ | 1. Xem tin nhắn từ support<br>2. Kiểm tra hiển thị | Tin nhắn hiển thị bên trái (justify-start), background bg-muted, max-w-xs lg:max-w-md, có thời gian gửi | | Pass | 11/15/2015 | |
-| **GUI-CH-06** | Kiểm tra thời gian tin nhắn | 1. Xem tin nhắn<br>2. Kiểm tra thời gian | Hiển thị thời gian với format ngày Việt Nam, text-xs opacity-70 mt-1 | | Pass | 11/15/2015 | |
-| **GUI-CH-07** | Kiểm tra ô nhập tin nhắn | 1. Chọn tab "Chat trực tiếp"<br>2. Kiểm tra ô nhập | Hiển thị Input với placeholder "Nhập tin nhắn của bạn...", có thể nhập và gửi bằng Enter | | Pass | 11/15/2015 | |
-| **GUI-CH-08** | Kiểm tra nút gửi tin nhắn | 1. Chọn tab "Chat trực tiếp"<br>2. Kiểm tra nút | Hiển thị nút với icon Send, disabled khi ô nhập trống | | Pass | 11/15/2015 | |
-| **GUI-CH-09** | Kiểm tra tab Chat trực tiếp | 1. Truy cập /user/support<br>2. Kiểm tra tab | Hiển thị tab "Chat trực tiếp" với icon MessageSquare trong TabsList | | Pass | 11/15/2015 | |
-| **GUI-CH-10** | Kiểm tra scroll khu vực tin nhắn | 1. Có nhiều tin nhắn<br>2. Kiểm tra scroll | Khu vực tin nhắn có scroll khi nội dung vượt quá chiều cao, tự động scroll xuống tin nhắn mới nhất | | Pass | 11/15/2015 | |
+| **GUI-YCTM-01** | Kiểm tra tiêu đề trang | 1. Truy cập trang yêu cầu đặt hàng<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Yêu cầu đặt hàng" với icon Package h-8 w-8, text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-YCTM-02** | Kiểm tra mô tả trang | 1. Truy cập trang yêu cầu đặt hàng<br>2. Kiểm tra mô tả | Hiển thị mô tả "Yêu cầu sản phẩm hết hàng hoặc sản phẩm mới" với text-muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-YCTM-03** | Kiểm tra tab Tạo yêu cầu | 1. Truy cập trang yêu cầu đặt hàng<br>2. Kiểm tra tab | Hiển thị tab "Tạo yêu cầu" trong TabsList grid-cols-2 | | Pass | 11/15/2015 | |
+| **GUI-YCTM-04** | Kiểm tra tiêu đề form | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Tạo yêu cầu đặt hàng" với CardDescription | | Pass | 11/15/2015 | |
+| **GUI-YCTM-05** | Kiểm tra trường Loại yêu cầu | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Loại yêu cầu *", Select với các option: "Sản phẩm hết hàng" (icon Package), "Sản phẩm mới" (icon BookOpen) | | Pass | 11/15/2015 | |
+| **GUI-YCTM-06** | Kiểm tra trường Tên sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Tên sản phẩm *", Input với placeholder "VD: Gundam RX-78-2 Ver.2.0", required | | Pass | 11/15/2015 | |
+| **GUI-YCTM-07** | Kiểm tra trường Tác giả/Thương hiệu | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Tác giả/Thương hiệu", Input với placeholder "VD: Bandai", optional | | Pass | 11/15/2015 | |
+| **GUI-YCTM-08** | Kiểm tra trường Nhà xuất bản | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Nhà xuất bản", Input với placeholder "VD: Bandai", optional | | Pass | 11/15/2015 | |
+| **GUI-YCTM-09** | Kiểm tra trường ISBN/Mã sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "ISBN/Mã sản phẩm", Input với placeholder "VD: 978-4-04-123456-7", optional | | Pass | 11/15/2015 | |
+| **GUI-YCTM-10** | Kiểm tra trường Lý do yêu cầu | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Lý do yêu cầu", Select với các option: "Sản phẩm hết hàng", "Sản phẩm mới chưa có", "Yêu cầu từ khách hàng", "Sản phẩm đang hot", "Khác" | | Pass | 11/15/2015 | |
+| **GUI-YCTM-11** | Kiểm tra trường Mức độ ưu tiên | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Mức độ ưu tiên", Select với các option: "Thấp", "Trung bình", "Cao" | | Pass | 11/15/2015 | |
+| **GUI-YCTM-12** | Kiểm tra trường Mô tả chi tiết | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra trường | Hiển thị label "Mô tả chi tiết *", Textarea với placeholder "Mô tả chi tiết về yêu cầu của bạn...", rows 4, required | | Pass | 11/15/2015 | |
+| **GUI-YCTM-13** | Kiểm tra nút Lưu nháp | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra nút | Hiển thị nút "Lưu nháp" variant outline | | Pass | 11/15/2015 | |
+| **GUI-YCTM-14** | Kiểm tra nút Gửi yêu cầu | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra nút | Hiển thị nút "Gửi yêu cầu" với icon Plus, variant default | | Pass | 11/15/2015 | |
+| **GUI-YCTM-15** | Kiểm tra grid layout thông tin sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Kiểm tra layout | Hiển thị grid grid-cols-1 md:grid-cols-2 gap-4 cho các trường thông tin sản phẩm | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Chat hỗ trợ
+### Check FUNC: Yêu cầu tìm mô hình
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CH-01** | Mở tab Chat trực tiếp | 1. Truy cập /user/support<br>2. Chọn tab "Chat trực tiếp" | Hiển thị khu vực chat với tiêu đề, mô tả, danh sách tin nhắn (nếu có), ô nhập và nút gửi | | Pass | 11/15/2015 | |
-| **FUNC-CH-02** | Kết nối chat hỗ trợ | 1. Chọn tab "Chat trực tiếp"<br>2. Kiểm tra kết nối | Hệ thống thiết lập kết nối chat real-time, hiển thị trạng thái kết nối, có thể gửi và nhận tin nhắn | | Pass | 11/15/2015 | |
-| **FUNC-CH-03** | Gửi tin nhắn | 1. Chọn tab "Chat trực tiếp"<br>2. Nhập tin nhắn<br>3. Nhấn nút gửi hoặc Enter | Tin nhắn được gửi thành công, hiển thị trong khu vực chat bên phải, có thời gian gửi, ô nhập được xóa trống | | Pass | 11/15/2015 | |
-| **FUNC-CH-04** | Gửi tin nhắn bằng Enter | 1. Chọn tab "Chat trực tiếp"<br>2. Nhập tin nhắn<br>3. Nhấn Enter | Tin nhắn được gửi như khi nhấn nút gửi | | Pass | 11/15/2015 | |
-| **FUNC-CH-05** | Gửi tin nhắn rỗng | 1. Chọn tab "Chat trực tiếp"<br>2. Để trống ô nhập<br>3. Nhấn gửi | Nút gửi bị disabled, không gửi tin nhắn | | Pass | 11/15/2015 | |
-| **FUNC-CH-06** | Nhận tin nhắn hỗ trợ | 1. Gửi tin nhắn<br>2. Đợi phản hồi | Tin nhắn từ nhân viên hỗ trợ được hiển thị tự động trong khu vực chat bên trái, có thời gian, trạng thái đã đọc được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-CH-07** | Lưu lịch sử chat | 1. Gửi và nhận tin nhắn<br>2. Tải lại trang<br>3. Kiểm tra lịch sử | Lịch sử chat được lưu trữ, hiển thị lại khi tải trang | | Pass | 11/15/2015 | |
-| **FUNC-CH-08** | Tìm kiếm trong lịch sử chat | 1. Chọn tab "Chat trực tiếp"<br>2. Nhập từ khóa tìm kiếm | Lịch sử chat được lọc theo từ khóa, chỉ hiển thị tin nhắn chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-CH-09** | Export lịch sử chat | 1. Chọn tab "Chat trực tiếp"<br>2. Nhấn nút export | Lịch sử chat được export ra file CSV hoặc TXT, file được tải xuống | | Pass | 11/15/2015 | |
-| **FUNC-CH-10** | Hiển thị trạng thái đã đọc | 1. Nhận tin nhắn hỗ trợ<br>2. Kiểm tra trạng thái | Trạng thái đã đọc được cập nhật khi người dùng xem tin nhắn, hiển thị badge "Đã đọc" | | Pass | 11/15/2015 | |
-| **FUNC-CH-11** | Auto-scroll đến tin nhắn mới | 1. Có nhiều tin nhắn<br>2. Gửi/nhận tin nhắn mới | Khu vực chat tự động scroll xuống tin nhắn mới nhất | | Pass | 11/15/2015 | |
-| **FUNC-CH-12** | Gửi tin nhắn dài | 1. Nhập tin nhắn rất dài (>500 ký tự)<br>2. Gửi tin nhắn | Tin nhắn được gửi thành công, hiển thị đầy đủ trong khu vực chat, tự động xuống dòng | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-01** | Mở tab Tạo yêu cầu | 1. Truy cập trang yêu cầu đặt hàng<br>2. Chọn tab "Tạo yêu cầu" | Hiển thị form tạo yêu cầu với đầy đủ các trường, form trống sẵn sàng nhập | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-02** | Tạo yêu cầu thành công | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập đầy đủ thông tin (loại, tên sản phẩm, mô tả)<br>3. Nhấn "Gửi yêu cầu" | Yêu cầu được tạo thành công, hiển thị toast "Đã gửi yêu cầu đặt hàng thành công", form được reset, yêu cầu xuất hiện trong tab "Yêu cầu của tôi" với trạng thái "Chờ xử lý" | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-03** | Tạo yêu cầu thiếu tên sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Để trống tên sản phẩm<br>3. Nhập các trường khác<br>4. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng điền đầy đủ thông tin bắt buộc", không gửi yêu cầu, form vẫn giữ nguyên | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-04** | Tạo yêu cầu thiếu mô tả | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập tên sản phẩm<br>3. Để trống mô tả<br>4. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng điền đầy đủ thông tin bắt buộc", không gửi yêu cầu | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-05** | Chọn loại yêu cầu - Sản phẩm hết hàng | 1. Chọn tab "Tạo yêu cầu"<br>2. Chọn loại "Sản phẩm hết hàng" | Loại yêu cầu được chọn, hiển thị icon Package, có thể thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-06** | Chọn loại yêu cầu - Sản phẩm mới | 1. Chọn tab "Tạo yêu cầu"<br>2. Chọn loại "Sản phẩm mới" | Loại yêu cầu được chọn, hiển thị icon BookOpen, có thể thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-07** | Nhập thông tin sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập tên, tác giả, nhà xuất bản, ISBN | Tất cả thông tin được nhập và hiển thị trong các Input tương ứng | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-08** | Chọn lý do yêu cầu | 1. Chọn tab "Tạo yêu cầu"<br>2. Chọn lý do từ Select | Lý do được chọn, hiển thị trong Select, có thể thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-09** | Chọn mức độ ưu tiên | 1. Chọn tab "Tạo yêu cầu"<br>2. Chọn mức độ ưu tiên | Mức độ ưu tiên được chọn, mặc định là "Trung bình", có thể thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-10** | Lưu nháp yêu cầu | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập một số thông tin<br>3. Nhấn "Lưu nháp" | Thông tin được lưu nháp, hiển thị toast "Đã lưu nháp", có thể tiếp tục chỉnh sửa sau | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-11** | Tạo yêu cầu với đầy đủ thông tin | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập đầy đủ: loại, tên, tác giả, nhà xuất bản, ISBN, lý do, mức độ ưu tiên, mô tả<br>3. Nhấn "Gửi yêu cầu" | Yêu cầu được tạo với đầy đủ thông tin, hiển thị trong danh sách với tất cả thông tin đã nhập | | Pass | 11/15/2015 | |
+| **FUNC-YCTM-12** | Tạo yêu cầu chỉ với thông tin bắt buộc | 1. Chọn tab "Tạo yêu cầu"<br>2. Chỉ nhập loại, tên sản phẩm, mô tả<br>3. Nhấn "Gửi yêu cầu" | Yêu cầu được tạo thành công với chỉ thông tin bắt buộc, các trường optional để trống | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Gửi phản hồi/khiếu nại
+### Function: Xem danh sách yêu cầu
 
-#### Check GUI: Gửi phản hồi/khiếu nại
+#### Check GUI: Xem danh sách yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-GPH-01** | Kiểm tra nút tạo yêu cầu mới | 1. Truy cập /user/support<br>2. Chọn tab "Yêu cầu hỗ trợ"<br>3. Kiểm tra nút | Hiển thị nút "Tạo yêu cầu mới" với icon FileText, variant default | | Pass | 11/15/2015 | |
-| **GUI-GPH-02** | Kiểm tra modal tạo yêu cầu | 1. Nhấn nút "Tạo yêu cầu mới"<br>2. Kiểm tra modal | Hiển thị modal với background overlay đen 50%, card max-w-2xl max-h-[90vh] overflow-y-auto, tiêu đề "Tạo yêu cầu hỗ trợ" | | Pass | 11/15/2015 | |
-| **GUI-GPH-03** | Kiểm tra trường Tiêu đề | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Tiêu đề *", Input với placeholder "Tóm tắt vấn đề của bạn", required | | Pass | 11/15/2015 | |
-| **GUI-GPH-04** | Kiểm tra trường Danh mục | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Danh mục *", Select với các option: Đơn hàng, Sản phẩm, Thanh toán, Vận chuyển, Tài khoản, Kỹ thuật, Khác | | Pass | 11/15/2015 | |
-| **GUI-GPH-05** | Kiểm tra trường Mức độ ưu tiên | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Mức độ ưu tiên", Select với các option: Thấp, Trung bình, Cao, Khẩn cấp | | Pass | 11/15/2015 | |
-| **GUI-GPH-06** | Kiểm tra trường Mô tả vấn đề | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Mô tả chi tiết *", Textarea với placeholder "Mô tả chi tiết vấn đề bạn đang gặp phải...", rows 6, required | | Pass | 11/15/2015 | |
-| **GUI-GPH-07** | Kiểm tra trường Mã đơn hàng | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Mã đơn hàng (nếu có)", Input với placeholder "Nhập mã đơn hàng liên quan", optional | | Pass | 11/15/2015 | |
-| **GUI-GPH-08** | Kiểm tra trường File đính kèm | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra trường | Hiển thị label "Tệp đính kèm", Input type file multiple, có thể chọn nhiều file | | Pass | 11/15/2015 | |
-| **GUI-GPH-09** | Kiểm tra nút Hủy | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, đóng modal khi nhấn | | Pass | 11/15/2015 | |
-| **GUI-GPH-10** | Kiểm tra nút Gửi yêu cầu | 1. Mở modal tạo yêu cầu<br>2. Kiểm tra nút | Hiển thị nút "Gửi yêu cầu" variant default, gửi yêu cầu khi nhấn | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-01** | Kiểm tra tab Yêu cầu của tôi | 1. Truy cập trang yêu cầu đặt hàng<br>2. Kiểm tra tab | Hiển thị tab "Yêu cầu của tôi" trong TabsList | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-02** | Kiểm tra tiêu đề danh sách | 1. Chọn tab "Yêu cầu của tôi"<br>2. Kiểm tra tiêu đề | Hiển thị CardTitle "Yêu cầu của tôi" với CardDescription "Theo dõi trạng thái các yêu cầu đặt hàng" | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-03** | Kiểm tra ô tìm kiếm | 1. Chọn tab "Yêu cầu của tôi"<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search bên trái, placeholder "Tìm kiếm yêu cầu...", pl-10 w-64 | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-04** | Kiểm tra bộ lọc trạng thái | 1. Chọn tab "Yêu cầu của tôi"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Tất cả", "Chờ xử lý", "Đã chấp nhận", "Đã từ chối", "Hoàn thành" | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-05** | Kiểm tra bộ lọc loại | 1. Chọn tab "Yêu cầu của tôi"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-32, các option: "Tất cả", "Hết hàng", "Mô hình mới" | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-06** | Kiểm tra card yêu cầu | 1. Xem danh sách yêu cầu<br>2. Kiểm tra card | Hiển thị card với CardContent p-4, chứa icon loại, tiêu đề, mã yêu cầu, badge trạng thái, badge mức độ ưu tiên | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-07** | Kiểm tra icon loại yêu cầu | 1. Xem card yêu cầu<br>2. Kiểm tra icon | Hiển thị icon loại trong div p-2 bg-primary/10 rounded-lg, icon Package hoặc BookOpen tùy loại | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-08** | Kiểm tra badge trạng thái | 1. Xem card yêu cầu<br>2. Kiểm tra badge | Hiển thị badge với màu: Chờ xử lý (yellow-500), Đã chấp nhận (green-500), Đã từ chối (red-500), Hoàn thành (blue-500), có icon tương ứng | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-09** | Kiểm tra badge mức độ ưu tiên | 1. Xem card yêu cầu<br>2. Kiểm tra badge | Hiển thị badge với màu: Thấp (green-500), Trung bình (yellow-500), Cao (red-500) | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-10** | Kiểm tra thông tin yêu cầu | 1. Xem card yêu cầu<br>2. Kiểm tra thông tin | Hiển thị grid grid-cols-1 md:grid-cols-2 gap-4 với thông tin: Tác giả (icon User), Nhà xuất bản (icon FileText), Ngày tạo (icon Calendar), Cập nhật (icon Clock) | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-11** | Kiểm tra mô tả yêu cầu | 1. Xem card yêu cầu<br>2. Kiểm tra mô tả | Hiển thị mô tả với text-sm text-muted-foreground line-clamp-2 | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-12** | Kiểm tra phản hồi admin | 1. Xem yêu cầu có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phần phản hồi với background bg-muted rounded-lg, icon MessageSquare, tiêu đề "Phản hồi từ admin:", nội dung phản hồi | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-13** | Kiểm tra nút Xem chi tiết | 1. Xem card yêu cầu<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết" với icon Eye, variant outline size sm, flex-1 | | Pass | 11/15/2015 | |
+| **GUI-XDSYC-14** | Kiểm tra nút Hủy yêu cầu | 1. Xem yêu cầu chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy yêu cầu" với icon XCircle, variant destructive size sm, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Gửi phản hồi/khiếu nại
+### Check FUNC: Xem danh sách yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-GPH-01** | Mở modal tạo yêu cầu | 1. Truy cập /user/support<br>2. Chọn tab "Yêu cầu hỗ trợ"<br>3. Nhấn nút "Tạo yêu cầu mới" | Mở modal với form trống, các trường sẵn sàng nhập | | Pass | 11/15/2015 | |
-| **FUNC-GPH-02** | Tạo yêu cầu hỗ trợ thành công | 1. Mở modal tạo yêu cầu<br>2. Nhập đầy đủ thông tin (tiêu đề, danh mục, mô tả)<br>3. Nhấn "Gửi yêu cầu" | Yêu cầu được tạo thành công, modal đóng, hiển thị toast "Yêu cầu hỗ trợ đã được gửi thành công", yêu cầu xuất hiện trong danh sách với trạng thái "Mở" | | Pass | 11/15/2015 | |
-| **FUNC-GPH-03** | Tạo yêu cầu thiếu tiêu đề | 1. Mở modal tạo yêu cầu<br>2. Để trống tiêu đề<br>3. Nhập các trường khác<br>4. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng nhập tiêu đề", không gửi yêu cầu, modal vẫn mở | | Pass | 11/15/2015 | |
-| **FUNC-GPH-04** | Tạo yêu cầu thiếu mô tả | 1. Mở modal tạo yêu cầu<br>2. Nhập tiêu đề<br>3. Để trống mô tả<br>4. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng nhập mô tả vấn đề", không gửi yêu cầu | | Pass | 11/15/2015 | |
-| **FUNC-GPH-05** | Chọn danh mục yêu cầu | 1. Mở modal tạo yêu cầu<br>2. Chọn danh mục từ Select | Danh mục được chọn, hiển thị trong Select, có thể thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-GPH-06** | Chọn mức độ ưu tiên | 1. Mở modal tạo yêu cầu<br>2. Chọn mức độ ưu tiên | Mức độ ưu tiên được chọn, mặc định là "Trung bình", có thể thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-GPH-07** | Đính kèm file | 1. Mở modal tạo yêu cầu<br>2. Chọn file đính kèm | File được chọn, hiển thị tên file trong danh sách, có thể chọn nhiều file | | Pass | 11/15/2015 | |
-| **FUNC-GPH-08** | Đính kèm file không hợp lệ | 1. Mở modal tạo yêu cầu<br>2. Chọn file không đúng định dạng | Hiển thị thông báo lỗi "Định dạng file không được hỗ trợ", file không được thêm | | Pass | 11/15/2015 | |
-| **FUNC-GPH-09** | Đính kèm file quá kích thước | 1. Mở modal tạo yêu cầu<br>2. Chọn file > 10MB | Hiển thị thông báo lỗi "File quá lớn. Kích thước tối đa: 10MB", file không được thêm | | Pass | 11/15/2015 | |
-| **FUNC-GPH-10** | Nhập mã đơn hàng | 1. Mở modal tạo yêu cầu<br>2. Nhập mã đơn hàng | Mã đơn hàng được nhập, hiển thị trong Input, optional | | Pass | 11/15/2015 | |
-| **FUNC-GPH-11** | Hủy tạo yêu cầu | 1. Mở modal tạo yêu cầu<br>2. Nhập một số thông tin<br>3. Nhấn "Hủy" | Modal đóng, không lưu thông tin đã nhập, quay lại trang yêu cầu hỗ trợ | | Pass | 11/15/2015 | |
-| **FUNC-GPH-12** | Đóng modal bằng click overlay | 1. Mở modal tạo yêu cầu<br>2. Click vào overlay | Modal đóng, không lưu thông tin | | Pass | 11/15/2015 | |
-| **FUNC-GPH-13** | Tạo yêu cầu với đầy đủ thông tin | 1. Mở modal tạo yêu cầu<br>2. Nhập đầy đủ: tiêu đề, danh mục, mức độ ưu tiên, mô tả, mã đơn hàng, file đính kèm<br>3. Nhấn "Gửi yêu cầu" | Yêu cầu được tạo với đầy đủ thông tin, hiển thị trong danh sách với tất cả thông tin đã nhập | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-01** | Mở tab Yêu cầu của tôi | 1. Truy cập trang yêu cầu đặt hàng<br>2. Chọn tab "Yêu cầu của tôi" | Hiển thị danh sách tất cả yêu cầu đã gửi, có ô tìm kiếm và bộ lọc | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-02** | Hiển thị danh sách yêu cầu | 1. Chọn tab "Yêu cầu của tôi" | Hiển thị danh sách với đầy đủ thông tin: icon loại, tiêu đề, mã yêu cầu, tác giả, nhà xuất bản, ngày tạo, cập nhật, trạng thái, mức độ ưu tiên, mô tả, phản hồi (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-03** | Sắp xếp theo thời gian mới nhất | 1. Chọn tab "Yêu cầu của tôi" | Danh sách được sắp xếp theo thời gian tạo mới nhất trước | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-04** | Tìm kiếm theo tên sản phẩm | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập tên sản phẩm vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị yêu cầu có tên sản phẩm chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-05** | Tìm kiếm theo tác giả | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập tên tác giả vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị yêu cầu có tác giả chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-06** | Tìm kiếm theo nhà xuất bản | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập nhà xuất bản vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị yêu cầu có nhà xuất bản chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-07** | Lọc theo trạng thái - Chờ xử lý | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc "Chờ xử lý" | Chỉ hiển thị các yêu cầu có trạng thái "Chờ xử lý" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-08** | Lọc theo trạng thái - Đã chấp nhận | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc "Đã chấp nhận" | Chỉ hiển thị các yêu cầu có trạng thái "Đã chấp nhận" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-09** | Lọc theo trạng thái - Đã từ chối | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc "Đã từ chối" | Chỉ hiển thị các yêu cầu có trạng thái "Đã từ chối" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-10** | Lọc theo trạng thái - Hoàn thành | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc "Hoàn thành" | Chỉ hiển thị các yêu cầu có trạng thái "Hoàn thành" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-11** | Lọc theo loại - Hết hàng | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc loại "Hết hàng" | Chỉ hiển thị các yêu cầu có loại "Hết hàng" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-12** | Lọc theo loại - Mô hình mới | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn bộ lọc loại "Mô hình mới" | Chỉ hiển thị các yêu cầu có loại "Mô hình mới" | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-13** | Kết hợp tìm kiếm và lọc | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn bộ lọc trạng thái và loại | Danh sách được lọc theo cả từ khóa, trạng thái và loại, chỉ hiển thị yêu cầu thỏa mãn tất cả điều kiện | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-14** | Hiển thị khi không có yêu cầu | 1. Chọn tab "Yêu cầu của tôi"<br>2. Không có yêu cầu nào | Hiển thị thông báo "Chưa có yêu cầu nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-15** | Hiển thị phản hồi admin | 1. Xem yêu cầu đã có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phần phản hồi với icon MessageSquare, tiêu đề "Phản hồi từ admin:", nội dung phản hồi | | Pass | 11/15/2015 | |
+| **FUNC-XDSYC-16** | Tìm kiếm real-time | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc ngay khi nhập, không cần nhấn Enter | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Quản lý yêu cầu hỗ trợ
+### Function: Xem chi tiết yêu cầu
 
-#### Check GUI: Quản lý yêu cầu hỗ trợ
+#### Check GUI: Xem chi tiết yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-QLYC-01** | Kiểm tra tab Yêu cầu hỗ trợ | 1. Truy cập /user/support<br>2. Kiểm tra tab | Hiển thị tab "Yêu cầu hỗ trợ" với icon FileText, số lượng yêu cầu trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-QLYC-02** | Kiểm tra bộ lọc trạng thái | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-40, các option: "Tất cả", "Mở", "Đang xử lý", "Đã giải quyết", "Đã đóng" với số lượng | | Pass | 11/15/2015 | |
-| **GUI-QLYC-03** | Kiểm tra bộ lọc danh mục | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-40, các option: "Tất cả", "Đơn hàng", "Sản phẩm", "Thanh toán", v.v. | | Pass | 11/15/2015 | |
-| **GUI-QLYC-04** | Kiểm tra ô tìm kiếm | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search bên trái, placeholder "Tìm kiếm yêu cầu hỗ trợ...", pl-10 | | Pass | 11/15/2015 | |
-| **GUI-QLYC-05** | Kiểm tra card yêu cầu | 1. Xem danh sách yêu cầu<br>2. Kiểm tra card | Hiển thị card với CardContent p-6, chứa tiêu đề, badge trạng thái, badge mức độ ưu tiên, thông tin thời gian, mô tả | | Pass | 11/15/2015 | |
-| **GUI-QLYC-06** | Kiểm tra badge trạng thái | 1. Xem card yêu cầu<br>2. Kiểm tra badge | Hiển thị badge với màu tương ứng: Mở (yellow-500), Đang xử lý (blue-500), Đã giải quyết (green-500), Đã đóng (gray-500), có icon | | Pass | 11/15/2015 | |
-| **GUI-QLYC-07** | Kiểm tra badge mức độ ưu tiên | 1. Xem card yêu cầu<br>2. Kiểm tra badge | Hiển thị badge với màu: Thấp (gray-500), Trung bình (yellow-500), Cao (orange-500), Khẩn cấp (red-500) | | Pass | 11/15/2015 | |
-| **GUI-QLYC-08** | Kiểm tra phản hồi admin | 1. Xem yêu cầu đã có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phần "Phản hồi từ hỗ trợ" với icon CheckCircle, nội dung phản hồi, thời gian phản hồi | | Pass | 11/15/2015 | |
-| **GUI-QLYC-09** | Kiểm tra nút Xem chi tiết | 1. Xem card yêu cầu<br>2. Kiểm tra nút | Hiển thị nút "Xem chi tiết" với icon Eye, variant outline size sm | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-01** | Kiểm tra modal/trang chi tiết | 1. Nhấn nút "Xem chi tiết"<br>2. Kiểm tra modal/trang | Hiển thị modal hoặc trang chi tiết với đầy đủ thông tin yêu cầu | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-02** | Kiểm tra thông tin cơ bản | 1. Xem chi tiết yêu cầu<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: mã yêu cầu, tên sản phẩm, tác giả, nhà xuất bản, ISBN, loại yêu cầu, mức độ ưu tiên, trạng thái | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-03** | Kiểm tra lý do yêu cầu | 1. Xem chi tiết yêu cầu<br>2. Kiểm tra lý do | Hiển thị lý do yêu cầu với text rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-04** | Kiểm tra mô tả chi tiết | 1. Xem chi tiết yêu cầu<br>2. Kiểm tra mô tả | Hiển thị mô tả chi tiết đầy đủ, không bị cắt (không có line-clamp) | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-05** | Kiểm tra ngày tạo | 1. Xem chi tiết yêu cầu<br>2. Kiểm tra ngày | Hiển thị ngày tạo với format ngày Việt Nam, icon Calendar | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-06** | Kiểm tra ngày phản hồi | 1. Xem chi tiết yêu cầu có phản hồi<br>2. Kiểm tra ngày | Hiển thị ngày phản hồi với format ngày Việt Nam | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-07** | Kiểm tra phản hồi admin | 1. Xem chi tiết yêu cầu có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phản hồi admin với nội dung đầy đủ, rõ ràng | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-08** | Kiểm tra nút Quay lại | 1. Xem chi tiết yêu cầu<br>2. Kiểm tra nút | Hiển thị nút "Quay lại" để quay lại danh sách | | Pass | 11/15/2015 | |
+| **GUI-XCTYC-09** | Kiểm tra nút Hủy yêu cầu | 1. Xem chi tiết yêu cầu chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy yêu cầu" variant destructive, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Quản lý yêu cầu hỗ trợ
+### Check FUNC: Xem chi tiết yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLYC-01** | Mở tab Yêu cầu hỗ trợ | 1. Truy cập /user/support<br>2. Chọn tab "Yêu cầu hỗ trợ" | Hiển thị danh sách yêu cầu hỗ trợ, bộ lọc, ô tìm kiếm, nút tạo yêu cầu mới | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-02** | Hiển thị danh sách yêu cầu | 1. Chọn tab "Yêu cầu hỗ trợ" | Hiển thị danh sách tất cả yêu cầu với đầy đủ thông tin: tiêu đề, danh mục, mức độ ưu tiên, trạng thái, thời gian tạo/cập nhật, mô tả, phản hồi (nếu có) | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-03** | Sắp xếp theo thời gian mới nhất | 1. Chọn tab "Yêu cầu hỗ trợ" | Danh sách được sắp xếp theo thời gian tạo mới nhất trước | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-04** | Lọc theo trạng thái - Mở | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Chọn bộ lọc "Mở" | Chỉ hiển thị các yêu cầu có trạng thái "Mở", cập nhật số lượng trong option | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-05** | Lọc theo trạng thái - Đã giải quyết | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Chọn bộ lọc "Đã giải quyết" | Chỉ hiển thị các yêu cầu có trạng thái "Đã giải quyết" | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-06** | Lọc theo danh mục | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Chọn bộ lọc danh mục (VD: "Đơn hàng") | Chỉ hiển thị các yêu cầu thuộc danh mục đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-07** | Tìm kiếm theo tiêu đề | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị yêu cầu có tiêu đề chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-08** | Tìm kiếm theo mô tả | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị yêu cầu có mô tả chứa từ khóa | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-09** | Kết hợp lọc và tìm kiếm | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Chọn bộ lọc trạng thái<br>3. Nhập từ khóa tìm kiếm | Danh sách được lọc theo cả trạng thái và từ khóa, chỉ hiển thị yêu cầu thỏa mãn cả hai điều kiện | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-10** | Xem chi tiết yêu cầu | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Nhấn nút "Xem chi tiết" | Mở modal hoặc trang chi tiết với đầy đủ thông tin: tiêu đề, danh mục, mức độ ưu tiên, trạng thái, mô tả, mã đơn hàng, file đính kèm, phản hồi admin, lịch sử cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-11** | Hiển thị phản hồi admin | 1. Xem yêu cầu đã có phản hồi<br>2. Kiểm tra phản hồi | Hiển thị phần "Phản hồi từ hỗ trợ" với icon CheckCircle, nội dung phản hồi, thời gian phản hồi được format đúng | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-12** | Hiển thị khi không có yêu cầu | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Không có yêu cầu nào | Hiển thị thông báo "Chưa có yêu cầu hỗ trợ nào" hoặc danh sách trống | | Pass | 11/15/2015 | |
-| **FUNC-QLYC-13** | Cập nhật số lượng trong tab | 1. Tạo yêu cầu mới<br>2. Kiểm tra tab | Số lượng trong tab "Yêu cầu hỗ trợ" được cập nhật tự động | | Pass | 11/15/2015 | |
+| **FUNC-XCTYC-01** | Mở chi tiết yêu cầu | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhấn nút "Xem chi tiết" | Mở modal hoặc trang chi tiết với đầy đủ thông tin yêu cầu | | Pass | 11/15/2015 | |
+| **FUNC-XCTYC-02** | Hiển thị chi tiết đầy đủ | 1. Xem chi tiết yêu cầu | Hiển thị đầy đủ: mã yêu cầu, tên sản phẩm, tác giả, nhà xuất bản, ISBN, loại yêu cầu, mức độ ưu tiên, trạng thái, lý do, mô tả, ngày tạo, ngày cập nhật, phản hồi admin (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-XCTYC-03** | Hiển thị phản hồi admin | 1. Xem chi tiết yêu cầu có phản hồi | Hiển thị phần phản hồi với nội dung đầy đủ, thời gian phản hồi, được format rõ ràng | | Pass | 11/15/2015 | |
+| **FUNC-XCTYC-04** | Quay lại danh sách | 1. Xem chi tiết yêu cầu<br>2. Nhấn nút "Quay lại" | Quay lại trang danh sách yêu cầu, giữ nguyên trạng thái lọc và tìm kiếm | | Pass | 11/15/2015 | |
+| **FUNC-XCTYC-05** | Đóng modal bằng click overlay | 1. Mở modal chi tiết<br>2. Click vào overlay | Modal đóng, quay lại danh sách | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Câu hỏi thường gặp
+### Function: Hủy yêu cầu
 
-#### Check GUI: Câu hỏi thường gặp
+#### Check GUI: Hủy yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-FAQ-01** | Kiểm tra tab Câu hỏi thường gặp | 1. Truy cập /user/support<br>2. Kiểm tra tab | Hiển thị tab "Câu hỏi thường gặp" với icon HelpCircle trong TabsList | | Pass | 11/15/2015 | |
-| **GUI-FAQ-02** | Kiểm tra tiêu đề FAQ | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Câu hỏi thường gặp" với icon HelpCircle, CardTitle | | Pass | 11/15/2015 | |
-| **GUI-FAQ-03** | Kiểm tra ô tìm kiếm FAQ | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Kiểm tra tìm kiếm | Hiển thị Input với icon Search bên trái, placeholder "Tìm kiếm câu hỏi...", pl-10 | | Pass | 11/15/2015 | |
-| **GUI-FAQ-04** | Kiểm tra bộ lọc danh mục FAQ | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Kiểm tra bộ lọc | Hiển thị Select với trigger w-48, các option: "Tất cả", "Đơn hàng & Thanh toán", "Vận chuyển & Giao hàng", "Tài khoản & Thành viên", "Đổi trả & Bảo hành" | | Pass | 11/15/2015 | |
-| **GUI-FAQ-05** | Kiểm tra card câu hỏi | 1. Xem danh sách FAQ<br>2. Kiểm tra card | Hiển thị card với CardHeader có icon và tiêu đề danh mục, CardContent chứa các câu hỏi và câu trả lời | | Pass | 11/15/2015 | |
-| **GUI-FAQ-06** | Kiểm tra câu hỏi | 1. Xem card FAQ<br>2. Kiểm tra câu hỏi | Hiển thị câu hỏi với font-medium, có thể mở rộng/thu gọn để xem câu trả lời | | Pass | 11/15/2015 | |
-| **GUI-FAQ-07** | Kiểm tra câu trả lời | 1. Xem card FAQ<br>2. Mở câu hỏi<br>3. Kiểm tra câu trả lời | Hiển thị câu trả lời với text-sm text-muted-foreground, nội dung chi tiết | | Pass | 11/15/2015 | |
-| **GUI-FAQ-08** | Kiểm tra nút hữu ích | 1. Xem câu hỏi FAQ<br>2. Kiểm tra nút | Hiển thị nút "Hữu ích" với icon ThumbsUp, số lượt trong ngoặc đơn | | Pass | 11/15/2015 | |
-| **GUI-FAQ-09** | Kiểm tra nút liên hệ hỗ trợ | 1. Xem FAQ<br>2. Kiểm tra nút | Hiển thị nút "Liên hệ hỗ trợ" để chuyển đến chat hoặc tạo yêu cầu nếu không tìm thấy câu trả lời | | Pass | 11/15/2015 | |
+| **GUI-HYC-01** | Kiểm tra nút Hủy yêu cầu | 1. Xem yêu cầu chờ xử lý<br>2. Kiểm tra nút | Hiển thị nút "Hủy yêu cầu" với icon XCircle, variant destructive size sm, chỉ hiển thị khi status = "pending" | | Pass | 11/15/2015 | |
+| **GUI-HYC-02** | Kiểm tra modal xác nhận | 1. Nhấn nút "Hủy yêu cầu"<br>2. Kiểm tra modal | Hiển thị modal xác nhận với tiêu đề "Xác nhận hủy yêu cầu", nội dung "Bạn có chắc chắn muốn hủy yêu cầu này?", nút "Xác nhận" và "Hủy" | | Pass | 11/15/2015 | |
+| **GUI-HYC-03** | Kiểm tra nút Xác nhận | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận" variant destructive, thực hiện hủy khi nhấn | | Pass | 11/15/2015 | |
+| **GUI-HYC-04** | Kiểm tra nút Hủy trong modal | 1. Mở modal xác nhận<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, đóng modal khi nhấn | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Câu hỏi thường gặp
+### Check FUNC: Hủy yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-FAQ-01** | Mở tab Câu hỏi thường gặp | 1. Truy cập /user/support<br>2. Chọn tab "Câu hỏi thường gặp" | Hiển thị danh sách câu hỏi thường gặp được phân loại theo danh mục, có ô tìm kiếm và bộ lọc | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-02** | Hiển thị câu hỏi thường gặp | 1. Chọn tab "Câu hỏi thường gặp" | Hiển thị danh sách câu hỏi với câu trả lời chi tiết, được phân loại theo danh mục, có thể mở rộng/thu gọn từng câu hỏi | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-03** | Mở rộng câu hỏi | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Click vào câu hỏi | Câu hỏi được mở rộng, hiển thị câu trả lời chi tiết | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-04** | Thu gọn câu hỏi | 1. Mở rộng câu hỏi<br>2. Click lại vào câu hỏi | Câu hỏi được thu gọn, ẩn câu trả lời | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-05** | Tìm kiếm câu hỏi | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Nhập từ khóa vào ô tìm kiếm | Danh sách được lọc, chỉ hiển thị câu hỏi/câu trả lời chứa từ khóa, cập nhật real-time | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-06** | Lọc theo danh mục | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Chọn danh mục trong bộ lọc | Chỉ hiển thị câu hỏi thuộc danh mục đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-07** | Kết hợp tìm kiếm và lọc | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Nhập từ khóa<br>3. Chọn danh mục | Danh sách được lọc theo cả từ khóa và danh mục | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-08** | Đánh giá câu trả lời hữu ích | 1. Xem câu hỏi FAQ<br>2. Nhấn nút "Hữu ích" | Số lượt hữu ích tăng lên, nút chuyển sang trạng thái đã nhấn, hiển thị toast cảm ơn | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-09** | Đánh giá câu trả lời không hữu ích | 1. Xem câu hỏi FAQ<br>2. Nhấn nút "Không hữu ích" | Số lượt không hữu ích tăng lên, hiển thị nút "Liên hệ hỗ trợ" | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-10** | Nhấn nút Liên hệ hỗ trợ | 1. Xem FAQ<br>2. Nhấn nút "Liên hệ hỗ trợ" | Chuyển đến tab "Chat trực tiếp" hoặc "Yêu cầu hỗ trợ" để liên hệ | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-11** | Hiển thị khi không có kết quả | 1. Chọn tab "Câu hỏi thường gặp"<br>2. Tìm kiếm không có kết quả | Hiển thị thông báo "Không tìm thấy câu hỏi nào", nút "Liên hệ hỗ trợ" | | Pass | 11/15/2015 | |
+| **FUNC-HYC-01** | Hủy yêu cầu chờ xử lý | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhấn nút "Hủy yêu cầu" trên yêu cầu chờ xử lý<br>3. Xác nhận hủy | Hiển thị modal xác nhận, sau khi xác nhận, yêu cầu được hủy, hiển thị toast "Đã hủy yêu cầu đặt hàng", yêu cầu biến mất khỏi danh sách | | Pass | 11/15/2015 | |
+| **FUNC-HYC-02** | Hủy yêu cầu trong modal xác nhận | 1. Nhấn nút "Hủy yêu cầu"<br>2. Nhấn nút "Hủy" trong modal | Modal đóng, không hủy yêu cầu, yêu cầu vẫn còn trong danh sách | | Pass | 11/15/2015 | |
+| **FUNC-HYC-03** | Hủy yêu cầu đã xử lý | 1. Xem yêu cầu đã được xử lý (đã chấp nhận/từ chối)<br>2. Kiểm tra nút hủy | Nút "Hủy yêu cầu" không hiển thị, không thể hủy yêu cầu đã xử lý | | Pass | 11/15/2015 | |
+| **FUNC-HYC-04** | Hủy yêu cầu từ trang chi tiết | 1. Xem chi tiết yêu cầu chờ xử lý<br>2. Nhấn nút "Hủy yêu cầu"<br>3. Xác nhận | Yêu cầu được hủy, quay lại danh sách, yêu cầu biến mất | | Pass | 11/15/2015 | |
+| **FUNC-HYC-05** | Đóng modal bằng click overlay | 1. Mở modal xác nhận<br>2. Click vào overlay | Modal đóng, không hủy yêu cầu | | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Thông tin liên hệ
+### Function: Quản lý trạng thái yêu cầu
 
-#### Check GUI: Thông tin liên hệ
+#### Check GUI: Quản lý trạng thái yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TTLH-01** | Kiểm tra card Hotline | 1. Truy cập /user/support<br>2. Kiểm tra card | Hiển thị card với icon Phone h-8 w-8 text-primary, tiêu đề "Hotline", số điện thoại "1900 1234", giờ làm việc "8:00 - 22:00 hàng ngày" | | Pass | 11/15/2015 | |
-| **GUI-TTLH-02** | Kiểm tra card Email | 1. Truy cập /user/support<br>2. Kiểm tra card | Hiển thị card với icon Mail h-8 w-8 text-primary, tiêu đề "Email", địa chỉ "support@nhasach.com", mô tả "Phản hồi trong 24h" | | Pass | 11/15/2015 | |
-| **GUI-TTLH-03** | Kiểm tra card Địa chỉ | 1. Truy cập /user/support<br>2. Kiểm tra card | Hiển thị card với icon MapPin h-8 w-8 text-primary, tiêu đề "Địa chỉ", địa chỉ "123 Đường ABC, Quận 1", "TP. Hồ Chí Minh" | | Pass | 11/15/2015 | |
-| **GUI-TTLH-04** | Kiểm tra grid layout | 1. Truy cập /user/support<br>2. Kiểm tra layout | Hiển thị grid grid-cols-1 md:grid-cols-3 gap-6 cho 3 card thông tin liên hệ | | Pass | 11/15/2015 | |
-| **GUI-TTLH-05** | Kiểm tra nút gọi điện | 1. Xem card Hotline<br>2. Kiểm tra nút | Hiển thị nút "Gọi điện" với icon Phone, có thể click để gọi trực tiếp | | Pass | 11/15/2015 | |
-| **GUI-TTLH-06** | Kiểm tra nút gửi email | 1. Xem card Email<br>2. Kiểm tra nút | Hiển thị nút "Gửi email" với icon Mail, có thể click để mở ứng dụng email | | Pass | 11/15/2015 | |
+| **GUI-QLTTYC-01** | Kiểm tra badge trạng thái Chờ xử lý | 1. Xem yêu cầu chờ xử lý<br>2. Kiểm tra badge | Hiển thị badge "Chờ xử lý" với màu yellow-500, icon Clock | | Pass | 11/15/2015 | |
+| **GUI-QLTTYC-02** | Kiểm tra badge trạng thái Đã chấp nhận | 1. Xem yêu cầu đã chấp nhận<br>2. Kiểm tra badge | Hiển thị badge "Đã chấp nhận" với màu green-500, icon CheckCircle | | Pass | 11/15/2015 | |
+| **GUI-QLTTYC-03** | Kiểm tra badge trạng thái Đã từ chối | 1. Xem yêu cầu đã từ chối<br>2. Kiểm tra badge | Hiển thị badge "Đã từ chối" với màu red-500, icon XCircle | | Pass | 11/15/2015 | |
+| **GUI-QLTTYC-04** | Kiểm tra badge trạng thái Hoàn thành | 1. Xem yêu cầu hoàn thành<br>2. Kiểm tra badge | Hiển thị badge "Hoàn thành" với màu blue-500, icon CheckCircle | | Pass | 11/15/2015 | |
+| **GUI-QLTTYC-05** | Kiểm tra thời gian cập nhật | 1. Xem yêu cầu<br>2. Kiểm tra thời gian | Hiển thị thời gian cập nhật cuối với icon Clock, format ngày giờ Việt Nam | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Thông tin liên hệ
+### Check FUNC: Quản lý trạng thái yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TTLH-01** | Hiển thị thông tin liên hệ | 1. Truy cập /user/support | Hiển thị 3 card thông tin liên hệ: Hotline, Email, Địa chỉ với đầy đủ thông tin và icon | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-02** | Gọi điện trực tiếp | 1. Xem card Hotline<br>2. Nhấn nút "Gọi điện" | Mở ứng dụng gọi điện với số 1900 1234, có thể gọi trực tiếp | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-03** | Gửi email trực tiếp | 1. Xem card Email<br>2. Nhấn nút "Gửi email" | Mở ứng dụng email với địa chỉ support@nhasach.com, có thể gửi email trực tiếp | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-04** | Hiển thị giờ làm việc | 1. Xem card Hotline<br>2. Kiểm tra giờ làm việc | Hiển thị "8:00 - 22:00 hàng ngày" để người dùng biết thời gian có thể liên hệ | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-05** | Copy số điện thoại | 1. Xem card Hotline<br>2. Click vào số điện thoại | Số điện thoại được copy vào clipboard, hiển thị toast "Đã sao chép số điện thoại" | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-06** | Copy địa chỉ email | 1. Xem card Email<br>2. Click vào email | Email được copy vào clipboard, hiển thị toast "Đã sao chép email" | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-07** | Copy địa chỉ | 1. Xem card Địa chỉ<br>2. Click vào địa chỉ | Địa chỉ được copy vào clipboard, hiển thị toast "Đã sao chép địa chỉ" | | Pass | 11/15/2015 | |
-| **FUNC-TTLH-08** | Kiểm tra responsive layout | 1. Truy cập /user/support<br>2. Thay đổi kích thước màn hình | Layout tự động điều chỉnh: 1 cột mobile, 3 cột desktop | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-01** | Theo dõi trạng thái real-time | 1. Xem danh sách yêu cầu<br>2. Admin thay đổi trạng thái | Trạng thái yêu cầu được cập nhật real-time, badge thay đổi màu và icon tương ứng, hiển thị thông báo khi có thay đổi | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-02** | Lọc theo trạng thái qua bộ lọc | 1. Chọn tab "Yêu cầu của tôi"<br>2. Chọn trạng thái trong bộ lọc | Danh sách được lọc, chỉ hiển thị yêu cầu có trạng thái đã chọn, cập nhật ngay lập tức | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-03** | Hiển thị thông tin trạng thái | 1. Xem yêu cầu<br>2. Kiểm tra thông tin | Hiển thị đầy đủ: badge trạng thái với màu và icon, thời gian cập nhật, người xử lý (nếu có), ghi chú (nếu có) | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-04** | Cập nhật trạng thái tự động | 1. Xem danh sách yêu cầu<br>2. Đợi admin xử lý | Hệ thống tự động cập nhật trạng thái khi admin xử lý, không cần refresh trang | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-05** | Thông báo thay đổi trạng thái | 1. Yêu cầu có thay đổi trạng thái<br>2. Kiểm tra thông báo | Hiển thị toast hoặc notification thông báo thay đổi trạng thái, có thể click để xem chi tiết | | Pass | 11/15/2015 | |
+| **FUNC-QLTTYC-06** | Hiển thị số lượng theo trạng thái | 1. Chọn tab "Yêu cầu của tôi"<br>2. Kiểm tra số lượng | Số lượng yêu cầu được hiển thị chính xác cho từng trạng thái trong bộ lọc | | Pass | 11/15/2015 | |
 
 ---
 
-### Check VALIDATION: Hỗ trợ - liên hệ
+### Check VALIDATION: Yêu cầu đặt hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **VALID-HT-01** | Gửi tin nhắn rỗng | 1. Chọn tab "Chat trực tiếp"<br>2. Để trống ô nhập<br>3. Nhấn gửi | Nút gửi bị disabled, không gửi tin nhắn | | Pass | 11/15/2015 | |
-| **VALID-HT-02** | Tạo yêu cầu thiếu tiêu đề | 1. Mở modal tạo yêu cầu<br>2. Để trống tiêu đề<br>3. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng nhập tiêu đề", không gửi yêu cầu | | Pass | 11/15/2015 | |
-| **VALID-HT-03** | Tạo yêu cầu thiếu mô tả | 1. Mở modal tạo yêu cầu<br>2. Để trống mô tả<br>3. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng nhập mô tả vấn đề", không gửi yêu cầu | | Pass | 11/15/2015 | |
-| **VALID-HT-04** | Đính kèm file không hợp lệ | 1. Mở modal tạo yêu cầu<br>2. Chọn file không đúng định dạng | Hiển thị thông báo lỗi "Định dạng file không được hỗ trợ", file không được thêm | | Pass | 11/15/2015 | |
-| **VALID-HT-05** | Đính kèm file quá kích thước | 1. Mở modal tạo yêu cầu<br>2. Chọn file > 10MB | Hiển thị thông báo lỗi "File quá lớn. Kích thước tối đa: 10MB", file không được thêm | | Pass | 11/15/2015 | |
-| **VALID-HT-06** | Tìm kiếm với từ khóa đặc biệt | 1. Chọn tab "Yêu cầu hỗ trợ"<br>2. Nhập từ khóa có ký tự đặc biệt | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
-| **VALID-HT-07** | Gửi tin nhắn quá dài | 1. Chọn tab "Chat trực tiếp"<br>2. Nhập tin nhắn rất dài (>1000 ký tự)<br>3. Gửi tin nhắn | Tin nhắn được gửi thành công hoặc hiển thị cảnh báo nếu vượt quá giới hạn | | Pass | 11/15/2015 | |
-| **VALID-HT-08** | Tạo yêu cầu với mô tả quá ngắn | 1. Mở modal tạo yêu cầu<br>2. Nhập mô tả < 10 ký tự<br>3. Nhấn "Gửi yêu cầu" | Hiển thị thông báo lỗi "Mô tả phải có ít nhất 10 ký tự" hoặc cho phép gửi | | Pass | 11/15/2015 | |
+| **VALID-YCDH-01** | Tạo yêu cầu thiếu tên sản phẩm | 1. Chọn tab "Tạo yêu cầu"<br>2. Để trống tên sản phẩm<br>3. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng điền đầy đủ thông tin bắt buộc", không gửi yêu cầu | | Pass | 11/15/2015 | |
+| **VALID-YCDH-02** | Tạo yêu cầu thiếu mô tả | 1. Chọn tab "Tạo yêu cầu"<br>2. Để trống mô tả<br>3. Nhấn "Gửi yêu cầu" | Hiển thị toast lỗi "Vui lòng điền đầy đủ thông tin bắt buộc", không gửi yêu cầu | | Pass | 11/15/2015 | |
+| **VALID-YCDH-03** | Tạo yêu cầu với mô tả quá ngắn | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập mô tả < 10 ký tự<br>3. Nhấn "Gửi yêu cầu" | Hiển thị thông báo lỗi "Mô tả phải có ít nhất 10 ký tự" hoặc cho phép gửi | | Pass | 11/15/2015 | |
+| **VALID-YCDH-04** | Hủy yêu cầu đã xử lý | 1. Xem yêu cầu đã được xử lý<br>2. Thử hủy yêu cầu | Nút "Hủy yêu cầu" không hiển thị, không thể hủy yêu cầu đã xử lý | | Pass | 11/15/2015 | |
+| **VALID-YCDH-05** | Tìm kiếm với từ khóa đặc biệt | 1. Chọn tab "Yêu cầu của tôi"<br>2. Nhập từ khóa có ký tự đặc biệt | Hệ thống xử lý an toàn, không gây lỗi, lọc kết quả chính xác | | Pass | 11/15/2015 | |
+| **VALID-YCDH-06** | Nhập ISBN không đúng định dạng | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập ISBN không đúng định dạng<br>3. Gửi yêu cầu | Hệ thống cho phép gửi (ISBN là optional) hoặc hiển thị cảnh báo định dạng không đúng | | Pass | 11/15/2015 | |
+| **VALID-YCDH-07** | Tạo yêu cầu với tên sản phẩm quá dài | 1. Chọn tab "Tạo yêu cầu"<br>2. Nhập tên sản phẩm rất dài (>200 ký tự)<br>3. Gửi yêu cầu | Tên sản phẩm được cắt hoặc hiển thị cảnh báo nếu vượt quá giới hạn | | Pass | 11/15/2015 | |
+| **VALID-YCDH-08** | Tạo nhiều yêu cầu giống nhau | 1. Tạo yêu cầu<br>2. Tạo lại yêu cầu giống hệt<br>3. Gửi yêu cầu | Hệ thống cho phép tạo hoặc hiển thị cảnh báo "Yêu cầu tương tự đã tồn tại" | | Pass | 11/15/2015 | |
 
