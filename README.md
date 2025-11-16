@@ -1,16 +1,16 @@
-# Test Case Template - Quản lý sản phẩm (Admin)
+# Test Case Template - Quản lý đơn hàng (Admin)
 
 ## Module Code
-**Model Management Store: Quản lý sản phẩm Admin**
+**Model Management Store: Quản lý đơn hàng Admin**
 
 ## Test Requirement
-1. Hiển thị danh sách sản phẩm
-2. Xem chi tiết sản phẩm
-3. Thêm sản phẩm
-4. Cập nhật sản phẩm
-5. Xóa sản phẩm
-6. Tìm kiếm sản phẩm
-7. Lọc sản phẩm
+1. Hiển thị danh sách đơn hàng
+2. Xem chi tiết đơn hàng
+3. Cập nhật đơn hàng
+4. Xóa đơn hàng
+5. Xác nhận đơn hàng
+6. In đơn hàng
+7. Tạo đơn hàng mới
 
 ---
 
@@ -20,276 +20,257 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 168 |
+| **Pass** | 63 |
 | **Fail** | 0 |
-| **Untested** | 52 |
+| **Untested** | 69 |
 | **N/A** | 0 |
-| **Number of Test cases** | 220 |
+| **Number of Test cases** | 132 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách sản phẩm
+### Function: Hiển thị danh sách đơn hàng
 
-#### Check GUI: Hiển thị danh sách sản phẩm
+#### Check GUI: Hiển thị danh sách đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSSP-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý sản phẩm" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-DSSP-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/products<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý danh sách sản phẩm và thông tin chi tiết" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DSSP-03** | Kiểm tra nút Nhập hàng | 1. Truy cập /admin/products<br>2. Kiểm tra nút Nhập hàng | Hiển thị nút "Nhập hàng" với icon Package variant outline ở header | | Pass | 11/15/2015 | |
-| **GUI-DSSP-04** | Kiểm tra nút Thêm sản phẩm | 1. Truy cập /admin/products<br>2. Kiểm tra nút Thêm sản phẩm | Hiển thị nút "Thêm sản phẩm" với icon Plus ở header, link đến /admin/products/new | | Pass | 11/15/2015 | |
-| **GUI-DSSP-05** | Kiểm tra Stats Cards | 1. Truy cập /admin/products<br>2. Kiểm tra Stats Cards | Hiển thị 4 card thống kê: Tổng sản phẩm (156), Đang bán (142), Sắp hết hàng (8), Hết hàng (6) | | Pass | 11/15/2015 | |
-| **GUI-DSSP-06** | Kiểm tra trường Tìm kiếm | 1. Truy cập /admin/products<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm sản phẩm...", có thể nhập và nhấn Enter để tìm | | Pass | 11/15/2015 | |
-| **GUI-DSSP-07** | Kiểm tra Select Danh mục | 1. Truy cập /admin/products<br>2. Kiểm tra Select Danh mục | Hiển thị Select với placeholder "Danh mục", width w-40, có các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
-| **GUI-DSSP-08** | Kiểm tra Select Thương hiệu | 1. Truy cập /admin/products<br>2. Kiểm tra Select Thương hiệu | Hiển thị Select với placeholder "Thương hiệu", width w-40, có các option: Tất cả, Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya | | Pass | 11/15/2015 | |
-| **GUI-DSSP-09** | Kiểm tra Select Trạng thái | 1. Truy cập /admin/products<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", width w-40, có các option: Tất cả, Đang bán, Sắp hết hàng, Hết hàng, Ngừng bán | | Pass | 11/15/2015 | |
-| **GUI-DSSP-10** | Kiểm tra nút Bộ lọc | 1. Truy cập /admin/products<br>2. Kiểm tra nút Bộ lọc | Hiển thị nút "Bộ lọc" với icon Filter variant outline | | Pass | 11/15/2015 | |
-| **GUI-DSSP-11** | Kiểm tra bảng danh sách sản phẩm | 1. Truy cập /admin/products<br>2. Kiểm tra bảng | Hiển thị Table với các cột: #, Sản phẩm, Danh mục, Giá, Tồn kho, Trạng thái, Đánh giá, Ngày tạo, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-DSSP-12** | Kiểm tra cột Sản phẩm trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Sản phẩm | Mỗi dòng hiển thị hình ảnh sản phẩm (w-12 h-12 rounded-lg), tên sản phẩm (font-medium), thương hiệu (text-sm muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DSSP-13** | Kiểm tra cột Danh mục trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Danh mục | Hiển thị Badge variant outline với tên danh mục | | Pass | 11/15/2015 | |
-| **GUI-DSSP-14** | Kiểm tra cột Giá trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Giá | Hiển thị giá bán (font-medium) và giá gốc (text-sm muted-foreground line-through) định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-DSSP-15** | Kiểm tra cột Tồn kho trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Tồn kho | Hiển thị số lượng tồn kho (font-medium) và tồn kho tối thiểu (text-sm muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DSSP-16** | Kiểm tra cột Trạng thái trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Trạng thái | Hiển thị Badge với màu tương ứng: Đang bán (default), Sắp hết (secondary), Hết hàng (destructive), Ngừng bán (outline) | | Pass | 11/15/2015 | |
-| **GUI-DSSP-17** | Kiểm tra cột Đánh giá trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Đánh giá | Hiển thị điểm đánh giá (text-sm font-medium) và số lượng đánh giá (text-sm muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DSSP-18** | Kiểm tra cột Thao tác trong bảng | 1. Truy cập /admin/products<br>2. Kiểm tra cột Thao tác | Hiển thị 4 nút: Xem (icon Eye), Chỉnh sửa (icon Edit), Ẩn (icon EyeOff), Xóa (icon Trash2), tất cả variant ghost size sm | | Pass | 11/15/2015 | |
-| **GUI-DSSP-19** | Kiểm tra Pagination | 1. Truy cập /admin/products<br>2. Kiểm tra Pagination | Hiển thị text "Hiển thị 1-X trong Y sản phẩm", các nút phân trang: Trước (disabled), số trang, Sau | | Pass | 11/15/2015 | |
+| **GUI-DSDH-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý đơn hàng" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-DSDH-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/orders<br>2. Kiểm tra mô tả | Hiển thị mô tả "Xử lý và theo dõi tất cả đơn hàng" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-DSDH-03** | Kiểm tra nút In báo cáo | 1. Truy cập /admin/orders<br>2. Kiểm tra nút | Hiển thị nút "In báo cáo" với icon Printer variant outline ở header | | Pass | 11/15/2015 | |
+| **GUI-DSDH-04** | Kiểm tra nút Bộ lọc nâng cao | 1. Truy cập /admin/orders<br>2. Kiểm tra nút | Hiển thị nút "Bộ lọc nâng cao" với icon Filter variant outline ở header | | Pass | 11/15/2015 | |
+| **GUI-DSDH-05** | Kiểm tra Stats Cards | 1. Truy cập /admin/orders<br>2. Kiểm tra Stats Cards | Hiển thị 5 card thống kê: Chờ xác nhận (12), Đã xác nhận (8), Đang giao (15), Đã giao (120), Đã hủy (1) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-06** | Kiểm tra trường Tìm kiếm | 1. Truy cập /admin/orders<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm đơn hàng, khách hàng...", có thể nhập và nhấn Enter để tìm | | Pass | 11/15/2015 | |
+| **GUI-DSDH-07** | Kiểm tra Select Trạng thái | 1. Truy cập /admin/orders<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", width w-40, có các option: Tất cả (156), Chờ xác nhận (12), Đã xác nhận (8), Đang giao (15), Đã giao (120), Đã hủy (1) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-08** | Kiểm tra Select Phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Phương thức thanh toán", width w-40, có các option: Tất cả, COD, Banking, Credit Card, E-wallet | | Pass | 11/15/2015 | |
+| **GUI-DSDH-09** | Kiểm tra Date Range | 1. Truy cập /admin/orders<br>2. Kiểm tra Date Range | Hiển thị 2 input date với text "đến" ở giữa, width w-40 mỗi input | | Pass | 11/15/2015 | |
+| **GUI-DSDH-10** | Kiểm tra nút Áp dụng | 1. Truy cập /admin/orders<br>2. Kiểm tra nút | Hiển thị nút "Áp dụng" với icon Filter variant outline | | Pass | 11/15/2015 | |
+| **GUI-DSDH-11** | Kiểm tra bảng danh sách đơn hàng | 1. Truy cập /admin/orders<br>2. Kiểm tra bảng | Hiển thị Table với các cột: Mã đơn hàng, Khách hàng, Sản phẩm, Tổng tiền, Thanh toán, Trạng thái, Ngày tạo, Thao tác | | Pass | 11/15/2015 | |
+| **GUI-DSDH-12** | Kiểm tra cột Mã đơn hàng trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Mã đơn hàng | Mỗi dòng hiển thị mã đơn hàng (font-medium) và ngày tạo (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-13** | Kiểm tra cột Khách hàng trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Khách hàng | Hiển thị tên khách hàng (font-medium), email (text-sm muted-foreground), số điện thoại (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-14** | Kiểm tra cột Sản phẩm trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Sản phẩm | Hiển thị số lượng sản phẩm (font-medium) và địa chỉ giao hàng (text-sm muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-15** | Kiểm tra cột Tổng tiền trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Tổng tiền | Hiển thị tổng tiền định dạng vi-VN (font-medium) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-16** | Kiểm tra cột Thanh toán trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Thanh toán | Hiển thị Badge variant outline với phương thức thanh toán (COD, Banking, Credit Card, E-wallet) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-17** | Kiểm tra cột Trạng thái trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Trạng thái | Hiển thị Badge với icon và màu tương ứng: Chờ xác nhận (Package icon, destructive), Đã xác nhận (CheckCircle icon, default), Đang giao (Truck icon, secondary), Đã giao (CheckCircle icon, outline), Đã hủy (XCircle icon, destructive) | | Pass | 11/15/2015 | |
+| **GUI-DSDH-18** | Kiểm tra cột Thao tác trong bảng | 1. Truy cập /admin/orders<br>2. Kiểm tra cột Thao tác | Hiển thị 4 nút: Xem (icon Eye link đến /admin/orders/[id]), Cập nhật trạng thái (icon Edit link đến /admin/orders/[id]/update-status), In (icon Printer), Hủy (icon AlertTriangle chỉ hiển thị khi trạng thái không phải cancelled/delivered), tất cả variant ghost size sm | | Pass | 11/15/2015 | |
+| **GUI-DSDH-19** | Kiểm tra Pagination | 1. Truy cập /admin/orders<br>2. Kiểm tra Pagination | Hiển thị text "Hiển thị 1-X trong Y đơn hàng", các nút phân trang: Trước (disabled), số trang, Sau | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách sản phẩm
+### Check FUNC: Hiển thị danh sách đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSSP-01** | Mở trang danh sách sản phẩm | 1. Truy cập /admin/products | Hiển thị trang với tiêu đề, mô tả, nút Nhập hàng, nút Thêm sản phẩm, 4 Stats Cards, bộ lọc (tìm kiếm, danh mục, thương hiệu, trạng thái, nút Bộ lọc), bảng danh sách sản phẩm, pagination | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-02** | Hiển thị danh sách sản phẩm mặc định | 1. Truy cập /admin/products | Hiển thị tất cả sản phẩm trong bảng, mỗi sản phẩm có đầy đủ thông tin: hình ảnh, tên, thương hiệu, danh mục, giá, tồn kho, trạng thái, đánh giá, ngày tạo, các nút thao tác | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-03** | Click nút Nhập hàng | 1. Truy cập /admin/products<br>2. Click nút "Nhập hàng" | Chuyển đến trang nhập hàng hoặc mở dialog nhập hàng | | Untested | 11/15/2015 | |
-| **FUNC-DSSP-04** | Click nút Thêm sản phẩm | 1. Truy cập /admin/products<br>2. Click nút "Thêm sản phẩm" | Chuyển đến trang /admin/products/new | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-05** | Click nút Xem (icon Eye) | 1. Truy cập /admin/products<br>2. Click nút Xem của một sản phẩm | Chuyển đến trang chi tiết sản phẩm /admin/products/[id] | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-06** | Click nút Chỉnh sửa (icon Edit) | 1. Truy cập /admin/products<br>2. Click nút Chỉnh sửa của một sản phẩm | Chuyển đến trang chỉnh sửa sản phẩm /admin/products/[id]/edit | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-07** | Click nút Ẩn (icon EyeOff) | 1. Truy cập /admin/products<br>2. Click nút Ẩn của một sản phẩm | Hiển thị Dialog xác nhận ẩn sản phẩm với tiêu đề "Xác nhận ẩn sản phẩm", mô tả, nút Hủy, nút "Ẩn sản phẩm" | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-08** | Click nút Xóa (icon Trash2) | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm | Hiển thị Dialog xác nhận xóa sản phẩm với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Hành động này không thể hoàn tác", nút Hủy, nút "Xóa" variant destructive | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-09** | Xác nhận ẩn sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Ẩn<br>3. Click "Ẩn sản phẩm" trong dialog | Hiển thị thông báo "Đã ẩn sản phẩm", sản phẩm bị ẩn khỏi danh sách hoặc trạng thái chuyển thành "Ẩn" | | Untested | 11/15/2015 | |
-| **FUNC-DSSP-10** | Xác nhận xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Xóa" trong dialog | Hiển thị thông báo "Đã xóa sản phẩm", sản phẩm bị xóa khỏi danh sách | | Untested | 11/15/2015 | |
-| **FUNC-DSSP-11** | Hủy ẩn sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Ẩn<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị ẩn | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-12** | Hủy xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị xóa | | Pass | 11/15/2015 | |
-| **FUNC-DSSP-13** | Xử lý khi không có sản phẩm | 1. Truy cập /admin/products<br>2. Lọc để không có sản phẩm nào | Hiển thị thông báo "Không tìm thấy sản phẩm nào" hoặc bảng trống | | Untested | 11/15/2015 | |
-| **FUNC-DSSP-14** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-DSSP-15** | Xử lý khi server lỗi | 1. Truy cập /admin/products<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-01** | Mở trang danh sách đơn hàng | 1. Truy cập /admin/orders | Hiển thị trang với tiêu đề, mô tả, nút In báo cáo, nút Bộ lọc nâng cao, 5 Stats Cards, bộ lọc (tìm kiếm, trạng thái, phương thức thanh toán, date range, nút Áp dụng), bảng danh sách đơn hàng, pagination | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-02** | Hiển thị danh sách đơn hàng mặc định | 1. Truy cập /admin/orders | Hiển thị tất cả đơn hàng trong bảng, mỗi đơn hàng có đầy đủ thông tin: mã đơn hàng, khách hàng, sản phẩm, tổng tiền, phương thức thanh toán, trạng thái, ngày tạo, các nút thao tác | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-03** | Click nút In báo cáo | 1. Truy cập /admin/orders<br>2. Click nút "In báo cáo" | Tải về file PDF/Excel báo cáo đơn hàng hoặc mở dialog in báo cáo | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-04** | Click nút Bộ lọc nâng cao | 1. Truy cập /admin/orders<br>2. Click nút "Bộ lọc nâng cao" | Mở dialog/modal với các bộ lọc nâng cao (khoảng giá, loại khách hàng, v.v.) | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-05** | Click nút Xem (icon Eye) | 1. Truy cập /admin/orders<br>2. Click nút Xem của một đơn hàng | Chuyển đến trang chi tiết đơn hàng /admin/orders/[id] | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-06** | Click nút Cập nhật trạng thái (icon Edit) | 1. Truy cập /admin/orders<br>2. Click nút Cập nhật trạng thái của một đơn hàng | Chuyển đến trang cập nhật trạng thái /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-07** | Click nút In (icon Printer) | 1. Truy cập /admin/orders<br>2. Click nút In của một đơn hàng | Mở modal in đơn hàng với các tùy chọn in | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-08** | Click nút Hủy (icon AlertTriangle) | 1. Truy cập /admin/orders<br>2. Click nút Hủy của một đơn hàng | Mở dialog xác nhận hủy đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-DSDH-09** | Lọc theo Trạng thái | 1. Truy cập /admin/orders<br>2. Chọn trạng thái (VD: Chờ xác nhận)<br>3. Click "Áp dụng" | Hiển thị danh sách đơn hàng có trạng thái đã chọn, Stats Cards được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-10** | Lọc theo Phương thức thanh toán | 1. Truy cập /admin/orders<br>2. Chọn phương thức thanh toán (VD: COD)<br>3. Click "Áp dụng" | Hiển thị danh sách đơn hàng có phương thức thanh toán đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-11** | Lọc theo Date Range | 1. Truy cập /admin/orders<br>2. Chọn khoảng ngày<br>3. Click "Áp dụng" | Hiển thị danh sách đơn hàng trong khoảng ngày đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-12** | Tìm kiếm đơn hàng | 1. Truy cập /admin/orders<br>2. Nhập từ khóa tìm kiếm (mã đơn hàng hoặc tên khách hàng)<br>3. Nhấn Enter hoặc click "Áp dụng" | Hiển thị danh sách đơn hàng phù hợp với từ khóa tìm kiếm | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-13** | Xử lý khi không có đơn hàng | 1. Truy cập /admin/orders<br>2. Lọc để không có đơn hàng nào | Hiển thị thông báo "Không tìm thấy đơn hàng nào" hoặc bảng trống | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-14** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-DSDH-15** | Xử lý khi server lỗi | 1. Truy cập /admin/orders<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết sản phẩm
+### Function: Xem chi tiết đơn hàng
 
-#### Check GUI: Xem chi tiết sản phẩm
+#### Check GUI: Xem chi tiết đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products | | Pass | 11/15/2015 | |
-| **GUI-CTSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tên sản phẩm với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CTSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra mô tả | Hiển thị "Chi tiết sản phẩm - ID: [id]" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTSP-04** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit variant outline, link đến /admin/products/[id]/edit | | Pass | 11/15/2015 | |
-| **GUI-CTSP-05** | Kiểm tra nút Ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Ẩn | Hiển thị nút "Ẩn sản phẩm" với icon EyeOff variant secondary | | Pass | 11/15/2015 | |
-| **GUI-CTSP-06** | Kiểm tra nút Xóa | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra nút Xóa | Hiển thị nút "Xóa" với icon Trash2 variant destructive | | Pass | 11/15/2015 | |
-| **GUI-CTSP-07** | Kiểm tra card Thông tin sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin sản phẩm" với hình ảnh sản phẩm (w-48 h-48), tên sản phẩm (text-2xl font-bold), thương hiệu, Badge danh mục, Badge trạng thái | | Pass | 11/15/2015 | |
-| **GUI-CTSP-08** | Kiểm tra thông tin giá và tồn kho | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra thông tin | Hiển thị grid 2 cột với: Giá bán (icon DollarSign), Giá gốc (icon DollarSign line-through), Tồn kho (icon Package), Tồn kho tối thiểu (icon BarChart3) | | Pass | 11/15/2015 | |
-| **GUI-CTSP-09** | Kiểm tra đánh giá sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra đánh giá | Hiển thị icon Star màu yellow-500, điểm đánh giá (font-medium), số lượng đánh giá (muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-CTSP-10** | Kiểm tra card Mô tả sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Mô tả sản phẩm" với nội dung mô tả màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTSP-11** | Kiểm tra card Thông số kỹ thuật | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông số kỹ thuật" với Table hiển thị các thông số: Tỷ lệ, Chất liệu, Chiều cao, Chiều rộng, Chiều sâu, Độ tuổi khuyến nghị, Thời gian lắp ráp, Tính năng | | Pass | 11/15/2015 | |
-| **GUI-CTSP-12** | Kiểm tra card Thông tin bổ sung | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin bổ sung" với: Ngày tạo (icon Calendar), Ngày cập nhật (icon Calendar), URL Slug (icon Package) | | Pass | 11/15/2015 | |
-| **GUI-CTSP-13** | Kiểm tra card Trạng thái sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Trạng thái sản phẩm" với các Badge: Đang giảm giá, Sản phẩm nổi bật, Sản phẩm mới | | Pass | 11/15/2015 | |
-| **GUI-CTSP-14** | Kiểm tra card Thông tin SEO | 1. Truy cập /admin/products/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin SEO" với Meta Title và Meta Description | | Pass | 11/15/2015 | |
-| **GUI-CTSP-15** | Kiểm tra Dialog ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút Ẩn sản phẩm<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận ẩn sản phẩm", mô tả, textarea "Lý do ẩn sản phẩm", nút Hủy, nút "Ẩn sản phẩm" | | Pass | 11/15/2015 | |
-| **GUI-CTSP-16** | Kiểm tra Dialog xóa sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút Xóa<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Hành động này không thể hoàn tác", textarea "Lý do xóa sản phẩm", nút Hủy, nút "Xóa vĩnh viễn" variant destructive | | Pass | 11/15/2015 | |
+| **GUI-CTDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/orders | | Pass | 11/15/2015 | |
+| **GUI-CTDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra tiêu đề | Hiển thị "Đơn hàng #[id]" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-CTDH-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra mô tả | Hiển thị "Chi tiết đơn hàng" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CTDH-04** | Kiểm tra Badge trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra Badge | Hiển thị Badge trạng thái với màu tương ứng: Chờ xác nhận (bg-yellow-500), Đã xác nhận (bg-blue-500), Đang giao (bg-purple-500), Đã giao (bg-green-500), Đã hủy (bg-red-500) | | Pass | 11/15/2015 | |
+| **GUI-CTDH-05** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle, chỉ hiển thị khi trạng thái là "pending" | | Pass | 11/15/2015 | |
+| **GUI-CTDH-06** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút | Hiển thị nút "Cập nhật trạng thái" với icon Edit variant outline, link đến /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
+| **GUI-CTDH-07** | Kiểm tra nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút | Hiển thị nút "In đơn hàng" với icon Printer variant outline | | Pass | 11/15/2015 | |
+| **GUI-CTDH-08** | Kiểm tra nút Hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút | Hiển thị nút "Hủy đơn hàng" với icon XCircle variant destructive, chỉ hiển thị khi trạng thái không phải cancelled/delivered | | Pass | 11/15/2015 | |
+| **GUI-CTDH-09** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin đơn hàng" với: Mã đơn hàng, Ngày tạo (icon Clock), Trạng thái, Tổng tiền (icon DollarSign), Phương thức thanh toán (icon CreditCard), Trạng thái thanh toán | | Pass | 11/15/2015 | |
+| **GUI-CTDH-10** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin khách hàng" với: Tên khách hàng (icon User), Email, Số điện thoại, Địa chỉ (icon MapPin) | | Pass | 11/15/2015 | |
+| **GUI-CTDH-11** | Kiểm tra card Danh sách sản phẩm | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card | Hiển thị card "Danh sách sản phẩm" với Table hiển thị các cột: Hình ảnh, Tên sản phẩm, Số lượng, Đơn giá, Thành tiền | | Pass | 11/15/2015 | |
+| **GUI-CTDH-12** | Kiểm tra card Thông tin vận chuyển | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin vận chuyển" với: Địa chỉ giao hàng (icon MapPin), Phương thức vận chuyển (icon Truck), Mã vận đơn, Ngày dự kiến giao hàng (icon Clock) | | Pass | 11/15/2015 | |
+| **GUI-CTDH-13** | Kiểm tra card Lịch sử cập nhật | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra card | Hiển thị card "Lịch sử cập nhật" với Timeline hiển thị các mốc thời gian: Thời gian, Trạng thái, Mô tả, Người xử lý | | Pass | 11/15/2015 | |
+| **GUI-CTDH-14** | Kiểm tra Dialog hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click nút Hủy đơn hàng<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận hủy đơn hàng", textarea "Lý do hủy", nút Hủy, nút "Xác nhận hủy" variant destructive | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết sản phẩm
+### Check FUNC: Xem chi tiết đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTSP-01** | Mở trang chi tiết sản phẩm | 1. Truy cập /admin/products/[id] | Hiển thị trang với nút Quay lại, tiêu đề (tên sản phẩm), mô tả, nút Chỉnh sửa, nút Ẩn, nút Xóa, card Thông tin sản phẩm, card Mô tả, card Thông số kỹ thuật, card Thông tin bổ sung, card Trạng thái, card SEO | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-02** | Hiển thị đầy đủ thông tin sản phẩm | 1. Truy cập /admin/products/[id] | Hiển thị đầy đủ thông tin: hình ảnh, tên, thương hiệu, danh mục, trạng thái, giá bán, giá gốc, tồn kho, tồn kho tối thiểu, đánh giá, mô tả, thông số kỹ thuật, ngày tạo, ngày cập nhật, slug, meta title, meta description | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-03** | Click nút Quay lại | 1. Truy cập /admin/products/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/products | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-04** | Click nút Chỉnh sửa | 1. Truy cập /admin/products/[id]<br>2. Click nút "Chỉnh sửa" | Chuyển đến trang /admin/products/[id]/edit | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-05** | Ẩn sản phẩm thành công | 1. Truy cập /admin/products/[id]<br>2. Click nút "Ẩn sản phẩm"<br>3. Nhập lý do<br>4. Click "Ẩn sản phẩm" | Hiển thị thông báo "Đã ẩn sản phẩm", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
-| **FUNC-CTSP-06** | Xóa sản phẩm thành công | 1. Truy cập /admin/products/[id]<br>2. Click nút "Xóa"<br>3. Nhập lý do<br>4. Click "Xóa vĩnh viễn" | Hiển thị thông báo "Đã xóa sản phẩm", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
-| **FUNC-CTSP-07** | Hủy ẩn sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút "Ẩn sản phẩm"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, sản phẩm không bị ẩn | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-08** | Hủy xóa sản phẩm | 1. Truy cập /admin/products/[id]<br>2. Click nút "Xóa"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, sản phẩm không bị xóa | | Pass | 11/15/2015 | |
-| **FUNC-CTSP-09** | Xử lý khi sản phẩm không tồn tại | 1. Truy cập /admin/products/[id không tồn tại] | Hiển thị thông báo lỗi "Sản phẩm không tồn tại" hoặc chuyển về trang danh sách | | Untested | 11/15/2015 | |
-| **FUNC-CTSP-10** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/[id]<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-CTSP-11** | Xử lý khi server lỗi | 1. Truy cập /admin/products/[id]<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+| **FUNC-CTDH-01** | Mở trang chi tiết đơn hàng | 1. Truy cập /admin/orders/[id] | Hiển thị trang với nút Quay lại, tiêu đề "Đơn hàng #[id]", mô tả, Badge trạng thái, các nút thao tác, card Thông tin đơn hàng, card Thông tin khách hàng, card Danh sách sản phẩm, card Thông tin vận chuyển, card Lịch sử cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-02** | Hiển thị đầy đủ thông tin đơn hàng | 1. Truy cập /admin/orders/[id] | Hiển thị đầy đủ thông tin: mã đơn hàng, ngày tạo, trạng thái, tổng tiền, phương thức thanh toán, trạng thái thanh toán, thông tin khách hàng, danh sách sản phẩm, thông tin vận chuyển, lịch sử cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-03** | Click nút Quay lại | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/orders | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-04** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển thành "Đã xác nhận", nút Xác nhận biến mất, lịch sử cập nhật được ghi nhận | | Untested | 11/15/2015 | |
+| **FUNC-CTDH-05** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Cập nhật trạng thái" | Chuyển đến trang /admin/orders/[id]/update-status | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-06** | Click nút In đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click nút "In đơn hàng" | Mở modal in đơn hàng với các tùy chọn in | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-07** | Hủy đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Hủy đơn hàng"<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", trạng thái đơn hàng chuyển thành "Đã hủy", chuyển về trang /admin/orders | | Untested | 11/15/2015 | |
+| **FUNC-CTDH-08** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Hủy đơn hàng"<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng", dialog không đóng | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-09** | Hủy hủy đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Hủy đơn hàng"<br>3. Click "Hủy" trong dialog | Dialog đóng, vẫn ở trang chi tiết, đơn hàng không bị hủy | | Pass | 11/15/2015 | |
+| **FUNC-CTDH-10** | Xử lý khi đơn hàng không tồn tại | 1. Truy cập /admin/orders/[id không tồn tại] | Hiển thị thông báo lỗi "Đơn hàng không tồn tại" hoặc chuyển về trang danh sách | | Untested | 11/15/2015 | |
+| **FUNC-CTDH-11** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders/[id]<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-CTDH-12** | Xử lý khi server lỗi | 1. Truy cập /admin/orders/[id]<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Thêm sản phẩm
+### Function: Cập nhật đơn hàng
 
-#### Check GUI: Thêm sản phẩm
+#### Check GUI: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products | | Pass | 11/15/2015 | |
-| **GUI-TSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thêm sản phẩm mới" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-TSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/new<br>2. Kiểm tra mô tả | Hiển thị mô tả "Nhập thông tin chi tiết cho sản phẩm mới" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-TSP-04** | Kiểm tra card Thông tin cơ bản | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Thông tin cơ bản" với tiêu đề, mô tả "Thông tin chính của sản phẩm" | | Pass | 11/15/2015 | |
-| **GUI-TSP-05** | Kiểm tra trường Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Tên sản phẩm *", input type text với placeholder "Nhập tên sản phẩm", có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-TSP-06** | Kiểm tra trường Thương hiệu | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Thương hiệu *", Select với placeholder "Chọn thương hiệu", có các option: Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya, Max Factory, Khác | | Pass | 11/15/2015 | |
-| **GUI-TSP-07** | Kiểm tra trường Mô tả sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Mô tả sản phẩm *", Textarea với placeholder "Mô tả chi tiết về sản phẩm...", rows 4 | | Pass | 11/15/2015 | |
-| **GUI-TSP-08** | Kiểm tra trường Danh mục | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Danh mục *", Select với placeholder "Chọn danh mục", có các option: Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
-| **GUI-TSP-09** | Kiểm tra trường Tỷ lệ | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Tỷ lệ", Select với placeholder "Chọn tỷ lệ", có các option: 1/144, 1/100, 1/72, 1/48, 1/24, 1/12, 1/8, 1/7, 1/6, 1/4 | | Pass | 11/15/2015 | |
-| **GUI-TSP-10** | Kiểm tra card Giá cả | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Giá cả" với tiêu đề, mô tả "Thiết lập giá bán và giá gốc" | | Pass | 11/15/2015 | |
-| **GUI-TSP-11** | Kiểm tra trường Giá bán | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Giá bán *", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
-| **GUI-TSP-12** | Kiểm tra trường Giá gốc | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Giá gốc", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
-| **GUI-TSP-13** | Kiểm tra checkbox Đang giảm giá | 1. Truy cập /admin/products/new<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Đang giảm giá" | | Pass | 11/15/2015 | |
-| **GUI-TSP-14** | Kiểm tra card Quản lý tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Quản lý tồn kho" với tiêu đề, mô tả "Thiết lập số lượng và cảnh báo tồn kho" | | Pass | 11/15/2015 | |
-| **GUI-TSP-15** | Kiểm tra trường Số lượng tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Số lượng tồn kho *", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
-| **GUI-TSP-16** | Kiểm tra trường Số lượng tối thiểu | 1. Truy cập /admin/products/new<br>2. Kiểm tra trường | Hiển thị label "Số lượng tối thiểu", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
-| **GUI-TSP-17** | Kiểm tra checkbox Theo dõi tồn kho | 1. Truy cập /admin/products/new<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Theo dõi tồn kho", mặc định checked | | Pass | 11/15/2015 | |
-| **GUI-TSP-18** | Kiểm tra card Thông số kỹ thuật | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Thông số kỹ thuật" với các trường: Chất liệu (Select), Chiều cao (number), Chiều rộng (number), Chiều sâu (number), Độ tuổi khuyến nghị (text), Thời gian lắp ráp (text) | | Pass | 11/15/2015 | |
-| **GUI-TSP-19** | Kiểm tra card Tính năng nổi bật | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Tính năng nổi bật" với input nhập tính năng, nút Plus để thêm, danh sách tính năng với nút X để xóa | | Pass | 11/15/2015 | |
-| **GUI-TSP-20** | Kiểm tra card Hình ảnh sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Hình ảnh sản phẩm" với vùng upload (border-dashed), icon Upload, text hướng dẫn, nút "Chọn hình ảnh", thông tin hỗ trợ (JPG, PNG, WebP, tối đa 5MB, tỷ lệ 1:1) | | Pass | 11/15/2015 | |
-| **GUI-TSP-21** | Kiểm tra card Trạng thái | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "Trạng thái" với Select "Trạng thái sản phẩm" (Bản nháp, Đang bán, Ngừng bán), checkbox "Sản phẩm nổi bật", checkbox "Sản phẩm mới" | | Pass | 11/15/2015 | |
-| **GUI-TSP-22** | Kiểm tra card SEO | 1. Truy cập /admin/products/new<br>2. Kiểm tra card | Hiển thị card "SEO" với các trường: URL slug (input), Meta title (input), Meta description (textarea rows 3) | | Pass | 11/15/2015 | |
-| **GUI-TSP-23** | Kiểm tra nút Hủy | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/products | | Pass | 11/15/2015 | |
-| **GUI-TSP-24** | Kiểm tra nút Lưu bản nháp | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Lưu bản nháp" variant outline type button | | Pass | 11/15/2015 | |
-| **GUI-TSP-25** | Kiểm tra nút Tạo sản phẩm | 1. Truy cập /admin/products/new<br>2. Kiểm tra nút | Hiển thị nút "Tạo sản phẩm" type submit | | Pass | 11/15/2015 | |
+| **GUI-CNDH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/orders/[id] | | Pass | 11/15/2015 | |
+| **GUI-CNDH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cập nhật trạng thái đơn hàng" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-CNDH-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra mô tả | Hiển thị mô tả "Thay đổi trạng thái đơn hàng #[id]" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-CNDH-04** | Kiểm tra card Thông tin đơn hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra card | Hiển thị card "Thông tin đơn hàng" với: Mã đơn hàng, Khách hàng, Tổng tiền, Trạng thái hiện tại (Badge với icon và màu) | | Pass | 11/15/2015 | |
+| **GUI-CNDH-05** | Kiểm tra trường Trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra trường | Hiển thị label "Trạng thái mới *", Select với placeholder "Chọn trạng thái mới", có các option: Đã xác nhận, Đang giao, Đã giao, Đã hủy | | Pass | 11/15/2015 | |
+| **GUI-CNDH-06** | Kiểm tra trường Lý do thay đổi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra trường | Hiển thị label "Lý do thay đổi", Textarea với placeholder "Nhập lý do thay đổi trạng thái (tùy chọn)" | | Pass | 11/15/2015 | |
+| **GUI-CNDH-07** | Kiểm tra checkbox Thông báo khách hàng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra checkbox | Hiển thị checkbox với label "Gửi thông báo cho khách hàng về thay đổi trạng thái", mặc định checked | | Pass | 11/15/2015 | |
+| **GUI-CNDH-08** | Kiểm tra nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/orders/[id] | | Pass | 11/15/2015 | |
+| **GUI-CNDH-09** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status<br>2. Kiểm tra nút | Hiển thị nút "Cập nhật trạng thái" với icon Save type submit | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Thêm sản phẩm
+### Check FUNC: Cập nhật đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TSP-01** | Mở trang thêm sản phẩm | 1. Truy cập /admin/products/new | Hiển thị trang với nút Quay lại, tiêu đề "Thêm sản phẩm mới", mô tả, form với các card: Thông tin cơ bản, Giá cả, Quản lý tồn kho, Thông số kỹ thuật, Tính năng nổi bật, Hình ảnh, Trạng thái, SEO, các nút Hủy, Lưu bản nháp, Tạo sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-TSP-02** | Tạo sản phẩm thành công | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin bắt buộc (Tên, Thương hiệu, Mô tả, Danh mục, Giá bán, Số lượng tồn kho)<br>3. Nhấn "Tạo sản phẩm" | Hiển thị thông báo "Tạo sản phẩm thành công", chuyển về trang /admin/products | | Untested | 11/15/2015 | |
-| **FUNC-TSP-03** | Tạo sản phẩm - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Để trống Tên sản phẩm<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-04** | Tạo sản phẩm - Thiếu Thương hiệu | 1. Truy cập /admin/products/new<br>2. Không chọn Thương hiệu<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-05** | Tạo sản phẩm - Thiếu Mô tả | 1. Truy cập /admin/products/new<br>2. Để trống Mô tả<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Mô tả không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-06** | Tạo sản phẩm - Thiếu Danh mục | 1. Truy cập /admin/products/new<br>2. Không chọn Danh mục<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-07** | Tạo sản phẩm - Giá bán <= 0 | 1. Truy cập /admin/products/new<br>2. Nhập giá bán <= 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Giá bán phải lớn hơn 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-08** | Tạo sản phẩm - Số lượng tồn kho < 0 | 1. Truy cập /admin/products/new<br>2. Nhập số lượng tồn kho < 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Số lượng tồn kho phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TSP-09** | Thêm tính năng | 1. Truy cập /admin/products/new<br>2. Nhập tính năng vào input<br>3. Click nút Plus hoặc nhấn Enter | Tính năng được thêm vào danh sách, hiển thị với nút X để xóa | | Pass | 11/15/2015 | |
-| **FUNC-TSP-10** | Xóa tính năng | 1. Truy cập /admin/products/new<br>2. Thêm tính năng<br>3. Click nút X của tính năng | Tính năng bị xóa khỏi danh sách | | Pass | 11/15/2015 | |
-| **FUNC-TSP-11** | Lưu bản nháp thành công | 1. Truy cập /admin/products/new<br>2. Nhập ít nhất Tên sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo "Lưu bản nháp thành công", chuyển về trang /admin/products, sản phẩm được lưu với trạng thái "Bản nháp" | | Untested | 11/15/2015 | |
-| **FUNC-TSP-12** | Lưu bản nháp - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/new<br>2. Để trống Tên sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo lỗi "Vui lòng nhập tên sản phẩm để lưu bản nháp" | | Pass | 11/15/2015 | |
-| **FUNC-TSP-13** | Click nút Hủy | 1. Truy cập /admin/products/new<br>2. Click nút "Hủy" | Chuyển về trang /admin/products, không lưu thông tin | | Pass | 11/15/2015 | |
-| **FUNC-TSP-14** | Upload hình ảnh thành công | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file ảnh hợp lệ (< 5MB, JPG/PNG/WebP) | Hình ảnh được upload và hiển thị preview | | Untested | 11/15/2015 | |
-| **FUNC-TSP-15** | Upload hình ảnh - File quá lớn | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file > 5MB | Hiển thị thông báo lỗi "Kích thước file không được vượt quá 5MB" | | Pass | 11/15/2015 | |
-| **FUNC-TSP-16** | Upload hình ảnh - File không phải ảnh | 1. Truy cập /admin/products/new<br>2. Click "Chọn hình ảnh"<br>3. Chọn file không phải ảnh | Hiển thị thông báo lỗi "Vui lòng chọn file ảnh hợp lệ (JPG, PNG, WebP)" | | Pass | 11/15/2015 | |
-| **FUNC-TSP-17** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-TSP-18** | Xử lý khi server lỗi | 1. Truy cập /admin/products/new<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-01** | Mở trang cập nhật trạng thái | 1. Truy cập /admin/orders/[id]/update-status | Hiển thị trang với nút Quay lại, tiêu đề "Cập nhật trạng thái đơn hàng", mô tả, card Thông tin đơn hàng, form với trường Trạng thái mới, Lý do thay đổi, checkbox Thông báo khách hàng, nút Hủy, nút Cập nhật trạng thái | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-02** | Cập nhật trạng thái thành công | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Nhập lý do (tùy chọn)<br>4. Tích checkbox Thông báo khách hàng<br>5. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", gửi thông báo cho khách hàng (nếu được chọn), chuyển về trang chi tiết đơn hàng, trạng thái được cập nhật, lịch sử cập nhật được ghi nhận | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-03** | Cập nhật - Thiếu Trạng thái mới | 1. Truy cập /admin/orders/[id]/update-status<br>2. Không chọn trạng thái mới<br>3. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng chọn trạng thái mới", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-04** | Cập nhật - Chọn trạng thái giống hiện tại | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới giống trạng thái hiện tại<br>3. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Trạng thái mới phải khác trạng thái hiện tại", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-05** | Cập nhật - Không gửi thông báo | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Bỏ tích checkbox Thông báo khách hàng<br>4. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", không gửi thông báo cho khách hàng, trạng thái được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-06** | Click nút Hủy | 1. Truy cập /admin/orders/[id]/update-status<br>2. Click nút "Hủy" | Chuyển về trang /admin/orders/[id], không lưu thông tin | | Pass | 11/15/2015 | |
+| **FUNC-CNDH-07** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Tắt kết nối mạng<br>4. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-CNDH-08** | Xử lý khi server lỗi | 1. Truy cập /admin/orders/[id]/update-status<br>2. Chọn trạng thái mới<br>3. Server trả về lỗi 500<br>4. Nhấn "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Cập nhật sản phẩm
+### Function: Xóa đơn hàng
 
-#### Check GUI: Cập nhật sản phẩm
+#### Check GUI: Xóa đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CNSP-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/products/[id] | | Pass | 11/15/2015 | |
-| **GUI-CNSP-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chỉnh sửa sản phẩm" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CNSP-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra mô tả | Hiển thị mô tả "Cập nhật thông tin sản phẩm #[id]" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CNSP-04** | Kiểm tra nút Hủy (khi đang chỉnh sửa) | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút Hủy | Hiển thị nút "Hủy" với icon X variant outline, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CNSP-05** | Kiểm tra nút Lưu bản nháp | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Lưu bản nháp" với icon Save variant outline, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CNSP-06** | Kiểm tra nút Cập nhật sản phẩm | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Cập nhật sản phẩm" với icon Save, chỉ hiển thị khi đang chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CNSP-07** | Kiểm tra nút Chỉnh sửa (khi không chỉnh sửa) | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Chỉnh sửa" với icon Save, chỉ hiển thị khi không đang chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CNSP-08** | Kiểm tra trạng thái disabled của các trường | 1. Truy cập /admin/products/[id]/edit<br>2. Kiểm tra các trường | Tất cả các trường input, select, textarea có thuộc tính disabled khi không ở chế độ chỉnh sửa | | Pass | 11/15/2015 | |
-| **GUI-CNSP-09** | Kiểm tra cảnh báo tồn kho thấp | 1. Truy cập /admin/products/[id]/edit<br>2. Chỉnh sửa tồn kho <= tồn kho tối thiểu<br>3. Kiểm tra cảnh báo | Hiển thị Alert với icon AlertTriangle màu yellow-600, text "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" màu yellow-800, background yellow-50, border yellow-200 | | Pass | 11/15/2015 | |
+| **GUI-XDH-01** | Kiểm tra Dialog xác nhận xóa | 1. Truy cập /admin/orders<br>2. Click nút Hủy (icon AlertTriangle) của một đơn hàng<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận hủy đơn hàng", mô tả "Bạn có chắc chắn muốn hủy đơn hàng này?", textarea "Lý do hủy", nút "Hủy" variant outline, nút "Xác nhận hủy" variant destructive | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cập nhật sản phẩm
+### Check FUNC: Xóa đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CNSP-01** | Mở trang chỉnh sửa sản phẩm | 1. Truy cập /admin/products/[id]/edit | Hiển thị trang với nút Quay lại, tiêu đề "Chỉnh sửa sản phẩm", mô tả, nút Chỉnh sửa, form với các trường đã được điền sẵn thông tin sản phẩm, tất cả trường disabled | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-02** | Bật chế độ chỉnh sửa | 1. Truy cập /admin/products/[id]/edit<br>2. Click nút "Chỉnh sửa" | Tất cả các trường được kích hoạt (disabled=false), nút Chỉnh sửa biến mất, hiển thị nút "Hủy", "Lưu bản nháp", "Cập nhật sản phẩm" | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-03** | Cập nhật sản phẩm thành công | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo "Cập nhật sản phẩm thành công", các trường chuyển về disabled, nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại, thông tin được cập nhật | | Untested | 11/15/2015 | |
-| **FUNC-CNSP-04** | Cập nhật - Thiếu Tên sản phẩm | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa tên sản phẩm<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-05** | Cập nhật - Thiếu Thương hiệu | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa thương hiệu<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-06** | Cập nhật - Thiếu Mô tả | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa mô tả<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Mô tả không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-07** | Cập nhật - Thiếu Danh mục | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Xóa danh mục<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-08** | Cập nhật - Giá bán <= 0 | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập giá bán <= 0<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Giá bán phải lớn hơn 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-09** | Cập nhật - Số lượng tồn kho < 0 | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập số lượng tồn kho < 0<br>4. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Số lượng tồn kho phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-10** | Hủy chỉnh sửa | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Hủy" | Các trường được reset về giá trị ban đầu, chuyển về chế độ xem (disabled=true), nút Lưu và Hủy biến mất, nút Chỉnh sửa hiển thị lại | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-11** | Lưu bản nháp | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Nhấn "Lưu bản nháp" | Hiển thị thông báo "Lưu bản nháp thành công", sản phẩm được lưu với trạng thái "Bản nháp" | | Untested | 11/15/2015 | |
-| **FUNC-CNSP-12** | Hiển thị cảnh báo tồn kho thấp | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Nhập tồn kho <= tồn kho tối thiểu | Hiển thị Alert cảnh báo màu vàng "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" | | Pass | 11/15/2015 | |
-| **FUNC-CNSP-13** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Tắt kết nối mạng<br>5. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-CNSP-14** | Xử lý khi server lỗi | 1. Truy cập /admin/products/[id]/edit<br>2. Click Chỉnh sửa<br>3. Sửa thông tin<br>4. Server trả về lỗi 500<br>5. Nhấn "Cập nhật sản phẩm" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-XDH-01** | Hủy đơn hàng thành công | 1. Truy cập /admin/orders<br>2. Click nút Hủy của một đơn hàng<br>3. Nhập lý do hủy<br>4. Click "Xác nhận hủy" | Hiển thị thông báo "Hủy đơn hàng thành công", trạng thái đơn hàng chuyển thành "Đã hủy", đơn hàng bị ẩn hoặc cập nhật trong danh sách | | Untested | 11/15/2015 | |
+| **FUNC-XDH-02** | Hủy đơn hàng - Thiếu lý do | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Để trống lý do<br>4. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Vui lòng nhập lý do hủy đơn hàng", dialog không đóng | | Pass | 11/15/2015 | |
+| **FUNC-XDH-03** | Hủy hủy đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Click "Hủy" trong dialog | Dialog đóng, đơn hàng không bị hủy, vẫn ở trang danh sách | | Pass | 11/15/2015 | |
+| **FUNC-XDH-04** | Hủy đơn hàng - Đơn hàng đã giao | 1. Truy cập /admin/orders<br>2. Click nút Hủy của đơn hàng đã giao | Nút Hủy không hiển thị hoặc hiển thị thông báo lỗi "Không thể hủy đơn hàng đã giao" | | Pass | 11/15/2015 | |
+| **FUNC-XDH-05** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Nhập lý do<br>4. Tắt kết nối mạng<br>5. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", đơn hàng không bị hủy | | Untested | 11/15/2015 | |
+| **FUNC-XDH-06** | Xử lý khi server lỗi | 1. Truy cập /admin/orders<br>2. Click nút Hủy<br>3. Nhập lý do<br>4. Server trả về lỗi 500<br>5. Click "Xác nhận hủy" | Hiển thị thông báo lỗi "Lỗi hủy đơn hàng", đơn hàng không bị hủy | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Xóa sản phẩm
+### Function: Xác nhận đơn hàng
 
-#### Check GUI: Xóa sản phẩm
+#### Check GUI: Xác nhận đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XSP-01** | Kiểm tra Dialog xác nhận xóa | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Bạn có chắc chắn muốn xóa sản phẩm...? Hành động này không thể hoàn tác", nút "Hủy" variant outline, nút "Xóa" variant destructive | | Pass | 11/15/2015 | |
+| **GUI-XNDH-01** | Kiểm tra nút Xác nhận đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Kiểm tra nút | Hiển thị nút "Xác nhận đơn hàng" với icon CheckCircle, chỉ hiển thị khi trạng thái là "pending" | | Pass | 11/15/2015 | |
+| **GUI-XNDH-02** | Kiểm tra Dialog xác nhận | 1. Truy cập /admin/orders/[id]/confirm<br>2. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận đơn hàng", mô tả, card Kiểm tra tồn kho, checkbox "Xác nhận thông tin khách hàng và địa chỉ giao hàng", textarea "Ghi chú xác nhận", nút Hủy, nút "Xác nhận đơn hàng" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xóa sản phẩm
+### Check FUNC: Xác nhận đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XSP-01** | Xóa sản phẩm thành công | 1. Truy cập /admin/products<br>2. Click nút Xóa của một sản phẩm<br>3. Click "Xóa" trong dialog | Hiển thị thông báo "Đã xóa sản phẩm", sản phẩm bị xóa khỏi danh sách, cập nhật lại bảng | | Untested | 11/15/2015 | |
-| **FUNC-XSP-02** | Hủy xóa sản phẩm | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Click "Hủy" trong dialog | Dialog đóng, sản phẩm không bị xóa, vẫn ở trang danh sách | | Pass | 11/15/2015 | |
-| **FUNC-XSP-03** | Xóa sản phẩm - Sản phẩm đang có đơn hàng | 1. Truy cập /admin/products<br>2. Click nút Xóa của sản phẩm đang có đơn hàng<br>3. Click "Xóa" | Hiển thị thông báo lỗi "Không thể xóa sản phẩm đang có đơn hàng", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-XSP-04** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Tắt kết nối mạng<br>4. Click "Xóa" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
-| **FUNC-XSP-05** | Xử lý khi server lỗi | 1. Truy cập /admin/products<br>2. Click nút Xóa<br>3. Server trả về lỗi 500<br>4. Click "Xóa" | Hiển thị thông báo lỗi "Lỗi xóa sản phẩm", sản phẩm không bị xóa | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-01** | Xác nhận đơn hàng thành công | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Kiểm tra tồn kho đủ<br>4. Tích checkbox xác nhận thông tin<br>5. Nhập ghi chú (tùy chọn)<br>6. Click "Xác nhận đơn hàng" | Hiển thị thông báo "Xác nhận đơn hàng thành công", trạng thái đơn hàng chuyển thành "Đã xác nhận", nút Xác nhận biến mất, lịch sử cập nhật được ghi nhận | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-02** | Xác nhận - Tồn kho không đủ | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Kiểm tra tồn kho không đủ<br>4. Click "Xác nhận đơn hàng" | Hiển thị thông báo lỗi "Tồn kho không đủ để xác nhận đơn hàng", đơn hàng không được xác nhận | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-03** | Xác nhận - Không tích checkbox | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Không tích checkbox xác nhận thông tin<br>4. Click "Xác nhận đơn hàng" | Hiển thị thông báo lỗi "Vui lòng xác nhận thông tin khách hàng và địa chỉ giao hàng", đơn hàng không được xác nhận | | Pass | 11/15/2015 | |
+| **FUNC-XNDH-04** | Từ chối đơn hàng | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Click "Từ chối đơn hàng" | Hiển thị thông báo "Từ chối đơn hàng thành công", trạng thái đơn hàng chuyển thành "Đã hủy" | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-05** | Hủy xác nhận | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, đơn hàng không được xác nhận | | Pass | 11/15/2015 | |
+| **FUNC-XNDH-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Tắt kết nối mạng<br>4. Click "Xác nhận đơn hàng" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", đơn hàng không được xác nhận | | Untested | 11/15/2015 | |
+| **FUNC-XNDH-07** | Xử lý khi server lỗi | 1. Truy cập /admin/orders/[id]<br>2. Click nút "Xác nhận đơn hàng"<br>3. Server trả về lỗi 500<br>4. Click "Xác nhận đơn hàng" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", đơn hàng không được xác nhận | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Tìm kiếm sản phẩm
+### Function: In đơn hàng
 
-#### Check GUI: Tìm kiếm sản phẩm
+#### Check GUI: In đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TKSP-01** | Kiểm tra trường tìm kiếm | 1. Truy cập /admin/products<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm sản phẩm...", có thể nhập và nhấn Enter | | Pass | 11/15/2015 | |
+| **GUI-IDH-01** | Kiểm tra modal In đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In (icon Printer) của một đơn hàng<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "In đơn hàng", mô tả "Xuất thông tin đơn hàng để in" | | Pass | 11/15/2015 | |
+| **GUI-IDH-02** | Kiểm tra Radio Group Loại tài liệu | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra Radio Group | Hiển thị Radio Group với các option: Phiếu giao hàng, Hóa đơn, Phiếu xuất kho | | Pass | 11/15/2015 | |
+| **GUI-IDH-03** | Kiểm tra Preview tài liệu | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra Preview | Hiển thị preview tài liệu với đầy đủ thông tin: Thông tin đơn hàng, Thông tin khách hàng, Danh sách sản phẩm, Thông tin vận chuyển | | Pass | 11/15/2015 | |
+| **GUI-IDH-04** | Kiểm tra textarea Ghi chú in | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra textarea | Hiển thị label "Ghi chú in", Textarea với placeholder "Ghi chú thêm cho tài liệu in (tùy chọn)" | | Pass | 11/15/2015 | |
+| **GUI-IDH-05** | Kiểm tra nút Xem trước | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra nút | Hiển thị nút "Xem trước" variant outline | | Pass | 11/15/2015 | |
+| **GUI-IDH-06** | Kiểm tra nút Xuất PDF | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra nút | Hiển thị nút "Xuất PDF" variant outline | | Pass | 11/15/2015 | |
+| **GUI-IDH-07** | Kiểm tra nút In trực tiếp | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra nút | Hiển thị nút "In trực tiếp" type submit | | Pass | 11/15/2015 | |
+| **GUI-IDH-08** | Kiểm tra nút Hủy | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Tìm kiếm sản phẩm
+### Check FUNC: In đơn hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TKSP-01** | Tìm kiếm theo tên sản phẩm | 1. Truy cập /admin/products<br>2. Nhập tên sản phẩm vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có tên chứa từ khóa tìm kiếm, hiển thị thông báo "Đã lọc X sản phẩm" | | Untested | 11/15/2015 | |
-| **FUNC-TKSP-02** | Tìm kiếm theo thương hiệu | 1. Truy cập /admin/products<br>2. Nhập thương hiệu vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có thương hiệu chứa từ khóa tìm kiếm | | Untested | 11/15/2015 | |
-| **FUNC-TKSP-03** | Tìm kiếm theo danh mục | 1. Truy cập /admin/products<br>2. Nhập danh mục vào ô tìm kiếm<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có danh mục chứa từ khóa tìm kiếm | | Untested | 11/15/2015 | |
-| **FUNC-TKSP-04** | Tìm kiếm - Không tìm thấy | 1. Truy cập /admin/products<br>2. Nhập từ khóa không tồn tại<br>3. Nhấn Enter | Hiển thị bảng trống hoặc thông báo "Không tìm thấy sản phẩm phù hợp" | | Untested | 11/15/2015 | |
-| **FUNC-TKSP-05** | Tìm kiếm - Từ khóa rỗng | 1. Truy cập /admin/products<br>2. Để trống ô tìm kiếm<br>3. Nhấn Enter | Hiển thị toàn bộ danh sách sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-TKSP-06** | Tìm kiếm không phân biệt hoa thường | 1. Truy cập /admin/products<br>2. Nhập "GUNDAM" (chữ hoa)<br>3. Nhấn Enter | Hiển thị danh sách sản phẩm có tên/thương hiệu/danh mục chứa "gundam" (không phân biệt hoa thường) | | Untested | 11/15/2015 | |
+| **FUNC-IDH-01** | Mở modal in đơn hàng | 1. Truy cập /admin/orders<br>2. Click nút In của một đơn hàng | Hiển thị Dialog với tiêu đề "In đơn hàng", Radio Group Loại tài liệu, Preview tài liệu, textarea Ghi chú in, các nút Xem trước, Xuất PDF, In trực tiếp, Hủy | | Pass | 11/15/2015 | |
+| **FUNC-IDH-02** | Chọn loại tài liệu | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Chọn loại tài liệu (VD: Hóa đơn) | Preview tài liệu được cập nhật theo loại tài liệu đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-IDH-03** | Xuất PDF thành công | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Chọn loại tài liệu<br>4. Click "Xuất PDF" | Tải về file PDF đơn hàng với đầy đủ thông tin, định dạng chuẩn | | Untested | 11/15/2015 | |
+| **FUNC-IDH-04** | In trực tiếp thành công | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Chọn loại tài liệu<br>4. Click "In trực tiếp" | Hiển thị thông báo "Đã gửi lệnh in", lệnh in được gửi đến máy in | | Untested | 11/15/2015 | |
+| **FUNC-IDH-05** | Xem trước tài liệu | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click "Xem trước" | Hiển thị preview tài liệu với đầy đủ thông tin, có thể zoom in/out | | Pass | 11/15/2015 | |
+| **FUNC-IDH-06** | Click nút Hủy | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click "Hủy" | Modal đóng, không in tài liệu | | Pass | 11/15/2015 | |
+| **FUNC-IDH-07** | Xuất PDF - Lỗi tạo file | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click "Xuất PDF"<br>4. Server lỗi khi tạo PDF | Hiển thị thông báo lỗi "Không thể tạo file PDF. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+| **FUNC-IDH-08** | In trực tiếp - Không có máy in | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Click "In trực tiếp"<br>4. Không có máy in được kết nối | Hiển thị thông báo lỗi "Không tìm thấy máy in. Vui lòng kiểm tra kết nối máy in" | | Untested | 11/15/2015 | |
+| **FUNC-IDH-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Tắt kết nối mạng<br>4. Click "Xuất PDF" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-IDH-10** | Xử lý khi server lỗi | 1. Truy cập /admin/orders<br>2. Click nút In<br>3. Server trả về lỗi 500<br>4. Click "Xuất PDF" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Lọc sản phẩm
+### Function: Tạo đơn hàng mới
 
-#### Check GUI: Lọc sản phẩm
+#### Check GUI: Tạo đơn hàng mới
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-LSP-01** | Kiểm tra Select Danh mục | 1. Truy cập /admin/products<br>2. Kiểm tra Select Danh mục | Hiển thị Select với placeholder "Danh mục", có các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
-| **GUI-LSP-02** | Kiểm tra Select Thương hiệu | 1. Truy cập /admin/products<br>2. Kiểm tra Select Thương hiệu | Hiển thị Select với placeholder "Thương hiệu", có các option: Tất cả, Bandai, Good Smile Company, Tamiya, Revell, Banpresto, Kotobukiya | | Pass | 11/15/2015 | |
-| **GUI-LSP-03** | Kiểm tra Select Trạng thái | 1. Truy cập /admin/products<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", có các option: Tất cả, Đang bán, Sắp hết hàng, Hết hàng, Ngừng bán | | Pass | 11/15/2015 | |
-| **GUI-LSP-04** | Kiểm tra nút Bộ lọc | 1. Truy cập /admin/products<br>2. Kiểm tra nút | Hiển thị nút "Bộ lọc" với icon Filter variant outline | | Pass | 11/15/2015 | |
+| **GUI-TDHM-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/orders | | Pass | 11/15/2015 | |
+| **GUI-TDHM-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/orders/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Tạo đơn hàng mới" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-TDHM-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/orders/new<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tạo đơn hàng mới cho khách hàng" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-TDHM-04** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/orders/new<br>2. Kiểm tra card | Hiển thị card "Thông tin khách hàng" với các trường: Chọn khách hàng (Select/Dropdown), Tên khách hàng (input), Email (input), Số điện thoại (input), Địa chỉ giao hàng (Textarea) | | Pass | 11/15/2015 | |
+| **GUI-TDHM-05** | Kiểm tra card Danh sách sản phẩm | 1. Truy cập /admin/orders/new<br>2. Kiểm tra card | Hiển thị card "Danh sách sản phẩm" với nút "Thêm sản phẩm", Table hiển thị các cột: Sản phẩm, Số lượng, Đơn giá, Thành tiền, Thao tác | | Pass | 11/15/2015 | |
+| **GUI-TDHM-06** | Kiểm tra card Thông tin thanh toán | 1. Truy cập /admin/orders/new<br>2. Kiểm tra card | Hiển thị card "Thông tin thanh toán" với các trường: Phương thức thanh toán (Select), Trạng thái thanh toán (Select), Ghi chú (Textarea) | | Pass | 11/15/2015 | |
+| **GUI-TDHM-07** | Kiểm tra card Thông tin vận chuyển | 1. Truy cập /admin/orders/new<br>2. Kiểm tra card | Hiển thị card "Thông tin vận chuyển" với các trường: Phương thức vận chuyển (Select), Phí vận chuyển (number input), Ngày dự kiến giao hàng (DatePicker) | | Pass | 11/15/2015 | |
+| **GUI-TDHM-08** | Kiểm tra card Tổng kết | 1. Truy cập /admin/orders/new<br>2. Kiểm tra card | Hiển thị card "Tổng kết" với: Tổng tiền sản phẩm, Phí vận chuyển, Tổng cộng (font-bold text-lg) | | Pass | 11/15/2015 | |
+| **GUI-TDHM-09** | Kiểm tra nút Hủy | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/orders | | Pass | 11/15/2015 | |
+| **GUI-TDHM-10** | Kiểm tra nút Tạo đơn hàng | 1. Truy cập /admin/orders/new<br>2. Kiểm tra nút | Hiển thị nút "Tạo đơn hàng" type submit | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Lọc sản phẩm
+### Check FUNC: Tạo đơn hàng mới
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-LSP-01** | Lọc theo Danh mục | 1. Truy cập /admin/products<br>2. Chọn Danh mục (VD: Gundam)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thuộc danh mục đã chọn, hiển thị thông báo "Đã lọc X sản phẩm" | | Untested | 11/15/2015 | |
-| **FUNC-LSP-02** | Lọc theo Thương hiệu | 1. Truy cập /admin/products<br>2. Chọn Thương hiệu (VD: Bandai)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thuộc thương hiệu đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-LSP-03** | Lọc theo Trạng thái | 1. Truy cập /admin/products<br>2. Chọn Trạng thái (VD: Đang bán)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm có trạng thái đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-LSP-04** | Lọc kết hợp nhiều tiêu chí | 1. Truy cập /admin/products<br>2. Chọn Danh mục, Thương hiệu, Trạng thái<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thỏa mãn tất cả các tiêu chí đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-LSP-05** | Lọc - Không có sản phẩm phù hợp | 1. Truy cập /admin/products<br>2. Chọn các tiêu chí không có sản phẩm nào<br>3. Click "Bộ lọc" | Hiển thị bảng trống hoặc thông báo "Không có sản phẩm phù hợp với bộ lọc" | | Untested | 11/15/2015 | |
-| **FUNC-LSP-06** | Lọc - Chọn "Tất cả" | 1. Truy cập /admin/products<br>2. Chọn "Tất cả" cho các Select<br>3. Click "Bộ lọc" | Hiển thị toàn bộ danh sách sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-LSP-07** | Kết hợp tìm kiếm và lọc | 1. Truy cập /admin/products<br>2. Nhập từ khóa tìm kiếm<br>3. Chọn Danh mục<br>4. Click "Bộ lọc" | Hiển thị danh sách sản phẩm thỏa mãn cả từ khóa tìm kiếm và bộ lọc đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-01** | Mở trang tạo đơn hàng mới | 1. Truy cập /admin/orders/new | Hiển thị trang với nút Quay lại, tiêu đề "Tạo đơn hàng mới", mô tả, form với các card: Thông tin khách hàng, Danh sách sản phẩm, Thông tin thanh toán, Thông tin vận chuyển, Tổng kết, các nút Hủy, Tạo đơn hàng | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-02** | Tạo đơn hàng thành công | 1. Truy cập /admin/orders/new<br>2. Chọn khách hàng hoặc nhập thông tin khách hàng<br>3. Thêm sản phẩm vào đơn hàng<br>4. Chọn phương thức thanh toán<br>5. Chọn phương thức vận chuyển<br>6. Nhấn "Tạo đơn hàng" | Hiển thị thông báo "Tạo đơn hàng thành công", chuyển về trang /admin/orders, đơn hàng được tạo với trạng thái "Chờ xác nhận" | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-03** | Tạo đơn hàng - Thiếu thông tin khách hàng | 1. Truy cập /admin/orders/new<br>2. Không chọn/nhập thông tin khách hàng<br>3. Thêm sản phẩm<br>4. Nhấn "Tạo đơn hàng" | Hiển thị thông báo lỗi "Vui lòng chọn hoặc nhập thông tin khách hàng", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-04** | Tạo đơn hàng - Chưa thêm sản phẩm | 1. Truy cập /admin/orders/new<br>2. Chọn khách hàng<br>3. Không thêm sản phẩm<br>4. Nhấn "Tạo đơn hàng" | Hiển thị thông báo lỗi "Vui lòng thêm ít nhất một sản phẩm vào đơn hàng", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-05** | Thêm sản phẩm vào đơn hàng | 1. Truy cập /admin/orders/new<br>2. Click nút "Thêm sản phẩm"<br>3. Chọn sản phẩm và số lượng<br>4. Click "Thêm" | Sản phẩm được thêm vào bảng danh sách sản phẩm, tổng kết được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-06** | Xóa sản phẩm khỏi đơn hàng | 1. Truy cập /admin/orders/new<br>2. Thêm sản phẩm<br>3. Click nút Xóa của sản phẩm | Sản phẩm bị xóa khỏi danh sách, tổng kết được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-07** | Cập nhật số lượng sản phẩm | 1. Truy cập /admin/orders/new<br>2. Thêm sản phẩm<br>3. Thay đổi số lượng | Tổng kết được cập nhật tự động theo số lượng mới | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-08** | Tính tổng kết tự động | 1. Truy cập /admin/orders/new<br>2. Thêm sản phẩm<br>3. Nhập phí vận chuyển | Tổng kết được tính tự động: Tổng tiền sản phẩm + Phí vận chuyển = Tổng cộng | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-09** | Click nút Hủy | 1. Truy cập /admin/orders/new<br>2. Click nút "Hủy" | Chuyển về trang /admin/orders, không lưu thông tin | | Pass | 11/15/2015 | |
+| **FUNC-TDHM-10** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/orders/new<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tạo đơn hàng" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-TDHM-11** | Xử lý khi server lỗi | 1. Truy cập /admin/orders/new<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tạo đơn hàng" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
 
 ---
 
