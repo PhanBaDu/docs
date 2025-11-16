@@ -1,14 +1,16 @@
-# Test Case Template - Xử lý phản hồi - khiếu nại (Admin)
+# Test Case Template - Báo cáo và thống kê (Admin)
 
 ## Module Code
-**Model Management Store: Xử lý phản hồi - khiếu nại Admin**
+**Model Management Store: Báo cáo và thống kê Admin**
 
 ## Test Requirement
-1. Hiển thị danh sách phản hồi
-2. Xem chi tiết phản hồi
-3. Trả lời phản hồi
-4. Cập nhật trạng thái xử lý phản hồi
-5. Phân loại khiếu nại
+1. Xem báo cáo doanh thu
+2. Xem báo cáo chi phí
+3. Xem báo cáo lợi nhuận
+4. Xem sản phẩm bán chạy
+5. Xem thống kê khách hàng
+6. Xem báo cáo tồn kho
+7. Tạo báo cáo tùy chỉnh
 
 ---
 
@@ -18,180 +20,237 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 44 |
+| **Pass** | 57 |
 | **Fail** | 0 |
-| **Untested** | 43 |
+| **Untested** | 55 |
 | **N/A** | 0 |
-| **Number of Test cases** | 87 |
+| **Number of Test cases** | 112 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách phản hồi
+### Function: Xem báo cáo doanh thu
 
-#### Check GUI: Hiển thị danh sách phản hồi
+#### Check GUI: Xem báo cáo doanh thu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSPH-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/complaints<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Xử lý phản hồi - khiếu nại" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-DSPH-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/complaints<br>2. Kiểm tra mô tả | Hiển thị mô tả "Quản lý và xử lý các phản hồi, khiếu nại từ khách hàng" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DSPH-03** | Kiểm tra Select Bộ lọc trạng thái | 1. Truy cập /admin/complaints<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Trạng thái", có các option: Tất cả, Mới, Đang xử lý, Đã giải quyết, Đóng | | Pass | 11/15/2015 | |
-| **GUI-DSPH-04** | Kiểm tra Select Bộ lọc phân loại | 1. Truy cập /admin/complaints<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Phân loại", có các option: Tất cả, Sản phẩm, Dịch vụ, Giao hàng, Thanh toán, Khác | | Pass | 11/15/2015 | |
-| **GUI-DSPH-05** | Kiểm tra trường Tìm kiếm | 1. Truy cập /admin/complaints<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm theo mã, tên khách, số điện thoại...", có thể nhập và nhấn Enter để tìm | | Pass | 11/15/2015 | |
-| **GUI-DSPH-06** | Kiểm tra bảng danh sách phản hồi | 1. Truy cập /admin/complaints<br>2. Kiểm tra bảng | Hiển thị Table với các cột: Mã, Khách hàng, Loại, Trạng thái, Ngày tạo, Cập nhật, Mức ưu tiên, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-DSPH-07** | Kiểm tra cột Mã trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Mã | Mỗi dòng hiển thị mã phản hồi (font-medium, VD: #COMP001) | | Pass | 11/15/2015 | |
-| **GUI-DSPH-08** | Kiểm tra cột Khách hàng trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Khách hàng | Hiển thị tên khách hàng (font-medium), email (text-sm muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DSPH-09** | Kiểm tra cột Loại trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Loại | Hiển thị Badge phân loại: Sản phẩm, Dịch vụ, Giao hàng, Thanh toán, Khác | | Pass | 11/15/2015 | |
-| **GUI-DSPH-10** | Kiểm tra cột Trạng thái trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Trạng thái | Hiển thị Badge với màu tương ứng: Mới (default), Đang xử lý (secondary), Đã giải quyết (outline), Đóng (destructive) | | Pass | 11/15/2015 | |
-| **GUI-DSPH-11** | Kiểm tra cột Mức ưu tiên trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Mức ưu tiên | Hiển thị Badge với màu tương ứng: Cao (destructive), Trung bình (secondary), Thấp (outline) | | Pass | 11/15/2015 | |
-| **GUI-DSPH-12** | Kiểm tra cột Thao tác trong bảng | 1. Truy cập /admin/complaints<br>2. Kiểm tra cột Thao tác | Hiển thị nút "Xem chi tiết" (icon Eye link đến /admin/complaints/[id]) | | Pass | 11/15/2015 | |
-| **GUI-DSPH-13** | Kiểm tra Pagination | 1. Truy cập /admin/complaints<br>2. Kiểm tra Pagination | Hiển thị text "Hiển thị 1-X trong Y phản hồi", các nút phân trang: Trước (disabled), số trang, Sau | | Pass | 11/15/2015 | |
+| **GUI-BCDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo doanh thu" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-BCDT-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra mô tả | Hiển thị mô tả "Theo dõi doanh thu theo ngày/tháng/năm" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-BCDT-03** | Kiểm tra Select Bộ lọc thời gian | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-BCDT-04** | Kiểm tra Date Range (khi chọn Tùy chỉnh) | 1. Truy cập /admin/reports/revenue<br>2. Chọn "Tùy chỉnh"<br>3. Kiểm tra Date Range | Hiển thị 2 input date với text "đến" ở giữa | | Pass | 11/15/2015 | |
+| **GUI-BCDT-05** | Kiểm tra Select Bộ lọc kênh | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Kênh thanh toán", có các option: Tất cả, COD, Banking, E-wallet | | Pass | 11/15/2015 | |
+| **GUI-BCDT-06** | Kiểm tra Card Tổng doanh thu | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra Card | Hiển thị Card "Tổng doanh thu" với số tiền VNĐ (text-3xl font-bold), icon DollarSign | | Pass | 11/15/2015 | |
+| **GUI-BCDT-07** | Kiểm tra Chart Biểu đồ doanh thu | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra Chart | Hiển thị Chart Line/Bar "Biểu đồ doanh thu" với trục X (thời gian), trục Y (số tiền), có thể zoom, hover để xem chi tiết | | Pass | 11/15/2015 | |
+| **GUI-BCDT-08** | Kiểm tra Table Bảng chi tiết | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra Table | Hiển thị Table với các cột: Ngày, Số đơn, Doanh thu, Trung bình đơn, Tỷ lệ hoàn | | Pass | 11/15/2015 | |
+| **GUI-BCDT-09** | Kiểm tra nút Export | 1. Truy cập /admin/reports/revenue<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách phản hồi
+### Check FUNC: Xem báo cáo doanh thu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSPH-01** | Mở trang danh sách phản hồi | 1. Truy cập /admin/complaints | Hiển thị trang với tiêu đề, mô tả, bộ lọc trạng thái, bộ lọc phân loại, trường tìm kiếm, bảng danh sách phản hồi, pagination | | Pass | 11/15/2015 | |
-| **FUNC-DSPH-02** | Hiển thị danh sách phản hồi mặc định | 1. Truy cập /admin/complaints | Hiển thị tất cả phản hồi trong bảng, mỗi phản hồi có đầy đủ thông tin: mã, khách hàng, loại, trạng thái, ngày tạo, cập nhật, mức ưu tiên, nút xem chi tiết, sắp xếp theo thời gian tạo/cập nhật mới nhất | | Pass | 11/15/2015 | |
-| **FUNC-DSPH-03** | Lọc theo Trạng thái | 1. Truy cập /admin/complaints<br>2. Chọn trạng thái (VD: Mới)<br>3. Kiểm tra danh sách | Hiển thị danh sách phản hồi có trạng thái đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-DSPH-04** | Lọc theo Phân loại | 1. Truy cập /admin/complaints<br>2. Chọn phân loại (VD: Sản phẩm)<br>3. Kiểm tra danh sách | Hiển thị danh sách phản hồi có phân loại đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-DSPH-05** | Tìm kiếm phản hồi | 1. Truy cập /admin/complaints<br>2. Nhập từ khóa tìm kiếm (mã, tên khách, số điện thoại)<br>3. Nhấn Enter | Hiển thị danh sách phản hồi phù hợp với từ khóa tìm kiếm | | Untested | 11/15/2015 | |
-| **FUNC-DSPH-06** | Click nút Xem chi tiết | 1. Truy cập /admin/complaints<br>2. Click nút "Xem chi tiết" của một phản hồi | Chuyển đến trang chi tiết phản hồi /admin/complaints/[id] | | Pass | 11/15/2015 | |
-| **FUNC-DSPH-07** | Xử lý khi không có phản hồi | 1. Truy cập /admin/complaints<br>2. Lọc để không có phản hồi nào | Hiển thị thông báo "Không tìm thấy phản hồi nào" hoặc bảng trống | | Untested | 11/15/2015 | |
-| **FUNC-DSPH-08** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/complaints<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-DSPH-09** | Xử lý khi server lỗi | 1. Truy cập /admin/complaints<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-01** | Mở trang báo cáo doanh thu | 1. Truy cập /admin/reports/revenue | Hiển thị trang với tiêu đề, mô tả, Select Bộ lọc thời gian, Select Bộ lọc kênh, Card Tổng doanh thu, Chart Biểu đồ doanh thu, Table Bảng chi tiết, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-BCDT-02** | Hiển thị báo cáo doanh thu mặc định | 1. Truy cập /admin/reports/revenue | Hiển thị báo cáo doanh thu theo khoảng thời gian mặc định (VD: Tháng này), số liệu chính xác, biểu đồ trực quan, bảng chi tiết đầy đủ | | Pass | 11/15/2015 | |
+| **FUNC-BCDT-03** | Lọc theo thời gian - Hôm nay | 1. Truy cập /admin/reports/revenue<br>2. Chọn "Hôm nay" | Hiển thị báo cáo doanh thu của ngày hôm nay, Card Tổng doanh thu, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-04** | Lọc theo thời gian - Tùy chỉnh | 1. Truy cập /admin/reports/revenue<br>2. Chọn "Tùy chỉnh"<br>3. Chọn khoảng ngày<br>4. Click "Áp dụng" | Hiển thị báo cáo doanh thu trong khoảng ngày đã chọn, Card, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-05** | Lọc theo kênh thanh toán | 1. Truy cập /admin/reports/revenue<br>2. Chọn kênh thanh toán (VD: COD)<br>3. Kiểm tra báo cáo | Hiển thị báo cáo doanh thu theo kênh đã chọn, Card, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-06** | Export báo cáo doanh thu | 1. Truy cập /admin/reports/revenue<br>2. Click nút "Export"<br>3. Chọn định dạng (CSV/XLSX/PDF) | Tải về file báo cáo doanh thu với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-07** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/revenue<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", Chart và Table trống | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-08** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/revenue<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-BCDT-09** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/revenue<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết phản hồi
+### Function: Xem báo cáo chi phí
 
-#### Check GUI: Xem chi tiết phản hồi
+#### Check GUI: Xem báo cáo chi phí
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTPH-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/complaints | | Pass | 11/15/2015 | |
-| **GUI-CTPH-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra tiêu đề | Hiển thị "Phản hồi #[id]" hoặc "Chủ đề: [chủ đề]" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CTPH-03** | Kiểm tra card Thông tin khách hàng | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin khách hàng" với: Họ tên (icon User), SĐT (icon Phone), Email (icon Mail), Mã đơn hàng (nếu có, icon Package) | | Pass | 11/15/2015 | |
-| **GUI-CTPH-04** | Kiểm tra card Chi tiết phản hồi | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra card | Hiển thị card "Chi tiết phản hồi" với: Chủ đề (text-xl font-bold), Nội dung (text-sm), Ảnh đính kèm (nếu có, hiển thị preview) | | Pass | 11/15/2015 | |
-| **GUI-CTPH-05** | Kiểm tra Badge Trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra Badge | Hiển thị Badge trạng thái với màu tương ứng: Mới (default), Đang xử lý (secondary), Đã giải quyết (outline), Đóng (destructive) | | Pass | 11/15/2015 | |
-| **GUI-CTPH-06** | Kiểm tra Badge Phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra Badge | Hiển thị Badge phân loại: Sản phẩm, Dịch vụ, Giao hàng, Thanh toán, Khác | | Pass | 11/15/2015 | |
-| **GUI-CTPH-07** | Kiểm tra Text Cam kết thời gian trả lời | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra Text | Hiển thị text "Cam kết trả lời trong X ngày" (VD: "Cam kết trả lời trong 3 ngày") với icon Clock | | Pass | 11/15/2015 | |
-| **GUI-CTPH-08** | Kiểm tra Progress bar tiến độ | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra Progress bar | Hiển thị Progress bar tiến độ xử lý với phần trăm hoàn thành (VD: 50%), màu thay đổi theo tiến độ | | Pass | 11/15/2015 | |
-| **GUI-CTPH-09** | Kiểm tra Timeline Lịch sử xử lý | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra Timeline | Hiển thị Timeline "Lịch sử xử lý" với các mốc: Thời gian, Người xử lý, Hành động, Ghi chú | | Pass | 11/15/2015 | |
-| **GUI-CTPH-10** | Kiểm tra nút Trả lời | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra nút | Hiển thị nút "Trả lời" với icon Reply variant outline | | Pass | 11/15/2015 | |
-| **GUI-CTPH-11** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra nút | Hiển thị nút "Cập nhật trạng thái" với icon CheckCircle variant outline | | Pass | 11/15/2015 | |
-| **GUI-CTPH-12** | Kiểm tra nút Phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Kiểm tra nút | Hiển thị nút "Phân loại" với icon Tag variant secondary | | Pass | 11/15/2015 | |
+| **GUI-BCCP-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo chi phí" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-BCCP-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra mô tả | Hiển thị mô tả "Theo dõi chi phí vận hành và quản lý" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-BCCP-03** | Kiểm tra Select Bộ lọc thời gian | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Tháng này, Quý này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-BCCP-04** | Kiểm tra Select Bộ lọc loại chi phí | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Loại chi phí", có các option: Tất cả, Vận chuyển, Nhập hàng, Marketing, Nhân sự, Khác | | Pass | 11/15/2015 | |
+| **GUI-BCCP-05** | Kiểm tra Card Tổng chi phí | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra Card | Hiển thị Card "Tổng chi phí" với số tiền VNĐ (text-3xl font-bold), icon TrendingDown | | Pass | 11/15/2015 | |
+| **GUI-BCCP-06** | Kiểm tra Chart Biểu đồ chi phí | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra Chart | Hiển thị Chart Bar/Line "Biểu đồ chi phí" với trục X (thời gian), trục Y (số tiền), phân loại theo loại chi phí | | Pass | 11/15/2015 | |
+| **GUI-BCCP-07** | Kiểm tra Table Bảng chi tiết | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra Table | Hiển thị Table với các cột: Ngày, Loại chi phí, Mô tả, Số tiền, Người tạo | | Pass | 11/15/2015 | |
+| **GUI-BCCP-08** | Kiểm tra nút Export | 1. Truy cập /admin/reports/expenses<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết phản hồi
+### Check FUNC: Xem báo cáo chi phí
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTPH-01** | Mở trang chi tiết phản hồi | 1. Truy cập /admin/complaints/[id] | Hiển thị trang với nút Quay lại, tiêu đề, card Thông tin khách hàng, card Chi tiết phản hồi, Badge Trạng thái, Badge Phân loại, Text Cam kết thời gian trả lời, Progress bar tiến độ, Timeline Lịch sử xử lý, nút Trả lời, nút Cập nhật trạng thái, nút Phân loại | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-02** | Hiển thị đầy đủ thông tin phản hồi | 1. Truy cập /admin/complaints/[id] | Hiển thị đầy đủ nội dung, phân loại, trạng thái, lịch sử xử lý, cam kết thời gian trả lời, progress bar tiến độ xử lý, ảnh đính kèm (nếu có) | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-03** | Click nút Quay lại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/complaints | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-04** | Xem ảnh đính kèm | 1. Truy cập /admin/complaints/[id]<br>2. Click vào ảnh đính kèm | Hiển thị preview ảnh hoặc mở ảnh trong tab mới | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-05** | Click nút Trả lời | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời" | Mở modal trả lời phản hồi | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-06** | Click nút Cập nhật trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái" | Mở modal cập nhật trạng thái xử lý | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-07** | Click nút Phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại" | Mở modal phân loại khiếu nại | | Pass | 11/15/2015 | |
-| **FUNC-CTPH-08** | Xử lý khi phản hồi không tồn tại | 1. Truy cập /admin/complaints/[id không tồn tại] | Hiển thị thông báo lỗi "Phản hồi không tồn tại" hoặc chuyển về trang danh sách | | Untested | 11/15/2015 | |
-| **FUNC-CTPH-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/complaints/[id]<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-CTPH-10** | Xử lý khi server lỗi | 1. Truy cập /admin/complaints/[id]<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-01** | Mở trang báo cáo chi phí | 1. Truy cập /admin/reports/expenses | Hiển thị trang với tiêu đề, mô tả, Select Bộ lọc thời gian, Select Bộ lọc loại chi phí, Card Tổng chi phí, Chart Biểu đồ chi phí, Table Bảng chi tiết, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-BCCP-02** | Hiển thị báo cáo chi phí mặc định | 1. Truy cập /admin/reports/expenses | Hiển thị báo cáo chi phí theo khoảng thời gian mặc định, số liệu chính xác, biểu đồ trực quan, bảng chi tiết đầy đủ | | Pass | 11/15/2015 | |
+| **FUNC-BCCP-03** | Lọc theo thời gian | 1. Truy cập /admin/reports/expenses<br>2. Chọn khoảng thời gian<br>3. Kiểm tra báo cáo | Hiển thị báo cáo chi phí trong khoảng thời gian đã chọn, Card, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-04** | Lọc theo loại chi phí | 1. Truy cập /admin/reports/expenses<br>2. Chọn loại chi phí (VD: Vận chuyển)<br>3. Kiểm tra báo cáo | Hiển thị báo cáo chi phí theo loại đã chọn, Card, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-05** | Export báo cáo chi phí | 1. Truy cập /admin/reports/expenses<br>2. Click nút "Export"<br>3. Chọn định dạng | Tải về file báo cáo chi phí với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-06** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/expenses<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", Chart và Table trống | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-07** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/expenses<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-BCCP-08** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/expenses<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Trả lời phản hồi
+### Function: Xem báo cáo lợi nhuận
 
-#### Check GUI: Trả lời phản hồi
+#### Check GUI: Xem báo cáo lợi nhuận
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TLPH-01** | Kiểm tra modal Trả lời phản hồi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Trả lời phản hồi", mô tả "Gửi phản hồi đến khách hàng" | | Pass | 11/15/2015 | |
-| **GUI-TLPH-02** | Kiểm tra trường Tiêu đề | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra trường | Hiển thị label "Tiêu đề *", input type text với giá trị mặc định là "Re: [chủ đề gốc]" | | Pass | 11/15/2015 | |
-| **GUI-TLPH-03** | Kiểm tra Textarea Nội dung | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra Textarea | Hiển thị label "Nội dung *", Textarea với placeholder "Nhập nội dung trả lời...", rows 6 | | Pass | 11/15/2015 | |
-| **GUI-TLPH-04** | Kiểm tra nút Đính kèm file | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra nút | Hiển thị nút "Đính kèm file" với icon Paperclip | | Pass | 11/15/2015 | |
-| **GUI-TLPH-05** | Kiểm tra Select Kênh gửi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra Select | Hiển thị label "Kênh gửi *", Select với placeholder "Chọn kênh gửi", có các option: Email, Push, có thể chọn nhiều | | Pass | 11/15/2015 | |
-| **GUI-TLPH-06** | Kiểm tra nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-TLPH-07** | Kiểm tra nút Gửi phản hồi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Kiểm tra nút | Hiển thị nút "Gửi phản hồi" type submit | | Pass | 11/15/2015 | |
+| **GUI-BCLN-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo lợi nhuận" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-BCLN-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tính chi phí - doanh thu = lãi" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-BCLN-03** | Kiểm tra Select Bộ lọc thời gian | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Tháng này, Quý này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-BCLN-04** | Kiểm tra Card Tổng lợi nhuận | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Card | Hiển thị Card "Tổng lợi nhuận" với số tiền VNĐ (text-3xl font-bold), icon TrendingUp màu xanh lá | | Pass | 11/15/2015 | |
+| **GUI-BCLN-05** | Kiểm tra Card Doanh thu | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Card | Hiển thị Card "Doanh thu" với số tiền VNĐ, icon DollarSign | | Pass | 11/15/2015 | |
+| **GUI-BCLN-06** | Kiểm tra Card Chi phí | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Card | Hiển thị Card "Chi phí" với số tiền VNĐ, icon TrendingDown màu đỏ | | Pass | 11/15/2015 | |
+| **GUI-BCLN-07** | Kiểm tra Chart Biểu đồ lợi nhuận | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Chart | Hiển thị Chart Bar/Line "Biểu đồ lợi nhuận" với trục X (thời gian), trục Y (số tiền), hiển thị Doanh thu, Chi phí, Lợi nhuận | | Pass | 11/15/2015 | |
+| **GUI-BCLN-08** | Kiểm tra Table Bảng chi tiết | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra Table | Hiển thị Table với các cột: Thời gian, Doanh thu, Giá vốn, Chi phí, Lợi nhuận, Tỷ lệ lợi nhuận (%) | | Pass | 11/15/2015 | |
+| **GUI-BCLN-09** | Kiểm tra nút Export | 1. Truy cập /admin/reports/profit<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Trả lời phản hồi
+### Check FUNC: Xem báo cáo lợi nhuận
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TLPH-01** | Mở modal trả lời phản hồi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời" | Hiển thị Dialog với tiêu đề "Trả lời phản hồi", mô tả, trường Tiêu đề (có giá trị mặc định), Textarea Nội dung, nút Đính kèm file, Select Kênh gửi, nút Hủy, nút Gửi phản hồi | | Pass | 11/15/2015 | |
-| **FUNC-TLPH-02** | Trả lời phản hồi thành công | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Điều chỉnh tiêu đề (nếu cần)<br>4. Nhập nội dung trả lời<br>5. Chọn kênh gửi (Email, Push)<br>6. Đính kèm file (tùy chọn)<br>7. Click "Gửi phản hồi" | Hiển thị thông báo "Gửi phản hồi thành công", phản hồi được gửi đến khách hàng qua các kênh đã chọn, bản sao được lưu vào lịch sử, progress bar tiến độ được cập nhật, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-TLPH-03** | Trả lời - Thiếu Tiêu đề | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Xóa tiêu đề<br>4. Click "Gửi phản hồi" | Hiển thị thông báo lỗi "Tiêu đề không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TLPH-04** | Trả lời - Thiếu Nội dung | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Để trống nội dung<br>4. Click "Gửi phản hồi" | Hiển thị thông báo lỗi "Nội dung không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TLPH-05** | Trả lời - Thiếu Kênh gửi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Không chọn kênh gửi<br>4. Click "Gửi phản hồi" | Hiển thị thông báo lỗi "Vui lòng chọn ít nhất một kênh gửi", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-TLPH-06** | Trả lời - Đính kèm file | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Nhập nội dung<br>4. Click "Đính kèm file"<br>5. Chọn file<br>6. Click "Gửi phản hồi" | File được đính kèm, hiển thị tên file, file được gửi cùng phản hồi | | Untested | 11/15/2015 | |
-| **FUNC-TLPH-07** | Click nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Click "Hủy" | Modal đóng, không gửi phản hồi | | Pass | 11/15/2015 | |
-| **FUNC-TLPH-08** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Điền đầy đủ thông tin<br>4. Tắt kết nối mạng<br>5. Click "Gửi phản hồi" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-TLPH-09** | Xử lý khi server lỗi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Trả lời"<br>3. Điền đầy đủ thông tin<br>4. Server trả về lỗi 500<br>5. Click "Gửi phản hồi" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-BCLN-01** | Mở trang báo cáo lợi nhuận | 1. Truy cập /admin/reports/profit | Hiển thị trang với tiêu đề, mô tả, Select Bộ lọc thời gian, Card Tổng lợi nhuận, Card Doanh thu, Card Chi phí, Chart Biểu đồ lợi nhuận, Table Bảng chi tiết, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-BCLN-02** | Hiển thị báo cáo lợi nhuận mặc định | 1. Truy cập /admin/reports/profit | Hiển thị báo cáo lợi nhuận theo khoảng thời gian mặc định, số liệu đúng (Doanh thu - Chi phí = Lợi nhuận), biểu đồ trình bày rõ ràng, bảng chi tiết đầy đủ | | Pass | 11/15/2015 | |
+| **FUNC-BCLN-03** | Lọc theo thời gian | 1. Truy cập /admin/reports/profit<br>2. Chọn khoảng thời gian<br>3. Kiểm tra báo cáo | Hiển thị báo cáo lợi nhuận trong khoảng thời gian đã chọn, các Card, Chart, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCLN-04** | Export báo cáo lợi nhuận | 1. Truy cập /admin/reports/profit<br>2. Click nút "Export"<br>3. Chọn định dạng | Tải về file báo cáo lợi nhuận với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-BCLN-05** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/profit<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", Chart và Table trống | | Untested | 11/15/2015 | |
+| **FUNC-BCLN-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/profit<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-BCLN-07** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/profit<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Cập nhật trạng thái xử lý phản hồi
+### Function: Xem sản phẩm bán chạy
 
-#### Check GUI: Cập nhật trạng thái xử lý phản hồi
+#### Check GUI: Xem sản phẩm bán chạy
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CNTTXLP-01** | Kiểm tra modal Cập nhật trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Cập nhật trạng thái xử lý", mô tả "Thay đổi trạng thái xử lý phản hồi" | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-02** | Kiểm tra trường Trạng thái hiện tại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra trường | Hiển thị label "Trạng thái hiện tại", Display hiển thị trạng thái hiện tại với Badge và màu tương ứng | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-03** | Kiểm tra Select Trạng thái mới | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra Select | Hiển thị label "Trạng thái mới *", Select với placeholder "Chọn trạng thái mới", có các option: Mới, Đang xử lý, Đã giải quyết, Đóng | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-04** | Kiểm tra trường Người xử lý | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra trường | Hiển thị label "Người xử lý", Select với placeholder "Chọn người xử lý...", có danh sách nhân viên | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-05** | Kiểm tra Textarea Ghi chú | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra Textarea | Hiển thị label "Ghi chú", Textarea với placeholder "Nhập ghi chú thay đổi trạng thái (tùy chọn)" | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-06** | Kiểm tra Form Mẫu phản hồi kết thúc | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái "Đóng"<br>4. Kiểm tra Form | Hiển thị Form "Mẫu phản hồi kết thúc" với: label "Lý do kết thúc *", Textarea, label "Hướng dẫn/đền bù (nếu có)", Textarea | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-07** | Kiểm tra nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-CNTTXLP-08** | Kiểm tra nút Cập nhật trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Kiểm tra nút | Hiển thị nút "Cập nhật trạng thái" type submit | | Pass | 11/15/2015 | |
+| **GUI-SPBC-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Sản phẩm bán chạy" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-SPBC-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra mô tả | Hiển thị mô tả "Top sản phẩm có doanh số cao" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-SPBC-03** | Kiểm tra Select Khoảng thời gian | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Hôm nay, Tuần này, Tháng này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-SPBC-04** | Kiểm tra Table Bảng xếp hạng | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra Table | Hiển thị Table với các cột: Hạng, Sản phẩm, Số lượng bán, Doanh thu, Tỷ trọng (%) | | Pass | 11/15/2015 | |
+| **GUI-SPBC-05** | Kiểm tra Chart Biểu đồ tỉ trọng | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra Chart | Hiển thị Chart Pie/Donut "Biểu đồ tỉ trọng doanh thu" với các phần tương ứng với từng sản phẩm | | Pass | 11/15/2015 | |
+| **GUI-SPBC-06** | Kiểm tra nút Export | 1. Truy cập /admin/reports/top-products<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cập nhật trạng thái xử lý phản hồi
+### Check FUNC: Xem sản phẩm bán chạy
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CNTTXLP-01** | Mở modal cập nhật trạng thái | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái" | Hiển thị Dialog với tiêu đề "Cập nhật trạng thái xử lý", mô tả, trường Trạng thái hiện tại, Select Trạng thái mới, Select Người xử lý, Textarea Ghi chú, nút Hủy, nút Cập nhật trạng thái | | Pass | 11/15/2015 | |
-| **FUNC-CNTTXLP-02** | Cập nhật trạng thái thành công | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái mới<br>4. Chọn người xử lý<br>5. Nhập ghi chú (tùy chọn)<br>6. Click "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", trạng thái phản hồi được cập nhật, bản ghi được thêm vào Timeline, progress bar tiến độ được cập nhật, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-CNTTXLP-03** | Cập nhật - Thiếu Trạng thái mới | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Không chọn trạng thái mới<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Vui lòng chọn trạng thái mới", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTTXLP-04** | Cập nhật - Chọn trạng thái giống hiện tại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái mới giống trạng thái hiện tại<br>4. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Trạng thái mới phải khác trạng thái hiện tại", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTTXLP-05** | Đóng phản hồi - Thiếu Lý do kết thúc | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái "Đóng"<br>4. Để trống Lý do kết thúc<br>5. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Lý do kết thúc không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTTXLP-06** | Đóng phản hồi thành công | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái "Đóng"<br>4. Nhập lý do kết thúc<br>5. Nhập hướng dẫn/đền bù (tùy chọn)<br>6. Click "Cập nhật trạng thái" | Hiển thị thông báo "Cập nhật trạng thái thành công", trạng thái chuyển thành "Đóng", bản ghi được thêm vào Timeline, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-CNTTXLP-07** | Click nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Click "Hủy" | Modal đóng, trạng thái không được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-CNTTXLP-08** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái mới<br>4. Tắt kết nối mạng<br>5. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-CNTTXLP-09** | Xử lý khi server lỗi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Cập nhật trạng thái"<br>3. Chọn trạng thái mới<br>4. Server trả về lỗi 500<br>5. Click "Cập nhật trạng thái" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-SPBC-01** | Mở trang sản phẩm bán chạy | 1. Truy cập /admin/reports/top-products | Hiển thị trang với tiêu đề, mô tả, Select Khoảng thời gian, Table Bảng xếp hạng, Chart Biểu đồ tỉ trọng, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-SPBC-02** | Hiển thị bảng xếp hạng mặc định | 1. Truy cập /admin/reports/top-products | Hiển thị bảng xếp hạng top sản phẩm theo doanh thu/số lượng, danh sách xếp hạng chính xác, biểu đồ tỉ trọng hiển thị đúng | | Pass | 11/15/2015 | |
+| **FUNC-SPBC-03** | Lọc theo thời gian | 1. Truy cập /admin/reports/top-products<br>2. Chọn khoảng thời gian<br>3. Kiểm tra bảng xếp hạng | Hiển thị bảng xếp hạng sản phẩm bán chạy trong khoảng thời gian đã chọn, Table và Chart được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-SPBC-04** | Export báo cáo sản phẩm bán chạy | 1. Truy cập /admin/reports/top-products<br>2. Click nút "Export"<br>3. Chọn định dạng | Tải về file báo cáo sản phẩm bán chạy với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-SPBC-05** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/top-products<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", Table và Chart trống | | Untested | 11/15/2015 | |
+| **FUNC-SPBC-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/top-products<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-SPBC-07** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/top-products<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
-### Function: Phân loại khiếu nại
+### Function: Xem thống kê khách hàng
 
-#### Check GUI: Phân loại khiếu nại
+#### Check GUI: Xem thống kê khách hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-PLKN-01** | Kiểm tra modal Phân loại khiếu nại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Phân loại khiếu nại", mô tả "Gắn nhãn/nhóm để phân tích & báo cáo" | | Pass | 11/15/2015 | |
-| **GUI-PLKN-02** | Kiểm tra Select Chọn phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Kiểm tra Select | Hiển thị label "Chọn phân loại *", Select với placeholder "Chọn phân loại...", có các option: Sản phẩm, Dịch vụ, Giao hàng, Thanh toán, Khác | | Pass | 11/15/2015 | |
-| **GUI-PLKN-03** | Kiểm tra nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-PLKN-04** | Kiểm tra nút Lưu phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Kiểm tra nút | Hiển thị nút "Lưu phân loại" type submit | | Pass | 11/15/2015 | |
+| **GUI-TKKH-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thống kê khách hàng" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-TKKH-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra mô tả | Hiển thị mô tả "Khách mới, VIP, tần suất mua hàng" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-TKKH-03** | Kiểm tra Select Bộ lọc thời gian | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Tuần này, Tháng này, Quý này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-TKKH-04** | Kiểm tra Card Khách mới | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Card | Hiển thị Card "Khách mới" với số lượng (text-2xl font-bold), icon UserPlus | | Pass | 11/15/2015 | |
+| **GUI-TKKH-05** | Kiểm tra Card Khách VIP | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Card | Hiển thị Card "Khách VIP" với số lượng (text-2xl font-bold), icon Crown | | Pass | 11/15/2015 | |
+| **GUI-TKKH-06** | Kiểm tra Card AOV (Average Order Value) | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Card | Hiển thị Card "AOV" với số tiền VNĐ (text-2xl font-bold), icon DollarSign | | Pass | 11/15/2015 | |
+| **GUI-TKKH-07** | Kiểm tra Card Tần suất mua | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Card | Hiển thị Card "Tần suất mua" với số lần (text-2xl font-bold), icon ShoppingCart | | Pass | 11/15/2015 | |
+| **GUI-TKKH-08** | Kiểm tra Table Bảng khách hàng | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra Table | Hiển thị Table với các cột: Tên, Email, Số đơn, Tổng chi tiêu, Hạng | | Pass | 11/15/2015 | |
+| **GUI-TKKH-09** | Kiểm tra nút Export | 1. Truy cập /admin/reports/customers<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Phân loại khiếu nại
+### Check FUNC: Xem thống kê khách hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-PLKN-01** | Mở modal phân loại khiếu nại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại" | Hiển thị Dialog với tiêu đề "Phân loại khiếu nại", mô tả, Select Chọn phân loại, nút Hủy, nút Lưu phân loại | | Pass | 11/15/2015 | |
-| **FUNC-PLKN-02** | Phân loại khiếu nại thành công | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Chọn phân loại (VD: Sản phẩm)<br>4. Click "Lưu phân loại" | Hiển thị thông báo "Lưu phân loại thành công", phân loại được lưu, Badge phân loại được cập nhật, có thể xuất báo cáo theo phân loại, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-PLKN-03** | Phân loại - Thiếu Chọn phân loại | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Không chọn phân loại<br>4. Click "Lưu phân loại" | Hiển thị thông báo lỗi "Vui lòng chọn phân loại", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-PLKN-04** | Click nút Hủy | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Click "Hủy" | Modal đóng, phân loại không được lưu | | Pass | 11/15/2015 | |
-| **FUNC-PLKN-05** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Chọn phân loại<br>4. Tắt kết nối mạng<br>5. Click "Lưu phân loại" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-PLKN-06** | Xử lý khi server lỗi | 1. Truy cập /admin/complaints/[id]<br>2. Click nút "Phân loại"<br>3. Chọn phân loại<br>4. Server trả về lỗi 500<br>5. Click "Lưu phân loại" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| **FUNC-TKKH-01** | Mở trang thống kê khách hàng | 1. Truy cập /admin/reports/customers | Hiển thị trang với tiêu đề, mô tả, Select Bộ lọc thời gian, Card Khách mới, Card Khách VIP, Card AOV, Card Tần suất mua, Table Bảng khách hàng, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-TKKH-02** | Hiển thị thống kê khách hàng mặc định | 1. Truy cập /admin/reports/customers | Hiển thị thống kê khách hàng theo khoảng thời gian mặc định, KPI hiển thị đúng (Khách mới, Khách VIP, AOV, Tần suất mua), bảng khách hàng đầy đủ | | Pass | 11/15/2015 | |
+| **FUNC-TKKH-03** | Lọc theo thời gian | 1. Truy cập /admin/reports/customers<br>2. Chọn khoảng thời gian<br>3. Kiểm tra thống kê | Hiển thị thống kê khách hàng trong khoảng thời gian đã chọn, các Card KPI và Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-TKKH-04** | Export thống kê khách hàng | 1. Truy cập /admin/reports/customers<br>2. Click nút "Export"<br>3. Chọn định dạng | Tải về file thống kê khách hàng với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-TKKH-05** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/customers<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", Table trống, các Card KPI hiển thị 0 | | Untested | 11/15/2015 | |
+| **FUNC-TKKH-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/customers<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-TKKH-07** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/customers<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+
+---
+
+### Function: Xem báo cáo tồn kho
+
+#### Check GUI: Xem báo cáo tồn kho
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-BCTK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo tồn kho" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-BCTK-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra mô tả | Hiển thị mô tả "Tình trạng hàng hóa, sản phẩm sắp hết" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-BCTK-03** | Kiểm tra Input Ngưỡng cảnh báo | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra Input | Hiển thị label "Ngưỡng cảnh báo", input type number với placeholder "Nhập số lượng sắp hết (VD: 5)", có giá trị mặc định | | Pass | 11/15/2015 | |
+| **GUI-BCTK-04** | Kiểm tra nút Áp dụng ngưỡng | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra nút | Hiển thị nút "Áp dụng ngưỡng" variant outline | | Pass | 11/15/2015 | |
+| **GUI-BCTK-05** | Kiểm tra Table Bảng tồn kho | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra Table | Hiển thị Table với các cột: Sản phẩm, SKU, Tồn hiện tại, Ngưỡng, Trạng thái | | Pass | 11/15/2015 | |
+| **GUI-BCTK-06** | Kiểm tra Badge Trạng thái trong bảng | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra Badge | Hiển thị Badge trạng thái: "Đủ hàng" (outline), "Sắp hết" (secondary), "Hết hàng" (destructive) | | Pass | 11/15/2015 | |
+| **GUI-BCTK-07** | Kiểm tra Form Bộ lọc nâng cao | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra Form | Hiển thị Form "Bộ lọc nâng cao" với các trường: Danh mục, Thương hiệu, Trạng thái, có nút "Áp dụng lọc" | | Pass | 11/15/2015 | |
+| **GUI-BCTK-08** | Kiểm tra Checkbox Chọn trường export | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra Checkbox | Hiển thị Checkbox "Chọn trường export" với danh sách các trường: Sản phẩm, SKU, Tồn hiện tại, Ngưỡng, Trạng thái, có thể chọn nhiều | | Pass | 11/15/2015 | |
+| **GUI-BCTK-09** | Kiểm tra nút Lưu mẫu export | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra nút | Hiển thị nút "Lưu mẫu export" variant outline | | Pass | 11/15/2015 | |
+| **GUI-BCTK-10** | Kiểm tra nút Export | 1. Truy cập /admin/reports/inventory<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline, có Select định dạng (CSV/XLSX) | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Xem báo cáo tồn kho
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-BCTK-01** | Mở trang báo cáo tồn kho | 1. Truy cập /admin/reports/inventory | Hiển thị trang với tiêu đề, mô tả, Input Ngưỡng cảnh báo, nút Áp dụng ngưỡng, Table Bảng tồn kho, Form Bộ lọc nâng cao, Checkbox Chọn trường export, nút Lưu mẫu export, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-BCTK-02** | Hiển thị báo cáo tồn kho mặc định | 1. Truy cập /admin/reports/inventory | Hiển thị báo cáo tồn kho với danh sách sản phẩm, trạng thái tồn kho, sản phẩm sắp hết được đánh dấu rõ ràng | | Pass | 11/15/2015 | |
+| **FUNC-BCTK-03** | Áp dụng ngưỡng cảnh báo | 1. Truy cập /admin/reports/inventory<br>2. Nhập ngưỡng cảnh báo (VD: 5)<br>3. Click "Áp dụng ngưỡng" | Danh sách sản phẩm dưới ngưỡng được liệt kê, cảnh báo rõ ràng, gợi ý nhập hàng, Table được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-04** | Lọc nâng cao | 1. Truy cập /admin/reports/inventory<br>2. Chọn danh mục, thương hiệu, trạng thái<br>3. Click "Áp dụng lọc" | Table hiển thị sản phẩm phù hợp với bộ lọc đã chọn | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-05** | Export dữ liệu tùy chỉnh | 1. Truy cập /admin/reports/inventory<br>2. Chọn các trường cần export<br>3. Áp dụng bộ lọc (nếu có)<br>4. Chọn định dạng (CSV/XLSX)<br>5. Click "Export" | Tải về file báo cáo tồn kho với các trường đã chọn, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-06** | Lưu mẫu export | 1. Truy cập /admin/reports/inventory<br>2. Chọn các trường export<br>3. Áp dụng bộ lọc<br>4. Click "Lưu mẫu export"<br>5. Nhập tên mẫu | Hiển thị thông báo "Lưu mẫu export thành công", mẫu được lưu và có thể sử dụng lại | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-07** | Export - Không chọn trường | 1. Truy cập /admin/reports/inventory<br>2. Không chọn trường export<br>3. Click "Export" | Hiển thị thông báo lỗi "Vui lòng chọn ít nhất một trường để export", không export | | Pass | 11/15/2015 | |
+| **FUNC-BCTK-08** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/inventory<br>2. Lọc để không có sản phẩm nào | Hiển thị thông báo "Không tìm thấy sản phẩm nào", Table trống | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/inventory<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-BCTK-10** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/inventory<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
+
+---
+
+### Function: Tạo báo cáo tùy chỉnh
+
+#### Check GUI: Tạo báo cáo tùy chỉnh
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-BCTC-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo nâng cao" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
+| **GUI-BCTC-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra mô tả | Hiển thị mô tả "Phân tích hiệu quả khuyến mãi, hành vi mua" màu muted-foreground | | Pass | 11/15/2015 | |
+| **GUI-BCTC-03** | Kiểm tra Card Phân tích khuyến mãi | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra Card | Hiển thị Card "Phân tích khuyến mãi" với: Tỉ lệ sử dụng mã (%), Doanh thu do khuyến mãi (VNĐ), Biểu đồ hiệu quả chiến dịch | | Pass | 11/15/2015 | |
+| **GUI-BCTC-04** | Kiểm tra Card Phân tích hành vi | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra Card | Hiển thị Card "Phân tích hành vi" với: Tần suất mua, Tỷ lệ quay lại (%), Phễu chuyển đổi, Biểu đồ hành vi khách hàng | | Pass | 11/15/2015 | |
+| **GUI-BCTC-05** | Kiểm tra Select Bộ lọc thời gian | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra Select | Hiển thị Select với placeholder "Khoảng thời gian", có các option: Tuần này, Tháng này, Quý này, Năm nay, Tùy chỉnh | | Pass | 11/15/2015 | |
+| **GUI-BCTC-06** | Kiểm tra nút Export | 1. Truy cập /admin/reports/advanced<br>2. Kiểm tra nút | Hiển thị nút "Export" với icon Download variant outline | | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Tạo báo cáo tùy chỉnh
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-BCTC-01** | Mở trang báo cáo nâng cao | 1. Truy cập /admin/reports/advanced | Hiển thị trang với tiêu đề, mô tả, Select Bộ lọc thời gian, Card Phân tích khuyến mãi, Card Phân tích hành vi, nút Export | | Pass | 11/15/2015 | |
+| **FUNC-BCTC-02** | Hiển thị báo cáo nâng cao mặc định | 1. Truy cập /admin/reports/advanced | Hiển thị báo cáo nâng cao với chỉ số hiển thị đúng (Tỉ lệ sử dụng mã, Doanh thu do khuyến mãi, Tần suất mua, Tỷ lệ quay lại, Phễu chuyển đổi), biểu đồ trực quan | | Pass | 11/15/2015 | |
+| **FUNC-BCTC-03** | Lọc theo thời gian | 1. Truy cập /admin/reports/advanced<br>2. Chọn khoảng thời gian<br>3. Kiểm tra báo cáo | Hiển thị báo cáo nâng cao trong khoảng thời gian đã chọn, các Card và biểu đồ được cập nhật | | Untested | 11/15/2015 | |
+| **FUNC-BCTC-04** | Export báo cáo nâng cao | 1. Truy cập /admin/reports/advanced<br>2. Click nút "Export"<br>3. Chọn định dạng | Tải về file báo cáo nâng cao với đầy đủ dữ liệu, file có định dạng đúng | | Untested | 11/15/2015 | |
+| **FUNC-BCTC-05** | Xử lý khi không có dữ liệu | 1. Truy cập /admin/reports/advanced<br>2. Chọn khoảng thời gian không có dữ liệu | Hiển thị thông báo "Không có dữ liệu trong khoảng thời gian đã chọn", các Card và biểu đồ trống | | Untested | 11/15/2015 | |
+| **FUNC-BCTC-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/reports/advanced<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
+| **FUNC-BCTC-07** | Xử lý khi server lỗi | 1. Truy cập /admin/reports/advanced<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
 
 ---
 
