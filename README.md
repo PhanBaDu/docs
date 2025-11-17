@@ -279,9 +279,9 @@
 
 ---
 
-**Tổng số chức năng:** 197 functions  
-**Admin:** 73 functions  
+**Tổng số chức năng:** 189 functions  
+**Admin:** 61 functions  
 **Nhân viên:** 27 functions  
 **Nhân viên kho:** 28 functions  
-**User:** 69 functions
+**User:** 57 functions
 
