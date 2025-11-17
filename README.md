@@ -1,291 +1,287 @@
-# Test Case Template - Quản lý tồn kho (Admin)
+# BLACKBOX TEST CASE - TỔNG QUAN DỰ ÁN
 
-## Module Code
-**Model Management Store: Quản lý tồn kho Admin**
-
-## Test Requirement
-1. Hiển thị danh sách tồn kho
-2. Xem chi tiết tồn kho
-3. Cập nhật tồn kho
-4. Nhập hàng mới
-5. Cảnh báo tồn kho thấp
-6. Kiểm kê tồn kho
-7. Nhập kho
+**Dự án:** Hệ Thống Quản Lý Nhà Sách  
+**Ngày tạo:** 2025  
+**Mục đích:** Tài liệu tổng quan về các chức năng và routes để thực hiện blackbox testing
 
 ---
 
-## Test Summary
+## BẢNG TỔNG HỢP TEST CASE
 
-### Người thực hiện Test: [Tên người test]
-
-| Status | Count |
-|--------|-------|
-| **Pass** | 71 |
-| **Fail** | 0 |
-| **Untested** | 72 |
-| **N/A** | 0 |
-| **Number of Test cases** | 143 |
-
----
-
-## Test Cases
-
-### Function: Hiển thị danh sách tồn kho
-
-#### Check GUI: Hiển thị danh sách tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSTK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/inventory<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý tồn kho" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-DSTK-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/inventory<br>2. Kiểm tra mô tả | Hiển thị mô tả "Theo dõi và quản lý tồn kho sản phẩm" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-DSTK-03** | Kiểm tra nút Nhập hàng | 1. Truy cập /admin/inventory<br>2. Kiểm tra nút Nhập hàng | Hiển thị nút "Nhập hàng" với icon Upload variant outline ở header | | Pass | 11/15/2015 | |
-| **GUI-DSTK-04** | Kiểm tra nút Kiểm kê | 1. Truy cập /admin/inventory<br>2. Kiểm tra nút Kiểm kê | Hiển thị nút "Kiểm kê" với icon ClipboardList variant outline ở header | | Pass | 11/15/2015 | |
-| **GUI-DSTK-05** | Kiểm tra nút Thêm sản phẩm | 1. Truy cập /admin/inventory<br>2. Kiểm tra nút Thêm sản phẩm | Hiển thị nút "Thêm sản phẩm" với icon Plus ở header, link đến /admin/inventory/new | | Pass | 11/15/2015 | |
-| **GUI-DSTK-06** | Kiểm tra Stats Cards | 1. Truy cập /admin/inventory<br>2. Kiểm tra Stats Cards | Hiển thị 4 card thống kê: Tổng sản phẩm (156), Đủ hàng (142), Sắp hết (8), Hết hàng (6) | | Pass | 11/15/2015 | |
-| **GUI-DSTK-07** | Kiểm tra trường Tìm kiếm | 1. Truy cập /admin/inventory<br>2. Kiểm tra trường tìm kiếm | Hiển thị input với icon Search bên trái, placeholder "Tìm kiếm sản phẩm...", có thể nhập và nhấn Enter để tìm | | Pass | 11/15/2015 | |
-| **GUI-DSTK-08** | Kiểm tra Select Danh mục | 1. Truy cập /admin/inventory<br>2. Kiểm tra Select Danh mục | Hiển thị Select với placeholder "Danh mục", width w-40, có các option: Tất cả, Gundam, Figure, Mô hình xe, Máy bay, Tàu chiến, Khác | | Pass | 11/15/2015 | |
-| **GUI-DSTK-09** | Kiểm tra Select Trạng thái tồn kho | 1. Truy cập /admin/inventory<br>2. Kiểm tra Select Trạng thái | Hiển thị Select với placeholder "Trạng thái", width w-40, có các option: Tất cả, Đủ hàng, Sắp hết, Nguy hiểm, Hết hàng | | Pass | 11/15/2015 | |
-| **GUI-DSTK-10** | Kiểm tra nút Bộ lọc | 1. Truy cập /admin/inventory<br>2. Kiểm tra nút Bộ lọc | Hiển thị nút "Bộ lọc" với icon Filter variant outline | | Pass | 11/15/2015 | |
-| **GUI-DSTK-11** | Kiểm tra bảng danh sách tồn kho | 1. Truy cập /admin/inventory<br>2. Kiểm tra bảng | Hiển thị Table với các cột: Mã SP, Tên SP, Danh mục, Tồn kho hiện tại, Ngưỡng cảnh báo, Trạng thái, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-DSTK-12** | Kiểm tra cột Mã SP trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Mã SP | Mỗi dòng hiển thị mã sản phẩm (VD: SP001) với font-medium | | Pass | 11/15/2015 | |
-| **GUI-DSTK-13** | Kiểm tra cột Tên SP trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Tên SP | Mỗi dòng hiển thị hình ảnh sản phẩm (w-12 h-12 rounded-lg), tên sản phẩm (font-medium), thương hiệu (text-sm muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DSTK-14** | Kiểm tra cột Danh mục trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Danh mục | Hiển thị Badge variant outline với tên danh mục | | Pass | 11/15/2015 | |
-| **GUI-DSTK-15** | Kiểm tra cột Tồn kho hiện tại trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Tồn kho | Hiển thị số lượng tồn kho (font-medium) và Progress bar hiển thị tỷ lệ tồn kho so với maxStock | | Pass | 11/15/2015 | |
-| **GUI-DSTK-16** | Kiểm tra cột Ngưỡng cảnh báo trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Ngưỡng cảnh báo | Hiển thị số lượng ngưỡng cảnh báo (text-sm) | | Pass | 11/15/2015 | |
-| **GUI-DSTK-17** | Kiểm tra cột Trạng thái trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Trạng thái | Hiển thị Badge với icon và màu tương ứng: Đủ hàng (CheckCircle màu xanh, default), Sắp hết (AlertTriangle màu vàng, secondary), Nguy hiểm (AlertTriangle màu cam, destructive), Hết hàng (AlertTriangle màu đỏ, destructive) | | Pass | 11/15/2015 | |
-| **GUI-DSTK-18** | Kiểm tra cột Thao tác trong bảng | 1. Truy cập /admin/inventory<br>2. Kiểm tra cột Thao tác | Hiển thị 3 nút: Xem (icon Edit link đến /admin/inventory/[id]), Chỉnh sửa (icon Edit link đến /admin/inventory/[id]/edit), Nhập hàng (icon Upload), tất cả variant ghost size sm | | Pass | 11/15/2015 | |
-| **GUI-DSTK-19** | Kiểm tra Pagination | 1. Truy cập /admin/inventory<br>2. Kiểm tra Pagination | Hiển thị text "Hiển thị 1-X trong Y sản phẩm", các nút phân trang: Trước (disabled), số trang, Sau | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Hiển thị danh sách tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSTK-01** | Mở trang danh sách tồn kho | 1. Truy cập /admin/inventory | Hiển thị trang với tiêu đề, mô tả, nút Nhập hàng, nút Kiểm kê, nút Thêm sản phẩm, 4 Stats Cards, bộ lọc (tìm kiếm, danh mục, trạng thái, nút Bộ lọc), bảng danh sách tồn kho, pagination | | Pass | 11/15/2015 | |
-| **FUNC-DSTK-02** | Hiển thị danh sách tồn kho mặc định | 1. Truy cập /admin/inventory | Hiển thị tất cả sản phẩm trong bảng, mỗi sản phẩm có đầy đủ thông tin: mã SP, hình ảnh, tên, thương hiệu, danh mục, tồn kho hiện tại (kèm progress bar), ngưỡng cảnh báo, trạng thái (kèm icon và màu), các nút thao tác | | Pass | 11/15/2015 | |
-| **FUNC-DSTK-03** | Click nút Nhập hàng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng" | Mở modal nhập hàng hoặc chuyển đến trang nhập hàng | | Untested | 11/15/2015 | |
-| **FUNC-DSTK-04** | Click nút Kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê" | Mở modal kiểm kê tồn kho | | Untested | 11/15/2015 | |
-| **FUNC-DSTK-05** | Click nút Thêm sản phẩm | 1. Truy cập /admin/inventory<br>2. Click nút "Thêm sản phẩm" | Chuyển đến trang /admin/inventory/new | | Pass | 11/15/2015 | |
-| **FUNC-DSTK-06** | Click nút Xem (icon Edit đầu tiên) | 1. Truy cập /admin/inventory<br>2. Click nút Xem của một sản phẩm | Chuyển đến trang chi tiết tồn kho /admin/inventory/[id] | | Pass | 11/15/2015 | |
-| **FUNC-DSTK-07** | Click nút Chỉnh sửa (icon Edit thứ hai) | 1. Truy cập /admin/inventory<br>2. Click nút Chỉnh sửa của một sản phẩm | Chuyển đến trang chỉnh sửa tồn kho /admin/inventory/[id]/edit | | Pass | 11/15/2015 | |
-| **FUNC-DSTK-08** | Click nút Nhập hàng (icon Upload) | 1. Truy cập /admin/inventory<br>2. Click nút Nhập hàng của một sản phẩm | Mở modal nhập hàng với sản phẩm đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-DSTK-09** | Xử lý khi không có sản phẩm | 1. Truy cập /admin/inventory<br>2. Lọc để không có sản phẩm nào | Hiển thị thông báo "Không tìm thấy sản phẩm nào" hoặc bảng trống | | Untested | 11/15/2015 | |
-| **FUNC-DSTK-10** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-DSTK-11** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
-
----
-
-### Function: Xem chi tiết tồn kho
-
-#### Check GUI: Xem chi tiết tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTTK-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/inventory | | Pass | 11/15/2015 | |
-| **GUI-CTTK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra tiêu đề | Hiển thị tên sản phẩm với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CTTK-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra mô tả | Hiển thị "Chi tiết tồn kho - Mã: [productCode]" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CTTK-04** | Kiểm tra nút Chỉnh sửa | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra nút Chỉnh sửa | Hiển thị nút "Chỉnh sửa" với icon Edit variant outline, link đến /admin/inventory/[id]/edit | | Pass | 11/15/2015 | |
-| **GUI-CTTK-05** | Kiểm tra nút Nhập hàng | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra nút Nhập hàng | Hiển thị nút "Nhập hàng" với icon Upload variant secondary | | Pass | 11/15/2015 | |
-| **GUI-CTTK-06** | Kiểm tra nút Xóa | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra nút Xóa | Hiển thị nút "Xóa" với icon Trash2 variant destructive | | Pass | 11/15/2015 | |
-| **GUI-CTTK-07** | Kiểm tra card Thông tin sản phẩm | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin sản phẩm" với hình ảnh sản phẩm (w-48 h-48), tên sản phẩm (text-2xl font-bold), thương hiệu, Badge danh mục, Badge trạng thái | | Pass | 11/15/2015 | |
-| **GUI-CTTK-08** | Kiểm tra thông tin tồn kho | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra thông tin | Hiển thị grid với: Tồn kho hiện tại (icon Package), Ngưỡng cảnh báo (icon AlertTriangle), Tồn kho tối đa (icon BarChart3), Trạng thái (icon CheckCircle/AlertTriangle) | | Pass | 11/15/2015 | |
-| **GUI-CTTK-09** | Kiểm tra thông tin giá | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra thông tin | Hiển thị: Giá nhập (icon DollarSign), Giá bán (icon DollarSign) | | Pass | 11/15/2015 | |
-| **GUI-CTTK-10** | Kiểm tra card Lịch sử nhập hàng | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra card | Hiển thị card "Lịch sử nhập hàng" với Table hiển thị các cột: Ngày nhập, Số lượng, Giá nhập, Nhà cung cấp, Ghi chú | | Pass | 11/15/2015 | |
-| **GUI-CTTK-11** | Kiểm tra card Lịch sử xuất hàng | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra card | Hiển thị card "Lịch sử xuất hàng" với Table hiển thị các cột: Ngày xuất, Số lượng, Lý do, Người thực hiện | | Pass | 11/15/2015 | |
-| **GUI-CTTK-12** | Kiểm tra card Thông tin bổ sung | 1. Truy cập /admin/inventory/[id]<br>2. Kiểm tra card | Hiển thị card "Thông tin bổ sung" với: Nhà cung cấp (icon User), Ngày tạo (icon Calendar), Ngày cập nhật (icon Calendar), Ghi chú (icon FileText) | | Pass | 11/15/2015 | |
-| **GUI-CTTK-13** | Kiểm tra Dialog xóa sản phẩm | 1. Truy cập /admin/inventory/[id]<br>2. Click nút Xóa<br>3. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Xác nhận xóa sản phẩm", mô tả "Hành động này không thể hoàn tác", textarea "Lý do xóa sản phẩm", nút Hủy, nút "Xóa vĩnh viễn" variant destructive | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Xem chi tiết tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTTK-01** | Mở trang chi tiết tồn kho | 1. Truy cập /admin/inventory/[id] | Hiển thị trang với nút Quay lại, tiêu đề (tên sản phẩm), mô tả, nút Chỉnh sửa, nút Nhập hàng, nút Xóa, card Thông tin sản phẩm, card Thông tin tồn kho, card Lịch sử nhập hàng, card Lịch sử xuất hàng, card Thông tin bổ sung | | Pass | 11/15/2015 | |
-| **FUNC-CTTK-02** | Hiển thị đầy đủ thông tin tồn kho | 1. Truy cập /admin/inventory/[id] | Hiển thị đầy đủ thông tin: hình ảnh, tên, thương hiệu, danh mục, trạng thái, tồn kho hiện tại, ngưỡng cảnh báo, tồn kho tối đa, giá nhập, giá bán, nhà cung cấp, ngày tạo, ngày cập nhật, ghi chú, lịch sử nhập hàng, lịch sử xuất hàng | | Pass | 11/15/2015 | |
-| **FUNC-CTTK-03** | Click nút Quay lại | 1. Truy cập /admin/inventory/[id]<br>2. Click nút "Quay lại" | Chuyển về trang /admin/inventory | | Pass | 11/15/2015 | |
-| **FUNC-CTTK-04** | Click nút Chỉnh sửa | 1. Truy cập /admin/inventory/[id]<br>2. Click nút "Chỉnh sửa" | Chuyển đến trang /admin/inventory/[id]/edit | | Pass | 11/15/2015 | |
-| **FUNC-CTTK-05** | Click nút Nhập hàng | 1. Truy cập /admin/inventory/[id]<br>2. Click nút "Nhập hàng" | Mở modal nhập hàng với sản phẩm đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-CTTK-06** | Xóa sản phẩm thành công | 1. Truy cập /admin/inventory/[id]<br>2. Click nút "Xóa"<br>3. Nhập lý do<br>4. Click "Xóa vĩnh viễn" | Hiển thị thông báo "Đã xóa sản phẩm", chuyển về trang /admin/inventory | | Untested | 11/15/2015 | |
-| **FUNC-CTTK-07** | Hủy xóa sản phẩm | 1. Truy cập /admin/inventory/[id]<br>2. Click nút "Xóa"<br>3. Click "Hủy" | Dialog đóng, vẫn ở trang chi tiết, sản phẩm không bị xóa | | Pass | 11/15/2015 | |
-| **FUNC-CTTK-08** | Xử lý khi sản phẩm không tồn tại | 1. Truy cập /admin/inventory/[id không tồn tại] | Hiển thị thông báo lỗi "Sản phẩm không tồn tại" hoặc chuyển về trang danh sách | | Untested | 11/15/2015 | |
-| **FUNC-CTTK-09** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory/[id]<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-CTTK-10** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory/[id]<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
-
----
-
-### Function: Cập nhật tồn kho
-
-#### Check GUI: Cập nhật tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CNTK-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/inventory/[id] | | Pass | 11/15/2015 | |
-| **GUI-CNTK-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chỉnh sửa tồn kho" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CNTK-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra mô tả | Hiển thị mô tả "Cập nhật thông tin tồn kho sản phẩm #[id]" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CNTK-04** | Kiểm tra card Thông tin cơ bản | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra card | Hiển thị card "Thông tin cơ bản" với các trường: Tên sản phẩm (input), Mã sản phẩm (input readonly), Danh mục (Select), Thương hiệu (Select), Mô tả (Textarea) | | Pass | 11/15/2015 | |
-| **GUI-CNTK-05** | Kiểm tra card Quản lý tồn kho | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra card | Hiển thị card "Quản lý tồn kho" với các trường: Số lượng hiện tại (number input), Ngưỡng cảnh báo (number input) | | Pass | 11/15/2015 | |
-| **GUI-CNTK-06** | Kiểm tra card Thông tin nhập hàng | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra card | Hiển thị card "Thông tin nhập hàng" với các trường: Giá nhập (number input), Nhà cung cấp (input), Ghi chú (Textarea) | | Pass | 11/15/2015 | |
-| **GUI-CNTK-07** | Kiểm tra nút Hủy | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/inventory/[id] | | Pass | 11/15/2015 | |
-| **GUI-CNTK-08** | Kiểm tra nút Lưu thay đổi | 1. Truy cập /admin/inventory/[id]/edit<br>2. Kiểm tra nút | Hiển thị nút "Lưu thay đổi" với icon Save type submit | | Pass | 11/15/2015 | |
-| **GUI-CNTK-09** | Kiểm tra cảnh báo tồn kho thấp | 1. Truy cập /admin/inventory/[id]/edit<br>2. Nhập tồn kho <= ngưỡng cảnh báo<br>3. Kiểm tra cảnh báo | Hiển thị Alert với icon AlertTriangle màu yellow-600, text "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" màu yellow-800, background yellow-50, border yellow-200 | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cập nhật tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CNTK-01** | Mở trang chỉnh sửa tồn kho | 1. Truy cập /admin/inventory/[id]/edit | Hiển thị trang với nút Quay lại, tiêu đề "Chỉnh sửa tồn kho", mô tả, form với các card: Thông tin cơ bản, Quản lý tồn kho, Thông tin nhập hàng, các trường đã được điền sẵn thông tin sản phẩm, nút Hủy, nút Lưu thay đổi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-02** | Cập nhật tồn kho thành công | 1. Truy cập /admin/inventory/[id]/edit<br>2. Sửa thông tin (Tên, Danh mục, Thương hiệu, Số lượng, Ngưỡng cảnh báo, Giá nhập, Nhà cung cấp, Ghi chú)<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo "Cập nhật tồn kho thành công", chuyển về trang /admin/inventory/[id], thông tin được cập nhật | | Untested | 11/15/2015 | |
-| **FUNC-CNTK-03** | Cập nhật - Thiếu Tên sản phẩm | 1. Truy cập /admin/inventory/[id]/edit<br>2. Xóa tên sản phẩm<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-04** | Cập nhật - Thiếu Danh mục | 1. Truy cập /admin/inventory/[id]/edit<br>2. Xóa danh mục<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-05** | Cập nhật - Thiếu Thương hiệu | 1. Truy cập /admin/inventory/[id]/edit<br>2. Xóa thương hiệu<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-06** | Cập nhật - Số lượng hiện tại < 0 | 1. Truy cập /admin/inventory/[id]/edit<br>2. Nhập số lượng hiện tại < 0<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Số lượng hiện tại phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-07** | Cập nhật - Ngưỡng cảnh báo < 0 | 1. Truy cập /admin/inventory/[id]/edit<br>2. Nhập ngưỡng cảnh báo < 0<br>3. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Ngưỡng cảnh báo phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-08** | Hiển thị cảnh báo tồn kho thấp | 1. Truy cập /admin/inventory/[id]/edit<br>2. Nhập tồn kho <= ngưỡng cảnh báo | Hiển thị Alert cảnh báo màu vàng "Cảnh báo: Tồn kho sắp hết, cần nhập hàng" | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-09** | Click nút Hủy | 1. Truy cập /admin/inventory/[id]/edit<br>2. Click nút "Hủy" | Chuyển về trang /admin/inventory/[id], không lưu thông tin | | Pass | 11/15/2015 | |
-| **FUNC-CNTK-10** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory/[id]/edit<br>2. Sửa thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-CNTK-11** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory/[id]/edit<br>2. Sửa thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
-
----
-
-### Function: Nhập hàng mới
-
-#### Check GUI: Nhập hàng mới
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-NHM-01** | Kiểm tra nút Quay lại | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra nút Quay lại | Hiển thị nút "Quay lại" với icon ArrowLeft variant outline size sm, link đến /admin/inventory | | Pass | 11/15/2015 | |
-| **GUI-NHM-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Thêm sản phẩm mới" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-NHM-03** | Kiểm tra mô tả trang | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra mô tả | Hiển thị mô tả "Nhập thông tin sản phẩm mới vào kho" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-NHM-04** | Kiểm tra card Thông tin cơ bản | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra card | Hiển thị card "Thông tin cơ bản" với các trường: Tên sản phẩm * (input), Mã sản phẩm * (input), Danh mục * (Select), Thương hiệu * (Select), Mô tả (Textarea) | | Pass | 11/15/2015 | |
-| **GUI-NHM-05** | Kiểm tra card Quản lý tồn kho | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra card | Hiển thị card "Quản lý tồn kho" với các trường: Số lượng ban đầu * (number input), Ngưỡng cảnh báo * (number input) | | Pass | 11/15/2015 | |
-| **GUI-NHM-06** | Kiểm tra card Thông tin nhập hàng | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra card | Hiển thị card "Thông tin nhập hàng" với các trường: Giá nhập (number input), Nhà cung cấp (input), Ghi chú (Textarea) | | Pass | 11/15/2015 | |
-| **GUI-NHM-07** | Kiểm tra nút Hủy | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra nút | Hiển thị nút "Hủy" variant outline, link đến /admin/inventory | | Pass | 11/15/2015 | |
-| **GUI-NHM-08** | Kiểm tra nút Lưu bản nháp | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra nút | Hiển thị nút "Lưu bản nháp" với icon FileText variant outline type button | | Pass | 11/15/2015 | |
-| **GUI-NHM-09** | Kiểm tra nút Tạo sản phẩm | 1. Truy cập /admin/inventory/new<br>2. Kiểm tra nút | Hiển thị nút "Tạo sản phẩm" với icon Save type submit | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Nhập hàng mới
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-NHM-01** | Mở trang thêm sản phẩm mới | 1. Truy cập /admin/inventory/new | Hiển thị trang với nút Quay lại, tiêu đề "Thêm sản phẩm mới", mô tả, form với các card: Thông tin cơ bản, Quản lý tồn kho, Thông tin nhập hàng, các nút Hủy, Lưu bản nháp, Tạo sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-NHM-02** | Tạo sản phẩm thành công | 1. Truy cập /admin/inventory/new<br>2. Điền đầy đủ thông tin bắt buộc (Tên, Mã SP, Danh mục, Thương hiệu, Số lượng ban đầu, Ngưỡng cảnh báo)<br>3. Nhấn "Tạo sản phẩm" | Hiển thị thông báo "Thêm sản phẩm thành công", chuyển về trang /admin/inventory | | Untested | 11/15/2015 | |
-| **FUNC-NHM-03** | Tạo sản phẩm - Thiếu Tên sản phẩm | 1. Truy cập /admin/inventory/new<br>2. Để trống Tên sản phẩm<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Tên sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-04** | Tạo sản phẩm - Thiếu Mã sản phẩm | 1. Truy cập /admin/inventory/new<br>2. Để trống Mã sản phẩm<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Mã sản phẩm không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-05** | Tạo sản phẩm - Thiếu Danh mục | 1. Truy cập /admin/inventory/new<br>2. Không chọn Danh mục<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Danh mục không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-06** | Tạo sản phẩm - Thiếu Thương hiệu | 1. Truy cập /admin/inventory/new<br>2. Không chọn Thương hiệu<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Thương hiệu không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-07** | Tạo sản phẩm - Số lượng ban đầu < 0 | 1. Truy cập /admin/inventory/new<br>2. Nhập số lượng ban đầu < 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Số lượng ban đầu phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-08** | Tạo sản phẩm - Ngưỡng cảnh báo < 0 | 1. Truy cập /admin/inventory/new<br>2. Nhập ngưỡng cảnh báo < 0<br>3. Điền các trường khác<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Ngưỡng cảnh báo phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NHM-09** | Lưu bản nháp thành công | 1. Truy cập /admin/inventory/new<br>2. Nhập ít nhất Tên sản phẩm và Mã sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo "Lưu bản nháp thành công", chuyển về trang /admin/inventory, sản phẩm được lưu với trạng thái "Bản nháp" | | Untested | 11/15/2015 | |
-| **FUNC-NHM-10** | Lưu bản nháp - Thiếu Tên sản phẩm | 1. Truy cập /admin/inventory/new<br>2. Để trống Tên sản phẩm<br>3. Nhấn "Lưu bản nháp" | Hiển thị thông báo lỗi "Vui lòng nhập tên sản phẩm để lưu bản nháp" | | Pass | 11/15/2015 | |
-| **FUNC-NHM-11** | Click nút Hủy | 1. Truy cập /admin/inventory/new<br>2. Click nút "Hủy" | Chuyển về trang /admin/inventory, không lưu thông tin | | Pass | 11/15/2015 | |
-| **FUNC-NHM-12** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory/new<br>2. Điền đầy đủ thông tin<br>3. Tắt kết nối mạng<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-NHM-13** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory/new<br>2. Điền đầy đủ thông tin<br>3. Server trả về lỗi 500<br>4. Nhấn "Tạo sản phẩm" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
-
----
-
-### Function: Cảnh báo tồn kho thấp
-
-#### Check GUI: Cảnh báo tồn kho thấp
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CBTK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/inventory/alerts<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cảnh báo tồn kho" với kích thước text-3xl font-bold | | Pass | 11/15/2015 | |
-| **GUI-CBTK-02** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/inventory/alerts<br>2. Kiểm tra mô tả | Hiển thị mô tả "Danh sách sản phẩm có tồn kho thấp cần nhập hàng" màu muted-foreground | | Pass | 11/15/2015 | |
-| **GUI-CBTK-03** | Kiểm tra bộ lọc | 1. Truy cập /admin/inventory/alerts<br>2. Kiểm tra bộ lọc | Hiển thị Select với các option: Tất cả, Sắp hết, Nguy hiểm, Hết hàng | | Pass | 11/15/2015 | |
-| **GUI-CBTK-04** | Kiểm tra bảng cảnh báo | 1. Truy cập /admin/inventory/alerts<br>2. Kiểm tra bảng | Hiển thị Table với các cột: Mã SP, Tên SP, Tồn kho hiện tại, Ngưỡng cảnh báo, Trạng thái, Thao tác | | Pass | 11/15/2015 | |
-| **GUI-CBTK-05** | Kiểm tra Badge trạng thái cảnh báo | 1. Truy cập /admin/inventory/alerts<br>2. Kiểm tra Badge | Hiển thị Badge với màu tương ứng: Sắp hết (secondary màu vàng), Nguy hiểm (destructive màu cam), Hết hàng (destructive màu đỏ) | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cảnh báo tồn kho thấp
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CBTK-01** | Mở trang cảnh báo tồn kho | 1. Truy cập /admin/inventory/alerts | Hiển thị trang với tiêu đề, mô tả, bộ lọc, bảng danh sách sản phẩm có tồn kho thấp | | Pass | 11/15/2015 | |
-| **FUNC-CBTK-02** | Hiển thị danh sách cảnh báo | 1. Truy cập /admin/inventory/alerts | Hiển thị danh sách sản phẩm có tồn kho <= ngưỡng cảnh báo, mỗi sản phẩm hiển thị đầy đủ thông tin và trạng thái cảnh báo | | Pass | 11/15/2015 | |
-| **FUNC-CBTK-03** | Lọc theo trạng thái cảnh báo | 1. Truy cập /admin/inventory/alerts<br>2. Chọn trạng thái cảnh báo (VD: Sắp hết)<br>3. Click "Bộ lọc" | Hiển thị danh sách sản phẩm có trạng thái cảnh báo đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-CBTK-04** | Click nút Nhập hàng từ cảnh báo | 1. Truy cập /admin/inventory/alerts<br>2. Click nút Nhập hàng của một sản phẩm | Mở modal nhập hàng với sản phẩm đã chọn | | Untested | 11/15/2015 | |
-| **FUNC-CBTK-05** | Xử lý khi không có cảnh báo | 1. Truy cập /admin/inventory/alerts<br>2. Lọc để không có sản phẩm nào | Hiển thị thông báo "Không có sản phẩm nào cần cảnh báo" hoặc bảng trống | | Untested | 11/15/2015 | |
-| **FUNC-CBTK-06** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory/alerts<br>2. Tắt kết nối mạng | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại" | | Untested | 11/15/2015 | |
-| **FUNC-CBTK-07** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory/alerts<br>2. Server trả về lỗi 500 | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau" | | Untested | 11/15/2015 | |
-
----
-
-### Function: Kiểm kê tồn kho
-
-#### Check GUI: Kiểm kê tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KKTK-01** | Kiểm tra modal Kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Kiểm kê tồn kho", mô tả "Đối chiếu tồn kho thực tế với hệ thống" | | Pass | 11/15/2015 | |
-| **GUI-KKTK-02** | Kiểm tra bảng kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra bảng | Hiển thị Table với các cột: Mã SP, Tên SP, Tồn kho hệ thống, Số lượng thực tế, Chênh lệch, Trạng thái | | Pass | 11/15/2015 | |
-| **GUI-KKTK-03** | Kiểm tra trường Số lượng thực tế | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra trường | Hiển thị input number cho mỗi sản phẩm để nhập số lượng thực tế | | Pass | 11/15/2015 | |
-| **GUI-KKTK-04** | Kiểm tra Badge trạng thái kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra Badge | Hiển thị Badge với màu: Khớp (default màu xanh), Chênh lệch (destructive màu đỏ) | | Pass | 11/15/2015 | |
-| **GUI-KKTK-05** | Kiểm tra nút Lưu kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra nút | Hiển thị nút "Lưu kiểm kê" variant outline | | Pass | 11/15/2015 | |
-| **GUI-KKTK-06** | Kiểm tra nút Đối chiếu & Cập nhật | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra nút | Hiển thị nút "Đối chiếu & Cập nhật" type submit | | Pass | 11/15/2015 | |
-| **GUI-KKTK-07** | Kiểm tra nút Xuất báo cáo | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Kiểm tra nút | Hiển thị nút "Xuất báo cáo" variant outline | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Kiểm kê tồn kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KKTK-01** | Mở modal kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê" | Hiển thị Dialog với tiêu đề "Kiểm kê tồn kho", mô tả, bảng danh sách sản phẩm với các trường để nhập số lượng thực tế, các nút Lưu kiểm kê, Đối chiếu & Cập nhật, Xuất báo cáo | | Pass | 11/15/2015 | |
-| **FUNC-KKTK-02** | Nhập số lượng thực tế | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế cho các sản phẩm | Số lượng thực tế được nhập vào input, hệ thống tự động tính chênh lệch và hiển thị trạng thái (Khớp/Chênh lệch) | | Pass | 11/15/2015 | |
-| **FUNC-KKTK-03** | Lưu kiểm kê thành công | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế<br>4. Click "Lưu kiểm kê" | Hiển thị thông báo "Lưu kiểm kê thành công", dữ liệu kiểm kê được lưu tạm thời | | Untested | 11/15/2015 | |
-| **FUNC-KKTK-04** | Đối chiếu & Cập nhật thành công | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế<br>4. Click "Đối chiếu & Cập nhật" | Hiển thị thông báo "Cập nhật tồn kho thành công", tồn kho hệ thống được cập nhật theo số lượng thực tế, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-KKTK-05** | Xuất báo cáo kiểm kê | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế<br>4. Click "Xuất báo cáo" | Tải về file Excel/PDF báo cáo kiểm kê với đầy đủ thông tin: Mã SP, Tên SP, Tồn kho hệ thống, Số lượng thực tế, Chênh lệch, Trạng thái | | Untested | 11/15/2015 | |
-| **FUNC-KKTK-06** | Hiển thị chênh lệch tự động | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế khác với tồn kho hệ thống | Hiển thị chênh lệch (số lượng thực tế - tồn kho hệ thống), Badge trạng thái chuyển thành "Chênh lệch" màu đỏ | | Pass | 11/15/2015 | |
-| **FUNC-KKTK-07** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế<br>4. Tắt kết nối mạng<br>5. Click "Đối chiếu & Cập nhật" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", không cập nhật tồn kho | | Untested | 11/15/2015 | |
-| **FUNC-KKTK-08** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory<br>2. Click nút "Kiểm kê"<br>3. Nhập số lượng thực tế<br>4. Server trả về lỗi 500<br>5. Click "Đối chiếu & Cập nhật" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", không cập nhật tồn kho | | Untested | 11/15/2015 | |
-
----
-
-### Function: Nhập kho
-
-#### Check GUI: Nhập kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-NK-01** | Kiểm tra modal Nhập hàng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng" hoặc icon Upload<br>3. Kiểm tra modal | Hiển thị Dialog với tiêu đề "Nhập hàng", mô tả "Ghi nhận việc nhập sản phẩm mới vào kho" | | Pass | 11/15/2015 | |
-| **GUI-NK-02** | Kiểm tra trường Sản phẩm | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị Select/Dropdown với placeholder "Chọn sản phẩm" hoặc input tìm kiếm sản phẩm, nếu click từ sản phẩm cụ thể thì sản phẩm đã được chọn sẵn | | Pass | 11/15/2015 | |
-| **GUI-NK-03** | Kiểm tra trường Số lượng nhập | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị label "Số lượng nhập *", input type number với placeholder "0", min 0, có thuộc tính required | | Pass | 11/15/2015 | |
-| **GUI-NK-04** | Kiểm tra trường Giá nhập | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị label "Giá nhập", input type number với placeholder "0", min 0 | | Pass | 11/15/2015 | |
-| **GUI-NK-05** | Kiểm tra trường Nhà cung cấp | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị label "Nhà cung cấp", Select/Dropdown với placeholder "Chọn nhà cung cấp" hoặc input text | | Pass | 11/15/2015 | |
-| **GUI-NK-06** | Kiểm tra trường Ngày nhập | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị label "Ngày nhập", DatePicker với giá trị mặc định là ngày hiện tại | | Pass | 11/15/2015 | |
-| **GUI-NK-07** | Kiểm tra trường Ghi chú | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra trường | Hiển thị label "Ghi chú", Textarea với placeholder "Ghi chú thêm về lô hàng nhập (tùy chọn)" | | Pass | 11/15/2015 | |
-| **GUI-NK-08** | Kiểm tra nút Hủy | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra nút | Hiển thị nút "Hủy" variant outline | | Pass | 11/15/2015 | |
-| **GUI-NK-09** | Kiểm tra nút Lưu | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Kiểm tra nút | Hiển thị nút "Lưu" type submit | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Nhập kho
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-NK-01** | Mở modal nhập hàng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng" | Hiển thị Dialog với tiêu đề "Nhập hàng", mô tả, các trường: Sản phẩm, Số lượng nhập, Giá nhập, Nhà cung cấp, Ngày nhập, Ghi chú, nút Hủy, nút Lưu | | Pass | 11/15/2015 | |
-| **FUNC-NK-02** | Mở modal nhập hàng từ sản phẩm cụ thể | 1. Truy cập /admin/inventory<br>2. Click icon Upload của một sản phẩm | Hiển thị Dialog với sản phẩm đã được chọn sẵn trong trường Sản phẩm | | Pass | 11/15/2015 | |
-| **FUNC-NK-03** | Nhập hàng thành công | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Chọn sản phẩm<br>4. Nhập số lượng nhập > 0<br>5. Nhập giá nhập (tùy chọn)<br>6. Chọn nhà cung cấp (tùy chọn)<br>7. Chọn ngày nhập<br>8. Nhập ghi chú (tùy chọn)<br>9. Click "Lưu" | Hiển thị thông báo "Nhập hàng thành công", tồn kho sản phẩm được cập nhật (tăng thêm số lượng nhập), lịch sử nhập hàng được ghi nhận, modal đóng | | Untested | 11/15/2015 | |
-| **FUNC-NK-04** | Nhập hàng - Thiếu Sản phẩm | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Không chọn sản phẩm<br>4. Nhập số lượng<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Vui lòng chọn sản phẩm", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NK-05** | Nhập hàng - Thiếu Số lượng nhập | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Chọn sản phẩm<br>4. Để trống số lượng nhập<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Số lượng nhập không được để trống", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NK-06** | Nhập hàng - Số lượng nhập <= 0 | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Chọn sản phẩm<br>4. Nhập số lượng <= 0<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Số lượng nhập phải lớn hơn 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NK-07** | Nhập hàng - Giá nhập < 0 | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Chọn sản phẩm<br>4. Nhập giá nhập < 0<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Giá nhập phải lớn hơn hoặc bằng 0", form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-NK-08** | Click nút Hủy | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Click "Hủy" | Modal đóng, không lưu thông tin | | Pass | 11/15/2015 | |
-| **FUNC-NK-09** | Cập nhật tồn kho sau nhập hàng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Chọn sản phẩm có tồn kho = 10<br>4. Nhập số lượng = 5<br>5. Click "Lưu"<br>6. Kiểm tra tồn kho | Tồn kho sản phẩm được cập nhật thành 15 (10 + 5), hiển thị trong bảng danh sách tồn kho | | Untested | 11/15/2015 | |
-| **FUNC-NK-10** | Ghi nhận lịch sử nhập hàng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Nhập hàng thành công<br>4. Xem chi tiết sản phẩm | Lịch sử nhập hàng được ghi nhận với đầy đủ thông tin: Ngày nhập, Số lượng, Giá nhập, Nhà cung cấp, Ghi chú | | Untested | 11/15/2015 | |
-| **FUNC-NK-11** | Xử lý khi mất kết nối mạng | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Điền đầy đủ thông tin<br>4. Tắt kết nối mạng<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Lỗi kết nối hệ thống. Vui lòng kiểm tra kết nối mạng và thử lại", form không được gửi | | Untested | 11/15/2015 | |
-| **FUNC-NK-12** | Xử lý khi server lỗi | 1. Truy cập /admin/inventory<br>2. Click nút "Nhập hàng"<br>3. Điền đầy đủ thông tin<br>4. Server trả về lỗi 500<br>5. Click "Lưu" | Hiển thị thông báo lỗi "Lỗi hệ thống. Vui lòng thử lại sau", form không được gửi | | Untested | 11/15/2015 | |
+| No | Function Name | Sheet Name | Description | Pre-Condition (Route) |
+|----|---------------|------------|-------------|----------------------|
+| **ADMIN - QUẢN LÝ TÀI KHOẢN** |
+| 1 | Function - Đăng nhập (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] hoặc truy cập `/admin/auth/login` |
+| 2 | Function - Đăng ký (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC register function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng ký] hoặc truy cập `/admin/auth/register` |
+| 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
+| 4 | Layout - Quản lý thông tin cá nhân (Admin) | Quản lý tài khoản Admin | GUI function for Admin personal information management | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] hoặc truy cập `/admin/account` |
+| 4.1 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
+| **ADMIN - QUẢN LÝ NHÂN VIÊN** |
+| 5 | Function - Hiển thị danh sách nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC display employees list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] hoặc truy cập `/admin/employees` |
+| 6 | Function - Xem chi tiết nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC view employee details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xem] hoặc truy cập `/admin/employees/[id]` |
+| 7 | Function - Thêm nhân viên mới (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC add new employee function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Thêm nhân viên] hoặc truy cập `/admin/employees/new` |
+| 8 | Function - Cập nhật thông tin nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC update employee information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/employees/[id]/edit` |
+| 9 | Function - Xóa nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC delete employee function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xóa] |
+| 10 | Function - Phân quyền nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC assign permissions function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Phân quyền] |
+| **ADMIN - QUẢN LÝ KHÁCH HÀNG** |
+| 11 | Function - Hiển thị danh sách khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC display customers list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
+| 12 | Function - Xem chi tiết khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC view customer details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/admin/customers/[id]` |
+| 13 | Function - Cập nhật thông tin khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC update customer information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
+| 14 | Function - Khóa/Mở khóa tài khoản khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC block/unblock customer account function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Khóa/Mở khóa] |
+| **ADMIN - QUẢN LÝ SÁCH** |
+| 15 | Function - Hiển thị danh sách sách (Admin) | Quản lý sách Admin | Check GUI and FUNC display books list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] hoặc truy cập `/admin/products` |
+| 16 | Function - Xem chi tiết sách (Admin) | Quản lý sách Admin | Check GUI and FUNC view book details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Xem] hoặc truy cập `/admin/products/[id]` |
+| 17 | Function - Thêm sách mới (Admin) | Quản lý sách Admin | Check GUI and FUNC add new book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Thêm sách] hoặc truy cập `/admin/products/new` |
+| 18 | Function - Cập nhật thông tin sách (Admin) | Quản lý sách Admin | Check GUI and FUNC update book information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/products/[id]/edit` |
+| 19 | Function - Xóa sách (Admin) | Quản lý sách Admin | Check GUI and FUNC delete book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Xóa] |
+| 20 | Function - Ẩn/Hiện sách (Admin) | Quản lý sách Admin | Check GUI and FUNC hide/show book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Ẩn/Hiện] |
+| **ADMIN - QUẢN LÝ TỒN KHO** |
+| 21 | Function - Hiển thị danh sách tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC display inventory list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] hoặc truy cập `/admin/inventory` |
+| 22 | Function - Xem chi tiết tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC view inventory details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xem] hoặc truy cập `/admin/inventory/[id]` |
+| 23 | Function - Cập nhật số lượng tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC update inventory quantity function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Cập nhật] |
+| 24 | Function - Nhập hàng (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import goods function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/admin/inventory/import` |
+| 25 | Function - Xuất hàng (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC export goods function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/admin/inventory/export` |
+| 26 | Function - Kiểm kê tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory audit function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/admin/inventory/audit` |
+| 27 | Function - Cảnh báo tồn kho thấp (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC low stock alert function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Cảnh báo] hoặc truy cập `/admin/inventory/alerts` |
+| **ADMIN - QUẢN LÝ ĐƠN HÀNG** |
+| 28 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display orders list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] hoặc truy cập `/admin/orders` |
+| 29 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
+| 30 | Function - Cập nhật trạng thái đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC update order status function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/orders/[id]/update-status` |
+| 31 | Function - Hủy đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC cancel order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
+| 32 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
+| 33 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
+| **ADMIN - QUẢN LÝ ĐẶT TRƯỚC** |
+| 34 | Function - Hiển thị danh sách đặt trước (Admin) | Quản lý đặt trước Admin | Check GUI and FUNC display pre-orders list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đặt trước] hoặc truy cập `/admin/pre-orders` |
+| 35 | Function - Xem chi tiết đặt trước (Admin) | Quản lý đặt trước Admin | Check GUI and FUNC view pre-order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đặt trước] 2. Click [Xem] hoặc truy cập `/admin/pre-orders/[id]` |
+| 36 | Function - Xử lý đặt trước (Admin) | Quản lý đặt trước Admin | Check GUI and FUNC process pre-order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đặt trước] 2. Click [Xử lý] hoặc truy cập `/admin/pre-orders/[id]/process` |
+| 37 | Function - Thông báo có hàng (Admin) | Quản lý đặt trước Admin | Check GUI and FUNC notify stock available function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đặt trước] 2. Click [Thông báo có hàng] hoặc truy cập `/admin/pre-orders/[id]/notify-stock` |
+| **ADMIN - QUẢN LÝ YÊU CẦU** |
+| 38 | Function - Hiển thị danh sách yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC display requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] hoặc truy cập `/admin/requests` |
+| 39 | Function - Xem chi tiết yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC view request details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/admin/requests/[id]` |
+| 40 | Function - Phê duyệt yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC approve request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Phê duyệt] |
+| 41 | Function - Từ chối yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC reject request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Từ chối] |
+| **ADMIN - QUẢN LÝ ĐÁNH GIÁ** |
+| 42 | Function - Hiển thị danh sách đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC display reviews list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đánh giá] hoặc truy cập `/admin/reviews` |
+| 43 | Function - Xem chi tiết đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC view review details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đánh giá] 2. Click [Xem chi tiết] hoặc truy cập `/admin/reviews/[id]` |
+| 44 | Function - Duyệt đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC approve review function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đánh giá] 2. Click [Duyệt] |
+| 45 | Function - Từ chối đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC reject review function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đánh giá] 2. Click [Từ chối] |
+| 46 | Function - Xóa đánh giá (Admin) | Quản lý đánh giá Admin | Check GUI and FUNC delete review function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đánh giá] 2. Click [Xóa đánh giá] |
+| **ADMIN - QUẢN LÝ BÀI VIẾT** |
+| 47 | Function - Hiển thị danh sách bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC display posts list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý bài viết] hoặc truy cập `/admin/posts` |
+| 48 | Function - Xem chi tiết bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC view post details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xem] hoặc truy cập `/admin/posts/[id]` |
+| 49 | Function - Xóa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC delete post function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Xóa] |
+| 50 | Function - Chỉnh sửa bài viết (Admin) | Quản lý bài viết Admin | Check GUI and FUNC edit post function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý bài viết] 2. Click [Chỉnh sửa] |
+| **ADMIN - BÁO CÁO VÀ THỐNG KÊ** |
+| 51 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/admin/reports/revenue` |
+| 52 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Chi phí] hoặc truy cập `/admin/reports/expenses` |
+| 53 | Function - Xem báo cáo lợi nhuận (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view profit report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Lợi nhuận] hoặc truy cập `/admin/reports/profit` |
+| 54 | Function - Xem sản phẩm bán chạy (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view top products report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Sản phẩm bán chạy] hoặc truy cập `/admin/reports/top-products` |
+| 55 | Function - Xem thống kê khách hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view customers statistics function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê khách hàng] hoặc truy cập `/admin/reports/customers` |
+| 56 | Function - Xem báo cáo tồn kho (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view inventory report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo tồn kho] hoặc truy cập `/admin/reports/inventory` |
+| **ADMIN - QUẢN LÝ VẬN CHUYỂN** |
+| 57 | Function - Hiển thị danh sách đơn vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC display shipping list function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] hoặc truy cập `/admin/shipping` |
+| 58 | Function - Cập nhật trạng thái vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC update shipping status function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] 2. Click [Cập nhật trạng thái] |
+| **ADMIN - HỖ TRỢ KHÁCH HÀNG** |
+| 59 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] hoặc truy cập `/admin/support` |
+| 60 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
+| 61 | Function - Trả lời yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply support request function (Admin) | Tại Menu Ứng dụng: 1. Click [Hỗ trợ] 2. Click [Trả lời] |
+| **ADMIN - XỬ LÝ KHIẾU NẠI** |
+| 62 | Function - Hiển thị danh sách khiếu nại (Admin) | Xử lý khiếu nại Admin | Check GUI and FUNC display complaints list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Khiếu nại] hoặc truy cập `/admin/complaints` |
+| 63 | Function - Xem chi tiết khiếu nại (Admin) | Xử lý khiếu nại Admin | Check GUI and FUNC view complaint details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Khiếu nại] 2. Click [Xem] hoặc truy cập `/admin/complaints/[id]` |
+| 64 | Function - Trả lời khiếu nại (Admin) | Xử lý khiếu nại Admin | Check GUI and FUNC reply complaint function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Khiếu nại] 2. Click [Trả lời] hoặc truy cập `/admin/complaints/[id]/reply` |
+| **ADMIN - CÀI ĐẶT HỆ THỐNG** |
+| 65 | Function - Cài đặt chính sách giảm giá (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC discount policy function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Chính sách giảm giá] hoặc truy cập `/admin/settings/discounts` |
+| 66 | Function - Cài đặt thanh toán (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC payment settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Cài đặt thanh toán] hoặc truy cập `/admin/settings/payments` |
+| 67 | Function - Cài đặt thông tin shop (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC shop information function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Thông tin shop] hoặc truy cập `/admin/settings/shop` |
+| 68 | Function - Cài đặt chung (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC general settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] hoặc truy cập `/admin/settings` |
+| **ADMIN - BẢO MẬT** |
+| 69 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
+| 70 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
+| 71 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện |
+| **ADMIN - THÔNG BÁO** |
+| 72 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Thông báo] hoặc truy cập `/admin/notifications` |
+| **NHÂN VIÊN - QUẢN LÝ TÀI KHOẢN** |
+| 73 | Function - Đăng nhập (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC login function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đăng nhập] hoặc truy cập `/nhanvien/auth/login` |
+| 74 | Function - Đổi mật khẩu (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC change password function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvien/account` |
+| 75 | Layout - Quản lý thông tin cá nhân (Nhân viên) | Quản lý tài khoản Nhân viên | GUI function for Nhân viên personal information management | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] hoặc truy cập `/nhanvien/account` |
+| **NHÂN VIÊN - TÌM KIẾM VÀ HIỂN THỊ SÁCH** |
+| 76 | Function - Tìm kiếm sách (Nhân viên) | Tìm kiếm sách Nhân viên | Check GUI and FUNC search books function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Sử dụng thanh tìm kiếm hoặc truy cập `/nhanvien/products` |
+| 77 | Function - Hiển thị danh sách sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC display books list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] hoặc truy cập `/nhanvien/products` |
+| 78 | Function - Xem chi tiết sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC view book details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvien/products/[id]` |
+| **NHÂN VIÊN - XỬ LÝ ĐƠN HÀNG** |
+| 79 | Function - Hiển thị danh sách đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC display orders list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] hoặc truy cập `/nhanvien/orders` |
+| 80 | Function - Xem chi tiết đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC view order details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/orders/[id]` |
+| 81 | Function - Cập nhật trạng thái đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC update order status function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/nhanvien/orders/[id]/update-status` |
+| 82 | Function - Xác nhận đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC confirm order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Xác nhận đơn hàng] |
+| 83 | Function - Hủy đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC cancel order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Hủy đơn hàng] |
+| 84 | Function - In đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC print order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] |
+| **NHÂN VIÊN - QUẢN LÝ KHÁCH HÀNG** |
+| 85 | Function - Hiển thị danh sách khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC display customers list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] hoặc truy cập `/nhanvien/customers` |
+| 86 | Function - Xem chi tiết khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC view customer details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/customers/[id]` |
+| 87 | Function - Cập nhật thông tin khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC update customer information function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
+| **NHÂN VIÊN - XỬ LÝ ĐỔI TRẢ** |
+| 88 | Function - Hiển thị danh sách yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC display returns list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] hoặc truy cập `/nhanvien/returns` |
+| 89 | Function - Xem chi tiết yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC view return details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xem] hoặc truy cập `/nhanvien/returns/[id]` |
+| 90 | Function - Xử lý yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC process return request function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xử lý] |
+| **NHÂN VIÊN - CHAT HỖ TRỢ** |
+| 91 | Function - Chat hỗ trợ khách hàng (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC chat support function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/nhanvien/support` |
+| 92 | Function - Xem lịch sử chat (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC view chat history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Lịch sử chat] |
+| **NHÂN VIÊN - QUẢN LÝ YÊU CẦU** |
+| 93 | Function - Hiển thị danh sách yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC display requests list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu] hoặc truy cập `/nhanvien/requests` |
+| 94 | Function - Xem chi tiết yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC view request details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/nhanvien/requests/[id]` |
+| **NHÂN VIÊN - CẬP NHẬT ĐƠN HÀNG ONLINE** |
+| 95 | Function - Cập nhật đơn hàng online (Nhân viên) | Cập nhật đơn hàng online Nhân viên | Check GUI and FUNC update online order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Cập nhật đơn hàng online] |
+| **NHÂN VIÊN - BÁO CÁO VÀ THỐNG KÊ** |
+| 96 | Function - Xem báo cáo doanh thu (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view revenue report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/nhanvien/reports/revenue` |
+| 97 | Function - Xem báo cáo bán hàng (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view sales report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Bán hàng] hoặc truy cập `/nhanvien/reports/sales` |
+| **NHÂN VIÊN - BẢO MẬT** |
+| 98 | Function - Xem lịch sử đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC login history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvien/security/login-history` |
+| 99 | Function - Quản lý phiên đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC sessions management function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvien/security/sessions` |
+| **NHÂN VIÊN KHO - QUẢN LÝ TÀI KHOẢN** |
+| 100 | Function - Đăng nhập (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC login function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Đăng nhập] hoặc truy cập `/nhanvienkho/auth/login` |
+| 101 | Function - Đổi mật khẩu (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC change password function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvienkho/account` |
+| 102 | Layout - Quản lý thông tin cá nhân (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | GUI function for Nhân viên kho personal information management | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] hoặc truy cập `/nhanvienkho/account` |
+| **NHÂN VIÊN KHO - QUẢN LÝ SÁCH** |
+| 103 | Function - Hiển thị danh sách sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC display books list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] hoặc truy cập `/nhanvienkho/books` |
+| 104 | Function - Xem chi tiết sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC view book details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvienkho/books/[id]` |
+| 105 | Function - Thêm sách mới (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC add new book function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Thêm sách] hoặc truy cập `/nhanvienkho/books/new` |
+| 106 | Function - Cập nhật thông tin sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC update book information function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Chỉnh sửa] hoặc truy cập `/nhanvienkho/books/[id]/edit` |
+| 107 | Function - Ẩn sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC hide book function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Ẩn sách] |
+| 108 | Function - Tìm kiếm sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC search books function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Sử dụng thanh tìm kiếm |
+| **NHÂN VIÊN KHO - QUẢN LÝ TỒN KHO** |
+| 109 | Function - Hiển thị danh sách tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC display inventory list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] hoặc truy cập `/nhanvienkho/inventory` |
+| 110 | Function - Cập nhật số lượng tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC update inventory quantity function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Cập nhật] |
+| 111 | Function - Nhập hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC import goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/nhanvienkho/inventory/import` |
+| 112 | Function - Xuất hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC export goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/nhanvienkho/inventory/export` |
+| 113 | Function - Kiểm kê tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC inventory audit function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/nhanvienkho/inventory/audit` |
+| **NHÂN VIÊN KHO - BÁO CÁO KHO** |
+| 114 | Function - Xem sách tồn kho thấp (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view low stock books function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Sách tồn kho thấp] hoặc truy cập `/nhanvienkho/reports/low-stock` |
+| 115 | Function - Xem báo cáo tồn kho (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view inventory report function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Báo cáo tồn kho] hoặc truy cập `/nhanvienkho/reports/inventory` |
+| 116 | Function - Xem lịch sử nhập/xuất (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view import/export history function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Lịch sử nhập/xuất] hoặc truy cập `/nhanvienkho/reports/history` |
+| **NHÂN VIÊN KHO - XỬ LÝ YÊU CẦU** |
+| 117 | Function - Hiển thị danh sách yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC display requests list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] hoặc truy cập `/nhanvienkho/requests` |
+| 118 | Function - Xem chi tiết yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC view request details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/nhanvienkho/requests/[id]` |
+| 119 | Function - Xử lý yêu cầu nhập hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process import request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu nhập] |
+| 120 | Function - Xử lý yêu cầu xuất hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process export request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu xuất] |
+| 121 | Function - Theo dõi trạng thái yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC track request status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Theo dõi trạng thái] |
+| **NHÂN VIÊN KHO - HỖ TRỢ BÁN HÀNG** |
+| 122 | Function - Kiểm tra tồn kho cho đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC check stock for order function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Kiểm tra tồn kho] |
+| 123 | Function - Xác nhận khả năng giao hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC confirm delivery capability function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Xác nhận giao hàng] |
+| 124 | Function - Cập nhật trạng thái đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC update order status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Cập nhật trạng thái] |
+| 125 | Function - Hỗ trợ xử lý đơn đặc biệt (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC support special order processing function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Đơn đặc biệt] |
+| **NHÂN VIÊN KHO - BẢO MẬT** |
+| 126 | Function - Xem lịch sử đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC login history function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
+| 127 | Function - Quản lý phiên đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC sessions management function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
+| **USER - QUẢN LÝ TÀI KHOẢN** |
+| 128 | Function - Đăng ký (User) | Quản lý tài khoản User | Check GUI and FUNC register function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng ký] hoặc truy cập `/user/auth/register` |
+| 129 | Function - Đăng nhập (User) | Quản lý tài khoản User | Check GUI and FUNC login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] hoặc truy cập `/user/auth/login` |
+| 130 | Function - Đổi mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/user/account` |
+| 131 | Layout - Quản lý thông tin cá nhân (User) | Quản lý tài khoản User | GUI function for User personal information management | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] hoặc truy cập `/user/account` |
+| 132 | Function - Khôi phục mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC forgot password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/user/auth/forgot-password` |
+| 133 | Function - Xem điểm tích lũy và hạng thành viên (User) | Quản lý tài khoản User | Check GUI and FUNC view loyalty points and membership rank function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Hạng thành viên] hoặc truy cập `/user/account/rank` |
+| **USER - HIỂN THỊ SÁCH** |
+| 134 | Function - Hiển thị danh sách sách (User) | Hiển thị sách User | Check GUI and FUNC display books list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Sách] hoặc truy cập `/user/products` |
+| 135 | Function - Xem chi tiết sách (User) | Hiển thị sách User | Check GUI and FUNC view book details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/user/products/[id]` |
+| 136 | Function - Hiển thị nội dung đọc thử (User) | Hiển thị sách User | Check GUI and FUNC display read trial content function (User) | Tại Trang chi tiết sách: 1. Click [Đọc thử] |
+| **USER - TÌM KIẾM SÁCH** |
+| 137 | Function - Tìm kiếm sách (User) | Tìm kiếm sách User | Check GUI and FUNC search books function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tìm kiếm] hoặc truy cập `/user/search` |
+| 138 | Function - Hiển thị kết quả tìm kiếm (User) | Tìm kiếm sách User | Check GUI and FUNC display search results function (User) | Tại Trang tìm kiếm: 1. Nhập từ khóa 2. Click [Tìm kiếm] |
+| **USER - BỘ LỌC SÁCH** |
+| 139 | Layout - Bộ lọc sách (User) | Bộ lọc sách User | GUI function for book filtering | Tại Menu Ứng dụng phía User: 1. Click [Sách] hoặc truy cập `/user/products` |
+| 140 | Function - Lọc sách theo khoảng giá (User) | Bộ lọc sách User | Check GUI and FUNC filter books by price range function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc giá |
+| 141 | Function - Lọc sách theo năm xuất bản (User) | Bộ lọc sách User | Check GUI and FUNC filter books by publication year function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc năm xuất bản |
+| 142 | Function - Lọc sách theo nhà xuất bản (User) | Bộ lọc sách User | Check GUI and FUNC filter books by publisher function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc nhà xuất bản |
+| 143 | Function - Sắp xếp danh sách sách (User) | Bộ lọc sách User | Check GUI and FUNC sort books list function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ sắp xếp |
+| **USER - QUẢN LÝ GIỎ HÀNG** |
+| 144 | Function - Thêm sách vào giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC add book to cart function (User) | Tại Trang chi tiết sách: 1. Click [Thêm vào giỏ hàng] |
+| 145 | Function - Hiển thị giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC view cart function (User) | Tại Menu chính: 1. Click [Giỏ hàng] hoặc truy cập `/user/cart` |
+| 146 | Function - Xóa sách khỏi giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC remove book from cart function (User) | Tại Trang giỏ hàng: 1. Click [Xóa] |
+| 147 | Function - Cập nhật số lượng sách (User) | Quản lý giỏ hàng User | Check GUI and FUNC update book quantity function (User) | Tại Trang giỏ hàng: 1. Thay đổi số lượng |
+| 148 | Function - Đặt hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC place order function (User) | Tại Trang giỏ hàng: 1. Click [Đặt hàng] hoặc truy cập `/user/checkout` |
+| **USER - THANH TOÁN ĐƠN HÀNG** |
+| 149 | Function - Nhập thông tin địa chỉ (User) | Thanh toán đơn hàng User | Check GUI and FUNC enter address information function (User) | Tại Trang thanh toán: 1. Nhập thông tin địa chỉ hoặc truy cập `/user/checkout` |
+| 150 | Function - Hiển thị phương thức thanh toán (User) | Thanh toán đơn hàng User | Check GUI and FUNC display payment methods function (User) | Tại Trang thanh toán: 1. Xem danh sách phương thức thanh toán |
+| 151 | Function - Chọn phương thức thanh toán (User) | Thanh toán đơn hàng User | Check GUI and FUNC select payment method function (User) | Tại Trang thanh toán: 1. Chọn phương thức thanh toán |
+| 152 | Function - Thanh toán khi nhận hàng (COD) (User) | Thanh toán đơn hàng User | Check GUI and FUNC COD payment function (User) | Tại Trang thanh toán: 1. Chọn [Thanh toán khi nhận hàng] 2. Click [Xác nhận] |
+| 153 | Function - Thanh toán online Banking/VNPay (User) | Thanh toán đơn hàng User | Check GUI and FUNC online banking/VNPay payment function (User) | Tại Trang thanh toán: 1. Chọn [Thanh toán online] 2. Chọn [Banking/VNPay] 3. Click [Xác nhận] |
+| 154 | Function - Thanh toán MoMo (User) | Thanh toán đơn hàng User | Check GUI and FUNC MoMo payment function (User) | Tại Trang thanh toán: 1. Chọn [MoMo] 2. Click [Xác nhận] |
+| 155 | Function - Thanh toán ZaloPay (User) | Thanh toán đơn hàng User | Check GUI and FUNC ZaloPay payment function (User) | Tại Trang thanh toán: 1. Chọn [ZaloPay] 2. Click [Xác nhận] |
+| 156 | Function - Thanh toán Viettel Money (User) | Thanh toán đơn hàng User | Check GUI and FUNC Viettel Money payment function (User) | Tại Trang thanh toán: 1. Chọn [Viettel Money] 2. Click [Xác nhận] |
+| 157 | Function - Xác nhận đơn hàng (User) | Thanh toán đơn hàng User | Check GUI and FUNC confirm order function (User) | Tại Trang thanh toán: 1. Click [Xác nhận đơn hàng] |
+| **USER - VẬN CHUYỂN** |
+| 158 | Layout - Chọn phương thức vận chuyển (User) | Vận chuyển User | GUI function for shipping method selection | Tại Trang thanh toán: 1. Chọn phương thức vận chuyển |
+| 159 | Function - Hiển thị danh sách đơn vị vận chuyển (User) | Vận chuyển User | Check GUI and FUNC display shipping carriers function (User) | Tại Trang thanh toán: 1. Xem danh sách đơn vị vận chuyển |
+| 160 | Function - Chọn đơn vị vận chuyển (User) | Vận chuyển User | Check GUI and FUNC select shipping carrier function (User) | Tại Trang thanh toán: 1. Chọn đơn vị vận chuyển |
+| **USER - QUẢN LÝ ĐƠN HÀNG** |
+| 161 | Function - Hiển thị danh sách đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC display orders list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] hoặc truy cập `/user/account/orders` |
+| 162 | Function - Xem chi tiết đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC view order details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] 2. Click [Xem chi tiết] hoặc truy cập `/user/orders/[id]` |
+| 163 | Function - Đặt lại đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC reorder function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đặt lại] |
+| 164 | Function - Đánh giá đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC rate order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đánh giá] |
+| 165 | Function - Hủy đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC cancel order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Hủy đơn hàng] |
+| 166 | Function - Theo dõi đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC track order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Theo dõi đơn hàng] hoặc truy cập `/user/orders/track/[id]` |
+| 167 | Function - Yêu cầu đổi/trả hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC request return/exchange function (User) | Tại Trang chi tiết đơn hàng đã giao: 1. Click [Yêu cầu đổi/trả hàng] hoặc truy cập `/user/returns` |
+| **USER - KHUYẾN MÃI** |
+| 168 | Function - Hiển thị danh sách mã giảm giá (User) | Khuyến mãi User | Check GUI and FUNC display discount codes function (User) | Tại Menu Ứng dụng: 1. Click [Khuyến mãi] hoặc truy cập `/user/promotions` |
+| 169 | Function - Xem chi tiết khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC view promotion details function (User) | Tại Trang khuyến mãi: 1. Click vào khuyến mãi hoặc truy cập `/user/promotions/[code]` |
+| 170 | Function - Xem hạng thành viên (User) | Khuyến mãi User | Check GUI and FUNC view membership rank function (User) | Tại Trang khuyến mãi: 1. Click [Hạng thành viên] |
+| 171 | Function - Xem hạng hiện tại (User) | Khuyến mãi User | Check GUI and FUNC view current rank function (User) | Tại Trang khuyến mãi: 1. Xem hạng hiện tại |
+| 172 | Function - Xem giảm giá theo sản phẩm (User) | Khuyến mãi User | Check GUI and FUNC view product-specific discounts function (User) | Tại Trang chi tiết sách: 1. Xem thông tin giảm giá |
+| **USER - ĐÁNH GIÁ VÀ NHẬN XÉT** |
+| 173 | Function - Đánh giá sách (1-5 sao) (User) | Đánh giá và nhận xét User | Check GUI and FUNC rate book function (User) | Tại Trang chi tiết sách: 1. Click [Đánh giá] 2. Chọn số sao |
+| 174 | Function - Viết nhận xét (User) | Đánh giá và nhận xét User | Check GUI and FUNC write review function (User) | Tại Trang chi tiết sách: 1. Click [Viết nhận xét] 2. Nhập nội dung |
+| 175 | Function - Xem nhận xét của khách hàng khác (User) | Đánh giá và nhận xét User | Check GUI and FUNC view other customers reviews function (User) | Tại Trang chi tiết sách: 1. Scroll xuống phần đánh giá |
+| **USER - DANH SÁCH SÁCH YÊU THÍCH** |
+| 176 | Function - Thêm sách vào yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC add book to wishlist function (User) | Tại Trang chi tiết sách: 1. Click [Thêm vào yêu thích] |
+| 177 | Function - Xem danh sách yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC view wishlist function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu thích] hoặc truy cập `/user/wishlist` |
+| 178 | Function - Xóa sách khỏi yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC remove book from wishlist function (User) | Tại Trang yêu thích: 1. Click [Xóa] |
+| **USER - HỖ TRỢ** |
+| 179 | Function - Chat/Liên hệ nhân viên hỗ trợ (User) | Hỗ trợ User | Check GUI and FUNC chat/contact support staff function (User) | Tại Menu Ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] hoặc truy cập `/user/support` |
+| 180 | Function - Gửi phản hồi/khiếu nại (User) | Hỗ trợ User | Check GUI and FUNC send feedback/complaint function (User) | Tại Menu Ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Gửi phản hồi] |
+| **USER - YÊU CẦU NHẬP HÀNG** |
+| 181 | Function - Yêu cầu nhập lại sách hết hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC request restocking out-of-stock books function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] hoặc truy cập `/user/requests` |
+| 182 | Function - Yêu cầu nhập sách mới theo gợi ý (User) | Yêu cầu nhập hàng User | Check GUI and FUNC request new books based on customer suggestions function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] 2. Click [Yêu cầu sách mới] |
+| 183 | Function - Xem danh sách yêu cầu đã gửi (User) | Yêu cầu nhập hàng User | Check GUI and FUNC view sent import requests function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu nhập hàng] 2. Xem danh sách |
+| 184 | Function - Xem chi tiết yêu cầu nhập hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC view import request details function (User) | Tại Trang danh sách yêu cầu: 1. Click [Xem chi tiết] hoặc truy cập `/user/requests/[id]` |
+| 185 | Function - Hủy yêu cầu nhập hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC cancel import request function (User) | Tại Trang chi tiết yêu cầu: 1. Click [Hủy yêu cầu] |
+| **USER - THÔNG BÁO** |
+| 186 | Function - Hiển thị danh sách thông báo (User) | Thông báo User | Check GUI and FUNC display notifications list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Thông báo] hoặc truy cập `/user/notifications` |
+| 187 | Function - Thông báo sách có hàng (User) | Thông báo User | Check GUI and FUNC notifications for in-stock books function (User) | Tại Trang thông báo: 1. Xem thông báo sách có hàng |
+| 188 | Function - Thông báo sách giảm giá (User) | Thông báo User | Check GUI and FUNC notifications for discounted books function (User) | Tại Trang thông báo: 1. Xem thông báo sách giảm giá |
+| 189 | Function - Thông báo trạng thái đơn hàng (User) | Thông báo User | Check GUI and FUNC order status notifications function (User) | Tại Trang thông báo: 1. Xem thông báo trạng thái đơn hàng |
+| **USER - BÀI VIẾT** |
+| 190 | Function - Hiển thị danh sách bài viết (User) | Bài viết User | Check GUI and FUNC display posts list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Bài viết] hoặc truy cập `/user/posts` |
+| 191 | Function - Xem chi tiết bài viết (User) | Bài viết User | Check GUI and FUNC view post details function (User) | Tại Trang danh sách bài viết: 1. Click vào bài viết hoặc truy cập `/user/posts/[id]` |
+| 192 | Function - Tạo bài viết (User) | Bài viết User | Check GUI and FUNC create post function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tạo bài viết] hoặc truy cập `/user/posts/create` |
+| 193 | Function - Chỉnh sửa bài viết (User) | Bài viết User | Check GUI and FUNC edit post function (User) | Tại Trang chi tiết bài viết: 1. Click [Chỉnh sửa] hoặc truy cập `/user/posts/[id]/edit` |
+| **USER - BẢO MẬT** |
+| 194 | Function - Đổi mật khẩu (User) | Bảo mật User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Bảo mật] 3. Click [Đổi mật khẩu] hoặc truy cập `/user/account/security` |
+| 195 | Function - Cài đặt bảo mật (User) | Bảo mật User | Check GUI and FUNC security settings function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Bảo mật] hoặc truy cập `/user/account/security` |
+| 196 | Function - Xem hoạt động bảo mật gần đây (User) | Bảo mật User | Check GUI and FUNC view recent security activities function (User) | Tại Trang bảo mật: 1. Xem hoạt động bảo mật gần đây |
 
 ---
 
-**Người tạo:** Testing Team  
-**Ngày cập nhật:** 11/15/2015  
-**Phiên bản:** 1.0
+## GHI CHÚ QUAN TRỌNG
+
+### Về Routes:
+- Tất cả routes được xác định dựa trên cấu trúc thư mục `src/app/admin/`, `src/app/nhanvien/`, `src/app/nhanvienkho/`, và `src/app/user/`
+- Routes có thể truy cập trực tiếp qua URL hoặc thông qua menu navigation
+- Routes động (có `[id]`) cần thay thế `[id]` bằng ID thực tế khi test
+
+### Về Pre-Condition:
+- Pre-Condition mô tả các bước điều hướng từ menu hoặc URL trực tiếp
+- Có thể kết hợp cả hai cách: click menu hoặc truy cập URL trực tiếp
+- Một số chức năng yêu cầu đăng nhập trước khi truy cập
+
+### Về Test Cases:
+- Mỗi function có thể có nhiều test case con (GUI test, Functional test, Validation test, etc.)
+- Cần bổ sung thêm các test case chi tiết cho từng function trong các sheet riêng
+- Test cases cần bao gồm: Test ID, Test Description, Pre-Condition, Test Steps, Expected Result, Actual Result, Status
+
+---
+
+**Tổng số chức năng:** 196 functions  
+**Admin:** 72 functions  
+**Nhân viên:** 27 functions  
+**Nhân viên kho:** 28 functions  
+**User:** 69 functions
 
