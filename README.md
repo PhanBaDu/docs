@@ -1,15 +1,12 @@
-# Test Case Template - Quản lý tài khoản (Admin)
+# Test Case Template - Xử lý đổi trả sách (Nhân viên)
 
 ## Module Code
-**Giao lộ 19: Họcl6c (Admin)**
+**Giao lộ 19: Họcl6c (Nhân viên)**
 
 ## Test Requirement
-1. Đăng nhập
-2. Đăng ký
-3. Đổi mật khẩu
-4. Quản lý thông tin cá nhân
-5. Khôi phục mật khẩu
-6. Đăng xuất
+1. Hiển thị danh sách đổi trả
+2. Xem chi tiết yêu cầu đổi trả
+3. Liên hệ đổi trả
 
 ---
 
@@ -19,155 +16,109 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 45 |
+| **Pass** | 36 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 45 |
+| **Number of Test cases** | 36 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập
+### Function: Hiển thị danh sách đổi trả
 
-#### Check GUI: Đăng nhập
+#### Check GUI: Hiển thị danh sách đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra icon Shield header | 1. Truy cập /admin/auth/login<br>2. Kiểm tra icon Shield | Hiển thị icon Shield trong vòng tròn (h-12 w-12) với background primary/10, icon màu primary (h-6 w-6), nằm ở header card, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng nhập Admin" với class text-2xl font-bold, nằm trong CardHeader, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra mô tả chức năng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra mô tả | Hiển thị mô tả "Đăng nhập vào hệ thống quản trị" với class CardDescription, nằm dưới tiêu đề, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra trường Email Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Email | Hiển thị label "Email Admin" với component Label, input type email với id="email", placeholder="admin@modelshop.com", có thuộc tính required, nằm trong div space-y-2 | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra trường Mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra label và input Mật khẩu | Hiển thị label "Mật khẩu" với component Label, input type password với id="password", placeholder="Nhập mật khẩu", có thuộc tính required, nằm trong div space-y-2 | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /admin/auth/login<br>2. Kiểm tra checkbox | Hiển thị checkbox với id="remember", label "Ghi nhớ đăng nhập" với class text-sm, nằm trong flex items-center space-x-2, bên trái | | Pass | 11/15/2015 | |
-| **GUI-DN-07** | Kiểm tra link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link Quên mật khẩu | Hiển thị link "Quên mật khẩu?" với href="/admin/auth/forgot-password", class text-sm text-primary hover:underline, nằm bên phải trong flex justify-between | | Pass | 11/15/2015 | |
-| **GUI-DN-08** | Kiểm tra nút Đăng nhập Admin | 1. Truy cập /admin/auth/login<br>2. Kiểm tra nút Đăng nhập | Hiển thị nút "Đăng nhập Admin" type submit, class w-full, nằm trong form space-y-4 | | Pass | 11/15/2015 | |
-| **GUI-DN-09** | Kiểm tra separator "Hoặc" | 1. Truy cập /admin/auth/login<br>2. Kiểm tra separator | Hiển thị separator với text "Hoặc" ở giữa, class text-xs uppercase, background bg-background px-2 text-muted-foreground, có đường kẻ ngang | | Pass | 11/15/2015 | |
-| **GUI-DN-10** | Kiểm tra link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Kiểm tra link | Hiển thị link "Đăng nhập với tài khoản khách hàng" với icon ArrowLeft (h-4 w-4 mr-1), href="/user/auth/login", class inline-flex items-center text-sm text-primary hover:underline, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DN-11** | Kiểm tra thông báo cảnh báo | 1. Truy cập /admin/auth/login<br>2. Kiểm tra thông báo | Hiển thị text "Chỉ dành cho quản trị viên được ủy quyền" với class text-center text-sm text-muted-foreground, nằm dưới link đăng nhập khách hàng | | Pass | 11/15/2015 | |
-| **GUI-DN-12** | Kiểm tra layout trang | 1. Truy cập /admin/auth/login<br>2. Kiểm tra layout tổng thể | Trang có background gradient từ primary/5 đến secondary/5 (bg-gradient-to-br from-primary/5 to-secondary/5), min-h-screen flex items-center justify-center, card container nằm giữa màn hình với w-full max-w-md, padding p-4 | | Pass | 11/15/2015 | |
-| **GUI-DN-13** | Kiểm tra card container | 1. Truy cập /admin/auth/login<br>2. Kiểm tra card | Hiển thị card container chứa toàn bộ form đăng nhập, có CardHeader và CardContent, CardContent có class space-y-4 | | Pass | 11/15/2015 | |
+| **GUI-DSDT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns<br>3. Kiểm tra tiêu đề | Hiển thị div space-y-6 với h1 `Xử lý đổi trả sách` class text-2xl font-bold, p `Quản lý yêu cầu đổi trả cần xử lý` class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-02** | Kiểm tra thống kê tổng quan | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-2 md:grid-cols-5 gap-4 với các Card chứa CardContent p-4: `Tổng yêu cầu 15`, `Chờ xử lý 8`, `Đã xử lý 5`, `Đã từ chối 2`, Card cuối class col-span-2 md:col-span-1 hiển thị `Tổng giá trị 2.500.000 VNĐ` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-03** | Kiểm tra card Bộ lọc yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Quan sát card | Hiển thị Card với CardHeader (CardTitle `Bộ lọc yêu cầu`, CardDescription `Trạng thái, loại, thời gian, ưu tiên, tìm kiếm`), CardContent class grid md:grid-cols-6 gap-3 chứa các control | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-04** | Kiểm tra bộ lọc Trạng thái | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Trạng thái | Hiển thị SelectTrigger với SelectValue placeholder `Tất cả`, SelectContent chứa SelectItem: `Tất cả`, `Chờ xử lý`, `Đang xử lý`, `Đã xử lý`, `Đã từ chối`, `Đã hủy` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-05** | Kiểm tra bộ lọc Loại yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Loại yêu cầu | Hiển thị Select với các option: `Tất cả`, `Đổi sách`, `Trả sách`, `Đổi sách khác`, `Hoàn tiền` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-06** | Kiểm tra bộ lọc Khoảng thời gian | 1. Truy cập /nhanvien/returns<br>2. Kiểm tra phần Khoảng thời gian | Hiển thị grid grid-cols-2 gap-2 với hai Input type="date" (Từ ngày, Đến ngày) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-07** | Kiểm tra bộ lọc Mức độ ưu tiên | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Mức độ ưu tiên | Hiển thị Select có các option: `Tất cả`, `Cao`, `Trung bình`, `Thấp` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-08** | Kiểm tra ô tìm kiếm | 1. Truy cập /nhanvien/returns<br>2. Quan sát ô tìm kiếm | Input placeholder `ID, tên, số điện thoại...` hiển thị trong grid | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-09** | Kiểm tra bảng danh sách yêu cầu | 1. Truy cập /nhanvien/returns<br>2. cuộn tới bảng | Hiển thị Card (CardTitle `Danh sách yêu cầu`, CardDescription `Các yêu cầu đổi trả cần xử lý`), TableHeader có các cột: `ID yêu cầu`, `Khách hàng`, `Loại`, `Sản phẩm`, `Lý do`, `Trạng thái`, `Ngày tạo`, `Thao tác`. TableBody hiển thị hàng với dữ liệu mẫu (#RT-001, Nguyễn Văn A, Badge `Đổi sách`, …) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSDT-10** | Kiểm tra cột Thao tác | 1. Truy cập /nhanvien/returns<br>2. Quan sát cột Thao tác | Mỗi hàng có Button size="sm" variant="outline" asChild Link tới `/nhanvien/returns/RT-001` (Xem chi tiết) và Button size="sm" `Xử lý yêu cầu` | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng nhập
+#### Check FUNC: Hiển thị danh sách đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /admin/auth/login | Hiển thị form đăng nhập với đầy đủ các thành phần: icon Shield trong vòng tròn, tiêu đề "Đăng nhập Admin", mô tả "Đăng nhập vào hệ thống quản trị", 2 trường nhập (Email Admin với placeholder "admin@modelshop.com", Mật khẩu với placeholder "Nhập mật khẩu"), checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập Admin, separator "Hoặc", link đăng nhập với tài khoản khách hàng, thông báo cảnh báo. Layout có background gradient, card nằm giữa màn hình | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công với thông tin hợp lệ | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ (VD: admin@modelshop.com)<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập Admin | Hệ thống xác thực thông tin, hiển thị loading state trên nút (nếu có), sau đó chuyển đến dashboard Admin (/admin), lưu phiên đăng nhập và lưu token vào localStorage/sessionStorage, hiển thị thông báo thành công (toast notification) | | Pass | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /admin/auth/login<br>2. Nhập email không tồn tại (VD: notexist@test.com)<br>3. Nhập mật khẩu bất kỳ<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng" (toast error), không chuyển trang, vẫn ở trang đăng nhập, các trường input vẫn giữ giá trị đã nhập | | Pass | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /admin/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn Đăng nhập Admin | Hiển thị thông báo lỗi "Tài khoản hoặc mật khẩu không đúng" (toast error), không chuyển trang, vẫn ở trang đăng nhập, các trường input vẫn giữ giá trị đã nhập | | Pass | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /admin/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc" trên trường email, form không được gửi, không có request đến server | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please fill out this field" hoặc validation message "Trường này là bắt buộc" trên trường mật khẩu, form không được gửi, không có request đến server | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /admin/auth/login<br>2. Nhập email không đúng định dạng (VD: "invalid-email")<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập Admin | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address" hoặc validation message "Dữ liệu không hợp lệ" trên trường email, form không được gửi, không có request đến server | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /admin/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn dài hơn (VD: 30 ngày), khi đóng trình duyệt và mở lại vẫn còn đăng nhập, token được lưu vào localStorage | | Pass | 11/15/2015 | |
-| **FUNC-DN-09** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /admin/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập thành công | Đăng nhập thành công, trình duyệt lưu cookie/session với thời hạn ngắn hơn (VD: session), khi đóng trình duyệt sẽ đăng xuất, token được lưu vào sessionStorage | | Pass | 11/15/2015 | |
-| **FUNC-DN-10** | Nhấn link Quên mật khẩu | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /admin/auth/forgot-password, URL thay đổi, trang mới được load | | Pass | 11/15/2015 | |
-| **FUNC-DN-11** | Nhấn link Đăng nhập với tài khoản khách hàng | 1. Truy cập /admin/auth/login<br>2. Nhấn link "Đăng nhập với tài khoản khách hàng" | Chuyển đến trang /user/auth/login, URL thay đổi, trang mới được load | | Pass | 11/15/2015 | |
-| **FUNC-DN-12** | Submit form bằng phím Enter | 1. Truy cập /admin/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút Đăng nhập Admin, chuyển đến dashboard nếu thành công | | Pass | 11/15/2015 | |
+| **FUNC-DSDT-01** | Xem danh sách yêu cầu đổi trả | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns | Trang hiển thị đầy đủ: tiêu đề, thống kê 5 card, card bộ lọc với các control (Select Trạng thái/Loại, Input date range, Select ưu tiên, Input tìm kiếm), card danh sách với bảng hiển thị yêu cầu, cột Thao tác có nút `Xem chi tiết` & `Xử lý yêu cầu` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-02** | Lọc yêu cầu theo trạng thái | 1. Truy cập /nhanvien/returns<br>2. Chọn Trạng thái = `Chờ xử lý` | Bảng chỉ hiển thị các yêu cầu có trạng thái `Chờ xử lý`, Badge variant="destructive" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-03** | Lọc theo loại yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Chọn Loại yêu cầu = `Hoàn tiền` | Danh sách chỉ còn các yêu cầu Hoàn tiền (Badge `Hoàn tiền`), thống kê cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-04** | Lọc theo khoảng thời gian | 1. Truy cập /nhanvien/returns<br>2. Chọn Từ ngày & Đến ngày<br>3. Áp dụng | Danh sách yêu cầu cập nhật chỉ bao gồm các yêu cầu tạo trong khoảng thời gian, cột Ngày tạo phù hợp | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-05** | Lọc theo mức độ ưu tiên | 1. Truy cập /nhanvien/returns<br>2. Chọn ưu tiên = `Cao` | Danh sách hiển thị các yêu cầu ưu tiên cao, Badge `Cao`, cột Thao tác vẫn hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-06** | Tìm kiếm yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Nhập `RT-001` vào ô tìm kiếm | Bảng hiển thị yêu cầu #RT-001, nếu không có hiển thị thông báo “Không tìm thấy yêu cầu nào” | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-07** | Sắp xếp theo ngày tạo mới nhất | 1. Truy cập /nhanvien/returns<br>2. Chọn sắp xếp = `Ngày tạo (mới nhất)` | Danh sách yêu cầu hiển thị theo thứ tự ngày tạo giảm dần, hàng đầu tiên là yêu cầu mới nhất | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-08** | Xem chi tiết yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Click nút `Xem chi tiết` | Điều hướng đến `/nhanvien/returns/RT-001` hiển thị chi tiết yêu cầu | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSDT-09** | Xử lý yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Click cbutton `Xử lý yêu cầu` | Hiển thị dialog/form xử lý (hoặc điều hướng), cho phép cập nhật trạng thái/ghi chú, hiển thị thông báo thành công | FUNC-DSDT-08 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đăng ký
+### Function: Xem chi tiết yêu cầu đổi trả
 
-#### Check GUI: Đăng ký
+#### Check GUI: Xem chi tiết yêu cầu đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/register<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Đăng ký tài khoản Admin" với class text-2xl font-bold, nằm trong CardHeader, căn giữa | | Pass | 11/15/2015 | |
-| **GUI-DK-02** | Kiểm tra form đăng ký | 1. Truy cập /admin/auth/register<br>2. Kiểm tra form | Hiển thị form đăng ký với các trường: Họ tên, Email, Mật khẩu, Xác nhận mật khẩu, nút Đăng ký, layout tương tự trang đăng nhập | | Pass | 11/15/2015 | |
+| **GUI-CTDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/returns/RT-001 | Hiển thị h1 `Chi tiết yêu cầu đổi trả #RT-001` class text-2xl font-bold | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-02** | Kiểm tra card Thông tin chung | 1. Truy cập chi tiết yêu cầu<br>2. Quan sát card đầu | CardTitle `Thông tin chung`, CardDescription, CardContent grid grid-cols-2 md:grid-cols-3 gap-4 hiển thị ID, Trạng thái (Badge variant destructive), Loại (Badge default), Mức độ ưu tiên (Badge), Ngày tạo, Ngày cập nhật, Người xử lý | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-03** | Kiểm tra card Thông tin khách hàng | 1. Truy cập chi tiết yêu cầu | CardTitle `Thông tin khách hàng`, grid grid-cols-2 md:grid-cols-3 hiển thị tên, số điện thoại, email, địa chỉ (md:col-span-3), Hạng khách hàng (Badge Vàng) | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-04** | Kiểm tra card Thông tin sản phẩm | 1. Truy cập chi tiết yêu cầu | CardTitle `Thông tin sản phẩm`, CardContent có hình ảnh (Image fill `/1.png`), grid hiển thị Tên SP, Mã SP, Số lượng, Giá bán, Ngày mua, Link đơn hàng gốc `/nhanvien/orders/#ORD-001` | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-05** | Kiểm tra card Lý do đổi trả | 1. Truy cập chi tiết yêu cầu | CardTitle `Lý do đổi trả`, hiển thị Lý do chính, Mô tả chi tiết, grid hình ảnh minh chứng (3 div h-24 bg-muted), Yêu cầu bồi thường | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-06** | Kiểm tra card Lịch sử xử lý | 1. Truy cập chi tiết yêu cầu | CardTitle `Lịch sử xử lý`, CardContent space-y-2 text-sm hiển thị các mục `thời gian • trạng thái • người xử lý • ghi chú` | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CTDT-07** | Kiểm tra card Ghi chú nội bộ | 1. Truy cập chi tiết yêu cầu | CardTitle `Ghi chú nội bộ`, CardContent có Label, Textarea placeholder `Nhập ghi chú nội bộ...`, Buttons `Thêm ghi chú`, `Cập nhật trạng thái`, `Liên hệ khách hàng` (Link /nhanvien/returns/RT-001/contact) | FUNC-DSDT-08 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng ký
+#### Check FUNC: Xem chi tiết yêu cầu đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DK-01** | Đăng ký thành công | 1. Truy cập /admin/auth/register<br>2. Nhập đầy đủ thông tin hợp lệ (Họ tên, Email, Mật khẩu, Xác nhận mật khẩu)<br>3. Nhấn Đăng ký | Tài khoản được tạo thành công, hiển thị thông báo thành công (toast), chuyển đến trang đăng nhập (/admin/auth/login) hoặc dashboard (/admin) nếu tự động đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-DK-02** | Đăng ký với email đã tồn tại | 1. Truy cập /admin/auth/register<br>2. Nhập email đã tồn tại<br>3. Nhập các thông tin khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị thông báo lỗi "Email đã tồn tại" (toast error), không tạo tài khoản, vẫn ở trang đăng ký, các trường input vẫn giữ giá trị đã nhập | | Pass | 11/15/2015 | |
+| **FUNC-CTDT-01** | Xem thông tin chi tiết yêu cầu | 1. Truy cập /nhanvien/returns/RT-001 | Hiển thị đầy đủ tất cả card: Thông tin chung (ID, trạng thái, loại, ưu tiên, thời gian, người xử lý), Thông tin khách hàng, Thông tin sản phẩm (ảnh bìa, mã SP, link đơn hàng gốc), Lý do đổi trả (lý do chính, mô tả, hình ảnh, yêu cầu bồi thường), Lịch sử xử lý, Ghi chú nội bộ, Buttons xử lý | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **FUNC-CTDT-02** | Thêm ghi chú nội bộ | 1. Truy cập chi tiết<br>2. Nhập ghi chú vào Textarea<br>3. Click `Thêm ghi chú` | Ghi chú nội bộ được lưu, hiển thị thông báo thành công (toast success), ghi chú xuất hiện trong danh sách (nếu UI hiển thị), ghi log | FUNC-CTDT-01 | Pass | 11/15/2015 | |
+| **FUNC-CTDT-03** | Cập nhật trạng thái yêu cầu | 1. Truy cập chi tiết<br>2. Click `Cập nhật trạng thái`<br>3. Chọn trạng thái mới | Hiển thị dialog hoặc form, cho phép chọn trạng thái (ví dụ: Đang xử lý, Đã xử lý, Đã từ chối), sau khi lưu: badge trạng thái cập nhật, lịch sử xử lý bổ sung dòng mới, thông báo thành công | FUNC-CTDT-01 | Pass | 11/15/2015 | |
+| **FUNC-CTDT-04** | Mở trang liên hệ khách hàng | 1. Truy cập chi tiết<br>2. Click `Liên hệ khách hàng` | Điều hướng đến `/nhanvien/returns/RT-001/contact` | FUNC-CTDT-01 | Pass | 11/15/2015 | |
+| **FUNC-CTDT-05** | Xem lịch sử xử lý | 1. Truy cập chi tiết<br>2. Quan sát card `Lịch sử xử lý` | Danh sách timeline hiển thị đúng thứ tự thời gian với thông tin `thời gian • trạng thái • người xử lý • ghi chú`, dữ liệu khớp với backend | FUNC-CTDT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đổi mật khẩu
+### Function: Liên hệ đổi trả
 
-#### Check GUI: Đổi mật khẩu
+#### Check GUI: Liên hệ đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra dialog đổi mật khẩu | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click nút "Đổi mật khẩu"<br>4. Kiểm tra dialog | Hiển thị Dialog với tiêu đề "Đổi mật khẩu", mô tả "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi", có các trường: Mật khẩu hiện tại, Mật khẩu mới, Xác nhận mật khẩu mới, mỗi trường có icon Eye/EyeOff để hiển thị/ẩn mật khẩu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra form đổi mật khẩu | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Đổi mật khẩu"<br>4. Kiểm tra form | Hiển thị form với các trường: Label "Mật khẩu hiện tại" với Input type password, có nút icon Eye/EyeOff bên phải, Label "Mật khẩu mới" với Input type password, có nút icon Eye/EyeOff, Label "Xác nhận mật khẩu mới" với Input type password, có nút icon Eye/EyeOff, nút "Hủy" và nút "Đổi mật khẩu" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LHDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/returns/RT-001/contact | Hiển thị h1 `Liên hệ đổi trả - #RT-001` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-02** | Kiểm tra card Thông tin khách hàng | 1. Truy cập contact page | CardTitle `Thông tin khách hàng`, CardContent grid md:grid-cols-4 hiển thị tên, số điện thoại, email, thời gian liên hệ | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-03** | Kiểm tra card Thông tin yêu cầu | 1. Truy cập contact page | CardTitle `Thông tin yêu cầu`, hiển thị Loại (Badge), Sản phẩm, Lý do, Yêu cầu bồi thường | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-04** | Kiểm tra khối Gọi điện thoại | 1. Truy cập contact page | Trong card `Phương thức liên hệ`, cột trái hiển thị Label `Số điện thoại`, Input defaultValue `0123456789`, Input `Thời gian gọi` type datetime-local, Textarea `Ghi chú cuộc gọi`, Select `Kết quả cuộc gọi` (Thành công, Không nghe máy, Máy bận, Không liên lạc được), Button `Xác nhận gọi` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-05** | Kiểm tra khối Gửi email | 1. Truy cập contact page | CardContent cột phải hiển thị section `Gửi email` với Input email, Input tiêu đề, Textarea nội dung, Button `Gửi email` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-06** | Kiểm tra khối Gửi SMS | 1. Truy cập contact page | Section `Gửi SMS` có Input số điện thoại, Textarea nội dung, Button `Gửi SMS` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-07** | Kiểm tra khối Chat trực tuyến | 1. Truy cập contact page | Section `Chat trực tuyến` hiển thị Select `Tin nhắn mẫu` với các option (Chào bạn…, Chúng tôi đã nhận…, Cảm ơn bạn…), Button `Mở chat`, Button `Gửi tin nhắn` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-08** | Kiểm tra card Lịch sử liên hệ | 1. Truy cập contact page | CardTitle `Lịch sử liên hệ`, CardContent space-y-2 text-sm hiển thị các dòng `thời gian • phương thức • nội dung • kết quả • nhân viên` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-LHDT-09** | Kiểm tra card Cập nhật trạng thái | 1. Truy cập contact page | CardTitle `Cập nhật trạng thái yêu cầu`, CardContent flex gap-2 hiển thị Buttons `Đã liên hệ`, `Đang xử lý`, `Hoàn thành`, `Hủy yêu cầu` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đổi mật khẩu
+#### Check FUNC: Liên hệ đổi trả
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Đổi mật khẩu thành công | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click nút "Đổi mật khẩu"<br>4. Nhập mật khẩu hiện tại đúng<br>5. Nhập mật khẩu mới (ít nhất 6 ký tự)<br>6. Xác nhận mật khẩu mới khớp<br>7. Nhấn "Đổi mật khẩu" | Mật khẩu được đổi thành công, hiển thị thông báo "Đổi mật khẩu thành công" (toast success), dialog đóng lại, form được reset về trạng thái ban đầu, gửi email thông báo thay đổi mật khẩu (nếu có) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu với mật khẩu hiện tại sai | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Đổi mật khẩu"<br>4. Nhập mật khẩu hiện tại sai<br>5. Nhập mật khẩu mới<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng" (toast error), không đổi mật khẩu, dialog vẫn mở, các trường input vẫn giữ giá trị đã nhập | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu với mật khẩu mới không khớp | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Đổi mật khẩu"<br>4. Nhập mật khẩu hiện tại đúng<br>5. Nhập mật khẩu mới<br>6. Xác nhận mật khẩu mới không khớp<br>7. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp" (toast error), không đổi mật khẩu, dialog vẫn mở | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu với mật khẩu mới quá ngắn | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Đổi mật khẩu"<br>4. Nhập mật khẩu hiện tại đúng<br>5. Nhập mật khẩu mới < 6 ký tự<br>6. Nhấn "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu mới phải có ít nhất 6 ký tự" (toast error), không đổi mật khẩu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-05** | Hủy đổi mật khẩu | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Đổi mật khẩu"<br>4. Nhập một số thông tin<br>5. Click nút "Hủy" | Dialog đóng lại, form được reset, không có thay đổi nào được lưu | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Quản lý thông tin cá nhân
-
-#### Check GUI: Quản lý thông tin cá nhân
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý tài khoản" với class text-3xl font-bold, mô tả "Quản lý thông tin cá nhân và cài đặt tài khoản" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TT-02** | Kiểm tra card Thông tin cá nhân | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Kiểm tra card | Hiển thị Card với CardHeader có tiêu đề "Thông tin cá nhân" với icon User (h-5 w-5), mô tả "Thông tin cơ bản của tài khoản quản trị", CardContent có Avatar (h-20 w-20) với fallback là chữ cái đầu của tên, Badge hiển thị role "Super Admin" với icon Shield | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TT-03** | Kiểm tra form cập nhật thông tin | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Kiểm tra form | Hiển thị form với các trường: Label "Họ và tên" với Input disabled khi không edit, Label "Email" với Input type email disabled, Label "Số điện thoại" với Input disabled, Label "Địa chỉ" với Input disabled, Label "Ngày sinh" với Input type date disabled. Có nút "Chỉnh sửa" với icon Edit, khi click chuyển thành nút "Hủy" và "Lưu thay đổi" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TT-04** | Kiểm tra card Thông tin tài khoản | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Kiểm tra card | Hiển thị Card với CardHeader có tiêu đề "Thông tin tài khoản" với icon Shield, mô tả "Thông tin bảo mật và hoạt động tài khoản", CardContent hiển thị: Email đăng nhập với icon Mail, Ngày tạo tài khoản với icon Calendar, Lần đăng nhập cuối với icon Calendar, Separator, nút "Đổi mật khẩu" với icon Key, nút "Đăng xuất" với icon LogOut variant destructive | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Quản lý thông tin cá nhân
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TT-01** | Xem thông tin cá nhân | 1. Đăng nhập Admin<br>2. Truy cập /admin/account | Hiển thị đầy đủ thông tin cá nhân của Admin hiện tại: Avatar với fallback là chữ cái đầu, Họ tên, Badge role, các trường thông tin (Họ tên, Email, Số điện thoại, Địa chỉ, Ngày sinh) đều disabled, thông tin tài khoản (Email đăng nhập, Ngày tạo, Lần đăng nhập cuối) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TT-02** | Cập nhật thông tin cá nhân thành công | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click nút "Chỉnh sửa"<br>4. Cập nhật thông tin (Họ tên, Số điện thoại, Địa chỉ, Ngày sinh)<br>5. Nhấn "Lưu thay đổi" | Thông tin được cập nhật thành công, hiển thị thông báo "Cập nhật thông tin thành công" (toast success), các trường chuyển về trạng thái disabled, nút chuyển về "Chỉnh sửa", dữ liệu mới được hiển thị, gửi email thông báo (nếu có thay đổi quan trọng) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TT-03** | Cập nhật thông tin thiếu trường bắt buộc | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Chỉnh sửa"<br>4. Xóa Họ tên<br>5. Nhấn "Lưu thay đổi" | Hiển thị thông báo lỗi "Họ tên không được để trống" (toast error), không cập nhật, vẫn ở chế độ edit | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TT-04** | Hủy cập nhật thông tin | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click "Chỉnh sửa"<br>4. Thay đổi một số thông tin<br>5. Click nút "Hủy" | Form được reset về giá trị ban đầu, các trường chuyển về trạng thái disabled, nút chuyển về "Chỉnh sửa", không có thay đổi nào được lưu | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Khôi phục mật khẩu
-
-#### Check GUI: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị tiêu đề "Khôi phục mật khẩu Admin" với layout tương tự trang đăng nhập, có icon Shield trong header | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra form khôi phục | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra form | Hiển thị form với trường Email/Số điện thoại, Phương thức khôi phục (Email/SMS) dạng radio hoặc select, nút "Gửi mã", có link quay lại trang đăng nhập | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Gửi mã khôi phục thành công | 1. Truy cập /admin/auth/forgot-password<br>2. Nhập email đã đăng ký<br>3. Chọn phương thức Email<br>4. Nhấn "Gửi mã" | Mã khôi phục được gửi thành công qua email, hiển thị thông báo xác nhận "Mã khôi phục đã được gửi đến email của bạn" (toast success), hiển thị form nhập mã xác thực với các trường: Mã xác thực, Mật khẩu mới, Xác nhận mật khẩu mới | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Gửi mã với email không tồn tại | 1. Truy cập /admin/auth/forgot-password<br>2. Nhập email không tồn tại<br>3. Nhấn "Gửi mã" | Hiển thị thông báo lỗi "Email không tồn tại" (toast error), không gửi mã, vẫn ở trang khôi phục mật khẩu | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-03** | Đặt lại mật khẩu thành công | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực đúng<br>3. Nhập mật khẩu mới (ít nhất 6 ký tự)<br>4. Xác nhận mật khẩu mới khớp<br>5. Nhấn "Đặt lại mật khẩu" | Mật khẩu được đặt lại thành công, hiển thị thông báo "Đặt lại mật khẩu thành công" (toast success), chuyển đến trang đăng nhập (/admin/auth/login), yêu cầu đăng nhập lại với mật khẩu mới | FUNC-KPMK-01 | Pass | 11/15/2015 | |
-| **FUNC-KPMK-04** | Đặt lại mật khẩu với mã sai | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực sai<br>3. Nhập mật khẩu mới<br>4. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mã xác thực không đúng hoặc đã hết hạn" (toast error), không đặt lại mật khẩu, vẫn ở trang khôi phục, có thể yêu cầu gửi lại mã | FUNC-KPMK-01 | Pass | 11/15/2015 | |
-
----
-
-### Function: Đăng xuất
-
-#### Check FUNC: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Đăng xuất thành công | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click nút "Đăng xuất"<br>4. Xác nhận đăng xuất trong AlertDialog | Hiển thị AlertDialog với tiêu đề "Xác nhận đăng xuất", mô tả "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng", có nút "Hủy" và "Đăng xuất". Sau khi xác nhận: đăng xuất thành công, hiển thị thông báo "Đăng xuất thành công" (toast success), phiên đăng nhập được kết thúc, token được xóa khỏi localStorage/sessionStorage, chuyển hướng về trang đăng nhập (/admin/auth/login) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Hủy đăng xuất | 1. Đăng nhập Admin<br>2. Truy cập /admin/account<br>3. Click nút "Đăng xuất"<br>4. Click nút "Hủy" trong AlertDialog | AlertDialog đóng lại, không đăng xuất, vẫn ở trang /admin/account, vẫn đăng nhập | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-01** | Ghi nhận cuộc gọi thành công | 1. Truy cập /nhanvien/returns/RT-001/contact<br>2. Nhập thời gian gọi, ghi chú, chọn kết quả `Thành công`<br>3. Click `Xác nhận gọi` | Cuộc gọi được ghi nhận, hiển thị thông báo thành công (toast success), lịch sử liên hệ thêm dòng `Gọi điện thoại … Thành công`, trạng thái yêu cầu có thể cập nhật thành `Đã liên hệ` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-02** | Gửi email hướng dẫn đổi trả | 1. Truy cập contact page<br>2. Nhập tiêu đề, nội dung<br>3. Click `Gửi email` | Email gửi thành công, hiển thị thông báo `Đã gửi email`, email được ghi trong lịch sử liên hệ với kết quả `Thành công`, khách hàng nhận được email | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-03** | Gửi SMS cho khách hàng | 1. Truy cập contact page<br>2. Nhập nội dung SMS<br>3. Click `Gửi SMS` | Tin nhắn được gửi, lịch sử liên hệ bổ sung dòng `SMS • nội dung • Thành công`, trạng thái yêu cầu cập nhật | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-04** | Gửi tin nhắn chat trực tuyến | 1. Truy cập contact page<br>2. Chọn tin nhắn mẫu<br>3. Click `Mở chat` rồi `Gửi tin nhắn` | Cửa sổ chat mở (UI placeholder), tin nhắn được gửi, ghi lại vào lịch sử, hiển thị thông báo thành công | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-05** | Cập nhật trạng thái `Đã liên hệ` | 1. Truy cập contact page<br>2. Click button `Đã liên hệ` | Trạng thái yêu cầu cập nhật (Badge trong trang chi tiết thay đổi, hoặc hiển thị toast `Đã cập nhật trạng thái`), lịch sử xử lý bổ sung dòng mới | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-LHDT-06** | Cập nhật trạng thái `Hoàn thành` | 1. Truy cập contact page<br>2. Click button `Hoàn thành` | Yêu cầu đổi trả chuyển sang trạng thái `Hoàn thành`, bảng danh sách cập nhật, hiển thị thông báo thành công, khách hàng nhận thông báo đóng yêu cầu | FUNC-CTDT-04 | Pass | 11/15/2015 | |
 
 ---
 
 *Template này được tạo theo chuẩn MDX để dễ dàng quản lý và cập nhật test cases.*
+
