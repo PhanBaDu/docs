@@ -1,15 +1,13 @@
-# Test Case Template - Quản lý sách (Nhân viên kho)
+# Test Case Template - Quản lý tồn kho (Nhân viên kho)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên kho)**
 
 ## Test Requirement
-1. Hiển thị danh sách & bộ lọc sách `/nhanvienkho/books`
-2. Xem chi tiết sách `/nhanvienkho/books/[id]`
-3. Thêm sách mới `/nhanvienkho/books/new`
-4. Chỉnh sửa thông tin sách `/nhanvienkho/books/[id]/edit`
-5. Ẩn sách & ghi nhận lý do (dialog trong trang chi tiết)
-6. Tìm kiếm nâng cao (kết hợp filter/sort)
+1. Trang tổng quan tồn kho `/nhanvienkho/inventory`
+2. Nhập hàng `/nhanvienkho/inventory/import`
+3. Xuất hàng `/nhanvienkho/inventory/export`
+4. Kiểm kê kho `/nhanvienkho/inventory/audit`
 
 ---
 
@@ -19,134 +17,122 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 34 |
+| **Pass** | 36 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 34 |
+| **Number of Test cases** | 36 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách & bộ lọc sách
+### Function: Trang tổng quan Quản lý tồn kho
 
-#### Check GUI: `/nhanvienkho/books`
+#### Check GUI: `/nhanvienkho/inventory`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-BOOK-LIST-01** | Kiểm tra header trang | 1. Đăng nhập kho<br>2. Truy cập `/nhanvienkho/books` | Header flex giữa: `h1` “Quản lý sách”, mô tả `Danh sách sách trong kho`, button `Thêm sách mới` (link `/nhanvienkho/books/new`) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **GUI-KW-BOOK-LIST-02** | Kiểm tra card thống kê | 1. Quan sát grid đầu | 4 `Card` hiển thị `Tổng số sách 1,250`, `Có sẵn 1,180`, `Hết hàng 45`, `Ẩn 25` với text-sm muted và số font-semibold | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **GUI-KW-BOOK-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Quan sát card thứ hai | CardTitle “Tìm kiếm & Bộ lọc”, description nêu tiêu chí; `Input` placeholder “Tìm tên sách…”, Select cho `Thể loại`, `Trạng thái`, `Sắp xếp` với options khớp code; grid md:grid-cols-6 | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **GUI-KW-BOOK-LIST-04** | Kiểm tra bảng danh sách | 1. Cuộn đến card Table | Table header gồm các cột Mã/Tên/Tác giả/Thể loại/Giá/Số lượng/Trạng thái/Thao tác; dòng mẫu hiển thị Badge `BK001`, `Đắc Nhân Tâm`, `Văn học`, etc và buttons `Xem chi tiết`, `Chỉnh sửa` | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **GUI-KW-INV-LANDING-01** | Kiểm tra layout chính | 1. Đăng nhập kho<br>2. Truy cập `/nhanvienkho/inventory` | Header `h1` “Quản lý tồn kho”, mô tả “Chọn chức năng cần thao tác”, grid 3 `Card` link: Nhập hàng `/inventory/import`, Xuất hàng `/inventory/export`, Kiểm kê kho `/inventory/audit` | FUNC-KW-INV-LANDING-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Danh sách & bộ lọc
+#### Check FUNC: Điều hướng nhanh
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-BOOK-LIST-01** | Tải danh sách mặc định | 1. Đăng nhập<br>2. Mở `/nhanvienkho/books` | API trả về danh sách, table hiển thị >=1 dòng, thống kê khớp dữ liệu tổng | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-BOOK-LIST-02** | Lọc theo thể loại | 1. Chọn `Thể loại = Văn học` | Table chỉ còn sách `category=vanhoc`, badge hiển thị `Văn học`, số liệu thống kê có thể cập nhật | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-BOOK-LIST-03** | Lọc theo trạng thái | 1. Chọn `Trạng thái = Hết hàng` | Table hiển thị sách `status=out`, badge `Hết hàng` (variant destructive) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-BOOK-LIST-04** | Sắp xếp theo giá giảm | 1. Chọn `Sắp xếp = Giá giảm dần` | Danh sách reorder, cột Giá hiển thị giảm dần; icon sort highlight (nếu có) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-BOOK-LIST-05** | Nút Thêm sách mới | 1. Click button `Thêm sách mới` | Điều hướng `/nhanvienkho/books/new` mở trang form | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-INV-LANDING-01** | Click Nhập hàng | 1. Click card `Nhập hàng` | Điều hướng tới `/nhanvienkho/inventory/import` | FUNC-KW-INV-LANDING-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-INV-LANDING-02** | Click Xuất hàng | 1. Click card `Xuất hàng` | Điều hướng tới `/nhanvienkho/inventory/export` | FUNC-KW-INV-LANDING-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-INV-LANDING-03** | Click Kiểm kê kho | 1. Click card `Kiểm kê kho` | Điều hướng tới `/nhanvienkho/inventory/audit` | FUNC-KW-INV-LANDING-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Tìm kiếm & gợi ý nâng cao
+### Function: Nhập hàng (Tạo đơn nhập)
+
+#### Check GUI: `/nhanvienkho/inventory/import`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-SEARCH-01** | Tìm theo tên/tác giả/mã | 1. Nhập `BK001` vào input | Gợi ý dropdown hiển thị BK001, table filter khớp; highlight từ khóa | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-SEARCH-02** | Không tìm thấy kết quả | 1. Nhập chuỗi không tồn tại | Table hiển thị empty state “Không tìm thấy sách phù hợp”, pagination ẩn | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-SEARCH-03** | Reset bộ lọc | 1. Xoá input, set select `Tất cả` | Danh sách trở lại mặc định, gợi ý ẩn | FUNC-KW-SEARCH-01 | Pass | 11/15/2015 | |
+| **GUI-KW-IMPORT-01** | Kiểm tra card Thông tin đơn nhập | 1. Mở trang | CardTitle `Thông tin đơn nhập`, fields `Mã đơn nhập (IMP001, readOnly)`, `Nhà cung cấp`, `Ngày nhập`, `Ghi chú` theo layout grid md:grid-cols-4 | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-IMPORT-02** | Kiểm tra bảng danh sách sách nhập | 1. Cuộn xuống card thứ hai | `Table` header: Mã sách, Tên sách, Số lượng nhập, Giá nhập, Tổng tiền, Thao tác; dòng mẫu BK001; buttons `Thêm sách`, `Xóa mục đã chọn` | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-IMPORT-03** | Kiểm tra card Tổng đơn nhập | 1. Cuộn xuống card cuối | Hiển thị `Tổng số sách 50`, `Tổng tiền 15,000,000`, buttons `Lưu đơn nhập`, `Hủy`, Alert hiển thị lỗi/success (theo state) | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết sách
-
-#### Check GUI: `/nhanvienkho/books/BK001`
+#### Check FUNC: Nhập hàng & Transaction
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-DETAIL-01** | Kiểm tra thông tin cơ bản | 1. Truy cập `/nhanvienkho/books/BK001` | Card “Thông tin cơ bản” grid md:grid-cols-3 hiển thị Mã/Tên/Tác giả/Thể loại/ Nhà XB/ Năm XB với Badge `Văn học` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **GUI-KW-DETAIL-02** | Kiểm tra card Thông tin bán hàng | 1. Quan sát card thứ hai | Các trường Giá bán `89.000 VNĐ`, Số lượng `15`, Trạng thái Badge `Có sẵn`, Ngày nhập `2023-10-15`, Ngày cập nhật `2023-11-20` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **GUI-KW-DETAIL-03** | Kiểm tra mô tả & hình ảnh | 1. Quan sát card `Mô tả sách` | Textarea default value + khung `div h-40 bg-muted` mô phỏng ảnh bìa | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **GUI-KW-DETAIL-04** | Kiểm tra lịch sử nhập xuất | 1. Xem card cuối | Liệt kê các dòng `2023-11-20 • Nhập +15…`, `2023-11-21 • Xuất -3…` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **GUI-KW-DETAIL-05** | Kiểm tra nhóm hành động | 1. Nhìn cuối trang | Buttons: `Chỉnh sửa` (variant outline, link edit), `Ẩn sách` (destructive), `Quay lại` | FUNC-KW-DETAIL-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-IMPORT-01** | Lưu đơn nhập hợp lệ | 1. Giữ dữ liệu mặc định<br>2. Click `Lưu đơn nhập` | Button hiển thị “Đang xử lý transaction...”, sau khi success hiển thị Alert “Nhập hàng thành công. Transaction ID: TXN-...”; tồn kho các sách +50, log transaction | FUNC-KW-INV-LANDING-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-IMPORT-02** | Số lượng nhập không hợp lệ | 1. Sửa `Số lượng nhập` = 0<br>2. Lưu | Validation phát hiện trong vòng lặp, throw error “Số lượng nhập không hợp lệ...”, Alert đỏ hiển thị và transaction rollback, không thay đổi tồn kho | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-IMPORT-03** | Lỗi khi xử lý từng sách | 1. Giả lập failure (Math.random)<br>2. Lưu | Khi item fail: Alert lỗi “Transaction đã được rollback. Không có thay đổi nào được lưu.”, console log; UI dừng processing | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-IMPORT-04** | Thêm sách mới vào đơn | 1. Click `Thêm sách`<br>2. Chọn mã, nhập số lượng/giá | Row mới được thêm vào table, tổng tiền cập nhật; items array >1 | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-IMPORT-05** | Xóa sách khỏi đơn | 1. Click `Xóa` ở row BK001 | Row biến mất, tổng tiền cập nhật, nếu không còn sách hiển thị cảnh báo “Vui lòng chọn ít nhất một sách” khi lưu | FUNC-KW-IMPORT-04 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Chi tiết
+### Function: Cập nhật số lượng tồn kho (trong quá trình nhập)
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-DETAIL-01** | Tải đúng dữ liệu | 1. Từ list click `Xem chi tiết` | Route `[id]` fetch book data theo ID, hiển thị khớp DB | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-DETAIL-02** | Điều hướng chỉnh sửa | 1. Click `Chỉnh sửa` | Điều hướng `/nhanvienkho/books/BK001/edit` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-DETAIL-03** | Lịch sử nhập xuất tải đủ | 1. Xem API history | Timeline hiển thị đầy đủ, có phân biệt nhập/xuất, include người thực hiện & ghi chú | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-STOCK-01** | Ghi lý do nhập hàng | 1. Điền ghi chú `Nhập bổ sung T11` | Sau khi lưu, lịch sử tồn kho mỗi sách ghi nhận: số lượng cũ, số lượng + nhập, lý do; trạng thái `Có sẵn` cập nhật | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Thêm sách mới
+### Function: Xuất hàng
 
-#### Check GUI: `/nhanvienkho/books/new`
+#### Check GUI: `/nhanvienkho/inventory/export`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-NEW-01** | Kiểm tra layout form | 1. Mở `/nhanvienkho/books/new` | Header `Thêm sách mới`, form grid md:grid-cols-2 gồm các Label/Input: Tên, Tác giả, Thể loại (Select), Nhà XB, Năm XB, Mã sách/ISBN, Giá bán, Số lượng nhập, Textarea mô tả, input file ảnh; button `Lưu`, `Hủy`, Alert hiển thị lỗi/thành công | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
-| **GUI-KW-NEW-02** | Kiểm tra cảnh báo trùng mã | 1. Nhập `BK001` vào field mã | Text nhỏ màu đỏ `⚠️ Mã sách này đã tồn tại...` hiển thị ngay dưới input | FUNC-KW-NEW-02 | Pass | 11/15/2015 | |
+| **GUI-KW-EXPORT-01** | Kiểm tra header & mô tả | 1. Truy cập `/inventory/export` | Header `h1` “Xuất hàng”, mô tả “Danh sách đơn xuất từ hệ thống bán hàng” | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-EXPORT-02** | Kiểm tra bộ lọc thời gian | 1. Quan sát card đầu | CardTitle `Bộ lọc thời gian`, Select `Khoảng thời gian` với options Hôm nay/Tuần này/Tháng này/Tùy chọn | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-EXPORT-03** | Kiểm tra bảng đơn xuất | 1. Quan sát card danh sách | Table hiển thị cột Mã đơn xuất, Mã đơn hàng, Khách hàng, Ngày xuất, Số lượng, Trạng thái, Thao tác; row mẫu `EXP001` | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Thêm sách
+#### Check FUNC: Xử lý đơn xuất
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-NEW-01** | Thêm sách hợp lệ | 1. Nhập đầy đủ thông tin hợp lệ<br>2. Nhập mã mới `BK200`<br>3. Click `Lưu` | Simulate API success: alert “Thêm sách mới thành công”, form reset, danh sách update (tăng tổng sách) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-NEW-02** | Mã sách trùng | 1. Nhập mã `BK001` | Không gọi API, hiển thị error `Mã sách "BK001" đã tồn tại...`, button `Lưu` disabled | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-NEW-03** | Lỗi transaction | 1. Gây lỗi mô phỏng (API fail) | Alert đỏ `Lỗi: ... Đã rollback transaction`, form giữ dữ liệu để sửa; log error | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-NEW-04** | Upload ảnh không hợp lệ | 1. Chọn file >5MB | Hiển thị lỗi “Kích thước ảnh vượt quá 5MB”, upload bị từ chối | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EXPORT-01** | Lọc theo thời gian | 1. Chọn `Tuần này` | Danh sách reload, chỉ hiển thị đơn nằm trong tuần; card thống kê (nếu có) cập nhật | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EXPORT-02** | Xem chi tiết đơn xuất | 1. Click `Xem chi tiết` | Modal hiển thị danh sách sách xuất, ghi chú, cho phép xác nhận | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EXPORT-03** | Xác nhận xuất hàng | 1. Click `Xác nhận xuất` | Trạng thái đổi `Đã xuất`, tồn kho trừ, history ghi `Xuất -3`, liên kết đến order `ORD001` cập nhật; toast success | FUNC-KW-EXPORT-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-EXPORT-04** | In phiếu xuất | 1. Click `In phiếu xuất` | Mở modal in/bản preview pdf; file chứa chi tiết đơn, logo, thời gian; status `In lần 1` ghi log | FUNC-KW-EXPORT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Chỉnh sửa thông tin sách
+### Function: Kiểm kê kho
 
-#### Check GUI: `/nhanvienkho/books/[id]/edit`
+#### Check GUI: `/nhanvienkho/inventory/audit`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-EDIT-01** | Bố cục form edit | 1. Mở `/nhanvienkho/books/BK001/edit` | Header `Chỉnh sửa sách - BK001`, form tương tự trang thêm nhưng có giá trị default; buttons `Lưu thay đổi`, `Hủy`, Alert hiển thị trạng thái | FUNC-KW-EDIT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-AUDIT-01** | Kiểm tra card Thông tin đợt kiểm kê | 1. Truy cập `/inventory/audit` | Form gồm `Mã đợt kiểm kê (INV001 readonly)`, `Ngày kiểm kê`, `Người thực hiện`, `Ghi chú` | FUNC-KW-AUDIT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-AUDIT-02** | Kiểm tra bảng sách kiểm kê | 1. Cuộn xuống card thứ hai | Table với cột Mã sách, Tên sách, Số lượng hệ thống, Số lượng thực tế, Chênh lệch, Ghi chú; row hiển thị `BK001`, `Badge +2` | FUNC-KW-AUDIT-01 | Pass | 11/15/2015 | |
+| **GUI-KW-AUDIT-03** | Kiểm tra card Tổng kết | 1. Quan sát card cuối | Thể hiện `Tổng sách kiểm kê 1,250`, `Chênh lệch dương 15`, `Chênh lệch âm 8`, buttons `Hoàn thành`, `Lưu kết quả`, Alert success | FUNC-KW-AUDIT-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Chỉnh sửa
+#### Check FUNC: Thực hiện kiểm kê
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-EDIT-01** | Cập nhật thông tin hợp lệ | 1. Sửa giá bán & mô tả<br>2. Click `Lưu thay đổi` | Alert success “Cập nhật thông tin sách thành công”, quay lại trang chi tiết hoặc ở lại (tùy config), history log record cũ/mới | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-EDIT-02** | Validation thiếu dữ liệu | 1. Xóa tên sách<br>2. Lưu | Input hiển thị lỗi `Trường này bắt buộc`, không gọi API | FUNC-KW-EDIT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-EDIT-03** | Hủy chỉnh sửa | 1. Click `Hủy` | Điều hướng về `/nhanvienkho/books/BK001` hoặc trang trước, không lưu thay đổi | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-01** | Bắt đầu đợt kiểm kê | 1. Từ landing click `Kiểm kê kho` | Tạo đợt với mã duy nhất (INVxxx), set ngày hiện tại, auto fill người thực hiện, fetch danh sách sách | FUNC-KW-INV-LANDING-03 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-02** | Nhập số lượng thực tế | 1. Nhập giá trị `17` cho BK001 | Chênh lệch cột cập nhật `+2` với Badge, tổng kết dương/âm cập nhật real-time | FUNC-KW-AUDIT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-03** | Validation thiếu dữ liệu | 1. Để trống số lượng thực tế cho 1 dòng<br>2. Click `Lưu kết quả` | Hiển thị Alert đỏ `Vui lòng nhập số lượng thực tế cho tất cả sách`, highlight field | FUNC-KW-AUDIT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-04** | Lưu kết quả kiểm kê | 1. Nhập đủ dữ liệu<br>2. Click `Lưu kết quả` | Dữ liệu lưu DB, log “Lưu kết quả kiểm kê”, có thể tiếp tục chỉnh sửa trước khi hoàn thành | FUNC-KW-AUDIT-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-05** | Hoàn thành kiểm kê | 1. Click `Hoàn thành` | Alert success “Kiểm kê kho hoàn thành thành công”, khóa chỉnh sửa, cập nhật tồn kho theo số thực tế, gửi báo cáo cho quản lý | FUNC-KW-AUDIT-04 | Pass | 11/15/2015 | |
+| **FUNC-KW-AUDIT-06** | Báo cáo kiểm kê | 1. Sau hoàn thành, chọn `Xuất báo cáo` (nếu có) | Xuất PDF/Excel bao gồm danh sách chênh lệch, ký tên; log `Report generated` | FUNC-KW-AUDIT-05 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Ẩn sách
-
-#### Check GUI: Dialog Ẩn sách (từ `/nhanvienkho/books/BK001`)
+### Function: Theo dõi lịch sử cập nhật tồn kho
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-HIDE-01** | Kiểm tra dialog | 1. Click `Ẩn sách` | DialogTitle `Ẩn sách`, description “Bạn có chắc chắn muốn ẩn sách này?”, Textarea placeholder “Lý do ẩn sách (bắt buộc)”, buttons `Hủy`, `Có, ẩn sách` | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
-
----
-
-#### Check FUNC: Ẩn sách
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-HIDE-01** | Ẩn sách thành công | 1. Nhập lý do “Ngừng kinh doanh”<br>2. Click `Có, ẩn sách` | Status sách đổi `Ẩn`, hiển thị badge `Ẩn`, log ghi lý do & người thực hiện, danh sách cập nhật cột trạng thái | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-HIDE-02** | Thiếu lý do | 1. Bỏ trống textarea<br>2. Click `Có, ẩn sách` | Validation hiển thị “Vui lòng nhập lý do ẩn sách”, dialog không đóng | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-HIDE-03** | Hủy thao tác | 1. Click `Hủy` hoặc icon close | Dialog đóng, trạng thái giữ nguyên | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-HISTORY-01** | Xem lịch sử nhập (từ chi tiết sách) | 1. Truy cập `/nhanvienkho/books/BK001`<br>2. Xem card `Lịch sử nhập xuất` | Hiển thị dòng `2023-11-20 • Nhập +15` sau khi đơn nhập thành công, `2023-11-21 • Xuất -3` khi xác nhận xuất | FUNC-KW-IMPORT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-HISTORY-02** | Xem lịch sử sau kiểm kê | 1. Sau khi hoàn thành kiểm kê | Card history hiển thị `2023-11-25 • Điều chỉnh kiểm kê ±Δ` với người thực hiện | FUNC-KW-AUDIT-05 | Pass | 11/15/2015 | |
 
 ---
 
