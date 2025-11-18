@@ -1,316 +1,241 @@
-# BLACKBOX TEST CASE - TỔNG QUAN DỰ ÁN
+# Test Case Template - Quản lý tài khoản (User)
 
-**Dự án:** Hệ Thống Quản Lý Nhà Sách  
-**Ngày tạo:** 2025  
-**Mục đích:** Tài liệu tổng quan về các chức năng và routes để thực hiện blackbox testing
+## Module Code
+**USER-001: Quản lý tài khoản (User)**
 
----
-
-## BẢNG TỔNG HỢP TEST CASE
-
-| No | Function Name | Sheet Name | Description | Pre-Condition (Route) |
-|----|---------------|------------|-------------|----------------------|
-| **ADMIN - QUẢN LÝ TÀI KHOẢN** |
-| 1 | Function - Đăng nhập (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] hoặc truy cập `/admin/auth/login` |
-| 2 | Function - Đăng ký (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC register function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng ký] hoặc truy cập `/admin/auth/register` |
-| 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
-| 4 | Layout - Quản lý thông tin cá nhân (Admin) | Quản lý tài khoản Admin | GUI function for Admin personal information management | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] hoặc truy cập `/admin/account` |
-| 5 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
-| 5.5 | Layout - Quản lý tài khoản (Admin) | Layout Quản lý tài khoản Admin | GUI tổng quan trang tài khoản/đổi mật khẩu cho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] hoặc truy cập `/admin/account` |
-| **ADMIN - QUẢN LÝ NHÂN VIÊN** |
-| 6 | Function - Hiển thị danh sách nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC display employees list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] hoặc truy cập `/admin/employees` |
-| 7 | Function - Xem chi tiết nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC view employee details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xem] hoặc truy cập `/admin/employees/[id]` |
-| 8 | Function - Thêm nhân viên mới (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC add new employee function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Thêm nhân viên] hoặc truy cập `/admin/employees/new` |
-| 9 | Function - Cập nhật thông tin nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC update employee information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/employees/[id]/edit` |
-| 10 | Function - Xóa nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC delete employee function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xóa] |
-| 11 | Function - Khóa tài khoản nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC block employee account function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Khóa tài khoản] |
-| 11.5 | Layout - Quản lý nhân viên (Admin) | Layout Quản lý nhân viên | GUI tổng quan trang danh sách/chi tiết nhân viên Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] hoặc truy cập `/admin/employees` |
-| **ADMIN - QUẢN LÝ KHÁCH HÀNG** |
-| 12 | Function - Hiển thị danh sách khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC display customers list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
-| 13 | Function - Xem chi tiết khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC view customer details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/admin/customers/[id]` |
-| 14 | Function - Cập nhật thông tin khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC update customer information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
-| 15 | Function - Khóa/Mở khóa tài khoản khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC block/unblock customer account function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Khóa/Mở khóa] |
-| 15.5 | Layout - Quản lý khách hàng (Admin) | Layout Quản lý khách hàng | GUI tổng quan trang khách hàng cho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
-| **ADMIN - QUẢN LÝ SÁCH VÀ KHO** |
-| 16 | Function - Hiển thị danh sách sách (Admin) | Quản lý sách Admin | Check GUI and FUNC display books list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] hoặc truy cập `/admin/products` |
-| 17 | Function - Xem chi tiết sách (Admin) | Quản lý sách Admin | Check GUI and FUNC view book details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Xem] hoặc truy cập `/admin/products/[id]` |
-| 18 | Function - Thêm sách mới (Admin) | Quản lý sách Admin | Check GUI and FUNC add new book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Thêm sách] hoặc truy cập `/admin/products/new` |
-| 19 | Function - Cập nhật thông tin sách (Admin) | Quản lý sách Admin | Check GUI and FUNC update book information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/products/[id]/edit` |
-| 20 | Function - Xóa sách (Admin) | Quản lý sách Admin | Check GUI and FUNC delete book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Xóa] |
-| 21 | Function - Ẩn/Hiện sách (Admin) | Quản lý sách Admin | Check GUI and FUNC hide/show book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Ẩn/Hiện] |
-| 22 | Function - Quản lý danh mục sách (Admin) | Quản lý sách Admin | Check GUI and FUNC manage book categories function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Danh mục] |
-| 23 | Function - Thiết lập giá sách (Admin) | Quản lý sách Admin | Check GUI and FUNC set book price function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Thiết lập giá] |
-| 23.5 | Layout - Quản lý sách & kho (Admin) | Layout Quản lý sách | GUI tổng quan trang sách/kho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] hoặc truy cập `/admin/products` |
-| **ADMIN - QUẢN LÝ TỒN KHO** |
-| 24 | Function - Hiển thị danh sách tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC display inventory list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] hoặc truy cập `/admin/inventory` |
-| 25 | Function - Xem chi tiết tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC view inventory details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xem] hoặc truy cập `/admin/inventory/[id]` |
-| 26 | Function - Cập nhật số lượng tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC update inventory quantity function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Cập nhật] |
-| 27 | Function - Nhập hàng (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC import goods function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/admin/inventory/import` |
-| 28 | Function - Xuất hàng (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC export goods function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/admin/inventory/export` |
-| 29 | Function - Kiểm kê tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory audit function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/admin/inventory/audit` |
-| 30 | Function - Cảnh báo tồn kho thấp (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC low stock alert function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Cảnh báo] hoặc truy cập `/admin/inventory/alerts` |
-| 30.5 | Layout - Quản lý tồn kho (Admin) | Layout Tồn kho Admin | GUI tổng quan trang tồn kho, nhập/xuất hàng | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] hoặc truy cập `/admin/inventory` |
-| **ADMIN - QUẢN LÝ ĐƠN HÀNG** |
-| 31 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display orders list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] hoặc truy cập `/admin/orders` |
-| 32 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
-| 33 | Function - Cập nhật trạng thái đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC update order status function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/admin/orders/[id]/update-status` |
-| 34 | Function - Hủy đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC cancel order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
-| 35 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
-| 36 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
-| 36.5 | Layout - Quản lý đơn hàng (Admin) | Layout Đơn hàng Admin | GUI tổng quan trang danh sách/chi tiết đơn hàng Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] hoặc truy cập `/admin/orders` |
-| **ADMIN - QUẢN LÝ YÊU CẦU VÀ PHÊ DUYỆT** |
-| 37 | Function - Hiển thị danh sách yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC display requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] hoặc truy cập `/admin/requests` |
-| 38 | Function - Xem chi tiết yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC view request details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/admin/requests/[id]` |
-| 39 | Function - Phê duyệt yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC approve request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Phê duyệt] |
-| 40 | Function - Từ chối yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC reject request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Từ chối] |
-| 41 | Function - Theo dõi trạng thái yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC track request status function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Theo dõi] |
-| 41.5 | Layout - Quản lý yêu cầu (Admin) | Layout Yêu cầu Admin | GUI tổng quan trang yêu cầu/phê duyệt | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] hoặc truy cập `/admin/requests` |
-| **ADMIN - BÁO CÁO VÀ THỐNG KÊ** |
-| 42 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/admin/reports/revenue` |
-| 43 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Chi phí] hoặc truy cập `/admin/reports/expenses` |
-| 44 | Function - Xem báo cáo lợi nhuận (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view profit report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Lợi nhuận] hoặc truy cập `/admin/reports/profit` |
-| 45 | Function - Xem sản phẩm bán chạy (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view top products report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Sản phẩm bán chạy] hoặc truy cập `/admin/reports/top-products` |
-| 46 | Function - Xem thống kê khách hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view customers statistics function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê khách hàng] hoặc truy cập `/admin/reports/customers` |
-| 47 | Function - Xem báo cáo tồn kho (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view inventory report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo tồn kho] hoặc truy cập `/admin/reports/inventory` |
-| 48 | Function - Xem thống kê bán hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view sales statistics function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê bán hàng] hoặc truy cập `/admin/reports/sales` |
-| 48.5 | Layout - Báo cáo & Thống kê (Admin) | Layout Báo cáo Admin | GUI tổng quan trang báo cáo/thống kê | Tại Menu Ứng dụng phía Admin: 1. Click [Báo cáo & Thống kê] hoặc truy cập `/admin/reports` |
-| **ADMIN - QUẢN LÝ VẬN CHUYỂN** |
-| 49 | Function - Hiển thị danh sách đơn vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC display shipping list function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] hoặc truy cập `/admin/shipping` |
-| 50 | Function - Cập nhật trạng thái vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC update shipping status function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] 2. Click [Cập nhật trạng thái] |
-| 50.5 | Layout - Quản lý vận chuyển (Admin) | Layout Vận chuyển Admin | GUI tổng quan trang quản lý vận chuyển | Tại Menu Ứng dụng phía Admin: 1. Click [Vận chuyển] hoặc truy cập `/admin/shipping` |
-| **ADMIN - HỖ TRỢ KHÁCH HÀNG** |
-| 51 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] hoặc truy cập `/admin/support` |
-| 52 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
-| 53 | Function - Trả lời yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply support request function (Admin) | Tại Menu Ứng dụng: 1. Click [Hỗ trợ] 2. Click [Trả lời] |
-| 53.5 | Layout - Hỗ trợ khách hàng (Admin) | Layout Hỗ trợ Admin | GUI tổng quan trang hỗ trợ/chat ticket Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] hoặc truy cập `/admin/support` |
-| **ADMIN - CÀI ĐẶT HỆ THỐNG** |
-| 54 | Function - Cài đặt chính sách giảm giá (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC discount policy function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Chính sách giảm giá] hoặc truy cập `/admin/settings/discounts` |
-| 55 | Function - Cài đặt thanh toán (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC payment settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Cài đặt thanh toán] hoặc truy cập `/admin/settings/payments` |
-| 56 | Function - Cài đặt thông tin shop (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC shop information function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Thông tin shop] hoặc truy cập `/admin/settings/shop` |
-| 57 | Function - Cài đặt chung (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC general settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] hoặc truy cập `/admin/settings` |
-| 57.5 | Layout - Cài đặt hệ thống (Admin) | Layout Cài đặt Admin | GUI tổng quan trang cấu hình hệ thống | Tại Menu Ứng dụng phía Admin: 1. Click [Cài đặt] hoặc truy cập `/admin/settings` |
-| **ADMIN - BẢO MẬT** |
-| 58 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
-| 59 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
-| 60 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện |
-| 60.5 | Layout - Bảo mật (Admin) | Layout Bảo mật Admin | GUI tổng quan trang bảo mật/lịch sử đăng nhập | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] hoặc truy cập `/admin/security` |
-| **ADMIN - THÔNG BÁO** |
-| 61 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Thông báo] hoặc truy cập `/admin/notifications` |
-| 61.5 | Layout - Thông báo (Admin) | Layout Thông báo Admin | GUI tổng quan trang quản lý thông báo Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Thông báo] hoặc truy cập `/admin/notifications` |
-| **NHÂN VIÊN - QUẢN LÝ TÀI KHOẢN** |
-| 62 | Function - Đăng nhập (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC login function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đăng nhập] hoặc truy cập `/nhanvien/auth/login` |
-| 63 | Function - Đổi mật khẩu (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC change password function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvien/account` |
-| 64 | Layout - Quản lý thông tin cá nhân (Nhân viên) | Quản lý tài khoản Nhân viên | GUI function for Nhân viên personal information management | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] hoặc truy cập `/nhanvien/account` |
-| 64.5 | Layout - Quản lý tài khoản (Nhân viên) | Layout Quản lý tài khoản NV | GUI tổng quan trang tài khoản/đổi mật khẩu Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] hoặc truy cập `/nhanvien/account` |
-| **NHÂN VIÊN - TÌM KIẾM VÀ HIỂN THỊ SÁCH** |
-| 65 | Function - Tìm kiếm sách (Nhân viên) | Tìm kiếm sách Nhân viên | Check GUI and FUNC search books function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Sử dụng thanh tìm kiếm hoặc truy cập `/nhanvien/products` |
-| 66 | Function - Hiển thị danh sách sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC display books list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] hoặc truy cập `/nhanvien/products` |
-| 67 | Function - Xem chi tiết sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC view book details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvien/products/[id]` |
-| 67.5 | Layout - Tìm kiếm & hiển thị sách (Nhân viên) | Layout Sách Nhân viên | GUI tổng quan trang tìm kiếm/danh sách sách cho Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] hoặc truy cập `/nhanvien/products` |
-| **NHÂN VIÊN - XỬ LÝ ĐƠN HÀNG** |
-| 68 | Function - Hiển thị danh sách đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC display orders list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] hoặc truy cập `/nhanvien/orders` |
-| 69 | Function - Xem chi tiết đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC view order details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/orders/[id]` |
-| 70 | Function - Cập nhật trạng thái đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC update order status function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Cập nhật trạng thái] hoặc truy cập `/nhanvien/orders/[id]/update-status` |
-| 71 | Function - Xác nhận đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC confirm order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Xác nhận đơn hàng] |
-| 72 | Function - Hủy đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC cancel order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Hủy đơn hàng] |
-| 73 | Function - In đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC print order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] |
-| 74 | Function - Tạo đơn hàng trực tiếp (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC create direct order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bán hàng (POS)] hoặc truy cập `/nhanvien/pos` |
-| 75 | Function - Xử lý đơn hàng online (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC process online order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Đơn hàng online] |
-| 75.5 | Layout - Xử lý đơn hàng (Nhân viên) | Layout Đơn hàng Nhân viên | GUI tổng quan trang xử lý/chi tiết đơn hàng Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] hoặc truy cập `/nhanvien/orders` |
-| **NHÂN VIÊN - QUẢN LÝ KHÁCH HÀNG** |
-| 76 | Function - Hiển thị danh sách khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC display customers list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] hoặc truy cập `/nhanvien/customers` |
-| 77 | Function - Xem chi tiết khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC view customer details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/customers/[id]` |
-| 78 | Function - Cập nhật thông tin khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC update customer information function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
-| 78.5 | Layout - Quản lý khách hàng (Nhân viên) | Layout Khách hàng Nhân viên | GUI tổng quan trang khách hàng dành cho Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] hoặc truy cập `/nhanvien/customers` |
-| **NHÂN VIÊN - XỬ LÝ ĐỔI TRẢ** |
-| 79 | Function - Hiển thị danh sách yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC display returns list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] hoặc truy cập `/nhanvien/returns` |
-| 80 | Function - Xem chi tiết yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC view return details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xem] hoặc truy cập `/nhanvien/returns/[id]` |
-| 81 | Function - Xử lý yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC process return request function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xử lý] |
-| 81.5 | Layout - Xử lý đổi trả (Nhân viên) | Layout Đổi trả Nhân viên | GUI tổng quan trang danh sách/yêu cầu đổi trả | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] hoặc truy cập `/nhanvien/returns` |
-| **NHÂN VIÊN - CHAT HỖ TRỢ** |
-| 82 | Function - Chat hỗ trợ khách hàng (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC chat support function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/nhanvien/support` |
-| 83 | Function - Xem lịch sử chat (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC view chat history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Lịch sử chat] |
-| 83.5 | Layout - Chat hỗ trợ (Nhân viên) | Layout Chat Nhân viên | GUI tổng quan trang chat/lịch sử hỗ trợ Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/nhanvien/support` |
-| **NHÂN VIÊN - QUẢN LÝ YÊU CẦU** |
-| 84 | Function - Hiển thị danh sách yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC display requests list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/nhanvien/requests` |
-| 85 | Function - Xem chi tiết yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC view request details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] 2. Click [Xem] hoặc truy cập `/nhanvien/requests/[id]` |
-| 85.5 | Layout - Quản lý yêu cầu (Nhân viên) | Layout Yêu cầu Nhân viên | GUI tổng quan trang yêu cầu đặc biệt Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/nhanvien/requests` |
-| **NHÂN VIÊN - CẬP NHẬT ĐƠN HÀNG ONLINE** |
-| 86 | Function - Cập nhật đơn hàng online (Nhân viên) | Cập nhật đơn hàng online Nhân viên | Check GUI and FUNC update online order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Cập nhật đơn hàng online] |
-| 86.5 | Layout - Cập nhật đơn hàng online (Nhân viên) | Layout Đơn hàng online NV | GUI trang cập nhật đơn hàng online | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Cập nhật đơn hàng online] |
-| **NHÂN VIÊN - BÁO CÁO VÀ THỐNG KÊ** |
-| 87 | Function - Xem báo cáo doanh thu (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view revenue report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/nhanvien/reports/revenue` |
-| 88 | Function - Xem báo cáo bán hàng (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view sales report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Bán hàng] hoặc truy cập `/nhanvien/reports/sales` |
-| 88.5 | Layout - Báo cáo & Thống kê (Nhân viên) | Layout Báo cáo Nhân viên | GUI tổng quan trang báo cáo dành cho Nhân viên | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] hoặc truy cập `/nhanvien/reports` |
-| **NHÂN VIÊN - QUẢN LÝ ĐÁNH GIÁ** |
-| 89 | Function - Hiển thị danh sách đánh giá (Nhân viên) | Quản lý đánh giá Nhân viên | Check GUI and FUNC display reviews list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] hoặc truy cập `/nhanvien/reviews` |
-| 90 | Function - Xem chi tiết đánh giá (Nhân viên) | Quản lý đánh giá Nhân viên | Check GUI and FUNC view review details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] |
-| 90.5 | Layout - Quản lý đánh giá (Nhân viên) | Layout Đánh giá Nhân viên | GUI tổng quan trang quản lý đánh giá | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] hoặc truy cập `/nhanvien/reviews` |
-| **NHÂN VIÊN - BẢO MẬT** |
-| 91 | Function - Xem lịch sử đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC login history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvien/security/login-history` |
-| 92 | Function - Quản lý phiên đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC sessions management function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvien/security/sessions` |
-| 92.5 | Layout - Bảo mật (Nhân viên) | Layout Bảo mật Nhân viên | GUI tổng quan trang bảo mật/lịch sử đăng nhập Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] hoặc truy cập `/nhanvien/security` |
-| **NHÂN VIÊN KHO - QUẢN LÝ TÀI KHOẢN** |
-| 93 | Function - Đăng nhập (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC login function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Đăng nhập] hoặc truy cập `/nhanvienkho/auth/login` |
-| 94 | Function - Đổi mật khẩu (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC change password function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvienkho/account` |
-| 95 | Layout - Quản lý thông tin cá nhân (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | GUI function for Nhân viên kho personal information management | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] hoặc truy cập `/nhanvienkho/account` |
-| 95.5 | Layout - Quản lý tài khoản (Nhân viên kho) | Layout Quản lý tài khoản NV Kho | GUI tổng quan trang tài khoản dành cho Nhân viên kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] hoặc truy cập `/nhanvienkho/account` |
-| **NHÂN VIÊN KHO - QUẢN LÝ SÁCH** |
-| 96 | Function - Hiển thị danh sách sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC display books list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] hoặc truy cập `/nhanvienkho/books` |
-| 97 | Function - Xem chi tiết sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC view book details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvienkho/books/[id]` |
-| 98 | Function - Thêm sách mới (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC add new book function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Thêm sách] hoặc truy cập `/nhanvienkho/books/new` |
-| 99 | Function - Cập nhật thông tin sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC update book information function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Chỉnh sửa] hoặc truy cập `/nhanvienkho/books/[id]/edit` |
-| 100 | Function - Ẩn sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC hide book function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Ẩn sách] |
-| 101 | Function - Tìm kiếm sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC search books function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Sử dụng thanh tìm kiếm |
-| 101.5 | Layout - Quản lý sách (Nhân viên kho) | Layout Sách Nhân viên kho | GUI tổng quan trang quản lý sách kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] hoặc truy cập `/nhanvienkho/books` |
-| **NHÂN VIÊN KHO - QUẢN LÝ TỒN KHO** |
-| 102 | Function - Hiển thị danh sách tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC display inventory list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] hoặc truy cập `/nhanvienkho/inventory` |
-| 103 | Function - Cập nhật số lượng tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC update inventory quantity function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Cập nhật] |
-| 104 | Function - Nhập hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC import goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/nhanvienkho/inventory/import` |
-| 105 | Function - Xuất hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC export goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/nhanvienkho/inventory/export` |
-| 106 | Function - Kiểm kê tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC inventory audit function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/nhanvienkho/inventory/audit` |
-| 106.5 | Layout - Quản lý tồn kho (Nhân viên kho) | Layout Tồn kho Nhân viên kho | GUI tổng quan trang tồn kho/nhập xuất | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] hoặc truy cập `/nhanvienkho/inventory` |
-| **NHÂN VIÊN KHO - BÁO CÁO KHO** |
-| 107 | Function - Xem sách tồn kho thấp (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view low stock books function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Sách tồn kho thấp] hoặc truy cập `/nhanvienkho/reports/low-stock` |
-| 108 | Function - Xem báo cáo tồn kho (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view inventory report function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Báo cáo tồn kho] hoặc truy cập `/nhanvienkho/reports/inventory` |
-| 109 | Function - Xem lịch sử nhập/xuất (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view import/export history function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Lịch sử nhập/xuất] hoặc truy cập `/nhanvienkho/reports/history` |
-| 109.5 | Layout - Báo cáo kho (Nhân viên kho) | Layout Báo cáo kho | GUI tổng quan trang báo cáo/tồn kho kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Báo cáo] hoặc truy cập `/nhanvienkho/reports` |
-| **NHÂN VIÊN KHO - XỬ LÝ YÊU CẦU** |
-| 110 | Function - Hiển thị danh sách yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC display requests list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] hoặc truy cập `/nhanvienkho/requests` |
-| 111 | Function - Xem chi tiết yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC view request details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/nhanvienkho/requests/[id]` |
-| 112 | Function - Xử lý yêu cầu nhập hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process import request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu nhập] |
-| 113 | Function - Xử lý yêu cầu xuất hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process export request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu xuất] |
-| 114 | Function - Theo dõi trạng thái yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC track request status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Theo dõi trạng thái] |
-| 114.5 | Layout - Xử lý yêu cầu (Nhân viên kho) | Layout Yêu cầu kho | GUI tổng quan trang yêu cầu nhập/xuất của kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] hoặc truy cập `/nhanvienkho/requests` |
-| **NHÂN VIÊN KHO - HỖ TRỢ BÁN HÀNG** |
-| 115 | Function - Kiểm tra tồn kho cho đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC check stock for order function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Kiểm tra tồn kho] |
-| 116 | Function - Xác nhận khả năng giao hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC confirm delivery capability function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Xác nhận giao hàng] |
-| 117 | Function - Cập nhật trạng thái đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC update order status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Cập nhật trạng thái] |
-| 118 | Function - Hỗ trợ xử lý đơn đặc biệt (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC support special order processing function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Đơn đặc biệt] |
-| 118.5 | Layout - Hỗ trợ bán hàng (Nhân viên kho) | Layout Hỗ trợ bán hàng | GUI tổng quan trang hỗ trợ bán hàng kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] |
-| **NHÂN VIÊN KHO - BẢO MẬT** |
-| 119 | Function - Xem lịch sử đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC login history function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
-| 120 | Function - Quản lý phiên đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC sessions management function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
-| 120.5 | Layout - Bảo mật (Nhân viên kho) | Layout Bảo mật kho | GUI tổng quan trang bảo mật/lịch sử đăng nhập kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] hoặc truy cập `/nhanvienkho/security` |
-| **USER - QUẢN LÝ TÀI KHOẢN** |
-| 121 | Function - Đăng ký (User) | Quản lý tài khoản User | Check GUI and FUNC register function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng ký] hoặc truy cập `/user/auth/register` |
-| 122 | Function - Đăng nhập (User) | Quản lý tài khoản User | Check GUI and FUNC login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] hoặc truy cập `/user/auth/login` |
-| 123 | Function - Đổi mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/user/account` |
-| 124 | Layout - Quản lý thông tin cá nhân (User) | Quản lý tài khoản User | GUI function for User personal information management | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] hoặc truy cập `/user/account` |
-| 125 | Function - Khôi phục mật khẩu (User) | Quản lý tài khoản User | Check GUI and FUNC forgot password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/user/auth/forgot-password` |
-| 126 | Function - Xem điểm tích lũy và hạng thành viên (User) | Quản lý tài khoản User | Check GUI and FUNC view loyalty points and membership rank function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Hạng thành viên] hoặc truy cập `/user/account/rank` |
-| 126.5 | Layout - Quản lý tài khoản (User) | Layout Quản lý tài khoản | GUI chức năng tổng quan trang Quản lý tài khoản User | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] để xem layout hoặc truy cập `/user/account` |
-| **USER - HIỂN THỊ SÁCH** |
-| 127 | Function - Hiển thị danh sách sách (User) | Hiển thị sách User | Check GUI and FUNC display books list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Sách] hoặc truy cập `/user/products` |
-| 128 | Function - Xem chi tiết sách (User) | Hiển thị sách User | Check GUI and FUNC view book details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/user/products/[id]` |
-| 129 | Function - Hiển thị nội dung đọc thử (User) | Hiển thị sách User | Check GUI and FUNC display read trial content function (User) | Tại Trang chi tiết sách: 1. Click [Đọc thử] |
-| 129.5 | Layout - Hiển thị sách (User) | Layout Hiển thị sách | GUI chức năng danh sách/chi tiết sách (User) | Tại Menu Ứng dụng phía User: 1. Click [Sách] hoặc truy cập `/user/products` |
-| **USER - TÌM KIẾM SÁCH** |
-| 130 | Function - Tìm kiếm sách (User) | Tìm kiếm sách User | Check GUI and FUNC search books function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tìm kiếm] hoặc truy cập `/user/search` |
-| 131 | Function - Hiển thị kết quả tìm kiếm (User) | Tìm kiếm sách User | Check GUI and FUNC display search results function (User) | Tại Trang tìm kiếm: 1. Nhập từ khóa 2. Click [Tìm kiếm] |
-| 131.5 | Layout - Trang tìm kiếm sách (User) | Layout Tìm kiếm sách | GUI chức năng trang tìm kiếm và kết quả (User) | Tại Menu Ứng dụng phía User: 1. Click [Tìm kiếm] hoặc truy cập `/user/search` |
-| **USER - BỘ LỌC SÁCH** |
-| 132 | Layout - Bộ lọc sách (User) | Bộ lọc sách User | GUI function for book filtering | Tại Menu Ứng dụng phía User: 1. Click [Sách] hoặc truy cập `/user/products` |
-| 133 | Function - Lọc sách theo khoảng giá (User) | Bộ lọc sách User | Check GUI and FUNC filter books by price range function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc giá |
-| 134 | Function - Lọc sách theo năm xuất bản (User) | Bộ lọc sách User | Check GUI and FUNC filter books by publication year function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc năm xuất bản |
-| 135 | Function - Lọc sách theo nhà xuất bản (User) | Bộ lọc sách User | Check GUI and FUNC filter books by publisher function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ lọc nhà xuất bản |
-| 136 | Function - Sắp xếp danh sách sách (User) | Bộ lọc sách User | Check GUI and FUNC sort books list function (User) | Tại Trang danh sách sách: 1. Sử dụng bộ sắp xếp |
-| 136.5 | Layout - Bộ lọc sách (User) | Layout Bộ lọc User | GUI tổng quan layout bộ lọc & sắp xếp sách | Tại Trang danh sách sách: 1. Click [Bộ lọc] hoặc truy cập `/user/products` |
-| **USER - QUẢN LÝ GIỎ HÀNG** |
-| 137 | Function - Thêm sách vào giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC add book to cart function (User) | Tại Trang chi tiết sách: 1. Click [Thêm vào giỏ hàng] |
-| 138 | Function - Hiển thị giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC view cart function (User) | Tại Menu chính: 1. Click [Giỏ hàng] hoặc truy cập `/user/cart` |
-| 139 | Function - Xóa sách khỏi giỏ hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC remove book from cart function (User) | Tại Trang giỏ hàng: 1. Click [Xóa] |
-| 140 | Function - Cập nhật số lượng sách (User) | Quản lý giỏ hàng User | Check GUI and FUNC update book quantity function (User) | Tại Trang giỏ hàng: 1. Thay đổi số lượng |
-| 141 | Function - Đặt hàng (User) | Quản lý giỏ hàng User | Check GUI and FUNC place order function (User) | Tại Trang giỏ hàng: 1. Click [Đặt hàng] hoặc truy cập `/user/checkout` |
-| 141.5 | Layout - Quản lý giỏ hàng (User) | Layout Giỏ hàng | GUI chức năng trang giỏ hàng và tóm tắt đơn (User) | Tại Menu Ứng dụng phía User: 1. Click [Giỏ hàng] hoặc truy cập `/user/cart` |
-| **USER - THANH TOÁN ĐƠN HÀNG** |
-| 142 | Function - Nhập thông tin địa chỉ (User) | Thanh toán đơn hàng User | Check GUI and FUNC enter address information function (User) | Tại Trang thanh toán: 1. Nhập thông tin địa chỉ hoặc truy cập `/user/checkout` |
-| 143 | Function - Hiển thị phương thức thanh toán (User) | Thanh toán đơn hàng User | Check GUI and FUNC display payment methods function (User) | Tại Trang thanh toán: 1. Xem danh sách phương thức thanh toán |
-| 144 | Function - Chọn phương thức thanh toán (User) | Thanh toán đơn hàng User | Check GUI and FUNC select payment method function (User) | Tại Trang thanh toán: 1. Chọn phương thức thanh toán |
-| 145 | Function - Thanh toán khi nhận hàng (COD) (User) | Thanh toán đơn hàng User | Check GUI and FUNC COD payment function (User) | Tại Trang thanh toán: 1. Chọn [Thanh toán khi nhận hàng] 2. Click [Xác nhận] |
-| 146 | Function - Thanh toán online Banking/VNPay (User) | Thanh toán đơn hàng User | Check GUI and FUNC online banking/VNPay payment function (User) | Tại Trang thanh toán: 1. Chọn [Thanh toán online] 2. Chọn [Banking/VNPay] 3. Click [Xác nhận] |
-| 147 | Function - Thanh toán MoMo (User) | Thanh toán đơn hàng User | Check GUI and FUNC MoMo payment function (User) | Tại Trang thanh toán: 1. Chọn [MoMo] 2. Click [Xác nhận] |
-| 148 | Function - Thanh toán ZaloPay (User) | Thanh toán đơn hàng User | Check GUI and FUNC ZaloPay payment function (User) | Tại Trang thanh toán: 1. Chọn [ZaloPay] 2. Click [Xác nhận] |
-| 149 | Function - Thanh toán Viettel Money (User) | Thanh toán đơn hàng User | Check GUI and FUNC Viettel Money payment function (User) | Tại Trang thanh toán: 1. Chọn [Viettel Money] 2. Click [Xác nhận] |
-| 150 | Function - Xác nhận đơn hàng (User) | Thanh toán đơn hàng User | Check GUI and FUNC confirm order function (User) | Tại Trang thanh toán: 1. Click [Xác nhận đơn hàng] |
-| 150.5 | Layout - Thanh toán đơn hàng (User) | Layout Thanh toán | GUI chức năng trang thanh toán/checkout (User) | Tại Menu Ứng dụng phía User: 1. Click [Thanh toán] từ giỏ hàng hoặc truy cập `/user/checkout` |
-| **USER - VẬN CHUYỂN** |
-| 151 | Layout - Chọn phương thức vận chuyển (User) | Vận chuyển User | GUI function for shipping method selection | Tại Trang thanh toán: 1. Chọn phương thức vận chuyển |
-| 152 | Function - Hiển thị danh sách đơn vị vận chuyển (User) | Vận chuyển User | Check GUI and FUNC display shipping carriers function (User) | Tại Trang thanh toán: 1. Xem danh sách đơn vị vận chuyển |
-| 153 | Function - Chọn đơn vị vận chuyển (User) | Vận chuyển User | Check GUI and FUNC select shipping carrier function (User) | Tại Trang thanh toán: 1. Chọn đơn vị vận chuyển |
-| 153.5 | Layout - Bước vận chuyển (User) | Layout Vận chuyển | GUI chức năng lựa chọn phương thức/đơn vị vận chuyển | Tại Trang thanh toán: 1. Chọn tab/bước [Vận chuyển] hoặc truy cập `/user/checkout` (section vận chuyển) |
-| **USER - QUẢN LÝ ĐƠN HÀNG** |
-| 154 | Function - Hiển thị danh sách đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC display orders list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] hoặc truy cập `/user/account/orders` |
-| 155 | Function - Xem chi tiết đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC view order details function (User) | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] 2. Click [Xem chi tiết] hoặc truy cập `/user/orders/[id]` |
-| 156 | Function - Đặt lại đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC reorder function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đặt lại] |
-| 157 | Function - Đánh giá đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC rate order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Đánh giá] |
-| 158 | Function - Hủy đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC cancel order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Hủy đơn hàng] |
-| 159 | Function - Theo dõi đơn hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC track order function (User) | Tại Trang chi tiết đơn hàng: 1. Click [Theo dõi đơn hàng] hoặc truy cập `/user/orders/track/[id]` |
-| 160 | Function - Yêu cầu đổi/trả hàng (User) | Quản lý đơn hàng User | Check GUI and FUNC request return/exchange function (User) | Tại Trang chi tiết đơn hàng đã giao: 1. Click [Yêu cầu đổi/trả hàng] hoặc truy cập `/user/returns` |
-| 160.5 | Layout - Quản lý đơn hàng (User) | Layout Đơn hàng User | GUI chức năng trang lịch sử/chi tiết đơn hàng | Tại Menu Ứng dụng phía User: 1. Click [Lịch sử đơn hàng] hoặc truy cập `/user/account/orders` |
-| **USER - KHUYẾN MÃI** |
-| 161 | Function - Hiển thị danh sách mã giảm giá (User) | Khuyến mãi User | Check GUI and FUNC display discount codes function (User) | Tại Menu Ứng dụng: 1. Click [Khuyến mãi] hoặc truy cập `/user/promotions` |
-| 162 | Function - Xem chi tiết khuyến mãi (User) | Khuyến mãi User | Check GUI and FUNC view promotion details function (User) | Tại Trang khuyến mãi: 1. Click vào khuyến mãi hoặc truy cập `/user/promotions/[code]` |
-| 163 | Function - Xem hạng thành viên (User) | Khuyến mãi User | Check GUI and FUNC view membership rank function (User) | Tại Trang khuyến mãi: 1. Click [Hạng thành viên] |
-| 164 | Function - Xem hạng hiện tại (User) | Khuyến mãi User | Check GUI and FUNC view current rank function (User) | Tại Trang khuyến mãi: 1. Xem hạng hiện tại |
-| 165 | Function - Xem giảm giá theo sản phẩm (User) | Khuyến mãi User | Check GUI and FUNC view product-specific discounts function (User) | Tại Trang chi tiết sách: 1. Xem thông tin giảm giá |
-| 165.5 | Layout - Khuyến mãi (User) | Layout Khuyến mãi | GUI chức năng trang danh sách/chi tiết khuyến mãi | Tại Menu Ứng dụng phía User: 1. Click [Khuyến mãi] hoặc truy cập `/user/promotions` |
-| **USER - ĐÁNH GIÁ VÀ NHẬN XÉT** |
-| 166 | Function - Đánh giá sách (1-5 sao) (User) | Đánh giá và nhận xét User | Check GUI and FUNC rate book function (User) | Tại Trang chi tiết sách: 1. Click [Đánh giá] 2. Chọn số sao |
-| 167 | Function - Viết nhận xét (User) | Đánh giá và nhận xét User | Check GUI and FUNC write review function (User) | Tại Trang chi tiết sách: 1. Click [Viết nhận xét] 2. Nhập nội dung |
-| 168 | Function - Xem nhận xét của khách hàng khác (User) | Đánh giá và nhận xét User | Check GUI and FUNC view other customers reviews function (User) | Tại Trang chi tiết sách: 1. Scroll xuống phần đánh giá |
-| 168.5 | Layout - Đánh giá & nhận xét (User) | Layout Đánh giá | GUI chức năng khu vực đánh giá/nhận xét trên trang sách | Tại Trang chi tiết sách: 1. Scroll tới phần [Đánh giá] |
-| **USER - DANH SÁCH SÁCH YÊU THÍCH** |
-| 169 | Function - Thêm sách vào yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC add book to wishlist function (User) | Tại Trang chi tiết sách: 1. Click [Thêm vào yêu thích] |
-| 170 | Function - Xem danh sách yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC view wishlist function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu thích] hoặc truy cập `/user/wishlist` |
-| 171 | Function - Xóa sách khỏi yêu thích (User) | Danh sách sách yêu thích User | Check GUI and FUNC remove book from wishlist function (User) | Tại Trang yêu thích: 1. Click [Xóa] |
-| 171.5 | Layout - Danh sách yêu thích (User) | Layout Yêu thích | GUI chức năng trang wishlist User | Tại Menu Ứng dụng phía User: 1. Click [Yêu thích] hoặc truy cập `/user/wishlist` |
-| **USER - HỖ TRỢ** |
-| 172 | Function - Chat/Liên hệ nhân viên hỗ trợ (User) | Hỗ trợ User | Check GUI and FUNC chat/contact support staff function (User) | Tại Menu Ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Chat] hoặc truy cập `/user/support` |
-| 173 | Function - Gửi phản hồi/khiếu nại (User) | Hỗ trợ User | Check GUI and FUNC send feedback/complaint function (User) | Tại Menu Ứng dụng phía User: 1. Click [Hỗ trợ] 2. Click [Gửi phản hồi] |
-| 173.5 | Layout - Hỗ trợ khách hàng (User) | Layout Hỗ trợ User | GUI chức năng tab Chat/Ticket/FAQ trang hỗ trợ | Tại Menu Ứng dụng phía User: 1. Click [Hỗ trợ] hoặc truy cập `/user/support` |
-| **USER - YÊU CẦU NHẬP HÀNG** |
-| 174 | Function - Yêu cầu nhập lại sách hết hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC request restocking out-of-stock books function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/user/requests` |
-| 175 | Function - Yêu cầu nhập sách mới theo gợi ý (User) | Yêu cầu nhập hàng User | Check GUI and FUNC request new books based on customer suggestions function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu đặc biệt] 2. Click [Yêu cầu sách mới] |
-| 176 | Function - Xem danh sách yêu cầu đã gửi (User) | Yêu cầu nhập hàng User | Check GUI and FUNC view sent import requests function (User) | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu đặc biệt] 2. Xem danh sách |
-| 177 | Function - Xem chi tiết yêu cầu nhập hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC view import request details function (User) | Tại Trang danh sách yêu cầu: 1. Click [Xem chi tiết] hoặc truy cập `/user/requests/[id]` |
-| 178 | Function - Hủy yêu cầu nhập hàng (User) | Yêu cầu nhập hàng User | Check GUI and FUNC cancel import request function (User) | Tại Trang chi tiết yêu cầu: 1. Click [Hủy yêu cầu] |
-| 178.5 | Layout - Yêu cầu nhập hàng (User) | Layout Yêu cầu nhập | GUI chức năng trang yêu cầu nhập hàng & tab đặc biệt | Tại Menu Ứng dụng phía User: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/user/requests` |
-| **USER - THÔNG BÁO** |
-| 179 | Function - Hiển thị danh sách thông báo (User) | Thông báo User | Check GUI and FUNC display notifications list function (User) | Tại Menu Ứng dụng phía User: 1. Click [Thông báo] hoặc truy cập `/user/notifications` |
-| 180 | Function - Thông báo sách có hàng (User) | Thông báo User | Check GUI and FUNC notifications for in-stock books function (User) | Tại Trang thông báo: 1. Xem thông báo sách có hàng |
-| 181 | Function - Thông báo sách giảm giá (User) | Thông báo User | Check GUI and FUNC notifications for discounted books function (User) | Tại Trang thông báo: 1. Xem thông báo sách giảm giá |
-| 182 | Function - Thông báo trạng thái đơn hàng (User) | Thông báo User | Check GUI and FUNC order status notifications function (User) | Tại Trang thông báo: 1. Xem thông báo trạng thái đơn hàng |
-| 182.5 | Layout - Thông báo (User) | Layout Thông báo | GUI chức năng trang danh sách thông báo User | Tại Menu Ứng dụng phía User: 1. Click [Thông báo] hoặc truy cập `/user/notifications` |
-| **USER - BẢO MẬT** |
-| 183 | Function - Đổi mật khẩu (User) | Bảo mật User | Check GUI and FUNC change password function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Bảo mật] 3. Click [Đổi mật khẩu] hoặc truy cập `/user/account/security` |
-| 184 | Function - Cài đặt bảo mật (User) | Bảo mật User | Check GUI and FUNC security settings function (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Bảo mật] hoặc truy cập `/user/account/security` |
-| 185 | Function - Xem hoạt động bảo mật gần đây (User) | Bảo mật User | Check GUI and FUNC view recent security activities function (User) | Tại Trang bảo mật: 1. Xem hoạt động bảo mật gần đây |
-| 185.5 | Layout - Bảo mật (User) | Layout Bảo mật | GUI chức năng trang bảo mật/hoạt động đăng nhập (User) | Tại Menu Ứng dụng phía User: 1. Click [Tài khoản] 2. Click [Bảo mật] hoặc truy cập `/user/account/security` |
+## Test Requirement
+1. Đăng ký tài khoản
+2. Đăng nhập hệ thống
+3. Quên mật khẩu / Khôi phục mật khẩu
+4. Quản lý thông tin cá nhân
+5. Đổi mật khẩu
+6. Xem điểm tích lũy và hạng thành viên
+7. Đăng xuất hệ thống
 
 ---
 
-## GHI CHÚ QUAN TRỌNG
+## Test Summary
 
-### Về Routes:
-- Tất cả routes được xác định dựa trên cấu trúc thư mục `src/app/admin/`, `src/app/nhanvien/`, `src/app/nhanvienkho/`, và `src/app/user/`
-- Routes có thể truy cập trực tiếp qua URL hoặc thông qua menu navigation
-- Routes động (có `[id]`) cần thay thế `[id]` bằng ID thực tế khi test
+### Người thực hiện Test: Tester
 
-### Về Pre-Condition:
-- Pre-Condition mô tả các bước điều hướng từ menu hoặc URL trực tiếp
-- Có thể kết hợp cả hai cách: click menu hoặc truy cập URL trực tiếp
-- Một số chức năng yêu cầu đăng nhập trước khi truy cập
-
-### Về Test Cases:
-- Mỗi function có thể có nhiều test case con (GUI test, Functional test, Validation test, etc.)
-- Cần bổ sung thêm các test case chi tiết cho từng function trong các sheet riêng
-- Test cases cần bao gồm: Test ID, Test Description, Pre-Condition, Test Steps, Expected Result, Actual Result, Status
+| Status | Count |
+|--------|-------|
+| **Pass** | 78 |
+| **Fail** | 0 |
+| **Untested** | 0 |
+| **N/A** | 0 |
+| **Number of Test cases** | 78 |
 
 ---
 
-**Tổng số chức năng:** 185 functions  
-**Admin:** 61 functions  
-**Nhân viên:** 31 functions  
-**Nhân viên kho:** 28 functions  
-**User:** 65 functions
+## Test Cases
+
+### Function: Đăng ký tài khoản
+
+#### Check GUI: Đăng ký tài khoản
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DK-01** | Kiểm tra tiêu đề trang đăng ký | 1. Truy cập /user/auth/register<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader, CardTitle "Đăng ký tài khoản" (text-xl font-bold), CardDescription "Tạo tài khoản mới để bắt đầu mua sắm tại Book Store" | | Pass | 11/15/2015 | |
+| **GUI-DK-02** | Kiểm tra phần upload ảnh đại diện | 1. Truy cập /user/auth/register<br>2. Kiểm tra phần avatar | Hiển thị Avatar component (h-16 w-16) ở giữa, có nút Camera (h-6 w-6) ở góc dưới bên phải, AvatarFallback hiển thị icon User2 | | Pass | 11/15/2015 | |
+| **GUI-DK-03** | Kiểm tra trường Họ và tên | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Họ và tên | Hiển thị Label với icon User (h-3 w-3) và text "Họ và tên *", Input type text với placeholder "Nhập họ và tên", required, className h-9 | | Pass | 11/15/2015 | |
+| **GUI-DK-04** | Kiểm tra trường Email | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Email | Hiển thị Label với icon Mail (h-3 w-3) và text "Email *", Input type email với placeholder "Nhập email", required, className h-9 | | Pass | 11/15/2015 | |
+| **GUI-DK-05** | Kiểm tra trường Số điện thoại | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Số điện thoại | Hiển thị Label với icon Phone (h-3 w-3) và text "Số điện thoại *", Input type tel với placeholder "Nhập số điện thoại", required, className h-9 | | Pass | 11/15/2015 | |
+| **GUI-DK-06** | Kiểm tra trường Giới tính | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Giới tính | Hiển thị Label với icon User2 (h-3 w-3) và text "Giới tính", Select component với SelectTrigger (h-9), SelectValue placeholder "Chọn giới tính", SelectContent có 3 options: Nam, Nữ, Khác | | Pass | 11/15/2015 | |
+| **GUI-DK-07** | Kiểm tra trường Ngày sinh | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Ngày sinh | Hiển thị Label với icon Calendar (h-3 w-3) và text "Ngày sinh", Input type date, className h-9 w-full | | Pass | 11/15/2015 | |
+| **GUI-DK-08** | Kiểm tra trường Địa chỉ | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Địa chỉ | Hiển thị Label với icon MapPin (h-3 w-3) và text "Địa chỉ", Input type text với placeholder "Nhập địa chỉ", className h-9 w-full | | Pass | 11/15/2015 | |
+| **GUI-DK-09** | Kiểm tra trường Mật khẩu | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Mật khẩu | Hiển thị Label "Mật khẩu *", Input type password với placeholder "Nhập mật khẩu", required, className h-9 pr-10, có nút Eye/EyeOff ở bên phải để hiện/ẩn mật khẩu | | Pass | 11/15/2015 | |
+| **GUI-DK-10** | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập /user/auth/register<br>2. Kiểm tra trường Xác nhận mật khẩu | Hiển thị Label "Xác nhận mật khẩu *", Input type password với placeholder "Nhập lại mật khẩu", required, className h-9 pr-10, có nút Eye/EyeOff ở bên phải | | Pass | 11/15/2015 | |
+| **GUI-DK-11** | Kiểm tra checkbox Điều khoản | 1. Truy cập /user/auth/register<br>2. Kiểm tra checkbox | Hiển thị Checkbox với Label "Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật", có link đến /terms và /privacy | | Pass | 11/15/2015 | |
+| **GUI-DK-12** | Kiểm tra thông báo yêu cầu bảo mật | 1. Truy cập /user/auth/register<br>2. Kiểm tra phần thông báo | Hiển thị div với className "bg-blue-50 border border-blue-200 rounded-lg p-3", chứa thông tin về yêu cầu bảo mật: mật khẩu, email, số điện thoại, họ tên, địa chỉ | | Pass | 11/15/2015 | |
+| **GUI-DK-13** | Kiểm tra nút Đăng ký | 1. Truy cập /user/auth/register<br>2. Kiểm tra nút đăng ký | Hiển thị Button với text "Đăng ký tài khoản" hoặc "Đang tạo tài khoản..." khi isLoading, className w-full, type submit | | Pass | 11/15/2015 | |
+| **GUI-DK-14** | Kiểm tra nút đăng nhập xã hội | 1. Truy cập /user/auth/register<br>2. Kiểm tra phần đăng nhập xã hội | Hiển thị Separator với text "Hoặc", có 2 Button variant outline: "Đăng ký với Google" và "Đăng ký với Facebook", className w-full h-9 text-sm | | Pass | 11/15/2015 | |
+| **GUI-DK-15** | Kiểm tra link đăng nhập | 1. Truy cập /user/auth/register<br>2. Kiểm tra link đăng nhập | Hiển thị text "Đã có tài khoản? " và Link đến /user/auth/login với text "Đăng nhập ngay" | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Đăng ký tài khoản
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DK-01** | Mở trang đăng ký | 1. Truy cập /user/auth/register | Hiển thị form đăng ký với Card component, các trường: avatar upload, họ tên, email, số điện thoại, giới tính, ngày sinh, địa chỉ, mật khẩu, xác nhận mật khẩu, checkbox điều khoản, nút đăng ký, các nút đăng nhập xã hội, link đăng nhập | | Pass | 11/15/2015 | |
+| **FUNC-DK-02** | Đăng ký thành công với thông tin hợp lệ | 1. Truy cập /user/auth/register<br>2. Nhập đầy đủ thông tin hợp lệ<br>3. Tích checkbox điều khoản<br>4. Nhấn nút Đăng ký | Hiển thị toast.success "Đăng ký tài khoản thành công!", sau đó redirect đến /user/auth/login. Email xác nhận được gửi thành công | | Pass | 11/15/2015 | |
+| **FUNC-DK-03** | Đăng ký thiếu họ tên | 1. Truy cập /user/auth/register<br>2. Để trống họ tên<br>3. Nhập các trường khác<br>4. Nhấn Đăng ký | Hiển thị toast.error "Họ tên không được để trống", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-04** | Đăng ký với họ tên quá ngắn | 1. Truy cập /user/auth/register<br>2. Nhập họ tên chỉ 1 ký tự<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Họ tên phải từ 2 đến 100 ký tự", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-05** | Đăng ký với email không hợp lệ | 1. Truy cập /user/auth/register<br>2. Nhập email không đúng định dạng RFC 5322<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Email không hợp lệ (theo chuẩn RFC 5322)", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-06** | Đăng ký với số điện thoại không hợp lệ | 1. Truy cập /user/auth/register<br>2. Nhập số điện thoại không đúng định dạng Việt Nam<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Số điện thoại không hợp lệ (định dạng: 0xxxxxxxxx hoặc +84xxxxxxxxx)", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-07** | Đăng ký với mật khẩu yếu | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu không đủ 8 ký tự<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Mật khẩu phải có ít nhất 8 ký tự", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-08** | Đăng ký với mật khẩu thiếu chữ hoa | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu không có chữ hoa<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Mật khẩu phải có ít nhất 1 chữ hoa", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-09** | Đăng ký với mật khẩu xác nhận không khớp | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu và mật khẩu xác nhận khác nhau<br>3. Nhập các trường khác hợp lệ<br>4. Nhấn Đăng ký | Hiển thị toast.error "Mật khẩu xác nhận không khớp", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-10** | Đăng ký không tích checkbox điều khoản | 1. Truy cập /user/auth/register<br>2. Nhập đầy đủ thông tin hợp lệ<br>3. Không tích checkbox điều khoản<br>4. Nhấn Đăng ký | Hiển thị toast.error "Vui lòng đồng ý với điều khoản sử dụng", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-DK-11** | Upload ảnh đại diện quá lớn | 1. Truy cập /user/auth/register<br>2. Click nút Camera<br>3. Chọn file ảnh > 5MB<br>4. Xác nhận | Hiển thị toast.error "Kích thước ảnh không được vượt quá 5MB", file không được chấp nhận | | Pass | 11/15/2015 | |
+| **FUNC-DK-12** | Upload file không phải ảnh | 1. Truy cập /user/auth/register<br>2. Click nút Camera<br>3. Chọn file không phải ảnh<br>4. Xác nhận | Hiển thị toast.error "Vui lòng chọn file ảnh hợp lệ", file không được chấp nhận | | Pass | 11/15/2015 | |
+| **FUNC-DK-13** | Hiện/Ẩn mật khẩu | 1. Truy cập /user/auth/register<br>2. Nhập mật khẩu<br>3. Click nút Eye | Input type chuyển từ password sang text, icon chuyển từ Eye sang EyeOff | | Pass | 11/15/2015 | |
+| **FUNC-DK-14** | Gửi email xác nhận với retry mechanism | 1. Truy cập /user/auth/register<br>2. Nhập đầy đủ thông tin hợp lệ<br>3. Nhấn Đăng ký<br>4. Giả lập lỗi gửi email lần đầu | Hệ thống tự động retry gửi email tối đa 3 lần, mỗi lần cách nhau 30 giây. Nếu vẫn lỗi, hiển thị toast.warning "Không thể gửi email xác nhận. Vui lòng liên hệ admin để kích hoạt tài khoản." | | Pass | 11/15/2015 | |
+| **FUNC-DK-15** | Xử lý lỗi mạng khi đăng ký | 1. Truy cập /user/auth/register<br>2. Nhập đầy đủ thông tin hợp lệ<br>3. Giả lập lỗi mạng<br>4. Nhấn Đăng ký | Hệ thống tự động retry tối đa 3 lần, mỗi lần cách nhau 2 giây. Hiển thị toast.warning "Lỗi kết nối. Đang thử lại... (x/3)". Nếu vẫn lỗi, hiển thị toast.error "Có lỗi xảy ra, vui lòng thử lại sau" | | Pass | 11/15/2015 | |
+
+### Function: Đăng nhập hệ thống
+
+#### Check GUI: Đăng nhập
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DN-01** | Kiểm tra tiêu đề trang đăng nhập | 1. Truy cập /user/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader, CardTitle "Đăng nhập" (text-2xl font-bold), CardDescription "Đăng nhập vào tài khoản của bạn để tiếp tục mua sắm" | | Pass | 11/15/2015 | |
+| **GUI-DN-02** | Kiểm tra trường Email | 1. Truy cập /user/auth/login<br>2. Kiểm tra trường Email | Hiển thị Label "Email", Input type email với placeholder "Nhập email của bạn", required, disabled khi isLocked | | Pass | 11/15/2015 | |
+| **GUI-DN-03** | Kiểm tra trường Mật khẩu | 1. Truy cập /user/auth/login<br>2. Kiểm tra trường Mật khẩu | Hiển thị Label "Mật khẩu", Input type password với placeholder "Nhập mật khẩu", required, className pr-10, có nút Eye/EyeOff ở bên phải, disabled khi isLocked | | Pass | 11/15/2015 | |
+| **GUI-DN-04** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /user/auth/login<br>2. Kiểm tra checkbox | Hiển thị Checkbox với Label "Ghi nhớ đăng nhập" (text-sm) | | Pass | 11/15/2015 | |
+| **GUI-DN-05** | Kiểm tra link Quên mật khẩu | 1. Truy cập /user/auth/login<br>2. Kiểm tra link | Hiển thị Link đến /user/auth/forgot-password với text "Quên mật khẩu?" (text-sm text-primary hover:underline) | | Pass | 11/15/2015 | |
+| **GUI-DN-06** | Kiểm tra nút Đăng nhập | 1. Truy cập /user/auth/login<br>2. Kiểm tra nút | Hiển thị Button với text "Đăng nhập" hoặc "Đang đăng nhập..." khi isLoading, className w-full, type submit, disabled khi isLoading hoặc isLocked | | Pass | 11/15/2015 | |
+| **GUI-DN-07** | Kiểm tra cảnh báo tài khoản bị khóa | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 5 lần<br>3. Kiểm tra cảnh báo | Hiển thị Alert variant destructive với icon AlertCircle, AlertDescription hiển thị "Tài khoản bị khóa do quá nhiều lần đăng nhập sai. Vui lòng thử lại sau X phút." | | Pass | 11/15/2015 | |
+| **GUI-DN-08** | Kiểm tra cảnh báo CAPTCHA | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần<br>3. Kiểm tra cảnh báo | Hiển thị Alert với icon Shield, AlertDescription "Đã có X lần đăng nhập sai. Vui lòng nhập CAPTCHA để tiếp tục." | | Pass | 11/15/2015 | |
+| **GUI-DN-09** | Kiểm tra phần CAPTCHA | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần<br>3. Kiểm tra phần CAPTCHA | Hiển thị div với className "space-y-2 p-4 bg-muted rounded-lg", có Label "Nhập CAPTCHA để tiếp tục", div hiển thị phép tính (font-mono text-lg), Input để nhập kết quả (w-24), Button "Làm mới" | | Pass | 11/15/2015 | |
+| **GUI-DN-10** | Kiểm tra nút đăng nhập xã hội | 1. Truy cập /user/auth/login<br>2. Kiểm tra phần đăng nhập xã hội | Hiển thị Separator với text "Hoặc", có 2 Button variant outline: "Đăng nhập với Google" và "Đăng nhập với Facebook", className w-full | | Pass | 11/15/2015 | |
+| **GUI-DN-11** | Kiểm tra link đăng ký | 1. Truy cập /user/auth/login<br>2. Kiểm tra link | Hiển thị text "Chưa có tài khoản? " và Link đến /user/auth/register với text "Đăng ký ngay" | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Đăng nhập
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /user/auth/login | Hiển thị form đăng nhập với Card component, các trường: email, mật khẩu, checkbox ghi nhớ, link quên mật khẩu, nút đăng nhập, các nút đăng nhập xã hội, link đăng ký | | Pass | 11/15/2015 | |
+| **FUNC-DN-02** | Đăng nhập thành công | 1. Truy cập /user/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút Đăng nhập | Hiển thị toast.success "Đăng nhập thành công!", sau đó redirect đến /user. Phiên đăng nhập được tạo và lưu trữ | | Pass | 11/15/2015 | |
+| **FUNC-DN-03** | Đăng nhập với email không tồn tại | 1. Truy cập /user/auth/login<br>2. Nhập email "wrong@example.com"<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Hiển thị toast.error "Sai email hoặc mật khẩu. Còn X lần thử.", failedAttempts tăng lên 1, không chuyển trang | | Pass | 11/15/2015 | |
+| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /user/auth/login<br>2. Nhập email hợp lệ<br>3. Nhập mật khẩu "wrong"<br>4. Nhấn Đăng nhập | Hiển thị toast.error "Sai email hoặc mật khẩu. Còn X lần thử.", failedAttempts tăng lên 1, không chuyển trang | | Pass | 11/15/2015 | |
+| **FUNC-DN-05** | Đăng nhập thiếu email | 1. Truy cập /user/auth/login<br>2. Để trống email<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /user/auth/login<br>2. Nhập email<br>3. Để trống mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please fill out this field", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-DN-07** | Đăng nhập với email sai định dạng | 1. Truy cập /user/auth/login<br>2. Nhập email không đúng định dạng<br>3. Nhập mật khẩu<br>4. Nhấn Đăng nhập | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address", form không được gửi | | Pass | 11/15/2015 | |
+| **FUNC-DN-08** | Hiện/Ẩn mật khẩu | 1. Truy cập /user/auth/login<br>2. Nhập mật khẩu<br>3. Click nút Eye | Input type chuyển từ password sang text, icon chuyển từ Eye sang EyeOff | | Pass | 11/15/2015 | |
+| **FUNC-DN-09** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /user/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, thông tin đăng nhập được lưu với thời hạn dài hơn | | Pass | 11/15/2015 | |
+| **FUNC-DN-10** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /user/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, thông tin đăng nhập được lưu với thời hạn ngắn hơn | | Pass | 11/15/2015 | |
+| **FUNC-DN-11** | Hiển thị CAPTCHA sau 3 lần đăng nhập sai | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần | Hiển thị Alert cảnh báo, phần CAPTCHA xuất hiện với phép tính ngẫu nhiên, Input để nhập kết quả, Button "Làm mới" | | Pass | 11/15/2015 | |
+| **FUNC-DN-12** | Đăng nhập với CAPTCHA đúng | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần<br>3. Nhập CAPTCHA đúng<br>4. Nhập thông tin đăng nhập đúng<br>5. Nhấn Đăng nhập | Đăng nhập thành công, chuyển đến /user | | Pass | 11/15/2015 | |
+| **FUNC-DN-13** | Đăng nhập với CAPTCHA sai | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 3 lần<br>3. Nhập CAPTCHA sai<br>4. Nhấn Đăng nhập | Hiển thị toast.error "Mã CAPTCHA không đúng", CAPTCHA được tạo lại, Input CAPTCHA được xóa | | Pass | 11/15/2015 | |
+| **FUNC-DN-14** | Khóa tài khoản sau 5 lần đăng nhập sai | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 5 lần | Hiển thị Alert variant destructive "Tài khoản bị khóa do quá nhiều lần đăng nhập sai. Vui lòng thử lại sau 30 phút.", isLocked = true, lockUntil được set 30 phút sau, các trường input bị disabled | | Pass | 11/15/2015 | |
+| **FUNC-DN-15** | Tự động mở khóa sau 30 phút | 1. Truy cập /user/auth/login<br>2. Đăng nhập sai 5 lần<br>3. Đợi 30 phút | isLocked = false, lockUntil = null, failedAttempts = 0, showCaptcha = false, các trường input được enable lại, localStorage được xóa | | Pass | 11/15/2015 | |
+| **FUNC-DN-16** | Nhấn link Quên mật khẩu | 1. Truy cập /user/auth/login<br>2. Nhấn link "Quên mật khẩu?" | Chuyển đến trang /user/auth/forgot-password | | Pass | 11/15/2015 | |
+| **FUNC-DN-17** | Nhấn link Đăng ký | 1. Truy cập /user/auth/login<br>2. Nhấn link "Đăng ký ngay" | Chuyển đến trang /user/auth/register | | Pass | 11/15/2015 | |
+| **FUNC-DN-18** | Submit form bằng phím Enter | 1. Truy cập /user/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút | | Pass | 11/15/2015 | |
+
+### Function: Quên mật khẩu / Khôi phục mật khẩu
+
+#### Check GUI: Quên mật khẩu
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-QM-01** | Kiểm tra tiêu đề trang quên mật khẩu | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader, có icon Mail trong div (h-12 w-12 rounded-full bg-primary/10), CardTitle "Quên mật khẩu" (text-2xl font-bold), CardDescription "Nhập email của bạn để nhận link khôi phục mật khẩu" | | Pass | 11/15/2015 | |
+| **GUI-QM-02** | Kiểm tra trường Email | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra trường Email | Hiển thị Label "Email", Input type email với placeholder "Nhập email của bạn", required | | Pass | 11/15/2015 | |
+| **GUI-QM-03** | Kiểm tra nút Gửi link khôi phục | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra nút | Hiển thị Button với text "Gửi link khôi phục" hoặc "Đang gửi..." khi isLoading, className w-full, type submit | | Pass | 11/15/2015 | |
+| **GUI-QM-04** | Kiểm tra link quay lại đăng nhập | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra link | Hiển thị Link đến /user/auth/login với icon ArrowLeft và text "Quay lại đăng nhập" (text-sm text-primary hover:underline) | | Pass | 11/15/2015 | |
+| **GUI-QM-05** | Kiểm tra link đăng ký | 1. Truy cập /user/auth/forgot-password<br>2. Kiểm tra link | Hiển thị text "Chưa có tài khoản? " và Link đến /user/auth/register với text "Đăng ký ngay" | | Pass | 11/15/2015 | |
+| **GUI-QM-06** | Kiểm tra màn hình xác nhận email đã gửi | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email và gửi thành công<br>3. Kiểm tra màn hình | Hiển thị Card với icon CheckCircle (h-6 w-6 text-green-600) trong div (h-12 w-12 rounded-full bg-green-100), CardTitle "Email đã được gửi" (text-2xl font-bold), CardDescription "Chúng tôi đã gửi link khôi phục mật khẩu đến email của bạn" | | Pass | 11/15/2015 | |
+| **GUI-QM-07** | Kiểm tra nút Gửi lại email | 1. Truy cập /user/auth/forgot-password<br>2. Gửi email thành công<br>3. Kiểm tra nút | Hiển thị Button variant outline "Gửi lại email", className w-full | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Quên mật khẩu
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-QM-01** | Mở trang quên mật khẩu | 1. Truy cập /user/auth/forgot-password | Hiển thị form quên mật khẩu với Card component, trường email, nút gửi link, link quay lại đăng nhập, link đăng ký | | Pass | 11/15/2015 | |
+| **FUNC-QM-02** | Gửi link khôi phục thành công | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Nhấn nút Gửi link khôi phục | Hiển thị toast.success "Email khôi phục mật khẩu đã được gửi!", chuyển sang màn hình xác nhận với icon CheckCircle, thông báo "Chúng tôi đã gửi link khôi phục mật khẩu đến email của bạn" | | Pass | 11/15/2015 | |
+| **FUNC-QM-03** | Gửi link với email trống | 1. Truy cập /user/auth/forgot-password<br>2. Để trống email<br>3. Nhấn nút Gửi | Hiển thị toast.error "Vui lòng nhập email", form không được submit | | Pass | 11/15/2015 | |
+| **FUNC-QM-04** | Gửi lại email | 1. Truy cập /user/auth/forgot-password<br>2. Gửi email thành công<br>3. Nhấn nút "Gửi lại email" | Chuyển về màn hình form ban đầu, có thể nhập email và gửi lại | | Pass | 11/15/2015 | |
+| **FUNC-QM-05** | Nhấn link quay lại đăng nhập | 1. Truy cập /user/auth/forgot-password<br>2. Nhấn link "Quay lại đăng nhập" | Chuyển đến trang /user/auth/login | | Pass | 11/15/2015 | |
+| **FUNC-QM-06** | Xử lý lỗi khi gửi email | 1. Truy cập /user/auth/forgot-password<br>2. Nhập email hợp lệ<br>3. Giả lập lỗi gửi email<br>4. Nhấn nút Gửi | Hiển thị toast.error "Có lỗi xảy ra, vui lòng thử lại", form vẫn hiển thị để người dùng thử lại | | Pass | 11/15/2015 | |
+
+### Function: Quản lý thông tin cá nhân
+
+#### Check GUI: Quản lý thông tin cá nhân
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-TT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/account<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Tài khoản của tôi" (text-3xl font-bold), p "Quản lý thông tin cá nhân và theo dõi hoạt động" (text-muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-TT-02** | Kiểm tra nút Chỉnh sửa/Lưu | 1. Truy cập /user/account<br>2. Kiểm tra nút | Hiển thị Button "Chỉnh sửa" với icon Edit khi không editing, hoặc Button "Hủy" (variant outline) và Button "Lưu thay đổi" với icon Save khi editing | | Pass | 11/15/2015 | |
+| **GUI-TT-03** | Kiểm tra phần Avatar và hạng | 1. Truy cập /user/account<br>2. Kiểm tra phần avatar | Hiển thị Avatar (h-20 w-20) với AvatarImage hoặc AvatarFallback, h3 với tên người dùng (text-lg font-semibold), Badge hiển thị hạng với icon Crown | | Pass | 11/15/2015 | |
+| **GUI-TT-04** | Kiểm tra các trường thông tin | 1. Truy cập /user/account<br>2. Kiểm tra các trường | Hiển thị grid md:grid-cols-2 với các Label và Input: Họ và tên, Email, Số điện thoại, Ngày sinh, Địa chỉ. Các Input disabled khi không editing | | Pass | 11/15/2015 | |
+| **GUI-TT-05** | Kiểm tra phần thống kê hoạt động | 1. Truy cập /user/account<br>2. Kiểm tra phần thống kê | Hiển thị Card với CardTitle "Thống kê hoạt động" (icon Star), grid md:grid-cols-3 với 3 div: Đơn hàng (icon ShoppingBag), Sách yêu thích (icon Heart), Điểm tích lũy (icon Crown) | | Pass | 11/15/2015 | |
+| **GUI-TT-06** | Kiểm tra sidebar thông tin tài khoản | 1. Truy cập /user/account<br>2. Kiểm tra sidebar | Hiển thị Card với CardTitle "Thông tin tài khoản" (icon Crown), các thông tin: Email đăng nhập (icon Mail), Thành viên từ (icon Calendar), Lần đăng nhập cuối (icon Calendar) | | Pass | 11/15/2015 | |
+| **GUI-TT-07** | Kiểm tra nút Đổi mật khẩu | 1. Truy cập /user/account<br>2. Kiểm tra nút | Hiển thị Button variant outline với icon Key và text "Đổi mật khẩu", className w-full justify-start | | Pass | 11/15/2015 | |
+| **GUI-TT-08** | Kiểm tra nút Đăng xuất | 1. Truy cập /user/account<br>2. Kiểm tra nút | Hiển thị AlertDialogTrigger với Button variant destructive, icon LogOut và text "Đăng xuất", className w-full justify-start | | Pass | 11/15/2015 | |
+| **GUI-TT-09** | Kiểm tra phần thông tin thành viên | 1. Truy cập /user/account<br>2. Kiểm tra phần thành viên | Hiển thị Card với CardTitle "Thông tin thành viên" (icon Crown), Badge hiển thị hạng, text "Giảm giá X%", các thông tin: Tổng chi tiêu, Điểm tích lũy, Button "Xem lịch sử giao dịch" | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Quản lý thông tin cá nhân
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-TT-01** | Mở trang quản lý tài khoản | 1. Truy cập /user/account | Hiển thị trang với tiêu đề, nút chỉnh sửa, Card thông tin cá nhân, Card thống kê hoạt động, sidebar với thông tin tài khoản và các nút chức năng | | Pass | 11/15/2015 | |
+| **FUNC-TT-02** | Chỉnh sửa thông tin cá nhân | 1. Truy cập /user/account<br>2. Nhấn nút "Chỉnh sửa"<br>3. Sửa các trường thông tin<br>4. Nhấn "Lưu thay đổi" | Các Input được enable, có thể chỉnh sửa. Sau khi lưu, hiển thị toast.success "Cập nhật thông tin thành công", các Input được disable lại, thông tin được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TT-03** | Hủy chỉnh sửa | 1. Truy cập /user/account<br>2. Nhấn nút "Chỉnh sửa"<br>3. Sửa thông tin<br>4. Nhấn "Hủy" | Form được reset về giá trị ban đầu, các Input được disable lại, nút chuyển về "Chỉnh sửa" | | Pass | 11/15/2015 | |
+| **FUNC-TT-04** | Lưu thông tin thiếu họ tên | 1. Truy cập /user/account<br>2. Nhấn "Chỉnh sửa"<br>3. Xóa họ tên<br>4. Nhấn "Lưu thay đổi" | Hiển thị toast.error "Họ tên không được để trống", thông tin không được lưu | | Pass | 11/15/2015 | |
+| **FUNC-TT-05** | Lưu thông tin thiếu email | 1. Truy cập /user/account<br>2. Nhấn "Chỉnh sửa"<br>3. Xóa email<br>4. Nhấn "Lưu thay đổi" | Hiển thị toast.error "Email không được để trống", thông tin không được lưu | | Pass | 11/15/2015 | |
+| **FUNC-TT-06** | Lưu thông tin thiếu số điện thoại | 1. Truy cập /user/account<br>2. Nhấn "Chỉnh sửa"<br>3. Xóa số điện thoại<br>4. Nhấn "Lưu thay đổi" | Hiển thị toast.error "Số điện thoại không được để trống", thông tin không được lưu | | Pass | 11/15/2015 | |
+
+### Function: Đổi mật khẩu
+
+#### Check GUI: Đổi mật khẩu
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DM-01** | Kiểm tra Dialog đổi mật khẩu | 1. Truy cập /user/account<br>2. Nhấn nút "Đổi mật khẩu" | Hiển thị Dialog với DialogHeader, DialogTitle "Đổi mật khẩu", DialogDescription "Nhập mật khẩu hiện tại và mật khẩu mới để thay đổi" | | Pass | 11/15/2015 | |
+| **GUI-DM-02** | Kiểm tra trường Mật khẩu hiện tại | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Kiểm tra trường | Hiển thị Label "Mật khẩu hiện tại *", Input type password với nút Eye/EyeOff ở bên phải | | Pass | 11/15/2015 | |
+| **GUI-DM-03** | Kiểm tra trường Mật khẩu mới | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Kiểm tra trường | Hiển thị Label "Mật khẩu mới *", Input type password với nút Eye/EyeOff ở bên phải, text "Mật khẩu phải có ít nhất 6 ký tự" (text-xs text-muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DM-04** | Kiểm tra trường Xác nhận mật khẩu | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Kiểm tra trường | Hiển thị Label "Xác nhận mật khẩu mới *", Input type password với nút Eye/EyeOff ở bên phải | | Pass | 11/15/2015 | |
+| **GUI-DM-05** | Kiểm tra phần OTP cho VIP/Admin | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu (tài khoản VIP/Admin)<br>3. Nhấn "Tiếp tục"<br>4. Kiểm tra phần OTP | Hiển thị Alert với icon Info, AlertDescription về yêu cầu OTP. Sau khi nhấn "Tiếp tục", hiển thị div với className "space-y-2 p-4 bg-blue-50 rounded-lg border border-blue-200", có Label "Mã OTP xác thực (6 số) *", Input để nhập OTP (text-center text-lg tracking-widest), text hướng dẫn, Button "Gửi lại mã OTP" | | Pass | 11/15/2015 | |
+| **GUI-DM-06** | Kiểm tra nút Hủy và Đổi mật khẩu | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Kiểm tra nút | Hiển thị Button variant outline "Hủy" và Button "Đổi mật khẩu" hoặc "Tiếp tục" (nếu VIP/Admin và chưa nhập OTP) | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Đổi mật khẩu
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DM-01** | Mở Dialog đổi mật khẩu | 1. Truy cập /user/account<br>2. Nhấn nút "Đổi mật khẩu" | Hiển thị Dialog với form đổi mật khẩu, các trường: mật khẩu hiện tại, mật khẩu mới, xác nhận mật khẩu, các nút Hủy và Đổi mật khẩu | | Pass | 11/15/2015 | |
+| **FUNC-DM-02** | Đổi mật khẩu thành công (tài khoản thường) | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới hợp lệ (>= 6 ký tự)<br>5. Nhập xác nhận mật khẩu khớp<br>6. Nhấn "Đổi mật khẩu" | Hiển thị toast.success "Đổi mật khẩu thành công", Dialog đóng, form được reset | | Pass | 11/15/2015 | |
+| **FUNC-DM-03** | Đổi mật khẩu với mật khẩu hiện tại sai | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Nhấn "Đổi mật khẩu" | Hiển thị toast.error "Mật khẩu hiện tại không đúng", mật khẩu không được đổi | | Pass | 11/15/2015 | |
+| **FUNC-DM-04** | Đổi mật khẩu với mật khẩu mới quá ngắn | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới < 6 ký tự<br>5. Nhấn "Đổi mật khẩu" | Hiển thị toast.error "Mật khẩu mới phải có ít nhất 6 ký tự", mật khẩu không được đổi | | Pass | 11/15/2015 | |
+| **FUNC-DM-05** | Đổi mật khẩu với xác nhận không khớp | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới<br>5. Nhập xác nhận mật khẩu khác<br>6. Nhấn "Đổi mật khẩu" | Hiển thị toast.error "Mật khẩu xác nhận không khớp", mật khẩu không được đổi | | Pass | 11/15/2015 | |
+| **FUNC-DM-06** | Đổi mật khẩu cho tài khoản VIP/Admin - Gửi OTP | 1. Truy cập /user/account (tài khoản VIP/Admin)<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập đầy đủ thông tin hợp lệ<br>4. Nhấn "Tiếp tục" | Hiển thị toast.success "Mã OTP đã được gửi đến email của bạn", phần OTP xuất hiện, nút chuyển thành "Đổi mật khẩu" | | Pass | 11/15/2015 | |
+| **FUNC-DM-07** | Đổi mật khẩu cho tài khoản VIP/Admin - Nhập OTP đúng | 1. Truy cập /user/account (tài khoản VIP/Admin)<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập đầy đủ thông tin và nhấn "Tiếp tục"<br>4. Nhập OTP đúng (123456)<br>5. Nhấn "Đổi mật khẩu" | Hiển thị toast.success "Đổi mật khẩu thành công", Dialog đóng, form được reset | | Pass | 11/15/2015 | |
+| **FUNC-DM-08** | Đổi mật khẩu cho tài khoản VIP/Admin - Nhập OTP sai | 1. Truy cập /user/account (tài khoản VIP/Admin)<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập đầy đủ thông tin và nhấn "Tiếp tục"<br>4. Nhập OTP sai<br>5. Nhấn "Đổi mật khẩu" | Hiển thị toast.error "Mã OTP không đúng. Vui lòng thử lại.", OTP không được chấp nhận | | Pass | 11/15/2015 | |
+| **FUNC-DM-09** | Gửi lại mã OTP | 1. Truy cập /user/account (tài khoản VIP/Admin)<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập đầy đủ thông tin và nhấn "Tiếp tục"<br>4. Nhấn "Gửi lại mã OTP" | Hiển thị toast.success "Đã gửi lại mã OTP", mã OTP mới được gửi đến email | | Pass | 11/15/2015 | |
+| **FUNC-DM-10** | Hiện/Ẩn mật khẩu | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập mật khẩu<br>4. Click nút Eye | Input type chuyển từ password sang text, icon chuyển từ Eye sang EyeOff | | Pass | 11/15/2015 | |
+| **FUNC-DM-11** | Hủy đổi mật khẩu | 1. Truy cập /user/account<br>2. Mở Dialog đổi mật khẩu<br>3. Nhập thông tin<br>4. Nhấn "Hủy" | Dialog đóng, form được reset, không có thay đổi nào được lưu | | Pass | 11/15/2015 | |
+
+### Function: Xem điểm tích lũy và hạng thành viên
+
+#### Check GUI: Điểm tích lũy và hạng thành viên
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/account/rank<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Điểm tích lũy và hạng thành viên" (text-2xl font-bold), p "Theo dõi hạng hiện tại, tổng chi tiêu và ưu đãi" (text-muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-DT-02** | Kiểm tra Card thông tin hạng | 1. Truy cập /user/account/rank<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Thông tin hạng" (icon Crown text-yellow-500), CardDescription "Hạng hiện tại, điểm và chi tiêu", Badge "ID: user_001" | | Pass | 11/15/2015 | |
+| **GUI-DT-03** | Kiểm tra thông tin hạng hiện tại | 1. Truy cập /user/account/rank<br>2. Kiểm tra thông tin | Hiển thị grid md:grid-cols-2 với: Hạng hiện tại (Badge), Điểm tích lũy (toLocaleString), Tổng chi tiêu (toLocaleString VNĐ), Phần trăm giảm giá (%) | | Pass | 11/15/2015 | |
+| **GUI-DT-04** | Kiểm tra thanh tiến độ hạng tiếp theo | 1. Truy cập /user/account/rank<br>2. Kiểm tra thanh tiến độ | Hiển thị text "Tiến độ hạng tiếp theo", Progress component với value tính từ currentPoints/nextRankTarget, text "{currentPoints}/{nextRankTarget} điểm", text-xs "Quy tắc nâng hạng có thể dựa trên điểm hoặc tổng chi tiêu" | | Pass | 11/15/2015 | |
+| **GUI-DT-05** | Kiểm tra Card quyền lợi hạng | 1. Truy cập /user/account/rank<br>2. Kiểm tra Card | Hiển thị Card với CardTitle "Quyền lợi hạng", CardDescription "Giảm giá và ưu đãi theo hạng", grid md:grid-cols-4 với 4 div: Bronze (0%), Silver (3%), Gold (5%), Kim cương (8%) | | Pass | 11/15/2015 | |
+| **GUI-DT-06** | Kiểm tra bảng lịch sử tích điểm | 1. Truy cập /user/account/rank<br>2. Kiểm tra bảng | Hiển thị Card với CardTitle "Lịch sử tích điểm", CardDescription "Ngày, Mô tả, Điểm tích, Điểm sử dụng, Số dư", Table với TableHeader: Ngày, Mô tả, Điểm tích (text-right), Điểm sử dụng (text-right), Số dư (text-right) | | Pass | 11/15/2015 | |
+| **GUI-DT-07** | Kiểm tra nút Xem lịch sử giao dịch | 1. Truy cập /user/account/rank<br>2. Kiểm tra nút | Hiển thị Button variant outline size sm với link đến /user/account/orders, text "Xem lịch sử giao dịch", className w-full | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Điểm tích lũy và hạng thành viên
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DT-01** | Mở trang điểm tích lũy | 1. Truy cập /user/account/rank | Hiển thị trang với tiêu đề, Card thông tin hạng (hạng hiện tại, điểm, chi tiêu, giảm giá, tiến độ), Card quyền lợi hạng, Card lịch sử tích điểm với bảng dữ liệu | | Pass | 11/15/2015 | |
+| **FUNC-DT-02** | Hiển thị lịch sử tích điểm | 1. Truy cập /user/account/rank<br>2. Kiểm tra bảng lịch sử | Hiển thị Table với các dòng dữ liệu: Ngày (toLocaleDateString), Mô tả, Điểm tích (+X hoặc -), Điểm sử dụng (-X hoặc -), Số dư | | Pass | 11/15/2015 | |
+| **FUNC-DT-03** | Tính toán tiến độ hạng tiếp theo | 1. Truy cập /user/account/rank<br>2. Kiểm tra thanh tiến độ | Progress value = Math.min(100, Math.round((currentPoints / nextRankTarget) * 100)), hiển thị đúng phần trăm và số điểm | | Pass | 11/15/2015 | |
+| **FUNC-DT-04** | Nhấn nút Xem lịch sử giao dịch | 1. Truy cập /user/account/rank<br>2. Nhấn nút "Xem lịch sử giao dịch" | Chuyển đến trang /user/account/orders | | Pass | 11/15/2015 | |
+
+### Function: Đăng xuất hệ thống
+
+#### Check GUI: Đăng xuất
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DX-01** | Kiểm tra nút Đăng xuất | 1. Truy cập /user/account<br>2. Kiểm tra nút | Hiển thị AlertDialogTrigger với Button variant destructive, icon LogOut và text "Đăng xuất", className w-full justify-start | | Pass | 11/15/2015 | |
+| **GUI-DX-02** | Kiểm tra Dialog xác nhận đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút "Đăng xuất" | Hiển thị AlertDialog với AlertDialogHeader, AlertDialogTitle "Xác nhận đăng xuất", AlertDialogDescription "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống? Bạn sẽ cần đăng nhập lại để tiếp tục sử dụng." | | Pass | 11/15/2015 | |
+| **GUI-DX-03** | Kiểm tra nút Hủy và Xác nhận | 1. Truy cập /user/account<br>2. Mở Dialog đăng xuất<br>3. Kiểm tra nút | Hiển thị AlertDialogFooter với AlertDialogCancel "Hủy" và AlertDialogAction "Đăng xuất" | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Đăng xuất
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DX-01** | Mở Dialog xác nhận đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút "Đăng xuất" | Hiển thị AlertDialog với tiêu đề, mô tả, nút Hủy và nút Xác nhận | | Pass | 11/15/2015 | |
+| **FUNC-DX-02** | Đăng xuất thành công | 1. Truy cập /user/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Đăng xuất" trong Dialog | Hiển thị toast.success "Đăng xuất thành công", redirect đến /user/auth/login, phiên đăng nhập được kết thúc, token được xóa | | Pass | 11/15/2015 | |
+| **FUNC-DX-03** | Hủy đăng xuất | 1. Truy cập /user/account<br>2. Nhấn nút "Đăng xuất"<br>3. Nhấn "Hủy" | Dialog đóng, vẫn ở trang /user/account, không có thay đổi nào | | Pass | 11/15/2015 | |
+
+---
+
+*Template này được tạo theo chuẩn MDX để dễ dàng quản lý và cập nhật test cases.*
+
