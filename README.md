@@ -1,14 +1,12 @@
-# Test Case Template - Quản lý vận chuyển (Admin)
+# Test Case Template - Hỗ trợ khách hàng (Admin)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Admin)**
 
 ## Test Requirement
-1. Hiển thị danh sách đơn vận chuyển
-2. Xem chi tiết đơn vận chuyển
-3. Cập nhật trạng thái vận chuyển
-4. Quản lý nhà vận chuyển
-5. Theo dõi vận chuyển
+1. Hiển thị danh sách yêu cầu hỗ trợ
+2. Chat hỗ trợ khách hàng
+3. Trả lời yêu cầu hỗ trợ
 
 ---
 
@@ -18,106 +16,82 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 20 |
+| **Pass** | 18 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 20 |
+| **Number of Test cases** | 18 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách đơn vận chuyển
+### Function: Hiển thị danh sách yêu cầu hỗ trợ
 
-#### Check GUI: Hiển thị danh sách đơn vận chuyển
+#### Check GUI: Hiển thị danh sách yêu cầu hỗ trợ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSVC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra tiêu đề | Hiển thị Card với CardHeader có CardTitle "Quản lý vận chuyển" với class text-2xl font-bold, layout trong div space-y-6 | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-02** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardContent có grid gap-4 md:grid-cols-5 chứa: Select "Trạng thái" với placeholder, Select "Nhà vận chuyển" với placeholder, Select "Khoảng thời gian" với placeholder, Input placeholder="Tìm mã đơn vận/đơn hàng", div flex justify-end với Button variant="outline" "Xuất báo cáo" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-03** | Kiểm tra dropdown Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Trạng thái", SelectContent có các option: "Chờ lấy hàng", "Đang giao", "Đã giao", "Trả về", "Hủy" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-04** | Kiểm tra dropdown Nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Nhà vận chuyển", SelectContent có các option: "Giao Hàng Nhanh", "Viettel Post", "J&T Express", "Ninja Van" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-05** | Kiểm tra card Danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra card | Hiển thị Card với CardContent chứa Table | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-06** | Kiểm tra bảng danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "Mã đơn vận", "Mã đơn hàng", "Khách hàng", "Nhà vận chuyển", "Trạng thái", "Ngày tạo", "Thao tác". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-07** | Kiểm tra cột Mã đơn vận | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa div flex items-center gap-2 với span (mã đơn vận, VD: VC001) và Badge với variant="default" nếu status="Đang giao" hoặc variant="secondary" nếu khác, hiển thị trạng thái | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-08** | Kiểm tra cột Mã đơn hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa Link href="/admin/orders/[orderId]" với text là mã đơn hàng (VD: DH001), có thể click để xem chi tiết đơn hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSVC-09** | Kiểm tra các nút thao tác | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra nút thao tác | Mỗi hàng có TableCell "Thao tác" với class space-x-2 chứa: Button size="sm" variant="outline" "Xem chi tiết" với Link href="/admin/shipping/[id]", Button size="sm" variant="outline" "Cập nhật trạng thái", Button size="sm" variant="outline" "Theo dõi", Button size="sm" variant="outline" "Hủy đơn" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Danh sách tin nhắn hỗ trợ" với class text-3xl font-bold, mô tả "Quản lý các cuộc hội thoại hỗ trợ với khách hàng" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-02** | Kiểm tra nút header | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra nút | Hiển thị div flex gap-2 bên phải tiêu đề với Button "Đánh dấu tất cả đã đọc" onClick | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-03** | Kiểm tra thống kê hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 với 6 Card: Card 1 "Tổng ticket" với icon MessageSquare h-4 w-4 text-muted-foreground, Card 2 "Mới" với icon Clock h-4 w-4 text-blue-600 và số text-blue-600, Card 3 "Đang xử lý" với icon AlertCircle h-4 w-4 text-orange-600 và số text-orange-600, Card 4 "Đã giải quyết" với icon CheckCircle h-4 w-4 text-green-600 và số text-green-600, Card 5 "Đóng" với icon XCircle h-4 w-4 text-gray-600 và số text-gray-600, Card 6 "Chưa đọc" với icon MessageSquare h-4 w-4 text-red-600 và số text-red-600. Mỗi card có CardHeader flex flex-row items-center justify-between space-y-0 pb-2 với CardTitle text-sm font-medium và icon, CardContent có text-2xl font-bold | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-04** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardHeader có CardTitle "Bộ lọc", CardContent có grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 chứa: div space-y-2 với Label "Tìm kiếm" và Input với icon Search absolute left-2 top-2.5, placeholder="Tìm theo mã, tên khách, SĐT...", class pl-8, Select "Trạng thái" với placeholder="Chọn trạng thái", Select "Ưu tiên" với placeholder="Chọn mức ưu tiên", Button "Áp dụng bộ lọc" onClick | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-05** | Kiểm tra dropdown Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Chọn trạng thái", SelectContent có các option: "Tất cả", "Mới", "Đang xử lý", "Đã giải quyết", "Đóng" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-06** | Kiểm tra dropdown Ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Chọn mức ưu tiên", SelectContent có các option: "Tất cả", "Thấp", "Trung bình", "Cao" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-07** | Kiểm tra card Danh sách hội thoại | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Danh sách hội thoại hỗ trợ", CardDescription "Hiển thị [số] cuộc hội thoại", CardContent có div space-y-4 chứa danh sách các ticket | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSHT-08** | Kiểm tra item hội thoại | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra item | Mỗi item có div flex items-center gap-4 p-4 border rounded-lg hover:bg-gray-50 chứa: Avatar h-12 w-12 với AvatarImage và AvatarFallback (chữ cái đầu tên), div flex-1 min-w-0 với h3 font-semibold truncate (tên khách hàng), các Badge (trạng thái với màu tương ứng, ưu tiên với màu tương ứng, "X tin nhắn mới" variant="destructive" nếu unreadCount > 0), p text-sm font-medium text-gray-900 (subject), p text-sm text-gray-600 (lastMessage), div flex items-center gap-4 text-xs text-gray-500 với icon User + assignedStaff, icon Clock + lastUpdate, icon Phone + customerPhone, icon Mail + customerEmail, div flex items-center gap-2 với Button "Xem chi tiết" và Button "Đánh dấu đã đọc" (nếu unreadCount > 0) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách đơn vận chuyển
+### Check FUNC: Hiển thị danh sách yêu cầu hỗ trợ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSVC-01** | Xem danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping | Hiển thị đầy đủ: card Bộ lọc với 3 Select (Trạng thái, Nhà vận chuyển, Khoảng thời gian), 1 Input tìm kiếm, nút Xuất báo cáo, card Danh sách đơn vận chuyển với Table hiển thị các đơn vận chuyển, mỗi hàng có Mã đơn vận (với Badge trạng thái), Mã đơn hàng (Link), Khách hàng, Nhà vận chuyển, Trạng thái, Ngày tạo, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-02** | Tìm kiếm đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Nhập từ khóa tìm kiếm vào ô "Tìm mã đơn vận/đơn hàng" | Danh sách đơn vận chuyển được lọc theo từ khóa (mã đơn vận, mã đơn hàng), bảng cập nhật ngay lập tức (real-time filtering), hiển thị các đơn vận chuyển có mã chứa từ khóa (case-insensitive) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-03** | Lọc đơn vận chuyển theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn trạng thái từ dropdown (VD: "Đang giao") | Danh sách đơn vận chuyển được lọc theo trạng thái đã chọn, bảng chỉ hiển thị đơn vận chuyển có trạng thái tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-04** | Lọc đơn vận chuyển theo nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn nhà vận chuyển từ dropdown (VD: "Giao Hàng Nhanh") | Danh sách đơn vận chuyển được lọc theo nhà vận chuyển đã chọn, bảng chỉ hiển thị đơn vận chuyển có nhà vận chuyển tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-05** | Lọc đơn vận chuyển theo khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn khoảng thời gian từ dropdown (VD: "Tuần này") | Danh sách đơn vận chuyển được lọc theo khoảng thời gian đã chọn, bảng chỉ hiển thị đơn vận chuyển được tạo trong khoảng thời gian tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-06** | Kết hợp nhiều bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn trạng thái "Đang giao"<br>4. Chọn nhà vận chuyển "Giao Hàng Nhanh"<br>5. Nhập từ khóa tìm kiếm | Danh sách đơn vận chuyển được lọc theo tất cả các tiêu chí đã chọn, bảng chỉ hiển thị đơn vận chuyển thỏa mãn tất cả điều kiện, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSVC-07** | Click vào mã đơn hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click vào Link mã đơn hàng (VD: DH001) | Chuyển đến trang chi tiết đơn hàng (/admin/orders/[orderId]), URL thay đổi, trang mới được load với thông tin đơn hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-01** | Xem danh sách yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support | Hiển thị đầy đủ: tiêu đề và mô tả, nút "Đánh dấu tất cả đã đọc", thống kê 6 card (Tổng ticket, Mới, Đang xử lý, Đã giải quyết, Đóng, Chưa đọc) với số liệu và icon màu tương ứng, card Bộ lọc với ô tìm kiếm (có icon Search), 2 dropdown (Trạng thái, Ưu tiên), nút "Áp dụng bộ lọc", card Danh sách hội thoại hỗ trợ với danh sách các ticket, mỗi ticket có Avatar, tên khách hàng, Badge trạng thái (màu tương ứng), Badge ưu tiên (màu tương ứng), Badge "X tin nhắn mới" (nếu có), subject, lastMessage, thông tin assignedStaff, lastUpdate, customerPhone, customerEmail, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-02** | Tìm kiếm yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Nhập từ khóa tìm kiếm vào ô "Tìm theo mã, tên khách, SĐT..."<br>4. Nhấn Enter hoặc click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo từ khóa (mã ticket, tên khách hàng, số điện thoại, subject), danh sách cập nhật với các ticket phù hợp, CardDescription được cập nhật "Hiển thị [số] cuộc hội thoại" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-03** | Lọc yêu cầu hỗ trợ theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn trạng thái từ dropdown (VD: "Mới")<br>4. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo trạng thái đã chọn, danh sách chỉ hiển thị ticket có trạng thái tương ứng, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-04** | Lọc yêu cầu hỗ trợ theo ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn ưu tiên từ dropdown (VD: "Cao")<br>4. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo ưu tiên đã chọn, danh sách chỉ hiển thị ticket có ưu tiên tương ứng, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-05** | Kết hợp nhiều bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn trạng thái "Mới"<br>4. Chọn ưu tiên "Cao"<br>5. Nhập từ khóa tìm kiếm<br>6. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo tất cả các tiêu chí đã chọn, danh sách chỉ hiển thị ticket thỏa mãn tất cả điều kiện, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-06** | Đánh dấu tất cả đã đọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Đánh dấu tất cả đã đọc" | Hiển thị thông báo thành công "Đã đánh dấu ticket all là đã đọc" (toast success), tất cả Badge "X tin nhắn mới" biến mất, số "Chưa đọc" trong thống kê về 0, các nút "Đánh dấu đã đọc" biến mất | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSHT-07** | Đánh dấu một ticket đã đọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Đánh dấu đã đọc" trên một ticket có unreadCount > 0 | Hiển thị thông báo thành công "Đã đánh dấu ticket [id] là đã đọc" (toast success), Badge "X tin nhắn mới" biến mất trên ticket đó, nút "Đánh dấu đã đọc" biến mất, số "Chưa đọc" trong thống kê giảm đi số lượng tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết đơn vận chuyển
+### Function: Chat hỗ trợ khách hàng
 
-#### Check GUI: Xem chi tiết đơn vận chuyển
+#### Check GUI: Chat hỗ trợ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTVC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chi tiết đơn vận chuyển - [Mã đơn vận]" hoặc "Chi tiết đơn vận chuyển - VC001" với class text-2xl font-bold, layout tương tự trang chi tiết nhân viên | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTVC-02** | Kiểm tra card Thông tin đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Thông tin đơn vận chuyển", CardContent có grid layout, hiển thị các trường: Mã đơn vận, Mã đơn hàng (Link), Khách hàng, Nhà vận chuyển, Trạng thái (Badge), Ngày tạo, Mã vận đơn (trackingNumber) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTVC-03** | Kiểm tra card Địa chỉ giao hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Địa chỉ giao hàng", CardContent hiển thị các trường: Tên người nhận, Số điện thoại, Địa chỉ chi tiết, Ghi chú (nếu có) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTVC-04** | Kiểm tra card Lịch sử vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Lịch sử vận chuyển", CardContent có Table hoặc timeline hiển thị các sự kiện: Thời gian, Trạng thái, Vị trí, Ghi chú, Người cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chat hỗ trợ - [Mã ticket]" hoặc "Chat hỗ trợ - ST001" với class text-2xl font-bold, layout tương tự trang chi tiết | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-02** | Kiểm tra giao diện chat | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra giao diện | Hiển thị Card với CardHeader có CardTitle "Chat hỗ trợ với [Tên khách hàng]", CardContent có div flex flex-col h-[600px] chứa: div flex-1 overflow-y-auto space-y-4 (khung chat với danh sách tin nhắn), div flex items-center gap-2 p-4 border-t (ô nhập tin nhắn với Input và Button "Gửi" có icon Send) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-03** | Kiểm tra thông tin khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra thông tin | Hiển thị Card với CardHeader có CardTitle "Thông tin khách hàng", CardContent hiển thị các trường: Avatar, Tên khách hàng, Email, Số điện thoại, Link đến trang chi tiết khách hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết đơn vận chuyển
+### Check FUNC: Chat hỗ trợ khách hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTVC-01** | Xem chi tiết đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Xem chi tiết" hoặc Link href="/admin/shipping/[id]" | Hiển thị đầy đủ thông tin: tiêu đề "Chi tiết đơn vận chuyển - [Mã]", card Thông tin đơn vận chuyển với đầy đủ các trường (Mã đơn vận, Mã đơn hàng với Link, Khách hàng, Nhà vận chuyển, Trạng thái với Badge, Ngày tạo, Mã vận đơn), card Địa chỉ giao hàng, card Lịch sử vận chuyển với Table/timeline, các nút thao tác (Cập nhật trạng thái, Theo dõi, Hủy đơn) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CTVC-02** | Xem lịch sử vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Xem card Lịch sử vận chuyển | Hiển thị lịch sử vận chuyển theo dòng thời gian từ cũ đến mới, mỗi sự kiện có: Thời gian, Trạng thái (Chờ lấy hàng, Đang giao, Đã giao, Trả về, Hủy), Vị trí (nếu có), Ghi chú, Người cập nhật | FUNC-DN-02, FUNC-CTVC-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-01** | Mở chat hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Xem chi tiết" trên một ticket | Hiển thị thông báo "Chuyển đến chi tiết ticket [id]" (toast success), chuyển đến trang /admin/support/tickets/[id], hiển thị giao diện chat với: tiêu đề "Chat hỗ trợ - [Mã ticket]", card Thông tin khách hàng, card Chat với lịch sử tin nhắn (nếu có), ô nhập tin nhắn, nút "Gửi" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-02** | Gửi tin nhắn | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Nhập tin nhắn vào Input<br>4. Click nút "Gửi" hoặc nhấn Enter | Tin nhắn được gửi thành công, hiển thị trong khung chat với format: div flex justify-end (tin nhắn của Admin), div p-3 rounded-lg bg-primary text-primary-foreground (nội dung tin nhắn), span text-xs text-muted-foreground (thời gian gửi), tin nhắn được lưu vào database, thông báo được gửi cho khách hàng qua email/SMS (nếu có cấu hình), trạng thái ticket có thể cập nhật thành "Đang xử lý" nếu đang là "Mới" | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-03** | Gửi tin nhắn rỗng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Để trống ô nhập tin nhắn<br>4. Click nút "Gửi" | Hiển thị thông báo cảnh báo "Vui lòng nhập tin nhắn" (toast warning), không gửi tin nhắn, ô nhập vẫn trống | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-04** | Nhận tin nhắn từ khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Chờ tin nhắn từ khách hàng (hoặc giả lập) | Tin nhắn mới từ khách hàng hiển thị trong khung chat với format: div flex justify-start (tin nhắn của khách hàng), div p-3 rounded-lg bg-muted (nội dung tin nhắn), span text-xs text-muted-foreground (thời gian gửi), có thể có thông báo (notification) hoặc badge "Tin nhắn mới", unreadCount tăng lên, khung chat tự động scroll xuống tin nhắn mới nhất | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-05** | Xem lịch sử tin nhắn | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Xem khung chat | Hiển thị lịch sử tin nhắn theo dòng thời gian từ cũ đến mới, mỗi tin nhắn có: người gửi (Admin hoặc Khách hàng), nội dung, thời gian gửi, tin nhắn của Admin hiển thị bên phải (justify-end) với màu primary, tin nhắn của khách hàng hiển thị bên trái (justify-start) với màu muted | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Cập nhật trạng thái vận chuyển
+### Function: Trả lời yêu cầu hỗ trợ
 
-#### Check FUNC: Cập nhật trạng thái vận chuyển
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-STVC-01** | Cập nhật trạng thái vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Cập nhật trạng thái" trên một đơn vận chuyển<br>4. Chọn trạng thái mới từ Select<br>5. Nhập mô tả/vị trí vào Textarea (nếu có)<br>6. Click "Lưu" | Hiển thị Dialog hoặc form cập nhật với Select trạng thái (các option: Chờ lấy hàng, Đang giao, Đã giao, Trả về, Hủy), có thể có Textarea "Mô tả" hoặc "Vị trí hiện tại", Input "Mã vận đơn" (nếu cần). Sau khi lưu: trạng thái vận chuyển được cập nhật thành công, hiển thị thông báo thành công (toast success), Badge trạng thái được cập nhật, thông báo được gửi cho khách hàng qua email/SMS về việc thay đổi trạng thái vận chuyển, lịch sử vận chuyển được ghi nhận với hành động "Cập nhật trạng thái", dialog/form đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-STVC-02** | Cập nhật trạng thái không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click "Cập nhật trạng thái"<br>4. Chọn trạng thái không hợp lệ (VD: từ "Đã giao" về "Chờ lấy hàng")<br>5. Click "Lưu" | Hiển thị thông báo cảnh báo "Không thể chuyển từ trạng thái [trạng thái cũ] sang [trạng thái mới]" (toast warning), không cập nhật trạng thái | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-STVC-03** | Hủy cập nhật trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click "Cập nhật trạng thái"<br>4. Chọn trạng thái mới<br>5. Click "Hủy" trong dialog | Dialog đóng lại, không cập nhật trạng thái, trạng thái không thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Quản lý nhà vận chuyển
-
-#### Check FUNC: Quản lý nhà vận chuyển
+#### Check FUNC: Trả lời yêu cầu hỗ trợ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-QLNVC-01** | Xem danh sách nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Xem danh sách | Hiển thị Card với Table có các cột: Tên nhà vận chuyển, Loại dịch vụ, Trạng thái (Badge), Phí vận chuyển, Thời gian giao hàng, Thao tác. Mỗi hàng có các nút: Chỉnh sửa, Xóa, Kích hoạt/Vô hiệu hóa | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-QLNVC-02** | Thêm nhà vận chuyển mới | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Thêm nhà vận chuyển mới"<br>4. Nhập thông tin (Tên, Loại dịch vụ, Phí vận chuyển, Thời gian giao hàng, API key nếu có)<br>5. Click "Lưu" | Hiển thị Dialog hoặc form thêm mới với các trường: Tên nhà vận chuyển (Input required), Loại dịch vụ (Select), Phí vận chuyển (Input type="number"), Thời gian giao hàng (Input), API key (Input, nếu cần), Trạng thái (Toggle). Sau khi lưu: nhà vận chuyển mới được thêm thành công, hiển thị thông báo thành công (toast success), nhà vận chuyển mới hiển thị trong bảng, có thể được chọn trong dropdown khi tạo đơn vận chuyển | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-QLNVC-03** | Chỉnh sửa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Chỉnh sửa" trên một nhà vận chuyển<br>4. Cập nhật thông tin (VD: Phí vận chuyển, Thời gian giao hàng)<br>5. Click "Lưu" | Hiển thị Dialog hoặc form chỉnh sửa với các trường đã điền sẵn. Sau khi lưu: thông tin nhà vận chuyển được cập nhật thành công, hiển thị thông báo thành công, bảng được cập nhật, các đơn vận chuyển đang sử dụng nhà vận chuyển này có thể được thông báo về thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-QLNVC-04** | Xóa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Xóa" trên một nhà vận chuyển<br>4. Xác nhận xóa | Hiển thị Dialog xác nhận "Bạn có chắc chắn muốn xóa nhà vận chuyển này?". Sau khi xác nhận: nhà vận chuyển được xóa thành công, hiển thị thông báo thành công, nhà vận chuyển biến mất khỏi bảng, không thể chọn trong dropdown khi tạo đơn vận chuyển mới, các đơn vận chuyển đang sử dụng nhà vận chuyển này vẫn giữ nguyên thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-QLNVC-05** | Kích hoạt/Vô hiệu hóa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Vô hiệu hóa" hoặc "Kích hoạt" trên một nhà vận chuyển<br>4. Xác nhận | Trạng thái nhà vận chuyển được thay đổi (Kích hoạt/Vô hiệu hóa), hiển thị thông báo thành công, Badge trạng thái được cập nhật, nhà vận chuyển bị vô hiệu hóa không thể chọn trong dropdown khi tạo đơn vận chuyển mới | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Theo dõi vận chuyển
-
-#### Check FUNC: Theo dõi vận chuyển
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TDVC-01** | Xem theo dõi vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Theo dõi" trên một đơn vận chuyển | Hiển thị Dialog hoặc trang theo dõi với thông tin: Mã đơn vận, Mã vận đơn, Trạng thái hiện tại (Badge), Timeline hoặc bảng lịch sử vận chuyển với các mốc: Chờ lấy hàng, Đang lấy hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng (hoặc Trả về), mỗi mốc có thời gian, vị trí (nếu có), ghi chú, có thể có bản đồ hiển thị vị trí hiện tại (nếu có API) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TDVC-02** | Cập nhật tiến độ vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Click "Cập nhật tiến độ" hoặc "Cập nhật trạng thái"<br>4. Chọn trạng thái mới<br>5. Nhập vị trí hiện tại (nếu có)<br>6. Nhập ghi chú<br>7. Click "Lưu" | Tiến độ vận chuyển được cập nhật thành công, hiển thị thông báo thành công (toast success), timeline được cập nhật với mốc mới, thông báo được gửi cho khách hàng về tiến độ vận chuyển, lịch sử vận chuyển được ghi nhận | FUNC-DN-02, FUNC-CTVC-01 | Pass | 11/15/2015 | |
-| **FUNC-TDVC-03** | Hủy đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Hủy đơn" trên một đơn vận chuyển<br>4. Nhập lý do hủy<br>5. Xác nhận | Hiển thị Dialog xác nhận với Textarea "Lý do hủy" required. Sau khi xác nhận: đơn vận chuyển được hủy thành công, hiển thị thông báo thành công, trạng thái cập nhật thành "Hủy" với Badge variant="destructive", thông báo được gửi cho khách hàng về việc đơn vận chuyển bị hủy và lý do, lịch sử vận chuyển được ghi nhận, dialog đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TDVC-04** | Xuất báo cáo vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Xuất báo cáo" | Hiển thị Dialog hoặc menu cho phép chọn định dạng (PDF, Excel) và khoảng thời gian. Sau khi chọn: báo cáo vận chuyển được xuất thành công, file được tải xuống với tên file chứa ngày tháng, file chứa: danh sách đơn vận chuyển, thống kê tổng quan, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TLHT-01** | Trả lời yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Nhập câu trả lời vào ô nhập tin nhắn<br>4. Click nút "Gửi" | Câu trả lời được gửi thành công, hiển thị trong khung chat, trạng thái ticket được cập nhật (từ "Mới" thành "Đang xử lý" hoặc từ "Đang xử lý" thành "Đã giải quyết" nếu câu trả lời giải quyết vấn đề), thông báo được gửi cho khách hàng qua email/SMS về việc có phản hồi mới, lịch sử ticket được ghi nhận, unreadCount của khách hàng tăng lên | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-TLHT-02** | Đánh dấu ticket đã giải quyết | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Đánh dấu đã giải quyết" hoặc chọn trạng thái "Đã giải quyết"<br>4. Xác nhận | Trạng thái ticket được cập nhật thành "Đã giải quyết", hiển thị thông báo thành công (toast success), Badge trạng thái được cập nhật với màu xanh, thông báo được gửi cho khách hàng về việc ticket đã được giải quyết, ticket có thể được đóng sau một thời gian | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-TLHT-03** | Đóng ticket | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Đóng ticket"<br>4. Nhập lý do đóng (nếu có)<br>5. Xác nhận | Ticket được đóng thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Đóng" với Badge màu xám, thông báo được gửi cho khách hàng về việc ticket đã được đóng, ticket không thể gửi tin nhắn mới (ô nhập và nút "Gửi" bị disabled) | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-TLHT-04** | Gán ticket cho nhân viên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Gán cho nhân viên" hoặc chọn từ Select<br>4. Chọn nhân viên<br>5. Xác nhận | Ticket được gán cho nhân viên thành công, hiển thị thông báo thành công (toast success), thông tin "Người phụ trách" được cập nhật, thông báo được gửi cho nhân viên được gán về việc có ticket mới, lịch sử ticket được ghi nhận | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-TLHT-05** | Thay đổi mức ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Thay đổi ưu tiên" hoặc chọn từ Select<br>4. Chọn mức ưu tiên mới<br>5. Xác nhận | Mức ưu tiên được cập nhật thành công, hiển thị thông báo thành công (toast success), Badge ưu tiên được cập nhật với màu tương ứng (xanh cho Thấp, vàng cho Trung bình, đỏ cho Cao), lịch sử ticket được ghi nhận | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
 
 ---
 
