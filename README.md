@@ -1,12 +1,11 @@
-# Test Case Template - Hiển thị sách (User)
+# Test Case Template - Tìm kiếm sách (User)
 
 ## Module Code
-**USER-002: Hiển thị sách (User)**
+**USER-003: Tìm kiếm sách (User)**
 
 ## Test Requirement
-1. Hiển thị danh sách sách
-2. Xem chi tiết thông tin sách
-3. Hiển thị nội dung sách "đọc thử"
+1. Tìm kiếm sách
+2. Hiển thị kết quả tìm kiếm
 
 ---
 
@@ -16,140 +15,98 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 62 |
+| **Pass** | 58 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 62 |
+| **Number of Test cases** | 58 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách sách
+### Function: Tìm kiếm sách
 
-#### Check GUI: Hiển thị danh sách sách
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DS-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/products<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Danh sách sách" (text-3xl font-bold mb-2), p "Khám phá bộ sưu tập sách đa dạng với nhiều thể loại và nhà xuất bản uy tín" (text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DS-02** | Kiểm tra Card bộ lọc | 1. Truy cập /user/products<br>2. Kiểm tra Card bộ lọc | Hiển thị Card với CardContent (p-6), có icon Filter (h-4 w-4) và text "Bộ lọc:" (font-medium) | | Pass | 11/15/2015 | |
-| **GUI-DS-03** | Kiểm tra Select danh mục | 1. Truy cập /user/products<br>2. Kiểm tra Select danh mục | Hiển thị Select với SelectTrigger (w-48), SelectValue placeholder "Danh mục", SelectContent có các options: Tất cả, Văn học, Truyện tranh - Manga, Công nghệ - Kỹ thuật, Kinh tế, Ảnh - Sách ảnh, Lịch sử, Khác | | Pass | 11/15/2015 | |
-| **GUI-DS-04** | Kiểm tra Select nhà xuất bản | 1. Truy cập /user/products<br>2. Kiểm tra Select nhà xuất bản | Hiển thị Select với SelectTrigger (w-48), SelectValue placeholder "Nhà xuất bản", SelectContent có các options: Tất cả, NXB Kim Đồng, NXB Trẻ, NXB Tổng hợp, NXB Văn học, NXB Kinh tế | | Pass | 11/15/2015 | |
-| **GUI-DS-05** | Kiểm tra SortControls | 1. Truy cập /user/products<br>2. Kiểm tra SortControls | Hiển thị component SortControls với các options sắp xếp: relevance, price-low, price-high, rating, newest | | Pass | 11/15/2015 | |
-| **GUI-DS-06** | Kiểm tra nút chế độ hiển thị | 1. Truy cập /user/products<br>2. Kiểm tra nút | Hiển thị 2 Button: Grid (icon Grid3X3) và List (icon List), variant default khi active, outline khi không active, size sm | | Pass | 11/15/2015 | |
-| **GUI-DS-07** | Kiểm tra Slider khoảng giá | 1. Truy cập /user/products<br>2. Kiểm tra Slider | Hiển thị Label "Khoảng giá" (text-sm font-medium), Slider với min=0, max=10000000, step=100000, hiển thị text "Từ: X VNĐ" và "Đến: Y VNĐ" (toLocaleString), text-xs "Giá từ 0 đến 10.000.000 VNĐ" | | Pass | 11/15/2015 | |
-| **GUI-DS-08** | Kiểm tra thông tin số lượng | 1. Truy cập /user/products<br>2. Kiểm tra thông tin | Hiển thị text "Hiển thị X trong tổng số Y sách" (text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DS-09** | Kiểm tra Card sách (Grid mode) | 1. Truy cập /user/products<br>2. Chọn chế độ Grid<br>3. Kiểm tra Card | Hiển thị grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4, mỗi Card có className "group hover:shadow-lg transition-shadow duration-200" | | Pass | 11/15/2015 | |
-| **GUI-DS-10** | Kiểm tra ảnh bìa sách | 1. Truy cập /user/products<br>2. Kiểm tra ảnh | Hiển thị Image component với src từ book.image, alt=book.title, width=300, height=300, className "w-full h-48 object-cover rounded-t-lg" | | Pass | 11/15/2015 | |
-| **GUI-DS-11** | Kiểm tra Badge trạng thái | 1. Truy cập /user/products<br>2. Kiểm tra Badge | Hiển thị Badge "Mới" (bg-green-500) nếu isNew, Badge "Bán chạy" (bg-orange-500) nếu isBestseller, Badge "-X%" (variant destructive) nếu có discount, ở vị trí absolute top-2 left-2 | | Pass | 11/15/2015 | |
-| **GUI-DS-12** | Kiểm tra nút yêu thích | 1. Truy cập /user/products<br>2. Kiểm tra nút | Hiển thị Button variant ghost size sm (h-8 w-8 p-0) ở absolute top-2 right-2, icon Heart với fill-red-500 text-red-500 nếu đã yêu thích, text-muted-foreground nếu chưa | | Pass | 11/15/2015 | |
-| **GUI-DS-13** | Kiểm tra tên sách | 1. Truy cập /user/products<br>2. Kiểm tra tên | Hiển thị h3 với book.title (font-semibold text-lg mb-1 line-clamp-2) | | Pass | 11/15/2015 | |
-| **GUI-DS-14** | Kiểm tra thông tin nhà xuất bản | 1. Truy cập /user/products<br>2. Kiểm tra thông tin | Hiển thị p với text "{book.brand} {book.series && `• ${book.series}`}" (text-sm text-muted-foreground mb-2) | | Pass | 11/15/2015 | |
-| **GUI-DS-15** | Kiểm tra đánh giá sao | 1. Truy cập /user/products<br>2. Kiểm tra đánh giá | Hiển thị icon Star (h-4 w-4 fill-yellow-400 text-yellow-400), span với book.rating (text-sm font-medium), span với "({book.reviewCount})" (text-sm text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DS-16** | Kiểm tra giá sách | 1. Truy cập /user/products<br>2. Kiểm tra giá | Hiển thị span với book.price.toLocaleString("vi-VN") VNĐ (text-lg font-bold text-primary), nếu có originalPrice thì hiển thị span với originalPrice.toLocaleString("vi-VN") VNĐ (text-sm text-muted-foreground line-through ml-2) | | Pass | 11/15/2015 | |
-| **GUI-DS-17** | Kiểm tra trạng thái tồn kho | 1. Truy cập /user/products<br>2. Kiểm tra trạng thái | Hiển thị text "Còn hàng (X)" (text-green-600) nếu stock > 0, "Hết hàng" (text-red-600) nếu stock = 0 (text-sm text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DS-18** | Kiểm tra nút Xem và Mua | 1. Truy cập /user/products<br>2. Kiểm tra nút | Hiển thị Button variant outline size sm với Link đến /user/products/{book.id}, icon Package và text "Xem", Button size sm với icon ShoppingCart và text "Mua", disabled nếu stock = 0 | | Pass | 11/15/2015 | |
-| **GUI-DS-19** | Kiểm tra Card không có kết quả | 1. Truy cập /user/products<br>2. Áp dụng bộ lọc không có kết quả<br>3. Kiểm tra Card | Hiển thị Card với text-center py-12, icon Package (h-12 w-12 mx-auto text-muted-foreground mb-4), h3 "Không tìm thấy sách" (text-lg font-semibold mb-2), p "Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm" (text-muted-foreground mb-4), Button "Xóa bộ lọc" variant outline | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Hiển thị danh sách sách
+#### Check GUI: Tìm kiếm sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DS-01** | Mở trang danh sách sách | 1. Truy cập /user/products | Hiển thị trang với tiêu đề, Card bộ lọc (danh mục, nhà xuất bản, sắp xếp, chế độ hiển thị, khoảng giá), thông tin số lượng, grid/list các Card sách với đầy đủ thông tin | | Pass | 11/15/2015 | |
-| **FUNC-DS-02** | Lọc sách theo danh mục | 1. Truy cập /user/products<br>2. Chọn danh mục từ Select<br>3. Kiểm tra kết quả | Danh sách sách được lọc theo danh mục đã chọn, thông tin số lượng được cập nhật, chỉ hiển thị sách thuộc danh mục đó | | Pass | 11/15/2015 | |
-| **FUNC-DS-03** | Lọc sách theo nhà xuất bản | 1. Truy cập /user/products<br>2. Chọn nhà xuất bản từ Select<br>3. Kiểm tra kết quả | Danh sách sách được lọc theo nhà xuất bản đã chọn, thông tin số lượng được cập nhật, chỉ hiển thị sách của nhà xuất bản đó | | Pass | 11/15/2015 | |
-| **FUNC-DS-04** | Sắp xếp sách theo giá thấp đến cao | 1. Truy cập /user/products<br>2. Chọn "Giá thấp đến cao" từ SortControls<br>3. Kiểm tra kết quả | Danh sách sách được sắp xếp theo giá tăng dần, sách có giá thấp nhất ở đầu | | Pass | 11/15/2015 | |
-| **FUNC-DS-05** | Sắp xếp sách theo giá cao đến thấp | 1. Truy cập /user/products<br>2. Chọn "Giá cao đến thấp" từ SortControls<br>3. Kiểm tra kết quả | Danh sách sách được sắp xếp theo giá giảm dần, sách có giá cao nhất ở đầu | | Pass | 11/15/2015 | |
-| **FUNC-DS-06** | Sắp xếp sách theo đánh giá | 1. Truy cập /user/products<br>2. Chọn "Đánh giá cao nhất" từ SortControls<br>3. Kiểm tra kết quả | Danh sách sách được sắp xếp theo rating giảm dần, sách có rating cao nhất ở đầu | | Pass | 11/15/2015 | |
-| **FUNC-DS-07** | Sắp xếp sách theo mới nhất | 1. Truy cập /user/products<br>2. Chọn "Mới nhất" từ SortControls<br>3. Kiểm tra kết quả | Danh sách sách được sắp xếp với sách có isNew = true ở đầu | | Pass | 11/15/2015 | |
-| **FUNC-DS-08** | Lọc sách theo khoảng giá hợp lệ | 1. Truy cập /user/products<br>2. Kéo Slider khoảng giá<br>3. Kiểm tra kết quả | Danh sách sách được lọc theo khoảng giá đã chọn, chỉ hiển thị sách có giá trong khoảng đó, thông tin số lượng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DS-09** | Lọc sách theo khoảng giá không hợp lệ (min > max) | 1. Truy cập /user/products<br>2. Đặt giá tối thiểu > giá tối đa<br>3. Kiểm tra | Hiển thị toast.error "Giá tối thiểu không thể lớn hơn giá tối đa", giá không được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DS-10** | Lọc sách theo khoảng giá âm | 1. Truy cập /user/products<br>2. Đặt giá tối thiểu < 0<br>3. Kiểm tra | Hiển thị toast.error "Giá tối thiểu không thể âm", giá được validate về 0 | | Pass | 11/15/2015 | |
-| **FUNC-DS-11** | Lọc sách theo khoảng giá vượt quá giới hạn | 1. Truy cập /user/products<br>2. Đặt giá tối đa > 10.000.000<br>3. Kiểm tra | Hiển thị toast.error "Giá tối đa không được vượt quá 10.000.000 VNĐ", giá được validate về 10.000.000 | | Pass | 11/15/2015 | |
-| **FUNC-DS-12** | Chuyển đổi chế độ hiển thị Grid | 1. Truy cập /user/products<br>2. Nhấn nút Grid | Hiển thị sách dạng grid với grid-cols-2 md:grid-cols-3 lg:grid-cols-6, nút Grid có variant default | | Pass | 11/15/2015 | |
-| **FUNC-DS-13** | Chuyển đổi chế độ hiển thị List | 1. Truy cập /user/products<br>2. Nhấn nút List | Hiển thị sách dạng list với space-y-4, nút List có variant default | | Pass | 11/15/2015 | |
-| **FUNC-DS-14** | Thêm sách vào yêu thích | 1. Truy cập /user/products<br>2. Nhấn nút Heart trên Card sách | Hiển thị toast.success "Đã thêm vào danh sách yêu thích", icon Heart chuyển sang fill-red-500 text-red-500, bookId được thêm vào favoriteBooks | | Pass | 11/15/2015 | |
-| **FUNC-DS-15** | Xóa sách khỏi yêu thích | 1. Truy cập /user/products<br>2. Nhấn nút Heart trên Card sách đã yêu thích | Hiển thị toast.success "Đã xóa khỏi danh sách yêu thích", icon Heart chuyển về text-muted-foreground, bookId được xóa khỏi favoriteBooks | | Pass | 11/15/2015 | |
-| **FUNC-DS-16** | Thêm sách vào giỏ hàng | 1. Truy cập /user/products<br>2. Nhấn nút "Mua" trên Card sách | Hiển thị toast.success "Đã thêm \"{book.title}\" vào giỏ hàng" | | Pass | 11/15/2015 | |
-| **FUNC-DS-17** | Thêm sách hết hàng vào giỏ hàng | 1. Truy cập /user/products<br>2. Tìm sách hết hàng (stock = 0)<br>3. Nhấn nút "Mua" | Nút "Mua" bị disabled, không thể thêm vào giỏ hàng | | Pass | 11/15/2015 | |
-| **FUNC-DS-18** | Nhấn nút Xem chi tiết | 1. Truy cập /user/products<br>2. Nhấn nút "Xem" trên Card sách | Chuyển đến trang /user/products/{book.id} | | Pass | 11/15/2015 | |
-| **FUNC-DS-19** | Xóa bộ lọc khi không có kết quả | 1. Truy cập /user/products<br>2. Áp dụng bộ lọc không có kết quả<br>3. Nhấn nút "Xóa bộ lọc" | Tất cả bộ lọc được reset về mặc định (searchTerm="", selectedCategory="Tất cả", selectedBrand="Tất cả", priceRange=[0, 5000000]), danh sách sách hiển thị lại đầy đủ | | Pass | 11/15/2015 | |
+| **GUI-TK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/search<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Tìm kiếm sách" (text-3xl font-bold mb-2), p "Tìm kiếm sách theo tên, tác giả, thể loại hoặc từ khóa" (text-muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-TK-02** | Kiểm tra nút Quay lại | 1. Truy cập /user/search<br>2. Kiểm tra nút | Hiển thị Link đến /user với Button variant outline size sm, icon ArrowLeft và text "Quay lại" | | Pass | 11/15/2015 | |
+| **GUI-TK-03** | Kiểm tra Card thanh tìm kiếm | 1. Truy cập /user/search<br>2. Kiểm tra Card | Hiển thị Card với CardContent (p-6), có Input với placeholder "Tìm kiếm sách, tác giả, thể loại..." | | Pass | 11/15/2015 | |
+| **GUI-TK-04** | Kiểm tra Input tìm kiếm | 1. Truy cập /user/search<br>2. Kiểm tra Input | Hiển thị Input với icon Search ở bên trái (absolute left-3 top-1/2), className "pl-10 pr-10", có nút X (×) ở bên phải khi có searchTerm | | Pass | 11/15/2015 | |
+| **GUI-TK-05** | Kiểm tra nút Xóa tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Kiểm tra nút | Hiển thị Button variant ghost size sm (h-6 w-6 p-0) ở absolute right-3 top-1/2 với text "×", chỉ hiển thị khi searchTerm có giá trị | | Pass | 11/15/2015 | |
+| **GUI-TK-06** | Kiểm tra phần gợi ý tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Kiểm tra gợi ý | Hiển thị div với className "mt-2 border rounded-lg bg-background shadow-lg max-h-60 overflow-y-auto" khi showSuggestions = true và searchTerm.length > 0 | | Pass | 11/15/2015 | |
+| **GUI-TK-07** | Kiểm tra item gợi ý | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Kiểm tra item | Hiển thị div với className "flex items-center justify-between p-3 hover:bg-muted cursor-pointer", có icon Package (h-4 w-4 text-muted-foreground), text suggestion.text, Badge variant outline hiển thị "Sách", "NXB", hoặc "Thể loại" tùy theo type, span hiển thị count nếu có | | Pass | 11/15/2015 | |
+| **GUI-TK-08** | Kiểm tra phần tìm kiếm gần đây | 1. Truy cập /user/search<br>2. Không nhập từ khóa<br>3. Có lịch sử tìm kiếm<br>4. Kiểm tra phần | Hiển thị div với h3 "Tìm kiếm gần đây" (text-sm font-medium mb-2), div flex flex-wrap gap-2 với các Button variant outline size sm, icon Clock (h-3 w-3 mr-1), text search term, className text-xs | | Pass | 11/15/2015 | |
+| **GUI-TK-09** | Kiểm tra Card bộ lọc | 1. Truy cập /user/search<br>2. Kiểm tra Card | Hiển thị Card với CardContent (p-4), có icon Filter (h-4 w-4) và text "Bộ lọc:" (font-medium) | | Pass | 11/15/2015 | |
+| **GUI-TK-10** | Kiểm tra Select danh mục | 1. Truy cập /user/search<br>2. Kiểm tra Select | Hiển thị Select với SelectTrigger (w-48), SelectValue placeholder "Danh mục", SelectContent có các options: Tất cả, Lập trình, Truyện tranh - Manga, Công nghệ - Kỹ thuật, Kinh tế, Ảnh - Sách ảnh, Lịch sử, Khác | | Pass | 11/15/2015 | |
+| **GUI-TK-11** | Kiểm tra Select nhà xuất bản | 1. Truy cập /user/search<br>2. Kiểm tra Select | Hiển thị Select với SelectTrigger (w-48), SelectValue placeholder "Nhà xuất bản", SelectContent có các options: Tất cả, NXB Kim Đồng, NXB Trẻ, NXB Tổng hợp, NXB Văn học, NXB Kinh tế | | Pass | 11/15/2015 | |
+| **GUI-TK-12** | Kiểm tra Select sắp xếp | 1. Truy cập /user/search<br>2. Kiểm tra Select | Hiển thị Select với SelectTrigger (w-48), SelectValue placeholder "Sắp xếp", SelectContent có các options: Liên quan, Giá thấp, Giá cao, Đánh giá, Mới nhất | | Pass | 11/15/2015 | |
+| **GUI-TK-13** | Kiểm tra Card thể loại sách | 1. Truy cập /user/search<br>2. Scroll xuống<br>3. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Thể loại sách" (icon Package h-5 w-5), CardDescription "Khám phá sách theo thể loại", CardContent có grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 | | Pass | 11/15/2015 | |
+| **GUI-TK-14** | Kiểm tra nút thể loại | 1. Truy cập /user/search<br>2. Kiểm tra nút thể loại | Hiển thị Button variant outline với className "h-20 flex flex-col items-center justify-center gap-2", icon Package (h-6 w-6), text category (text-sm) | | Pass | 11/15/2015 | |
 
-### Function: Xem chi tiết thông tin sách
-
-#### Check GUI: Xem chi tiết sách
+#### Check FUNC: Tìm kiếm sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CT-01** | Kiểm tra Breadcrumb | 1. Truy cập /user/products/[id]<br>2. Kiểm tra Breadcrumb | Hiển thị Link đến /user với Button variant ghost size sm "Trang chủ" (icon ArrowLeft), text "/", Link đến /user/products với Button "Sách", text "/", span với model.title (text-sm text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-CT-02** | Kiểm tra phần ảnh sách | 1. Truy cập /user/products/[id]<br>2. Kiểm tra phần ảnh | Hiển thị grid grid-cols-1 lg:grid-cols-2 gap-8, div aspect-square relative với Image fill, grid grid-cols-3 gap-2 với các ảnh thumbnail, ảnh được chọn có ring-2 ring-primary | | Pass | 11/15/2015 | |
-| **GUI-CT-03** | Kiểm tra Badge trạng thái | 1. Truy cập /user/products/[id]<br>2. Kiểm tra Badge | Hiển thị Badge "Mới" (bg-green-500) nếu isNew, Badge "Bán chạy" (bg-orange-500) nếu isBestseller, Badge "-X%" (variant destructive) nếu có discount | | Pass | 11/15/2015 | |
-| **GUI-CT-04** | Kiểm tra tên sách và tác giả | 1. Truy cập /user/products/[id]<br>2. Kiểm tra thông tin | Hiển thị h1 với model.title (text-3xl font-bold mb-2), p với "{model.brand} {model.series && `• ${model.series}`}" (text-muted-foreground mb-4) | | Pass | 11/15/2015 | |
-| **GUI-CT-05** | Kiểm tra đánh giá tổng quan | 1. Truy cập /user/products/[id]<br>2. Kiểm tra đánh giá | Hiển thị icon Star (h-5 w-5 fill-yellow-400 text-yellow-400), span với model.rating (font-medium), span với "({model.reviewCount} đánh giá)" (text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-CT-06** | Kiểm tra giá sách | 1. Truy cập /user/products/[id]<br>2. Kiểm tra giá | Hiển thị span với model.price.toLocaleString("vi-VN") VNĐ (text-3xl font-bold text-primary), nếu có originalPrice thì hiển thị span với originalPrice.toLocaleString("vi-VN") VNĐ (text-lg text-muted-foreground line-through ml-2) | | Pass | 11/15/2015 | |
-| **GUI-CT-07** | Kiểm tra trạng thái tồn kho | 1. Truy cập /user/products/[id]<br>2. Kiểm tra trạng thái | Hiển thị Label "Tình trạng", nếu stock > 0: icon CheckCircle (h-4 w-4 text-green-600), text "Còn hàng (X sản phẩm)" (text-green-600 font-medium), nếu stock = 0: icon CheckCircle (h-4 w-4 text-red-600), text "Hết hàng" (text-red-600 font-medium) | | Pass | 11/15/2015 | |
-| **GUI-CT-08** | Kiểm tra chọn số lượng | 1. Truy cập /user/products/[id]<br>2. Kiểm tra số lượng | Hiển thị Label "Số lượng", Button variant outline size sm với icon Minus (disabled nếu quantity <= 1), Input type number với value=quantity, min=1, max=stock, className w-20 text-center, Button variant outline size sm với icon Plus (disabled nếu quantity >= stock) | | Pass | 11/15/2015 | |
-| **GUI-CT-09** | Kiểm tra nút Thêm vào giỏ hàng | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị Button size lg className flex-1 với icon ShoppingCart và text "Thêm vào giỏ hàng", disabled nếu stock = 0 | | Pass | 11/15/2015 | |
-| **GUI-CT-10** | Kiểm tra nút Yêu thích và Chia sẻ | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị Button size lg variant outline với icon Heart (fill-red-500 text-red-500 nếu isFavorite), Button size lg variant outline với icon Share2 | | Pass | 11/15/2015 | |
-| **GUI-CT-11** | Kiểm tra nút Mua ngay | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị Button size lg className w-full với text "Mua ngay", disabled nếu stock = 0 | | Pass | 11/15/2015 | |
-| **GUI-CT-12** | Kiểm tra Card Điểm nổi bật | 1. Truy cập /user/products/[id]<br>2. Kiểm tra Card | Hiển thị Card với CardTitle "Điểm nổi bật" (text-lg), CardContent có ul với các li, mỗi li có icon CheckCircle (h-4 w-4 text-green-600) và text feature | | Pass | 11/15/2015 | |
-| **GUI-CT-13** | Kiểm tra Card Khuyến mãi đặc biệt | 1. Truy cập /user/products/[id]<br>2. Kiểm tra Card | Hiển thị Card với CardTitle "{productPromo.title}" (text-lg), CardDescription "Mã giảm cho riêng sản phẩm này", CardContent có Badge "Giảm giá", text mã code, thông tin mức giảm, giá gốc, giá sau giảm, thời gian áp dụng, điều kiện, Button "Áp dụng mã" hoặc "Xóa mã" | | Pass | 11/15/2015 | |
-| **GUI-CT-14** | Kiểm tra Tabs nội dung | 1. Truy cập /user/products/[id]<br>2. Kiểm tra Tabs | Hiển thị Tabs với TabsList grid grid-cols-4, các TabsTrigger: "Mô tả", "Thông tin", "Đánh giá", "Vận chuyển" | | Pass | 11/15/2015 | |
-| **GUI-CT-15** | Kiểm tra Tab Mô tả | 1. Truy cập /user/products/[id]<br>2. Click Tab "Mô tả" | Hiển thị Card với CardTitle "Mô tả sản phẩm", CardContent có p với model.detailedDescription (text-muted-foreground leading-relaxed), Button "Đọc thử", Button variant outline "Tải PDF mẫu" | | Pass | 11/15/2015 | |
-| **GUI-CT-16** | Kiểm tra Tab Thông tin | 1. Truy cập /user/products/[id]<br>2. Click Tab "Thông tin" | Hiển thị Card với CardTitle "Thông tin", CardContent có grid grid-cols-2 gap-4 với các Label và p: Nhà xuất bản, Series, Chất liệu, Độ tuổi | | Pass | 11/15/2015 | |
-| **GUI-CT-17** | Kiểm tra Tab Đánh giá | 1. Truy cập /user/products/[id]<br>2. Click Tab "Đánh giá" | Hiển thị Card với CardTitle "Đánh giá sản phẩm", CardDescription "{model.reviewCount} đánh giá từ khách hàng", CardContent có danh sách reviews với tên người dùng, Badge "Đã mua" nếu verified, ngày đánh giá, sao đánh giá, comment, các nút Hữu ích/Không hữu ích, Báo cáo | | Pass | 11/15/2015 | |
-| **GUI-CT-18** | Kiểm tra Tab Vận chuyển | 1. Truy cập /user/products/[id]<br>2. Click Tab "Vận chuyển" | Hiển thị Card với CardTitle "Thông tin vận chuyển", CardContent có thông tin về phí vận chuyển và thời gian giao hàng | | Pass | 11/15/2015 | |
+| **FUNC-TK-01** | Mở trang tìm kiếm | 1. Truy cập /user/search | Hiển thị trang với tiêu đề, nút Quay lại, Card thanh tìm kiếm, Card bộ lọc, phần kết quả (nếu có), Card thể loại sách | | Pass | 11/15/2015 | |
+| **FUNC-TK-02** | Nhập từ khóa tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa vào Input<br>3. Kiểm tra | showSuggestions = true nếu searchTerm.length > 0, danh sách gợi ý được lọc theo từ khóa, kết quả tìm kiếm được cập nhật theo thời gian thực | | Pass | 11/15/2015 | |
+| **FUNC-TK-03** | Tìm kiếm với từ khóa hợp lệ | 1. Truy cập /user/search<br>2. Nhập từ khóa "React"<br>3. Kiểm tra kết quả | Danh sách sách được lọc theo từ khóa, hiển thị các sách có title, brand, category, hoặc description chứa từ khóa, thông tin số lượng được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-TK-04** | Tìm kiếm không có kết quả | 1. Truy cập /user/search<br>2. Nhập từ khóa không tồn tại<br>3. Kiểm tra | Hiển thị Card với icon Package (h-12 w-12 mx-auto text-muted-foreground mb-4), h3 "Không tìm thấy sách" (text-lg font-semibold mb-2), p "Không có sách nào phù hợp với từ khóa \"{searchTerm}\"", Button "Xóa bộ lọc" variant outline | | Pass | 11/15/2015 | |
+| **FUNC-TK-05** | Click vào gợi ý tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Click vào item gợi ý | searchTerm được set thành suggestion.text, showSuggestions = false, kết quả tìm kiếm được cập nhật, từ khóa được thêm vào recentSearches (tối đa 5 từ khóa) | | Pass | 11/15/2015 | |
+| **FUNC-TK-06** | Click vào tìm kiếm gần đây | 1. Truy cập /user/search<br>2. Có lịch sử tìm kiếm<br>3. Click vào từ khóa gần đây | searchTerm được set thành từ khóa đã chọn, kết quả tìm kiếm được cập nhật, showSuggestions = false | | Pass | 11/15/2015 | |
+| **FUNC-TK-07** | Lưu lịch sử tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa và tìm kiếm<br>3. Kiểm tra lịch sử | Từ khóa được thêm vào đầu danh sách recentSearches, giới hạn tối đa 5 từ khóa (slice(0, 4) + từ khóa mới), không thêm trùng lặp | | Pass | 11/15/2015 | |
+| **FUNC-TK-08** | Xóa từ khóa tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Click nút X | searchTerm = "", filteredBooks = [], showSuggestions = false, nút X biến mất | | Pass | 11/15/2015 | |
+| **FUNC-TK-09** | Tìm kiếm với query parameter | 1. Truy cập /user/search?q=React<br>2. Kiểm tra | searchTerm được khởi tạo với giá trị từ query parameter "q", kết quả tìm kiếm được hiển thị ngay | | Pass | 11/15/2015 | |
+| **FUNC-TK-10** | Lọc theo danh mục | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn danh mục từ Select | Kết quả tìm kiếm được lọc theo danh mục đã chọn, chỉ hiển thị sách thuộc danh mục đó, currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-11** | Lọc theo nhà xuất bản | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn nhà xuất bản từ Select | Kết quả tìm kiếm được lọc theo nhà xuất bản đã chọn, chỉ hiển thị sách của nhà xuất bản đó, currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-12** | Sắp xếp theo liên quan | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn "Liên quan" | Kết quả được sắp xếp theo thứ tự mặc định (không sắp xếp), currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-13** | Sắp xếp theo giá thấp | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn "Giá thấp" | Kết quả được sắp xếp theo giá tăng dần (a.price - b.price), currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-14** | Sắp xếp theo giá cao | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn "Giá cao" | Kết quả được sắp xếp theo giá giảm dần (b.price - a.price), currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-15** | Sắp xếp theo đánh giá | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn "Đánh giá" | Kết quả được sắp xếp theo rating giảm dần (b.rating - a.rating), currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-16** | Sắp xếp theo mới nhất | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn "Mới nhất" | Kết quả được sắp xếp với sách có isNew = true ở đầu ((b.isNew ? 1 : 0) - (a.isNew ? 1 : 0)), currentPage được reset về 1 | | Pass | 11/15/2015 | |
+| **FUNC-TK-17** | Click vào nút thể loại | 1. Truy cập /user/search<br>2. Click vào nút thể loại | selectedCategory được set thành category đã chọn, searchTerm = "", kết quả được lọc theo thể loại | | Pass | 11/15/2015 | |
+| **FUNC-TK-18** | Focus vào Input tìm kiếm | 1. Truy cập /user/search<br>2. Click vào Input | showSuggestions = true nếu searchTerm.length > 0, danh sách gợi ý được hiển thị | | Pass | 11/15/2015 | |
+| **FUNC-TK-19** | Nhấn nút Quay lại | 1. Truy cập /user/search<br>2. Nhấn nút "Quay lại" | Chuyển đến trang /user | | Pass | 11/15/2015 | |
 
-#### Check FUNC: Xem chi tiết sách
+### Function: Hiển thị kết quả tìm kiếm
 
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CT-01** | Mở trang chi tiết sách | 1. Truy cập /user/products/[id] | Hiển thị trang với Breadcrumb, grid 2 cột (ảnh và thông tin), Badge trạng thái, tên sách, tác giả, đánh giá, giá, trạng thái tồn kho, chọn số lượng, các nút hành động, Card điểm nổi bật, Card khuyến mãi, Tabs nội dung | | Pass | 11/15/2015 | |
-| **FUNC-CT-02** | Chọn ảnh thumbnail | 1. Truy cập /user/products/[id]<br>2. Click vào ảnh thumbnail | Ảnh chính được thay đổi thành ảnh thumbnail đã chọn, thumbnail được chọn có ring-2 ring-primary | | Pass | 11/15/2015 | |
-| **FUNC-CT-03** | Tăng số lượng | 1. Truy cập /user/products/[id]<br>2. Nhấn nút Plus | Số lượng tăng lên 1, nút Plus bị disabled nếu quantity >= stock | | Pass | 11/15/2015 | |
-| **FUNC-CT-04** | Giảm số lượng | 1. Truy cập /user/products/[id]<br>2. Nhấn nút Minus | Số lượng giảm xuống 1, nút Minus bị disabled nếu quantity <= 1 | | Pass | 11/15/2015 | |
-| **FUNC-CT-05** | Nhập số lượng trực tiếp | 1. Truy cập /user/products/[id]<br>2. Nhập số lượng vào Input | Số lượng được cập nhật nếu giá trị >= 1 và <= stock, không cập nhật nếu ngoài khoảng này | | Pass | 11/15/2015 | |
-| **FUNC-CT-06** | Thêm vào giỏ hàng | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng<br>3. Nhấn "Thêm vào giỏ hàng" | Hiển thị toast.success "Đã thêm {quantity} \"{model.title}\" vào giỏ hàng" | | Pass | 11/15/2015 | |
-| **FUNC-CT-07** | Thêm sách hết hàng vào giỏ hàng | 1. Truy cập /user/products/[id] (stock = 0)<br>2. Nhấn "Thêm vào giỏ hàng" | Nút bị disabled, không thể thêm vào giỏ hàng | | Pass | 11/15/2015 | |
-| **FUNC-CT-08** | Mua ngay | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng<br>3. Nhấn "Mua ngay" | Hiển thị toast.success "Chuyển đến trang thanh toán" | | Pass | 11/15/2015 | |
-| **FUNC-CT-09** | Thêm vào yêu thích | 1. Truy cập /user/products/[id]<br>2. Nhấn nút Heart | Hiển thị toast.success "Đã thêm vào danh sách yêu thích", icon Heart chuyển sang fill-red-500 text-red-500, isFavorite = true | | Pass | 11/15/2015 | |
-| **FUNC-CT-10** | Xóa khỏi yêu thích | 1. Truy cập /user/products/[id]<br>2. Nhấn nút Heart (đã yêu thích) | Hiển thị toast.success "Đã xóa khỏi danh sách yêu thích", icon Heart chuyển về mặc định, isFavorite = false | | Pass | 11/15/2015 | |
-| **FUNC-CT-11** | Áp dụng mã khuyến mãi sản phẩm | 1. Truy cập /user/products/[id]<br>2. Nhấn nút "Áp dụng mã" | Hiển thị toast.success "Áp dụng mã giảm giá sản phẩm thành công", appliedProductCode được set, hiển thị text "Đã áp dụng mã {code}. Giá sau giảm sẽ thể hiện ở trang thanh toán.", nút chuyển thành "Xóa mã" | | Pass | 11/15/2015 | |
-| **FUNC-CT-12** | Xóa mã khuyến mãi sản phẩm | 1. Truy cập /user/products/[id]<br>2. Áp dụng mã<br>3. Nhấn "Xóa mã" | Hiển thị toast.success "Đã xóa mã giảm giá sản phẩm", appliedProductCode = null, nút chuyển về "Áp dụng mã" | | Pass | 11/15/2015 | |
-| **FUNC-CT-13** | Chuyển Tab | 1. Truy cập /user/products/[id]<br>2. Click các Tab | Nội dung Tab được hiển thị tương ứng: Mô tả, Thông tin, Đánh giá, Vận chuyển | | Pass | 11/15/2015 | |
-| **FUNC-CT-14** | Đánh dấu đánh giá hữu ích | 1. Truy cập /user/products/[id]<br>2. Click Tab "Đánh giá"<br>3. Nhấn nút "Hữu ích" | Số lượng hữu ích tăng lên 1, nếu đã nhấn "Không hữu ích" trước đó thì số không hữu ích giảm 1, user = "up" | | Pass | 11/15/2015 | |
-| **FUNC-CT-15** | Đánh dấu đánh giá không hữu ích | 1. Truy cập /user/products/[id]<br>2. Click Tab "Đánh giá"<br>3. Nhấn nút "Không hữu ích" | Số lượng không hữu ích tăng lên 1, nếu đã nhấn "Hữu ích" trước đó thì số hữu ích giảm 1, user = "down" | | Pass | 11/15/2015 | |
-| **FUNC-CT-16** | Báo cáo đánh giá | 1. Truy cập /user/products/[id]<br>2. Click Tab "Đánh giá"<br>3. Nhấn nút "Báo cáo"<br>4. Chọn lý do và nhập mô tả<br>5. Nhấn "Gửi báo cáo" | Hiển thị Dialog với DialogTitle "Báo cáo đánh giá", có select lý do (spam, abuse, misinfo, other), Textarea mô tả, nút Hủy và Gửi báo cáo. Sau khi gửi, hiển thị toast.success "Đã gửi báo cáo đánh giá", Dialog đóng, Badge "Đã báo cáo" xuất hiện | | Pass | 11/15/2015 | |
-| **FUNC-CT-17** | Nhấn nút Đọc thử | 1. Truy cập /user/products/[id]<br>2. Click Tab "Mô tả"<br>3. Nhấn nút "Đọc thử" | Chuyển đến trang /user/products/[id]/preview | | Pass | 11/15/2015 | |
-| **FUNC-CT-18** | Tải PDF mẫu | 1. Truy cập /user/products/[id]<br>2. Click Tab "Mô tả"<br>3. Nhấn nút "Tải PDF mẫu" | Hiển thị toast.success "Đã tải PDF mẫu (demo)" | | Pass | 11/15/2015 | |
-
-### Function: Hiển thị nội dung sách "đọc thử"
-
-#### Check GUI: Đọc thử sách
+#### Check GUI: Kết quả tìm kiếm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra tiêu đề | Hiển thị div flex items-center gap-2 với icon BookOpen (h-5 w-5), h1 "Đọc thử miễn phí" (text-xl font-semibold), Badge variant secondary "Sách #{bookId}" | | Pass | 11/15/2015 | |
-| **GUI-DT-02** | Kiểm tra nút Đóng | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra nút | Hiển thị Button variant ghost với icon X và text "Đóng" | | Pass | 11/15/2015 | |
-| **GUI-DT-03** | Kiểm tra Card trình đọc | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Trang {current + 1} / {total}" (text-base), CardContent | | Pass | 11/15/2015 | |
-| **GUI-DT-04** | Kiểm tra điều hướng trang | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra nút | Hiển thị Button variant outline với icon ChevronLeft (disabled nếu current === 0), Button variant outline với icon ChevronRight (disabled nếu current === total - 1) | | Pass | 11/15/2015 | |
-| **GUI-DT-05** | Kiểm tra thanh tiến độ | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra thanh | Hiển thị Progress component với value = Math.round(((current + 1) / total) * 100), text-xs "Tiến độ đọc: {progress}%" (text-muted-foreground mt-1 text-center) | | Pass | 11/15/2015 | |
-| **GUI-DT-06** | Kiểm tra ảnh trang sách | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra ảnh | Hiển thị div relative w-full aspect-[3/4] với Image fill, src=pages[current], alt="Trang {current + 1}", className "object-contain bg-white" | | Pass | 11/15/2015 | |
-| **GUI-DT-07** | Kiểm tra điểm điều hướng | 1. Truy cập /user/products/[id]/preview<br>2. Kiểm tra điểm | Hiển thị div flex items-center justify-center gap-2 với các button h-2 w-2 rounded-full, bg-primary nếu idx === current, bg-muted nếu không | | Pass | 11/15/2015 | |
+| **GUI-KQ-01** | Kiểm tra tiêu đề kết quả | 1. Truy cập /user/search<br>2. Nhập từ khóa và tìm kiếm<br>3. Kiểm tra tiêu đề | Hiển thị h2 "Kết quả tìm kiếm cho \"{searchTerm}\"" (text-xl font-semibold) nếu có searchTerm, hoặc "Tìm thấy X kết quả" nếu không có searchTerm nhưng có kết quả, hoặc "Nhập từ khóa để tìm kiếm" nếu không có kết quả | | Pass | 11/15/2015 | |
+| **GUI-KQ-02** | Kiểm tra thông tin số lượng | 1. Truy cập /user/search<br>2. Có kết quả tìm kiếm<br>3. Kiểm tra thông tin | Hiển thị div flex items-center gap-2 với icon TrendingUp (h-4 w-4), text "Hiển thị {startIndex + 1}-{Math.min(endIndex, filteredBooks.length)} trong tổng số {filteredBooks.length} sách" (text-sm text-muted-foreground) | | Pass | 11/15/2015 | |
+| **GUI-KQ-03** | Kiểm tra grid kết quả | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Kiểm tra grid | Hiển thị grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 với các Card sách | | Pass | 11/15/2015 | |
+| **GUI-KQ-04** | Kiểm tra Card sách trong kết quả | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Kiểm tra Card | Hiển thị Card với className "group hover:shadow-lg transition-shadow duration-200", CardContent (p-0), có ảnh bìa, Badge trạng thái, nút yêu thích, thông tin sách, giá, trạng thái tồn kho, nút Xem và Mua | | Pass | 11/15/2015 | |
+| **GUI-KQ-05** | Kiểm tra phân trang | 1. Truy cập /user/search<br>2. Có > 20 kết quả<br>3. Kiểm tra phân trang | Hiển thị Pagination component với PaginationContent, PaginationPrevious (disabled nếu currentPage === 1), các PaginationLink cho các trang (hiển thị trang 1, trang cuối, trang hiện tại, và các trang xung quanh), PaginationEllipsis cho các trang bị ẩn, PaginationNext (disabled nếu currentPage === totalPages) | | Pass | 11/15/2015 | |
+| **GUI-KQ-06** | Kiểm tra màn hình không có kết quả | 1. Truy cập /user/search<br>2. Tìm kiếm không có kết quả<br>3. Kiểm tra | Hiển thị div col-span-full text-center py-12 với icon Package (h-12 w-12 mx-auto text-muted-foreground mb-4), h3 "Không tìm thấy sách" (text-lg font-semibold mb-2), p "Không có sách nào phù hợp với từ khóa \"{searchTerm}\"", Button "Xóa bộ lọc" variant outline | | Pass | 11/15/2015 | |
+| **GUI-KQ-07** | Kiểm tra màn hình chưa tìm kiếm | 1. Truy cập /user/search<br>2. Chưa nhập từ khóa<br>3. Kiểm tra | Hiển thị div col-span-full text-center py-12 với icon Package (h-12 w-12 mx-auto text-muted-foreground mb-4), h3 "Tìm kiếm sách yêu thích" (text-lg font-semibold mb-2), p "Nhập từ khóa để tìm kiếm sách bạn muốn" (text-muted-foreground) | | Pass | 11/15/2015 | |
 
-#### Check FUNC: Đọc thử sách
+#### Check FUNC: Kết quả tìm kiếm
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DT-01** | Mở trang đọc thử | 1. Truy cập /user/products/[id]/preview | Hiển thị trang với tiêu đề, nút Đóng, Card trình đọc với ảnh trang đầu tiên, điều hướng trang, thanh tiến độ, điểm điều hướng | | Pass | 11/15/2015 | |
-| **FUNC-DT-02** | Chuyển sang trang sau | 1. Truy cập /user/products/[id]/preview<br>2. Nhấn nút ChevronRight | current tăng lên 1, ảnh trang được cập nhật, thanh tiến độ được cập nhật, CardTitle hiển thị "Trang {current + 1} / {total}", điểm điều hướng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DT-03** | Chuyển về trang trước | 1. Truy cập /user/products/[id]/preview<br>2. Ở trang > 1<br>3. Nhấn nút ChevronLeft | current giảm xuống 1, ảnh trang được cập nhật, thanh tiến độ được cập nhật, CardTitle hiển thị "Trang {current + 1} / {total}", điểm điều hướng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DT-04** | Disable nút Trang trước ở trang đầu | 1. Truy cập /user/products/[id]/preview<br>2. Ở trang đầu (current = 0)<br>3. Kiểm tra nút | Nút ChevronLeft bị disabled, không thể nhấn | | Pass | 11/15/2015 | |
-| **FUNC-DT-05** | Disable nút Trang sau ở trang cuối | 1. Truy cập /user/products/[id]/preview<br>2. Ở trang cuối (current = total - 1)<br>3. Kiểm tra nút | Nút ChevronRight bị disabled, không thể nhấn | | Pass | 11/15/2015 | |
-| **FUNC-DT-06** | Click vào điểm điều hướng | 1. Truy cập /user/products/[id]/preview<br>2. Click vào điểm điều hướng thứ X | current được set về X, ảnh trang được cập nhật, thanh tiến độ được cập nhật, CardTitle hiển thị "Trang {current + 1} / {total}" | | Pass | 11/15/2015 | |
-| **FUNC-DT-07** | Tính toán tiến độ đọc | 1. Truy cập /user/products/[id]/preview<br>2. Chuyển trang<br>3. Kiểm tra tiến độ | progress = Math.round(((current + 1) / total) * 100), Progress value được cập nhật, text hiển thị đúng phần trăm | | Pass | 11/15/2015 | |
-| **FUNC-DT-08** | Nhấn nút Đóng | 1. Truy cập /user/products/[id]/preview<br>2. Nhấn nút "Đóng" | Chuyển về trang /user/products/[id] | | Pass | 11/15/2015 | |
+| **FUNC-KQ-01** | Hiển thị kết quả tìm kiếm | 1. Truy cập /user/search<br>2. Nhập từ khóa và tìm kiếm<br>3. Kiểm tra kết quả | Danh sách sách được hiển thị trong grid, mỗi Card có đầy đủ thông tin: ảnh, tên, tác giả, đánh giá, giá, trạng thái tồn kho, các nút hành động | | Pass | 11/15/2015 | |
+| **FUNC-KQ-02** | Phân trang kết quả | 1. Truy cập /user/search<br>2. Tìm kiếm có > 20 kết quả<br>3. Kiểm tra phân trang | itemsPerPage = 20, totalPages = Math.ceil(filteredBooks.length / itemsPerPage), chỉ hiển thị 20 sách đầu tiên, phân trang được hiển thị nếu totalPages > 1 | | Pass | 11/15/2015 | |
+| **FUNC-KQ-03** | Chuyển sang trang sau | 1. Truy cập /user/search<br>2. Có nhiều trang<br>3. Nhấn PaginationNext | currentPage tăng lên 1, hiển thị 20 sách tiếp theo (startIndex = (currentPage - 1) * itemsPerPage, endIndex = startIndex + itemsPerPage) | | Pass | 11/15/2015 | |
+| **FUNC-KQ-04** | Chuyển về trang trước | 1. Truy cập /user/search<br>2. Ở trang > 1<br>3. Nhấn PaginationPrevious | currentPage giảm xuống 1, hiển thị 20 sách trước đó | | Pass | 11/15/2015 | |
+| **FUNC-KQ-05** | Click vào số trang | 1. Truy cập /user/search<br>2. Có nhiều trang<br>3. Click vào số trang X | currentPage được set về X, hiển thị 20 sách tương ứng với trang X, PaginationLink có isActive = true cho trang hiện tại | | Pass | 11/15/2015 | |
+| **FUNC-KQ-06** | Disable nút Trang trước ở trang đầu | 1. Truy cập /user/search<br>2. Ở trang đầu (currentPage = 1)<br>3. Kiểm tra nút | PaginationPrevious có className "pointer-events-none opacity-50", không thể click | | Pass | 11/15/2015 | |
+| **FUNC-KQ-07** | Disable nút Trang sau ở trang cuối | 1. Truy cập /user/search<br>2. Ở trang cuối (currentPage = totalPages)<br>3. Kiểm tra nút | PaginationNext có className "pointer-events-none opacity-50", không thể click | | Pass | 11/15/2015 | |
+| **FUNC-KQ-08** | Hiển thị PaginationEllipsis | 1. Truy cập /user/search<br>2. Có nhiều trang<br>3. Ở trang giữa<br>4. Kiểm tra | Hiển thị PaginationEllipsis cho các trang bị ẩn (page === currentPage - 2 hoặc page === currentPage + 2), chỉ hiển thị trang 1, trang cuối, trang hiện tại, và các trang xung quanh | | Pass | 11/15/2015 | |
+| **FUNC-KQ-09** | Reset về trang đầu khi thay đổi bộ lọc | 1. Truy cập /user/search<br>2. Ở trang > 1<br>3. Thay đổi bộ lọc hoặc sắp xếp | currentPage được reset về 1, hiển thị 20 sách đầu tiên của kết quả mới | | Pass | 11/15/2015 | |
+| **FUNC-KQ-10** | Thêm sách vào yêu thích từ kết quả | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Nhấn nút Heart trên Card sách | Hiển thị toast.success "Đã thêm vào danh sách yêu thích" hoặc "Đã xóa khỏi danh sách yêu thích", icon Heart chuyển sang fill-red-500 text-red-500 hoặc text-muted-foreground, bookId được thêm/xóa khỏi favoriteBooks | | Pass | 11/15/2015 | |
+| **FUNC-KQ-11** | Thêm sách vào giỏ hàng từ kết quả | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Nhấn nút "Mua" trên Card sách | Hiển thị toast.success "Đã thêm \"{model.title}\" vào giỏ hàng" | | Pass | 11/15/2015 | |
+| **FUNC-KQ-12** | Xem chi tiết sách từ kết quả | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Nhấn nút "Xem" trên Card sách | Chuyển đến trang /user/products/{model.id} | | Pass | 11/15/2015 | |
+| **FUNC-KQ-13** | Thêm sách hết hàng vào giỏ hàng | 1. Truy cập /user/search<br>2. Tìm sách hết hàng (stock = 0)<br>3. Nhấn nút "Mua" | Nút "Mua" bị disabled, không thể thêm vào giỏ hàng | | Pass | 11/15/2015 | |
+| **FUNC-KQ-14** | Tính toán startIndex và endIndex | 1. Truy cập /user/search<br>2. Có kết quả<br>3. Chuyển trang<br>4. Kiểm tra | startIndex = (currentPage - 1) * itemsPerPage, endIndex = startIndex + itemsPerPage, paginatedBooks = filteredBooks.slice(startIndex, endIndex) | | Pass | 11/15/2015 | |
+| **FUNC-KQ-15** | Hiển thị đúng số lượng kết quả | 1. Truy cập /user/search<br>2. Tìm kiếm<br>3. Kiểm tra số lượng | Thông tin hiển thị "Hiển thị {startIndex + 1}-{Math.min(endIndex, filteredBooks.length)} trong tổng số {filteredBooks.length} sách" chính xác | | Pass | 11/15/2015 | |
+| **FUNC-KQ-16** | Xóa bộ lọc khi không có kết quả | 1. Truy cập /user/search<br>2. Tìm kiếm không có kết quả<br>3. Nhấn nút "Xóa bộ lọc" | searchTerm = "", filteredBooks = [], showSuggestions = false, hiển thị màn hình chưa tìm kiếm | | Pass | 11/15/2015 | |
+| **FUNC-KQ-17** | Tìm kiếm kết hợp nhiều điều kiện | 1. Truy cập /user/search<br>2. Nhập từ khóa<br>3. Chọn danh mục<br>4. Chọn nhà xuất bản<br>5. Chọn sắp xếp | Kết quả được lọc theo tất cả điều kiện: từ khóa (title, brand, category, description), danh mục, nhà xuất bản, và được sắp xếp theo tiêu chí đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-KQ-18** | Tìm kiếm không phân biệt hoa thường | 1. Truy cập /user/search<br>2. Nhập từ khóa "REACT"<br>3. Kiểm tra kết quả | Kết quả tìm kiếm giống như nhập "react" hoặc "React", tìm kiếm không phân biệt hoa thường (toLowerCase()) | | Pass | 11/15/2015 | |
+| **FUNC-KQ-19** | Tìm kiếm theo mô tả sách | 1. Truy cập /user/search<br>2. Nhập từ khóa có trong mô tả<br>3. Kiểm tra kết quả | Sách có description chứa từ khóa được hiển thị trong kết quả | | Pass | 11/15/2015 | |
 
 ---
 
