@@ -69,7 +69,7 @@
 | 45 | Hỗ trợ bán hàng Nhân viên kho | 34 | 0 | 0 | 0 | 34 |
 | 46 | Bảo mật Nhân viên kho | 32 | 0 | 0 | 0 | 32 |
 | **TỔNG HỢP** |
-| **Sub total:** | | **1,641** | **0** | **0** | **0** | **1,641** |
+| **Sub total:** | | **1,948** | **0** | **0** | **0** | **1,948** |
 | **Test coverage:** | 100.00% |
 | **Test successful coverage:** | 100.00% |
 
