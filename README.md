@@ -1,16 +1,13 @@
-# Test Case Template - Cài đặt hệ thống (Admin)
+# Test Case Template - Bảo mật (Admin)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Admin)**
 
 ## Test Requirement
-1. Cài đặt thông tin cửa hàng
-2. Cài đặt thông báo hệ thống
-3. Cài đặt bảo mật
-4. Cài đặt tích hợp
-5. Cài đặt sao lưu
-6. Cài đặt chính sách giảm giá
-7. Cài đặt thanh toán
+1. Khôi phục mật khẩu
+2. Lịch sử đăng nhập
+3. Xóa phiên đăng nhập
+4. Phát hiện đăng nhập lạ
 
 ---
 
@@ -20,137 +17,106 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 30 |
+| **Pass** | 20 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 30 |
+| **Number of Test cases** | 20 |
 
 ---
 
 ## Test Cases
 
-### Function: Cài đặt thông tin cửa hàng
+### Function: Khôi phục mật khẩu
 
-#### Check GUI: Cài đặt thông tin cửa hàng
+#### Check GUI: Khôi phục mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TTCH-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cài đặt hệ thống" với class text-3xl font-bold, mô tả "Quản lý cài đặt và cấu hình hệ thống" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCH-02** | Kiểm tra nút Lưu tất cả | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra nút | Hiển thị Button "Lưu tất cả" bên phải tiêu đề với icon Save h-4 w-4 mr-2 | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCH-03** | Kiểm tra Tabs | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra tabs | Hiển thị Tabs defaultValue="general" với TabsList className="grid w-full grid-cols-6" có 6 TabsTrigger: "Chung", "Cửa hàng", "Thanh toán", "Vận chuyển", "Thông báo", "Bảo mật" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCH-04** | Kiểm tra Tab Cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng" | Hiển thị TabsContent value="store" với Card "Thông tin cửa hàng" có CardTitle với icon Store h-5 w-5, CardDescription "Cập nhật thông tin liên hệ và địa chỉ cửa hàng", CardContent có grid grid-cols-2 gap-4 với các Input: Tên cửa hàng, Tên chủ cửa hàng, Địa chỉ (Textarea rows={2}), Số điện thoại, Email, Website | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KPMK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị Card với CardHeader có CardTitle "Khôi phục mật khẩu Admin" với class text-2xl font-bold, CardDescription "Nhập email để nhận mã khôi phục", layout tương tự trang đăng nhập | | Pass | 11/15/2015 | |
+| **GUI-KPMK-02** | Kiểm tra form khôi phục | 1. Truy cập /admin/auth/forgot-password<br>2. Kiểm tra form | Hiển thị CardContent với form chứa: Input type="email" placeholder="Email Admin" required, Button "Gửi mã khôi phục" type="submit", Link "Quay lại đăng nhập" href="/admin/auth/login" | | Pass | 11/15/2015 | |
+| **GUI-KPMK-03** | Kiểm tra form nhập mã | 1. Gửi mã khôi phục thành công<br>2. Kiểm tra form | Hiển thị form nhập mã với: Input "Mã xác thực" required, Input type="password" "Mật khẩu mới" required, Input type="password" "Xác nhận mật khẩu mới" required, Button "Đặt lại mật khẩu" type="submit", Button "Hủy" variant="outline" | | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cài đặt thông tin cửa hàng
+### Check FUNC: Khôi phục mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TTCH-01** | Cập nhật thông tin cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Cập nhật thông tin (Tên cửa hàng, Địa chỉ, Số điện thoại, Email, Website)<br>5. Click nút "Lưu tất cả" | Thông tin cửa hàng được cập nhật thành công, hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, thông tin mới được hiển thị trên các trang công khai (nếu có), form vẫn giữ giá trị đã cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCH-02** | Cập nhật với email không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Nhập email không hợp lệ (VD: "invalid-email")<br>5. Click nút "Lưu tất cả" | Trình duyệt hiển thị cảnh báo "Please enter a valid email address" hoặc validation message, form không được gửi, không cập nhật thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCH-03** | Upload logo cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Click nút "Upload logo" hoặc chọn file từ File input<br>5. Chọn file ảnh (JPG, PNG, GIF)<br>6. Click "Lưu tất cả" | Logo được upload thành công, hiển thị thông báo thành công (toast success), ảnh được resize về kích thước phù hợp (nếu cần), logo hiển thị trên giao diện (preview), logo được lưu vào hệ thống, logo hiển thị trên các trang công khai (nếu có) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCH-04** | Upload logo với file không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Chọn file không phải ảnh (VD: .pdf, .doc)<br>5. Click "Lưu tất cả" | Hiển thị thông báo lỗi "Chỉ chấp nhận file ảnh (JPG, PNG, GIF)" (toast error), không upload logo, file không được chọn | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KPMK-01** | Gửi mã khôi phục qua email | 1. Truy cập /admin/auth/forgot-password<br>2. Nhập email đã đăng ký (VD: admin@bookstore.com)<br>3. Nhấn "Gửi mã khôi phục" | Mã khôi phục được gửi thành công qua email, hiển thị thông báo thành công "Mã khôi phục đã được gửi đến email của bạn" (toast success), form chuyển sang form nhập mã, có thể có countdown timer (VD: "Gửi lại mã sau 60 giây") | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-02** | Gửi mã với email không tồn tại | 1. Truy cập /admin/auth/forgot-password<br>2. Nhập email không tồn tại<br>3. Nhấn "Gửi mã khôi phục" | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" (toast error), không gửi mã, vẫn ở form nhập email | | Pass | 11/15/2015 | |
+| **FUNC-KPMK-03** | Đặt lại mật khẩu thành công | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực đúng (6 chữ số)<br>3. Nhập mật khẩu mới (>= 6 ký tự)<br>4. Xác nhận mật khẩu mới (khớp với mật khẩu mới)<br>5. Nhấn "Đặt lại mật khẩu" | Mật khẩu được đặt lại thành công, hiển thị thông báo thành công "Đặt lại mật khẩu thành công. Vui lòng đăng nhập lại." (toast success), chuyển đến trang đăng nhập (/admin/auth/login), có thể hiển thị thông báo "Vui lòng đăng nhập với mật khẩu mới" | FUNC-KPMK-01 | Pass | 11/15/2015 | |
+| **FUNC-KPMK-04** | Đặt lại mật khẩu với mã sai | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực sai<br>3. Nhập mật khẩu mới<br>4. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mã xác thực không đúng hoặc đã hết hạn" (toast error), không đặt lại mật khẩu, form vẫn ở trạng thái nhập mã, có thể có nút "Gửi lại mã" | FUNC-KPMK-01 | Pass | 11/15/2015 | |
+| **FUNC-KPMK-05** | Đặt lại mật khẩu với mật khẩu không khớp | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực đúng<br>3. Nhập mật khẩu mới "password123"<br>4. Xác nhận mật khẩu mới "password456" (không khớp)<br>5. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu xác nhận không khớp" (toast error), không đặt lại mật khẩu, form vẫn ở trạng thái nhập mã | FUNC-KPMK-01 | Pass | 11/15/2015 | |
+| **FUNC-KPMK-06** | Đặt lại mật khẩu với mật khẩu yếu | 1. Gửi mã khôi phục thành công<br>2. Nhập mã xác thực đúng<br>3. Nhập mật khẩu mới "123" (< 6 ký tự)<br>4. Nhấn "Đặt lại mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu phải có ít nhất 6 ký tự" (toast error), không đặt lại mật khẩu | FUNC-KPMK-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Cài đặt thông báo hệ thống
+### Function: Lịch sử đăng nhập
 
-#### Check GUI: Cài đặt thông báo hệ thống
+#### Check GUI: Lịch sử đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TBHT-01** | Kiểm tra Tab Thông báo | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo" | Hiển thị TabsContent value="notifications" với Card "Cài đặt thông báo" có CardTitle với icon Bell h-5 w-5, CardDescription "Quản lý các loại thông báo hệ thống", CardContent có các Switch: "Thông báo đơn hàng mới" (defaultChecked), "Thông báo sắp hết hàng" (defaultChecked), "Thông báo phản hồi khách hàng" (defaultChecked), "Thông báo email" (defaultChecked), "Thông báo SMS" (không checked), mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LSDN-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Lịch sử đăng nhập Admin" hoặc "Lịch sử đăng nhập" với class text-2xl font-bold, layout tương tự các trang quản lý khác | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LSDN-02** | Kiểm tra thống kê đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-4 gap-4 với 4 Card: Card "Tổng đăng nhập" với số liệu, Card "Hôm nay" với số liệu, Card "Tuần này" với số liệu, Card "Tháng này" với số liệu. Mỗi card có CardContent p-4 với text-sm text-muted-foreground cho label và text-xl font-semibold cho số | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LSDN-03** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardContent chứa: Input tìm kiếm với icon Search, Select "Trạng thái" với các option (Tất cả, Thành công, Thất bại), 2 Input type="date" cho khoảng thời gian, Button "Áp dụng" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LSDN-04** | Kiểm tra card Danh sách đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Danh sách đăng nhập", CardContent chứa Table | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-LSDN-05** | Kiểm tra bảng danh sách đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "Thời gian", "IP Address", "Trạng thái" (Badge), "Thiết bị", "Địa điểm", "Thao tác". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cài đặt thông báo hệ thống
+### Check FUNC: Lịch sử đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TBHT-01** | Bật/tắt thông báo đơn hàng mới | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo đơn hàng mới"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật (bật/tắt), hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, hệ thống sẽ gửi/không gửi thông báo khi có đơn hàng mới tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TBHT-02** | Bật/tắt thông báo sắp hết hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo sắp hết hàng"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi cảnh báo khi sản phẩm sắp hết hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TBHT-03** | Bật/tắt thông báo email | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo email"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi thông báo qua email tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TBHT-04** | Bật/tắt thông báo SMS | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo SMS"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi thông báo qua SMS tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-LSDN-01** | Xem lịch sử đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history | Hiển thị đầy đủ: thống kê 4 card (Tổng đăng nhập, Hôm nay, Tuần này, Tháng này) với số liệu, card Bộ lọc với ô tìm kiếm, dropdown Trạng thái, 2 input date, nút Áp dụng, card Danh sách đăng nhập với Table hiển thị các lần đăng nhập, mỗi hàng có Thời gian, IP Address, Trạng thái (Badge "Thành công" màu xanh hoặc "Thất bại" màu đỏ), Thiết bị (tên thiết bị + trình duyệt), Địa điểm, các nút thao tác (Xem chi tiết) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-LSDN-02** | Tìm kiếm lịch sử đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Nhập từ khóa tìm kiếm (VD: IP Address hoặc thiết bị)<br>4. Click nút "Áp dụng" | Danh sách đăng nhập được lọc theo từ khóa, bảng chỉ hiển thị các lần đăng nhập có IP Address, thiết bị, hoặc thông tin khác chứa từ khóa | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-LSDN-03** | Lọc lịch sử theo khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Chọn ngày bắt đầu và ngày kết thúc<br>4. Click nút "Áp dụng" | Danh sách đăng nhập được lọc theo khoảng thời gian đã chọn, bảng chỉ hiển thị các lần đăng nhập trong khoảng thời gian đó, thống kê có thể được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-LSDN-04** | Lọc lịch sử theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Chọn trạng thái từ dropdown (VD: "Thất bại")<br>4. Click nút "Áp dụng" | Danh sách đăng nhập được lọc theo trạng thái đã chọn, bảng chỉ hiển thị các lần đăng nhập có trạng thái tương ứng (chỉ các lần đăng nhập thất bại) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Cài đặt bảo mật
+### Function: Xóa phiên đăng nhập
 
-#### Check GUI: Cài đặt bảo mật
+#### Check GUI: Xóa phiên đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-BM-01** | Kiểm tra Tab Bảo mật | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật" | Hiển thị TabsContent value="security" với Card "Cài đặt bảo mật" có CardTitle với icon Shield h-5 w-5, CardDescription "Cấu hình các tùy chọn bảo mật hệ thống", CardContent có các Switch: "Xác thực 2 yếu tố (2FA)" (không checked), "Giới hạn đăng nhập" (defaultChecked), "Phiên đăng nhập hết hạn" (defaultChecked), Input type="number" "Thời gian hết hạn phiên (phút)" defaultValue="30", mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Quản lý bảo mật" với class text-2xl font-bold, mô tả "Quản lý sessions và force logout khi phát hiện security risk" với class text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-02** | Kiểm tra thống kê sessions | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-4 gap-4 với 4 Card: Card "Tổng sessions" với số liệu, Card "Sessions đang hoạt động" với số liệu, Card "Sessions đã đóng" với số liệu, Card "Users đang online" với số liệu. Mỗi card có CardContent p-4 với text-sm text-muted-foreground cho label và text-xl font-semibold cho số | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-03** | Kiểm tra card Force Logout Tất Cả | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle với icon Shield h-5 w-5 "Force Logout Tất Cả Sessions", CardDescription "Đóng tất cả sessions khi phát hiện security risk (đổi mật khẩu, suspicious activity)", CardContent có Alert với icon AlertCircle và AlertDescription cảnh báo, Dialog với DialogTrigger là Button variant="destructive" "Force Logout Tất Cả Sessions" có icon LogOut | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-04** | Kiểm tra card Danh sách Sessions | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Danh sách Sessions", CardDescription "Quản lý và theo dõi các phiên đăng nhập", Select "Tất cả users" w-48, CardContent chứa Table | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-05** | Kiểm tra bảng danh sách sessions | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "User", "Thiết bị", "IP Address", "Vị trí", "Hoạt động cuối", "Trạng thái", "Thao tác". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-06** | Kiểm tra cột User | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa div flex items-center gap-2 với icon User h-4 w-4 text-muted-foreground, div với div font-medium (userName) và div text-xs text-muted-foreground (userId) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-07** | Kiểm tra cột Thiết bị | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa div flex items-center gap-2 với icon Monitor h-4 w-4 text-muted-foreground, div với div text-sm (device) và div text-xs text-muted-foreground (browser) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-08** | Kiểm tra cột Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa Badge với className="bg-green-100 text-green-800" nếu isActive=true "Đang hoạt động" hoặc className="bg-gray-100 text-gray-800" nếu isActive=false "Đã đóng" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-XPDN-09** | Kiểm tra các nút thao tác | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Kiểm tra nút thao tác | Mỗi hàng có TableCell "Thao tác" chứa Button variant="outline" size="sm" "Force Logout" có icon LogOut h-3 w-3 mr-1 onClick (chỉ hiển thị nếu isActive=true) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Cài đặt bảo mật
+### Check FUNC: Xóa phiên đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BM-01** | Bật xác thực 2 yếu tố (2FA) | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Toggle Switch "Xác thực 2 yếu tố (2FA)" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, có thể hiển thị Dialog hướng dẫn thiết lập 2FA (quét QR code, nhập mã xác thực), sau khi lưu, lần đăng nhập tiếp theo sẽ yêu cầu mã 2FA | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BM-02** | Bật giới hạn đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Toggle Switch "Giới hạn đăng nhập" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ khóa tài khoản sau 5 lần đăng nhập sai | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BM-03** | Cài đặt thời gian hết hạn phiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Nhập thời gian hết hạn phiên (VD: 60 phút) vào Input<br>5. Click nút "Lưu tất cả" | Thời gian hết hạn phiên được cập nhật thành công, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ tự động đăng xuất sau thời gian không hoạt động đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BM-04** | Cài đặt thời gian hết hạn phiên với giá trị không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Nhập thời gian < 1 hoặc > 1440 phút<br>5. Click nút "Lưu tất cả" | Hiển thị thông báo lỗi "Thời gian hết hạn phiên phải từ 1 đến 1440 phút" (toast error), không cập nhật, giá trị vẫn giữ nguyên | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-01** | Xem danh sách phiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions | Hiển thị đầy đủ: thống kê 4 card (Tổng sessions, Sessions đang hoạt động, Sessions đã đóng, Users đang online) với số liệu, card Force Logout Tất Cả Sessions với Alert cảnh báo và Dialog, card Danh sách Sessions với Select lọc theo user, Table hiển thị các session, mỗi hàng có User (icon + tên + ID), Thiết bị (icon + device + browser), IP Address, Vị trí (icon + location), Hoạt động cuối (icon + lastActivity), Trạng thái (Badge), nút Force Logout (nếu đang hoạt động) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-02** | Lọc sessions theo user | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Chọn user từ Select (VD: "Nguyễn Văn A (user-001)") | Danh sách sessions được lọc theo user đã chọn, bảng chỉ hiển thị sessions của user đó, thống kê có thể được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-03** | Xóa phiên đăng nhập cụ thể | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Click nút "Force Logout" trên một session đang hoạt động<br>4. Nhập lý do vào Textarea<br>5. Click "Xác nhận Force Logout" | Hiển thị Dialog với DialogTitle "Xác nhận Force Logout", DialogDescription "Bạn có chắc chắn muốn force logout session này?", Textarea "Lý do force logout *" required placeholder="Nhập lý do...", nút "Hủy" và "Xác nhận Force Logout" variant="destructive". Sau khi xác nhận: session được force logout thành công, hiển thị thông báo thành công "Đã force logout tất cả sessions của user [userId]" (toast success), trạng thái session cập nhật thành "Đã đóng" với Badge màu xám, nút "Force Logout" biến mất, thông báo được gửi đến thiết bị bị ảnh hưởng (nếu có), dialog đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-04** | Force logout thiếu lý do | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Click nút "Force Logout"<br>4. Để trống lý do<br>5. Click "Xác nhận Force Logout" | Hiển thị thông báo lỗi "Vui lòng nhập lý do force logout" (toast error), không force logout, dialog vẫn mở | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-05** | Đăng xuất tất cả phiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Click nút "Force Logout Tất Cả Sessions"<br>4. Nhập lý do vào Textarea<br>5. Click "Xác nhận Force Logout Tất Cả" | Hiển thị Dialog với DialogTitle "Xác nhận Force Logout", DialogDescription "Bạn có chắc chắn muốn force logout tất cả sessions? Tất cả users sẽ bị đăng xuất và cần đăng nhập lại.", Textarea "Lý do force logout *" required, nút "Hủy" và "Xác nhận Force Logout Tất Cả" variant="destructive". Sau khi xác nhận: tất cả sessions được force logout thành công, hiển thị thông báo thành công "Đã force logout tất cả sessions trong hệ thống" (toast success), tất cả trạng thái sessions cập nhật thành "Đã đóng", tất cả nút "Force Logout" biến mất, thống kê được cập nhật (Sessions đang hoạt động = 0, Users đang online = 0), thông báo được gửi đến tất cả thiết bị, yêu cầu đăng nhập lại, dialog đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-XPDN-06** | Hủy force logout | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Click nút "Force Logout"<br>4. Nhập lý do<br>5. Click "Hủy" trong dialog | Dialog đóng lại, không force logout, trạng thái sessions không thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Cài đặt tích hợp
+### Function: Phát hiện đăng nhập lạ
 
-#### Check GUI: Cài đặt tích hợp
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TH-01** | Kiểm tra Tab Thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán" | Hiển thị TabsContent value="payment" với Card "Cài đặt thanh toán" có CardTitle với icon CreditCard h-5 w-5, CardDescription "Cấu hình các phương thức thanh toán", CardContent có các Switch: "Thanh toán khi nhận hàng (COD)" (defaultChecked), "Chuyển khoản ngân hàng" (defaultChecked), "Ví điện tử" (không checked), "Thẻ tín dụng" (không checked), mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TH-02** | Kiểm tra Tab Vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển" | Hiển thị TabsContent value="shipping" với Card "Cài đặt vận chuyển" có CardTitle với icon Truck h-5 w-5, CardDescription "Cấu hình phí vận chuyển và phương thức giao hàng", CardContent có Switch "Miễn phí vận chuyển" (defaultChecked), Input "Ngưỡng miễn phí vận chuyển (VNĐ)" type="number" defaultValue="500000", Input "Phí vận chuyển mặc định (VNĐ)" type="number" defaultValue="30000", các Switch phương thức giao hàng: "Giao hàng tiêu chuẩn (5-7 ngày)" (defaultChecked), "Giao hàng nhanh (2-3 ngày)" (defaultChecked), "Giao hàng trong ngày (TP.HCM)" (không checked) | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Cài đặt tích hợp
+#### Check FUNC: Phát hiện đăng nhập lạ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TH-01** | Bật/tắt phương thức thanh toán COD | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch "Thanh toán khi nhận hàng (COD)"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công (toast success), cài đặt được lưu, phương thức thanh toán COD sẽ hiển thị/không hiển thị trong danh sách phương thức thanh toán khi khách hàng đặt hàng tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TH-02** | Bật/tắt phương thức thanh toán ví điện tử | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch "Ví điện tử" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, có thể hiển thị form cấu hình API (API Key, API Secret) cho các ví điện tử (MoMo, ZaloPay, VNPay), phương thức thanh toán ví điện tử sẽ hiển thị trong danh sách khi khách hàng đặt hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TH-03** | Cài đặt miễn phí vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Toggle Switch "Miễn phí vận chuyển" sang ON<br>5. Nhập ngưỡng miễn phí vận chuyển (VD: 500000 VNĐ)<br>6. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, ngưỡng miễn phí vận chuyển được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ tự động miễn phí vận chuyển cho đơn hàng có tổng giá trị >= ngưỡng đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TH-04** | Cài đặt phí vận chuyển mặc định | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Nhập phí vận chuyển mặc định (VD: 30000 VNĐ) vào Input<br>5. Click nút "Lưu tất cả" | Phí vận chuyển mặc định được cập nhật thành công, hiển thị thông báo thành công, cài đặt được lưu, phí vận chuyển này sẽ được áp dụng cho các đơn hàng không đủ điều kiện miễn phí vận chuyển | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TH-05** | Bật/tắt phương thức giao hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Toggle Switch "Giao hàng trong ngày (TP.HCM)" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, phương thức giao hàng "Giao hàng trong ngày" sẽ hiển thị trong danh sách phương thức giao hàng khi khách hàng đặt hàng (chỉ cho địa chỉ TP.HCM) | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Cài đặt sao lưu
-
-#### Check FUNC: Cài đặt sao lưu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-SL-01** | Cài đặt sao lưu tự động | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Thiết lập tần suất (VD: Hàng ngày), thời gian (VD: 02:00), nơi lưu trữ (VD: Cloud Storage)<br>4. Click "Lưu" | Hiển thị form cài đặt sao lưu với Select "Tần suất" (Hàng ngày, Hàng tuần, Hàng tháng), Input type="time" "Thời gian", Select "Nơi lưu trữ" (Local, Cloud Storage). Sau khi lưu: sao lưu tự động được cài đặt thành công, hiển thị thông báo thành công (toast success), hệ thống sẽ tự động tạo sao lưu theo lịch đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SL-02** | Tạo sao lưu thủ công | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Click nút "Tạo sao lưu"<br>4. Chờ quá trình sao lưu hoàn tất | Hiển thị Dialog hoặc progress bar "Đang tạo sao lưu...", sau khi hoàn tất: sao lưu thủ công được tạo thành công, hiển thị thông báo thành công (toast success), file sao lưu được lưu trữ với tên chứa ngày tháng (VD: "backup_2024-01-20.sql"), file sao lưu hiển thị trong danh sách sao lưu, có thể tải xuống | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SL-03** | Khôi phục từ sao lưu | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Chọn file sao lưu từ danh sách<br>4. Click nút "Khôi phục"<br>5. Xác nhận trong Dialog | Hiển thị Dialog xác nhận "Bạn có chắc chắn muốn khôi phục từ file sao lưu này? Tất cả dữ liệu hiện tại sẽ bị thay thế." với nút "Hủy" và "Xác nhận khôi phục" variant="destructive". Sau khi xác nhận: hiển thị progress bar "Đang khôi phục...", sau khi hoàn tất: hệ thống được khôi phục thành công, hiển thị thông báo thành công (toast success), dữ liệu được khôi phục đầy đủ, có thể yêu cầu đăng nhập lại | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Cài đặt chính sách giảm giá
-
-#### Check FUNC: Cài đặt chính sách giảm giá
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-GG-01** | Cài đặt giảm giá toàn cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/discounts<br>3. Thiết lập giảm giá (VD: 10% cho tất cả sản phẩm trong tháng 12)<br>4. Nhập thời gian áp dụng<br>5. Click "Lưu" | Hiển thị form cài đặt giảm giá với Input "Phần trăm giảm giá" type="number", Input "Số tiền giảm giá" type="number", Input type="date" "Ngày bắt đầu", Input type="date" "Ngày kết thúc", Switch "Áp dụng cho tất cả sản phẩm". Sau khi lưu: chính sách giảm giá toàn cửa hàng được cài đặt thành công, hiển thị thông báo thành công (toast success), giảm giá được áp dụng tự động cho tất cả sản phẩm trong thời gian đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-GG-02** | Cài đặt giảm giá theo sản phẩm | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/discounts<br>3. Chọn sản phẩm từ Select hoặc danh sách<br>4. Thiết lập giảm giá (VD: 15% cho sản phẩm cụ thể)<br>5. Nhập thời gian áp dụng<br>6. Click "Lưu" | Hiển thị form với Select "Chọn sản phẩm" (có thể tìm kiếm), Input "Phần trăm giảm giá" hoặc "Số tiền giảm giá", Input type="date" cho thời gian. Sau khi lưu: chính sách giảm giá theo sản phẩm được cài đặt thành công, hiển thị thông báo thành công, giảm giá được áp dụng cho sản phẩm đã chọn trong thời gian đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Cài đặt thanh toán
-
-#### Check FUNC: Cài đặt thanh toán
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TT-01** | Bật/tắt phương thức thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch cho một phương thức thanh toán (VD: "Thẻ tín dụng")<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công (toast success), cài đặt được lưu, phương thức thanh toán sẽ hiển thị/không hiển thị trong danh sách phương thức thanh toán khi khách hàng đặt hàng tùy theo trạng thái Switch, nếu bật có thể hiển thị form cấu hình API (API Key, API Secret, Test Mode) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TT-02** | Cấu hình API thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Bật Switch "Ví điện tử" hoặc "Thẻ tín dụng"<br>5. Nhập API Key và API Secret vào các Input<br>6. Click nút "Lưu tất cả" | Hiển thị form cấu hình với Input "API Key" type="password", Input "API Secret" type="password", Switch "Test Mode" (nếu có), nút "Test kết nối". Sau khi lưu: API thanh toán được cấu hình thành công, hiển thị thông báo thành công, cài đặt được lưu, có thể test kết nối để xác minh API hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TT-03** | Test kết nối API thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Nhập API Key và API Secret<br>5. Click nút "Test kết nối" | Hiển thị progress "Đang kiểm tra kết nối...", sau khi hoàn tất: nếu thành công hiển thị thông báo "Kết nối API thành công" (toast success), nếu thất bại hiển thị thông báo lỗi "Không thể kết nối API. Vui lòng kiểm tra lại API Key và API Secret" (toast error) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-PHDL-01** | Hệ thống phát hiện đăng nhập lạ | 1. Đăng nhập Admin từ IP/thiết bị lạ (khác với các lần đăng nhập trước)<br>2. Truy cập /admin/security/sessions hoặc /admin/security/login-history | Hệ thống tự động phát hiện và đánh dấu đăng nhập lạ, hiển thị cảnh báo trong lịch sử đăng nhập với Badge "Đăng nhập lạ" variant="destructive" hoặc icon AlertCircle màu đỏ, có thể gửi thông báo email/SMS cho Admin về việc có đăng nhập lạ, session mới được tạo với flag "suspicious" hoặc "unusual", có thể yêu cầu xác thực 2FA bổ sung | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-PHDL-02** | Xem chi tiết đăng nhập lạ | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/login-history<br>3. Click vào một đăng nhập lạ (có Badge "Đăng nhập lạ") | Hiển thị Dialog hoặc trang chi tiết với thông tin: IP Address (highlight màu đỏ), Thiết bị (highlight), Địa điểm (highlight), Thời gian, Badge "Đăng nhập lạ" variant="destructive", có thể có nút "Force Logout Session này" để đóng session nếu nghi ngờ, có thể có nút "Đánh dấu là an toàn" nếu xác nhận đây là đăng nhập hợp pháp | FUNC-DN-02, FUNC-LSDN-01 | Pass | 11/15/2015 | |
+| **FUNC-PHDL-03** | Force logout session đăng nhập lạ | 1. Đăng nhập Admin<br>2. Truy cập /admin/security/sessions<br>3. Tìm session có flag "suspicious" hoặc "unusual"<br>4. Click nút "Force Logout"<br>5. Nhập lý do "Phát hiện đăng nhập lạ"<br>6. Xác nhận | Session đăng nhập lạ được force logout thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Đã đóng", thông báo được gửi đến thiết bị bị ảnh hưởng, lịch sử bảo mật được ghi nhận với hành động "Force logout session đăng nhập lạ" | FUNC-DN-02, FUNC-XPDN-03 | Pass | 11/15/2015 | |
 
 ---
 
