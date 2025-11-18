@@ -1,12 +1,16 @@
-# Test Case Template - Hỗ trợ khách hàng (Admin)
+# Test Case Template - Cài đặt hệ thống (Admin)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Admin)**
 
 ## Test Requirement
-1. Hiển thị danh sách yêu cầu hỗ trợ
-2. Chat hỗ trợ khách hàng
-3. Trả lời yêu cầu hỗ trợ
+1. Cài đặt thông tin cửa hàng
+2. Cài đặt thông báo hệ thống
+3. Cài đặt bảo mật
+4. Cài đặt tích hợp
+5. Cài đặt sao lưu
+6. Cài đặt chính sách giảm giá
+7. Cài đặt thanh toán
 
 ---
 
@@ -16,82 +20,137 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 18 |
+| **Pass** | 30 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 18 |
+| **Number of Test cases** | 30 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách yêu cầu hỗ trợ
+### Function: Cài đặt thông tin cửa hàng
 
-#### Check GUI: Hiển thị danh sách yêu cầu hỗ trợ
+#### Check GUI: Cài đặt thông tin cửa hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSHT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Danh sách tin nhắn hỗ trợ" với class text-3xl font-bold, mô tả "Quản lý các cuộc hội thoại hỗ trợ với khách hàng" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-02** | Kiểm tra nút header | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra nút | Hiển thị div flex gap-2 bên phải tiêu đề với Button "Đánh dấu tất cả đã đọc" onClick | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-03** | Kiểm tra thống kê hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 với 6 Card: Card 1 "Tổng ticket" với icon MessageSquare h-4 w-4 text-muted-foreground, Card 2 "Mới" với icon Clock h-4 w-4 text-blue-600 và số text-blue-600, Card 3 "Đang xử lý" với icon AlertCircle h-4 w-4 text-orange-600 và số text-orange-600, Card 4 "Đã giải quyết" với icon CheckCircle h-4 w-4 text-green-600 và số text-green-600, Card 5 "Đóng" với icon XCircle h-4 w-4 text-gray-600 và số text-gray-600, Card 6 "Chưa đọc" với icon MessageSquare h-4 w-4 text-red-600 và số text-red-600. Mỗi card có CardHeader flex flex-row items-center justify-between space-y-0 pb-2 với CardTitle text-sm font-medium và icon, CardContent có text-2xl font-bold | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-04** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardHeader có CardTitle "Bộ lọc", CardContent có grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 chứa: div space-y-2 với Label "Tìm kiếm" và Input với icon Search absolute left-2 top-2.5, placeholder="Tìm theo mã, tên khách, SĐT...", class pl-8, Select "Trạng thái" với placeholder="Chọn trạng thái", Select "Ưu tiên" với placeholder="Chọn mức ưu tiên", Button "Áp dụng bộ lọc" onClick | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-05** | Kiểm tra dropdown Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Chọn trạng thái", SelectContent có các option: "Tất cả", "Mới", "Đang xử lý", "Đã giải quyết", "Đóng" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-06** | Kiểm tra dropdown Ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Chọn mức ưu tiên", SelectContent có các option: "Tất cả", "Thấp", "Trung bình", "Cao" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-07** | Kiểm tra card Danh sách hội thoại | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Danh sách hội thoại hỗ trợ", CardDescription "Hiển thị [số] cuộc hội thoại", CardContent có div space-y-4 chứa danh sách các ticket | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSHT-08** | Kiểm tra item hội thoại | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Kiểm tra item | Mỗi item có div flex items-center gap-4 p-4 border rounded-lg hover:bg-gray-50 chứa: Avatar h-12 w-12 với AvatarImage và AvatarFallback (chữ cái đầu tên), div flex-1 min-w-0 với h3 font-semibold truncate (tên khách hàng), các Badge (trạng thái với màu tương ứng, ưu tiên với màu tương ứng, "X tin nhắn mới" variant="destructive" nếu unreadCount > 0), p text-sm font-medium text-gray-900 (subject), p text-sm text-gray-600 (lastMessage), div flex items-center gap-4 text-xs text-gray-500 với icon User + assignedStaff, icon Clock + lastUpdate, icon Phone + customerPhone, icon Mail + customerEmail, div flex items-center gap-2 với Button "Xem chi tiết" và Button "Đánh dấu đã đọc" (nếu unreadCount > 0) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TTCH-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Cài đặt hệ thống" với class text-3xl font-bold, mô tả "Quản lý cài đặt và cấu hình hệ thống" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TTCH-02** | Kiểm tra nút Lưu tất cả | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra nút | Hiển thị Button "Lưu tất cả" bên phải tiêu đề với icon Save h-4 w-4 mr-2 | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TTCH-03** | Kiểm tra Tabs | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Kiểm tra tabs | Hiển thị Tabs defaultValue="general" với TabsList className="grid w-full grid-cols-6" có 6 TabsTrigger: "Chung", "Cửa hàng", "Thanh toán", "Vận chuyển", "Thông báo", "Bảo mật" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TTCH-04** | Kiểm tra Tab Cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng" | Hiển thị TabsContent value="store" với Card "Thông tin cửa hàng" có CardTitle với icon Store h-5 w-5, CardDescription "Cập nhật thông tin liên hệ và địa chỉ cửa hàng", CardContent có grid grid-cols-2 gap-4 với các Input: Tên cửa hàng, Tên chủ cửa hàng, Địa chỉ (Textarea rows={2}), Số điện thoại, Email, Website | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách yêu cầu hỗ trợ
+### Check FUNC: Cài đặt thông tin cửa hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSHT-01** | Xem danh sách yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support | Hiển thị đầy đủ: tiêu đề và mô tả, nút "Đánh dấu tất cả đã đọc", thống kê 6 card (Tổng ticket, Mới, Đang xử lý, Đã giải quyết, Đóng, Chưa đọc) với số liệu và icon màu tương ứng, card Bộ lọc với ô tìm kiếm (có icon Search), 2 dropdown (Trạng thái, Ưu tiên), nút "Áp dụng bộ lọc", card Danh sách hội thoại hỗ trợ với danh sách các ticket, mỗi ticket có Avatar, tên khách hàng, Badge trạng thái (màu tương ứng), Badge ưu tiên (màu tương ứng), Badge "X tin nhắn mới" (nếu có), subject, lastMessage, thông tin assignedStaff, lastUpdate, customerPhone, customerEmail, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-02** | Tìm kiếm yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Nhập từ khóa tìm kiếm vào ô "Tìm theo mã, tên khách, SĐT..."<br>4. Nhấn Enter hoặc click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo từ khóa (mã ticket, tên khách hàng, số điện thoại, subject), danh sách cập nhật với các ticket phù hợp, CardDescription được cập nhật "Hiển thị [số] cuộc hội thoại" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-03** | Lọc yêu cầu hỗ trợ theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn trạng thái từ dropdown (VD: "Mới")<br>4. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo trạng thái đã chọn, danh sách chỉ hiển thị ticket có trạng thái tương ứng, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-04** | Lọc yêu cầu hỗ trợ theo ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn ưu tiên từ dropdown (VD: "Cao")<br>4. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo ưu tiên đã chọn, danh sách chỉ hiển thị ticket có ưu tiên tương ứng, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-05** | Kết hợp nhiều bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Chọn trạng thái "Mới"<br>4. Chọn ưu tiên "Cao"<br>5. Nhập từ khóa tìm kiếm<br>6. Click nút "Áp dụng bộ lọc" | Danh sách ticket được lọc theo tất cả các tiêu chí đã chọn, danh sách chỉ hiển thị ticket thỏa mãn tất cả điều kiện, CardDescription được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-06** | Đánh dấu tất cả đã đọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Đánh dấu tất cả đã đọc" | Hiển thị thông báo thành công "Đã đánh dấu ticket all là đã đọc" (toast success), tất cả Badge "X tin nhắn mới" biến mất, số "Chưa đọc" trong thống kê về 0, các nút "Đánh dấu đã đọc" biến mất | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSHT-07** | Đánh dấu một ticket đã đọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Đánh dấu đã đọc" trên một ticket có unreadCount > 0 | Hiển thị thông báo thành công "Đã đánh dấu ticket [id] là đã đọc" (toast success), Badge "X tin nhắn mới" biến mất trên ticket đó, nút "Đánh dấu đã đọc" biến mất, số "Chưa đọc" trong thống kê giảm đi số lượng tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TTCH-01** | Cập nhật thông tin cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Cập nhật thông tin (Tên cửa hàng, Địa chỉ, Số điện thoại, Email, Website)<br>5. Click nút "Lưu tất cả" | Thông tin cửa hàng được cập nhật thành công, hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, thông tin mới được hiển thị trên các trang công khai (nếu có), form vẫn giữ giá trị đã cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TTCH-02** | Cập nhật với email không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Nhập email không hợp lệ (VD: "invalid-email")<br>5. Click nút "Lưu tất cả" | Trình duyệt hiển thị cảnh báo "Please enter a valid email address" hoặc validation message, form không được gửi, không cập nhật thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TTCH-03** | Upload logo cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Click nút "Upload logo" hoặc chọn file từ File input<br>5. Chọn file ảnh (JPG, PNG, GIF)<br>6. Click "Lưu tất cả" | Logo được upload thành công, hiển thị thông báo thành công (toast success), ảnh được resize về kích thước phù hợp (nếu cần), logo hiển thị trên giao diện (preview), logo được lưu vào hệ thống, logo hiển thị trên các trang công khai (nếu có) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TTCH-04** | Upload logo với file không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Cửa hàng"<br>4. Chọn file không phải ảnh (VD: .pdf, .doc)<br>5. Click "Lưu tất cả" | Hiển thị thông báo lỗi "Chỉ chấp nhận file ảnh (JPG, PNG, GIF)" (toast error), không upload logo, file không được chọn | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Chat hỗ trợ khách hàng
+### Function: Cài đặt thông báo hệ thống
 
-#### Check GUI: Chat hỗ trợ
+#### Check GUI: Cài đặt thông báo hệ thống
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CHAT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chat hỗ trợ - [Mã ticket]" hoặc "Chat hỗ trợ - ST001" với class text-2xl font-bold, layout tương tự trang chi tiết | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-02** | Kiểm tra giao diện chat | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra giao diện | Hiển thị Card với CardHeader có CardTitle "Chat hỗ trợ với [Tên khách hàng]", CardContent có div flex flex-col h-[600px] chứa: div flex-1 overflow-y-auto space-y-4 (khung chat với danh sách tin nhắn), div flex items-center gap-2 p-4 border-t (ô nhập tin nhắn với Input và Button "Gửi" có icon Send) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-03** | Kiểm tra thông tin khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Kiểm tra thông tin | Hiển thị Card với CardHeader có CardTitle "Thông tin khách hàng", CardContent hiển thị các trường: Avatar, Tên khách hàng, Email, Số điện thoại, Link đến trang chi tiết khách hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TBHT-01** | Kiểm tra Tab Thông báo | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo" | Hiển thị TabsContent value="notifications" với Card "Cài đặt thông báo" có CardTitle với icon Bell h-5 w-5, CardDescription "Quản lý các loại thông báo hệ thống", CardContent có các Switch: "Thông báo đơn hàng mới" (defaultChecked), "Thông báo sắp hết hàng" (defaultChecked), "Thông báo phản hồi khách hàng" (defaultChecked), "Thông báo email" (defaultChecked), "Thông báo SMS" (không checked), mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Chat hỗ trợ khách hàng
+### Check FUNC: Cài đặt thông báo hệ thống
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-01** | Mở chat hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support<br>3. Click nút "Xem chi tiết" trên một ticket | Hiển thị thông báo "Chuyển đến chi tiết ticket [id]" (toast success), chuyển đến trang /admin/support/tickets/[id], hiển thị giao diện chat với: tiêu đề "Chat hỗ trợ - [Mã ticket]", card Thông tin khách hàng, card Chat với lịch sử tin nhắn (nếu có), ô nhập tin nhắn, nút "Gửi" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-02** | Gửi tin nhắn | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Nhập tin nhắn vào Input<br>4. Click nút "Gửi" hoặc nhấn Enter | Tin nhắn được gửi thành công, hiển thị trong khung chat với format: div flex justify-end (tin nhắn của Admin), div p-3 rounded-lg bg-primary text-primary-foreground (nội dung tin nhắn), span text-xs text-muted-foreground (thời gian gửi), tin nhắn được lưu vào database, thông báo được gửi cho khách hàng qua email/SMS (nếu có cấu hình), trạng thái ticket có thể cập nhật thành "Đang xử lý" nếu đang là "Mới" | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-03** | Gửi tin nhắn rỗng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Để trống ô nhập tin nhắn<br>4. Click nút "Gửi" | Hiển thị thông báo cảnh báo "Vui lòng nhập tin nhắn" (toast warning), không gửi tin nhắn, ô nhập vẫn trống | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-04** | Nhận tin nhắn từ khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Chờ tin nhắn từ khách hàng (hoặc giả lập) | Tin nhắn mới từ khách hàng hiển thị trong khung chat với format: div flex justify-start (tin nhắn của khách hàng), div p-3 rounded-lg bg-muted (nội dung tin nhắn), span text-xs text-muted-foreground (thời gian gửi), có thể có thông báo (notification) hoặc badge "Tin nhắn mới", unreadCount tăng lên, khung chat tự động scroll xuống tin nhắn mới nhất | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-05** | Xem lịch sử tin nhắn | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Xem khung chat | Hiển thị lịch sử tin nhắn theo dòng thời gian từ cũ đến mới, mỗi tin nhắn có: người gửi (Admin hoặc Khách hàng), nội dung, thời gian gửi, tin nhắn của Admin hiển thị bên phải (justify-end) với màu primary, tin nhắn của khách hàng hiển thị bên trái (justify-start) với màu muted | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **FUNC-TBHT-01** | Bật/tắt thông báo đơn hàng mới | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo đơn hàng mới"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật (bật/tắt), hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, hệ thống sẽ gửi/không gửi thông báo khi có đơn hàng mới tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TBHT-02** | Bật/tắt thông báo sắp hết hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo sắp hết hàng"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi cảnh báo khi sản phẩm sắp hết hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TBHT-03** | Bật/tắt thông báo email | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo email"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi thông báo qua email tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TBHT-04** | Bật/tắt thông báo SMS | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thông báo"<br>4. Toggle Switch "Thông báo SMS"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ gửi/không gửi thông báo qua SMS tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Trả lời yêu cầu hỗ trợ
+### Function: Cài đặt bảo mật
 
-#### Check FUNC: Trả lời yêu cầu hỗ trợ
+#### Check GUI: Cài đặt bảo mật
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TLHT-01** | Trả lời yêu cầu hỗ trợ | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Nhập câu trả lời vào ô nhập tin nhắn<br>4. Click nút "Gửi" | Câu trả lời được gửi thành công, hiển thị trong khung chat, trạng thái ticket được cập nhật (từ "Mới" thành "Đang xử lý" hoặc từ "Đang xử lý" thành "Đã giải quyết" nếu câu trả lời giải quyết vấn đề), thông báo được gửi cho khách hàng qua email/SMS về việc có phản hồi mới, lịch sử ticket được ghi nhận, unreadCount của khách hàng tăng lên | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-TLHT-02** | Đánh dấu ticket đã giải quyết | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Đánh dấu đã giải quyết" hoặc chọn trạng thái "Đã giải quyết"<br>4. Xác nhận | Trạng thái ticket được cập nhật thành "Đã giải quyết", hiển thị thông báo thành công (toast success), Badge trạng thái được cập nhật với màu xanh, thông báo được gửi cho khách hàng về việc ticket đã được giải quyết, ticket có thể được đóng sau một thời gian | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-TLHT-03** | Đóng ticket | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Đóng ticket"<br>4. Nhập lý do đóng (nếu có)<br>5. Xác nhận | Ticket được đóng thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Đóng" với Badge màu xám, thông báo được gửi cho khách hàng về việc ticket đã được đóng, ticket không thể gửi tin nhắn mới (ô nhập và nút "Gửi" bị disabled) | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-TLHT-04** | Gán ticket cho nhân viên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Gán cho nhân viên" hoặc chọn từ Select<br>4. Chọn nhân viên<br>5. Xác nhận | Ticket được gán cho nhân viên thành công, hiển thị thông báo thành công (toast success), thông tin "Người phụ trách" được cập nhật, thông báo được gửi cho nhân viên được gán về việc có ticket mới, lịch sử ticket được ghi nhận | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
-| **FUNC-TLHT-05** | Thay đổi mức ưu tiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/support/tickets/[id]<br>3. Click nút "Thay đổi ưu tiên" hoặc chọn từ Select<br>4. Chọn mức ưu tiên mới<br>5. Xác nhận | Mức ưu tiên được cập nhật thành công, hiển thị thông báo thành công (toast success), Badge ưu tiên được cập nhật với màu tương ứng (xanh cho Thấp, vàng cho Trung bình, đỏ cho Cao), lịch sử ticket được ghi nhận | FUNC-DN-02, FUNC-CHAT-01 | Pass | 11/15/2015 | |
+| **GUI-BM-01** | Kiểm tra Tab Bảo mật | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật" | Hiển thị TabsContent value="security" với Card "Cài đặt bảo mật" có CardTitle với icon Shield h-5 w-5, CardDescription "Cấu hình các tùy chọn bảo mật hệ thống", CardContent có các Switch: "Xác thực 2 yếu tố (2FA)" (không checked), "Giới hạn đăng nhập" (defaultChecked), "Phiên đăng nhập hết hạn" (defaultChecked), Input type="number" "Thời gian hết hạn phiên (phút)" defaultValue="30", mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Cài đặt bảo mật
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-BM-01** | Bật xác thực 2 yếu tố (2FA) | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Toggle Switch "Xác thực 2 yếu tố (2FA)" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công (toast success), cài đặt được lưu vào hệ thống, có thể hiển thị Dialog hướng dẫn thiết lập 2FA (quét QR code, nhập mã xác thực), sau khi lưu, lần đăng nhập tiếp theo sẽ yêu cầu mã 2FA | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-02** | Bật giới hạn đăng nhập | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Toggle Switch "Giới hạn đăng nhập" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ khóa tài khoản sau 5 lần đăng nhập sai | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-03** | Cài đặt thời gian hết hạn phiên | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Nhập thời gian hết hạn phiên (VD: 60 phút) vào Input<br>5. Click nút "Lưu tất cả" | Thời gian hết hạn phiên được cập nhật thành công, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ tự động đăng xuất sau thời gian không hoạt động đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-04** | Cài đặt thời gian hết hạn phiên với giá trị không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Bảo mật"<br>4. Nhập thời gian < 1 hoặc > 1440 phút<br>5. Click nút "Lưu tất cả" | Hiển thị thông báo lỗi "Thời gian hết hạn phiên phải từ 1 đến 1440 phút" (toast error), không cập nhật, giá trị vẫn giữ nguyên | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Cài đặt tích hợp
+
+#### Check GUI: Cài đặt tích hợp
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-TH-01** | Kiểm tra Tab Thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán" | Hiển thị TabsContent value="payment" với Card "Cài đặt thanh toán" có CardTitle với icon CreditCard h-5 w-5, CardDescription "Cấu hình các phương thức thanh toán", CardContent có các Switch: "Thanh toán khi nhận hàng (COD)" (defaultChecked), "Chuyển khoản ngân hàng" (defaultChecked), "Ví điện tử" (không checked), "Thẻ tín dụng" (không checked), mỗi Switch có Label và text-sm text-muted-foreground mô tả, có Separator giữa các mục | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-TH-02** | Kiểm tra Tab Vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển" | Hiển thị TabsContent value="shipping" với Card "Cài đặt vận chuyển" có CardTitle với icon Truck h-5 w-5, CardDescription "Cấu hình phí vận chuyển và phương thức giao hàng", CardContent có Switch "Miễn phí vận chuyển" (defaultChecked), Input "Ngưỡng miễn phí vận chuyển (VNĐ)" type="number" defaultValue="500000", Input "Phí vận chuyển mặc định (VNĐ)" type="number" defaultValue="30000", các Switch phương thức giao hàng: "Giao hàng tiêu chuẩn (5-7 ngày)" (defaultChecked), "Giao hàng nhanh (2-3 ngày)" (defaultChecked), "Giao hàng trong ngày (TP.HCM)" (không checked) | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Check FUNC: Cài đặt tích hợp
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-TH-01** | Bật/tắt phương thức thanh toán COD | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch "Thanh toán khi nhận hàng (COD)"<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công (toast success), cài đặt được lưu, phương thức thanh toán COD sẽ hiển thị/không hiển thị trong danh sách phương thức thanh toán khi khách hàng đặt hàng tùy theo trạng thái Switch | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TH-02** | Bật/tắt phương thức thanh toán ví điện tử | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch "Ví điện tử" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, có thể hiển thị form cấu hình API (API Key, API Secret) cho các ví điện tử (MoMo, ZaloPay, VNPay), phương thức thanh toán ví điện tử sẽ hiển thị trong danh sách khi khách hàng đặt hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TH-03** | Cài đặt miễn phí vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Toggle Switch "Miễn phí vận chuyển" sang ON<br>5. Nhập ngưỡng miễn phí vận chuyển (VD: 500000 VNĐ)<br>6. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, ngưỡng miễn phí vận chuyển được cập nhật, hiển thị thông báo thành công, cài đặt được lưu, hệ thống sẽ tự động miễn phí vận chuyển cho đơn hàng có tổng giá trị >= ngưỡng đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TH-04** | Cài đặt phí vận chuyển mặc định | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Nhập phí vận chuyển mặc định (VD: 30000 VNĐ) vào Input<br>5. Click nút "Lưu tất cả" | Phí vận chuyển mặc định được cập nhật thành công, hiển thị thông báo thành công, cài đặt được lưu, phí vận chuyển này sẽ được áp dụng cho các đơn hàng không đủ điều kiện miễn phí vận chuyển | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TH-05** | Bật/tắt phương thức giao hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Vận chuyển"<br>4. Toggle Switch "Giao hàng trong ngày (TP.HCM)" sang ON<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật thành ON, hiển thị thông báo thành công, cài đặt được lưu, phương thức giao hàng "Giao hàng trong ngày" sẽ hiển thị trong danh sách phương thức giao hàng khi khách hàng đặt hàng (chỉ cho địa chỉ TP.HCM) | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Cài đặt sao lưu
+
+#### Check FUNC: Cài đặt sao lưu
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-SL-01** | Cài đặt sao lưu tự động | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Thiết lập tần suất (VD: Hàng ngày), thời gian (VD: 02:00), nơi lưu trữ (VD: Cloud Storage)<br>4. Click "Lưu" | Hiển thị form cài đặt sao lưu với Select "Tần suất" (Hàng ngày, Hàng tuần, Hàng tháng), Input type="time" "Thời gian", Select "Nơi lưu trữ" (Local, Cloud Storage). Sau khi lưu: sao lưu tự động được cài đặt thành công, hiển thị thông báo thành công (toast success), hệ thống sẽ tự động tạo sao lưu theo lịch đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-SL-02** | Tạo sao lưu thủ công | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Click nút "Tạo sao lưu"<br>4. Chờ quá trình sao lưu hoàn tất | Hiển thị Dialog hoặc progress bar "Đang tạo sao lưu...", sau khi hoàn tất: sao lưu thủ công được tạo thành công, hiển thị thông báo thành công (toast success), file sao lưu được lưu trữ với tên chứa ngày tháng (VD: "backup_2024-01-20.sql"), file sao lưu hiển thị trong danh sách sao lưu, có thể tải xuống | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-SL-03** | Khôi phục từ sao lưu | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/backup<br>3. Chọn file sao lưu từ danh sách<br>4. Click nút "Khôi phục"<br>5. Xác nhận trong Dialog | Hiển thị Dialog xác nhận "Bạn có chắc chắn muốn khôi phục từ file sao lưu này? Tất cả dữ liệu hiện tại sẽ bị thay thế." với nút "Hủy" và "Xác nhận khôi phục" variant="destructive". Sau khi xác nhận: hiển thị progress bar "Đang khôi phục...", sau khi hoàn tất: hệ thống được khôi phục thành công, hiển thị thông báo thành công (toast success), dữ liệu được khôi phục đầy đủ, có thể yêu cầu đăng nhập lại | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Cài đặt chính sách giảm giá
+
+#### Check FUNC: Cài đặt chính sách giảm giá
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-GG-01** | Cài đặt giảm giá toàn cửa hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/discounts<br>3. Thiết lập giảm giá (VD: 10% cho tất cả sản phẩm trong tháng 12)<br>4. Nhập thời gian áp dụng<br>5. Click "Lưu" | Hiển thị form cài đặt giảm giá với Input "Phần trăm giảm giá" type="number", Input "Số tiền giảm giá" type="number", Input type="date" "Ngày bắt đầu", Input type="date" "Ngày kết thúc", Switch "Áp dụng cho tất cả sản phẩm". Sau khi lưu: chính sách giảm giá toàn cửa hàng được cài đặt thành công, hiển thị thông báo thành công (toast success), giảm giá được áp dụng tự động cho tất cả sản phẩm trong thời gian đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-GG-02** | Cài đặt giảm giá theo sản phẩm | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings/discounts<br>3. Chọn sản phẩm từ Select hoặc danh sách<br>4. Thiết lập giảm giá (VD: 15% cho sản phẩm cụ thể)<br>5. Nhập thời gian áp dụng<br>6. Click "Lưu" | Hiển thị form với Select "Chọn sản phẩm" (có thể tìm kiếm), Input "Phần trăm giảm giá" hoặc "Số tiền giảm giá", Input type="date" cho thời gian. Sau khi lưu: chính sách giảm giá theo sản phẩm được cài đặt thành công, hiển thị thông báo thành công, giảm giá được áp dụng cho sản phẩm đã chọn trong thời gian đã cài đặt | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Cài đặt thanh toán
+
+#### Check FUNC: Cài đặt thanh toán
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-TT-01** | Bật/tắt phương thức thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Toggle Switch cho một phương thức thanh toán (VD: "Thẻ tín dụng")<br>5. Click nút "Lưu tất cả" | Trạng thái Switch được cập nhật, hiển thị thông báo thành công (toast success), cài đặt được lưu, phương thức thanh toán sẽ hiển thị/không hiển thị trong danh sách phương thức thanh toán khi khách hàng đặt hàng tùy theo trạng thái Switch, nếu bật có thể hiển thị form cấu hình API (API Key, API Secret, Test Mode) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TT-02** | Cấu hình API thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Bật Switch "Ví điện tử" hoặc "Thẻ tín dụng"<br>5. Nhập API Key và API Secret vào các Input<br>6. Click nút "Lưu tất cả" | Hiển thị form cấu hình với Input "API Key" type="password", Input "API Secret" type="password", Switch "Test Mode" (nếu có), nút "Test kết nối". Sau khi lưu: API thanh toán được cấu hình thành công, hiển thị thông báo thành công, cài đặt được lưu, có thể test kết nối để xác minh API hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TT-03** | Test kết nối API thanh toán | 1. Đăng nhập Admin<br>2. Truy cập /admin/settings<br>3. Click tab "Thanh toán"<br>4. Nhập API Key và API Secret<br>5. Click nút "Test kết nối" | Hiển thị progress "Đang kiểm tra kết nối...", sau khi hoàn tất: nếu thành công hiển thị thông báo "Kết nối API thành công" (toast success), nếu thất bại hiển thị thông báo lỗi "Không thể kết nối API. Vui lòng kiểm tra lại API Key và API Secret" (toast error) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
