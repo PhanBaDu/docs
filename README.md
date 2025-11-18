@@ -1,14 +1,15 @@
-# Test Case Template - Quản lý yêu cầu và phê duyệt (Admin)
+# Test Case Template - Báo cáo và thống kê (Admin)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Admin)**
 
 ## Test Requirement
-1. Hiển thị danh sách yêu cầu
-2. Xem chi tiết yêu cầu
-3. Phê duyệt yêu cầu
-4. Từ chối yêu cầu
-5. Theo dõi trạng thái yêu cầu
+1. Hiển thị báo cáo và thống kê tổng quan
+2. Xem chi tiết báo cáo
+3. Xem báo cáo doanh thu
+4. Xem thống kê bán hàng
+5. Xem báo cáo khách hàng
+6. Xem báo cáo tồn kho
 
 ---
 
@@ -18,106 +19,109 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 22 |
+| **Pass** | 24 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 22 |
+| **Number of Test cases** | 24 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách yêu cầu
+### Function: Hiển thị báo cáo và thống kê tổng quan
 
-#### Check GUI: Hiển thị danh sách yêu cầu
+#### Check GUI: Hiển thị báo cáo và thống kê
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSYC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra tiêu đề | Hiển thị Card với CardHeader có CardTitle "Quản lý yêu cầu và phê duyệt" với class text-2xl font-bold, layout trong div space-y-6 | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-02** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardContent có grid gap-4 md:grid-cols-5 chứa: Select "Loại yêu cầu" với placeholder, Select "Trạng thái" với placeholder, Select "Người gửi" với placeholder, Select "Khoảng thời gian" với placeholder, Input placeholder="Tìm mã yêu cầu" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-03** | Kiểm tra dropdown Loại yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Loại yêu cầu", SelectContent có các option: "Nhập hàng", "Trả hàng", "Đổi hàng", "Hỗ trợ", "Khác" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-04** | Kiểm tra dropdown Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Trạng thái", SelectContent có các option: "Chờ phê duyệt", "Đã phê duyệt", "Từ chối", "Đang xử lý", "Hoàn thành" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-05** | Kiểm tra dropdown Người gửi | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Người gửi", SelectContent có các option: "Nhân viên bán hàng", "Nhân viên kho", "Khách hàng", "Admin" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-06** | Kiểm tra dropdown Khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Khoảng thời gian", SelectContent có các option: "Tất cả", "Hôm nay", "Tuần này", "Tháng này", "Quý này", "Năm này", "Tùy chọn" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-07** | Kiểm tra card Danh sách yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra card | Hiển thị Card với CardContent chứa Table | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-08** | Kiểm tra bảng danh sách yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "Mã yêu cầu", "Loại yêu cầu", "Người gửi", "Ngày tạo", "Trạng thái", "Ưu tiên", "Thao tác". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-09** | Kiểm tra cột Mã yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa div flex items-center gap-2 với span (mã yêu cầu, VD: YC001) và Badge với variant="destructive" nếu priority="Cao" hoặc variant="secondary" nếu khác, hiển thị priority | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSYC-10** | Kiểm tra các nút thao tác | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Kiểm tra nút thao tác | Mỗi hàng có TableCell "Thao tác" với class space-x-2 chứa: Button size="sm" variant="outline" "Xem chi tiết" với Link href="/admin/requests/[id]", Button size="sm" variant="outline" "Phê duyệt", Button size="sm" variant="outline" "Từ chối", Button size="sm" variant="outline" "Giao việc" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo & Thống kê" với class text-3xl font-bold, mô tả "Theo dõi hiệu suất kinh doanh và phân tích dữ liệu" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-02** | Kiểm tra các nút header | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra nút | Hiển thị div flex items-center gap-2 bên phải tiêu đề với Select defaultValue="6months" w-40 có các option: "7 ngày qua", "30 ngày qua", "3 tháng qua", "6 tháng qua", "1 năm qua", Button variant="outline" "Xuất báo cáo" có icon Download h-4 w-4 mr-2 | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-03** | Kiểm tra thống kê tổng quan | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-4 gap-4 với 4 Card: Card 1 "Doanh thu tháng" với icon DollarSign h-8 w-8 text-primary, số "22.5M đ", div flex items-center gap-1 với icon TrendingUp màu xanh và text "+22%", Card 2 "Đơn hàng tháng" với icon ShoppingCart, số "85", growth "+18%", Card 3 "Khách hàng mới" với icon Users, số "23", growth "+28%", Card 4 "Sản phẩm bán" với icon Package, số "342", growth "+15%". Mỗi card có CardContent p-4 với text-sm text-muted-foreground cho label và text-2xl font-bold cho số | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-04** | Kiểm tra Tabs | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra tabs | Hiển thị Tabs defaultValue="revenue" với TabsList className="grid w-full grid-cols-4" có 4 TabsTrigger: "Doanh thu", "Sản phẩm", "Khách hàng", "Tồn kho" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-05** | Kiểm tra Tab Doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị TabsContent value="revenue" với space-y-6 chứa: Card "Biểu đồ doanh thu" với CardDescription "Doanh thu theo tháng trong 6 tháng qua", CardContent có div h-80 border-2 border-dashed với icon BarChart3 và text "Biểu đồ doanh thu sẽ được hiển thị ở đây", Card "Chi tiết doanh thu" với CardContent có danh sách các tháng với doanh thu, số đơn hàng, và growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-06** | Kiểm tra Tab Sản phẩm | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Hiển thị TabsContent value="products" với Card "Sản phẩm bán chạy" có CardDescription "Top sản phẩm có doanh số cao nhất", CardContent có danh sách sản phẩm với số thứ tự (#1, #2...), tên sản phẩm, số lượng đã bán, doanh thu, growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-07** | Kiểm tra Tab Khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Hiển thị TabsContent value="customers" với grid grid-cols-1 md:grid-cols-2 gap-4 chứa các Card thống kê: "Khách hàng mới", "Khách VIP", "Tỷ lệ quay lại", "Giá trị đơn hàng TB", mỗi card có số liệu và growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BC-08** | Kiểm tra Tab Tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Hiển thị TabsContent value="inventory" với Card "Cảnh báo tồn kho" có CardDescription "Sản phẩm sắp hết hàng cần nhập thêm", CardContent có danh sách sản phẩm với tên, số lượng hiện tại, số lượng tối thiểu, Badge trạng thái (Nguy hiểm/Cảnh báo/Hết hàng) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị danh sách yêu cầu
+### Check FUNC: Hiển thị báo cáo và thống kê
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSYC-01** | Xem danh sách yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests | Hiển thị đầy đủ: card Bộ lọc với 4 Select (Loại yêu cầu, Trạng thái, Người gửi, Khoảng thời gian) và 1 Input tìm kiếm, card Danh sách yêu cầu với Table hiển thị các yêu cầu, mỗi hàng có Mã yêu cầu (với Badge priority), Loại yêu cầu, Người gửi, Ngày tạo, Trạng thái, Ưu tiên, các nút thao tác (Xem chi tiết, Phê duyệt, Từ chối, Giao việc) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-02** | Tìm kiếm yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Nhập từ khóa tìm kiếm vào ô "Tìm mã yêu cầu" | Danh sách yêu cầu được lọc theo từ khóa (mã yêu cầu), bảng cập nhật ngay lập tức (real-time filtering), hiển thị các yêu cầu có mã chứa từ khóa (case-insensitive) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-03** | Lọc yêu cầu theo loại | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Chọn loại yêu cầu từ dropdown (VD: "Nhập hàng") | Danh sách yêu cầu được lọc theo loại đã chọn, bảng chỉ hiển thị yêu cầu có loại tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-04** | Lọc yêu cầu theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Chọn trạng thái từ dropdown (VD: "Chờ phê duyệt") | Danh sách yêu cầu được lọc theo trạng thái đã chọn, bảng chỉ hiển thị yêu cầu có trạng thái tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-05** | Lọc yêu cầu theo người gửi | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Chọn người gửi từ dropdown (VD: "Nhân viên kho") | Danh sách yêu cầu được lọc theo người gửi đã chọn, bảng chỉ hiển thị yêu cầu có người gửi tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-06** | Lọc yêu cầu theo khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Chọn khoảng thời gian từ dropdown (VD: "Tuần này") | Danh sách yêu cầu được lọc theo khoảng thời gian đã chọn, bảng chỉ hiển thị yêu cầu được tạo trong khoảng thời gian tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSYC-07** | Kết hợp nhiều bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Chọn loại "Nhập hàng"<br>4. Chọn trạng thái "Chờ phê duyệt"<br>5. Chọn người gửi "Nhân viên kho"<br>6. Nhập từ khóa tìm kiếm | Danh sách yêu cầu được lọc theo tất cả các tiêu chí đã chọn, bảng chỉ hiển thị yêu cầu thỏa mãn tất cả điều kiện, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-01** | Xem danh sách báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports | Hiển thị đầy đủ: tiêu đề và mô tả, Select khoảng thời gian và nút Xuất báo cáo, thống kê tổng quan 4 card (Doanh thu tháng: 22.5M đ +22%, Đơn hàng tháng: 85 +18%, Khách hàng mới: 23 +28%, Sản phẩm bán: 342 +15%), Tabs với 4 tab (Doanh thu, Sản phẩm, Khách hàng, Tồn kho), Tab Doanh thu hiển thị biểu đồ và chi tiết doanh thu theo tháng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-02** | Chọn khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Chọn khoảng thời gian từ Select (VD: "30 ngày qua") | Dữ liệu báo cáo được cập nhật theo khoảng thời gian đã chọn, thống kê tổng quan được tính lại, biểu đồ và danh sách chi tiết được refresh với dữ liệu mới | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-03** | Chuyển đổi giữa các tab | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Tab "Sản phẩm" được kích hoạt, hiển thị Card "Sản phẩm bán chạy" với danh sách top sản phẩm, mỗi sản phẩm có số thứ tự (#1, #2...), tên, số lượng đã bán, doanh thu (toLocaleString), growth % với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-04** | Xem thống kê khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Tab "Khách hàng" được kích hoạt, hiển thị grid với 4 Card: "Khách hàng mới" (23, +28%), "Khách VIP" (12, +50%), "Tỷ lệ quay lại" (68%, +10%), "Giá trị đơn hàng TB" (1.3M đ, +14%), mỗi card có icon Users và growth với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-05** | Xem cảnh báo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Tab "Tồn kho" được kích hoạt, hiển thị Card "Cảnh báo tồn kho" với danh sách sản phẩm sắp hết, mỗi sản phẩm có tên, thông tin "Còn [số] sản phẩm (Tối thiểu: [số])", Badge trạng thái với variant tương ứng (destructive cho "Nguy hiểm", secondary cho "Cảnh báo", outline cho "Hết hàng") | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BC-06** | Xuất báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "Xuất báo cáo" | Hiển thị Dialog hoặc menu cho phép chọn định dạng (PDF, Excel), sau khi chọn: báo cáo được xuất thành công, file được tải xuống với tên file chứa ngày tháng, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết yêu cầu
+### Function: Xem chi tiết báo cáo
 
-#### Check GUI: Xem chi tiết yêu cầu
+#### Check FUNC: Xem chi tiết báo cáo
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTYC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chi tiết yêu cầu - [Mã yêu cầu]" hoặc "Chi tiết yêu cầu - YC001" với class text-2xl font-bold, layout tương tự trang chi tiết nhân viên | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTYC-02** | Kiểm tra card Thông tin cơ bản | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Thông tin cơ bản", CardContent có grid layout, hiển thị các trường: Mã yêu cầu, Loại yêu cầu (Badge), Người gửi, Ngày tạo, Trạng thái (Badge), Ưu tiên (Badge) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTYC-03** | Kiểm tra card Nội dung yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Nội dung yêu cầu", CardContent hiển thị các trường: Tiêu đề, Mô tả, Lý do, Yêu cầu cụ thể, Thời hạn, Ghi chú | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CTYC-04** | Kiểm tra card Lịch sử xử lý | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Lịch sử xử lý", CardContent có Table hoặc timeline hiển thị các sự kiện: Thời gian, Người xử lý, Hành động, Ghi chú | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CTBC-01** | Xem chi tiết doanh thu theo tháng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Xem chi tiết một tháng | Hiển thị Card "Chi tiết doanh thu" với danh sách các tháng, mỗi tháng có: tên tháng (VD: "Tháng 1"), số đơn hàng (VD: "45 đơn hàng"), doanh thu (toLocaleString("vi-VN")đ), growth % với icon TrendingUp (màu xanh) nếu > 0 hoặc TrendingDown (màu đỏ) nếu < 0, text màu xanh/đỏ tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CTBC-02** | Tải xuống báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "Xuất báo cáo"<br>4. Chọn định dạng (PDF hoặc Excel)<br>5. Click "Tải xuống" | Báo cáo được tải xuống thành công dưới dạng PDF hoặc Excel, file có tên chứa ngày tháng (VD: "BaoCao_2024-01-20.pdf"), file chứa đầy đủ thông tin: thống kê tổng quan, biểu đồ (nếu PDF), bảng dữ liệu chi tiết, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CTBC-03** | In báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "In báo cáo" (nếu có) hoặc Ctrl+P | Hiển thị dialog in của trình duyệt với preview báo cáo, có thể in ra giấy hoặc lưu PDF, preview hiển thị đầy đủ thông tin: tiêu đề, thống kê, biểu đồ, bảng dữ liệu | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem chi tiết yêu cầu
+### Function: Xem báo cáo doanh thu
+
+#### Check GUI: Báo cáo doanh thu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTYC-01** | Xem chi tiết yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Xem chi tiết" hoặc Link href="/admin/requests/[id]" | Hiển thị đầy đủ thông tin: tiêu đề "Chi tiết yêu cầu - [Mã]", card Thông tin cơ bản với đầy đủ các trường (Mã yêu cầu, Loại yêu cầu với Badge, Người gửi, Ngày tạo, Trạng thái với Badge, Ưu tiên với Badge), card Nội dung yêu cầu với đầy đủ các trường (Tiêu đề, Mô tả, Lý do, Yêu cầu cụ thể, Thời hạn, Ghi chú), card Lịch sử xử lý với Table/timeline, các nút thao tác (Phê duyệt, Từ chối, Giao việc) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CTYC-02** | Xem lịch sử xử lý | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Xem card Lịch sử xử lý | Hiển thị lịch sử xử lý theo dòng thời gian từ cũ đến mới, mỗi sự kiện có: Thời gian, Người xử lý, Hành động (Tạo yêu cầu, Phê duyệt, Từ chối, Giao việc, Cập nhật trạng thái), Ghi chú | FUNC-DN-02, FUNC-CTYC-01 | Pass | 11/15/2015 | |
+| **GUI-DT-01** | Kiểm tra tab Doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị TabsContent value="revenue" với Card "Biểu đồ doanh thu" có CardTitle và CardDescription, CardContent có placeholder biểu đồ với icon BarChart3 và text "Biểu đồ doanh thu sẽ được hiển thị ở đây", Card "Chi tiết doanh thu" với danh sách các tháng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DT-02** | Kiểm tra biểu đồ doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Kiểm tra biểu đồ | Hiển thị div h-80 flex items-center justify-center border-2 border-dashed border-muted-foreground/25 rounded-lg với icon BarChart3 h-12 w-12 mx-auto mb-4 text-muted-foreground và text "Biểu đồ doanh thu sẽ được hiển thị ở đây" (placeholder, trong thực tế sẽ có biểu đồ thực) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DT-03** | Kiểm tra chi tiết doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Kiểm tra chi tiết | Hiển thị Card "Chi tiết doanh thu" với CardContent có space-y-4 chứa các div flex items-center justify-between p-4 border rounded-lg, mỗi div có: tên tháng (font-medium), số đơn hàng (text-sm text-muted-foreground), doanh thu (font-medium, toLocaleString), growth % với icon và màu tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Phê duyệt yêu cầu
-
-#### Check FUNC: Phê duyệt yêu cầu
+### Check FUNC: Xem báo cáo doanh thu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-PDYC-01** | Phê duyệt yêu cầu hoàn toàn | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Phê duyệt" trên một yêu cầu<br>4. Chọn "Phê duyệt hoàn toàn"<br>5. Chọn người thực hiện từ Select (nếu có)<br>6. Nhập ghi chú (nếu có)<br>7. Click "Xác nhận" | Hiển thị Dialog hoặc form phê duyệt với Select loại phê duyệt ("Phê duyệt hoàn toàn", "Phê duyệt có điều kiện"), có thể có Select người thực hiện, Textarea ghi chú. Sau khi xác nhận: yêu cầu được phê duyệt thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Đã phê duyệt" với Badge, thông báo được gửi cho người gửi qua email/SMS về việc yêu cầu đã được phê duyệt, thông báo được gửi cho người thực hiện (nếu có), lịch sử xử lý được ghi nhận với hành động "Phê duyệt", dialog/form đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-PDYC-02** | Phê duyệt yêu cầu có điều kiện | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Phê duyệt"<br>4. Chọn "Phê duyệt có điều kiện"<br>5. Nhập điều kiện vào Textarea<br>6. Chọn người thực hiện<br>7. Click "Xác nhận" | Hiển thị Dialog hoặc form với Textarea "Điều kiện phê duyệt" required. Sau khi xác nhận: yêu cầu được phê duyệt có điều kiện thành công, hiển thị thông báo thành công, trạng thái cập nhật thành "Đã phê duyệt (có điều kiện)" hoặc "Đang xử lý", điều kiện được ghi nhận trong lịch sử xử lý, thông báo được gửi cho người gửi với điều kiện, thông báo được gửi cho người thực hiện | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-PDYC-03** | Phê duyệt yêu cầu đã được phê duyệt | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Tìm yêu cầu có trạng thái "Đã phê duyệt"<br>4. Click nút "Phê duyệt" | Hiển thị thông báo cảnh báo "Yêu cầu này đã được phê duyệt" hoặc nút "Phê duyệt" bị disabled, không thể phê duyệt lại | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-PDYC-04** | Hủy phê duyệt yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Phê duyệt"<br>4. Nhập thông tin<br>5. Click "Hủy" trong dialog | Dialog đóng lại, không phê duyệt yêu cầu, trạng thái không thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DT-01** | Xem báo cáo doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị báo cáo doanh thu với: Card "Biểu đồ doanh thu" (placeholder hoặc biểu đồ thực), Card "Chi tiết doanh thu" với danh sách các tháng trong khoảng thời gian đã chọn, mỗi tháng hiển thị: tên tháng, số đơn hàng, doanh thu (toLocaleString), growth % với icon TrendingUp (xanh) nếu tăng hoặc TrendingDown (đỏ) nếu giảm | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DT-02** | Xuất báo cáo doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu"<br>4. Click nút "Xuất báo cáo" | Báo cáo doanh thu được xuất thành công dưới dạng PDF hoặc Excel, file chứa: biểu đồ doanh thu (nếu PDF), bảng chi tiết doanh thu theo tháng, thống kê tổng quan, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Từ chối yêu cầu
+### Function: Xem thống kê bán hàng
 
-#### Check FUNC: Từ chối yêu cầu
+#### Check FUNC: Xem thống kê bán hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TCYC-01** | Từ chối yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Từ chối" trên một yêu cầu<br>4. Chọn lý do từ chối từ Select hoặc nhập vào Textarea<br>5. Nhập ghi chú (nếu có)<br>6. Click "Xác nhận từ chối" | Hiển thị Dialog hoặc form từ chối với Select "Lý do từ chối" (có thể có các option: "Không đủ điều kiện", "Không phù hợp", "Khác") hoặc Textarea "Lý do từ chối" required, có thể có Textarea "Ghi chú". Sau khi xác nhận: yêu cầu được từ chối thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Từ chối" với Badge variant="destructive", thông báo được gửi cho người gửi qua email/SMS về việc yêu cầu bị từ chối và lý do, lịch sử xử lý được ghi nhận với hành động "Từ chối" và lý do, dialog/form đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TCYC-02** | Từ chối yêu cầu thiếu lý do | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Từ chối"<br>4. Để trống lý do từ chối<br>5. Click "Xác nhận từ chối" | Hiển thị thông báo lỗi "Vui lòng nhập lý do từ chối" (toast error), không từ chối yêu cầu, dialog vẫn mở | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TCYC-03** | Từ chối yêu cầu đã được xử lý | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Tìm yêu cầu có trạng thái "Đã phê duyệt" hoặc "Hoàn thành"<br>4. Click nút "Từ chối" | Hiển thị thông báo cảnh báo "Không thể từ chối yêu cầu đã được xử lý" hoặc nút "Từ chối" bị disabled, không thể từ chối | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TCYC-04** | Hủy từ chối yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Từ chối"<br>4. Nhập lý do<br>5. Click "Hủy" trong dialog | Dialog đóng lại, không từ chối yêu cầu, trạng thái không thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKBH-01** | Xem thống kê bán hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Hiển thị thống kê bán hàng: Card "Sản phẩm bán chạy" với CardDescription "Top sản phẩm có doanh số cao nhất", CardContent có danh sách sản phẩm được sắp xếp theo doanh số, mỗi sản phẩm có: số thứ tự (#1, #2...) trong vòng tròn bg-primary/10, tên sản phẩm (font-medium), số lượng đã bán (text-sm text-muted-foreground), doanh thu (font-medium, toLocaleString), growth % với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKBH-02** | Xem sách bán chạy | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm"<br>4. Xem danh sách sách bán chạy | Hiển thị danh sách sách bán chạy với xếp hạng (từ #1 đến #5 hoặc nhiều hơn), mỗi sách có: số thứ tự trong vòng tròn, tên sách, số lượng đã bán (VD: "156 sản phẩm đã bán"), doanh thu (VD: "187,200,000đ"), growth % (VD: "+15%"), các sách được sắp xếp theo doanh số từ cao xuống thấp | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Theo dõi trạng thái yêu cầu
+### Function: Xem báo cáo khách hàng
 
-#### Check FUNC: Theo dõi trạng thái yêu cầu
+#### Check FUNC: Xem báo cáo khách hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TDYC-01** | Xem trạng thái yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Xem trạng thái các yêu cầu trong bảng | Hiển thị trạng thái của các yêu cầu dưới dạng Badge với màu sắc tương ứng: "Chờ phê duyệt" (màu vàng/cam), "Đã phê duyệt" (màu xanh), "Từ chối" (màu đỏ), "Đang xử lý" (màu xanh dương), "Hoàn thành" (màu xanh lá), có thể có icon tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TDYC-02** | Cập nhật trạng thái yêu cầu | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests/[id]<br>3. Click nút "Cập nhật trạng thái" hoặc chọn trạng thái mới từ Select<br>4. Nhập ghi chú (nếu có)<br>5. Click "Lưu" | Hiển thị form hoặc Dialog với Select trạng thái (các option: Chờ phê duyệt, Đã phê duyệt, Từ chối, Đang xử lý, Hoàn thành), có thể có Textarea ghi chú. Sau khi lưu: trạng thái yêu cầu được cập nhật thành công, hiển thị thông báo thành công (toast success), Badge trạng thái được cập nhật với màu sắc và icon tương ứng, thông báo được gửi cho người gửi về việc thay đổi trạng thái, lịch sử xử lý được ghi nhận với hành động "Cập nhật trạng thái" | FUNC-DN-02, FUNC-CTYC-01 | Pass | 11/15/2015 | |
-| **FUNC-TDYC-03** | Giao việc cho nhân viên | 1. Đăng nhập Admin<br>2. Truy cập /admin/requests<br>3. Click nút "Giao việc" trên một yêu cầu<br>4. Chọn nhân viên từ Select<br>5. Nhập hướng dẫn/ghi chú<br>6. Click "Xác nhận" | Hiển thị Dialog hoặc form giao việc với Select "Chọn nhân viên" (danh sách nhân viên), Textarea "Hướng dẫn" hoặc "Ghi chú". Sau khi xác nhận: yêu cầu được giao cho nhân viên thành công, hiển thị thông báo thành công (toast success), trạng thái cập nhật thành "Đang xử lý", thông báo được gửi cho nhân viên được giao việc qua email/SMS, lịch sử xử lý được ghi nhận với hành động "Giao việc" và người được giao, dialog/form đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BCKH-01** | Xem báo cáo khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Hiển thị báo cáo khách hàng: grid grid-cols-1 md:grid-cols-2 gap-4 với 4 Card: Card "Khách hàng mới" (23, +28%), Card "Khách VIP" (12, +50%), Card "Tỷ lệ quay lại" (68%, +10%), Card "Giá trị đơn hàng TB" (1.3M đ, +14%). Mỗi card có: label (text-sm text-muted-foreground), số liệu (text-2xl font-bold, format đặc biệt cho số lớn), growth % với icon TrendingUp màu xanh, icon Users h-8 w-8 text-primary | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BCKH-02** | Xuất báo cáo khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng"<br>4. Click nút "Xuất báo cáo" | Báo cáo khách hàng được xuất thành công dưới dạng PDF hoặc Excel, file chứa: thống kê khách hàng mới, VIP, tỷ lệ quay lại, giá trị đơn hàng TB, có thể có biểu đồ phân bố khách hàng, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Xem báo cáo tồn kho
+
+#### Check FUNC: Xem báo cáo tồn kho
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-BCTK-01** | Xem báo cáo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Hiển thị báo cáo tồn kho: Card "Cảnh báo tồn kho" với CardDescription "Sản phẩm sắp hết hàng cần nhập thêm", CardContent có danh sách sản phẩm với: tên sản phẩm (font-medium), thông tin "Còn [số] sản phẩm (Tối thiểu: [số])" (text-sm text-muted-foreground), Badge trạng thái với variant tương ứng (destructive cho "Nguy hiểm", secondary cho "Cảnh báo", outline cho "Hết hàng"), các sản phẩm được sắp xếp theo mức độ nguy hiểm | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BCTK-02** | Xuất báo cáo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho"<br>4. Click nút "Xuất báo cáo" | Báo cáo tồn kho được xuất thành công dưới dạng PDF hoặc Excel, file chứa: tổng quan tình trạng kho, danh sách sản phẩm sắp hết/hết hàng với số lượng hiện tại và tối thiểu, trạng thái, có thể có biểu đồ phân bố tồn kho, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
