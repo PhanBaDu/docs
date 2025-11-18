@@ -1,14 +1,15 @@
-# Test Case Template - Quản lý tài khoản (Nhân viên kho)
+# Test Case Template - Quản lý sách (Nhân viên kho)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên kho)**
 
 ## Test Requirement
-1. Đăng nhập hệ thống `/nhanvienkho/auth/login`
-2. Khôi phục mật khẩu `/nhanvienkho/auth/forgot-password`
-3. Quản lý thông tin cá nhân `/nhanvienkho/account`
-4. Đổi mật khẩu `/nhanvienkho/account/change-password`
-5. Đăng xuất hệ thống `/nhanvienkho/logout`
+1. Hiển thị danh sách & bộ lọc sách `/nhanvienkho/books`
+2. Xem chi tiết sách `/nhanvienkho/books/[id]`
+3. Thêm sách mới `/nhanvienkho/books/new`
+4. Chỉnh sửa thông tin sách `/nhanvienkho/books/[id]/edit`
+5. Ẩn sách & ghi nhận lý do (dialog trong trang chi tiết)
+6. Tìm kiếm nâng cao (kết hợp filter/sort)
 
 ---
 
@@ -18,118 +19,134 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 25 |
+| **Pass** | 34 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 25 |
+| **Number of Test cases** | 34 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập hệ thống
+### Function: Hiển thị danh sách & bộ lọc sách
 
-#### Check GUI: `/nhanvienkho/auth/login`
+#### Check GUI: `/nhanvienkho/books`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-LOGIN-01** | Kiểm tra bố cục form đăng nhập | 1. Mở `/nhanvienkho/auth/login` | Card trung tâm max-w-md với header chứa logo avatar chữ `K`, `CardTitle` “Đăng nhập - Nhân viên kho”, `CardDescription` “Truy cập hệ thống quản lý kho”; form gồm Input `Tên đăng nhập hoặc Email`, Input password với placeholder `••••••••`, checkbox `Ghi nhớ đăng nhập`, link `Quên mật khẩu?`, nút `Đăng nhập` full width | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **GUI-KW-LOGIN-02** | Kiểm tra vùng thông báo | 1. Nhập sai để trigger lỗi | Sau submit hiển thị `Alert variant="destructive"` chứa thông báo lỗi; khi thành công hiển thị `Alert` thường với text “Đăng nhập thành công” | FUNC-KW-LOGIN-02 | Pass | 11/15/2015 | |
+| **GUI-KW-BOOK-LIST-01** | Kiểm tra header trang | 1. Đăng nhập kho<br>2. Truy cập `/nhanvienkho/books` | Header flex giữa: `h1` “Quản lý sách”, mô tả `Danh sách sách trong kho`, button `Thêm sách mới` (link `/nhanvienkho/books/new`) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **GUI-KW-BOOK-LIST-02** | Kiểm tra card thống kê | 1. Quan sát grid đầu | 4 `Card` hiển thị `Tổng số sách 1,250`, `Có sẵn 1,180`, `Hết hàng 45`, `Ẩn 25` với text-sm muted và số font-semibold | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **GUI-KW-BOOK-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Quan sát card thứ hai | CardTitle “Tìm kiếm & Bộ lọc”, description nêu tiêu chí; `Input` placeholder “Tìm tên sách…”, Select cho `Thể loại`, `Trạng thái`, `Sắp xếp` với options khớp code; grid md:grid-cols-6 | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **GUI-KW-BOOK-LIST-04** | Kiểm tra bảng danh sách | 1. Cuộn đến card Table | Table header gồm các cột Mã/Tên/Tác giả/Thể loại/Giá/Số lượng/Trạng thái/Thao tác; dòng mẫu hiển thị Badge `BK001`, `Đắc Nhân Tâm`, `Văn học`, etc và buttons `Xem chi tiết`, `Chỉnh sửa` | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Đăng nhập
+#### Check FUNC: Danh sách & bộ lọc
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-LOGIN-01** | Đăng nhập hợp lệ | 1. Nhập username hợp lệ<br>2. Nhập mật khẩu đúng<br>3. Click `Đăng nhập` | Form submit thành công, alert “Đăng nhập thành công”, chuyển hướng dashboard `/nhanvienkho` trong vòng 2s, lưu log đăng nhập (thời gian + IP) | None | Pass | 11/15/2015 | |
-| **FUNC-KW-LOGIN-02** | Sai thông tin đăng nhập | 1. Nhập mật khẩu sai | Hiển thị alert đỏ “Tên đăng nhập hoặc mật khẩu không đúng”, reset trường mật khẩu, không chuyển trang | None | Pass | 11/15/2015 | |
-| **FUNC-KW-LOGIN-03** | Bật Ghi nhớ đăng nhập | 1. Tick checkbox `Ghi nhớ đăng nhập`<br>2. Đăng nhập thành công | Token refresh lưu 30 ngày, lần sau tự điền, hiển thị thông báo “Đã bật ghi nhớ đăng nhập trên thiết bị này” | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-BOOK-LIST-01** | Tải danh sách mặc định | 1. Đăng nhập<br>2. Mở `/nhanvienkho/books` | API trả về danh sách, table hiển thị >=1 dòng, thống kê khớp dữ liệu tổng | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-BOOK-LIST-02** | Lọc theo thể loại | 1. Chọn `Thể loại = Văn học` | Table chỉ còn sách `category=vanhoc`, badge hiển thị `Văn học`, số liệu thống kê có thể cập nhật | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-BOOK-LIST-03** | Lọc theo trạng thái | 1. Chọn `Trạng thái = Hết hàng` | Table hiển thị sách `status=out`, badge `Hết hàng` (variant destructive) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-BOOK-LIST-04** | Sắp xếp theo giá giảm | 1. Chọn `Sắp xếp = Giá giảm dần` | Danh sách reorder, cột Giá hiển thị giảm dần; icon sort highlight (nếu có) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-BOOK-LIST-05** | Nút Thêm sách mới | 1. Click button `Thêm sách mới` | Điều hướng `/nhanvienkho/books/new` mở trang form | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Khôi phục mật khẩu
-
-#### Check GUI: `/nhanvienkho/auth/forgot-password`
+### Function: Tìm kiếm & gợi ý nâng cao
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-FP-01** | Kiểm tra layout trang khôi phục | 1. Mở `/nhanvienkho/auth/forgot-password` | Card max-w-lg, `CardTitle` “Khôi phục mật khẩu”, `CardDescription` hướng dẫn nhập email/SĐT, form có Input `Email hoặc Số điện thoại`, RadioGroup `Gửi qua Email/SMS`, 2 buttons `Gửi link khôi phục` (primary) và `Hủy` (outline), alert trạng thái | FUNC-KW-FP-01 | Pass | 11/15/2015 | |
-| **GUI-KW-FP-02** | Kiểm tra Radio phương thức xác thực | 1. Click từng radio | RadioGroup thay đổi highlight, label cập nhật, giữ layout flex items-center | FUNC-KW-FP-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-SEARCH-01** | Tìm theo tên/tác giả/mã | 1. Nhập `BK001` vào input | Gợi ý dropdown hiển thị BK001, table filter khớp; highlight từ khóa | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-SEARCH-02** | Không tìm thấy kết quả | 1. Nhập chuỗi không tồn tại | Table hiển thị empty state “Không tìm thấy sách phù hợp”, pagination ẩn | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-SEARCH-03** | Reset bộ lọc | 1. Xoá input, set select `Tất cả` | Danh sách trở lại mặc định, gợi ý ẩn | FUNC-KW-SEARCH-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Khôi phục mật khẩu
+### Function: Xem chi tiết sách
+
+#### Check GUI: `/nhanvienkho/books/BK001`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-FP-01** | Gửi link qua email | 1. Nhập email hợp lệ<br>2. Chọn `Gửi qua Email`<br>3. Click gửi | Alert hiển thị “Link khôi phục đã được gửi...”, hệ thống tạo token 15 phút, email chứa link reset | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-FP-02** | Gửi OTP qua SMS | 1. Nhập số điện thoại hợp lệ<br>2. Chọn `Gửi qua SMS` | Hệ thống gửi OTP 6 số, hiển thị hướng dẫn nhập OTP ở bước kế, ghi log kênh SMS | FUNC-KW-FP-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-FP-03** | Nhập thông tin không hợp lệ | 1. Để trống email/SĐT<br>2. Gửi | Hiển thị lỗi `Vui lòng nhập email hoặc số điện thoại hợp lệ`, không gọi API | None | Pass | 11/15/2015 | |
+| **GUI-KW-DETAIL-01** | Kiểm tra thông tin cơ bản | 1. Truy cập `/nhanvienkho/books/BK001` | Card “Thông tin cơ bản” grid md:grid-cols-3 hiển thị Mã/Tên/Tác giả/Thể loại/ Nhà XB/ Năm XB với Badge `Văn học` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-DETAIL-02** | Kiểm tra card Thông tin bán hàng | 1. Quan sát card thứ hai | Các trường Giá bán `89.000 VNĐ`, Số lượng `15`, Trạng thái Badge `Có sẵn`, Ngày nhập `2023-10-15`, Ngày cập nhật `2023-11-20` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-DETAIL-03** | Kiểm tra mô tả & hình ảnh | 1. Quan sát card `Mô tả sách` | Textarea default value + khung `div h-40 bg-muted` mô phỏng ảnh bìa | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-DETAIL-04** | Kiểm tra lịch sử nhập xuất | 1. Xem card cuối | Liệt kê các dòng `2023-11-20 • Nhập +15…`, `2023-11-21 • Xuất -3…` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-DETAIL-05** | Kiểm tra nhóm hành động | 1. Nhìn cuối trang | Buttons: `Chỉnh sửa` (variant outline, link edit), `Ẩn sách` (destructive), `Quay lại` | FUNC-KW-DETAIL-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Quản lý thông tin cá nhân
-
-#### Check GUI: `/nhanvienkho/account`
+#### Check FUNC: Chi tiết
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-ACC-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvienkho/account` | Hiển thị `h1` “Thông tin cá nhân” (text-2xl font-bold) và mô tả “Quản lý thông tin nhân viên kho” | FUNC-KW-ACC-01 | Pass | 11/15/2015 | |
-| **GUI-KW-ACC-02** | Kiểm tra card Hồ sơ | 1. Quan sát card đầu | CardTitle `Hồ sơ`, Thumbnail avatar chữ `K`, button `Tải lên ảnh mới`, thông tin `Chức vụ`, `Trạng thái tài khoản` với `Badge Hoạt động` | FUNC-KW-ACC-01 | Pass | 11/15/2015 | |
-| **GUI-KW-ACC-03** | Kiểm tra form thông tin liên hệ | 1. Quan sát card thứ hai | Grid md:grid-cols-2: các Input `Họ và tên`, `Số điện thoại`, `Email`, Textarea `Địa chỉ`, Input date `Ngày sinh`, Input `Giới tính`; buttons cuối trang “Lưu thay đổi”, “Hủy” | FUNC-KW-ACC-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-DETAIL-01** | Tải đúng dữ liệu | 1. Từ list click `Xem chi tiết` | Route `[id]` fetch book data theo ID, hiển thị khớp DB | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-DETAIL-02** | Điều hướng chỉnh sửa | 1. Click `Chỉnh sửa` | Điều hướng `/nhanvienkho/books/BK001/edit` | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-DETAIL-03** | Lịch sử nhập xuất tải đủ | 1. Xem API history | Timeline hiển thị đầy đủ, có phân biệt nhập/xuất, include người thực hiện & ghi chú | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Thông tin cá nhân
+### Function: Thêm sách mới
+
+#### Check GUI: `/nhanvienkho/books/new`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-ACC-01** | Xem thông tin cá nhân | 1. Đăng nhập<br>2. Truy cập `/nhanvienkho/account` | Dữ liệu hiển thị đúng profile DB (tên, sđt, email, địa chỉ, ngày sinh, giới tính, chức vụ, trạng thái), avatar placeholder nếu chưa có ảnh | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-ACC-02** | Cập nhật thông tin hợp lệ | 1. Sửa SĐT, địa chỉ<br>2. Click `Lưu thay đổi` | Validate thành công, hiển thị toast success “Đã lưu thông tin”, DB cập nhật, lịch sử thay đổi được log | FUNC-KW-ACC-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-ACC-03** | Validation email sai định dạng | 1. Nhập email `abc`<br>2. Lưu | Hiển thị lỗi tại field email “Email không hợp lệ”, không lưu | FUNC-KW-ACC-01 | Pass | 11/15/2015 | |
+| **GUI-KW-NEW-01** | Kiểm tra layout form | 1. Mở `/nhanvienkho/books/new` | Header `Thêm sách mới`, form grid md:grid-cols-2 gồm các Label/Input: Tên, Tác giả, Thể loại (Select), Nhà XB, Năm XB, Mã sách/ISBN, Giá bán, Số lượng nhập, Textarea mô tả, input file ảnh; button `Lưu`, `Hủy`, Alert hiển thị lỗi/thành công | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
+| **GUI-KW-NEW-02** | Kiểm tra cảnh báo trùng mã | 1. Nhập `BK001` vào field mã | Text nhỏ màu đỏ `⚠️ Mã sách này đã tồn tại...` hiển thị ngay dưới input | FUNC-KW-NEW-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đổi mật khẩu
-
-#### Check GUI: `/nhanvienkho/account/change-password`
+#### Check FUNC: Thêm sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-PW-01** | Kiểm tra bố cục | 1. Mở trang | Hiển thị `h1` “Đổi mật khẩu”, mô tả yêu cầu độ mạnh, Card với form gồm 3 Input password (current/new/confirm) và button pair `Đổi mật khẩu` & `Hủy`, Alert hiển thị trạng thái | FUNC-KW-PW-01 | Pass | 11/15/2015 | |
-| **GUI-KW-PW-02** | Kiểm tra thông báo | 1. Submit thành công<br>2. Submit lỗi | Sau thành công hiển thị Alert thường “Đổi mật khẩu thành công”; khi lỗi hiển thị Alert đỏ với message tương ứng | FUNC-KW-PW-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-NEW-01** | Thêm sách hợp lệ | 1. Nhập đầy đủ thông tin hợp lệ<br>2. Nhập mã mới `BK200`<br>3. Click `Lưu` | Simulate API success: alert “Thêm sách mới thành công”, form reset, danh sách update (tăng tổng sách) | FUNC-KW-BOOK-LIST-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-NEW-02** | Mã sách trùng | 1. Nhập mã `BK001` | Không gọi API, hiển thị error `Mã sách "BK001" đã tồn tại...`, button `Lưu` disabled | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-NEW-03** | Lỗi transaction | 1. Gây lỗi mô phỏng (API fail) | Alert đỏ `Lỗi: ... Đã rollback transaction`, form giữ dữ liệu để sửa; log error | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-NEW-04** | Upload ảnh không hợp lệ | 1. Chọn file >5MB | Hiển thị lỗi “Kích thước ảnh vượt quá 5MB”, upload bị từ chối | FUNC-KW-NEW-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Đổi mật khẩu
+### Function: Chỉnh sửa thông tin sách
+
+#### Check GUI: `/nhanvienkho/books/[id]/edit`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-PW-01** | Đổi mật khẩu thành công | 1. Nhập mật khẩu hiện tại đúng<br>2. Nhập mật khẩu mới hợp lệ<br>3. Submit | Hệ thống xác thực, cập nhật mật khẩu, logout các thiết bị khác, Alert success, ghi log bảo mật | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-PW-02** | Sai mật khẩu hiện tại | 1. Nhập mật khẩu hiện tại sai | Hiển thị lỗi “Mật khẩu hiện tại không đúng”, không lưu | FUNC-KW-PW-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-PW-03** | Mật khẩu mới không đạt yêu cầu | 1. Nhập mật khẩu mới < 8 ký tự | Hiển thị lỗi “Mật khẩu phải có ít nhất 8 ký tự...”, highlight field | FUNC-KW-PW-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-PW-04** | Hủy thao tác đổi mật khẩu | 1. Click `Hủy` | Form reset, không lưu thay đổi, điều hướng về `/nhanvienkho/account` | FUNC-KW-PW-01 | Pass | 11/15/2015 | |
+| **GUI-KW-EDIT-01** | Bố cục form edit | 1. Mở `/nhanvienkho/books/BK001/edit` | Header `Chỉnh sửa sách - BK001`, form tương tự trang thêm nhưng có giá trị default; buttons `Lưu thay đổi`, `Hủy`, Alert hiển thị trạng thái | FUNC-KW-EDIT-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đăng xuất hệ thống
-
-#### Check GUI: `/nhanvienkho/logout`
+#### Check FUNC: Chỉnh sửa
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-LOGOUT-01** | Kiểm tra modal đăng xuất | 1. Đăng nhập rồi truy cập `/nhanvienkho/logout` | Card giữa màn hình với `CardTitle` “Đăng xuất hệ thống”, `CardDescription` hỏi xác nhận, 2 nút `Có, đăng xuất` (primary) và `Hủy` (outline) | FUNC-KW-LOGOUT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EDIT-01** | Cập nhật thông tin hợp lệ | 1. Sửa giá bán & mô tả<br>2. Click `Lưu thay đổi` | Alert success “Cập nhật thông tin sách thành công”, quay lại trang chi tiết hoặc ở lại (tùy config), history log record cũ/mới | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EDIT-02** | Validation thiếu dữ liệu | 1. Xóa tên sách<br>2. Lưu | Input hiển thị lỗi `Trường này bắt buộc`, không gọi API | FUNC-KW-EDIT-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-EDIT-03** | Hủy chỉnh sửa | 1. Click `Hủy` | Điều hướng về `/nhanvienkho/books/BK001` hoặc trang trước, không lưu thay đổi | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Đăng xuất
+### Function: Ẩn sách
+
+#### Check GUI: Dialog Ẩn sách (từ `/nhanvienkho/books/BK001`)
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-LOGOUT-01** | Đăng xuất thành công | 1. Click `Có, đăng xuất` | Phiên hiện tại bị revoke, cookie/token xóa, chuyển hướng `/nhanvienkho/auth/login`, hiển thị toast “Đã đăng xuất thành công” | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-LOGOUT-02** | Hủy đăng xuất | 1. Click `Hủy` | Quay lại trang trước (dashboard), phiên vẫn hoạt động, ghi log “Cancel logout” | FUNC-KW-LOGIN-01 | Pass | 11/15/2015 | |
+| **GUI-KW-HIDE-01** | Kiểm tra dialog | 1. Click `Ẩn sách` | DialogTitle `Ẩn sách`, description “Bạn có chắc chắn muốn ẩn sách này?”, Textarea placeholder “Lý do ẩn sách (bắt buộc)”, buttons `Hủy`, `Có, ẩn sách` | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
+
+---
+
+#### Check FUNC: Ẩn sách
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-KW-HIDE-01** | Ẩn sách thành công | 1. Nhập lý do “Ngừng kinh doanh”<br>2. Click `Có, ẩn sách` | Status sách đổi `Ẩn`, hiển thị badge `Ẩn`, log ghi lý do & người thực hiện, danh sách cập nhật cột trạng thái | FUNC-KW-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-HIDE-02** | Thiếu lý do | 1. Bỏ trống textarea<br>2. Click `Có, ẩn sách` | Validation hiển thị “Vui lòng nhập lý do ẩn sách”, dialog không đóng | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-HIDE-03** | Hủy thao tác | 1. Click `Hủy` hoặc icon close | Dialog đóng, trạng thái giữ nguyên | FUNC-KW-HIDE-01 | Pass | 11/15/2015 | |
 
 ---
 
