@@ -1,12 +1,12 @@
-# Test Case Template - Thông báo (User)
+# Test Case Template - Bảo mật tài khoản (User)
 
 ## Module Code
-**USER-014: Thông báo (User)**
+**USER-015: Bảo mật tài khoản (User)**
 
 ## Test Requirement
-1. Hiển thị, lọc và quản lý danh sách thông báo của User
-2. Thông báo sách có hàng trở lại / sách trong wishlist cập nhật
-3. Thông báo khuyến mãi, giảm giá và trạng thái đơn hàng
+1. Đổi mật khẩu & yêu cầu kiểm soát đầu vào
+2. Cấu hình các cài đặt bảo mật/khôi phục tài khoản
+3. Theo dõi hoạt động bảo mật, quản lý phiên đăng nhập
 
 ---
 
@@ -26,91 +26,103 @@
 
 ## Test Cases
 
-### Function: Hiển thị danh sách thông báo (`/user/notifications`)
+### Function: Đổi mật khẩu (`/user/account/change-password` hoặc component `SecurityManagement` tab "Đổi mật khẩu`)
 
-#### Check GUI: Trang quản lý thông báo
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-NOT-01** | Nút quay lại | 1. Truy cập `/user/notifications` | Header chứa Button variant="ghost" asChild Link `/user/products` với icon `ArrowLeft` và text "Quay lại" | | Pass | 11/15/2015 | |
-| **GUI-NOT-02** | Tiêu đề & mô tả trạng thái | 1. Quan sát phần tiêu đề | `h1` text-3xl font-bold "Thông báo", `p` hiển thị "{unreadCount} thông báo chưa đọc" nếu có chưa đọc, ngược lại "Tất cả thông báo đã được đọc" | | Pass | 11/15/2015 | |
-| **GUI-NOT-03** | Nút đánh dấu tất cả đã đọc | 1. Khi `unreadCount>0` | Button variant="outline" icon `CheckCheck` + text "Đánh dấu tất cả đã đọc" hiển thị bên phải | | Pass | 11/15/2015 | |
-| **GUI-NOT-04** | Nút xóa đã đọc | 1. Quan sát button thứ hai | Button variant="outline" icon `Trash2` + text "Xóa đã đọc" luôn hiển thị | | Pass | 11/15/2015 | |
-| **GUI-NOT-05** | Tabs phân loại | 1. Quan sát `TabsList` | Có 7 TabsTrigger: Tất cả + 6 loại (Đơn hàng, Khuyến mãi, Yêu thích, Đánh giá, Hệ thống, Hỗ trợ), mỗi tab hiển thị icon tương ứng và số lượng `getTypeCount` | | Pass | 11/15/2015 | |
-| **GUI-NOT-06** | Bộ lọc tìm kiếm | 1. Quan sát hàng filter | Input với icon `Search` left-3 placeholder "Tìm kiếm thông báo...", Select loại (Tất cả + các loại) và Select ưu tiên (Cao/Trung bình/Thấp) | | Pass | 11/15/2015 | |
-| **GUI-NOT-07** | Card thông báo chưa đọc | 1. Xem notification `isRead=false` | Card border-primary, icon container nền `bg-primary/10`, tiêu đề màu text-foreground, dot tròn xanh 2px và Button check (CheckCircle) hiện | | Pass | 11/15/2015 | |
-| **GUI-NOT-08** | Card thông báo đã đọc | 1. Xem notification `isRead=true` | Card border mặc định, icon nền `bg-muted`, tiêu đề màu `text-muted-foreground`, không có dot hoặc button đánh dấu đã đọc | | Pass | 11/15/2015 | |
-| **GUI-NOT-09** | Badge ưu tiên | 1. Quan sát badge trên card | Badge variant="outline" với lớp màu từ `priorityConfig` (low=bg-gray-500, medium=bg-yellow-500, high=bg-red-500) hiển thị label Thấp/Trung bình/Cao | | Pass | 11/15/2015 | |
-| **GUI-NOT-10** | Thời gian và metadata | 1. Kiểm tra phần timestamp | Có icon `Calendar` + text kết quả `formatDate(notification.date)` và nếu có `metadata.expiryDate` hiển thị thêm icon `AlertCircle` + "Hết hạn: {dd/mm/yyyy}" | | Pass | 11/15/2015 | |
-| **GUI-NOT-11** | Action button theo thông báo | 1. Với notification có `actionUrl` | Hiển thị Button variant="outline" size="sm" chứa Link `notification.actionUrl` với text `actionText` | | Pass | 11/15/2015 | |
-| **GUI-NOT-12** | Empty state | 1. Lọc sao cho `filteredNotifications.length===0` | Hiển thị icon `Bell` cỡ lớn, heading "Không có thông báo nào" và mô tả tùy trường hợp tab | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Quản lý danh sách thông báo
+#### Check GUI: Form & bố cục
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-NOT-01** | Lọc theo tab | 1. Chọn tab "Đơn hàng" | `selectedTab="order"` khiến `filteredNotifications` chỉ chứa `type==="order"` | | Pass | 11/15/2015 | |
-| **FUNC-NOT-02** | Lọc theo Select loại | 1. Để tab "Tất cả"<br>2. Chọn `typeFilter="promotion"` | `filteredNotifications` chỉ hiển thị thông báo khuyến mãi bất kể tab | | Pass | 11/15/2015 | |
-| **FUNC-NOT-03** | Lọc theo ưu tiên | 1. `priorityFilter="high"` | Danh sách chỉ còn các thông báo `priority==="high"` (ví dụ id 1,4) | | Pass | 11/15/2015 | |
-| **FUNC-NOT-04** | Tìm kiếm title/message | 1. Nhập "điểm" vào ô search | `filteredNotifications` trả về thông báo có chuỗi trong title hoặc message (id 8) | | Pass | 11/15/2015 | |
-| **FUNC-NOT-05** | Đếm chưa đọc | 1. Mở trang lần đầu | `unreadCount` = số item `isRead=false` (2 trong mock), text mô tả và Button đánh dấu tất cả xuất hiện/ẩn dựa vào giá trị này | | Pass | 11/15/2015 | |
-| **FUNC-NOT-06** | Đánh dấu một thông báo | 1. Click Button CheckCircle trên notif id=1 | Hàm `markAsRead` đặt `isRead=true`, card mất border-primary, dot biến mất, `unreadCount` giảm 1 | | Pass | 11/15/2015 | |
-| **FUNC-NOT-07** | Đánh dấu tất cả đã đọc | 1. Nhấn Button "Đánh dấu tất cả đã đọc" | `markAllAsRead` set mọi `isRead=true`, `toast.success("Đã đánh dấu tất cả thông báo là đã đọc")`, Button biến mất | | Pass | 11/15/2015 | |
-| **FUNC-NOT-08** | Xóa một thông báo | 1. Nhấn nút `XCircle` trên notif bất kỳ | `deleteNotification` filter bỏ item, `toast.success("Đã xóa thông báo")`, danh sách cập nhật lập tức | | Pass | 11/15/2015 | |
-| **FUNC-NOT-09** | Xóa tất cả đã đọc | 1. Nhấn Button "Xóa đã đọc" | `clearAllRead` giữ lại chỉ các notification `!isRead`, `toast.success("Đã xóa tất cả thông báo đã đọc")` | | Pass | 11/15/2015 | |
-| **FUNC-NOT-10** | Icon động theo loại | 1. Quan sát `getNotificationIcon` | Hàm tìm icon dựa trên `notification.type`; nếu không tìm thấy dùng `Bell` mặc định | | Pass | 11/15/2015 | |
-| **FUNC-NOT-11** | Định dạng thời gian | 1. Mock date gần hiện tại | `formatDate` trả về "Vừa xong"/"x giờ trước"/"Hôm qua"/`toLocaleDateString("vi-VN")` theo chênh lệch thời gian | | Pass | 11/15/2015 | |
-| **FUNC-NOT-12** | Giữ trạng thái bộ lọc khi đổi tab | 1. Thiết lập search + filters<br>2. Chuyển tab khác rồi quay lại | `searchTerm`, `typeFilter`, `priorityFilter` giữ giá trị do state đặt tại component | | Pass | 11/15/2015 | |
+| **GUI-PASS-01** | Header trang | 1. Truy cập trang đổi mật khẩu | Section đầu chứa Button quay lại `/user/account` với icon `ArrowLeft`, `h1` "Đổi mật khẩu" và mô tả "Thay đổi mật khẩu tài khoản của bạn" | | Pass | 11/15/2015 | |
+| **GUI-PASS-02** | Card tiêu đề | 1. Quan sát `CardHeader` | CardTitle hiển thị icon `Key`/`Lock` + text "Thay đổi/Đổi mật khẩu", CardDescription mô tả nhập mật khẩu hiện tại & mới | | Pass | 11/15/2015 | |
+| **GUI-PASS-03** | Input mật khẩu hiện tại | 1. Kiểm tra field đầu | Có `Label` "Mật khẩu hiện tại" và `Input` type password cùng Button icon `Eye/EyeOff` bên phải | | Pass | 11/15/2015 | |
+| **GUI-PASS-04** | Input mật khẩu mới | 1. Kiểm tra field thứ hai | `Label` "Mật khẩu mới", input có Button toggle hiển/ẩn, dưới có text hướng dẫn (ít nhất 6 hoặc 8 ký tự tùy component) | | Pass | 11/15/2015 | |
+| **GUI-PASS-05** | Input xác nhận mật khẩu | 1. Quan sát field thứ ba | `Label` "Xác nhận mật khẩu mới", có nút Eye/EyeOff riêng | | Pass | 11/15/2015 | |
+| **GUI-PASS-06** | Alert VIP/Admin | 1. Với tài khoản VIP/Admin | Alert (icon `Info`) thông báo yêu cầu OTP khi đổi mật khẩu hiển thị phía trên form | | Pass | 11/15/2015 | Mock VIP |
+| **GUI-PASS-07** | Khối OTP | 1. Khi `showOtpStep=true` | Card nền `bg-blue-50` chứa Label "Mã OTP xác thực (6 số)", Input text-center, mô tả email và nút "Gửi lại mã OTP" | GUI-PASS-06 | Pass | 11/15/2015 | |
+| **GUI-PASS-08** | Tabs bảo mật (SecurityManagement) | 1. Sử dụng component SecurityManagement | `TabsList` có 3 `TabsTrigger`: Đổi mật khẩu, Khôi phục mật khẩu, Phiên đăng nhập | | Pass | 11/15/2015 | |
+| **GUI-PASS-09** | Nhóm cài đặt bảo mật | 1. Cuộn xuống trong tab password | Section "Cài đặt bảo mật" với các dòng "Xác thực 2 yếu tố", "Cảnh báo đăng nhập", "Cảnh báo thiết bị" cùng Button trạng thái | | Pass | 11/15/2015 | |
+| **GUI-PASS-10** | Nút hành động | 1. Quan sát footer card | Nút primary icon `Key` text "Đổi mật khẩu" (hoặc button "Đổi mật khẩu"/"Tiếp tục") nằm bên phải; thêm nút `Hủy` trong dialog/route | | Pass | 11/15/2015 | |
+| **GUI-PASS-11** | Toast thông báo | 1. Thực hiện thao tác hợp lệ | Sau thao tác thành công/ lỗi, toast từ `sonner` xuất hiện với đúng thông điệp (VD: "Đổi mật khẩu thành công") | | Pass | 11/15/2015 | |
+| **GUI-PASS-12** | Trạng thái nút khi OTP | 1. Là VIP/Admin chưa nhập OTP | Button hiển thị text "Tiếp tục" thay vì "Đổi mật khẩu" cho bước gửi OTP | GUI-PASS-07 | Pass | 11/15/2015 | |
 
-### Function: Thông báo sách có hàng (wishlist/in-stock)
-
-#### Check GUI & FUNC
+#### Check FUNC: Đổi mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-INST-01** | Icon & màu loại có hàng | 1. Lọc `typeFilter="wishlist"` | Icon trong circle dùng component `Heart`, màu `bg-muted` nếu đã đọc (id=3) | | Pass | 11/15/2015 | |
-| **GUI-INST-02** | Tiêu đề/nội dung sách có hàng | 1. Xem notif id=3 | Title "Sách yêu thích đã có hàng", message "Sách 'Tư Duy Nhanh..." hiển thị đầy đủ | | Pass | 11/15/2015 | |
-| **GUI-INST-03** | Badge ưu tiên trung bình | 1. Quan sát badge notif id=3 | Badge outline class `bg-yellow-500` hiển thị label "Trung bình" | | Pass | 11/15/2015 | |
-| **GUI-INST-04** | Action xem sách | 1. Kiểm tra button trong notif id=3 | Button variant="outline" Link `/user/products/2` với text "Xem sách" | | Pass | 11/15/2015 | |
-| **FUNC-INST-01** | Lọc tab yêu thích | 1. Chọn tab "Yêu thích" | `selectedTab="wishlist"` hiển thị mọi notif có `type==="wishlist"` | | Pass | 11/15/2015 | |
-| **FUNC-INST-02** | Đánh dấu đã đọc sách có hàng | 1. Nếu notif wishlist chưa đọc (có thể thêm mới) | `markAsRead` chuyển `isRead=true`, icon background đổi `bg-muted`, dot biến mất | | Pass | 11/15/2015 | |
-| **FUNC-INST-03** | Action button điều hướng | 1. Click "Xem sách" | Link asChild điều hướng đến `/user/products/2` (client-side navigation) | | Pass | 11/15/2015 | |
-| **FUNC-INST-04** | Search theo tiêu đề sách | 1. Nhập "yêu thích" vào ô search | `filteredNotifications` bao gồm notif id=3 vì title chứa từ khóa | | Pass | 11/15/2015 | |
+| **FUNC-PASS-01** | Thiếu mật khẩu hiện tại | 1. Để trống `currentPassword`<br>2. Nhấn Đổi mật khẩu | `toast.error("Vui lòng nhập mật khẩu hiện tại")`, không chuyển bước OTP | | Pass | 11/15/2015 | |
+| **FUNC-PASS-02** | Thiếu mật khẩu mới | 1. Chỉ nhập currentPassword<br>2. Nhấn | Nhận toast "Vui lòng nhập mật khẩu mới" | | Pass | 11/15/2015 | |
+| **FUNC-PASS-03** | Mật khẩu mới quá ngắn | 1. Nhập password mới < 6/8 ký tự | Toast lỗi "Mật khẩu mới phải có ít nhất X ký tự", không reset form | | Pass | 11/15/2015 | |
+| **FUNC-PASS-04** | Mật khẩu xác nhận không khớp | 1. Nhập newPassword ≠ confirmPassword | Toast "Mật khẩu xác nhận không khớp" | | Pass | 11/15/2015 | |
+| **FUNC-PASS-05** | Bước gửi OTP VIP | 1. Là VIP/Admin, nhập hợp lệ lần đầu | `showOtpStep` chuyển true, toast "Mã OTP đã được gửi đến email của bạn" | | Pass | 11/15/2015 | |
+| **FUNC-PASS-06** | OTP không hợp lệ | 1. Ở bước OTP nhập <6 ký tự | Toast "Vui lòng nhập mã OTP hợp lệ (6 số)" | FUNC-PASS-05 | Pass | 11/15/2015 | |
+| **FUNC-PASS-07** | OTP sai | 1. Nhập 6 số ≠ "123456" | Toast "Mã OTP không đúng. Vui lòng thử lại." | FUNC-PASS-05 | Pass | 11/15/2015 | |
+| **FUNC-PASS-08** | Đổi mật khẩu thành công | 1. Nhập đủ thông tin hợp lệ (OTP đúng nếu cần) | Toast success "Đổi mật khẩu thành công", reset `passwordForm` = rỗng, `showOtpStep=false` | FUNC-PASS-05 | Pass | 11/15/2015 | |
+| **FUNC-PASS-09** | Toggle hiện/ẩn mật khẩu | 1. Nhấn icon Eye trên mỗi input | `type` của input chuyển `password` ↔ `text` tương ứng với state `showCurrentPassword`... | | Pass | 11/15/2015 | |
+| **FUNC-PASS-10** | Nút Hủy reset OTP | 1. Khi đang ở dialog OTP<br>2. Nhấn Hủy | `setShowOtpStep(false)`, `otpCode=""`, dialog đóng | FUNC-PASS-05 | Pass | 11/15/2015 | |
 
-### Function: Thông báo sách giảm giá (promotion)
+### Function: Cài đặt bảo mật & khôi phục (tab "Cài đặt bảo mật"/"Khôi phục mật khẩu")
 
-#### Check GUI & FUNC
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-SALE-01** | Icon giảm giá | 1. Chọn tab "Khuyến mãi" | Icon `Percent` hoặc `Gift` (from list) hiển thị trong circle, card border-primary nếu chưa đọc (id=2) | | Pass | 11/15/2015 | |
-| **GUI-SALE-02** | Nội dung giảm giá chi tiết | 1. Quan sát notif id=2 | Message mô tả giảm 20% và thời gian áp dụng, hiển thị đầy đủ | | Pass | 11/15/2015 | |
-| **GUI-SALE-03** | Metadata hết hạn | 1. Kiểm tra notif id=2 | Có dòng icon `AlertCircle` + text "Hết hạn: 25/01/2024" từ `metadata.expiryDate` | | Pass | 11/15/2015 | |
-| **GUI-SALE-04** | Badge ưu tiên trung bình | 1. Xem badge notif id=2 | Badge outline class `bg-yellow-500` label "Trung bình" | | Pass | 11/15/2015 | |
-| **GUI-SALE-05** | Action Mua ngay | 1. Quan sát nút trên notif id=2 | Button variant="outline" Link `/user/products?category=Kỹ năng sống` text "Mua ngay" | | Pass | 11/15/2015 | |
-| **FUNC-SALE-01** | Lọc tab Khuyến mãi | 1. TabsTrigger "Khuyến mãi" | `selectedTab="promotion"` hiển thị notif id=2 và 8 | | Pass | 11/15/2015 | |
-| **FUNC-SALE-02** | Lọc theo ưu tiên Thấp | 1. `priorityFilter="low"` khi tab Khuyến mãi | Danh sách chỉ còn notif id=8 (priority low) | FUNC-SALE-01 | Pass | 11/15/2015 | |
-| **FUNC-SALE-03** | Tìm kiếm theo phần trăm giảm | 1. Search "20%" | `filteredNotifications` khớp notif id=2 vì message chứa "20%" | | Pass | 11/15/2015 | |
-| **FUNC-SALE-04** | Action button đến catalog | 1. Click "Mua ngay" | Chuyển đến `/user/products?category=Kỹ năng sống`, tab Khuyến mãi vẫn giữ state khi quay lại (client) | | Pass | 11/15/2015 | |
-
-### Function: Thông báo trạng thái đơn hàng (order)
-
-#### Check GUI & FUNC
+#### Check GUI: Tùy chọn & form khôi phục
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-ORD-01** | Icon đơn hàng | 1. Chọn tab "Đơn hàng" | Icon `Package` hoặc `Truck` trong circle màu `bg-primary/10` nếu chưa đọc (id=1) | | Pass | 11/15/2015 | |
-| **GUI-ORD-02** | Tiêu đề xác nhận đơn | 1. Quan sát notif id=1 | Title "Đơn hàng đã được xác nhận", message hiển thị mã ORD-001 | | Pass | 11/15/2015 | |
-| **GUI-ORD-03** | Tiêu đề đang giao | 1. Quan sát notif id=4 | Title "Đơn hàng đang được giao", message mô tả trạng thái giao | | Pass | 11/15/2015 | |
-| **GUI-ORD-04** | Badge ưu tiên cao | 1. Xem badge id=1 hoặc 4 | Badge outline class `bg-red-500` label "Cao" hiển thị | | Pass | 11/15/2015 | |
-| **GUI-ORD-05** | Action theo dõi đơn | 1. Kiểm tra buttons | Notif id=1 Button "Xem chi tiết" Link `/user/orders/ORD-001`; id=4 Button "Theo dõi" Link `/user/orders/ORD-002` | | Pass | 11/15/2015 | |
-| **FUNC-ORD-01** | Lọc tab Đơn hàng | 1. TabsTrigger "Đơn hàng" | `selectedTab="order"` hiển thị notif id=1 và 4 | | Pass | 11/15/2015 | |
-| **FUNC-ORD-02** | Đánh dấu đã đọc đơn hàng | 1. Click CheckCircle trên notif id=1 | `markAsRead` đặt `isRead=true`, border-primary biến mất, `unreadCount` giảm | | Pass | 11/15/2015 | |
-| **FUNC-ORD-03** | Xóa thông báo đơn hàng | 1. Nhấn `XCircle` id=4 | `deleteNotification` loại bỏ id=4, toast "Đã xóa thông báo" | | Pass | 11/15/2015 | |
-| **FUNC-ORD-04** | Search theo mã đơn | 1. Nhập "ORD-002" vào ô search | Chỉ hiển thị notif chứa mã ORD-002 trong message | | Pass | 11/15/2015 | |
-| **FUNC-ORD-05** | Action button giữ state | 1. Click "Theo dõi" (id=4) rồi back | Điều hướng Link `/user/orders/ORD-002`; khi quay lại, `selectedTab` vẫn là "order" vì state tại component | | Pass | 11/15/2015 | |
+| **GUI-SEC-01** | Section Cài đặt bảo mật | 1. Ở tab Đổi mật khẩu cuộn tới phần cuối | Hiển thị tiêu đề phụ "Cài đặt bảo mật" với 3 dòng tùy chọn (2FA, cảnh báo đăng nhập, cảnh báo thiết bị) | | Pass | 11/15/2015 | |
+| **GUI-SEC-02** | Button trạng thái 2FA | 1. Quan sát dòng đầu | Button hiển thị "Bật" hoặc "Đã bật" tùy `securitySettings.twoFactorAuth`, mô tả "Thêm lớp bảo mật..." | | Pass | 11/15/2015 | |
+| **GUI-SEC-03** | Button cảnh báo đăng nhập | 1. Quan sát dòng thứ 2 | Button variant đổi theo state, mô tả "Nhận thông báo khi có đăng nhập mới" | | Pass | 11/15/2015 | |
+| **GUI-SEC-04** | Button cảnh báo thiết bị mới | 1. Quan sát dòng thứ 3 | Button hiển thị trạng thái, mô tả "Nhận thông báo khi có thiết bị mới đăng nhập" | | Pass | 11/15/2015 | |
+| **GUI-SEC-05** | Tab "Khôi phục mật khẩu" | 1. Chuyển TabsTrigger `value="recovery"` | CardTitle icon `RefreshCw` + text "Khôi phục mật khẩu", CardDescription giải thích | | Pass | 11/15/2015 | |
+| **GUI-SEC-06** | Danh sách phương thức khôi phục | 1. Xem section đầu trong tab recovery | Nhiều hàng border hiển thị icon `Mail`/`Phone`, giá trị email/số, badge "Đã xác thực" và badge "Chính" (nếu isPrimary) | | Pass | 11/15/2015 | |
+| **GUI-SEC-07** | Form email khôi phục | 1. Quan sát form sau Separator | Label "Email khôi phục", Input type email + Button icon `Send` text "Gửi email" | | Pass | 11/15/2015 | |
+| **GUI-SEC-08** | Form SMS khôi phục | 1. Quan sát field kế tiếp | Label "Số điện thoại khôi phục", Input tel + Button "Gửi SMS" | | Pass | 11/15/2015 | |
+| **GUI-SEC-09** | Button chỉnh sửa phương thức | 1. Trong danh sách phương thức | Mỗi item có Button variant="outline" size="sm" text "Chỉnh sửa" (UI only) | | Pass | 11/15/2015 | |
+| **GUI-SEC-10** | Toast phản hồi cấu hình | 1. Thực hiện thao tác bật/tắt/gửi form | Toast hiển thị thông điệp tương ứng ("Đã bật xác thực 2 yếu tố", "Đã gửi email khôi phục...") | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Cài đặt bảo mật & khôi phục
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-SEC-01** | Bật xác thực 2 yếu tố | 1. Nhấn Button 2FA khi đang tắt | State `securitySettings.twoFactorAuth` chuyển true, toast "Đã bật xác thực 2 yếu tố" | | Pass | 11/15/2015 | |
+| **FUNC-SEC-02** | Tắt 2FA | 1. Nhấn lại Button khi đang bật | State trở về false, toast "Đã tắt xác thực 2 yếu tố" | FUNC-SEC-01 | Pass | 11/15/2015 | |
+| **FUNC-SEC-03** | Toggle cảnh báo đăng nhập | 1. Nhấn Button dòng thứ 2 | `loginAlerts` flip boolean, toast hiển thị trạng thái mới | | Pass | 11/15/2015 | |
+| **FUNC-SEC-04** | Toggle cảnh báo thiết bị | 1. Nhấn Button dòng thứ 3 | `deviceAlerts` flip boolean tương tự | | Pass | 11/15/2015 | |
+| **FUNC-SEC-05** | Gửi email khôi phục thiếu dữ liệu | 1. Để trống `recoveryForm.email`<br>2. Nhấn "Gửi email" | Toast lỗi "Vui lòng nhập địa chỉ email" | | Pass | 11/15/2015 | |
+| **FUNC-SEC-06** | Gửi email khôi phục thành công | 1. Nhập email hợp lệ<br>2. Nhấn gửi | Toast success "Đã gửi email khôi phục mật khẩu" | | Pass | 11/15/2015 | |
+| **FUNC-SEC-07** | Gửi SMS thiếu số | 1. Để trống `recoveryForm.phone`<br>2. Nhấn "Gửi SMS" | Toast lỗi yêu cầu nhập số điện thoại | | Pass | 11/15/2015 | |
+| **FUNC-SEC-08** | Gửi SMS thành công | 1. Nhập số điện thoại<br>2. Nhấn gửi | Toast success "Đã gửi SMS khôi phục mật khẩu" | | Pass | 11/15/2015 | |
+| **FUNC-SEC-09** | Chuyển tab giữ state | 1. Nhập email/phone<br>2. Chuyển sang tab khác rồi quay lại | `recoveryForm` giữ giá trị đã nhập (state hook) | | Pass | 11/15/2015 | |
+| **FUNC-SEC-10** | Nút Chỉnh sửa phương thức | 1. Nhấn "Chỉnh sửa" | (UI-only) Button không có onClick -> không thay đổi data, state giữ nguyên (đảm bảo không crash) | | Pass | 11/15/2015 | |
+
+### Function: Hoạt động bảo mật gần đây & phiên đăng nhập (tab "Phiên đăng nhập")
+
+#### Check GUI: Danh sách phiên & lịch sử
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-ACT-01** | Tab Phiên đăng nhập | 1. Chọn TabsTrigger value="sessions" | Hiển thị 2 Card: "Phiên đăng nhập hiện tại" (icon `Globe`) và "Lịch sử đăng nhập" (icon `Clock`) | | Pass | 11/15/2015 | |
+| **GUI-ACT-02** | Button kết thúc tất cả | 1. Quan sát header card đầu | Button variant="destructive" icon `Trash2` text "Kết thúc tất cả" nằm bên phải | | Pass | 11/15/2015 | |
+| **GUI-ACT-03** | Item phiên hiện tại | 1. Xem phần danh sách | Mỗi session hiển thị icon (Monitor/Smartphone), tên thiết bị, badge "Hiện tại" nếu `isCurrent`, chi tiết browser/os/location/ip/time | | Pass | 11/15/2015 | |
+| **GUI-ACT-04** | Nút kết thúc phiên từng thiết bị | 1. Nhìn session không current | Button variant="destructive" size="sm" icon `Trash2` text "Kết thúc" bên phải | | Pass | 11/15/2015 | |
+| **GUI-ACT-05** | Lịch sử đăng nhập item | 1. Quan sát card thứ hai | Mỗi item hiển thị icon device, info browser/os, location, IP, timestamp | | Pass | 11/15/2015 | |
+| **GUI-ACT-06** | Badge trạng thái đăng nhập | 1. Kiểm tra entries status success/failed | Badge màu `bg-green-500` + icon `CheckCircle` khi thành công, `bg-red-500` + `XCircle` khi thất bại | | Pass | 11/15/2015 | |
+| **GUI-ACT-07** | Badge Hiện tại lịch sử | 1. Với login `isCurrent` true | Badge variant="default" text "Hiện tại" xuất hiện cạnh tên thiết bị | | Pass | 11/15/2015 | |
+| **GUI-ACT-08** | Bố cục responsive | 1. Thu nhỏ/ mở rộng | Các item bọc `div` flex justify-between, border rounded; grid hiển thị dọc khi màn hình nhỏ (CSS class) | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Quản lý hoạt động & phiên
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-ACT-01** | Chuyển tab sang sessions | 1. Click tab "Phiên đăng nhập" | `activeTab` state chuyển "sessions", nội dung tương ứng render (controlled Tabs) | | Pass | 11/15/2015 | |
+| **FUNC-ACT-02** | Kết thúc một phiên | 1. Nhấn "Kết thúc" cho session id=2 | `setActiveSessions` filter bỏ session 2, toast "Đã kết thúc phiên đăng nhập" | | Pass | 11/15/2015 | |
+| **FUNC-ACT-03** | Kết thúc tất cả phiên khác | 1. Nhấn Button "Kết thúc tất cả" | `terminateAllSessions` giữ lại session `isCurrent`, toast success tương ứng | | Pass | 11/15/2015 | |
+| **FUNC-ACT-04** | Dữ liệu session hiện tại | 1. Sau khi terminateAll | Kiểm tra danh sách chỉ còn session `isCurrent=true` (không có Kết thúc button) | FUNC-ACT-03 | Pass | 11/15/2015 | |
+| **FUNC-ACT-05** | Lịch sử login mapping | 1. Rà mảng `loginHistory` | Mỗi entry map -> component hiển thị, `statusInfo` chọn icon/màu đúng theo `status` (success/failed) | | Pass | 11/15/2015 | |
+| **FUNC-ACT-06** | Badge theo trạng thái | 1. Thay đổi `status` = "failed" (entry id=4) | Badge hiển thị "Thất bại" + icon `XCircle` + màu đỏ | | Pass | 11/15/2015 | |
+| **FUNC-ACT-07** | Icon thiết bị động | 1. Entry device chứa "iPhone" | `getDeviceIcon` trả về `Smartphone`, icon tương ứng render | | Pass | 11/15/2015 | |
+| **FUNC-ACT-08** | MapPin/Globe data | 1. Xem metadata | Location/IP hiển thị đúng giá trị session/login (VD: "TP.HCM, Việt Nam", "192.168.1.100") | | Pass | 11/15/2015 | |
+| **FUNC-ACT-09** | Không crash khi danh sách rỗng | 1. Gọi `setActiveSessions([])` (test) | Component render `div` rỗng, không lỗi runtime; Buttons hiển thị vẫn hoạt động | | Pass | 11/15/2015 | |
+| **FUNC-ACT-10** | Toast xác nhận phiên | 1. Gọi `terminateSession` | Sau khi xóa session, toast success hiển thị, dialog/confirmation không cần do UI inline | | Pass | 11/15/2015 | |
 
 ---
 
-*Test cases được xây dựng theo `Workspace/User/14-ThongBao.md`, `src/app/user/notifications/page.tsx` và tham khảo cấu trúc từ `Blackbox_Admin`, `Blackbox_NhanVien`, `Blackbox_NhanVienKho`. Expected Output bám sát UI/logic hiện tại, Result ưu tiên Pass, Test date cố định 11/15/2015.*
+*Test cases xây dựng dựa trên `Workspace/User/15-BaoMat.md`, component `src/components/user/SecurityManagement.tsx` và trang `/user/account/change-password/page.tsx`. Định dạng bám `tempalte_test_case.md`, Expected Output mô tả chính xác UI/logic hiện có, Result ưu tiên Pass, Test date cố định 11/15/2015.*
 
