@@ -1,14 +1,13 @@
-# Test Case Template - Chat hỗ trợ (Nhân viên)
+# Test Case Template - Quản lý yêu cầu (Nhân viên)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên)**
 
 ## Test Requirement
-1. Danh sách chat chờ xử lý
-2. Chi tiết cuộc chat
-3. Trả lời khách hàng / đánh dấu hoàn thành
-4. Liên hệ & chuyển tiếp
-5. Xử lý khiếu nại
+1. Danh sách yêu cầu nhập sách
+2. Chi tiết yêu cầu
+3. Chuyển tiếp lên kho
+4. Gửi phản hồi/Thông báo khách hàng
 
 ---
 
@@ -18,119 +17,88 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 38 |
+| **Pass** | 32 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 38 |
+| **Number of Test cases** | 32 |
 
 ---
 
 ## Test Cases
 
-### Function: Danh sách chat chờ xử lý
+### Function: Danh sách yêu cầu nhập sách
 
-#### Check GUI: Danh sách chat chờ xử lý
+#### Check GUI: `/nhanvien/requests`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CHAT-LIST-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/support` | Hiển thị h1 `Chat hỗ trợ` class text-2xl font-bold và mô tả `Quản lý tin nhắn hỗ trợ đang chờ xử lý` class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-LIST-02** | Kiểm tra thống kê tổng quan | 1. Truy cập `/nhanvien/support`<br>2. Quan sát grid thống kê | Grid `grid-cols-2 md:grid-cols-4 gap-4` gồm 4 Card hiển thị `Tổng chat 45`, `Chờ xử lý 12`, `Đang xử lý 8`, `Đã hoàn thành 25` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Truy cập `/nhanvien/support`<br>2. Kiểm tra card | CardTitle `Tìm kiếm & Bộ lọc`, CardDescription `Tìm theo ID/tên/email/nội dung, lọc theo trạng thái & ưu tiên`, CardContent grid md:grid-cols-6 gap-3 chứa Input tìm kiếm, Select Trạng thái, Select Độ ưu tiên | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-LIST-04** | Kiểm tra bảng danh sách chat | 1. Truy cập `/nhanvien/support`<br>2. Quan sát Card danh sách | CardTitle `Danh sách chat chờ xử lý`, CardDescription `Tổng quan các cuộc chat`, Table với TableHead: `ID chat`, `Khách hàng`, `Chủ đề`, `Tin nhắn cuối`, `Trạng thái`, `Thời gian`, `Nhân viên`, `Thao tác` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-LIST-05** | Kiểm tra cột Khách hàng | 1. Truy cập `/nhanvien/support`<br>2. Quan sát hàng #CHAT001 | TableCell chứa div text-sm font-medium (Tên), div text-xs text-muted-foreground `email • SĐT • Hạng` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-CHAT-LIST-06** | Kiểm tra cột Thao tác | 1. Truy cập `/nhanvien/support` | Cột Thao tác hiển thị Button size=sm variant=outline `Xem` (Link `/nhanvien/support/CHAT001`) và Button size=sm `Trả lời` (Link `/nhanvien/support/CHAT001/reply`) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-YC-LIST-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/requests` | Hiển thị h1 `Quản lý yêu cầu từ khách hàng` class text-2xl font-bold & mô tả `Yêu cầu nhập sách từ khách hàng` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-YC-LIST-02** | Kiểm tra thống kê | 1. Ở `/nhanvien/requests` quan sát grid đầu | Grid `grid-cols-2 md:grid-cols-5` gồm Card `Tổng yêu cầu 78`, `Chờ xử lý 15`, `Đang xử lý 12`, `Đã hoàn thành 45`, Card cuối `Đã từ chối 6` (col-span-2 md:col-span-1) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-YC-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Quan sát card tiếp theo | CardTitle `Tìm kiếm & Bộ lọc`, mô tả `Tìm theo ID, tên KH, tên sách; lọc Trạng thái & Loại yêu cầu`, grid md:grid-cols-6 có Input, Select Trạng thái, Select Loại yêu cầu | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-YC-LIST-04** | Kiểm tra bảng yêu cầu | 1. Quan sát card `Danh sách yêu cầu` | TableHeader có các cột ID, Khách hàng, Loại yêu cầu, Sản phẩm, Tình trạng, Ngày tạo, Thao tác. TableBody hiển thị hàng mẫu (#REQ001) với Badge, info khách, mô tả loại, list sản phẩm, Badge trạng thái, thời gian, nút `Xem chi tiết` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-YC-LIST-05** | Kiểm tra sidebar panels | 1. Cuộn xuống grid 3 card | Card `Yêu cầu mới` chứa Button `Tạo yêu cầu nhập sách mới`; Card `Tóm tắt trạng thái` có placeholder chart `h-40 bg-muted`; Card `Hoạt động gần đây` liệt kê các hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Danh sách chat chờ xử lý
+#### Check FUNC: Danh sách yêu cầu nhập sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-LIST-01** | Xem danh sách chat | 1. Đăng nhập<br>2. Truy cập `/nhanvien/support` | Trang hiển thị đầy đủ thống kê, bộ lọc, bảng chat. Mỗi hàng hiển thị Badge ID (#CHAT001), thông tin khách, chủ đề, tin nhắn cuối, trạng thái, thời gian, nhân viên, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-LIST-02** | Tìm kiếm chat theo từ khóa | 1. Truy cập `/nhanvien/support`<br>2. Nhập `CHAT001` vào ô tìm kiếm | Bảng chỉ hiển thị chat có ID hoặc nội dung phù hợp với từ khóa, nếu không có hiển thị thông báo “Không tìm thấy chat” | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-LIST-03** | Lọc chat theo trạng thái | 1. Truy cập `/nhanvien/support`<br>2. Chọn Trạng thái = `Chờ xử lý` | Bảng cập nhật, chỉ hiển thị chat có Badge `Chờ xử lý`, thống kê có thể cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-LIST-04** | Lọc chat theo độ ưu tiên | 1. Truy cập `/nhanvien/support`<br>2. Chọn Độ ưu tiên = `Cao` | Danh sách chat chỉ hiển thị các chat ưu tiên cao, Badge/ghi chú thể hiện mức ưu tiên, thao tác vẫn hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-LIST-05** | Xem chi tiết chat | 1. Truy cập `/nhanvien/support`<br>2. Click nút `Xem` | Điều hướng đến `/nhanvien/support/CHAT001`, hiển thị trang chi tiết | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-LIST-06** | Mở trang trả lời chat | 1. Truy cập `/nhanvien/support`<br>2. Click nút `Trả lời` | Điều hướng đến `/nhanvien/support/CHAT001/reply`, hiển thị cửa sổ chat | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-01** | Xem danh sách yêu cầu | 1. Đăng nhập<br>2. Truy cập `/nhanvien/requests` | Trang hiển thị thống kê, bộ lọc, bảng, sidebar như GUI tests; dữ liệu khớp mock | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-02** | Tìm kiếm yêu cầu theo từ khóa | 1. Nhập `REQ001` vào Input tìm kiếm | Bảng chỉ hiển thị yêu cầu có ID/khách hàng/sản phẩm khớp; nếu không có hiển thị thông báo “Không tìm thấy yêu cầu” | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-03** | Lọc theo trạng thái | 1. Chọn Trạng thái = `Chờ xử lý` | Bảng chỉ hiển thị các yêu cầu status `Chờ xử lý` (Badge variant destructive) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-04** | Lọc theo loại yêu cầu | 1. Chọn Loại = `Nhập sách hết hàng` | Danh sách cập nhật chỉ các yêu cầu cùng loại; cột “Loại yêu cầu” hiển thị mô tả & số lượng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-05** | Xem chi tiết yêu cầu | 1. Click nút `Xem chi tiết` của #REQ001 | Điều hướng `/nhanvien/requests/REQ001` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-YC-LIST-06** | Tạo yêu cầu mới | 1. Click `Tạo yêu cầu nhập sách mới` | Mở form/modal tạo yêu cầu mới (theo tài liệu). Cho phép nhập thông tin sản phẩm & lý do. Sau khi lưu hiển thị toast success | FUNC-DN-02 | Pass | 11/15/2015 | *(Mock flow)* |
 
 ---
 
-### Function: Chi tiết cuộc chat
+### Function: Chi tiết yêu cầu
 
-#### Check GUI: Chi tiết chat `/nhanvien/support/CHAT001`
+#### Check GUI: `/nhanvien/requests/[id]`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CHAT-DETAIL-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvien/support/CHAT001` | Tiêu đề `Chi tiết chat hỗ trợ #CHAT001` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **GUI-CHAT-DETAIL-02** | Kiểm tra card Thông tin khách hàng | 1. Mở trang chi tiết | CardTitle `Thông tin khách hàng`, CardDescription, grid md:grid-cols-4 hiển thị Tên, Email, SĐT, Hạng (Badge), Lịch sử hỗ trợ trước | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **GUI-CHAT-DETAIL-03** | Kiểm tra card Cuộc hội thoại | 1. Mở trang chi tiết | CardTitle `Cuộc hội thoại`, CardContent hiển thị các bubble `[Khách]` (bg-muted) và `[Nhân viên]` (bg-primary/10) theo thời gian | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **GUI-CHAT-DETAIL-04** | Kiểm tra card Ghi chú & Ưu tiên | 1. Mở trang chi tiết | CardTitle `Ghi chú & Ưu tiên`, CardContent grid md:grid-cols-2, Textarea `Ghi chú nội bộ`, badges hiển thị độ ưu tiên, các Button `Trả lời chat`, `Đánh dấu hoàn thành`, `Chuyển tiếp / Escalate`, `Đóng chat` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **GUI-CHAT-DETAIL-05** | Kiểm tra dialog chuyển tiếp | 1. Click `Chuyển tiếp / Escalate` | Dialog hiển thị Select `Chuyển đến *` với các option (Supervisor, Nhân viên B/C, Admin, Bộ phận kỹ thuật), Textarea `Lý do chuyển tiếp *`, Buttons `Hủy`, `Xác nhận chuyển tiếp` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **GUI-CHAT-DETAIL-06** | Kiểm tra hiển thị lỗi | 1. Giả lập errorState | Alert variant destructive hiển thị (icon AlertCircle, mô tả lỗi) ở đầu trang | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-YC-DETAIL-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvien/requests/REQ001` | Tiêu đề `Chi tiết yêu cầu #REQ001` | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-YC-DETAIL-02** | Kiểm tra card Thông tin chung | 1. Quan sát card đầu | CardTitle `Thông tin chung`, CardDescription, grid md:grid-cols-3 hiển thị ID, Trạng thái (Badge), Loại, Ngày tạo, Ngày cập nhật, Mức độ ưu tiên (Badge), Khách hàng (email/sđt/hạng), Nhân viên phụ trách | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-YC-DETAIL-03** | Kiểm tra card Chi tiết sản phẩm | 1. Quan sát card thứ hai | CardTitle `Chi tiết sản phẩm yêu cầu`, CardContent liệt kê từng sách: tên, số lượng, lý do, phản hồi kho | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-YC-DETAIL-04** | Kiểm tra card Lịch sử xử lý | 1. Quan sát card `Lịch sử xử lý` | CardContent hiển thị các dòng `thời gian • người xử lý • hành động • nội dung` | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-YC-DETAIL-05** | Kiểm tra card Ghi chú cá nhân | 1. Quan sát card cuối | CardTitle `Ghi chú cá nhân`, Label + Textarea, Button group `Chuyển tiếp lên kho`, `Cập nhật trạng thái`, `Gửi phản hồi`, `Hoàn thành yêu cầu` | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Chi tiết cuộc chat
+#### Check FUNC: Chi tiết yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-DETAIL-01** | Xem nội dung chat | 1. Truy cập `/nhanvien/support/CHAT001` | Lịch sử tin nhắn hiển thị đúng thứ tự thời gian, bubble khách/nhân viên rõ ràng | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-DETAIL-02** | Thêm ghi chú nội bộ | 1. Nhập ghi chú<br>2. Click `Ghi chú nội bộ` (nút `Thêm ghi chú`) | Ghi chú được lưu, hiển thị toast success, ghi log | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-DETAIL-03** | Đánh dấu hoàn thành | 1. Click `Đánh dấu hoàn thành` | Toast success “Đã đánh dấu hoàn thành”, trạng thái chat cập nhật, chat biến mất khỏi danh sách chờ xử lý | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-DETAIL-04** | Chuyển tiếp chat | 1. Click `Chuyển tiếp / Escalate`<br>2. Chọn người nhận, nhập lý do<br>3. `Xác nhận chuyển tiếp` | Nếu hợp lệ: hiển thị toast success `Đã chuyển tiếp chat đến ...`, dialog đóng, form reset. Nếu thiếu chọn/lý do: hiển thị toast error tương ứng | FUNC-CHAT-DETAIL-05 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-DETAIL-05** | Đóng chat | 1. Click `Đóng chat` | Toast success “Chat đã được đóng”, chat chuyển trạng thái `Đã đóng`, ghi lịch sử | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-DETAIL-06** | Truy cập trang reply | 1. Click `Trả lời chat` | Điều hướng `/nhanvien/support/CHAT001/reply` | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-DETAIL-01** | Xem thông tin yêu cầu | 1. Truy cập `/nhanvien/requests/REQ001` | Tất cả card hiển thị đúng dữ liệu: thổng tin chung, sản phẩm, lịch sử, ghi chú | FUNC-YC-LIST-05 | Pass | 11/15/2015 | |
+| **FUNC-YC-DETAIL-02** | Thêm ghi chú cá nhân | 1. Nhập nội dung ghi chú<br>2. Click `Ghi chú cá nhân` (hành động) | Ghi chú được lưu, hiển thị toast success, lịch sử ghi chú cập nhật | FUNC-YC-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-DETAIL-03** | Cập nhật trạng thái yêu cầu | 1. Click `Cập nhật trạng thái`<br>2. Chọn trạng thái mới<br>3. Xác nhận | Yêu cầu chuyển trạng thái (Badge & bảng), timeline thêm dòng, hiển thị toast success | FUNC-YC-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-DETAIL-04** | Hoàn thành yêu cầu | 1. Click `Hoàn thành yêu cầu` | Trạng thái => `Đã hoàn thành`, các nút hành động ẩn/disable tùy logic, hiển thị toast success, danh sách tổng quan update | FUNC-YC-DETAIL-03 | Pass | 11/15/2015 | |
+| **FUNC-YC-DETAIL-05** | Gửi phản hồi khách hàng | 1. Click `Gửi phản hồi` -> mở modal | Cho phép chọn loại phản hồi (dropdown), nhập tiêu đề, nội dung, phương thức gửi, template, tệp đính kèm, thời gian gửi. Khi click `Gửi`, thông báo được gửi (email/SMS/push), hiển thị toast success, log vào lịch sử xử lý | FUNC-YC-DETAIL-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Chat / trả lời khách hàng
-
-#### Check GUI: Cửa sổ reply `/nhanvien/support/CHAT001/reply`
+### Function: Chuyển tiếp lên kho
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CHAT-REPLY-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvien/support/CHAT001/reply` | Tiêu đề `Chat hỗ trợ với Nguyễn Văn A` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **GUI-CHAT-REPLY-02** | Kiểm tra card Cửa sổ trò chuyện | 1. Quan sát card đầu | CardTitle `Cửa sổ trò chuyện`, CardDescription, CardContent hiển thị `div space-y-2 text-sm max-h-80 overflow-auto border rounded p-3` chứa lịch sử tin nhắn (bubble) | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **GUI-CHAT-REPLY-03** | Kiểm tra khu nhập tin nhắn | 1. Quan sát grid `Tin nhắn mới` | Textarea rows=4 placeholder `Nhập nội dung tin nhắn...`, Select `Mẫu tin nhắn` với các option (welcome, thanks, guide, sorry), Button `Áp dụng mẫu` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **GUI-CHAT-REPLY-04** | Kiểm tra nhóm nút hành động | 1. Quan sát phần cuối card | Các Button: `Gửi tin nhắn`, `Gửi tệp đính kèm`, `Thêm ghi chú` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **GUI-CHAT-REPLY-05** | Kiểm tra card Đánh dấu chat đã xử lý | 1. Quan sát card thứ hai | CardTitle `Đánh dấu chat đã xử lý`, CardDescription `Chọn lý do và xác nhận`, grid md:grid-cols-3: Select `Lý do hoàn thành`, Select `Gửi tin nhắn cảm ơn`, Textarea `Ghi chú`, Button `Đánh dấu hoàn thành`, Button `Đóng chat` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-YC-KHO-01** | Mở modal chuyển tiếp | 1. Tại `/nhanvien/requests/REQ001`, click `Chuyển tiếp lên kho` | Modal hiển thị thông tin yêu cầu (ID, KH, loại), danh sách sách, lý do, radio ưu tiên, textarea ghi chú cho kho, DatePicker thời hạn, checkbox “Thông báo cho khách hàng”, Buttons `Hủy` & `Xác nhận` | FUNC-YC-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-KHO-02** | Chuyển tiếp thành công | 1. Trong modal, chọn ưu tiên, nhập ghi chú, chọn thời hạn, tick thông báo<br>2. Click `Xác nhận` | Yêu cầu chuyển trạng thái `Chuyển kho`, Nhân viên kho nhận thông báo, timeline cập nhật hành động, khách hàng nhận thông báo (nếu chọn), toast success | FUNC-YC-KHO-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-KHO-03** | Thiếu thông tin chuyển tiếp | 1. Mở modal<br>2. Không nhập ghi chú hoặc thời hạn<br>3. Click `Xác nhận` | Hiển thị validation `Vui lòng nhập ghi chú/ thời hạn`, không chuyển trạng thái, modal vẫn mở | FUNC-YC-KHO-01 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Chat / trả lời khách hàng
+### Function: Thông báo khách hàng / phản hồi
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-REPLY-01** | Gửi tin nhắn thủ công | 1. Vào `/nhanvien/support/CHAT001/reply`<br>2. Nhập nội dung<br>3. Click `Gửi tin nhắn` | Tin nhắn được gửi, hiển thị toast success, bubble `[Nhân viên]` mới xuất hiện, khách hàng nhận được tin nhắn trong real-time | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-REPLY-02** | Sử dụng mẫu tin nhắn | 1. Chọn mẫu `Xin chào...`<br>2. Click `Áp dụng mẫu`<br>3. Gửi | Textarea được điền sẵn nội dung mẫu, tin nhắn gửi với nội dung đó, hiển thị log “Sử dụng mẫu tin nhắn” | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-REPLY-03** | Gửi tệp đính kèm | 1. Click `Gửi tệp đính kèm`<br>2. Chọn file | File được upload (modal/preview), gửi kèm tin nhắn, hiển thị thông báo thành công | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-REPLY-04** | Thêm ghi chú nhanh | 1. Click `Thêm ghi chú`<br>2. Nhập nội dung | Ghi chú lưu vào hệ thống, hiển thị confirm message | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-REPLY-05** | Đánh dấu hoàn thành (từ reply) | 1. Trong card “Đánh dấu chat đã xử lý”, chọn Lý do + Gửi tin nhắn cảm ơn `Có`<br>2. Nhập ghi chú<br>3. Click `Đánh dấu hoàn thành` | Chat chuyển trạng thái `Đã hoàn thành`, tin nhắn cảm ơn tự động gửi, hiển thị toast success | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-REPLY-06** | Đóng chat không gửi cảm ơn | 1. Chọn Gửi tin nhắn cảm ơn = `Không`<br>2. Click `Đóng chat` | Chat chuyển trạng thái `Đã đóng`, không gửi tin nhắn cảm ơn, hiển thị toast success | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
-
----
-
-### Function: Liên hệ & chuyển tiếp (contact, escalate)
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-CONTACT-01** | Liên hệ khách hàng qua điện thoại | 1. Từ trang chi tiết, click `Liên hệ khách hàng` (nếu có) hoặc truy cập `/nhanvien/returns/RT-001/contact` (đối với đổi trả) *hoặc* dùng khối Gọi điện (nếu UI chat có) | Nhập thời gian gọi, ghi chú, chọn kết quả. Sau khi `Xác nhận gọi`: lịch sử liên hệ bổ sung dòng “Gọi điện thoại ... Thành công”, trạng thái chat cập nhật `Đã liên hệ` | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-CONTACT-02** | Gửi email hỗ trợ | 1. Tại contact card `Gửi email`<br>2. Nhập tiêu đề, nội dung<br>3. Click `Gửi email` | Email gửi thành công, ghi lại lịch sử liên hệ `Gửi email • ... • Thành công`, khách hàng nhận mail | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-CONTACT-03** | Gửi SMS thông báo | 1. Nhập nội dung SMS<br>2. Click `Gửi SMS` | Tin nhắn gửi thành công, log trong lịch sử, trạng thái có thể cập nhật | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-CONTACT-04** | Gửi tin nhắn chat mẫu từ contact | 1. Chọn tin nhắn mẫu (Chat trực tuyến section)<br>2. Click `Mở chat` & `Gửi tin nhắn` | Cửa sổ chat mở, tin nhắn được gửi, hiển thị confirm | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-CONTACT-05** | Cập nhật trạng thái từ contact | 1. Click `Đã liên hệ` (card `Cập nhật trạng thái yêu cầu`) | Trạng thái chat đổi sang tương ứng, hiển thị toast success, timeline bổ sung | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-CONTACT-06** | Chuyển tiếp chat (escalate) | 1. Trên trang chi tiết chat, mở dialog `Chuyển tiếp / Escalate`<br>2. Chọn người nhận & lý do<br>3. `Xác nhận chuyển tiếp` | Chat gán cho nhân sự mới, log “Chuyển tiếp chat đến …”, toast success. Nếu thiếu dữ liệu hiển thị toast error | FUNC-CHAT-DETAIL-04 | Pass | 11/15/2015 | |
-
----
-
-### Function: Xử lý khiếu nại (Modal escalate cao)
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-KN-01** | Tiếp nhận khiếu nại từ chat | 1. Khi phát hiện khiếu nại (ví dụ trong chat), mở modal “Xử lý khiếu nại” (theo tài liệu) hoặc quy trình escalate | Modal hiển thị thông tin khiếu nại, loại khiếu nại (Radio), mức độ nghiêm trọng, trạng thái xử lý, nội dung chi tiết, kế hoạch xử lý, người chịu trách nhiệm, thời hạn, checkbox thông báo khách hàng, Buttons `Hủy`/`Lưu` | FUNC-CHAT-DETAIL-04 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-KN-02** | Lưu kế hoạch xử lý khiếu nại | 1. Điền đầy đủ thông tin trong modal<br>2. Click `Lưu` | Thông tin khiếu nại được lưu, chat gắn cờ “Khiếu nại”, hiển thị toast success, timeline cập nhật, khách hàng được thông báo nếu checkbox | FUNC-CHAT-KN-01 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-KN-03** | Cập nhật tiến độ khiếu nại | 1. Mở modal xử lý<br>2. Đổi trạng thái `Đang điều tra` → `Đã giải quyết`<br>3. Thêm ghi chú | Tiến độ cập nhật, timeline ghi nhận, khách hàng nhận thông báo (nếu bật), hiển thị confirm message | FUNC-CHAT-KN-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-TB-01** | Gửi thông báo cập nhật | 1. Tại chi tiết yêu cầu, click `Gửi phản hồi`<br>2. Chọn `Loại phản hồi = Cập nhật tiến độ`<br>3. Nhập tiêu đề, nội dung, chọn gửi email & app, tick “Lưu vào lịch sử”<br>4. Click `Gửi` | Thông báo gửi qua email & app, khách hàng nhận nội dung, lịch sử yêu cầu thêm dòng, toast success | FUNC-YC-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-TB-02** | Gửi thông báo hoàn thành | 1. Loại phản hồi `Hoàn thành yêu cầu`<br>2. Nhập nội dung<br>3. Chọn `Gửi ngay` | Yêu cầu đánh dấu `Đã hoàn thành`, thông báo gửi ngay, log kèm nội dung | FUNC-YC-DETAIL-04 | Pass | 11/15/2015 | |
+| **FUNC-YC-TB-03** | Lên lịch gửi thông báo | 1. Trong modal, chọn `Gửi tại thời gian cụ thể`, đặt ngày/giờ | Thông báo được xếp lịch (ghi chú trong lịch sử), khi đến thời gian sẽ gửi tự động, hiển thị toast `Đã lên lịch gửi thông báo` | FUNC-YC-TB-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-TB-04** | Sử dụng mẫu phản hồi | 1. Chọn mẫu `Mẫu cảm ơn`<br>2. Chỉnh nội dung<br>3. Gửi | Textarea được điền nội dung mẫu, có thể chỉnh sửa, sau khi gửi log “Sử dụng mẫu” | FUNC-YC-TB-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-TB-05** | Gửi thông báo thất bại | 1. Ngắt kết nối/ mô phỏng lỗi, click `Gửi` | Hiển thị toast error `Không thể gửi thông báo`, log lỗi, yêu cầu giữ trạng thái cũ, cho phép thử lại | FUNC-YC-TB-01 | Pass | 11/15/2015 | |
 
 ---
 
