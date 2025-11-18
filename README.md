@@ -1,12 +1,12 @@
-# Test Case Template - Báo cáo và thống kê (Nhân viên)
+# Test Case Template - Chức năng bảo mật (Nhân viên)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên)**
 
 ## Test Requirement
-1. Báo cáo ca làm
-2. Xem số lượng đơn hàng đã xử lý
-3. Báo cáo cuối ca
+1. Khôi phục mật khẩu (quên mật khẩu + đặt lại)
+2. Lịch sử đăng nhập & cảnh báo bất thường
+3. Quản lý và xóa phiên đăng nhập
 
 ---
 
@@ -16,110 +16,91 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 35 |
+| **Pass** | 29 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 35 |
+| **Number of Test cases** | 29 |
 
 ---
 
 ## Test Cases
 
-### Function: Báo cáo và thống kê
+### Function: Khôi phục mật khẩu
 
-#### Check GUI: Báo cáo và thống kê
+#### Check GUI: `/nhanvien/auth/forgot-password`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-BCTK-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Kiểm tra tiêu đề | Hiển thị div space-y-6 với h1 "Báo cáo & Thống kê" class text-2xl font-bold, p "Chọn loại báo cáo để xem chi tiết" class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCTK-02** | Kiểm tra card Doanh thu | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Kiểm tra card | Hiển thị div grid grid-cols-1 md:grid-cols-3 gap-4 với Card có CardHeader có CardTitle "Doanh thu", CardDescription "Báo cáo doanh thu theo thời gian", CardContent có Button asChild className="w-full" Link href="/nhanvien/reports/revenue" "Xem báo cáo" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCTK-03** | Kiểm tra card Lợi nhuận | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Kiểm tra card | Hiển thị Card có CardHeader có CardTitle "Lợi nhuận", CardDescription "Theo dõi lợi nhuận theo kỳ", CardContent có Button asChild className="w-full" Link href="/nhanvien/reports/profit" "Xem báo cáo" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCTK-04** | Kiểm tra card Tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Kiểm tra card | Hiển thị Card có CardHeader có CardTitle "Tồn kho", CardDescription "Phân tích tồn kho, cảnh báo", CardContent có Button asChild className="w-full" Link href="/nhanvien/reports/inventory" "Xem báo cáo" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-FP-01** | Kiểm tra layout trang khôi phục | 1. Từ trang đăng nhập click `Quên mật khẩu` | Trang hiển thị Card với CardHeader (Title `Khôi phục mật khẩu`, Description “Nhập email...”), Alert hướng dẫn, Input `Email`, Button `Gửi liên kết đặt lại mật khẩu` (full width) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-FP-02** | Kiểm tra label & placeholder | 1. Quan sát Input | Label `Email`, placeholder `nhanvien@bookstore.com`, input type email với border mặc định | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-FP-03** | Kiểm tra thông báo trạng thái | 1. Gửi form (mock) | Alert text `Đang gửi link khôi phục...` hoặc `Link đã được gửi thành công` hiển thị bên dưới | FUNC-BM-FP-01 | Pass | 11/15/2015 | |
+| **GUI-BM-FP-04** | Kiểm tra Radio phương thức xác thực (tài liệu) | 1. Kiểm tra phần `Phương thức xác thực` (theo tài liệu) | Các tùy chọn Email/SMS hiển thị radio button, mô tả “Hệ thống sẽ gửi link qua phương thức đã chọn” | FUNC-BM-FP-02 | Pass | 11/15/2015 | |
+| **GUI-BM-FP-05** | Kiểm tra khối OTP & câu hỏi bảo mật | 1. Chọn phương thức OTP/câu hỏi bảo mật | Hiển thị input nhập OTP 6 số, dropdown câu hỏi bảo mật, input trả lời, Button `Tạo mã OTP` | FUNC-BM-FP-03 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Báo cáo và thống kê
+#### Check FUNC: Khôi phục mật khẩu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCTK-01** | Xem trang báo cáo và thống kê | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports | Hiển thị đầy đủ: tiêu đề "Báo cáo & Thống kê" và mô tả, grid 3 card: Card "Doanh thu" với mô tả "Báo cáo doanh thu theo thời gian", nút "Xem báo cáo" Link href="/nhanvien/reports/revenue". Card "Lợi nhuận" với mô tả "Theo dõi lợi nhuận theo kỳ", nút "Xem báo cáo" Link href="/nhanvien/reports/profit". Card "Tồn kho" với mô tả "Phân tích tồn kho, cảnh báo", nút "Xem báo cáo" Link href="/nhanvien/reports/inventory" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCTK-02** | Xem báo cáo doanh thu | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Click nút "Xem báo cáo" trên card "Doanh thu" | Chuyển đến trang /nhanvien/reports/revenue, hiển thị báo cáo doanh thu với đầy đủ thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCTK-03** | Xem báo cáo lợi nhuận | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Click nút "Xem báo cáo" trên card "Lợi nhuận" | Chuyển đến trang /nhanvien/reports/profit, hiển thị báo cáo lợi nhuận với đầy đủ thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCTK-04** | Xem báo cáo tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports<br>3. Click nút "Xem báo cáo" trên card "Tồn kho" | Chuyển đến trang /nhanvien/reports/inventory, hiển thị báo cáo tồn kho với đầy đủ thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-01** | Gửi link khôi phục hợp lệ | 1. Nhập email hợp lệ `nv@example.com`<br>2. Chọn phương thức Email<br>3. Nhấn `Gửi` | Hiển thị toast success, Alert “Link đã được gửi”, hệ thống tạo token và ghi log khôi phục | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-02** | Chọn phương thức SMS | 1. Chọn radio `Gửi qua SMS`<br>2. Nhập số điện thoại hợp lệ | Hệ thống gửi OTP/link qua SMS, hiển thị thông báo “Đã gửi OTP tới SĐT...” | FUNC-BM-FP-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-03** | Xác thực OTP đúng | 1. Nhấn `Tạo mã OTP`<br>2. Nhập mã hợp lệ trong ô OTP<br>3. Submit | Chấp nhận OTP, chuyển sang màn đặt mật khẩu mới | FUNC-BM-FP-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-04** | OTP sai hoặc hết hạn | 1. Nhập mã sai/ quá 15 phút<br>2. Submit | Hiển thị lỗi `OTP không chính xác hoặc đã hết hạn`, cho phép yêu cầu lại | FUNC-BM-FP-03 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-05** | Câu hỏi bảo mật sai | 1. Chọn câu hỏi bảo mật<br>2. Nhập sai câu trả lời 3 lần | Khóa chức năng 5 phút, thông báo `Bạn đã nhập sai quá số lần cho phép` | FUNC-BM-FP-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-06** | Đặt lại mật khẩu mới hợp lệ | 1. Sau khi vào trang đặt mật khẩu, nhập mật khẩu mới (>=8 ký tự, hoa/thường/số/ký tự đặc biệt)<br>2. Confirm khớp | Hiển thị success `Mật khẩu đã được đặt lại`, mật khẩu cũ vô hiệu, tự chuyển về màn đăng nhập | FUNC-BM-FP-03 | Pass | 11/15/2015 | |
+| **FUNC-BM-FP-07** | Đặt lại mật khẩu không đạt chuẩn | 1. Nhập mật khẩu <8 ký tự hoặc thiếu ký tự đặc biệt | Validation hiển thị `Mật khẩu phải có ...`, không cho lưu | FUNC-BM-FP-06 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Báo cáo doanh thu
+### Function: Lịch sử đăng nhập & cảnh báo
 
-#### Check GUI: Báo cáo doanh thu
+#### Check GUI: `/nhanvien/security/login-history`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-BCDT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Kiểm tra tiêu đề | Hiển thị div space-y-6 với h1 "Báo cáo doanh thu" class text-2xl font-bold, p "Doanh thu theo ngày/tháng/quý/năm" class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCDT-02** | Kiểm tra card Bộ lọc | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Bộ lọc", CardDescription "Khoảng thời gian và nhóm theo", CardContent className="grid md:grid-cols-4 gap-3" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCDT-03** | Kiểm tra các trường bộ lọc | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Kiểm tra trường | Hiển thị: div grid gap-1 với Label "Từ ngày", Input type="date". div grid gap-1 với Label "Đến ngày", Input type="date". div grid gap-1 với Label "Nhóm theo", Select với SelectTrigger SelectValue placeholder="Ngày", SelectContent có SelectItem (Ngày, Tháng, Quý, Năm) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BCDT-04** | Kiểm tra card Biểu đồ doanh thu | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Biểu đồ doanh thu", CardDescription "Đường/ cột theo nhóm", CardContent có div h-64 bg-muted rounded (placeholder cho biểu đồ) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-LH-01** | Kiểm tra Card tiêu đề | 1. Truy cập `/nhanvien/security/login-history` | CardTitle `Lịch sử đăng nhập`, CardDescription “Thời gian, địa chỉ IP, thiết bị, vị trí và trạng thái` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-LH-02** | Kiểm tra Alert cảnh báo | 1. Quan sát Alert đầu trang | Alert text “Chúng tôi nhận thấy các đăng nhập bất thường...” hiển thị icon + nền `bg-muted` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-LH-03** | Kiểm tra bộ lọc thời gian & trạng thái | 1. Kiểm tra grid bộ lọc | Hai Select với Label `Khoảng thời gian`, `Trạng thái`, options `Tất cả/Tuần này/...` và `Thành công/Thất bại` | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
+| **GUI-BM-LH-04** | Kiểm tra card danh sách log | 1. Cuộn xuống danh sách | Mỗi log hiển thị Card border-dashed, grid 5 cột (time+IP, device+OS, browser+location, Badge trạng thái, ID) | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
+| **GUI-BM-LH-05** | Kiểm tra badge trạng thái | 1. So sánh log thành công và thất bại | Thành công dùng Badge variant secondary `THÀNH CÔNG`, thất bại variant destructive `THẤT BẠI` | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Báo cáo doanh thu
+#### Check FUNC: Lịch sử đăng nhập
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCDT-01** | Xem báo cáo doanh thu | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue | Hiển thị đầy đủ: tiêu đề "Báo cáo doanh thu" và mô tả, card Bộ lọc với Input "Từ ngày" type="date", Input "Đến ngày" type="date", Select "Nhóm theo" (Ngày, Tháng, Quý, Năm), card Biểu đồ doanh thu với div placeholder cho biểu đồ (trong thực tế sẽ hiển thị biểu đồ đường hoặc cột), biểu đồ hiển thị doanh thu theo khoảng thời gian và nhóm đã chọn | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCDT-02** | Lọc báo cáo theo khoảng thời gian | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Chọn "Từ ngày" và "Đến ngày"<br>4. Chọn "Nhóm theo" (VD: "Ngày") | Báo cáo được lọc theo khoảng thời gian đã chọn, biểu đồ được cập nhật hiển thị doanh thu trong khoảng thời gian đó, dữ liệu được nhóm theo "Ngày" (mỗi ngày một điểm trên biểu đồ) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCDT-03** | Nhóm báo cáo theo tháng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Chọn khoảng thời gian<br>4. Chọn "Nhóm theo" = "Tháng" | Biểu đồ được cập nhật, dữ liệu được nhóm theo tháng (mỗi tháng một điểm trên biểu đồ), doanh thu được tổng hợp theo từng tháng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCDT-04** | Nhóm báo cáo theo quý | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Chọn khoảng thời gian<br>4. Chọn "Nhóm theo" = "Quý" | Biểu đồ được cập nhật, dữ liệu được nhóm theo quý (mỗi quý một điểm trên biểu đồ), doanh thu được tổng hợp theo từng quý | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCDT-05** | Nhóm báo cáo theo năm | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/revenue<br>3. Chọn khoảng thời gian<br>4. Chọn "Nhóm theo" = "Năm" | Biểu đồ được cập nhật, dữ liệu được nhóm theo năm (mỗi năm một điểm trên biểu đồ), doanh thu được tổng hợp theo từng năm | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-LH-01** | Tải danh sách log | 1. Truy cập trang | Hệ thống gọi API lịch sử, hiển thị dữ liệu theo thời gian giảm dần | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-LH-02** | Lọc theo trạng thái thành công | 1. Chọn `Trạng thái = Thành công` | Danh sách chỉ còn log `status = success` (badge xanh), card thất bại ẩn | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-LH-03** | Lọc theo trạng thái thất bại | 1. Chọn `Thất bại` | Chỉ hiển thị log thất bại, Alert gợi ý đổi mật khẩu | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-LH-04** | Lọc theo khoảng thời gian | 1. Chọn `Tuần này` | Chỉ hiển thị log trong 7 ngày gần nhất, nếu không có data hiển thị empty state | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-LH-05** | Gửi cảnh báo đăng nhập bất thường | 1. Hệ thống phát hiện IP/thiết bị lạ | Tự động gửi email/app notification cho nhân viên, ghi log “Cảnh báo đã gửi”, hiển thị Alert trên trang | FUNC-BM-LH-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Báo cáo ca làm
+### Function: Quản lý phiên đăng nhập
 
-#### Check FUNC: Báo cáo ca làm
+#### Check GUI: `/nhanvien/security/sessions`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCCL-01** | Xem báo cáo ca làm | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/shift<br>3. Xem báo cáo | Hiển thị đầy đủ: tiêu đề "Báo cáo ca làm việc", card Thông tin ca làm với thông tin (Ngày làm việc, Ca làm việc, Nhân viên, Thời gian bắt đầu, Thời gian kết thúc, Trạng thái ca làm Badge), card Thống kê doanh thu với các chỉ số (Tổng doanh thu, Doanh thu tiền mặt với %, Doanh thu thẻ với %, Doanh thu chuyển khoản với %, Doanh thu ví điện tử với %), card Thống kê đơn hàng với các chỉ số (Tổng số đơn hàng, Đơn hàng thành công với %, Đơn hàng đã hủy với %, Đơn hàng trực tiếp với %, Đơn hàng online với %), card Thống kê sản phẩm với các chỉ số (Tổng số sản phẩm bán, Sản phẩm bán chạy nhất, Giá trị đơn hàng TB, Số khách hàng phục vụ), biểu đồ doanh thu theo giờ, biểu đồ doanh thu theo phương thức thanh toán, biểu đồ số lượng đơn hàng theo giờ, bảng chi tiết đơn hàng Table với các cột (Thời gian, Mã đơn hàng Link, Khách hàng, Sản phẩm, Tổng tiền, Phương thức thanh toán, Trạng thái Badge), các nút xuất báo cáo (Xuất PDF, Xuất Excel, In báo cáo, Chia sẻ báo cáo) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCL-02** | Xuất báo cáo ca làm PDF | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/shift<br>3. Click nút "Xuất báo cáo PDF" | File PDF báo cáo ca làm được tạo thành công, báo cáo bao gồm tất cả thông tin trong báo cáo ca làm, định dạng chuyên nghiệp và dễ đọc, tên file tự động đặt theo ngày và ca làm việc (VD: "BaoCaoCaLam_2024-01-22_CaSang.pdf"), file được lưu vào thư mục quy định hoặc tải xuống, hiển thị thông báo thành công "Đã xuất báo cáo PDF" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCL-03** | Xuất báo cáo ca làm Excel | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/shift<br>3. Click nút "Xuất báo cáo Excel" | File Excel báo cáo ca làm được tạo thành công, báo cáo bao gồm tất cả dữ liệu chi tiết trong bảng tính, hỗ trợ phân tích dữ liệu với các công thức Excel, tên file tự động đặt theo ngày và ca làm việc (VD: "BaoCaoCaLam_2024-01-22_CaSang.xlsx"), file được lưu vào thư mục quy định hoặc tải xuống, hiển thị thông báo thành công "Đã xuất báo cáo Excel" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCL-04** | In báo cáo ca làm | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/shift<br>3. Click nút "In báo cáo" | Bản xem trước báo cáo được hiển thị trước khi in, hỗ trợ tùy chỉnh kích thước và hướng in, báo cáo được in trực tiếp ra máy in, tự động lưu bản sao báo cáo trong hệ thống, hiển thị thông báo thành công "Đã in báo cáo" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCL-05** | Chia sẻ báo cáo ca làm | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/shift<br>3. Click nút "Chia sẻ báo cáo" | Hiển thị Dialog hoặc form với các tùy chọn chia sẻ (Email, Link, v.v.), sau khi chia sẻ: báo cáo được chia sẻ thành công, hiển thị thông báo thành công "Đã chia sẻ báo cáo" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-SE-01** | Kiểm tra Card tiêu đề | 1. Truy cập `/nhanvien/security/sessions` | CardTitle `Bảo mật - Phiên đăng nhập`, mô tả “Quản lý và xóa phiên đăng nhập`, Alert cảnh báo | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-BM-SE-02** | Kiểm tra thông tin phiên | 1. Quan sát nội dung | Text hiển thị `Phiên hiện tại` với thiết bị, IP, thời gian; `Phiên khác` liệt kê iPhone Safari... | FUNC-BM-SE-01 | Pass | 11/15/2015 | |
+| **GUI-BM-SE-03** | Kiểm tra Dialog đăng xuất | 1. Click nút `Đăng xuất` | DialogTitle `Xác nhận đăng xuất`, radio chọn phạm vi, Textarea ghi chú, Buttons `Hủy`, `Đăng xuất` | FUNC-BM-SE-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem số lượng đơn hàng đã xử lý
-
-#### Check FUNC: Xem số lượng đơn hàng đã xử lý
+#### Check FUNC: Quản lý & xóa phiên
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-SLDH-01** | Xem thống kê đơn hàng đã xử lý | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Xem thống kê | Hiển thị đầy đủ: tiêu đề "Thống kê đơn hàng đã xử lý", bộ lọc thời gian với Date Picker "Ngày", Week Picker "Tuần", Month Picker "Tháng", Date Range "Khoảng thời gian tùy chỉnh", card Thống kê tổng quan với các chỉ số (Tổng đơn hàng, Đơn hàng thành công với %, Đơn hàng đã hủy với %, Tỷ lệ thành công Progress Bar, Tổng doanh thu), card Thống kê theo loại với các chỉ số (Đơn hàng trực tiếp với %, Đơn hàng online với %, Đơn hàng COD với %, Đơn hàng thanh toán trước với %), card Thống kê theo giờ với các chỉ số (Giờ cao điểm, Giờ thấp điểm, Giờ trung bình, Phân bố đơn hàng Chart), bảng Top sản phẩm bán chạy Table với các cột (STT, Tên sản phẩm, Số lượng bán, Doanh thu, Tỷ lệ), bảng Top khách hàng Table với các cột (STT, Tên khách hàng, Số đơn hàng, Tổng chi tiêu, Hạng khách hàng Badge), biểu đồ phân tích Chart Group (Biểu đồ doanh thu theo ngày, Biểu đồ số lượng đơn hàng theo ngày, Biểu đồ tỷ lệ thành công theo ngày), các nút xuất báo cáo (Xuất PDF, Xuất Excel, In báo cáo, Gửi email) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-02** | Lọc thống kê theo ngày | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Chọn ngày từ Date Picker<br>4. Click "Áp dụng" | Thống kê được lọc theo ngày đã chọn, tất cả dữ liệu thống kê được cập nhật chỉ hiển thị đơn hàng trong ngày đó, biểu đồ và bảng dữ liệu được cập nhật tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-03** | Lọc thống kê theo tuần | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Chọn tuần từ Week Picker<br>4. Click "Áp dụng" | Thống kê được lọc theo tuần đã chọn, tất cả dữ liệu thống kê được cập nhật chỉ hiển thị đơn hàng trong tuần đó, biểu đồ và bảng dữ liệu được cập nhật tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-04** | Lọc thống kê theo tháng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Chọn tháng từ Month Picker<br>4. Click "Áp dụng" | Thống kê được lọc theo tháng đã chọn, tất cả dữ liệu thống kê được cập nhật chỉ hiển thị đơn hàng trong tháng đó, biểu đồ và bảng dữ liệu được cập nhật tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-05** | Lọc thống kê theo khoảng thời gian tùy chỉnh | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Chọn khoảng thời gian từ Date Range<br>4. Click "Áp dụng" | Thống kê được lọc theo khoảng thời gian đã chọn, tất cả dữ liệu thống kê được cập nhật chỉ hiển thị đơn hàng trong khoảng thời gian đó, biểu đồ và bảng dữ liệu được cập nhật tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-06** | Xem top sản phẩm bán chạy | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Xem bảng Top sản phẩm bán chạy | Hiển thị danh sách các sản phẩm bán chạy nhất với thông tin chi tiết: STT (số thứ tự xếp hạng), Tên sản phẩm, Số lượng bán, Doanh thu (format VNĐ), Tỷ lệ (%), sản phẩm được sắp xếp theo số lượng bán hoặc doanh thu từ cao xuống thấp, có thể có biểu đồ trực quan hóa dữ liệu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-07** | Xem top khách hàng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Xem bảng Top khách hàng | Hiển thị danh sách các khách hàng mua nhiều nhất với thông tin chi tiết: STT (số thứ tự xếp hạng), Tên khách hàng, Số đơn hàng, Tổng chi tiêu (format VNĐ), Hạng khách hàng Badge, khách hàng được sắp xếp theo tổng chi tiêu hoặc số đơn hàng từ cao xuống thấp, có thể có biểu đồ trực quan hóa dữ liệu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-08** | Xuất báo cáo PDF | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Click nút "Xuất PDF" | File PDF báo cáo được tạo thành công, báo cáo bao gồm tất cả thông tin thống kê, file được tải xuống hoặc lưu vào thư mục, hiển thị thông báo thành công "Đã xuất báo cáo PDF" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-09** | Xuất báo cáo Excel | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Click nút "Xuất Excel" | File Excel báo cáo được tạo thành công, báo cáo bao gồm tất cả dữ liệu chi tiết trong bảng tính, file được tải xuống hoặc lưu vào thư mục, hiển thị thông báo thành công "Đã xuất báo cáo Excel" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-SLDH-10** | Gửi email báo cáo | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/orders-processed<br>3. Click nút "Gửi email"<br>4. Nhập email người nhận<br>5. Click "Gửi" | Hiển thị Dialog hoặc form với Input email người nhận, sau khi gửi: email báo cáo được gửi thành công, file PDF hoặc Excel được đính kèm, hiển thị thông báo thành công "Đã gửi email báo cáo" (toast success), người nhận nhận được email | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Báo cáo cuối ca
-
-#### Check FUNC: Báo cáo cuối ca
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCCC-01** | Xem báo cáo cuối ca | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Xem báo cáo | Hiển thị đầy đủ: tiêu đề "Báo cáo cuối ca làm việc", card Thông tin ca làm với thông tin (Ngày làm việc, Ca làm việc, Nhân viên, Thời gian bắt đầu, Thời gian kết thúc, Thời gian làm việc), card Tổng kết doanh thu với các chỉ số (Tổng doanh thu, Doanh thu tiền mặt với %, Doanh thu thẻ với %, Doanh thu chuyển khoản với %, Doanh thu ví điện tử với %), card Tổng kết đơn hàng với các chỉ số (Tổng số đơn hàng, Đơn hàng thành công với %, Đơn hàng đã hủy với %, Đơn hàng trực tiếp với %, Đơn hàng online với %), card Tổng kết sản phẩm với các chỉ số (Tổng số sản phẩm bán, Sản phẩm bán chạy nhất, Giá trị đơn hàng TB, Số khách hàng phục vụ), card Đánh giá hiệu suất với các chỉ số (Điểm hiệu suất, So sánh với ca trước, So sánh với trung bình, Ghi chú đánh giá Textarea), bảng chi tiết đơn hàng Table với các cột (Thời gian, Mã đơn hàng Link, Khách hàng, Sản phẩm, Tổng tiền, Phương thức thanh toán, Trạng thái Badge), biểu đồ tổng kết Chart Group (Biểu đồ doanh thu theo giờ, Biểu đồ doanh thu theo phương thức thanh toán, Biểu đồ số lượng đơn hàng theo giờ), các nút xác nhận (Xác nhận hoàn thành ca, Lưu báo cáo, Gửi báo cáo cho quản lý, In báo cáo) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCC-02** | Xác nhận hoàn thành ca | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Xem báo cáo<br>4. Click nút "Xác nhận hoàn thành ca"<br>5. Xác nhận trong Dialog | Hiển thị Dialog xác nhận với DialogTitle "Xác nhận hoàn thành ca làm việc", DialogDescription, nút "Hủy" và "Xác nhận". Sau khi xác nhận: ca làm việc được xác nhận hoàn thành, thông tin ca làm việc được lưu trữ vào hệ thống, trạng thái ca làm việc cập nhật thành "Đã hoàn thành", thông báo được gửi cho quản lý về việc hoàn thành ca làm việc, các chỉ số hiệu suất được tính toán tự động, hiển thị thông báo thành công "Đã xác nhận hoàn thành ca làm việc" (toast success), dialog đóng lại | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCC-03** | Lưu báo cáo cuối ca | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Click nút "Lưu báo cáo" | Báo cáo cuối ca được lưu vào hệ thống, tên file tự động đặt theo ngày và ca làm việc (VD: "BaoCaoCuoiCa_2024-01-22_CaSang.pdf"), file được lưu vào thư mục quy định, bản sao lưu trữ được tạo cho quản lý, lịch sử tạo báo cáo được ghi lại, hiển thị thông báo thành công "Đã lưu báo cáo cuối ca" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCC-04** | Gửi báo cáo cho quản lý | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Click nút "Gửi báo cáo cho quản lý"<br>4. Xác nhận gửi | Email báo cáo cuối ca được gửi cho quản lý, thông tin quản lý được điền tự động, file PDF báo cáo được đính kèm, email có nội dung chuyên nghiệp, hiển thị thông báo thành công "Đã gửi báo cáo cho quản lý" (toast success), quản lý nhận được email, file đính kèm chính xác | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCC-05** | In báo cáo cuối ca | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Click nút "In báo cáo" | Bản xem trước báo cáo được hiển thị trước khi in, hỗ trợ tùy chỉnh kích thước và hướng in, báo cáo được in trực tiếp ra máy in, tự động lưu bản sao báo cáo trong hệ thống, hiển thị thông báo thành công "Đã in báo cáo" (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCCC-06** | Thêm ghi chú đánh giá | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/reports/end-of-shift<br>3. Nhập ghi chú vào Textarea "Ghi chú đánh giá"<br>4. Click "Lưu" | Ghi chú đánh giá được lưu thành công, hiển thị thông báo thành công "Đã lưu ghi chú" (toast success), ghi chú được hiển thị trong card "Đánh giá hiệu suất" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-SE-01** | Đăng xuất phiên hiện tại | 1. Mở dialog<br>2. Chọn `Đăng xuất chỉ phiên hiện tại`<br>3. Confirm | Phiên hiện tại bị revoke, user chuyển về `/nhanvien/auth/login`, lịch sử ghi `logout current session` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-BM-SE-02** | Đăng xuất tất cả phiên khác | 1. Chọn radio `Đăng xuất tất cả phiên khác` | Chỉ giữ phiên hiện tại, các refresh token khác bị hủy, hiển thị toast success | FUNC-BM-SE-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-SE-03** | Đăng xuất tất cả phiên | 1. Chọn `Đăng xuất tất cả các phiên` | User bị logout khỏi mọi thiết bị, yêu cầu đăng nhập lại, hiển thị cảnh báo “Đã đăng xuất tất cả phiên” | FUNC-BM-SE-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-SE-04** | Ghi chú đăng xuất | 1. Nhập ghi chú vào textarea trước khi confirm | Ghi chú lưu kèm log logout để quản trị tra cứu, hiển thị trong lịch sử bảo mật | FUNC-BM-SE-01 | Pass | 11/15/2015 | |
+| **FUNC-BM-SE-05** | Hủy dialog | 1. Click `Hủy` | Dialog đóng, không thay đổi trạng thái phiên | FUNC-BM-SE-01 | Pass | 11/15/2015 | |
 
 ---
 
