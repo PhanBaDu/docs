@@ -1,13 +1,14 @@
-# Test Case Template - Xử lý yêu cầu (Nhân viên kho)
+# Test Case Template - Hỗ trợ bán hàng (Nhân viên kho)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên kho)**
 
 ## Test Requirement
-1. Danh sách yêu cầu `/nhanvienkho/requests`
-2. Xử lý yêu cầu nhập hàng `/nhanvienkho/requests/import`
-3. Xử lý yêu cầu xuất hàng `/nhanvienkho/requests/export`
-4. Theo dõi trạng thái & báo cáo yêu cầu `/nhanvienkho/requests/tracking`
+1. Trang chọn thao tác hỗ trợ `/nhanvienkho/support`
+2. Kiểm tra tồn kho cho đơn hàng `/nhanvienkho/support/check-order`
+3. Xác nhận khả năng giao hàng `/nhanvienkho/support/confirm`
+4. Cập nhật trạng thái đơn hàng `/nhanvienkho/support/update-status`
+5. Xử lý đơn hàng đặc biệt `/nhanvienkho/support/special-orders`
 
 ---
 
@@ -27,97 +28,112 @@
 
 ## Test Cases
 
-### Function: Danh sách yêu cầu
+### Function: Trang hỗ trợ bán hàng (landing)
 
-#### Check GUI: `/nhanvienkho/requests`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-REQ-LIST-01** | Thẻ thống kê đầu trang | 1. Đăng nhập kho<br>2. Truy cập `/nhanvienkho/requests` | Grid 4 `Card`: `Yêu cầu mới 15`, `Đang xử lý 8`, `Hoàn thành 45`, `Chờ phê duyệt 3` đúng typography trong UI | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-LIST-02** | Bộ lọc | 1. Quan sát card `Bộ lọc` | 4 Select: Loại (all/import/export/audit/adjust), Trạng thái, Ưu tiên, Sắp xếp (time-desc/time-asc/priority/code) hiển thị đúng label | FUNC-KW-REQ-LIST-02 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-LIST-03** | Bảng danh sách | 1. Quan sát `Table` | Cột Mã yêu cầu, Loại, Mô tả, Người tạo, Thời gian, Ưu tiên, Trạng thái, Thao tác; row mẫu hiển thị `REQ001`, badge `Nhập hàng`, `Mới`, buttons `Xem chi tiết`, `Xử lý` | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-
-#### Check FUNC: Lọc, sắp xếp, thao tác
+#### Check GUI: `/nhanvienkho/support`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-REQ-LIST-01** | Tải danh sách mặc định | 1. Mở trang | API trả danh sách, table >=1 row, thống kê khớp database | None | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-02** | Lọc theo loại | 1. Chọn `Loại = Xuất hàng` | Table chỉ hiển thị yêu cầu `export`, badge loại cập nhật | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-03** | Lọc theo trạng thái | 1. Chọn `Trạng thái = Đang xử lý` | Danh sách chỉ còn badge `Đang xử lý`; thẻ “Đang xử lý” highlight | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-04** | Lọc theo ưu tiên | 1. Chọn `Ưu tiên = Cao` | Table hiển thị badge `Cao`; cột `Ưu tiên` highlight | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-05** | Sắp xếp thời gian | 1. Chọn `Sắp xếp = Thời gian tạo cũ nhất` | Danh sách được sắp xếp ascending theo `Thời gian` | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-06** | Xem chi tiết yêu cầu | 1. Click `Xem chi tiết` trên REQ001 | Điều hướng/toggle detail view hiển thị đầy đủ info + hành động xử lý tương ứng | FUNC-KW-REQ-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-LIST-07** | Mở trang xử lý | 1. Click `Xử lý` trên yêu cầu import | Điều hướng tới `/nhanvienkho/requests/import` với query ID | FUNC-KW-REQ-LIST-06 | Pass | 11/15/2015 | |
+| **GUI-KW-SUP-LAND-01** | Kiểm tra bố cục thẻ điều hướng | 1. Đăng nhập kho<br>2. mở `/nhanvienkho/support` | Header `Hỗ trợ bán hàng`, mô tả; grid 4 card link tới `check-order`, `confirm`, `update-status`, `special-orders` với CardTitle/CardDescription khớp code | FUNC-KW-SUP-LAND-01 | Pass | 11/15/2015 | |
+
+#### Check FUNC
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-KW-SUP-LAND-01** | Điều hướng kiểm tra đơn | 1. Click card `Kiểm tra tồn kho cho đơn hàng` | Điều hướng tới `/nhanvienkho/support/check-order` | None | Pass | 11/15/2015 | |
+| **FUNC-KW-SUP-LAND-02** | Điều hướng xác nhận giao hàng | 1. Click card `Xác nhận khả năng giao hàng` | Điều hướng tới `/nhanvienkho/support/confirm` | None | Pass | 11/15/2015 | |
+| **FUNC-KW-SUP-LAND-03** | Điều hướng cập nhật trạng thái | 1. Click card `Cập nhật trạng thái đơn hàng` | Điều hướng tới `/nhanvienkho/support/update-status` | None | Pass | 11/15/2015 | |
+| **FUNC-KW-SUP-LAND-04** | Điều hướng đơn đặc biệt | 1. Click card `Đơn hàng đặc biệt` | Điều hướng tới `/nhanvienkho/support/special-orders` | None | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xử lý yêu cầu nhập hàng
+### Function: Kiểm tra tồn kho cho đơn hàng
 
-#### Check GUI: `/nhanvienkho/requests/import`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-REQ-IMPORT-01** | Thông tin yêu cầu | 1. Mở trang | Card hiển thị `Mã yêu cầu`, `Người tạo`, `Thời gian`, `Mô tả` dạng grid 4 cột | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-IMPORT-02** | Bảng sách yêu cầu | 1. Quan sát table | Cột Mã sách, Tên sách, Số lượng yêu cầu/có sẵn, Trạng thái (Badge), Thao tác (buttons Xác nhận/Từ chối/Điều chỉnh) | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-IMPORT-03** | Khối ghi chú xử lý | 1. Quan sát card cuối | Textarea placeholder “Ghi chú…”, các button `Xác nhận tất cả`, `Từ chối yêu cầu`, `Lưu xử lý` | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-
-#### Check FUNC: Xử lý yêu cầu nhập
+#### Check GUI: `/nhanvienkho/support/check-order`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-REQ-IMPORT-01** | Xác nhận từng sách | 1. Click `Xác nhận` tại BK001<br>2. Nhập ghi chú | Trạng thái item chuyển “Đã xác nhận”, badge cập nhật, log ghi lý do; tooltip/alert success | FUNC-KW-REQ-LIST-07 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-02** | Từ chối từng sách | 1. Click `Từ chối`<br>2. Nhập lý do | Badge đổi `Từ chối`, trạng thái yêu cầu partial; notify người tạo | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-03** | Điều chỉnh số lượng | 1. Click `Điều chỉnh`<br>2. Nhập số lượng mới 30 | UI ghi nhận số mới (hiển thị 30/100), log `Điều chỉnh`, hiển thị note | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-04** | Xác nhận tất cả | 1. Click `Xác nhận tất cả` | Tất cả book rows set to `Đã xác nhận`, trạng thái yêu cầu -> `Đã xác nhận`, alert success | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-05** | Từ chối toàn bộ | 1. Click `Từ chối yêu cầu`<br>2. Nhập lý do | Request status -> `Từ chối`, send notification to requester, log reason | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-06** | Lưu xử lý | 1. Click `Lưu xử lý` | Ghi lại trạng thái từng sách + ghi chú xuống DB, toast `Đã lưu xử lý yêu cầu` | FUNC-KW-REQ-IMPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-IMPORT-07** | Validation ghi chú bắt buộc khi từ chối | 1. Click `Từ chối yêu cầu` mà không nhập ghi chú | Alert lỗi “Vui lòng nhập lý do từ chối”, không thay đổi trạng thái | FUNC-KW-REQ-IMPORT-05 | Pass | 11/15/2015 | |
+| **GUI-KW-CHECK-01** | Form tìm kiếm đơn hàng | 1. Mở trang | Card với Label/Input `Mã đơn hàng`, `Mã khách hàng`, `Ngày tạo đơn`, button `Tìm kiếm` | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+| **GUI-KW-CHECK-02** | Thông tin đơn hàng | 1. Quan sát card thứ hai | Grid text-sm hiển thị `Mã đơn`, `Khách hàng`, `Ngày tạo`, `Tổng tiền` | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+| **GUI-KW-CHECK-03** | Bảng danh sách sách | 1. Quan sát Table | Cột Mã sách, Tên sách, `Số lượng yêu cầu/có sẵn`, `Trạng thái` (Badge), `Ghi chú` | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+| **GUI-KW-CHECK-04** | Tổng kết kiểm tra | 1. Quan sát card cuối | Các dòng `Tổng sách`, `Có sẵn`, `Hết hàng` + buttons `Xác nhận giao hàng`, `Từ chối giao hàng`, `Đề xuất thay thế` | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+
+#### Check FUNC
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|----------------|------------|--------|-----------|------|
+| **FUNC-KW-CHECK-01** | Tìm kiếm đơn hàng hợp lệ | 1. Nhập mã ORD001<br>2. Click `Tìm kiếm` | Thông tin đơn và danh sách sách được tải, hiển thị summary | None | Pass | 11/15/2015 | |
+| **FUNC-KW-CHECK-02** | Tính trạng thái từng sách | 1. Kiểm tra row `Số lượng có sẵn =0` | Badge chuyển `Hết hàng`, ghi chú “Cần đề xuất thay thế” | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CHECK-03** | Xác nhận giao hàng | 1. Sau khi đảm bảo đủ hàng, click `Xác nhận giao hàng` | Alert success “Đơn hàng có thể giao”, log confirmation, notify sales | FUNC-KW-CHECK-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CHECK-04** | Từ chối giao hàng | 1. Khi thiếu hàng, click `Từ chối giao hàng` + nhập lý do | Trạng thái đơn -> `Từ chối`, send notification, prompt to create import request | FUNC-KW-CHECK-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-CHECK-05** | Đề xuất thay thế | 1. Click `Đề xuất thay thế` trên sách hết hàng | Modal gợi ý sách tương tự (theo category/author), cho phép chọn & gửi note | FUNC-KW-CHECK-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xử lý yêu cầu xuất hàng
+### Function: Xác nhận khả năng giao hàng
 
-#### Check GUI: `/nhanvienkho/requests/export`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-REQ-EXPORT-01** | Card thông tin yêu cầu | 1. Mở trang | Card grid hiển thị `REQ002`, người tạo, thời gian, mô tả | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-EXPORT-02** | Card thông tin đơn hàng | 1. Quan sát card thứ hai | Fields `Mã đơn hàng ORD001`, `Khách hàng`, `Thời gian giao` | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-EXPORT-03** | Bảng sách xuất & ghi chú | 1. Quan sát table + card `Ghi chú xử lý` | Table như trang import (Số lượng yêu cầu/có sẵn, badges). Card ghi chú có buttons `Xác nhận tất cả`, `Từ chối yêu cầu`, `Lưu xử lý` | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-
-#### Check FUNC: Xử lý yêu cầu xuất
+#### Check GUI: `/nhanvienkho/support/confirm`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-REQ-EXPORT-01** | Kiểm tra tồn kho trước xuất | 1. Click `Xác nhận` khi `Số lượng có sẵn` < yêu cầu | Nếu không đủ: hiển thị cảnh báo, cho phép điều chỉnh hoặc từ chối; không cập nhật kho | FUNC-KW-REQ-LIST-07 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-EXPORT-02** | Xác nhận đủ hàng | 1. Click `Xác nhận` khi đủ hàng | Trạng thái item `Sẵn sàng xuất`, giảm tạm số lượng trong session, log cho ORD001 | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-EXPORT-03** | Từ chối yêu cầu | 1. Click `Từ chối yêu cầu` + ghi chú | Request status -> `Từ chối`, notify sales team | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-EXPORT-04** | Điều chỉnh thay thế sách | 1. Click `Điều chỉnh` -> chọn sách khác | UI cho phép chọn sản phẩm thay thế, update table & ghi chú | FUNC-KW-REQ-EXPORT-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-EXPORT-05** | Lưu xử lý | 1. Click `Lưu xử lý` | Ghi log, cập nhật trạng thái, gửi thông báo, hiển thị alert success | FUNC-KW-REQ-EXPORT-02 | Pass | 11/15/2015 | |
+| **GUI-KW-CONFIRM-01** | Bộ lọc đơn hàng | 1. Mở trang | Form 4 cột: Select `Trạng thái`, Input `Ngày tạo`, Input `Mã khách hàng`, Select `Ưu tiên` | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+| **GUI-KW-CONFIRM-02** | Bảng đơn hàng cần xác nhận | 1. Quan sát table | Cột Mã, Khách hàng, Ngày tạo, Tổng tiền, Trạng thái, Ưu tiên, Thao tác; buttons `Xem chi tiết`, `Xác nhận`, `Từ chối`, `Đề xuất thay thế`; buttons `Xác nhận hàng loạt`, `Xuất báo cáo` phía trên | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+
+#### Check FUNC
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|----------------|-----------|--------|-----------|------|
+| **FUNC-KW-CONFIRM-01** | Lọc theo trạng thái | 1. Set `Trạng thái = Chờ xác nhận` | Table hiển thị đơn pending, badge `Chờ xác nhận` | None | Pass | 11/15/2015 | |
+| **FUNC-KW-CONFIRM-02** | Xác nhận đơn | 1. Click `Xác nhận` trên ORD001 | Trạng thái -> `Đã xác nhận`, log timestamp, notify sales/customer | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CONFIRM-03** | Từ chối đơn | 1. Click `Từ chối` + nhập lý do | Đơn set `Từ chối`, gợi ý tạo yêu cầu nhập, email notification | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CONFIRM-04** | Đề xuất thay thế | 1. Click `Đề xuất thay thế` | Modal cho phép lựa chọn sách thay, gửi note cho sales | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CONFIRM-05** | Xác nhận hàng loạt | 1. Chọn nhiều đơn -> click `Xác nhận hàng loạt` | Selected orders update to confirmed, progress toast hiển thị; log batch id | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-CONFIRM-06** | Xuất báo cáo | 1. Click `Xuất báo cáo` | Download file danh sách + trạng thái, kèm bộ lọc hiện tại | FUNC-KW-CONFIRM-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Theo dõi trạng thái yêu cầu
+### Function: Cập nhật trạng thái đơn hàng
 
-#### Check GUI: `/nhanvienkho/requests/tracking`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KW-REQ-TRACK-01** | Bộ lọc theo thời gian & trạng thái | 1. Mở trang tracking | Form với Input `Từ ngày`, `Đến ngày`, Select `Trạng thái`, `Loại yêu cầu` (layout md:grid-cols-5) | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-TRACK-02** | Thẻ thống kê & biểu đồ | 1. Quan sát grid & card | Grid 4 card (Tổng, Hoàn thành, Đang xử lý, Từ chối) + card `Biểu đồ trạng thái` (div h-48 bg-muted) | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
-| **GUI-KW-REQ-TRACK-03** | Bảng yêu cầu theo dõi | 1. Quan sát table | Cột Mã, Loại, Mô tả, Trạng thái, Thời gian tạo/xử lý, Người xử lý, Thao tác (Xem chi tiết, Cập nhật trạng thái) | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
-
-#### Check FUNC: Theo dõi & cập nhật
+#### Check GUI: `/nhanvienkho/support/update-status`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KW-REQ-TRACK-01** | Lọc theo trạng thái | 1. Set `Trạng thái = Chờ phê duyệt` | Card thống kê cập nhật, table chỉ hiển thị yêu cầu pending | None | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-02** | Lọc theo loại yêu cầu | 1. Set `Loại = Điều chỉnh` | Table hiển thị req adjust, badge `Điều chỉnh` | None | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-03** | Xem chi tiết từ tracking | 1. Click `Xem chi tiết` | Mở modal / điều hướng detail page hiển thị timeline xử lý | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-04** | Cập nhật trạng thái | 1. Click `Cập nhật trạng thái` -> chọn `Hoàn thành` | Trạng thái thay đổi, log `status_change`, gửi thông báo cho requester | FUNC-KW-REQ-TRACK-03 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-05** | Xem lịch sử xử lý | 1. Trong modal detail, mở tab `Lịch sử` | Hiển thị timeline entries (thời gian, người xử lý, ghi chú) | FUNC-KW-REQ-TRACK-03 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-06** | Xuất báo cáo theo dõi | 1. Từ trang tracking, click `Xuất báo cáo` | Tạo file PDF/Excel gồm thống kê + biểu đồ + bảng theo bộ lọc | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
-| **FUNC-KW-REQ-TRACK-07** | Gửi báo cáo theo dõi | 1. Sau khi xuất, chọn `Gửi báo cáo` | Báo cáo gửi qua email/app cho quản lý, toast success | FUNC-KW-REQ-TRACK-06 | Pass | 11/15/2015 | |
+| **GUI-KW-UPD-01** | Bộ lọc | 1. Mở trang | Form với Input `Mã đơn hàng`, Select `Trạng thái hiện tại`, Input `Ngày cập nhật`, Input `Mã khách hàng` | FUNC-KW-UPD-01 | Pass | 11/15/2015 | |
+| **GUI-KW-UPD-02** | Bảng đơn hàng | 1. Quan sát table | Cột Mã, Khách hàng, Trạng thái hiện tại, Ngày cập nhật, Ghi chú, Thao tác (button `Cập nhật trạng thái`) | FUNC-KW-UPD-01 | Pass | 11/15/2015 | |
+| **GUI-KW-UPD-03** | Modal cập nhật trạng thái | 1. Click `Cập nhật trạng thái` | Dialog hiển thị Select `Trạng thái mới` (preparing/shipping/delivered/done/canceled), Textarea `Ghi chú`, Input `Ngày cập nhật`, Input readOnly `Người thực hiện`, buttons `Hủy`, `Lưu cập nhật` | FUNC-KW-UPD-02 | Pass | 11/15/2015 | |
+
+#### Check FUNC
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|----------------|-----------|--------|-----------|------|
+| **FUNC-KW-UPD-01** | Lọc theo trạng thái | 1. Set filter `Trạng thái hiện tại = Đã xác nhận` | Table hiển thị các đơn matching | None | Pass | 11/15/2015 | |
+| **FUNC-KW-UPD-02** | Cập nhật sang `Đang chuẩn bị` | 1. Click `Cập nhật trạng thái` -> chọn `Đang chuẩn bị` | Record updated, table row status text change, toast success | FUNC-KW-UPD-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-UPD-03** | Cập nhật sang `Đang giao` | 1. Chọn `Đang giao` + ghi chú | Thông báo gửi cho vận chuyển & khách hàng; history entry appended | FUNC-KW-UPD-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-UPD-04** | Cập nhật sang `Đã giao` | 1. Chọn `Đã giao` | Đơn được đánh dấu delivered, trigger `Đánh giá` email cho khách | FUNC-KW-UPD-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-UPD-05** | Hủy đơn | 1. Chọn `Hủy bỏ` + ghi chú lý do | Đơn set canceled, logs, refund process triggered (nếu cần) | FUNC-KW-UPD-02 | Pass | 11/15/2015 | |
+| **FUNC-KW-UPD-06** | Validation ghi chú | 1. Chọn `Hủy bỏ` nhưng bỏ trống ghi chú | Modal hiển thị lỗi `Vui lòng nhập ghi chú`, không lưu | FUNC-KW-UPD-05 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Đơn hàng đặc biệt
+
+#### Check GUI: `/nhanvienkho/support/special-orders`
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-KW-SPECIAL-01** | Bộ lọc | 1. Mở trang | Form gồm Select `Loại đặc biệt`, `Ưu tiên`, `Trạng thái`, Input `Ngày tạo` | FUNC-KW-SPECIAL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-SPECIAL-02** | Bảng đơn hàng đặc biệt | 1. Quan sát table | Cột Mã đơn, Loại đặc biệt, Khách hàng, Mô tả, Ưu tiên, Trạng thái, Thao tác (buttons `Xem chi tiết`, `Xử lý`, `Chuyển tiếp`, `Ghi chú`) | FUNC-KW-SPECIAL-01 | Pass | 11/15/2015 | |
+| **GUI-KW-SPECIAL-03** | Form xử lý đặc biệt | 1. Quan sát card cuối | Textarea `Phương án xử lý`, Input datetime `Thời gian dự kiến`, Select `Người phụ trách`, buttons `Lưu xử lý`, `Chuyển tiếp` | FUNC-KW-SPECIAL-02 | Pass | 11/15/2015 | |
+
+#### Check FUNC
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|----------------|-----------|--------|-----------|------|
+| **FUNC-KW-SPECIAL-01** | Lọc theo loại đặc biệt | 1. Set `Loại đặc biệt = Giao hàng nhanh` | Table hiển thị các đơn express, badge `Giao hàng nhanh` | None | Pass | 11/15/2015 | |
+| **FUNC-KW-SPECIAL-02** | Lưu phương án xử lý | 1. Nhập phương án + thời gian + người phụ trách, click `Lưu xử lý` | Plan saved, status -> `Đang xử lý`, notify stakeholders | FUNC-KW-SPECIAL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-SPECIAL-03** | Chuyển tiếp đơn | 1. Click `Chuyển tiếp` + chọn bộ phận | Đơn status -> `Đã chuyển tiếp`, log reason, send notification | FUNC-KW-SPECIAL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-SPECIAL-04** | Ghi chú bổ sung | 1. Click `Ghi chú` -> nhập note | Note appended to history, hiển thị trong detail | FUNC-KW-SPECIAL-01 | Pass | 11/15/2015 | |
+| **FUNC-KW-SPECIAL-05** | Theo dõi tiến độ | 1. Sau khi lưu phương án, refresh tracking | Trang tracking hiển thị đơn trong danh mục “Đơn đặc biệt - đang xử lý” | FUNC-KW-REQ-TRACK-01 | Pass | 11/15/2015 | |
 
 ---
 
