@@ -1,12 +1,14 @@
-# Test Case Template - Xử lý đổi trả sách (Nhân viên)
+# Test Case Template - Chat hỗ trợ (Nhân viên)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên)**
 
 ## Test Requirement
-1. Hiển thị danh sách đổi trả
-2. Xem chi tiết yêu cầu đổi trả
-3. Liên hệ đổi trả
+1. Danh sách chat chờ xử lý
+2. Chi tiết cuộc chat
+3. Trả lời khách hàng / đánh dấu hoàn thành
+4. Liên hệ & chuyển tiếp
+5. Xử lý khiếu nại
 
 ---
 
@@ -16,107 +18,119 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 36 |
+| **Pass** | 38 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 36 |
+| **Number of Test cases** | 38 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị danh sách đổi trả
+### Function: Danh sách chat chờ xử lý
 
-#### Check GUI: Hiển thị danh sách đổi trả
+#### Check GUI: Danh sách chat chờ xử lý
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DSDT-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns<br>3. Kiểm tra tiêu đề | Hiển thị div space-y-6 với h1 `Xử lý đổi trả sách` class text-2xl font-bold, p `Quản lý yêu cầu đổi trả cần xử lý` class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-02** | Kiểm tra thống kê tổng quan | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-2 md:grid-cols-5 gap-4 với các Card chứa CardContent p-4: `Tổng yêu cầu 15`, `Chờ xử lý 8`, `Đã xử lý 5`, `Đã từ chối 2`, Card cuối class col-span-2 md:col-span-1 hiển thị `Tổng giá trị 2.500.000 VNĐ` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-03** | Kiểm tra card Bộ lọc yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Quan sát card | Hiển thị Card với CardHeader (CardTitle `Bộ lọc yêu cầu`, CardDescription `Trạng thái, loại, thời gian, ưu tiên, tìm kiếm`), CardContent class grid md:grid-cols-6 gap-3 chứa các control | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-04** | Kiểm tra bộ lọc Trạng thái | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Trạng thái | Hiển thị SelectTrigger với SelectValue placeholder `Tất cả`, SelectContent chứa SelectItem: `Tất cả`, `Chờ xử lý`, `Đang xử lý`, `Đã xử lý`, `Đã từ chối`, `Đã hủy` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-05** | Kiểm tra bộ lọc Loại yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Loại yêu cầu | Hiển thị Select với các option: `Tất cả`, `Đổi sách`, `Trả sách`, `Đổi sách khác`, `Hoàn tiền` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-06** | Kiểm tra bộ lọc Khoảng thời gian | 1. Truy cập /nhanvien/returns<br>2. Kiểm tra phần Khoảng thời gian | Hiển thị grid grid-cols-2 gap-2 với hai Input type="date" (Từ ngày, Đến ngày) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-07** | Kiểm tra bộ lọc Mức độ ưu tiên | 1. Truy cập /nhanvien/returns<br>2. Mở dropdown Mức độ ưu tiên | Hiển thị Select có các option: `Tất cả`, `Cao`, `Trung bình`, `Thấp` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-08** | Kiểm tra ô tìm kiếm | 1. Truy cập /nhanvien/returns<br>2. Quan sát ô tìm kiếm | Input placeholder `ID, tên, số điện thoại...` hiển thị trong grid | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-09** | Kiểm tra bảng danh sách yêu cầu | 1. Truy cập /nhanvien/returns<br>2. cuộn tới bảng | Hiển thị Card (CardTitle `Danh sách yêu cầu`, CardDescription `Các yêu cầu đổi trả cần xử lý`), TableHeader có các cột: `ID yêu cầu`, `Khách hàng`, `Loại`, `Sản phẩm`, `Lý do`, `Trạng thái`, `Ngày tạo`, `Thao tác`. TableBody hiển thị hàng với dữ liệu mẫu (#RT-001, Nguyễn Văn A, Badge `Đổi sách`, …) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DSDT-10** | Kiểm tra cột Thao tác | 1. Truy cập /nhanvien/returns<br>2. Quan sát cột Thao tác | Mỗi hàng có Button size="sm" variant="outline" asChild Link tới `/nhanvien/returns/RT-001` (Xem chi tiết) và Button size="sm" `Xử lý yêu cầu` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/support` | Hiển thị h1 `Chat hỗ trợ` class text-2xl font-bold và mô tả `Quản lý tin nhắn hỗ trợ đang chờ xử lý` class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-02** | Kiểm tra thống kê tổng quan | 1. Truy cập `/nhanvien/support`<br>2. Quan sát grid thống kê | Grid `grid-cols-2 md:grid-cols-4 gap-4` gồm 4 Card hiển thị `Tổng chat 45`, `Chờ xử lý 12`, `Đang xử lý 8`, `Đã hoàn thành 25` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Truy cập `/nhanvien/support`<br>2. Kiểm tra card | CardTitle `Tìm kiếm & Bộ lọc`, CardDescription `Tìm theo ID/tên/email/nội dung, lọc theo trạng thái & ưu tiên`, CardContent grid md:grid-cols-6 gap-3 chứa Input tìm kiếm, Select Trạng thái, Select Độ ưu tiên | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-04** | Kiểm tra bảng danh sách chat | 1. Truy cập `/nhanvien/support`<br>2. Quan sát Card danh sách | CardTitle `Danh sách chat chờ xử lý`, CardDescription `Tổng quan các cuộc chat`, Table với TableHead: `ID chat`, `Khách hàng`, `Chủ đề`, `Tin nhắn cuối`, `Trạng thái`, `Thời gian`, `Nhân viên`, `Thao tác` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-05** | Kiểm tra cột Khách hàng | 1. Truy cập `/nhanvien/support`<br>2. Quan sát hàng #CHAT001 | TableCell chứa div text-sm font-medium (Tên), div text-xs text-muted-foreground `email • SĐT • Hạng` | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CHAT-LIST-06** | Kiểm tra cột Thao tác | 1. Truy cập `/nhanvien/support` | Cột Thao tác hiển thị Button size=sm variant=outline `Xem` (Link `/nhanvien/support/CHAT001`) và Button size=sm `Trả lời` (Link `/nhanvien/support/CHAT001/reply`) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Hiển thị danh sách đổi trả
+#### Check FUNC: Danh sách chat chờ xử lý
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DSDT-01** | Xem danh sách yêu cầu đổi trả | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/returns | Trang hiển thị đầy đủ: tiêu đề, thống kê 5 card, card bộ lọc với các control (Select Trạng thái/Loại, Input date range, Select ưu tiên, Input tìm kiếm), card danh sách với bảng hiển thị yêu cầu, cột Thao tác có nút `Xem chi tiết` & `Xử lý yêu cầu` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-02** | Lọc yêu cầu theo trạng thái | 1. Truy cập /nhanvien/returns<br>2. Chọn Trạng thái = `Chờ xử lý` | Bảng chỉ hiển thị các yêu cầu có trạng thái `Chờ xử lý`, Badge variant="destructive" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-03** | Lọc theo loại yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Chọn Loại yêu cầu = `Hoàn tiền` | Danh sách chỉ còn các yêu cầu Hoàn tiền (Badge `Hoàn tiền`), thống kê cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-04** | Lọc theo khoảng thời gian | 1. Truy cập /nhanvien/returns<br>2. Chọn Từ ngày & Đến ngày<br>3. Áp dụng | Danh sách yêu cầu cập nhật chỉ bao gồm các yêu cầu tạo trong khoảng thời gian, cột Ngày tạo phù hợp | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-05** | Lọc theo mức độ ưu tiên | 1. Truy cập /nhanvien/returns<br>2. Chọn ưu tiên = `Cao` | Danh sách hiển thị các yêu cầu ưu tiên cao, Badge `Cao`, cột Thao tác vẫn hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-06** | Tìm kiếm yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Nhập `RT-001` vào ô tìm kiếm | Bảng hiển thị yêu cầu #RT-001, nếu không có hiển thị thông báo “Không tìm thấy yêu cầu nào” | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-07** | Sắp xếp theo ngày tạo mới nhất | 1. Truy cập /nhanvien/returns<br>2. Chọn sắp xếp = `Ngày tạo (mới nhất)` | Danh sách yêu cầu hiển thị theo thứ tự ngày tạo giảm dần, hàng đầu tiên là yêu cầu mới nhất | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-08** | Xem chi tiết yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Click nút `Xem chi tiết` | Điều hướng đến `/nhanvien/returns/RT-001` hiển thị chi tiết yêu cầu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DSDT-09** | Xử lý yêu cầu | 1. Truy cập /nhanvien/returns<br>2. Click cbutton `Xử lý yêu cầu` | Hiển thị dialog/form xử lý (hoặc điều hướng), cho phép cập nhật trạng thái/ghi chú, hiển thị thông báo thành công | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-01** | Xem danh sách chat | 1. Đăng nhập<br>2. Truy cập `/nhanvien/support` | Trang hiển thị đầy đủ thống kê, bộ lọc, bảng chat. Mỗi hàng hiển thị Badge ID (#CHAT001), thông tin khách, chủ đề, tin nhắn cuối, trạng thái, thời gian, nhân viên, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-02** | Tìm kiếm chat theo từ khóa | 1. Truy cập `/nhanvien/support`<br>2. Nhập `CHAT001` vào ô tìm kiếm | Bảng chỉ hiển thị chat có ID hoặc nội dung phù hợp với từ khóa, nếu không có hiển thị thông báo “Không tìm thấy chat” | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-03** | Lọc chat theo trạng thái | 1. Truy cập `/nhanvien/support`<br>2. Chọn Trạng thái = `Chờ xử lý` | Bảng cập nhật, chỉ hiển thị chat có Badge `Chờ xử lý`, thống kê có thể cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-04** | Lọc chat theo độ ưu tiên | 1. Truy cập `/nhanvien/support`<br>2. Chọn Độ ưu tiên = `Cao` | Danh sách chat chỉ hiển thị các chat ưu tiên cao, Badge/ghi chú thể hiện mức ưu tiên, thao tác vẫn hoạt động | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-05** | Xem chi tiết chat | 1. Truy cập `/nhanvien/support`<br>2. Click nút `Xem` | Điều hướng đến `/nhanvien/support/CHAT001`, hiển thị trang chi tiết | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-LIST-06** | Mở trang trả lời chat | 1. Truy cập `/nhanvien/support`<br>2. Click nút `Trả lời` | Điều hướng đến `/nhanvien/support/CHAT001/reply`, hiển thị cửa sổ chat | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết yêu cầu đổi trả
+### Function: Chi tiết cuộc chat
 
-#### Check GUI: Xem chi tiết yêu cầu đổi trả
+#### Check GUI: Chi tiết chat `/nhanvien/support/CHAT001`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CTDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/returns/RT-001 | Hiển thị h1 `Chi tiết yêu cầu đổi trả #RT-001` class text-2xl font-bold | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-02** | Kiểm tra card Thông tin chung | 1. Truy cập chi tiết yêu cầu<br>2. Quan sát card đầu | CardTitle `Thông tin chung`, CardDescription, CardContent grid grid-cols-2 md:grid-cols-3 gap-4 hiển thị ID, Trạng thái (Badge variant destructive), Loại (Badge default), Mức độ ưu tiên (Badge), Ngày tạo, Ngày cập nhật, Người xử lý | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-03** | Kiểm tra card Thông tin khách hàng | 1. Truy cập chi tiết yêu cầu | CardTitle `Thông tin khách hàng`, grid grid-cols-2 md:grid-cols-3 hiển thị tên, số điện thoại, email, địa chỉ (md:col-span-3), Hạng khách hàng (Badge Vàng) | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-04** | Kiểm tra card Thông tin sản phẩm | 1. Truy cập chi tiết yêu cầu | CardTitle `Thông tin sản phẩm`, CardContent có hình ảnh (Image fill `/1.png`), grid hiển thị Tên SP, Mã SP, Số lượng, Giá bán, Ngày mua, Link đơn hàng gốc `/nhanvien/orders/#ORD-001` | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-05** | Kiểm tra card Lý do đổi trả | 1. Truy cập chi tiết yêu cầu | CardTitle `Lý do đổi trả`, hiển thị Lý do chính, Mô tả chi tiết, grid hình ảnh minh chứng (3 div h-24 bg-muted), Yêu cầu bồi thường | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-06** | Kiểm tra card Lịch sử xử lý | 1. Truy cập chi tiết yêu cầu | CardTitle `Lịch sử xử lý`, CardContent space-y-2 text-sm hiển thị các mục `thời gian • trạng thái • người xử lý • ghi chú` | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **GUI-CTDT-07** | Kiểm tra card Ghi chú nội bộ | 1. Truy cập chi tiết yêu cầu | CardTitle `Ghi chú nội bộ`, CardContent có Label, Textarea placeholder `Nhập ghi chú nội bộ...`, Buttons `Thêm ghi chú`, `Cập nhật trạng thái`, `Liên hệ khách hàng` (Link /nhanvien/returns/RT-001/contact) | FUNC-DSDT-08 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvien/support/CHAT001` | Tiêu đề `Chi tiết chat hỗ trợ #CHAT001` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-02** | Kiểm tra card Thông tin khách hàng | 1. Mở trang chi tiết | CardTitle `Thông tin khách hàng`, CardDescription, grid md:grid-cols-4 hiển thị Tên, Email, SĐT, Hạng (Badge), Lịch sử hỗ trợ trước | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-03** | Kiểm tra card Cuộc hội thoại | 1. Mở trang chi tiết | CardTitle `Cuộc hội thoại`, CardContent hiển thị các bubble `[Khách]` (bg-muted) và `[Nhân viên]` (bg-primary/10) theo thời gian | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-04** | Kiểm tra card Ghi chú & Ưu tiên | 1. Mở trang chi tiết | CardTitle `Ghi chú & Ưu tiên`, CardContent grid md:grid-cols-2, Textarea `Ghi chú nội bộ`, badges hiển thị độ ưu tiên, các Button `Trả lời chat`, `Đánh dấu hoàn thành`, `Chuyển tiếp / Escalate`, `Đóng chat` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-05** | Kiểm tra dialog chuyển tiếp | 1. Click `Chuyển tiếp / Escalate` | Dialog hiển thị Select `Chuyển đến *` với các option (Supervisor, Nhân viên B/C, Admin, Bộ phận kỹ thuật), Textarea `Lý do chuyển tiếp *`, Buttons `Hủy`, `Xác nhận chuyển tiếp` | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **GUI-CHAT-DETAIL-06** | Kiểm tra hiển thị lỗi | 1. Giả lập errorState | Alert variant destructive hiển thị (icon AlertCircle, mô tả lỗi) ở đầu trang | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Xem chi tiết yêu cầu đổi trả
+#### Check FUNC: Chi tiết cuộc chat
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTDT-01** | Xem thông tin chi tiết yêu cầu | 1. Truy cập /nhanvien/returns/RT-001 | Hiển thị đầy đủ tất cả card: Thông tin chung (ID, trạng thái, loại, ưu tiên, thời gian, người xử lý), Thông tin khách hàng, Thông tin sản phẩm (ảnh bìa, mã SP, link đơn hàng gốc), Lý do đổi trả (lý do chính, mô tả, hình ảnh, yêu cầu bồi thường), Lịch sử xử lý, Ghi chú nội bộ, Buttons xử lý | FUNC-DSDT-08 | Pass | 11/15/2015 | |
-| **FUNC-CTDT-02** | Thêm ghi chú nội bộ | 1. Truy cập chi tiết<br>2. Nhập ghi chú vào Textarea<br>3. Click `Thêm ghi chú` | Ghi chú nội bộ được lưu, hiển thị thông báo thành công (toast success), ghi chú xuất hiện trong danh sách (nếu UI hiển thị), ghi log | FUNC-CTDT-01 | Pass | 11/15/2015 | |
-| **FUNC-CTDT-03** | Cập nhật trạng thái yêu cầu | 1. Truy cập chi tiết<br>2. Click `Cập nhật trạng thái`<br>3. Chọn trạng thái mới | Hiển thị dialog hoặc form, cho phép chọn trạng thái (ví dụ: Đang xử lý, Đã xử lý, Đã từ chối), sau khi lưu: badge trạng thái cập nhật, lịch sử xử lý bổ sung dòng mới, thông báo thành công | FUNC-CTDT-01 | Pass | 11/15/2015 | |
-| **FUNC-CTDT-04** | Mở trang liên hệ khách hàng | 1. Truy cập chi tiết<br>2. Click `Liên hệ khách hàng` | Điều hướng đến `/nhanvien/returns/RT-001/contact` | FUNC-CTDT-01 | Pass | 11/15/2015 | |
-| **FUNC-CTDT-05** | Xem lịch sử xử lý | 1. Truy cập chi tiết<br>2. Quan sát card `Lịch sử xử lý` | Danh sách timeline hiển thị đúng thứ tự thời gian với thông tin `thời gian • trạng thái • người xử lý • ghi chú`, dữ liệu khớp với backend | FUNC-CTDT-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-01** | Xem nội dung chat | 1. Truy cập `/nhanvien/support/CHAT001` | Lịch sử tin nhắn hiển thị đúng thứ tự thời gian, bubble khách/nhân viên rõ ràng | FUNC-CHAT-LIST-05 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-02** | Thêm ghi chú nội bộ | 1. Nhập ghi chú<br>2. Click `Ghi chú nội bộ` (nút `Thêm ghi chú`) | Ghi chú được lưu, hiển thị toast success, ghi log | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-03** | Đánh dấu hoàn thành | 1. Click `Đánh dấu hoàn thành` | Toast success “Đã đánh dấu hoàn thành”, trạng thái chat cập nhật, chat biến mất khỏi danh sách chờ xử lý | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-04** | Chuyển tiếp chat | 1. Click `Chuyển tiếp / Escalate`<br>2. Chọn người nhận, nhập lý do<br>3. `Xác nhận chuyển tiếp` | Nếu hợp lệ: hiển thị toast success `Đã chuyển tiếp chat đến ...`, dialog đóng, form reset. Nếu thiếu chọn/lý do: hiển thị toast error tương ứng | FUNC-CHAT-DETAIL-05 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-05** | Đóng chat | 1. Click `Đóng chat` | Toast success “Chat đã được đóng”, chat chuyển trạng thái `Đã đóng`, ghi lịch sử | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-DETAIL-06** | Truy cập trang reply | 1. Click `Trả lời chat` | Điều hướng `/nhanvien/support/CHAT001/reply` | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Liên hệ đổi trả
+### Function: Chat / trả lời khách hàng
 
-#### Check GUI: Liên hệ đổi trả
+#### Check GUI: Cửa sổ reply `/nhanvien/support/CHAT001/reply`
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-LHDT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/returns/RT-001/contact | Hiển thị h1 `Liên hệ đổi trả - #RT-001` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-02** | Kiểm tra card Thông tin khách hàng | 1. Truy cập contact page | CardTitle `Thông tin khách hàng`, CardContent grid md:grid-cols-4 hiển thị tên, số điện thoại, email, thời gian liên hệ | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-03** | Kiểm tra card Thông tin yêu cầu | 1. Truy cập contact page | CardTitle `Thông tin yêu cầu`, hiển thị Loại (Badge), Sản phẩm, Lý do, Yêu cầu bồi thường | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-04** | Kiểm tra khối Gọi điện thoại | 1. Truy cập contact page | Trong card `Phương thức liên hệ`, cột trái hiển thị Label `Số điện thoại`, Input defaultValue `0123456789`, Input `Thời gian gọi` type datetime-local, Textarea `Ghi chú cuộc gọi`, Select `Kết quả cuộc gọi` (Thành công, Không nghe máy, Máy bận, Không liên lạc được), Button `Xác nhận gọi` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-05** | Kiểm tra khối Gửi email | 1. Truy cập contact page | CardContent cột phải hiển thị section `Gửi email` với Input email, Input tiêu đề, Textarea nội dung, Button `Gửi email` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-06** | Kiểm tra khối Gửi SMS | 1. Truy cập contact page | Section `Gửi SMS` có Input số điện thoại, Textarea nội dung, Button `Gửi SMS` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-07** | Kiểm tra khối Chat trực tuyến | 1. Truy cập contact page | Section `Chat trực tuyến` hiển thị Select `Tin nhắn mẫu` với các option (Chào bạn…, Chúng tôi đã nhận…, Cảm ơn bạn…), Button `Mở chat`, Button `Gửi tin nhắn` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-08** | Kiểm tra card Lịch sử liên hệ | 1. Truy cập contact page | CardTitle `Lịch sử liên hệ`, CardContent space-y-2 text-sm hiển thị các dòng `thời gian • phương thức • nội dung • kết quả • nhân viên` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **GUI-LHDT-09** | Kiểm tra card Cập nhật trạng thái | 1. Truy cập contact page | CardTitle `Cập nhật trạng thái yêu cầu`, CardContent flex gap-2 hiển thị Buttons `Đã liên hệ`, `Đang xử lý`, `Hoàn thành`, `Hủy yêu cầu` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **GUI-CHAT-REPLY-01** | Kiểm tra tiêu đề trang | 1. Mở `/nhanvien/support/CHAT001/reply` | Tiêu đề `Chat hỗ trợ với Nguyễn Văn A` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **GUI-CHAT-REPLY-02** | Kiểm tra card Cửa sổ trò chuyện | 1. Quan sát card đầu | CardTitle `Cửa sổ trò chuyện`, CardDescription, CardContent hiển thị `div space-y-2 text-sm max-h-80 overflow-auto border rounded p-3` chứa lịch sử tin nhắn (bubble) | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **GUI-CHAT-REPLY-03** | Kiểm tra khu nhập tin nhắn | 1. Quan sát grid `Tin nhắn mới` | Textarea rows=4 placeholder `Nhập nội dung tin nhắn...`, Select `Mẫu tin nhắn` với các option (welcome, thanks, guide, sorry), Button `Áp dụng mẫu` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **GUI-CHAT-REPLY-04** | Kiểm tra nhóm nút hành động | 1. Quan sát phần cuối card | Các Button: `Gửi tin nhắn`, `Gửi tệp đính kèm`, `Thêm ghi chú` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **GUI-CHAT-REPLY-05** | Kiểm tra card Đánh dấu chat đã xử lý | 1. Quan sát card thứ hai | CardTitle `Đánh dấu chat đã xử lý`, CardDescription `Chọn lý do và xác nhận`, grid md:grid-cols-3: Select `Lý do hoàn thành`, Select `Gửi tin nhắn cảm ơn`, Textarea `Ghi chú`, Button `Đánh dấu hoàn thành`, Button `Đóng chat` | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
 
 ---
 
-#### Check FUNC: Liên hệ đổi trả
+#### Check FUNC: Chat / trả lời khách hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-LHDT-01** | Ghi nhận cuộc gọi thành công | 1. Truy cập /nhanvien/returns/RT-001/contact<br>2. Nhập thời gian gọi, ghi chú, chọn kết quả `Thành công`<br>3. Click `Xác nhận gọi` | Cuộc gọi được ghi nhận, hiển thị thông báo thành công (toast success), lịch sử liên hệ thêm dòng `Gọi điện thoại … Thành công`, trạng thái yêu cầu có thể cập nhật thành `Đã liên hệ` | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **FUNC-LHDT-02** | Gửi email hướng dẫn đổi trả | 1. Truy cập contact page<br>2. Nhập tiêu đề, nội dung<br>3. Click `Gửi email` | Email gửi thành công, hiển thị thông báo `Đã gửi email`, email được ghi trong lịch sử liên hệ với kết quả `Thành công`, khách hàng nhận được email | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **FUNC-LHDT-03** | Gửi SMS cho khách hàng | 1. Truy cập contact page<br>2. Nhập nội dung SMS<br>3. Click `Gửi SMS` | Tin nhắn được gửi, lịch sử liên hệ bổ sung dòng `SMS • nội dung • Thành công`, trạng thái yêu cầu cập nhật | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **FUNC-LHDT-04** | Gửi tin nhắn chat trực tuyến | 1. Truy cập contact page<br>2. Chọn tin nhắn mẫu<br>3. Click `Mở chat` rồi `Gửi tin nhắn` | Cửa sổ chat mở (UI placeholder), tin nhắn được gửi, ghi lại vào lịch sử, hiển thị thông báo thành công | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **FUNC-LHDT-05** | Cập nhật trạng thái `Đã liên hệ` | 1. Truy cập contact page<br>2. Click button `Đã liên hệ` | Trạng thái yêu cầu cập nhật (Badge trong trang chi tiết thay đổi, hoặc hiển thị toast `Đã cập nhật trạng thái`), lịch sử xử lý bổ sung dòng mới | FUNC-CTDT-04 | Pass | 11/15/2015 | |
-| **FUNC-LHDT-06** | Cập nhật trạng thái `Hoàn thành` | 1. Truy cập contact page<br>2. Click button `Hoàn thành` | Yêu cầu đổi trả chuyển sang trạng thái `Hoàn thành`, bảng danh sách cập nhật, hiển thị thông báo thành công, khách hàng nhận thông báo đóng yêu cầu | FUNC-CTDT-04 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-01** | Gửi tin nhắn thủ công | 1. Vào `/nhanvien/support/CHAT001/reply`<br>2. Nhập nội dung<br>3. Click `Gửi tin nhắn` | Tin nhắn được gửi, hiển thị toast success, bubble `[Nhân viên]` mới xuất hiện, khách hàng nhận được tin nhắn trong real-time | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-02** | Sử dụng mẫu tin nhắn | 1. Chọn mẫu `Xin chào...`<br>2. Click `Áp dụng mẫu`<br>3. Gửi | Textarea được điền sẵn nội dung mẫu, tin nhắn gửi với nội dung đó, hiển thị log “Sử dụng mẫu tin nhắn” | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-03** | Gửi tệp đính kèm | 1. Click `Gửi tệp đính kèm`<br>2. Chọn file | File được upload (modal/preview), gửi kèm tin nhắn, hiển thị thông báo thành công | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-04** | Thêm ghi chú nhanh | 1. Click `Thêm ghi chú`<br>2. Nhập nội dung | Ghi chú lưu vào hệ thống, hiển thị confirm message | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-05** | Đánh dấu hoàn thành (từ reply) | 1. Trong card “Đánh dấu chat đã xử lý”, chọn Lý do + Gửi tin nhắn cảm ơn `Có`<br>2. Nhập ghi chú<br>3. Click `Đánh dấu hoàn thành` | Chat chuyển trạng thái `Đã hoàn thành`, tin nhắn cảm ơn tự động gửi, hiển thị toast success | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-REPLY-06** | Đóng chat không gửi cảm ơn | 1. Chọn Gửi tin nhắn cảm ơn = `Không`<br>2. Click `Đóng chat` | Chat chuyển trạng thái `Đã đóng`, không gửi tin nhắn cảm ơn, hiển thị toast success | FUNC-CHAT-DETAIL-06 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Liên hệ & chuyển tiếp (contact, escalate)
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-CHAT-CONTACT-01** | Liên hệ khách hàng qua điện thoại | 1. Từ trang chi tiết, click `Liên hệ khách hàng` (nếu có) hoặc truy cập `/nhanvien/returns/RT-001/contact` (đối với đổi trả) *hoặc* dùng khối Gọi điện (nếu UI chat có) | Nhập thời gian gọi, ghi chú, chọn kết quả. Sau khi `Xác nhận gọi`: lịch sử liên hệ bổ sung dòng “Gọi điện thoại ... Thành công”, trạng thái chat cập nhật `Đã liên hệ` | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-CONTACT-02** | Gửi email hỗ trợ | 1. Tại contact card `Gửi email`<br>2. Nhập tiêu đề, nội dung<br>3. Click `Gửi email` | Email gửi thành công, ghi lại lịch sử liên hệ `Gửi email • ... • Thành công`, khách hàng nhận mail | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-CONTACT-03** | Gửi SMS thông báo | 1. Nhập nội dung SMS<br>2. Click `Gửi SMS` | Tin nhắn gửi thành công, log trong lịch sử, trạng thái có thể cập nhật | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-CONTACT-04** | Gửi tin nhắn chat mẫu từ contact | 1. Chọn tin nhắn mẫu (Chat trực tuyến section)<br>2. Click `Mở chat` & `Gửi tin nhắn` | Cửa sổ chat mở, tin nhắn được gửi, hiển thị confirm | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-CONTACT-05** | Cập nhật trạng thái từ contact | 1. Click `Đã liên hệ` (card `Cập nhật trạng thái yêu cầu`) | Trạng thái chat đổi sang tương ứng, hiển thị toast success, timeline bổ sung | FUNC-CHAT-DETAIL-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-CONTACT-06** | Chuyển tiếp chat (escalate) | 1. Trên trang chi tiết chat, mở dialog `Chuyển tiếp / Escalate`<br>2. Chọn người nhận & lý do<br>3. `Xác nhận chuyển tiếp` | Chat gán cho nhân sự mới, log “Chuyển tiếp chat đến …”, toast success. Nếu thiếu dữ liệu hiển thị toast error | FUNC-CHAT-DETAIL-04 | Pass | 11/15/2015 | |
+
+---
+
+### Function: Xử lý khiếu nại (Modal escalate cao)
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-CHAT-KN-01** | Tiếp nhận khiếu nại từ chat | 1. Khi phát hiện khiếu nại (ví dụ trong chat), mở modal “Xử lý khiếu nại” (theo tài liệu) hoặc quy trình escalate | Modal hiển thị thông tin khiếu nại, loại khiếu nại (Radio), mức độ nghiêm trọng, trạng thái xử lý, nội dung chi tiết, kế hoạch xử lý, người chịu trách nhiệm, thời hạn, checkbox thông báo khách hàng, Buttons `Hủy`/`Lưu` | FUNC-CHAT-DETAIL-04 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-KN-02** | Lưu kế hoạch xử lý khiếu nại | 1. Điền đầy đủ thông tin trong modal<br>2. Click `Lưu` | Thông tin khiếu nại được lưu, chat gắn cờ “Khiếu nại”, hiển thị toast success, timeline cập nhật, khách hàng được thông báo nếu checkbox | FUNC-CHAT-KN-01 | Pass | 11/15/2015 | |
+| **FUNC-CHAT-KN-03** | Cập nhật tiến độ khiếu nại | 1. Mở modal xử lý<br>2. Đổi trạng thái `Đang điều tra` → `Đã giải quyết`<br>3. Thêm ghi chú | Tiến độ cập nhật, timeline ghi nhận, khách hàng nhận thông báo (nếu bật), hiển thị confirm message | FUNC-CHAT-KN-01 | Pass | 11/15/2015 | |
 
 ---
 
