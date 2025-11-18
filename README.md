@@ -16,6 +16,7 @@
 | 3 | Function - Đổi mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC change password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/admin/account` |
 | 4 | Layout - Quản lý thông tin cá nhân (Admin) | Quản lý tài khoản Admin | GUI function for Admin personal information management | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] hoặc truy cập `/admin/account` |
 | 5 | Function - Khôi phục mật khẩu (Admin) | Quản lý tài khoản Admin | Check GUI and FUNC forgot password function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đăng nhập] 2. Click [Quên mật khẩu] hoặc truy cập `/admin/auth/forgot-password` |
+| 5.5 | Layout - Quản lý tài khoản (Admin) | Layout Quản lý tài khoản Admin | GUI tổng quan trang tài khoản/đổi mật khẩu cho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Tài khoản] hoặc truy cập `/admin/account` |
 | **ADMIN - QUẢN LÝ NHÂN VIÊN** |
 | 6 | Function - Hiển thị danh sách nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC display employees list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] hoặc truy cập `/admin/employees` |
 | 7 | Function - Xem chi tiết nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC view employee details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xem] hoặc truy cập `/admin/employees/[id]` |
@@ -23,11 +24,13 @@
 | 9 | Function - Cập nhật thông tin nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC update employee information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Chỉnh sửa] hoặc truy cập `/admin/employees/[id]/edit` |
 | 10 | Function - Xóa nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC delete employee function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Xóa] |
 | 11 | Function - Khóa tài khoản nhân viên (Admin) | Quản lý nhân viên Admin | Check GUI and FUNC block employee account function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] 2. Click [Khóa tài khoản] |
+| 11.5 | Layout - Quản lý nhân viên (Admin) | Layout Quản lý nhân viên | GUI tổng quan trang danh sách/chi tiết nhân viên Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý nhân viên] hoặc truy cập `/admin/employees` |
 | **ADMIN - QUẢN LÝ KHÁCH HÀNG** |
 | 12 | Function - Hiển thị danh sách khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC display customers list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
 | 13 | Function - Xem chi tiết khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC view customer details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/admin/customers/[id]` |
 | 14 | Function - Cập nhật thông tin khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC update customer information function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
 | 15 | Function - Khóa/Mở khóa tài khoản khách hàng (Admin) | Quản lý khách hàng Admin | Check GUI and FUNC block/unblock customer account function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] 2. Click [Khóa/Mở khóa] |
+| 15.5 | Layout - Quản lý khách hàng (Admin) | Layout Quản lý khách hàng | GUI tổng quan trang khách hàng cho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý khách hàng] hoặc truy cập `/admin/customers` |
 | **ADMIN - QUẢN LÝ SÁCH VÀ KHO** |
 | 16 | Function - Hiển thị danh sách sách (Admin) | Quản lý sách Admin | Check GUI and FUNC display books list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] hoặc truy cập `/admin/products` |
 | 17 | Function - Xem chi tiết sách (Admin) | Quản lý sách Admin | Check GUI and FUNC view book details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Xem] hoặc truy cập `/admin/products/[id]` |
@@ -37,6 +40,7 @@
 | 21 | Function - Ẩn/Hiện sách (Admin) | Quản lý sách Admin | Check GUI and FUNC hide/show book function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Ẩn/Hiện] |
 | 22 | Function - Quản lý danh mục sách (Admin) | Quản lý sách Admin | Check GUI and FUNC manage book categories function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Danh mục] |
 | 23 | Function - Thiết lập giá sách (Admin) | Quản lý sách Admin | Check GUI and FUNC set book price function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] 2. Click [Thiết lập giá] |
+| 23.5 | Layout - Quản lý sách & kho (Admin) | Layout Quản lý sách | GUI tổng quan trang sách/kho Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Quản lý sách] hoặc truy cập `/admin/products` |
 | **ADMIN - QUẢN LÝ TỒN KHO** |
 | 24 | Function - Hiển thị danh sách tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC display inventory list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] hoặc truy cập `/admin/inventory` |
 | 25 | Function - Xem chi tiết tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC view inventory details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xem] hoặc truy cập `/admin/inventory/[id]` |
@@ -45,6 +49,7 @@
 | 28 | Function - Xuất hàng (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC export goods function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/admin/inventory/export` |
 | 29 | Function - Kiểm kê tồn kho (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC inventory audit function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/admin/inventory/audit` |
 | 30 | Function - Cảnh báo tồn kho thấp (Admin) | Quản lý tồn kho Admin | Check GUI and FUNC low stock alert function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] 2. Click [Cảnh báo] hoặc truy cập `/admin/inventory/alerts` |
+| 30.5 | Layout - Quản lý tồn kho (Admin) | Layout Tồn kho Admin | GUI tổng quan trang tồn kho, nhập/xuất hàng | Tại Menu Ứng dụng phía Admin: 1. Click [Tồn kho] hoặc truy cập `/admin/inventory` |
 | **ADMIN - QUẢN LÝ ĐƠN HÀNG** |
 | 31 | Function - Hiển thị danh sách đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC display orders list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] hoặc truy cập `/admin/orders` |
 | 32 | Function - Xem chi tiết đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC view order details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xem] hoặc truy cập `/admin/orders/[id]` |
@@ -52,12 +57,14 @@
 | 34 | Function - Hủy đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC cancel order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Hủy đơn hàng] hoặc truy cập `/admin/orders/[id]/cancel` |
 | 35 | Function - Xác nhận đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC confirm order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [Xác nhận đơn hàng] hoặc truy cập `/admin/orders/[id]/confirm` |
 | 36 | Function - In đơn hàng (Admin) | Quản lý đơn hàng Admin | Check GUI and FUNC print order function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] 2. Click [In đơn hàng] hoặc truy cập `/admin/orders/[id]/print` |
+| 36.5 | Layout - Quản lý đơn hàng (Admin) | Layout Đơn hàng Admin | GUI tổng quan trang danh sách/chi tiết đơn hàng Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Đơn hàng] hoặc truy cập `/admin/orders` |
 | **ADMIN - QUẢN LÝ YÊU CẦU VÀ PHÊ DUYỆT** |
 | 37 | Function - Hiển thị danh sách yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC display requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] hoặc truy cập `/admin/requests` |
 | 38 | Function - Xem chi tiết yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC view request details function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/admin/requests/[id]` |
 | 39 | Function - Phê duyệt yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC approve request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Phê duyệt] |
 | 40 | Function - Từ chối yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC reject request function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Từ chối] |
 | 41 | Function - Theo dõi trạng thái yêu cầu (Admin) | Quản lý yêu cầu Admin | Check GUI and FUNC track request status function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] 2. Click [Theo dõi] |
+| 41.5 | Layout - Quản lý yêu cầu (Admin) | Layout Yêu cầu Admin | GUI tổng quan trang yêu cầu/phê duyệt | Tại Menu Ứng dụng phía Admin: 1. Click [Yêu cầu] hoặc truy cập `/admin/requests` |
 | **ADMIN - BÁO CÁO VÀ THỐNG KÊ** |
 | 42 | Function - Xem báo cáo doanh thu (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view revenue report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/admin/reports/revenue` |
 | 43 | Function - Xem báo cáo chi phí (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view expenses report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Chi phí] hoặc truy cập `/admin/reports/expenses` |
@@ -66,32 +73,40 @@
 | 46 | Function - Xem thống kê khách hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view customers statistics function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê khách hàng] hoặc truy cập `/admin/reports/customers` |
 | 47 | Function - Xem báo cáo tồn kho (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view inventory report function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Báo cáo tồn kho] hoặc truy cập `/admin/reports/inventory` |
 | 48 | Function - Xem thống kê bán hàng (Admin) | Báo cáo và thống kê Admin | Check GUI and FUNC view sales statistics function (Admin) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Thống kê bán hàng] hoặc truy cập `/admin/reports/sales` |
+| 48.5 | Layout - Báo cáo & Thống kê (Admin) | Layout Báo cáo Admin | GUI tổng quan trang báo cáo/thống kê | Tại Menu Ứng dụng phía Admin: 1. Click [Báo cáo & Thống kê] hoặc truy cập `/admin/reports` |
 | **ADMIN - QUẢN LÝ VẬN CHUYỂN** |
 | 49 | Function - Hiển thị danh sách đơn vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC display shipping list function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] hoặc truy cập `/admin/shipping` |
 | 50 | Function - Cập nhật trạng thái vận chuyển (Admin) | Quản lý vận chuyển Admin | Check GUI and FUNC update shipping status function (Admin) | Tại Menu Ứng dụng: 1. Click [Vận chuyển] 2. Click [Cập nhật trạng thái] |
+| 50.5 | Layout - Quản lý vận chuyển (Admin) | Layout Vận chuyển Admin | GUI tổng quan trang quản lý vận chuyển | Tại Menu Ứng dụng phía Admin: 1. Click [Vận chuyển] hoặc truy cập `/admin/shipping` |
 | **ADMIN - HỖ TRỢ KHÁCH HÀNG** |
 | 51 | Function - Hiển thị danh sách yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC display support requests list function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] hoặc truy cập `/admin/support` |
 | 52 | Function - Chat hỗ trợ khách hàng (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC chat support function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] 2. Click [Chat] hoặc truy cập `/admin/support/[id]/chat` |
 | 53 | Function - Trả lời yêu cầu hỗ trợ (Admin) | Quản lý hỗ trợ Admin | Check GUI and FUNC reply support request function (Admin) | Tại Menu Ứng dụng: 1. Click [Hỗ trợ] 2. Click [Trả lời] |
+| 53.5 | Layout - Hỗ trợ khách hàng (Admin) | Layout Hỗ trợ Admin | GUI tổng quan trang hỗ trợ/chat ticket Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Hỗ trợ] hoặc truy cập `/admin/support` |
 | **ADMIN - CÀI ĐẶT HỆ THỐNG** |
 | 54 | Function - Cài đặt chính sách giảm giá (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC discount policy function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Chính sách giảm giá] hoặc truy cập `/admin/settings/discounts` |
 | 55 | Function - Cài đặt thanh toán (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC payment settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Cài đặt thanh toán] hoặc truy cập `/admin/settings/payments` |
 | 56 | Function - Cài đặt thông tin shop (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC shop information function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] 2. Click [Thông tin shop] hoặc truy cập `/admin/settings/shop` |
 | 57 | Function - Cài đặt chung (Admin) | Cài đặt hệ thống Admin | Check GUI and FUNC general settings function (Admin) | Tại Menu Ứng dụng: 1. Click [Cài đặt] hoặc truy cập `/admin/settings` |
+| 57.5 | Layout - Cài đặt hệ thống (Admin) | Layout Cài đặt Admin | GUI tổng quan trang cấu hình hệ thống | Tại Menu Ứng dụng phía Admin: 1. Click [Cài đặt] hoặc truy cập `/admin/settings` |
 | **ADMIN - BẢO MẬT** |
 | 58 | Function - Xem lịch sử đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC login history function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/admin/security/login-history` |
 | 59 | Function - Quản lý phiên đăng nhập (Admin) | Bảo mật Admin | Check GUI and FUNC sessions management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/admin/security/sessions` |
 | 60 | Function - Phát hiện đăng nhập lạ (Admin) | Bảo mật Admin | Check GUI and FUNC detect suspicious login function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] - Hệ thống tự động phát hiện |
+| 60.5 | Layout - Bảo mật (Admin) | Layout Bảo mật Admin | GUI tổng quan trang bảo mật/lịch sử đăng nhập | Tại Menu Ứng dụng phía Admin: 1. Click [Bảo mật] hoặc truy cập `/admin/security` |
 | **ADMIN - THÔNG BÁO** |
 | 61 | Function - Quản lý thông báo (Admin) | Thông báo Admin | Check GUI and FUNC notifications management function (Admin) | Tại Menu Ứng dụng phía Admin: 1. Click [Thông báo] hoặc truy cập `/admin/notifications` |
+| 61.5 | Layout - Thông báo (Admin) | Layout Thông báo Admin | GUI tổng quan trang quản lý thông báo Admin | Tại Menu Ứng dụng phía Admin: 1. Click [Thông báo] hoặc truy cập `/admin/notifications` |
 | **NHÂN VIÊN - QUẢN LÝ TÀI KHOẢN** |
 | 62 | Function - Đăng nhập (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC login function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đăng nhập] hoặc truy cập `/nhanvien/auth/login` |
 | 63 | Function - Đổi mật khẩu (Nhân viên) | Quản lý tài khoản Nhân viên | Check GUI and FUNC change password function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvien/account` |
 | 64 | Layout - Quản lý thông tin cá nhân (Nhân viên) | Quản lý tài khoản Nhân viên | GUI function for Nhân viên personal information management | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] hoặc truy cập `/nhanvien/account` |
+| 64.5 | Layout - Quản lý tài khoản (Nhân viên) | Layout Quản lý tài khoản NV | GUI tổng quan trang tài khoản/đổi mật khẩu Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Tài khoản] hoặc truy cập `/nhanvien/account` |
 | **NHÂN VIÊN - TÌM KIẾM VÀ HIỂN THỊ SÁCH** |
 | 65 | Function - Tìm kiếm sách (Nhân viên) | Tìm kiếm sách Nhân viên | Check GUI and FUNC search books function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Sử dụng thanh tìm kiếm hoặc truy cập `/nhanvien/products` |
 | 66 | Function - Hiển thị danh sách sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC display books list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] hoặc truy cập `/nhanvien/products` |
 | 67 | Function - Xem chi tiết sách (Nhân viên) | Hiển thị sách Nhân viên | Check GUI and FUNC view book details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvien/products/[id]` |
+| 67.5 | Layout - Tìm kiếm & hiển thị sách (Nhân viên) | Layout Sách Nhân viên | GUI tổng quan trang tìm kiếm/danh sách sách cho Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Sách] hoặc truy cập `/nhanvien/products` |
 | **NHÂN VIÊN - XỬ LÝ ĐƠN HÀNG** |
 | 68 | Function - Hiển thị danh sách đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC display orders list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] hoặc truy cập `/nhanvien/orders` |
 | 69 | Function - Xem chi tiết đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC view order details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/orders/[id]` |
@@ -101,35 +116,45 @@
 | 73 | Function - In đơn hàng (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC print order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [In đơn hàng] |
 | 74 | Function - Tạo đơn hàng trực tiếp (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC create direct order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bán hàng (POS)] hoặc truy cập `/nhanvien/pos` |
 | 75 | Function - Xử lý đơn hàng online (Nhân viên) | Xử lý đơn hàng Nhân viên | Check GUI and FUNC process online order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] 2. Click [Đơn hàng online] |
+| 75.5 | Layout - Xử lý đơn hàng (Nhân viên) | Layout Đơn hàng Nhân viên | GUI tổng quan trang xử lý/chi tiết đơn hàng Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Xử lý đơn hàng] hoặc truy cập `/nhanvien/orders` |
 | **NHÂN VIÊN - QUẢN LÝ KHÁCH HÀNG** |
 | 76 | Function - Hiển thị danh sách khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC display customers list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] hoặc truy cập `/nhanvien/customers` |
 | 77 | Function - Xem chi tiết khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC view customer details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Xem] hoặc truy cập `/nhanvien/customers/[id]` |
 | 78 | Function - Cập nhật thông tin khách hàng (Nhân viên) | Quản lý khách hàng Nhân viên | Check GUI and FUNC update customer information function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] 2. Click [Chỉnh sửa] |
+| 78.5 | Layout - Quản lý khách hàng (Nhân viên) | Layout Khách hàng Nhân viên | GUI tổng quan trang khách hàng dành cho Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý khách hàng] hoặc truy cập `/nhanvien/customers` |
 | **NHÂN VIÊN - XỬ LÝ ĐỔI TRẢ** |
 | 79 | Function - Hiển thị danh sách yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC display returns list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] hoặc truy cập `/nhanvien/returns` |
 | 80 | Function - Xem chi tiết yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC view return details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xem] hoặc truy cập `/nhanvien/returns/[id]` |
 | 81 | Function - Xử lý yêu cầu đổi trả (Nhân viên) | Xử lý đổi trả Nhân viên | Check GUI and FUNC process return request function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] 2. Click [Xử lý] |
+| 81.5 | Layout - Xử lý đổi trả (Nhân viên) | Layout Đổi trả Nhân viên | GUI tổng quan trang danh sách/yêu cầu đổi trả | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Đổi trả] hoặc truy cập `/nhanvien/returns` |
 | **NHÂN VIÊN - CHAT HỖ TRỢ** |
 | 82 | Function - Chat hỗ trợ khách hàng (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC chat support function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Chat] hoặc truy cập `/nhanvien/support` |
 | 83 | Function - Xem lịch sử chat (Nhân viên) | Chat hỗ trợ Nhân viên | Check GUI and FUNC view chat history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] 2. Click [Lịch sử chat] |
+| 83.5 | Layout - Chat hỗ trợ (Nhân viên) | Layout Chat Nhân viên | GUI tổng quan trang chat/lịch sử hỗ trợ Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Hỗ trợ khách hàng] hoặc truy cập `/nhanvien/support` |
 | **NHÂN VIÊN - QUẢN LÝ YÊU CẦU** |
 | 84 | Function - Hiển thị danh sách yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC display requests list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/nhanvien/requests` |
 | 85 | Function - Xem chi tiết yêu cầu (Nhân viên) | Quản lý yêu cầu Nhân viên | Check GUI and FUNC view request details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] 2. Click [Xem] hoặc truy cập `/nhanvien/requests/[id]` |
+| 85.5 | Layout - Quản lý yêu cầu (Nhân viên) | Layout Yêu cầu Nhân viên | GUI tổng quan trang yêu cầu đặc biệt Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Yêu cầu đặc biệt] hoặc truy cập `/nhanvien/requests` |
 | **NHÂN VIÊN - CẬP NHẬT ĐƠN HÀNG ONLINE** |
 | 86 | Function - Cập nhật đơn hàng online (Nhân viên) | Cập nhật đơn hàng online Nhân viên | Check GUI and FUNC update online order function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Cập nhật đơn hàng online] |
+| 86.5 | Layout - Cập nhật đơn hàng online (Nhân viên) | Layout Đơn hàng online NV | GUI trang cập nhật đơn hàng online | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Cập nhật đơn hàng online] |
 | **NHÂN VIÊN - BÁO CÁO VÀ THỐNG KÊ** |
 | 87 | Function - Xem báo cáo doanh thu (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view revenue report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Doanh thu] hoặc truy cập `/nhanvien/reports/revenue` |
 | 88 | Function - Xem báo cáo bán hàng (Nhân viên) | Báo cáo và thống kê Nhân viên | Check GUI and FUNC view sales report function (Nhân viên) | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] 2. Click [Bán hàng] hoặc truy cập `/nhanvien/reports/sales` |
+| 88.5 | Layout - Báo cáo & Thống kê (Nhân viên) | Layout Báo cáo Nhân viên | GUI tổng quan trang báo cáo dành cho Nhân viên | Tại Menu Ứng dụng: 1. Click [Báo cáo & Thống kê] hoặc truy cập `/nhanvien/reports` |
 | **NHÂN VIÊN - QUẢN LÝ ĐÁNH GIÁ** |
 | 89 | Function - Hiển thị danh sách đánh giá (Nhân viên) | Quản lý đánh giá Nhân viên | Check GUI and FUNC display reviews list function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] hoặc truy cập `/nhanvien/reviews` |
 | 90 | Function - Xem chi tiết đánh giá (Nhân viên) | Quản lý đánh giá Nhân viên | Check GUI and FUNC view review details function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] 2. Click [Xem chi tiết] |
+| 90.5 | Layout - Quản lý đánh giá (Nhân viên) | Layout Đánh giá Nhân viên | GUI tổng quan trang quản lý đánh giá | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Quản lý đánh giá] hoặc truy cập `/nhanvien/reviews` |
 | **NHÂN VIÊN - BẢO MẬT** |
 | 91 | Function - Xem lịch sử đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC login history function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvien/security/login-history` |
 | 92 | Function - Quản lý phiên đăng nhập (Nhân viên) | Bảo mật Nhân viên | Check GUI and FUNC sessions management function (Nhân viên) | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvien/security/sessions` |
+| 92.5 | Layout - Bảo mật (Nhân viên) | Layout Bảo mật Nhân viên | GUI tổng quan trang bảo mật/lịch sử đăng nhập Nhân viên | Tại Menu Ứng dụng phía Nhân viên: 1. Click [Bảo mật] hoặc truy cập `/nhanvien/security` |
 | **NHÂN VIÊN KHO - QUẢN LÝ TÀI KHOẢN** |
 | 93 | Function - Đăng nhập (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC login function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Đăng nhập] hoặc truy cập `/nhanvienkho/auth/login` |
 | 94 | Function - Đổi mật khẩu (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | Check GUI and FUNC change password function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] 2. Click [Đổi mật khẩu] hoặc truy cập `/nhanvienkho/account` |
 | 95 | Layout - Quản lý thông tin cá nhân (Nhân viên kho) | Quản lý tài khoản Nhân viên kho | GUI function for Nhân viên kho personal information management | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] hoặc truy cập `/nhanvienkho/account` |
+| 95.5 | Layout - Quản lý tài khoản (Nhân viên kho) | Layout Quản lý tài khoản NV Kho | GUI tổng quan trang tài khoản dành cho Nhân viên kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tài khoản] hoặc truy cập `/nhanvienkho/account` |
 | **NHÂN VIÊN KHO - QUẢN LÝ SÁCH** |
 | 96 | Function - Hiển thị danh sách sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC display books list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] hoặc truy cập `/nhanvienkho/books` |
 | 97 | Function - Xem chi tiết sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC view book details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click vào sách hoặc truy cập `/nhanvienkho/books/[id]` |
@@ -137,30 +162,36 @@
 | 99 | Function - Cập nhật thông tin sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC update book information function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Chỉnh sửa] hoặc truy cập `/nhanvienkho/books/[id]/edit` |
 | 100 | Function - Ẩn sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC hide book function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] 2. Click [Ẩn sách] |
 | 101 | Function - Tìm kiếm sách (Nhân viên kho) | Quản lý sách Nhân viên kho | Check GUI and FUNC search books function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Sử dụng thanh tìm kiếm |
+| 101.5 | Layout - Quản lý sách (Nhân viên kho) | Layout Sách Nhân viên kho | GUI tổng quan trang quản lý sách kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Sách] hoặc truy cập `/nhanvienkho/books` |
 | **NHÂN VIÊN KHO - QUẢN LÝ TỒN KHO** |
 | 102 | Function - Hiển thị danh sách tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC display inventory list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] hoặc truy cập `/nhanvienkho/inventory` |
 | 103 | Function - Cập nhật số lượng tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC update inventory quantity function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Cập nhật] |
 | 104 | Function - Nhập hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC import goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Nhập hàng] hoặc truy cập `/nhanvienkho/inventory/import` |
 | 105 | Function - Xuất hàng (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC export goods function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Xuất hàng] hoặc truy cập `/nhanvienkho/inventory/export` |
 | 106 | Function - Kiểm kê tồn kho (Nhân viên kho) | Quản lý tồn kho Nhân viên kho | Check GUI and FUNC inventory audit function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] 2. Click [Kiểm kê] hoặc truy cập `/nhanvienkho/inventory/audit` |
+| 106.5 | Layout - Quản lý tồn kho (Nhân viên kho) | Layout Tồn kho Nhân viên kho | GUI tổng quan trang tồn kho/nhập xuất | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Tồn kho] hoặc truy cập `/nhanvienkho/inventory` |
 | **NHÂN VIÊN KHO - BÁO CÁO KHO** |
 | 107 | Function - Xem sách tồn kho thấp (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view low stock books function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Sách tồn kho thấp] hoặc truy cập `/nhanvienkho/reports/low-stock` |
 | 108 | Function - Xem báo cáo tồn kho (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view inventory report function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Báo cáo tồn kho] hoặc truy cập `/nhanvienkho/reports/inventory` |
 | 109 | Function - Xem lịch sử nhập/xuất (Nhân viên kho) | Báo cáo kho Nhân viên kho | Check GUI and FUNC view import/export history function (Nhân viên kho) | Tại Menu Ứng dụng: 1. Click [Báo cáo] 2. Click [Lịch sử nhập/xuất] hoặc truy cập `/nhanvienkho/reports/history` |
+| 109.5 | Layout - Báo cáo kho (Nhân viên kho) | Layout Báo cáo kho | GUI tổng quan trang báo cáo/tồn kho kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Báo cáo] hoặc truy cập `/nhanvienkho/reports` |
 | **NHÂN VIÊN KHO - XỬ LÝ YÊU CẦU** |
 | 110 | Function - Hiển thị danh sách yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC display requests list function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] hoặc truy cập `/nhanvienkho/requests` |
 | 111 | Function - Xem chi tiết yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC view request details function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xem] hoặc truy cập `/nhanvienkho/requests/[id]` |
 | 112 | Function - Xử lý yêu cầu nhập hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process import request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu nhập] |
 | 113 | Function - Xử lý yêu cầu xuất hàng (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC process export request function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Xử lý yêu cầu xuất] |
 | 114 | Function - Theo dõi trạng thái yêu cầu (Nhân viên kho) | Xử lý yêu cầu Nhân viên kho | Check GUI and FUNC track request status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] 2. Click [Theo dõi trạng thái] |
+| 114.5 | Layout - Xử lý yêu cầu (Nhân viên kho) | Layout Yêu cầu kho | GUI tổng quan trang yêu cầu nhập/xuất của kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Yêu cầu] hoặc truy cập `/nhanvienkho/requests` |
 | **NHÂN VIÊN KHO - HỖ TRỢ BÁN HÀNG** |
 | 115 | Function - Kiểm tra tồn kho cho đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC check stock for order function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Kiểm tra tồn kho] |
 | 116 | Function - Xác nhận khả năng giao hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC confirm delivery capability function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Xác nhận giao hàng] |
 | 117 | Function - Cập nhật trạng thái đơn hàng (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC update order status function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Cập nhật trạng thái] |
 | 118 | Function - Hỗ trợ xử lý đơn đặc biệt (Nhân viên kho) | Hỗ trợ bán hàng Nhân viên kho | Check GUI and FUNC support special order processing function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] 2. Click [Đơn đặc biệt] |
+| 118.5 | Layout - Hỗ trợ bán hàng (Nhân viên kho) | Layout Hỗ trợ bán hàng | GUI tổng quan trang hỗ trợ bán hàng kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Hỗ trợ bán hàng] |
 | **NHÂN VIÊN KHO - BẢO MẬT** |
 | 119 | Function - Xem lịch sử đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC login history function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Lịch sử đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
 | 120 | Function - Quản lý phiên đăng nhập (Nhân viên kho) | Bảo mật Nhân viên kho | Check GUI and FUNC sessions management function (Nhân viên kho) | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] 2. Click [Phiên đăng nhập] hoặc truy cập `/nhanvienkho/security/sessions` |
+| 120.5 | Layout - Bảo mật (Nhân viên kho) | Layout Bảo mật kho | GUI tổng quan trang bảo mật/lịch sử đăng nhập kho | Tại Menu Ứng dụng phía Nhân viên kho: 1. Click [Bảo mật] hoặc truy cập `/nhanvienkho/security` |
 | **USER - QUẢN LÝ TÀI KHOẢN** |
 | 121 | Function - Đăng ký (User) | Quản lý tài khoản User | Check GUI and FUNC register function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng ký] hoặc truy cập `/user/auth/register` |
 | 122 | Function - Đăng nhập (User) | Quản lý tài khoản User | Check GUI and FUNC login function (User) | Tại Menu Ứng dụng phía User: 1. Click [Đăng nhập] hoặc truy cập `/user/auth/login` |
