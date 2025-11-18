@@ -1,107 +1,89 @@
-# Test Case Template - Quản lý đánh giá (Nhân viên)
+# TEST REPORT
 
-## Module Code
-**Giao lộ 19: Họcl6c (Nhân viên)**
+## 1. THÔNG TIN DỰ ÁN
 
-## Test Requirement
-1. Hiển thị danh sách đánh giá
-2. Xem chi tiết đánh giá
-3. Quản lý và theo dõi đánh giá từ khách hàng
-
----
-
-## Test Summary
-
-### Người lớp Test: [Tên người test]
-
-| Status | Count |
-|--------|-------|
-| **Pass** | 42 |
-| **Fail** | 0 |
-| **Untested** | 0 |
-| **N/A** | 0 |
-| **Number of Test cases** | 42 |
+| Thông tin | Nội dung |
+|-----------|----------|
+| **Tên dự án:** | Xây dựng hệ thống quản lý nhà sách |
+| **Mã dự án:** | KH-20 |
+| **Mã tài liệu:** | KH-20_Test Report_v1.0 |
+| **Người tạo:** | [Tên người tạo] |
+| **Người duyệt/Phê duyệt:** | |
+| **Ngày phát hành:** | 11/15/2015 |
+| **Ghi chú:** | |
 
 ---
 
-## Test Cases
+## 2. KẾT QUẢ TEST
 
-### Function: Hiển thị danh sách đánh giá (Nhân viên)
-
-#### Check GUI: `/nhanvien/reviews`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DG-LIST-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/reviews` | Hiển thị h1 `Quản lý đánh giá` class text-2xl font-bold & mô tả `Xem và quản lý đánh giá từ khách hàng` class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LIST-02** | Kiểm tra thống kê đánh giá | 1. Ở `/nhanvien/reviews` quan sát grid đầu | Grid `grid-cols-2 md:grid-cols-4` gồm Card `Tổng đánh giá 156`, `5 sao 89`, `4 sao 45`, `3 sao 12`, `2 sao 7`, `1 sao 3` với Badge màu tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LIST-03** | Kiểm tra card Tìm kiếm & Bộ lọc | 1. Quan sát card tiếp theo | CardTitle `Tìm kiếm & Bộ lọc`, mô tả `Tìm theo tên sách, khách hàng; lọc theo điểm đánh giá & trạng thái`, grid md:grid-cols-6 có Input placeholder "Tên sách, khách hàng...", Select `Điểm đánh giá` (Tất cả, 5 sao, 4 sao, 3 sao, 2 sao, 1 sao), Select `Trạng thái` (Tất cả, Đã duyệt, Chờ duyệt, Đã ẩn), Button `Tìm kiếm`, Button variant="outline" `Xóa bộ lọc` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LIST-04** | Kiểm tra bảng danh sách đánh giá | 1. Quan sát card `Danh sách đánh giá` | TableHeader có các cột STT, Sách, Khách hàng, Điểm đánh giá, Nhận xét, Ngày đánh giá, Trạng thái, Thao tác. TableBody hiển thị hàng mẫu với Image sách, tên sách, tên khách hàng, div flex gap-1 với 5 icon Star (h-4 w-4) màu vàng/xám, p text-sm line-clamp-2 nhận xét, thời gian, Badge trạng thái, nút `Xem chi tiết` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LIST-05** | Kiểm tra phân trang | 1. Cuộn xuống cuối bảng | Hiển thị div flex justify-between items-center với text "Hiển thị 1-10 của 156 đánh giá", div flex gap-2 với Button variant="outline" size="sm" "Trước", Button variant="outline" size="sm" "Sau", Select số items/trang | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LIST-06** | Kiểm tra sidebar panels | 1. Quan sát grid 3 card bên phải | Card `Đánh giá mới nhất` liệt kê 5 đánh giá gần nhất với Image, tên sách, tên khách, điểm sao; Card `Thống kê theo sách` có placeholder chart `h-40 bg-muted`; Card `Hoạt động gần đây` liệt kê các hoạt động duyệt/ẩn đánh giá | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-#### Check FUNC: Hiển thị danh sách đánh giá
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DG-LIST-01** | Xem danh sách đánh giá | 1. Đăng nhập<br>2. Truy cập `/nhanvien/reviews` | Trang hiển thị thống kê, bộ lọc, bảng danh sách đánh giá, sidebar như GUI tests; dữ liệu khớp mock reviews | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-02** | Tìm kiếm đánh giá theo từ khóa | 1. Nhập `Sách hay` vào Input tìm kiếm<br>2. Click `Tìm kiếm` | Bảng chỉ hiển thị đánh giá có tên sách hoặc tên khách hàng khớp; nếu không có hiển thị thông báo "Không tìm thấy đánh giá" | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-03** | Lọc theo điểm đánh giá | 1. Chọn Điểm đánh giá = `5 sao`<br>2. Click `Tìm kiếm` | Bảng chỉ hiển thị các đánh giá 5 sao (5 icon Star màu vàng) | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-04** | Lọc theo trạng thái | 1. Chọn Trạng thái = `Chờ duyệt`<br>2. Click `Tìm kiếm` | Bảng chỉ hiển thị các đánh giá có status `Chờ duyệt` (Badge variant warning) | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-05** | Kết hợp tìm kiếm và lọc | 1. Nhập `Nguyễn Văn A` vào Input<br>2. Chọn Điểm = `4 sao`, Trạng thái = `Đã duyệt`<br>3. Click `Tìm kiếm` | Bảng hiển thị đánh giá của khách hàng "Nguyễn Văn A" có 4 sao và đã duyệt | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-06** | Xóa bộ lọc | 1. Đã có bộ lọc đang áp dụng<br>2. Click `Xóa bộ lọc` | Input và Select về giá trị mặc định (rỗng/Tất cả), bảng hiển thị toàn bộ đánh giá | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-07** | Phân trang - Chuyển trang | 1. Click nút `Sau` | Bảng hiển thị trang tiếp theo (items 11-20), nút `Trước` được enable | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-08** | Phân trang - Thay đổi số items/trang | 1. Chọn Select số items = `20` | Bảng hiển thị 20 items/trang, tổng số trang giảm, text cập nhật "Hiển thị 1-20 của 156 đánh giá" | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-09** | Click Xem chi tiết | 1. Click nút `Xem chi tiết` ở một đánh giá | Chuyển đến trang `/nhanvien/reviews/[id]` hiển thị chi tiết đánh giá | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-LIST-10** | Cập nhật thống kê real-time | 1. Thực hiện thao tác duyệt/ẩn đánh giá<br>2. Quay lại danh sách | Thống kê ở đầu trang cập nhật số lượng đánh giá theo từng mức điểm | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
-
----
-
-### Function: Xem chi tiết đánh giá (Nhân viên)
-
-#### Check GUI: `/nhanvien/reviews/[id]`
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DG-DETAIL-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/reviews/[id]` | Hiển thị h1 `Chi tiết đánh giá` class text-2xl font-bold & mô tả `Thông tin chi tiết về đánh giá từ khách hàng` | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-02** | Kiểm tra nút Quay lại | 1. Ở `/nhanvien/reviews/[id]` quan sát | Hiển thị Button variant="ghost" asChild với Link href="/nhanvien/reviews", icon ArrowLeft (h-4 w-4 mr-2) và text "Quay lại danh sách" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-03** | Kiểm tra card Thông tin đánh giá | 1. Quan sát card đầu tiên | CardTitle `Thông tin đánh giá`, CardContent có grid md:grid-cols-2 với: div flex gap-4 (Image sách w-24 h-32, div có h3 tên sách, p tác giả), div space-y-2 (Label "Khách hàng" + p tên khách, Label "Điểm đánh giá" + div flex gap-1 5 icon Star, Label "Ngày đánh giá" + p thời gian, Label "Trạng thái" + Badge) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-04** | Kiểm tra card Nội dung đánh giá | 1. Quan sát card tiếp theo | CardTitle `Nội dung đánh giá`, CardContent có div space-y-2 với Label "Nhận xét" + Textarea readOnly value={review.comment} rows={6}, Label "Đã mua sách" + p "Có" hoặc "Không", Label "Đã đọc sách" + p "Có" hoặc "Không" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-05** | Kiểm tra card Thông tin đơn hàng | 1. Quan sát card tiếp theo | CardTitle `Thông tin đơn hàng`, CardContent có div space-y-2 với Label "Mã đơn hàng" + Link href="/nhanvien/orders/[orderId]" text "#ORD001", Label "Ngày mua" + p thời gian, Label "Số lượng" + p "1 cuốn" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-06** | Kiểm tra card Thao tác | 1. Quan sát card cuối | CardTitle `Thao tác`, CardContent có div flex gap-2 với Button variant="default" "Duyệt đánh giá" (nếu status Chờ duyệt), Button variant="destructive" "Ẩn đánh giá" (nếu status Đã duyệt), Button variant="outline" "Xóa đánh giá" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-DETAIL-07** | Kiểm tra Modal xác nhận | 1. Click nút "Duyệt" hoặc "Ẩn"<br>2. Quan sát Modal | Hiển thị Dialog với DialogTitle "Xác nhận", DialogDescription "Bạn có chắc chắn muốn [duyệt/ẩn] đánh giá này?", DialogFooter có Button variant="outline" "Hủy", Button variant="default" "Xác nhận" | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-#### Check FUNC: Xem chi tiết đánh giá
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DG-DETAIL-01** | Xem chi tiết đánh giá | 1. Đăng nhập<br>2. Truy cập `/nhanvien/reviews/[id]` | Trang hiển thị đầy đủ thông tin đánh giá: thông tin sách, khách hàng, điểm đánh giá, nội dung, đơn hàng như GUI tests; dữ liệu khớp với ID | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-02** | Click Quay lại danh sách | 1. Click nút `Quay lại danh sách` | Chuyển về trang `/nhanvien/reviews`, giữ nguyên bộ lọc và phân trang trước đó | FUNC-DG-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-03** | Duyệt đánh giá | 1. Đánh giá có status `Chờ duyệt`<br>2. Click `Duyệt đánh giá`<br>3. Xác nhận trong Modal | Hiển thị toast "Đã duyệt đánh giá thành công", Badge trạng thái chuyển sang `Đã duyệt` (variant default), nút "Duyệt" biến mất, nút "Ẩn đánh giá" xuất hiện | FUNC-DG-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-04** | Ẩn đánh giá | 1. Đánh giá có status `Đã duyệt`<br>2. Click `Ẩn đánh giá`<br>3. Xác nhận trong Modal | Hiển thị toast "Đã ẩn đánh giá thành công", Badge trạng thái chuyển sang `Đã ẩn` (variant secondary), nút "Ẩn" biến mất | FUNC-DG-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-05** | Hủy thao tác trong Modal | 1. Click nút thao tác (Duyệt/Ẩn)<br>2. Click `Hủy` trong Modal | Modal đóng, không có thay đổi nào, trạng thái đánh giá giữ nguyên | FUNC-DG-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-06** | Click link Mã đơn hàng | 1. Click link "#ORD001" | Chuyển đến trang `/nhanvien/orders/[orderId]` hiển thị chi tiết đơn hàng | FUNC-DG-DETAIL-01 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-07** | Xử lý đánh giá không tồn tại | 1. Truy cập `/nhanvien/reviews/invalid-id` | Hiển thị thông báo lỗi "Không tìm thấy đánh giá", nút "Quay lại danh sách" để quay về | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DG-DETAIL-08** | Cập nhật trạng thái real-time | 1. Duyệt/ẩn đánh giá<br>2. Quay lại danh sách | Đánh giá trong danh sách cập nhật trạng thái mới, thống kê cập nhật | FUNC-DG-DETAIL-03, FUNC-DG-DETAIL-04 | Pass | 11/15/2015 | |
+| No | Module code | Pass | Fail | Untested | N/A | Number of test cases |
+|----|-------------|------|------|----------|-----|---------------------|
+| **ADMIN MODULES** |
+| 1 | Quản lý tài khoản Admin | 45 | 0 | 0 | 0 | 45 |
+| 2 | Quản lý nhân viên Admin | 38 | 0 | 0 | 0 | 38 |
+| 3 | Quản lý khách hàng Admin | 28 | 0 | 0 | 0 | 28 |
+| 4 | Quản lý sách và kho Admin | 35 | 0 | 0 | 0 | 35 |
+| 5 | Quản lý tồn kho Admin | 28 | 0 | 0 | 0 | 28 |
+| 6 | Quản lý đơn hàng Admin | 25 | 0 | 0 | 0 | 25 |
+| 7 | Quản lý yêu cầu và phê duyệt Admin | 22 | 0 | 0 | 0 | 22 |
+| 8 | Báo cáo và thống kê Admin | 24 | 0 | 0 | 0 | 24 |
+| 9 | Quản lý vận chuyển Admin | 20 | 0 | 0 | 0 | 20 |
+| 10 | Hỗ trợ khách hàng Admin | 18 | 0 | 0 | 0 | 18 |
+| 11 | Cài đặt hệ thống Admin | 30 | 0 | 0 | 0 | 30 |
+| 12 | Bảo mật Admin | 20 | 0 | 0 | 0 | 20 |
+| 13 | Thông báo Admin | 20 | 0 | 0 | 0 | 20 |
+| **USER MODULES** |
+| 14 | Quản lý tài khoản User | 78 | 0 | 0 | 0 | 78 |
+| 15 | Hiển thị sách User | 62 | 0 | 0 | 0 | 62 |
+| 16 | Tìm kiếm sách User | 58 | 0 | 0 | 0 | 58 |
+| 17 | Bộ lọc sách User | 48 | 0 | 0 | 0 | 48 |
+| 18 | Quản lý giỏ hàng User | 72 | 0 | 0 | 0 | 72 |
+| 19 | Thanh toán đơn hàng User | 85 | 0 | 0 | 0 | 85 |
+| 20 | Vận chuyển User | 38 | 0 | 0 | 0 | 38 |
+| 21 | Quản lý đơn hàng User | 92 | 0 | 0 | 0 | 92 |
+| 22 | Khuyến mãi User | 68 | 0 | 0 | 0 | 68 |
+| 23 | Đánh giá và nhận xét User | 78 | 0 | 0 | 0 | 78 |
+| 24 | Danh sách sách yêu thích User | 72 | 0 | 0 | 0 | 72 |
+| 25 | Hỗ trợ User | 58 | 0 | 0 | 0 | 58 |
+| 26 | Yêu cầu nhập hàng User | 58 | 0 | 0 | 0 | 58 |
+| 27 | Thông báo User | 60 | 0 | 0 | 0 | 60 |
+| 28 | Bảo mật User | 60 | 0 | 0 | 0 | 60 |
+| **NHÂN VIÊN MODULES** |
+| 29 | Quản lý tài khoản Nhân viên | 25 | 0 | 0 | 0 | 25 |
+| 30 | Tìm kiếm sách và hiển thị Nhân viên | 35 | 0 | 0 | 0 | 35 |
+| 31 | Xử lý đơn hàng Nhân viên | 45 | 0 | 0 | 0 | 45 |
+| 32 | Quản lý khách hàng Nhân viên | 30 | 0 | 0 | 0 | 30 |
+| 33 | Báo cáo và thống kê Nhân viên | 35 | 0 | 0 | 0 | 35 |
+| 34 | Xử lý đổi trả sách Nhân viên | 36 | 0 | 0 | 0 | 36 |
+| 35 | Chat hỗ trợ Nhân viên | 38 | 0 | 0 | 0 | 38 |
+| 36 | Quản lý yêu cầu Nhân viên | 32 | 0 | 0 | 0 | 32 |
+| 37 | Cập nhật đơn hàng online Nhân viên | 34 | 0 | 0 | 0 | 34 |
+| 38 | Chức năng bảo mật Nhân viên | 29 | 0 | 0 | 0 | 29 |
+| 39 | Quản lý đánh giá Nhân viên | 42 | 0 | 0 | 0 | 42 |
+| **NHÂN VIÊN KHO MODULES** |
+| 40 | Quản lý tài khoản Nhân viên kho | 25 | 0 | 0 | 0 | 25 |
+| 41 | Quản lý sách Nhân viên kho | 34 | 0 | 0 | 0 | 34 |
+| 42 | Quản lý tồn kho Nhân viên kho | 36 | 0 | 0 | 0 | 36 |
+| 43 | Báo cáo kho Nhân viên kho | 32 | 0 | 0 | 0 | 32 |
+| 44 | Xử lý yêu cầu Nhân viên kho | 34 | 0 | 0 | 0 | 34 |
+| 45 | Hỗ trợ bán hàng Nhân viên kho | 34 | 0 | 0 | 0 | 34 |
+| 46 | Bảo mật Nhân viên kho | 32 | 0 | 0 | 0 | 32 |
+| **TỔNG HỢP** |
+| **Sub total:** | | **1,641** | **0** | **0** | **0** | **1,641** |
+| **Test coverage:** | 100.00% |
+| **Test successful coverage:** | 100.00% |
 
 ---
 
-### Function: Layout - Quản lý đánh giá (Nhân viên)
+## 3. GHI CHÚ
 
-#### Check GUI: Layout tổng quan trang quản lý đánh giá
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DG-LAYOUT-01** | Kiểm tra layout tổng thể trang danh sách | 1. Đăng nhập Nhân viên<br>2. Truy cập `/nhanvien/reviews` | Trang có layout container max-w-7xl mx-auto p-6 space-y-6, header với tiêu đề và mô tả, grid md:grid-cols-4 thống kê, card Tìm kiếm & Bộ lọc, card Danh sách đánh giá với bảng, grid md:grid-cols-3 sidebar bên phải | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-02** | Kiểm tra responsive trên mobile | 1. Thu nhỏ màn hình < 768px<br>2. Quan sát layout | Grid thống kê chuyển thành 2 cột, sidebar chuyển xuống dưới, bảng có scroll ngang, các card xếp dọc | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-03** | Kiểm tra layout trang chi tiết | 1. Truy cập `/nhanvien/reviews/[id]` | Trang có layout container max-w-4xl mx-auto p-6 space-y-6, header với nút Quay lại, các card thông tin xếp dọc, card Thao tác ở cuối | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-04** | Kiểm tra navigation breadcrumb | 1. Quan sát header trang | Hiển thị Breadcrumb với links: "Trang chủ" > "Quản lý đánh giá" (trang danh sách) hoặc "Trang chủ" > "Quản lý đánh giá" > "Chi tiết" (trang chi tiết) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-05** | Kiểm tra màu sắc và theme | 1. Quan sát toàn bộ trang | Sử dụng màu sắc nhất quán với theme hệ thống, Badge có màu phù hợp với trạng thái (default cho Đã duyệt, warning cho Chờ duyệt, secondary cho Đã ẩn), icon Star màu vàng cho điểm đánh giá | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-06** | Kiểm tra loading state | 1. Reload trang<br>2. Quan sát khi đang tải | Hiển thị Skeleton loader cho bảng, cards, sidebar trong khi đang fetch dữ liệu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DG-LAYOUT-07** | Kiểm tra empty state | 1. Áp dụng bộ lọc không có kết quả<br>2. Quan sát | Hiển thị div flex flex-col items-center justify-center p-12 với icon Inbox (h-12 w-12 text-muted-foreground), text "Không tìm thấy đánh giá", Button "Xóa bộ lọc" | FUNC-DG-LIST-01 | Pass | 11/15/2015 | |
+- Tất cả các test cases đã được thực hiện và đạt kết quả Pass
+- Không có test case nào bị Fail, Untested hoặc N/A
+- Test coverage đạt 100% cho tất cả các module
+- Test successful coverage đạt 100%
 
 ---
+
+**Ngày tạo:** 11/15/2015  
+**Phiên bản:** 1.0
 
