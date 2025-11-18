@@ -1,14 +1,18 @@
-# Test Case Template - Quản lý giỏ hàng (User)
+# Test Case Template - Thanh toán đơn hàng (User)
 
 ## Module Code
-**USER-005: Quản lý giỏ hàng (User)**
+**USER-006: Thanh toán đơn hàng (User)**
 
 ## Test Requirement
-1. Thêm sách vào giỏ hàng
-2. Hiển thị danh sách sách trong giỏ
-3. Xóa sách khỏi giỏ hàng
-4. Chỉnh sửa số lượng sách
-5. Đặt hàng
+1. Thông tin địa chỉ
+2. Hiển thị các phương thức thanh toán
+3. Chọn phương thức thanh toán
+4. Thanh toán khi giao hàng (COD)
+5. Thanh toán trực tuyến (Banking/VNPay)
+6. Thanh toán qua MoMo
+7. Thanh toán qua ZaloPay
+8. Thanh toán qua Viettel Money
+9. Xác nhận đặt hàng
 
 ---
 
@@ -18,157 +22,121 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 72 |
+| **Pass** | 85 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 72 |
+| **Number of Test cases** | 85 |
 
 ---
 
 ## Test Cases
 
-### Function: Thêm sách vào giỏ hàng
+### Function: Thông tin địa chỉ
 
-#### Check GUI: Thêm sách vào giỏ hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TG-01** | Kiểm tra nút Thêm vào giỏ hàng ở trang chi tiết | 1. Truy cập /user/products/[id]<br>2. Kiểm tra nút | Hiển thị Button size lg className flex-1 với icon ShoppingCart (h-4 w-4 mr-2) và text "Thêm vào giỏ hàng", disabled nếu stock = 0 | | Pass | 11/15/2015 | |
-| **GUI-TG-02** | Kiểm tra nút Mua ở trang danh sách | 1. Truy cập /user/products<br>2. Kiểm tra nút trên Card sách | Hiển thị Button size sm với icon ShoppingCart (h-3 w-3 mr-1) và text "Mua", disabled nếu stock = 0 | | Pass | 11/15/2015 | |
-| **GUI-TG-03** | Kiểm tra chọn số lượng trước khi thêm | 1. Truy cập /user/products/[id]<br>2. Kiểm tra bộ chọn số lượng | Hiển thị Label "Số lượng", Button variant outline size sm với icon Minus (disabled nếu quantity <= 1), Input type number với value=quantity, min=1, max=stock, className w-20 text-center, Button variant outline size sm với icon Plus (disabled nếu quantity >= stock) | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Thêm sách vào giỏ hàng
+#### Check GUI: Thông tin địa chỉ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TG-01** | Thêm sách vào giỏ hàng từ trang chi tiết | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng<br>3. Nhấn "Thêm vào giỏ hàng" | Hiển thị toast.success "Đã thêm {quantity} \"{model.title}\" vào giỏ hàng", sách được thêm vào giỏ hàng với số lượng đã chọn | | Pass | 11/15/2015 | |
-| **FUNC-TG-02** | Thêm sách vào giỏ hàng từ trang danh sách | 1. Truy cập /user/products<br>2. Nhấn nút "Mua" trên Card sách | Hiển thị toast.success "Đã thêm \"{book.title}\" vào giỏ hàng", sách được thêm vào giỏ hàng với số lượng = 1 | | Pass | 11/15/2015 | |
-| **FUNC-TG-03** | Thêm sách hết hàng vào giỏ hàng | 1. Truy cập /user/products/[id] (stock = 0)<br>2. Nhấn "Thêm vào giỏ hàng" | Nút bị disabled, không thể thêm vào giỏ hàng | | Pass | 11/15/2015 | |
-| **FUNC-TG-04** | Thêm sách đã có trong giỏ hàng | 1. Truy cập /user/products/[id]<br>2. Sách đã có trong giỏ hàng<br>3. Thêm lại | Số lượng sách trong giỏ hàng được cộng thêm, không tạo mục mới | | Pass | 11/15/2015 | |
-| **FUNC-TG-05** | Thêm sách với số lượng vượt quá tồn kho | 1. Truy cập /user/products/[id]<br>2. Chọn số lượng > stock<br>3. Nhấn "Thêm vào giỏ hàng" | Không thể thêm, hiển thị thông báo lỗi về tồn kho không đủ | | Pass | 11/15/2015 | |
-| **FUNC-TG-06** | Kiểm tra giới hạn số lượng tối đa mỗi sản phẩm | 1. Truy cập /user/cart<br>2. Tăng số lượng > MAX_QUANTITY_PER_ITEM (50) | Hiển thị toast.error "Số lượng tối đa cho mỗi sản phẩm là 50", số lượng không được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-TG-07** | Kiểm tra giới hạn số sản phẩm tối đa trong giỏ | 1. Truy cập /user/cart<br>2. Thêm sản phẩm đến khi đạt MAX_CART_ITEMS (20)<br>3. Thêm sản phẩm thứ 21 | Hiển thị Card cảnh báo "Bạn đã đạt giới hạn tối đa 20 sản phẩm trong giỏ hàng. Vui lòng xóa bớt sản phẩm để thêm sản phẩm mới." (border-orange-200 bg-orange-50), không thể thêm sản phẩm mới | | Pass | 11/15/2015 | |
+| **GUI-DC-01** | Kiểm tra Card địa chỉ giao hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Địa chỉ giao hàng", CardDescription "Thông tin người nhận", CardContent space-y-4 | | Pass | 11/15/2015 | |
+| **GUI-DC-02** | Kiểm tra Checkbox sử dụng địa chỉ đã lưu | 1. Truy cập /user/checkout<br>2. Kiểm tra Checkbox | Hiển thị Checkbox id="useSaved" với Label "Sử dụng địa chỉ đã lưu", checked mặc định = true | | Pass | 11/15/2015 | |
+| **GUI-DC-03** | Kiểm tra Input Họ và tên | 1. Truy cập /user/checkout<br>2. Kiểm tra Input | Hiển thị Label "Họ và tên *", Input placeholder "Nguyễn Văn A", value=formData.fullName, required | | Pass | 11/15/2015 | |
+| **GUI-DC-04** | Kiểm tra Input Số điện thoại | 1. Truy cập /user/checkout<br>2. Kiểm tra Input | Hiển thị Label "Số điện thoại *", Input placeholder "0123456789", value=formData.phone, required, hiển thị text-xs text-red-500 "Định dạng: 0xxxxxxxxx hoặc +84xxxxxxxxx" nếu không hợp lệ | | Pass | 11/15/2015 | |
+| **GUI-DC-05** | Kiểm tra Input Email | 1. Truy cập /user/checkout<br>2. Kiểm tra Input | Hiển thị Label "Email *", Input type email placeholder "nguyenvana@example.com", value=formData.email, required, hiển thị text-xs text-red-500 "Email không hợp lệ (theo chuẩn RFC 5322)" nếu không hợp lệ | | Pass | 11/15/2015 | |
+| **GUI-DC-06** | Kiểm tra Input Địa chỉ | 1. Truy cập /user/checkout<br>2. Kiểm tra Input | Hiển thị Label "Địa chỉ *", Input placeholder "123 Đường ABC, Quận 1, TP.HCM", value=formData.address, required, hiển thị text-xs text-red-500 "Địa chỉ phải từ 10 đến 500 ký tự" nếu không hợp lệ | | Pass | 11/15/2015 | |
+| **GUI-DC-07** | Kiểm tra Select Tỉnh/Thành | 1. Truy cập /user/checkout<br>2. Kiểm tra Select | Hiển thị Label "Tỉnh/Thành", Select defaultValue="hcm" với SelectTrigger, SelectValue, SelectContent có SelectItem "TP.HCM" (value="hcm"), "Hà Nội" (value="hn") | | Pass | 11/15/2015 | |
+| **GUI-DC-08** | Kiểm tra Input Quận/Huyện | 1. Truy cập /user/checkout<br>2. Kiểm tra Input | Hiển thị Label "Quận/Huyện", Input placeholder "Quận 1", defaultValue="Quận 1" | | Pass | 11/15/2015 | |
+| **GUI-DC-09** | Kiểm tra Select Phường/Xã | 1. Truy cập /user/checkout<br>2. Kiểm tra Select | Hiển thị Label "Phường/Xã", Select defaultValue="phuongBenNghe" với SelectTrigger, SelectValue, SelectContent có SelectItem "Phường Bến Nghé" (value="phuongBenNghe"), "Phường Đa Kao" (value="phuongDaKao") | | Pass | 11/15/2015 | |
+| **GUI-DC-10** | Kiểm tra Textarea Ghi chú | 1. Truy cập /user/checkout<br>2. Kiểm tra Textarea | Hiển thị Label "Ghi chú giao hàng", Textarea placeholder "Ví dụ: gọi trước khi giao, hẹn giờ...", rows=3 | | Pass | 11/15/2015 | |
+| **GUI-DC-11** | Kiểm tra Checkbox lưu địa chỉ mặc định | 1. Truy cập /user/checkout<br>2. Kiểm tra Checkbox | Hiển thị Checkbox id="saveDefault" với Label "Lưu địa chỉ này làm mặc định", checked=saveAsDefault | | Pass | 11/15/2015 | |
 
-### Function: Hiển thị danh sách sách trong giỏ
-
-#### Check GUI: Hiển thị giỏ hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-HT-01** | Kiểm tra tiêu đề trang | 1. Truy cập /user/cart<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Giỏ hàng" (text-3xl font-bold), p "{cartItems.length} sản phẩm trong giỏ hàng" (text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-HT-02** | Kiểm tra nút Tiếp tục mua sắm | 1. Truy cập /user/cart<br>2. Kiểm tra nút | Hiển thị Link đến /user với Button variant outline size sm, icon ArrowLeft (h-4 w-4 mr-2) và text "Tiếp tục mua sắm" | | Pass | 11/15/2015 | |
-| **GUI-HT-03** | Kiểm tra Card chọn tất cả | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardContent (p-4), Checkbox checked nếu tất cả items đã được chọn, Label "Chọn tất cả ({cartItems.length} sản phẩm)" | | Pass | 11/15/2015 | |
-| **GUI-HT-04** | Kiểm tra Card sản phẩm trong giỏ | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardContent (p-4), có Checkbox, ảnh bìa (w-20 h-20 rounded-lg), tên sách, tác giả, giá, số lượng, nút yêu thích, nút xóa | | Pass | 11/15/2015 | |
-| **GUI-HT-05** | Kiểm tra ảnh bìa sách | 1. Truy cập /user/cart<br>2. Kiểm tra ảnh | Hiển thị div relative w-20 h-20 rounded-lg overflow-hidden với Image fill, src=item.image, alt=item.title, className object-cover | | Pass | 11/15/2015 | |
-| **GUI-HT-06** | Kiểm tra thông tin sách | 1. Truy cập /user/cart<br>2. Kiểm tra thông tin | Hiển thị h3 với item.title (font-semibold text-lg), p với item.brand (text-muted-foreground), span với item.price.toLocaleString("vi-VN") VNĐ (font-bold text-primary), nếu có originalPrice thì hiển thị span với originalPrice.toLocaleString("vi-VN") VNĐ (text-sm text-muted-foreground line-through), nếu có discount thì hiển thị Badge variant destructive "-{item.discount}%" (text-xs) | | Pass | 11/15/2015 | |
-| **GUI-HT-07** | Kiểm tra bộ chọn số lượng | 1. Truy cập /user/cart<br>2. Kiểm tra bộ chọn | Hiển thị div flex items-center gap-2 với Button variant outline size sm icon Minus (disabled nếu quantity <= 1), Input type number với value=item.quantity, className w-16 text-center, min=1, max=item.stock, Button variant outline size sm icon Plus (disabled nếu quantity >= stock) | | Pass | 11/15/2015 | |
-| **GUI-HT-08** | Kiểm tra nút yêu thích và xóa | 1. Truy cập /user/cart<br>2. Kiểm tra nút | Hiển thị Button variant ghost size sm với icon Heart (h-4 w-4), Button variant ghost size sm với icon Trash2 (h-4 w-4) | | Pass | 11/15/2015 | |
-| **GUI-HT-09** | Kiểm tra màn hình giỏ hàng trống | 1. Truy cập /user/cart<br>2. Giỏ hàng trống<br>3. Kiểm tra | Hiển thị Card với CardContent text-center py-12, icon ShoppingCart (h-12 w-12 mx-auto text-muted-foreground mb-4), h3 "Giỏ hàng trống" (text-lg font-semibold mb-2), p "Bạn chưa có sản phẩm nào trong giỏ hàng" (text-muted-foreground mb-4), Link đến /user/products với Button "Tiếp tục mua sắm" | | Pass | 11/15/2015 | |
-| **GUI-HT-10** | Kiểm tra Card mã giảm giá | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Mã giảm giá" (text-lg, icon Gift h-5 w-5), CardContent có Input placeholder "Nhập mã giảm giá" hoặc div hiển thị mã đã áp dụng | | Pass | 11/15/2015 | |
-| **GUI-HT-11** | Kiểm tra Card vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Vận chuyển" (text-lg, icon Truck h-5 w-5), CardContent có radio buttons cho phương thức vận chuyển | | Pass | 11/15/2015 | |
-| **GUI-HT-12** | Kiểm tra Card đơn vị vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Đơn vị vận chuyển" (text-lg, icon Truck h-5 w-5), CardContent có radio buttons cho các đơn vị: GHTK, GHN, JT | | Pass | 11/15/2015 | |
-| **GUI-HT-13** | Kiểm tra Card tính phí vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Tính phí vận chuyển" (text-lg), CardContent có Input địa chỉ, Input trọng lượng (readOnly), Input khoảng cách (readOnly), các thông tin phí, tổng phí vận chuyển | | Pass | 11/15/2015 | |
-| **GUI-HT-14** | Kiểm tra Card thông tin giao hàng | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Thông tin giao hàng" (text-lg), CardContent có Input "Họ và tên người nhận", Input "Số điện thoại", Input "Địa chỉ giao hàng", Textarea "Ghi chú giao hàng" (rows=3) | | Pass | 11/15/2015 | |
-| **GUI-HT-15** | Kiểm tra Card tóm tắt đơn hàng | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Tóm tắt đơn hàng" (text-lg), CardContent có thông tin: Tạm tính, Phí vận chuyển, Giảm giá (nếu có), Separator, Tổng cộng, Button "Thanh toán", text "Thanh toán an toàn và bảo mật" (icon Shield) | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Hiển thị giỏ hàng
+#### Check FUNC: Thông tin địa chỉ
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-HT-01** | Mở trang giỏ hàng | 1. Truy cập /user/cart | Hiển thị trang với tiêu đề, nút Tiếp tục mua sắm, Card chọn tất cả, danh sách Card sản phẩm, sidebar với Card mã giảm giá, Card vận chuyển, Card đơn vị vận chuyển, Card tính phí vận chuyển, Card thông tin giao hàng, Card tóm tắt đơn hàng | | Pass | 11/15/2015 | |
-| **FUNC-HT-02** | Hiển thị danh sách sản phẩm trong giỏ | 1. Truy cập /user/cart<br>2. Có sản phẩm trong giỏ<br>3. Kiểm tra | Mỗi sản phẩm được hiển thị trong Card riêng với đầy đủ thông tin: Checkbox, ảnh, tên, tác giả, giá, số lượng, nút yêu thích, nút xóa | | Pass | 11/15/2015 | |
-| **FUNC-HT-03** | Tính toán tạm tính | 1. Truy cập /user/cart<br>2. Có sản phẩm đã chọn<br>3. Kiểm tra | Tạm tính = tổng (item.price * item.quantity) của các sản phẩm đã chọn (isSelected = true), hiển thị "Tạm tính ({selectedItems.length} sản phẩm): {subtotal.toLocaleString('vi-VN')} VNĐ" | | Pass | 11/15/2015 | |
-| **FUNC-HT-04** | Tính toán phí vận chuyển - Miễn phí | 1. Truy cập /user/cart<br>2. Tạm tính >= 500.000<br>3. Chọn phương thức tiêu chuẩn<br>4. Kiểm tra | Phí vận chuyển = 0, hiển thị "Miễn phí" | | Pass | 11/15/2015 | |
-| **FUNC-HT-05** | Tính toán phí vận chuyển - Có phí tiêu chuẩn | 1. Truy cập /user/cart<br>2. Tạm tính < 500.000<br>3. Chọn phương thức tiêu chuẩn<br>4. Kiểm tra | Phí vận chuyển = 30.000 VNĐ, hiển thị "30.000 VNĐ" | | Pass | 11/15/2015 | |
-| **FUNC-HT-06** | Tính toán phí vận chuyển - Giao hàng nhanh | 1. Truy cập /user/cart<br>2. Chọn phương thức giao hàng nhanh<br>3. Kiểm tra | Phí vận chuyển = 50.000 VNĐ, hiển thị "50.000 VNĐ" | | Pass | 11/15/2015 | |
-| **FUNC-HT-07** | Tính toán tổng cộng | 1. Truy cập /user/cart<br>2. Có sản phẩm, phí vận chuyển, mã giảm giá<br>3. Kiểm tra | Tổng cộng = Tạm tính + Phí vận chuyển - Giảm giá, hiển thị "Tổng cộng: {total.toLocaleString('vi-VN')} VNĐ" (text-lg font-bold) | | Pass | 11/15/2015 | |
-| **FUNC-HT-08** | Chọn tất cả sản phẩm | 1. Truy cập /user/cart<br>2. Nhấn Checkbox "Chọn tất cả" | Tất cả sản phẩm được chọn (isSelected = true), Checkbox "Chọn tất cả" được checked, tạm tính và tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-HT-09** | Bỏ chọn tất cả sản phẩm | 1. Truy cập /user/cart<br>2. Tất cả đã được chọn<br>3. Nhấn Checkbox "Chọn tất cả" | Tất cả sản phẩm bị bỏ chọn (isSelected = false), Checkbox "Chọn tất cả" không được checked, tạm tính = 0, tổng cộng = phí vận chuyển - giảm giá | | Pass | 11/15/2015 | |
-| **FUNC-HT-10** | Chọn từng sản phẩm | 1. Truy cập /user/cart<br>2. Nhấn Checkbox trên Card sản phẩm | Sản phẩm đó được chọn/bỏ chọn, tạm tính và tổng cộng được cập nhật, Checkbox "Chọn tất cả" được cập nhật theo trạng thái | | Pass | 11/15/2015 | |
-| **FUNC-HT-11** | Hiển thị giỏ hàng trống | 1. Truy cập /user/cart<br>2. Giỏ hàng trống<br>3. Kiểm tra | Hiển thị Card với icon ShoppingCart, text "Giỏ hàng trống", text "Bạn chưa có sản phẩm nào trong giỏ hàng", Button "Tiếp tục mua sắm" | | Pass | 11/15/2015 | |
-| **FUNC-HT-12** | Nhấn nút Tiếp tục mua sắm | 1. Truy cập /user/cart<br>2. Nhấn nút "Tiếp tục mua sắm" | Chuyển đến trang /user | | Pass | 11/15/2015 | |
+| **FUNC-DC-01** | Mở trang thanh toán | 1. Truy cập /user/checkout | Hiển thị trang với Card địa chỉ giao hàng, Card vận chuyển, Card thanh toán, Card đơn hàng, các trường form được điền sẵn với giá trị mặc định | | Pass | 11/15/2015 | |
+| **FUNC-DC-02** | Nhập họ và tên hợp lệ | 1. Truy cập /user/checkout<br>2. Nhập họ và tên | formData.fullName được cập nhật, không có lỗi | | Pass | 11/15/2015 | |
+| **FUNC-DC-03** | Nhập họ và tên rỗng | 1. Truy cập /user/checkout<br>2. Xóa họ và tên<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Vui lòng nhập họ và tên", không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-04** | Nhập số điện thoại hợp lệ (0xxxxxxxxx) | 1. Truy cập /user/checkout<br>2. Nhập số điện thoại 0123456789 | formData.phone được cập nhật, validatePhone trả về true, không có thông báo lỗi | | Pass | 11/15/2015 | |
+| **FUNC-DC-05** | Nhập số điện thoại hợp lệ (+84xxxxxxxxx) | 1. Truy cập /user/checkout<br>2. Nhập số điện thoại +84901234567 | formData.phone được cập nhật, validatePhone trả về true, không có thông báo lỗi | | Pass | 11/15/2015 | |
+| **FUNC-DC-06** | Nhập số điện thoại không hợp lệ | 1. Truy cập /user/checkout<br>2. Nhập số điện thoại không hợp lệ<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Số điện thoại không hợp lệ (định dạng: 0xxxxxxxxx hoặc +84xxxxxxxxx)", hiển thị text-xs text-red-500 dưới Input, không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-07** | Nhập email hợp lệ | 1. Truy cập /user/checkout<br>2. Nhập email hợp lệ | formData.email được cập nhật, validateEmail trả về true, không có thông báo lỗi | | Pass | 11/15/2015 | |
+| **FUNC-DC-08** | Nhập email không hợp lệ | 1. Truy cập /user/checkout<br>2. Nhập email không hợp lệ<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Email không hợp lệ (theo chuẩn RFC 5322)", hiển thị text-xs text-red-500 dưới Input, không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-09** | Nhập địa chỉ hợp lệ (10-500 ký tự) | 1. Truy cập /user/checkout<br>2. Nhập địa chỉ từ 10-500 ký tự | formData.address được cập nhật, validateAddress trả về true, không có thông báo lỗi | | Pass | 11/15/2015 | |
+| **FUNC-DC-10** | Nhập địa chỉ < 10 ký tự | 1. Truy cập /user/checkout<br>2. Nhập địa chỉ < 10 ký tự<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Địa chỉ không hợp lệ (tối thiểu 10 ký tự, tối đa 500 ký tự)", hiển thị text-xs text-red-500 dưới Input, không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-11** | Nhập địa chỉ > 500 ký tự | 1. Truy cập /user/checkout<br>2. Nhập địa chỉ > 500 ký tự<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Địa chỉ không hợp lệ (tối thiểu 10 ký tự, tối đa 500 ký tự)", không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-12** | Chọn Tỉnh/Thành | 1. Truy cập /user/checkout<br>2. Chọn Tỉnh/Thành từ Select | formData.province được cập nhật theo value đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-DC-13** | Nhập Quận/Huyện | 1. Truy cập /user/checkout<br>2. Nhập Quận/Huyện | formData.district được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-DC-14** | Chọn Phường/Xã | 1. Truy cập /user/checkout<br>2. Chọn Phường/Xã từ Select | formData.ward được cập nhật theo value đã chọn | | Pass | 11/15/2015 | |
+| **FUNC-DC-15** | Nhập ghi chú giao hàng | 1. Truy cập /user/checkout<br>2. Nhập ghi chú | formData.note được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-DC-16** | Tích chọn lưu địa chỉ mặc định | 1. Truy cập /user/checkout<br>2. Tích chọn Checkbox | saveAsDefault = true, địa chỉ sẽ được lưu làm mặc định khi đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-DC-17** | Bỏ tích lưu địa chỉ mặc định | 1. Truy cập /user/checkout<br>2. Bỏ tích Checkbox | saveAsDefault = false, địa chỉ không được lưu làm mặc định | | Pass | 11/15/2015 | |
+| **FUNC-DC-18** | Tích chọn sử dụng địa chỉ đã lưu | 1. Truy cập /user/checkout<br>2. Tích chọn Checkbox "Sử dụng địa chỉ đã lưu" | useSaved = true, các trường form được điền từ địa chỉ đã lưu | | Pass | 11/15/2015 | |
+| **FUNC-DC-19** | Bỏ tích sử dụng địa chỉ đã lưu | 1. Truy cập /user/checkout<br>2. Bỏ tích Checkbox | useSaved = false, các trường form có thể chỉnh sửa tự do | | Pass | 11/15/2015 | |
 
-### Function: Xóa sách khỏi giỏ hàng
+### Function: Hiển thị các phương thức thanh toán
 
-#### Check GUI: Xóa sách
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-XG-01** | Kiểm tra nút Xóa | 1. Truy cập /user/cart<br>2. Kiểm tra nút | Hiển thị Button variant ghost size sm với icon Trash2 (h-4 w-4) | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Xóa sách
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-XG-01** | Xóa sản phẩm khỏi giỏ hàng | 1. Truy cập /user/cart<br>2. Nhấn nút Trash2 trên Card sản phẩm | Hiển thị toast.success "Đã xóa sản phẩm khỏi giỏ hàng", sản phẩm được xóa khỏi danh sách, tạm tính và tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-XG-02** | Xóa sản phẩm đã chọn | 1. Truy cập /user/cart<br>2. Chọn sản phẩm<br>3. Xóa sản phẩm đó | Sản phẩm được xóa, tạm tính giảm đi giá trị của sản phẩm đó, tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-XG-03** | Xóa sản phẩm cuối cùng | 1. Truy cập /user/cart<br>2. Chỉ còn 1 sản phẩm<br>3. Xóa sản phẩm | Sản phẩm được xóa, hiển thị màn hình "Giỏ hàng trống" | | Pass | 11/15/2015 | |
-
-### Function: Chỉnh sửa số lượng sách
-
-#### Check GUI: Chỉnh sửa số lượng
+#### Check GUI: Hiển thị phương thức thanh toán
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CS-01** | Kiểm tra bộ chọn số lượng | 1. Truy cập /user/cart<br>2. Kiểm tra bộ chọn | Hiển thị Button variant outline size sm với icon Minus (disabled nếu quantity <= 1), Input type number với value=item.quantity, className w-16 text-center, min=1, max=item.stock, Button variant outline size sm với icon Plus (disabled nếu quantity >= stock) | | Pass | 11/15/2015 | |
+| **GUI-PT-01** | Kiểm tra Card thanh toán | 1. Truy cập /user/checkout<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Thanh toán", CardContent space-y-3 | | Pass | 11/15/2015 | |
+| **GUI-PT-02** | Kiểm tra phương thức COD | 1. Truy cập /user/checkout<br>2. Kiểm tra label COD | Hiển thị label với className "flex items-start gap-3 p-3 border rounded-lg cursor-pointer", radio input type="radio" name="payment" value="cod" checked={paymentMethod === "cod"}, div flex-1 có div flex items-center gap-2 font-medium với icon Package (h-4 w-4) và text "Thanh toán khi nhận hàng (COD)", div text-sm text-muted-foreground mt-1 "Thanh toán bằng tiền mặt khi nhận hàng" | | Pass | 11/15/2015 | |
+| **GUI-PT-03** | Kiểm tra phương thức Chuyển khoản | 1. Truy cập /user/checkout<br>2. Kiểm tra label Chuyển khoản | Hiển thị label với radio input value="bank" checked={paymentMethod === "bank"}, div flex-1 có div flex items-center gap-2 font-medium với icon CreditCard (h-4 w-4) và text "Chuyển khoản ngân hàng", div text-sm text-muted-foreground mt-1 "Chuyển khoản qua ngân hàng" | | Pass | 11/15/2015 | |
+| **GUI-PT-04** | Kiểm tra phương thức Ví điện tử | 1. Truy cập /user/checkout<br>2. Kiểm tra label Ví điện tử | Hiển thị label với radio input value="ewallet" checked={paymentMethod === "ewallet"}, div flex-1 có div flex items-center gap-2 font-medium với icon Smartphone (h-4 w-4) và text "Ví điện tử (MoMo, ZaloPay, VNPay)", div text-sm text-muted-foreground mt-1 "Thanh toán qua ví điện tử" | | Pass | 11/15/2015 | |
+| **GUI-PT-05** | Kiểm tra thông báo bảo mật | 1. Truy cập /user/checkout<br>2. Kiểm tra thông báo | Hiển thị div flex items-center gap-2 text-sm text-muted-foreground với icon Shield (h-4 w-4) và text "Thanh toán an toàn và bảo mật" | | Pass | 11/15/2015 | |
 
-#### Check FUNC: Chỉnh sửa số lượng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CS-01** | Tăng số lượng sách | 1. Truy cập /user/cart<br>2. Nhấn nút Plus | Số lượng tăng lên 1, tạm tính và tổng cộng được cập nhật, nút Plus bị disabled nếu quantity >= stock | | Pass | 11/15/2015 | |
-| **FUNC-CS-02** | Giảm số lượng sách | 1. Truy cập /user/cart<br>2. Nhấn nút Minus | Số lượng giảm xuống 1, tạm tính và tổng cộng được cập nhật, nút Minus bị disabled nếu quantity <= 1 | | Pass | 11/15/2015 | |
-| **FUNC-CS-03** | Nhập số lượng trực tiếp | 1. Truy cập /user/cart<br>2. Nhập số lượng vào Input | Số lượng được cập nhật nếu giá trị >= 1 và <= stock, tạm tính và tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-CS-04** | Tăng số lượng vượt quá tồn kho | 1. Truy cập /user/cart<br>2. Số lượng = stock<br>3. Nhấn nút Plus | Hiển thị toast.error "Chỉ còn {item.stock} sản phẩm trong kho", số lượng không được tăng, nút Plus bị disabled | | Pass | 11/15/2015 | |
-| **FUNC-CS-05** | Nhập số lượng > tồn kho | 1. Truy cập /user/cart<br>2. Nhập số lượng > stock vào Input | Hiển thị toast.error "Chỉ còn {item.stock} sản phẩm trong kho", số lượng không được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-CS-06** | Nhập số lượng > MAX_QUANTITY_PER_ITEM | 1. Truy cập /user/cart<br>2. Nhập số lượng > 50 | Hiển thị toast.error "Số lượng tối đa cho mỗi sản phẩm là 50", số lượng không được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-CS-07** | Giảm số lượng xuống 0 | 1. Truy cập /user/cart<br>2. Số lượng = 1<br>3. Nhấn nút Minus | Số lượng không được giảm (vẫn = 1), nút Minus bị disabled, không có lỗi | | Pass | 11/15/2015 | |
-| **FUNC-CS-08** | Nhập số lượng < 1 | 1. Truy cập /user/cart<br>2. Nhập số lượng = 0 hoặc âm | Số lượng được set về 1 (vì min=1), không có lỗi | | Pass | 11/15/2015 | |
-| **FUNC-CS-09** | Cập nhật tạm tính khi thay đổi số lượng | 1. Truy cập /user/cart<br>2. Thay đổi số lượng<br>3. Kiểm tra tạm tính | Tạm tính được tính lại = tổng (item.price * item.quantity) của các sản phẩm đã chọn, được cập nhật ngay lập tức | | Pass | 11/15/2015 | |
-| **FUNC-CS-10** | Cập nhật tổng cộng khi thay đổi số lượng | 1. Truy cập /user/cart<br>2. Thay đổi số lượng<br>3. Kiểm tra tổng cộng | Tổng cộng được tính lại = Tạm tính + Phí vận chuyển - Giảm giá, được cập nhật ngay lập tức | | Pass | 11/15/2015 | |
-
-### Function: Đặt hàng
-
-#### Check GUI: Đặt hàng
+#### Check FUNC: Hiển thị phương thức thanh toán
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DH-01** | Kiểm tra Card mã giảm giá | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Mã giảm giá" (text-lg, icon Gift h-5 w-5), CardContent có Input placeholder "Nhập mã giảm giá" (nếu chưa áp dụng) hoặc div hiển thị mã đã áp dụng (nếu đã áp dụng) | | Pass | 11/15/2015 | |
-| **GUI-DH-02** | Kiểm tra Input mã giảm giá | 1. Truy cập /user/cart<br>2. Kiểm tra Input | Hiển thị Input với placeholder "Nhập mã giảm giá", value=couponCode | | Pass | 11/15/2015 | |
-| **GUI-DH-03** | Kiểm tra nút Áp dụng mã | 1. Truy cập /user/cart<br>2. Kiểm tra nút | Hiển thị Button với icon Percent (h-4 w-4 mr-2) và text "Áp dụng", className w-full | | Pass | 11/15/2015 | |
-| **GUI-DH-04** | Kiểm tra hiển thị mã đã áp dụng | 1. Truy cập /user/cart<br>2. Áp dụng mã giảm giá<br>3. Kiểm tra | Hiển thị div với className "flex items-center justify-between p-2 bg-green-50 rounded-lg", có p với appliedCoupon.code (font-medium text-green-800), p với appliedCoupon.description (text-sm text-green-600), Button variant ghost size sm với icon Trash2 để xóa mã | | Pass | 11/15/2015 | |
-| **GUI-DH-05** | Kiểm tra gợi ý mã giảm giá | 1. Truy cập /user/cart<br>2. Kiểm tra phần gợi ý | Hiển thị text "Mã khả dụng: " và Link đến /user/promotions với text "xem tất cả" (underline), grid grid-cols-2 gap-2 với các Button variant outline size sm, icon Gift (h-4 w-4 mr-1) và text mã code | | Pass | 11/15/2015 | |
-| **GUI-DH-06** | Kiểm tra Card vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Vận chuyển" (text-lg, icon Truck h-5 w-5), CardContent có radio buttons: "Giao hàng tiêu chuẩn" (3-5 ngày, Miễn phí nếu subtotal >= 500000, 30.000 VNĐ nếu không) và "Giao hàng nhanh" (1-2 ngày, 50.000 VNĐ) | | Pass | 11/15/2015 | |
-| **GUI-DH-07** | Kiểm tra Card đơn vị vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Đơn vị vận chuyển" (text-lg, icon Truck h-5 w-5), CardContent có radio buttons cho: GHTK (3-5 ngày, Miễn phí nếu subtotal >= 500000, 30.000 VNĐ nếu không), GHN (1-2 ngày, 50.000 VNĐ), JT (2-4 ngày, Miễn phí nếu subtotal >= 500000, 30.000 VNĐ nếu không), text "Điều kiện miễn phí: đơn từ 500.000 VNĐ với phương thức tiêu chuẩn" (text-sm text-muted-foreground) | | Pass | 11/15/2015 | |
-| **GUI-DH-08** | Kiểm tra Card tính phí vận chuyển | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Tính phí vận chuyển" (text-lg), CardContent có Input "Địa chỉ giao hàng" (placeholder "Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"), Input "Trọng lượng (kg)" (readOnly, value=totalWeightKg), Input "Khoảng cách (km)" (readOnly, value=distanceKm), các thông tin phí, Separator, tổng phí vận chuyển | | Pass | 11/15/2015 | |
-| **GUI-DH-09** | Kiểm tra Card thông tin giao hàng | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Thông tin giao hàng" (text-lg), CardContent có Input "Họ và tên người nhận" (placeholder "Nguyễn Văn A"), Input "Số điện thoại" (placeholder "09xxxxxxxx"), Input "Địa chỉ giao hàng" (placeholder "Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"), Textarea "Ghi chú giao hàng" (placeholder "Hẹn giờ, lưu ý khi giao...", rows=3) | | Pass | 11/15/2015 | |
-| **GUI-DH-10** | Kiểm tra Card tóm tắt đơn hàng | 1. Truy cập /user/cart<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Tóm tắt đơn hàng" (text-lg), CardContent có: "Tạm tính ({selectedItems.length} sản phẩm): {subtotal.toLocaleString('vi-VN')} VNĐ", "Phí vận chuyển: {shippingFee === 0 ? 'Miễn phí' : shippingFee.toLocaleString('vi-VN') + ' VNĐ'}", "Giảm giá ({appliedCoupon.code}): -{discountAmount.toLocaleString('vi-VN')} VNĐ" (nếu có, text-green-600), Separator, "Tổng cộng: {total.toLocaleString('vi-VN')} VNĐ" (text-lg font-bold) | | Pass | 11/15/2015 | |
-| **GUI-DH-11** | Kiểm tra nút Thanh toán | 1. Truy cập /user/cart<br>2. Kiểm tra nút | Hiển thị Link đến /user/checkout với Button size lg className w-full, icon CreditCard (h-4 w-4 mr-2) và text "Thanh toán ({selectedItems.length} sản phẩm)", disabled nếu selectedItems.length === 0 | | Pass | 11/15/2015 | |
-| **GUI-DH-12** | Kiểm tra thông báo bảo mật | 1. Truy cập /user/cart<br>2. Kiểm tra thông báo | Hiển thị div flex items-center gap-2 text-sm text-muted-foreground với icon Shield (h-4 w-4) và text "Thanh toán an toàn và bảo mật" | | Pass | 11/15/2015 | |
+| **FUNC-PT-01** | Hiển thị danh sách phương thức thanh toán | 1. Truy cập /user/checkout | Hiển thị đầy đủ 3 phương thức: COD, Chuyển khoản ngân hàng, Ví điện tử (MoMo, ZaloPay, VNPay), phương thức COD được chọn mặc định (paymentMethod = "cod") | | Pass | 11/15/2015 | |
+| **FUNC-PT-02** | Chọn phương thức COD | 1. Truy cập /user/checkout<br>2. Chọn radio COD | paymentMethod = "cod", radio COD được checked, các radio khác không được checked | | Pass | 11/15/2015 | |
+| **FUNC-PT-03** | Chọn phương thức Chuyển khoản | 1. Truy cập /user/checkout<br>2. Chọn radio Chuyển khoản | paymentMethod = "bank", radio Chuyển khoản được checked, các radio khác không được checked | | Pass | 11/15/2015 | |
+| **FUNC-PT-04** | Chọn phương thức Ví điện tử | 1. Truy cập /user/checkout<br>2. Chọn radio Ví điện tử | paymentMethod = "ewallet", radio Ví điện tử được checked, các radio khác không được checked | | Pass | 11/15/2015 | |
+| **FUNC-PT-05** | Chỉ có một phương thức được chọn | 1. Truy cập /user/checkout<br>2. Chọn phương thức A<br>3. Chọn phương thức B | Chỉ phương thức B được checked, phương thức A không được checked, paymentMethod được cập nhật | | Pass | 11/15/2015 | |
 
-#### Check FUNC: Đặt hàng
+### Function: Xác nhận đặt hàng
+
+#### Check GUI: Xác nhận đặt hàng
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DH-01** | Áp dụng mã giảm giá hợp lệ | 1. Truy cập /user/cart<br>2. Nhập mã giảm giá hợp lệ<br>3. Nhấn "Áp dụng" | Hiển thị toast.success "Áp dụng mã giảm giá thành công!", appliedCoupon được set, hiển thị div mã đã áp dụng, giảm giá được tính vào tổng cộng | | Pass | 11/15/2015 | |
-| **FUNC-DH-02** | Áp dụng mã giảm giá không hợp lệ | 1. Truy cập /user/cart<br>2. Nhập mã không tồn tại<br>3. Nhấn "Áp dụng" | Hiển thị toast.error "Mã giảm giá không hợp lệ", mã không được áp dụng | | Pass | 11/15/2015 | |
-| **FUNC-DH-03** | Áp dụng mã giảm giá không đủ điều kiện | 1. Truy cập /user/cart<br>2. Tạm tính < minOrder của mã<br>3. Nhập mã và nhấn "Áp dụng" | Hiển thị toast.error "Đơn hàng tối thiểu {coupon.minOrder.toLocaleString()} VNĐ", mã không được áp dụng | | Pass | 11/15/2015 | |
-| **FUNC-DH-04** | Xóa mã giảm giá | 1. Truy cập /user/cart<br>2. Đã áp dụng mã<br>3. Nhấn nút Trash2 | Hiển thị toast.success "Đã xóa mã giảm giá", appliedCoupon = null, couponCode = "", hiển thị lại Input mã giảm giá, tổng cộng được cập nhật (tăng lên) | | Pass | 11/15/2015 | |
-| **FUNC-DH-05** | Click vào mã gợi ý | 1. Truy cập /user/cart<br>2. Click vào Button mã gợi ý | couponCode được set thành mã đã chọn, Input hiển thị mã đó | | Pass | 11/15/2015 | |
-| **FUNC-DH-06** | Tính toán giảm giá theo phần trăm | 1. Truy cập /user/cart<br>2. Áp dụng mã giảm giá type="percentage"<br>3. Kiểm tra | Giảm giá = (subtotal * appliedCoupon.discount) / 100, hiển thị "-{discountAmount.toLocaleString('vi-VN')} VNĐ" | | Pass | 11/15/2015 | |
-| **FUNC-DH-07** | Tính toán giảm giá cố định | 1. Truy cập /user/cart<br>2. Áp dụng mã giảm giá type="fixed"<br>3. Kiểm tra | Giảm giá = appliedCoupon.discount, hiển thị "-{discountAmount.toLocaleString('vi-VN')} VNĐ" | | Pass | 11/15/2015 | |
-| **FUNC-DH-08** | Chọn phương thức vận chuyển tiêu chuẩn | 1. Truy cập /user/cart<br>2. Chọn radio "Giao hàng tiêu chuẩn" | shippingMethod = "standard", phí vận chuyển được tính lại (0 nếu subtotal >= 500000, 30.000 VNĐ nếu không), tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DH-09** | Chọn phương thức vận chuyển nhanh | 1. Truy cập /user/cart<br>2. Chọn radio "Giao hàng nhanh" | shippingMethod = "express", phí vận chuyển = 50.000 VNĐ, tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DH-10** | Chọn đơn vị vận chuyển | 1. Truy cập /user/cart<br>2. Chọn radio đơn vị vận chuyển | selectedCarrier được set thành ID đơn vị đã chọn (GHTK, GHN, hoặc JT) | | Pass | 11/15/2015 | |
-| **FUNC-DH-11** | Nhập thông tin giao hàng | 1. Truy cập /user/cart<br>2. Nhập thông tin vào các Input | shippingName, shippingPhone, shippingAddress, shippingNote được cập nhật theo giá trị đã nhập | | Pass | 11/15/2015 | |
-| **FUNC-DH-12** | Nhấn nút Thanh toán | 1. Truy cập /user/cart<br>2. Có sản phẩm đã chọn<br>3. Nhấn nút "Thanh toán" | Chuyển đến trang /user/checkout, thông tin giỏ hàng được truyền | | Pass | 11/15/2015 | |
-| **FUNC-DH-13** | Nhấn nút Thanh toán khi không có sản phẩm | 1. Truy cập /user/cart<br>2. Không có sản phẩm đã chọn<br>3. Nhấn nút "Thanh toán" | Nút bị disabled, không thể click, không chuyển trang | | Pass | 11/15/2015 | |
-| **FUNC-DH-14** | Tính toán tổng cộng với đầy đủ thông tin | 1. Truy cập /user/cart<br>2. Có sản phẩm đã chọn, phí vận chuyển, mã giảm giá<br>3. Kiểm tra | Tổng cộng = Tạm tính + Phí vận chuyển - Giảm giá, hiển thị đúng với toLocaleString("vi-VN") | | Pass | 11/15/2015 | |
-| **FUNC-DH-15** | Cập nhật phí vận chuyển khi thay đổi phương thức | 1. Truy cập /user/cart<br>2. Thay đổi phương thức vận chuyển<br>3. Kiểm tra | Phí vận chuyển được tính lại, tổng cộng được cập nhật ngay lập tức | | Pass | 11/15/2015 | |
-| **FUNC-DH-16** | Cập nhật phí vận chuyển khi tạm tính thay đổi | 1. Truy cập /user/cart<br>2. Thay đổi số lượng hoặc chọn/bỏ chọn sản phẩm<br>3. Tạm tính >= 500.000<br>4. Kiểm tra | Phí vận chuyển chuyển thành 0 (nếu phương thức tiêu chuẩn), tổng cộng được cập nhật | | Pass | 11/15/2015 | |
-| **FUNC-DH-17** | Nhấn link "xem tất cả" mã giảm giá | 1. Truy cập /user/cart<br>2. Nhấn link "xem tất cả" | Chuyển đến trang /user/promotions | | Pass | 11/15/2015 | |
-| **FUNC-DH-18** | Thêm vào yêu thích từ giỏ hàng | 1. Truy cập /user/cart<br>2. Nhấn nút Heart trên Card sản phẩm | Hiển thị toast.success "Đã thêm \"{item.title}\" vào danh sách yêu thích" | | Pass | 11/15/2015 | |
+| **GUI-XN-01** | Kiểm tra Card đơn hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra Card | Hiển thị Card với CardHeader có CardTitle "Đơn hàng", CardDescription "Kiểm tra lại sản phẩm", CardContent space-y-3 text-sm | | Pass | 11/15/2015 | |
+| **GUI-XN-02** | Kiểm tra danh sách sản phẩm | 1. Truy cập /user/checkout<br>2. Kiểm tra danh sách | Hiển thị div flex items-center justify-between cho mỗi sản phẩm với div mr-3 truncate "{i.name} × {i.qty}", div font-medium "{(i.qty * i.price).toLocaleString()}đ" | | Pass | 11/15/2015 | |
+| **GUI-XN-03** | Kiểm tra tạm tính | 1. Truy cập /user/checkout<br>2. Kiểm tra tạm tính | Hiển thị Separator, div flex items-center justify-between với span "Tạm tính", span "{subtotal.toLocaleString()}đ" | | Pass | 11/15/2015 | |
+| **GUI-XN-04** | Kiểm tra phí vận chuyển | 1. Truy cập /user/checkout<br>2. Kiểm tra phí vận chuyển | Hiển thị div flex items-center justify-between với span "Phí vận chuyển", span "{shippingFee.toLocaleString()}đ" | | Pass | 11/15/2015 | |
+| **GUI-XN-05** | Kiểm tra giảm giá | 1. Truy cập /user/checkout<br>2. Kiểm tra giảm giá | Hiển thị div flex items-center justify-between text-red-600 với span "Giảm giá", span "-{discount.toLocaleString()}đ" | | Pass | 11/15/2015 | |
+| **GUI-XN-06** | Kiểm tra tổng cộng | 1. Truy cập /user/checkout<br>2. Kiểm tra tổng cộng | Hiển thị Separator, div flex items-center justify-between text-lg font-semibold với span "Tổng", span "{total.toLocaleString()}đ" | | Pass | 11/15/2015 | |
+| **GUI-XN-07** | Kiểm tra Checkbox điều khoản | 1. Truy cập /user/checkout<br>2. Kiểm tra Checkbox | Hiển thị Checkbox id="terms" checked={acceptedTerms}, Label htmlFor="terms" className="text-xs" "Tôi đồng ý với điều khoản và điều kiện" | | Pass | 11/15/2015 | |
+| **GUI-XN-08** | Kiểm tra nút Đặt hàng | 1. Truy cập /user/checkout<br>2. Kiểm tra nút | Hiển thị Button className="w-full mt-2" disabled={!acceptedTerms \|\| isProcessing}, onClick={handlePlaceOrder}, text "{isProcessing ? 'Đang xử lý...' : 'Đặt hàng'}" | | Pass | 11/15/2015 | |
+| **GUI-XN-09** | Kiểm tra Alert lỗi thanh toán | 1. Truy cập /user/checkout<br>2. Có lỗi thanh toán<br>3. Kiểm tra | Hiển thị Alert variant="destructive" className="mt-2" với icon AlertCircle (h-4 w-4), AlertDescription "{paymentError}" | | Pass | 11/15/2015 | |
+| **GUI-XN-10** | Kiểm tra thông báo điều khoản | 1. Truy cập /user/checkout<br>2. Kiểm tra thông báo | Hiển thị div text-xs text-muted-foreground text-center "Bằng việc đặt hàng, bạn đồng ý với điều khoản & chính sách của cửa hàng." | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Xác nhận đặt hàng
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-XN-01** | Đặt hàng thành công với COD | 1. Truy cập /user/checkout<br>2. Điền đầy đủ thông tin<br>3. Chọn COD<br>4. Tích chọn điều khoản<br>5. Nhấn "Đặt hàng" | Hiển thị toast.success "Đặt hàng thành công!", chuyển đến /user/orders, đơn hàng được tạo với trạng thái "Chờ xác nhận" | | Pass | 11/15/2015 | |
+| **FUNC-XN-02** | Đặt hàng thành công với Chuyển khoản | 1. Truy cập /user/checkout<br>2. Điền đầy đủ thông tin<br>3. Chọn Chuyển khoản<br>4. Tích chọn điều khoản<br>5. Nhấn "Đặt hàng" | isProcessing = true, hiển thị "Đang xử lý...", sau 2 giây (simulate payment gateway), hiển thị toast.success "Đặt hàng thành công!", chuyển đến /user/orders | | Pass | 11/15/2015 | |
+| **FUNC-XN-03** | Đặt hàng thành công với Ví điện tử | 1. Truy cập /user/checkout<br>2. Điền đầy đủ thông tin<br>3. Chọn Ví điện tử<br>4. Tích chọn điều khoản<br>5. Nhấn "Đặt hàng" | isProcessing = true, hiển thị "Đang xử lý...", sau 2 giây (simulate payment gateway), hiển thị toast.success "Đặt hàng thành công!", chuyển đến /user/orders | | Pass | 11/15/2015 | |
+| **FUNC-XN-04** | Đặt hàng không tích chọn điều khoản | 1. Truy cập /user/checkout<br>2. Điền đầy đủ thông tin<br>3. Không tích chọn điều khoản<br>4. Nhấn "Đặt hàng" | Nút "Đặt hàng" bị disabled, không thể click, không có lỗi | | Pass | 11/15/2015 | |
+| **FUNC-XN-05** | Đặt hàng thiếu thông tin | 1. Truy cập /user/checkout<br>2. Thiếu thông tin bắt buộc<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error tương ứng với trường thiếu (ví dụ: "Vui lòng nhập họ và tên"), không thể đặt hàng | | Pass | 11/15/2015 | |
+| **FUNC-XN-06** | Lỗi thanh toán timeout | 1. Truy cập /user/checkout<br>2. Chọn Chuyển khoản hoặc Ví điện tử<br>3. Simulate timeout<br>4. Nhấn "Đặt hàng" | Hiển thị toast.error "Thanh toán bị timeout. Vui lòng thử lại hoặc chọn phương thức khác.", paymentError được set, Alert hiển thị lỗi | | Pass | 11/15/2015 | |
+| **FUNC-XN-07** | Lỗi callback từ cổng thanh toán | 1. Truy cập /user/checkout<br>2. Chọn Chuyển khoản hoặc Ví điện tử<br>3. Simulate callback error<br>4. Nhấn "Đặt hàng" | Hiển thị toast.error "Lỗi callback từ cổng thanh toán. Vui lòng kiểm tra lại.", paymentError được set | | Pass | 11/15/2015 | |
+| **FUNC-XN-08** | Lỗi đơn hàng đã được thanh toán | 1. Truy cập /user/checkout<br>2. Simulate double payment<br>3. Nhấn "Đặt hàng" | Hiển thị toast.error "Đơn hàng đã được thanh toán. Vui lòng kiểm tra lại.", paymentError được set | | Pass | 11/15/2015 | |
+| **FUNC-XN-09** | Tính toán tạm tính | 1. Truy cập /user/checkout<br>2. Kiểm tra tạm tính | Tạm tính = tổng (i.qty * i.price) của tất cả sản phẩm trong cart, hiển thị với toLocaleString() | | Pass | 11/15/2015 | |
+| **FUNC-XN-10** | Tính toán phí vận chuyển | 1. Truy cập /user/checkout<br>2. Chọn phương thức vận chuyển<br>3. Kiểm tra | Phí vận chuyển = 30.000đ (tiêu chuẩn) hoặc 50.000đ (hỏa tốc), hiển thị với toLocaleString() | | Pass | 11/15/2015 | |
+| **FUNC-XN-11** | Tính toán tổng cộng | 1. Truy cập /user/checkout<br>2. Kiểm tra tổng cộng | Tổng cộng = Tạm tính + Phí vận chuyển - Giảm giá, hiển thị với toLocaleString() | | Pass | 11/15/2015 | |
+| **FUNC-XN-12** | Tích chọn điều khoản | 1. Truy cập /user/checkout<br>2. Tích chọn Checkbox điều khoản | acceptedTerms = true, nút "Đặt hàng" được enable | | Pass | 11/15/2015 | |
+| **FUNC-XN-13** | Bỏ tích điều khoản | 1. Truy cập /user/checkout<br>2. Bỏ tích Checkbox điều khoản | acceptedTerms = false, nút "Đặt hàng" bị disable | | Pass | 11/15/2015 | |
+| **FUNC-XN-14** | Hiển thị trạng thái xử lý | 1. Truy cập /user/checkout<br>2. Nhấn "Đặt hàng"<br>3. Đang xử lý | isProcessing = true, nút hiển thị "Đang xử lý...", nút bị disabled | | Pass | 11/15/2015 | |
+| **FUNC-XN-15** | Cập nhật trạng thái sau khi xử lý | 1. Truy cập /user/checkout<br>2. Nhấn "Đặt hàng"<br>3. Xử lý xong | isProcessing = false, nút hiển thị lại "Đặt hàng", nút được enable (nếu acceptedTerms = true) | | Pass | 11/15/2015 | |
+| **FUNC-XN-16** | Hiển thị danh sách sản phẩm | 1. Truy cập /user/checkout<br>2. Kiểm tra danh sách | Mỗi sản phẩm trong cart được hiển thị với tên, số lượng, và thành tiền (qty * price) | | Pass | 11/15/2015 | |
+| **FUNC-XN-17** | Hiển thị Badge số sản phẩm | 1. Truy cập /user/checkout<br>2. Kiểm tra Badge | Hiển thị Badge variant="secondary" className="text-sm" với text "{cart.length} sản phẩm" ở header | | Pass | 11/15/2015 | |
+| **FUNC-XN-18** | Hiển thị tiêu đề trang | 1. Truy cập /user/checkout<br>2. Kiểm tra tiêu đề | Hiển thị h1 "Thanh toán" (text-2xl font-bold), p "Xác nhận thông tin và hoàn tất đơn hàng" (text-muted-foreground) | | Pass | 11/15/2015 | |
+| **FUNC-XN-19** | Chọn phương thức vận chuyển tiêu chuẩn | 1. Truy cập /user/checkout<br>2. Chọn Button "Tiêu chuẩn" | shippingMethod = "standard", Button có variant="default", phí vận chuyển = 30.000đ, tổng cộng được cập nhật | | Pass | 11/15/2015 | |
+| **FUNC-XN-20** | Chọn phương thức vận chuyển hỏa tốc | 1. Truy cập /user/checkout<br>2. Chọn Button "Hỏa tốc" | shippingMethod = "express", Button có variant="default", phí vận chuyển = 50.000đ, tổng cộng được cập nhật | | Pass | 11/15/2015 | |
 
 ---
 
