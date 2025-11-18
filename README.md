@@ -1,15 +1,14 @@
-# Test Case Template - Báo cáo và thống kê (Admin)
+# Test Case Template - Quản lý vận chuyển (Admin)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Admin)**
 
 ## Test Requirement
-1. Hiển thị báo cáo và thống kê tổng quan
-2. Xem chi tiết báo cáo
-3. Xem báo cáo doanh thu
-4. Xem thống kê bán hàng
-5. Xem báo cáo khách hàng
-6. Xem báo cáo tồn kho
+1. Hiển thị danh sách đơn vận chuyển
+2. Xem chi tiết đơn vận chuyển
+3. Cập nhật trạng thái vận chuyển
+4. Quản lý nhà vận chuyển
+5. Theo dõi vận chuyển
 
 ---
 
@@ -19,109 +18,106 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 24 |
+| **Pass** | 20 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 24 |
+| **Number of Test cases** | 20 |
 
 ---
 
 ## Test Cases
 
-### Function: Hiển thị báo cáo và thống kê tổng quan
+### Function: Hiển thị danh sách đơn vận chuyển
 
-#### Check GUI: Hiển thị báo cáo và thống kê
+#### Check GUI: Hiển thị danh sách đơn vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-BC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Báo cáo & Thống kê" với class text-3xl font-bold, mô tả "Theo dõi hiệu suất kinh doanh và phân tích dữ liệu" với class text-muted-foreground, nằm trong div flex items-center justify-between | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-02** | Kiểm tra các nút header | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra nút | Hiển thị div flex items-center gap-2 bên phải tiêu đề với Select defaultValue="6months" w-40 có các option: "7 ngày qua", "30 ngày qua", "3 tháng qua", "6 tháng qua", "1 năm qua", Button variant="outline" "Xuất báo cáo" có icon Download h-4 w-4 mr-2 | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-03** | Kiểm tra thống kê tổng quan | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra thống kê | Hiển thị grid grid-cols-1 md:grid-cols-4 gap-4 với 4 Card: Card 1 "Doanh thu tháng" với icon DollarSign h-8 w-8 text-primary, số "22.5M đ", div flex items-center gap-1 với icon TrendingUp màu xanh và text "+22%", Card 2 "Đơn hàng tháng" với icon ShoppingCart, số "85", growth "+18%", Card 3 "Khách hàng mới" với icon Users, số "23", growth "+28%", Card 4 "Sản phẩm bán" với icon Package, số "342", growth "+15%". Mỗi card có CardContent p-4 với text-sm text-muted-foreground cho label và text-2xl font-bold cho số | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-04** | Kiểm tra Tabs | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Kiểm tra tabs | Hiển thị Tabs defaultValue="revenue" với TabsList className="grid w-full grid-cols-4" có 4 TabsTrigger: "Doanh thu", "Sản phẩm", "Khách hàng", "Tồn kho" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-05** | Kiểm tra Tab Doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị TabsContent value="revenue" với space-y-6 chứa: Card "Biểu đồ doanh thu" với CardDescription "Doanh thu theo tháng trong 6 tháng qua", CardContent có div h-80 border-2 border-dashed với icon BarChart3 và text "Biểu đồ doanh thu sẽ được hiển thị ở đây", Card "Chi tiết doanh thu" với CardContent có danh sách các tháng với doanh thu, số đơn hàng, và growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-06** | Kiểm tra Tab Sản phẩm | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Hiển thị TabsContent value="products" với Card "Sản phẩm bán chạy" có CardDescription "Top sản phẩm có doanh số cao nhất", CardContent có danh sách sản phẩm với số thứ tự (#1, #2...), tên sản phẩm, số lượng đã bán, doanh thu, growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-07** | Kiểm tra Tab Khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Hiển thị TabsContent value="customers" với grid grid-cols-1 md:grid-cols-2 gap-4 chứa các Card thống kê: "Khách hàng mới", "Khách VIP", "Tỷ lệ quay lại", "Giá trị đơn hàng TB", mỗi card có số liệu và growth % | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-BC-08** | Kiểm tra Tab Tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Hiển thị TabsContent value="inventory" với Card "Cảnh báo tồn kho" có CardDescription "Sản phẩm sắp hết hàng cần nhập thêm", CardContent có danh sách sản phẩm với tên, số lượng hiện tại, số lượng tối thiểu, Badge trạng thái (Nguy hiểm/Cảnh báo/Hết hàng) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra tiêu đề | Hiển thị Card với CardHeader có CardTitle "Quản lý vận chuyển" với class text-2xl font-bold, layout trong div space-y-6 | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-02** | Kiểm tra card Bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra card bộ lọc | Hiển thị Card với CardContent có grid gap-4 md:grid-cols-5 chứa: Select "Trạng thái" với placeholder, Select "Nhà vận chuyển" với placeholder, Select "Khoảng thời gian" với placeholder, Input placeholder="Tìm mã đơn vận/đơn hàng", div flex justify-end với Button variant="outline" "Xuất báo cáo" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-03** | Kiểm tra dropdown Trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Trạng thái", SelectContent có các option: "Chờ lấy hàng", "Đang giao", "Đã giao", "Trả về", "Hủy" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-04** | Kiểm tra dropdown Nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra dropdown | Hiển thị Select với SelectTrigger, SelectValue placeholder="Nhà vận chuyển", SelectContent có các option: "Giao Hàng Nhanh", "Viettel Post", "J&T Express", "Ninja Van" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-05** | Kiểm tra card Danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra card | Hiển thị Card với CardContent chứa Table | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-06** | Kiểm tra bảng danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "Mã đơn vận", "Mã đơn hàng", "Khách hàng", "Nhà vận chuyển", "Trạng thái", "Ngày tạo", "Thao tác". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-07** | Kiểm tra cột Mã đơn vận | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa div flex items-center gap-2 với span (mã đơn vận, VD: VC001) và Badge với variant="default" nếu status="Đang giao" hoặc variant="secondary" nếu khác, hiển thị trạng thái | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-08** | Kiểm tra cột Mã đơn hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra cột | Mỗi hàng có TableCell chứa Link href="/admin/orders/[orderId]" với text là mã đơn hàng (VD: DH001), có thể click để xem chi tiết đơn hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-DSVC-09** | Kiểm tra các nút thao tác | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Kiểm tra nút thao tác | Mỗi hàng có TableCell "Thao tác" với class space-x-2 chứa: Button size="sm" variant="outline" "Xem chi tiết" với Link href="/admin/shipping/[id]", Button size="sm" variant="outline" "Cập nhật trạng thái", Button size="sm" variant="outline" "Theo dõi", Button size="sm" variant="outline" "Hủy đơn" | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Hiển thị báo cáo và thống kê
+### Check FUNC: Hiển thị danh sách đơn vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BC-01** | Xem danh sách báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports | Hiển thị đầy đủ: tiêu đề và mô tả, Select khoảng thời gian và nút Xuất báo cáo, thống kê tổng quan 4 card (Doanh thu tháng: 22.5M đ +22%, Đơn hàng tháng: 85 +18%, Khách hàng mới: 23 +28%, Sản phẩm bán: 342 +15%), Tabs với 4 tab (Doanh thu, Sản phẩm, Khách hàng, Tồn kho), Tab Doanh thu hiển thị biểu đồ và chi tiết doanh thu theo tháng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BC-02** | Chọn khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Chọn khoảng thời gian từ Select (VD: "30 ngày qua") | Dữ liệu báo cáo được cập nhật theo khoảng thời gian đã chọn, thống kê tổng quan được tính lại, biểu đồ và danh sách chi tiết được refresh với dữ liệu mới | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BC-03** | Chuyển đổi giữa các tab | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Tab "Sản phẩm" được kích hoạt, hiển thị Card "Sản phẩm bán chạy" với danh sách top sản phẩm, mỗi sản phẩm có số thứ tự (#1, #2...), tên, số lượng đã bán, doanh thu (toLocaleString), growth % với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BC-04** | Xem thống kê khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Tab "Khách hàng" được kích hoạt, hiển thị grid với 4 Card: "Khách hàng mới" (23, +28%), "Khách VIP" (12, +50%), "Tỷ lệ quay lại" (68%, +10%), "Giá trị đơn hàng TB" (1.3M đ, +14%), mỗi card có icon Users và growth với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BC-05** | Xem cảnh báo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Tab "Tồn kho" được kích hoạt, hiển thị Card "Cảnh báo tồn kho" với danh sách sản phẩm sắp hết, mỗi sản phẩm có tên, thông tin "Còn [số] sản phẩm (Tối thiểu: [số])", Badge trạng thái với variant tương ứng (destructive cho "Nguy hiểm", secondary cho "Cảnh báo", outline cho "Hết hàng") | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BC-06** | Xuất báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "Xuất báo cáo" | Hiển thị Dialog hoặc menu cho phép chọn định dạng (PDF, Excel), sau khi chọn: báo cáo được xuất thành công, file được tải xuống với tên file chứa ngày tháng, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-01** | Xem danh sách đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping | Hiển thị đầy đủ: card Bộ lọc với 3 Select (Trạng thái, Nhà vận chuyển, Khoảng thời gian), 1 Input tìm kiếm, nút Xuất báo cáo, card Danh sách đơn vận chuyển với Table hiển thị các đơn vận chuyển, mỗi hàng có Mã đơn vận (với Badge trạng thái), Mã đơn hàng (Link), Khách hàng, Nhà vận chuyển, Trạng thái, Ngày tạo, các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-02** | Tìm kiếm đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Nhập từ khóa tìm kiếm vào ô "Tìm mã đơn vận/đơn hàng" | Danh sách đơn vận chuyển được lọc theo từ khóa (mã đơn vận, mã đơn hàng), bảng cập nhật ngay lập tức (real-time filtering), hiển thị các đơn vận chuyển có mã chứa từ khóa (case-insensitive) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-03** | Lọc đơn vận chuyển theo trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn trạng thái từ dropdown (VD: "Đang giao") | Danh sách đơn vận chuyển được lọc theo trạng thái đã chọn, bảng chỉ hiển thị đơn vận chuyển có trạng thái tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-04** | Lọc đơn vận chuyển theo nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn nhà vận chuyển từ dropdown (VD: "Giao Hàng Nhanh") | Danh sách đơn vận chuyển được lọc theo nhà vận chuyển đã chọn, bảng chỉ hiển thị đơn vận chuyển có nhà vận chuyển tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-05** | Lọc đơn vận chuyển theo khoảng thời gian | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn khoảng thời gian từ dropdown (VD: "Tuần này") | Danh sách đơn vận chuyển được lọc theo khoảng thời gian đã chọn, bảng chỉ hiển thị đơn vận chuyển được tạo trong khoảng thời gian tương ứng, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-06** | Kết hợp nhiều bộ lọc | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Chọn trạng thái "Đang giao"<br>4. Chọn nhà vận chuyển "Giao Hàng Nhanh"<br>5. Nhập từ khóa tìm kiếm | Danh sách đơn vận chuyển được lọc theo tất cả các tiêu chí đã chọn, bảng chỉ hiển thị đơn vận chuyển thỏa mãn tất cả điều kiện, cập nhật ngay lập tức | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-DSVC-07** | Click vào mã đơn hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click vào Link mã đơn hàng (VD: DH001) | Chuyển đến trang chi tiết đơn hàng (/admin/orders/[orderId]), URL thay đổi, trang mới được load với thông tin đơn hàng | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem chi tiết báo cáo
+### Function: Xem chi tiết đơn vận chuyển
 
-#### Check FUNC: Xem chi tiết báo cáo
+#### Check GUI: Xem chi tiết đơn vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CTBC-01** | Xem chi tiết doanh thu theo tháng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Xem chi tiết một tháng | Hiển thị Card "Chi tiết doanh thu" với danh sách các tháng, mỗi tháng có: tên tháng (VD: "Tháng 1"), số đơn hàng (VD: "45 đơn hàng"), doanh thu (toLocaleString("vi-VN")đ), growth % với icon TrendingUp (màu xanh) nếu > 0 hoặc TrendingDown (màu đỏ) nếu < 0, text màu xanh/đỏ tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CTBC-02** | Tải xuống báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "Xuất báo cáo"<br>4. Chọn định dạng (PDF hoặc Excel)<br>5. Click "Tải xuống" | Báo cáo được tải xuống thành công dưới dạng PDF hoặc Excel, file có tên chứa ngày tháng (VD: "BaoCao_2024-01-20.pdf"), file chứa đầy đủ thông tin: thống kê tổng quan, biểu đồ (nếu PDF), bảng dữ liệu chi tiết, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-CTBC-03** | In báo cáo | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click nút "In báo cáo" (nếu có) hoặc Ctrl+P | Hiển thị dialog in của trình duyệt với preview báo cáo, có thể in ra giấy hoặc lưu PDF, preview hiển thị đầy đủ thông tin: tiêu đề, thống kê, biểu đồ, bảng dữ liệu | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CTVC-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Chi tiết đơn vận chuyển - [Mã đơn vận]" hoặc "Chi tiết đơn vận chuyển - VC001" với class text-2xl font-bold, layout tương tự trang chi tiết nhân viên | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CTVC-02** | Kiểm tra card Thông tin đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Thông tin đơn vận chuyển", CardContent có grid layout, hiển thị các trường: Mã đơn vận, Mã đơn hàng (Link), Khách hàng, Nhà vận chuyển, Trạng thái (Badge), Ngày tạo, Mã vận đơn (trackingNumber) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CTVC-03** | Kiểm tra card Địa chỉ giao hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Địa chỉ giao hàng", CardContent hiển thị các trường: Tên người nhận, Số điện thoại, Địa chỉ chi tiết, Ghi chú (nếu có) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-CTVC-04** | Kiểm tra card Lịch sử vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Lịch sử vận chuyển", CardContent có Table hoặc timeline hiển thị các sự kiện: Thời gian, Trạng thái, Vị trí, Ghi chú, Người cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem báo cáo doanh thu
-
-#### Check GUI: Báo cáo doanh thu
+### Check FUNC: Xem chi tiết đơn vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DT-01** | Kiểm tra tab Doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị TabsContent value="revenue" với Card "Biểu đồ doanh thu" có CardTitle và CardDescription, CardContent có placeholder biểu đồ với icon BarChart3 và text "Biểu đồ doanh thu sẽ được hiển thị ở đây", Card "Chi tiết doanh thu" với danh sách các tháng | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DT-02** | Kiểm tra biểu đồ doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Kiểm tra biểu đồ | Hiển thị div h-80 flex items-center justify-center border-2 border-dashed border-muted-foreground/25 rounded-lg với icon BarChart3 h-12 w-12 mx-auto mb-4 text-muted-foreground và text "Biểu đồ doanh thu sẽ được hiển thị ở đây" (placeholder, trong thực tế sẽ có biểu đồ thực) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DT-03** | Kiểm tra chi tiết doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Xem tab "Doanh thu"<br>4. Kiểm tra chi tiết | Hiển thị Card "Chi tiết doanh thu" với CardContent có space-y-4 chứa các div flex items-center justify-between p-4 border rounded-lg, mỗi div có: tên tháng (font-medium), số đơn hàng (text-sm text-muted-foreground), doanh thu (font-medium, toLocaleString), growth % với icon và màu tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CTVC-01** | Xem chi tiết đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Xem chi tiết" hoặc Link href="/admin/shipping/[id]" | Hiển thị đầy đủ thông tin: tiêu đề "Chi tiết đơn vận chuyển - [Mã]", card Thông tin đơn vận chuyển với đầy đủ các trường (Mã đơn vận, Mã đơn hàng với Link, Khách hàng, Nhà vận chuyển, Trạng thái với Badge, Ngày tạo, Mã vận đơn), card Địa chỉ giao hàng, card Lịch sử vận chuyển với Table/timeline, các nút thao tác (Cập nhật trạng thái, Theo dõi, Hủy đơn) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-CTVC-02** | Xem lịch sử vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Xem card Lịch sử vận chuyển | Hiển thị lịch sử vận chuyển theo dòng thời gian từ cũ đến mới, mỗi sự kiện có: Thời gian, Trạng thái (Chờ lấy hàng, Đang giao, Đã giao, Trả về, Hủy), Vị trí (nếu có), Ghi chú, Người cập nhật | FUNC-DN-02, FUNC-CTVC-01 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Xem báo cáo doanh thu
+### Function: Cập nhật trạng thái vận chuyển
+
+#### Check FUNC: Cập nhật trạng thái vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DT-01** | Xem báo cáo doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu" | Hiển thị báo cáo doanh thu với: Card "Biểu đồ doanh thu" (placeholder hoặc biểu đồ thực), Card "Chi tiết doanh thu" với danh sách các tháng trong khoảng thời gian đã chọn, mỗi tháng hiển thị: tên tháng, số đơn hàng, doanh thu (toLocaleString), growth % với icon TrendingUp (xanh) nếu tăng hoặc TrendingDown (đỏ) nếu giảm | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DT-02** | Xuất báo cáo doanh thu | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Doanh thu"<br>4. Click nút "Xuất báo cáo" | Báo cáo doanh thu được xuất thành công dưới dạng PDF hoặc Excel, file chứa: biểu đồ doanh thu (nếu PDF), bảng chi tiết doanh thu theo tháng, thống kê tổng quan, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-STVC-01** | Cập nhật trạng thái vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Cập nhật trạng thái" trên một đơn vận chuyển<br>4. Chọn trạng thái mới từ Select<br>5. Nhập mô tả/vị trí vào Textarea (nếu có)<br>6. Click "Lưu" | Hiển thị Dialog hoặc form cập nhật với Select trạng thái (các option: Chờ lấy hàng, Đang giao, Đã giao, Trả về, Hủy), có thể có Textarea "Mô tả" hoặc "Vị trí hiện tại", Input "Mã vận đơn" (nếu cần). Sau khi lưu: trạng thái vận chuyển được cập nhật thành công, hiển thị thông báo thành công (toast success), Badge trạng thái được cập nhật, thông báo được gửi cho khách hàng qua email/SMS về việc thay đổi trạng thái vận chuyển, lịch sử vận chuyển được ghi nhận với hành động "Cập nhật trạng thái", dialog/form đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-STVC-02** | Cập nhật trạng thái không hợp lệ | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click "Cập nhật trạng thái"<br>4. Chọn trạng thái không hợp lệ (VD: từ "Đã giao" về "Chờ lấy hàng")<br>5. Click "Lưu" | Hiển thị thông báo cảnh báo "Không thể chuyển từ trạng thái [trạng thái cũ] sang [trạng thái mới]" (toast warning), không cập nhật trạng thái | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-STVC-03** | Hủy cập nhật trạng thái | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click "Cập nhật trạng thái"<br>4. Chọn trạng thái mới<br>5. Click "Hủy" trong dialog | Dialog đóng lại, không cập nhật trạng thái, trạng thái không thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem thống kê bán hàng
+### Function: Quản lý nhà vận chuyển
 
-#### Check FUNC: Xem thống kê bán hàng
+#### Check FUNC: Quản lý nhà vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TKBH-01** | Xem thống kê bán hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm" | Hiển thị thống kê bán hàng: Card "Sản phẩm bán chạy" với CardDescription "Top sản phẩm có doanh số cao nhất", CardContent có danh sách sản phẩm được sắp xếp theo doanh số, mỗi sản phẩm có: số thứ tự (#1, #2...) trong vòng tròn bg-primary/10, tên sản phẩm (font-medium), số lượng đã bán (text-sm text-muted-foreground), doanh thu (font-medium, toLocaleString), growth % với icon TrendingUp màu xanh | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TKBH-02** | Xem sách bán chạy | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Sản phẩm"<br>4. Xem danh sách sách bán chạy | Hiển thị danh sách sách bán chạy với xếp hạng (từ #1 đến #5 hoặc nhiều hơn), mỗi sách có: số thứ tự trong vòng tròn, tên sách, số lượng đã bán (VD: "156 sản phẩm đã bán"), doanh thu (VD: "187,200,000đ"), growth % (VD: "+15%"), các sách được sắp xếp theo doanh số từ cao xuống thấp | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-QLNVC-01** | Xem danh sách nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Xem danh sách | Hiển thị Card với Table có các cột: Tên nhà vận chuyển, Loại dịch vụ, Trạng thái (Badge), Phí vận chuyển, Thời gian giao hàng, Thao tác. Mỗi hàng có các nút: Chỉnh sửa, Xóa, Kích hoạt/Vô hiệu hóa | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-QLNVC-02** | Thêm nhà vận chuyển mới | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Thêm nhà vận chuyển mới"<br>4. Nhập thông tin (Tên, Loại dịch vụ, Phí vận chuyển, Thời gian giao hàng, API key nếu có)<br>5. Click "Lưu" | Hiển thị Dialog hoặc form thêm mới với các trường: Tên nhà vận chuyển (Input required), Loại dịch vụ (Select), Phí vận chuyển (Input type="number"), Thời gian giao hàng (Input), API key (Input, nếu cần), Trạng thái (Toggle). Sau khi lưu: nhà vận chuyển mới được thêm thành công, hiển thị thông báo thành công (toast success), nhà vận chuyển mới hiển thị trong bảng, có thể được chọn trong dropdown khi tạo đơn vận chuyển | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-QLNVC-03** | Chỉnh sửa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Chỉnh sửa" trên một nhà vận chuyển<br>4. Cập nhật thông tin (VD: Phí vận chuyển, Thời gian giao hàng)<br>5. Click "Lưu" | Hiển thị Dialog hoặc form chỉnh sửa với các trường đã điền sẵn. Sau khi lưu: thông tin nhà vận chuyển được cập nhật thành công, hiển thị thông báo thành công, bảng được cập nhật, các đơn vận chuyển đang sử dụng nhà vận chuyển này có thể được thông báo về thay đổi | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-QLNVC-04** | Xóa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Xóa" trên một nhà vận chuyển<br>4. Xác nhận xóa | Hiển thị Dialog xác nhận "Bạn có chắc chắn muốn xóa nhà vận chuyển này?". Sau khi xác nhận: nhà vận chuyển được xóa thành công, hiển thị thông báo thành công, nhà vận chuyển biến mất khỏi bảng, không thể chọn trong dropdown khi tạo đơn vận chuyển mới, các đơn vận chuyển đang sử dụng nhà vận chuyển này vẫn giữ nguyên thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-QLNVC-05** | Kích hoạt/Vô hiệu hóa nhà vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/carriers<br>3. Click nút "Vô hiệu hóa" hoặc "Kích hoạt" trên một nhà vận chuyển<br>4. Xác nhận | Trạng thái nhà vận chuyển được thay đổi (Kích hoạt/Vô hiệu hóa), hiển thị thông báo thành công, Badge trạng thái được cập nhật, nhà vận chuyển bị vô hiệu hóa không thể chọn trong dropdown khi tạo đơn vận chuyển mới | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Xem báo cáo khách hàng
+### Function: Theo dõi vận chuyển
 
-#### Check FUNC: Xem báo cáo khách hàng
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCKH-01** | Xem báo cáo khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng" | Hiển thị báo cáo khách hàng: grid grid-cols-1 md:grid-cols-2 gap-4 với 4 Card: Card "Khách hàng mới" (23, +28%), Card "Khách VIP" (12, +50%), Card "Tỷ lệ quay lại" (68%, +10%), Card "Giá trị đơn hàng TB" (1.3M đ, +14%). Mỗi card có: label (text-sm text-muted-foreground), số liệu (text-2xl font-bold, format đặc biệt cho số lớn), growth % với icon TrendingUp màu xanh, icon Users h-8 w-8 text-primary | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCKH-02** | Xuất báo cáo khách hàng | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Khách hàng"<br>4. Click nút "Xuất báo cáo" | Báo cáo khách hàng được xuất thành công dưới dạng PDF hoặc Excel, file chứa: thống kê khách hàng mới, VIP, tỷ lệ quay lại, giá trị đơn hàng TB, có thể có biểu đồ phân bố khách hàng, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Xem báo cáo tồn kho
-
-#### Check FUNC: Xem báo cáo tồn kho
+#### Check FUNC: Theo dõi vận chuyển
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-BCTK-01** | Xem báo cáo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho" | Hiển thị báo cáo tồn kho: Card "Cảnh báo tồn kho" với CardDescription "Sản phẩm sắp hết hàng cần nhập thêm", CardContent có danh sách sản phẩm với: tên sản phẩm (font-medium), thông tin "Còn [số] sản phẩm (Tối thiểu: [số])" (text-sm text-muted-foreground), Badge trạng thái với variant tương ứng (destructive cho "Nguy hiểm", secondary cho "Cảnh báo", outline cho "Hết hàng"), các sản phẩm được sắp xếp theo mức độ nguy hiểm | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-BCTK-02** | Xuất báo cáo tồn kho | 1. Đăng nhập Admin<br>2. Truy cập /admin/reports<br>3. Click tab "Tồn kho"<br>4. Click nút "Xuất báo cáo" | Báo cáo tồn kho được xuất thành công dưới dạng PDF hoặc Excel, file chứa: tổng quan tình trạng kho, danh sách sản phẩm sắp hết/hết hàng với số lượng hiện tại và tối thiểu, trạng thái, có thể có biểu đồ phân bố tồn kho, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TDVC-01** | Xem theo dõi vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Theo dõi" trên một đơn vận chuyển | Hiển thị Dialog hoặc trang theo dõi với thông tin: Mã đơn vận, Mã vận đơn, Trạng thái hiện tại (Badge), Timeline hoặc bảng lịch sử vận chuyển với các mốc: Chờ lấy hàng, Đang lấy hàng, Đang vận chuyển, Đang giao hàng, Đã giao hàng (hoặc Trả về), mỗi mốc có thời gian, vị trí (nếu có), ghi chú, có thể có bản đồ hiển thị vị trí hiện tại (nếu có API) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TDVC-02** | Cập nhật tiến độ vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping/[id]<br>3. Click "Cập nhật tiến độ" hoặc "Cập nhật trạng thái"<br>4. Chọn trạng thái mới<br>5. Nhập vị trí hiện tại (nếu có)<br>6. Nhập ghi chú<br>7. Click "Lưu" | Tiến độ vận chuyển được cập nhật thành công, hiển thị thông báo thành công (toast success), timeline được cập nhật với mốc mới, thông báo được gửi cho khách hàng về tiến độ vận chuyển, lịch sử vận chuyển được ghi nhận | FUNC-DN-02, FUNC-CTVC-01 | Pass | 11/15/2015 | |
+| **FUNC-TDVC-03** | Hủy đơn vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Hủy đơn" trên một đơn vận chuyển<br>4. Nhập lý do hủy<br>5. Xác nhận | Hiển thị Dialog xác nhận với Textarea "Lý do hủy" required. Sau khi xác nhận: đơn vận chuyển được hủy thành công, hiển thị thông báo thành công, trạng thái cập nhật thành "Hủy" với Badge variant="destructive", thông báo được gửi cho khách hàng về việc đơn vận chuyển bị hủy và lý do, lịch sử vận chuyển được ghi nhận, dialog đóng, bảng được refresh | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TDVC-04** | Xuất báo cáo vận chuyển | 1. Đăng nhập Admin<br>2. Truy cập /admin/shipping<br>3. Click nút "Xuất báo cáo" | Hiển thị Dialog hoặc menu cho phép chọn định dạng (PDF, Excel) và khoảng thời gian. Sau khi chọn: báo cáo vận chuyển được xuất thành công, file được tải xuống với tên file chứa ngày tháng, file chứa: danh sách đơn vận chuyển, thống kê tổng quan, hiển thị thông báo thành công (toast success) | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
