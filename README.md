@@ -1,12 +1,12 @@
-# Test Case Template - Hỗ trợ khách hàng (User)
+# Test Case Template - Yêu cầu nhập hàng (User)
 
 ## Module Code
-**USER-012: Hỗ trợ khách hàng (User)**
+**USER-013: Yêu cầu nhập hàng (User)**
 
 ## Test Requirement
-1. Chat/liên hệ với nhân viên hỗ trợ
-2. Gửi phản hồi/khiếu nại qua ticket
-3. Tra cứu FAQ và quản lý yêu cầu
+1. Gửi yêu cầu nhập thêm sách/mô hình hết hàng
+2. Gửi yêu cầu nhập theo đề xuất khách hàng
+3. Theo dõi, xem chi tiết, hủy yêu cầu đã gửi
 
 ---
 
@@ -26,96 +26,118 @@
 
 ## Test Cases
 
-### Function: Chat/liên hệ với nhân viên hỗ trợ
+### Function: Gửi yêu cầu nhập hàng (trang `/user/requests`)
 
-#### Check GUI: Giao diện chat trực tiếp
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-CHAT-01** | Nút quay lại | 1. Truy cập `/user/support`<br>2. Quan sát phần header | Hiển thị `Button` variant="ghost" asChild trỏ về `/user/products` với icon `ArrowLeft` h-4 w-4 mr-2 và text "Quay lại" | | Pass | 11/15/2015 | |
-| **GUI-CHAT-02** | Tiêu đề/mô tả trang | 1. Truy cập `/user/support` | Có `h1` text-3xl font-bold "Hỗ trợ khách hàng" và `p` text-muted-foreground "Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7" | | Pass | 11/15/2015 | |
-| **GUI-CHAT-03** | Card liên hệ nhanh | 1. Quan sát grid 3 cột | Mỗi Card hiển thị icon (`Phone`, `Mail`, `MapPin`), tiêu đề (Hotline/Email/Địa chỉ) và giá trị 1900 1234, support@nhasach.com, 123 Đường ABC | | Pass | 11/15/2015 | |
-| **GUI-CHAT-04** | Tabs điều hướng | 1. Kiểm tra `TabsList` | Có 3 `TabsTrigger`: "Chat trực tiếp", "Yêu cầu hỗ trợ ({tickets.length})", "Câu hỏi thường gặp" cùng icon `MessageSquare`, `FileText`, `HelpCircle` | | Pass | 11/15/2015 | |
-| **GUI-CHAT-05** | Card tiêu đề chat | 1. Vào tab Chat | CardHeader hiển thị CardTitle "Chat trực tiếp với nhân viên hỗ trợ" và CardDescription "Nhân viên hỗ trợ sẽ phản hồi trong vài phút" | | Pass | 11/15/2015 | |
-| **GUI-CHAT-06** | Khung tin nhắn | 1. Kiểm tra container | Div `h-96 overflow-y-auto border rounded-lg p-4` hiển thị bubble căn phải (user - bg-primary) và căn trái (support - bg-muted) | | Pass | 11/15/2015 | |
-| **GUI-CHAT-07** | Timestamp tin nhắn | 1. Quan sát bubble | Mỗi bubble có `p` text-xs opacity-70 mt-1 hiển thị `formatDate(message.timestamp)` định dạng vi-VN | | Pass | 11/15/2015 | |
-| **GUI-CHAT-08** | Trạng thái chat active | 1. Khi `isChatActive=true` | Không có alert, xuất hiện text-xs "Chat sẽ tự động đóng sau 10 phút không hoạt động" | | Pass | 11/15/2015 | |
-| **GUI-CHAT-09** | Trạng thái chat đã đóng | 1. Khi `isChatActive=false` | Hiển thị khối bg-yellow-50 với cảnh báo ⚠️ cùng Button "Bắt đầu chat lại" variant="outline" size="sm" | | Pass | 11/15/2015 | |
-| **GUI-CHAT-10** | Thanh nhập tin nhắn | 1. Quan sát input | `Input` placeholder thay đổi theo trạng thái và `Button` icon `Send`; Input disabled khi `!isChatActive` | | Pass | 11/15/2015 | |
-| **GUI-CHAT-11** | Nút gửi khi rỗng | 1. Để Input rỗng | Button `Send` disabled do điều kiện `!newMessage.trim() || !isChatActive` | | Pass | 11/15/2015 | |
-| **GUI-CHAT-12** | Cảnh báo timeout | 1. Mở alert timeout | Nội dung đúng: "Chat đã tự động đóng do không có hoạt động trong 10 phút. Vui lòng tạo yêu cầu hỗ trợ mới hoặc bắt đầu chat lại." | | Pass | 11/15/2015 | |
-
-#### Check FUNC: Chat trực tiếp
+#### Check GUI: Form gửi yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-CHAT-01** | Tab mặc định | 1. Truy cập `/user/support` | `selectedTab` khởi tạo "chat", nội dung chat hiển thị ngay | | Pass | 11/15/2015 | |
-| **FUNC-CHAT-02** | Gửi tin nhắn thành công | 1. Nhập nội dung<br>2. Nhấn Send | `sendMessage` append ChatMessage sender=user, input reset, toast không lỗi | | Pass | 11/15/2015 | |
-| **FUNC-CHAT-03** | Ngăn gửi tin nhắn rỗng | 1. Để Input trống<br>2. Nhấn Send | Điều kiện `if (!newMessage.trim()) return;` giữ nguyên danh sách tin nhắn | | Pass | 11/15/2015 | |
-| **FUNC-CHAT-04** | Gửi bằng phím Enter | 1. Nhập nội dung<br>2. Nhấn Enter | `onKeyPress` gọi `sendMessage`, tin nhắn được gửi như nhấn nút | FUNC-CHAT-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-05** | Nhận phản hồi tự động | 1. Gửi tin nhắn<br>2. Chờ 2 giây | `setTimeout` append tin nhắn sender=support với nội dung mặc định, nếu chat vẫn active | FUNC-CHAT-02 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-06** | Reset timeout khi hoạt động | 1. Gửi tin hoặc nhập ký tự | `resetChatTimeout()` chạy, `lastActivityTime` cập nhật, timer 10 phút mới được set | | Pass | 11/15/2015 | |
-| **FUNC-CHAT-07** | Tự động đóng chat | 1. Không tương tác 10 phút (mô phỏng) | Timer gọi `setIsChatActive(false)` và `toast.warning` "Chat đã tự động đóng..." | | Pass | 11/15/2015 | |
-| **FUNC-CHAT-08** | Gửi sau khi chat đóng | 1. Sau timeout, thử gửi | `sendMessage` kiểm tra `isChatActive`, hiển thị `toast.error` "Chat đã bị đóng do timeout..." và không thêm tin nhắn | FUNC-CHAT-07 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-09** | Bắt đầu chat lại | 1. Nhấn Button "Bắt đầu chat lại" | `setIsChatActive(true)` và `resetChatTimeout()` chạy, Input hoạt động lại | FUNC-CHAT-07 | Pass | 11/15/2015 | |
-| **FUNC-CHAT-10** | Nhập liệu gia hạn timeout | 1. Khi chat active, gõ ký tự | `onChange` gọi `resetChatTimeout`, giữ đồng hồ 10 phút | | Pass | 11/15/2015 | |
+| **GUI-YC-01** | Header và mô tả | 1. Truy cập `/user/requests`<br>2. Quan sát card đầu tiên | CardTitle hiển thị biểu tượng `HelpCircle` + text "Yêu cầu nhập hàng", CardDescription "Gửi yêu cầu nhập hàng cho sản phẩm bạn cần. UI mẫu, chưa có logic." | | Pass | 11/15/2015 | |
+| **GUI-YC-02** | Trường Tên sản phẩm | 1. Xem form<br>2. Kiểm tra input đầu tiên | Label "Tên sản phẩm *", `Input` placeholder "Nhập tên sản phẩm", thuộc tính `disabled` phụ thuộc `!canSubmitRequest` | | Pass | 11/15/2015 | |
+| **GUI-YC-03** | Trường Đường link | 1. Xem form<br>2. Kiểm tra input thứ hai | Label "Đường link (nếu có)", placeholder "https://..." và bị disable khi đạt giới hạn tuần | | Pass | 11/15/2015 | |
+| **GUI-YC-04** | Textarea mô tả | 1. Xem form<br>2. Kiểm tra `Textarea` | Label "Mô tả yêu cầu", `Textarea` rows=4 placeholder "Phiên bản, màu sắc, kích thước..." ràng buộc `disabled={!canSubmitRequest}` | | Pass | 11/15/2015 | |
+| **GUI-YC-05** | Cảnh báo giới hạn tuần | 1. Giả lập `!canSubmitRequest` (MOCK > 5)<br>2. Quan sát | Hiển thị div `bg-orange-50` với biểu tượng ⚠️ và text "Bạn đã đạt giới hạn 5 yêu cầu mỗi tuần..." | | Pass | 11/15/2015 | |
+| **GUI-YC-06** | Nút gửi yêu cầu | 1. Quan sát Button dưới form | Button hiển thị "Gửi yêu cầu ({getThisWeekRequestCount()}/5 tuần này)", disabled khi `!canSubmitRequest || !requestForm.productName.trim()` | | Pass | 11/15/2015 | |
 
-### Function: Gửi phản hồi/khiếu nại (Ticket)
-
-#### Check GUI: Tab “Yêu cầu hỗ trợ”
+#### Check FUNC: Form gửi yêu cầu
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TIC-01** | Select trạng thái | 1. Chuyển sang tab `tickets` | SelectTrigger w-40 hiển thị placeholder "Trạng thái" cùng các option Tất cả/Mở/Đang xử lý/Đã giải quyết/Đã đóng với số lượng `getStatusCount` | | Pass | 11/15/2015 | |
-| **GUI-TIC-02** | Select danh mục | 1. Tab tickets | Select thứ 2 hiển thị danh sách `categories` (Đơn hàng, Sản phẩm, Thanh toán, Vận chuyển, Tài khoản, Kỹ thuật, Khác) | | Pass | 11/15/2015 | |
-| **GUI-TIC-03** | Nút “Tạo yêu cầu mới” | 1. Xem góc phải | Button có icon `FileText` và text "Tạo yêu cầu mới" | | Pass | 11/15/2015 | |
-| **GUI-TIC-04** | Ô tìm kiếm | 1. Quan sát vùng search | Input có icon `Search` absolute left-3, placeholder "Tìm kiếm yêu cầu hỗ trợ...", lớp `pl-10` | | Pass | 11/15/2015 | |
-| **GUI-TIC-05** | Badge trạng thái ticket | 1. Xem 1 ticket | Badge màu theo `statusConfig` với icon tương ứng (`AlertCircle`, `Clock`, `CheckCircle`, `XCircle`) | | Pass | 11/15/2015 | |
-| **GUI-TIC-06** | Badge độ ưu tiên | 1. Xem 1 ticket | Badge variant="outline" màu theo `priorityConfig` (xám, vàng, cam, đỏ) với text Thấp/Trung bình/Cao/Khẩn cấp | | Pass | 11/15/2015 | |
-| **GUI-TIC-07** | Metadata ngày tạo/cập nhật | 1. Xem ticket | Có dòng icon `Calendar` + "Tạo: ..." và icon `Clock` + "Cập nhật: ..." hiển thị `formatDate` | | Pass | 11/15/2015 | |
-| **GUI-TIC-08** | Hiển thị đơn hàng liên quan | 1. Ticket có orderId | Dòng "Đơn hàng: ORD-001" hiển thị nếu ticket có `orderId` | | Pass | 11/15/2015 | |
-| **GUI-TIC-09** | Phần mô tả vấn đề | 1. Quan sát card | Section "Mô tả vấn đề" text-sm text-muted-foreground hiện `ticket.description` | | Pass | 11/15/2015 | |
-| **GUI-TIC-10** | Phản hồi hỗ trợ | 1. Ticket có `response` | Section "Phản hồi từ hỗ trợ" với icon `CheckCircle`, thời gian trong ngoặc nếu có `responseDate` | | Pass | 11/15/2015 | |
-| **GUI-TIC-11** | Modal tạo ticket | 1. Nhấn nút tạo mới | Overlay `bg-black/50` cùng Card tiêu đề "Tạo yêu cầu hỗ trợ" và mô tả "Mô tả chi tiết..." | | Pass | 11/15/2015 | |
-| **GUI-TIC-12** | Field trong modal | 1. Quan sát form | Các field: Tiêu đề (Input), Danh mục (Select), Mức độ ưu tiên (Select), Mã đơn hàng (Input), Mô tả (Textarea rows=6), nút Hủy/Gửi | | Pass | 11/15/2015 | |
-| **GUI-TIC-13** | Nút hành động modal | 1. Kiểm tra footer | Có Button variant="outline" "Hủy" và Button primary "Gửi yêu cầu" | | Pass | 11/15/2015 | |
-| **GUI-TIC-14** | Alert quy tắc ưu tiên | 1. Quan sát đầu trang | Alert với icon Info hiển thị thông điệp "Chỉ có thể áp dụng 1 mã giảm giá..." (theo file) | | Pass | 11/15/2015 | |
+| **FUNC-YC-01** | Gửi yêu cầu thành công | 1. Nhập tên sản phẩm + mô tả<br>2. Nhấn Button | `toast.success("Yêu cầu đã được gửi thành công")`, form reset `{productName:"",link:"",description:""}` | | Pass | 11/15/2015 | |
+| **FUNC-YC-02** | Thiếu tên sản phẩm | 1. Để trống `productName`<br>2. Nhấn Button | Button disabled (do `!requestForm.productName.trim()`), không gọi toast | | Pass | 11/15/2015 | |
+| **FUNC-YC-03** | Vượt giới hạn tuần | 1. Mock `getThisWeekRequestCount()` = 5<br>2. Thử nhấn Button | `canSubmitRequest=false`, Button disabled, cảnh báo hiển thị, không reset form | | Pass | 11/15/2015 | |
+| **FUNC-YC-04** | Link tùy chọn | 1. Chỉ nhập tên sản phẩm<br>2. Gửi | Gửi thành công dù `requestForm.link === ""`, toast giống FUNC-YC-01 | FUNC-YC-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-05** | Mô tả trống | 1. Nhập tên, bỏ trống mô tả<br>2. Gửi | Cho phép gửi (mô tả không bắt buộc), toast success và reset description | FUNC-YC-01 | Pass | 11/15/2015 | |
+| **FUNC-YC-06** | Thông báo đếm tuần | 1. Gửi nhiều yêu cầu<br>2. Quan sát Button label | Chuỗi `Gửi yêu cầu (n/5 tuần này)` cập nhật theo `getThisWeekRequestCount()` sau mỗi submit | FUNC-YC-01 | Pass | 11/15/2015 | |
 
-#### Check FUNC: Quản lý ticket
+### Function: Quản lý danh sách yêu cầu nhập hàng (trang `/user/requests`)
+
+#### Check GUI: Danh sách & bộ lọc
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TIC-01** | Lọc theo trạng thái | 1. Chọn trạng thái "Đang xử lý" | `filteredTickets` chỉ còn ticket `status === 'in_progress'` | | Pass | 11/15/2015 | |
-| **FUNC-TIC-02** | Lọc theo danh mục | 1. Chọn "Thanh toán" | Danh sách chỉ còn ticket `category === 'payment'` | | Pass | 11/15/2015 | |
-| **FUNC-TIC-03** | Lọc kết hợp | 1. Chọn trạng thái "Mở" và danh mục "Thanh toán" | Kết quả chỉ giữ ticket thỏa cả hai điều kiện (mock ticket #3) | FUNC-TIC-01 | Pass | 11/15/2015 | |
-| **FUNC-TIC-04** | Tìm kiếm theo từ khóa | 1. Nhập "đơn hàng" vào ô search | `matchesSearch` theo subject/description lowercase, hiển thị đúng ticket | | Pass | 11/15/2015 | |
-| **FUNC-TIC-05** | Tìm kiếm không phân biệt hoa thường | 1. Nhập "SÁCH" | Hàm toLowerCase cho phép tìm được "Sách bị lỗi in ấn" | FUNC-TIC-04 | Pass | 11/15/2015 | |
-| **FUNC-TIC-06** | Mở modal tạo ticket | 1. Nhấn "Tạo yêu cầu mới" | `isCreatingTicket=true`, modal xuất hiện | | Pass | 11/15/2015 | |
-| **FUNC-TIC-07** | Thiếu tiêu đề | 1. Trong modal để trống subject<br>2. Nhấn "Gửi yêu cầu" | `toast.error("Vui lòng nhập tiêu đề")`, không thêm ticket | | Pass | 11/15/2015 | |
-| **FUNC-TIC-08** | Thiếu mô tả | 1. Nhập tiêu đề nhưng để trống description | `toast.error("Vui lòng nhập mô tả vấn đề")`, modal giữ nguyên | | Pass | 11/15/2015 | |
-| **FUNC-TIC-09** | Tạo ticket thành công | 1. Điền hợp lệ<br>2. Nhấn Gửi | Ticket mới (status=open) được unshift vào `tickets`, modal đóng, form reset, `toast.success` hiển thị | FUNC-TIC-06 | Pass | 11/15/2015 | |
-| **FUNC-TIC-10** | orderId tùy chọn | 1. Tạo ticket bỏ trống orderId | Ticket mới không chứa `orderId`, UI không hiển thị dòng "Đơn hàng" | FUNC-TIC-09 | Pass | 11/15/2015 | |
-| **FUNC-TIC-11** | Hủy tạo ticket | 1. Nhấn "Hủy" trong modal | Modal đóng, `ticketForm` reset về subject rỗng, category="other", priority="medium", description rỗng | FUNC-TIC-06 | Pass | 11/15/2015 | |
-| **FUNC-TIC-12** | Đóng modal bằng overlay | 1. Click nền đen | `setIsCreatingTicket(false)`, modal biến mất | FUNC-TIC-06 | Pass | 11/15/2015 | |
-| **FUNC-TIC-13** | Badge số ticket cập nhật | 1. Tạo ticket mới | TabsTrigger "Yêu cầu hỗ trợ ({tickets.length})" tăng thêm 1 ngay lập tức | FUNC-TIC-09 | Pass | 11/15/2015 | |
-| **FUNC-TIC-14** | Lọc giữ nguyên sau khi tạo | 1. Đang lọc "Mở"<br>2. Tạo ticket open | Ticket mới đáp ứng filter nên hiển thị, filter không reset | FUNC-TIC-01<br>FUNC-TIC-09 | Pass | 11/15/2015 | |
-| **FUNC-TIC-15** | Tạo nhiều ticket liên tiếp | 1. Tạo 2 ticket | ID dựa trên `Date.now()` đảm bảo duy nhất, danh sách sắp xếp mới nhất lên đầu | FUNC-TIC-09 | Pass | 11/15/2015 | |
-| **FUNC-TIC-16** | Giữ state khi đổi tab | 1. Thiết lập filter<br>2. Qua tab khác rồi quay lại | `statusFilter`, `categoryFilter`, `searchTerm` giữ giá trị cũ | | Pass | 11/15/2015 | |
-| **FUNC-TIC-17** | Hiển thị phản hồi hỗ trợ | 1. Chọn ticket có `response` | Section phản hồi render nội dung `ticket.response` và thời gian `responseDate` | | Pass | 11/15/2015 | |
-| **FUNC-TIC-18** | Ticket chưa có phản hồi | 1. Chọn ticket status open | Điều kiện `ticket.response && ...` không thỏa, UI chỉ hiển thị mô tả | | Pass | 11/15/2015 | |
+| **GUI-QL-01** | Tabs trạng thái | 1. Quan sát `TabsList` | 5 `TabsTrigger`: Tất cả, Chờ xử lý, Đã duyệt, Từ chối, Hoàn thành với số đếm từ `MOCK_REQUESTS.filter(...)` | | Pass | 11/15/2015 | |
+| **GUI-QL-02** | Ô tìm kiếm | 1. Quan sát khu vực filter | Input có icon `Search` absolute left-3, placeholder "Tìm kiếm yêu cầu..." và class `pl-9` | | Pass | 11/15/2015 | |
+| **GUI-QL-03** | Select trạng thái phụ | 1. Kiểm tra select đầu tiên | `SelectTrigger` w-48 placeholder "Trạng thái" với các option All/Pending/Approved/Rejected/Done | | Pass | 11/15/2015 | |
+| **GUI-QL-04** | Select loại yêu cầu | 1. Kiểm tra select thứ hai | Option "Tất cả", "Nhập hàng", "Đặc biệt" tương ứng `value="import"|"special"` | | Pass | 11/15/2015 | |
+| **GUI-QL-05** | Card yêu cầu | 1. Quan sát một item trong `filtered` | Card dashed, `CardContent` grid md:grid-cols-7, hiển thị ID, tên sách, badge loại (`variant="secondary"`), badge priority với màu tùy priority | | Pass | 11/15/2015 | |
+| **GUI-QL-06** | Badge trạng thái | 1. Quan sát cột trạng thái | Component `statusBadge` trả về badge màu: pending=bg-yellow-100, approved=bg-blue-100, rejected=bg-red-100, done=bg-green-100 | | Pass | 11/15/2015 | |
+| **GUI-QL-07** | Ngày tạo/phản hồi | 1. Kiểm tra cột thời gian | Hiển thị "Tạo: {createdAt}" và nếu có `respondedAt` thì thêm dòng "Phản hồi: ..." | | Pass | 11/15/2015 | |
+| **GUI-QL-08** | Nút xem chi tiết | 1. Kiểm tra cột action | Button variant="outline" size="sm" `asChild` Link `/user/requests/{id}` | | Pass | 11/15/2015 | |
+| **GUI-QL-09** | Nút Hủy yêu cầu | 1. Quan sát request status pending | Button variant="destructive" size="sm" text "Hủy yêu cầu"; không hiển thị với status khác | | Pass | 11/15/2015 | |
+| **GUI-QL-10** | Modal xác nhận hủy | 1. Click Hủy yêu cầu | Dialog với DialogTitle "Xác nhận hủy yêu cầu", Button variant="outline" "Hủy" và Button `variant="destructive"` "Xác nhận" | | Pass | 11/15/2015 | |
 
-### Function: FAQ & giữ trạng thái hỗ trợ
-
-#### Check GUI & FUNC
+#### Check FUNC: Danh sách & bộ lọc
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-FAQ-01** | Bố cục FAQ | 1. Chọn tab "Câu hỏi thường gặp" | Grid 2 cột hiển thị 4 Card với icon `ShoppingCart`, `Package`, `User`, `HelpCircle` và tiêu đề tương ứng | | Pass | 11/15/2015 | |
-| **GUI-FAQ-02** | Nội dung FAQ | 1. Đọc các card FAQ | Mỗi card có cặp `h4` + `p` text-sm mô tả quy trình đặt hàng, thanh toán, giao hàng, đổi trả giống `page.tsx` | | Pass | 11/15/2015 | |
-| **FUNC-FAQ-01** | Đổi tab không mất lịch sử chat | 1. Gửi tin nhắn ở tab chat<br>2. Chuyển sang tab FAQ<br>3. Quay lại | `chatMessages` lưu trong state nên lịch sử vẫn còn, không reset | FUNC-CHAT-02 | Pass | 11/15/2015 | |
-| **FUNC-FAQ-02** | Đổi tab không reset filter tickets | 1. Thiết lập filter ở tab tickets<br>2. Chuyển sang tab FAQ<br>3. Quay lại | Các state `statusFilter`, `categoryFilter`, `searchTerm` giữ nguyên, danh sách giữ kết quả cũ | FUNC-TIC-01 | Pass | 11/15/2015 | |
+| **FUNC-QL-01** | Lọc theo tab | 1. Đổi `activeTab` sang `pending` | `filtered` chỉ giữ request `status === "pending"`, TabsTrigger pending hiển thị count tương ứng | | Pass | 11/15/2015 | |
+| **FUNC-QL-02** | Lọc theo Select trạng thái | 1. activeTab="all"<br>2. Chọn `statusFilter="approved"` | `filtered` chỉ còn các request đã duyệt, bất kể tab | | Pass | 11/15/2015 | |
+| **FUNC-QL-03** | Lọc theo loại yêu cầu | 1. Chọn `typeFilter="special"` | Danh sách chỉ còn request có `type === "special"` | | Pass | 11/15/2015 | |
+| **FUNC-QL-04** | Lọc kết hợp | 1. TabsTrigger "Đã duyệt"<br>2. `statusFilter="approved"`<br>3. `typeFilter="special"` | `filtered` trả về giao của cả ba điều kiện (ví dụ REQ-002) | FUNC-QL-01 | Pass | 11/15/2015 | |
+| **FUNC-QL-05** | Tìm kiếm theo tên | 1. Nhập "Sapiens" vào ô search | `filtered` chỉ còn request có `name` chứa chuỗi (case-insensitive) | | Pass | 11/15/2015 | |
+| **FUNC-QL-06** | Nút xem chi tiết | 1. Click "Xem chi tiết" | Điều hướng đến `/user/requests/{id}` (Link asChild), hiển thị trang chi tiết | | Pass | 11/15/2015 | |
+| **FUNC-QL-07** | Hiện modal hủy | 1. Với request pending<br>2. Nhấn "Hủy yêu cầu" | `confirmCancelId` set id, Dialog open được render với nội dung xác nhận | | Pass | 11/15/2015 | |
+| **FUNC-QL-08** | Đóng modal hủy | 1. Trong Dialog<br>2. Nhấn Button "Hủy" | `setConfirmCancelId(null)` => Dialog đóng, danh sách giữ nguyên | FUNC-QL-07 | Pass | 11/15/2015 | |
+| **FUNC-QL-09** | Xác nhận hủy | 1. Trong Dialog<br>2. Nhấn Button "Xác nhận" | UI chỉ đóng modal (demo), không xóa request (do chưa gắn logic), confirm id trở về null | FUNC-QL-07 | Pass | 11/15/2015 | |
+
+### Function: Xem chi tiết yêu cầu nhập hàng (trang `/user/requests/[id]`)
+
+#### Check GUI: Trang chi tiết
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-CT-01** | Breadcrumb quay lại | 1. Truy cập `/user/requests/REQ-001` | Button variant="ghost" size="sm" chứa Link `/user/requests` với icon `ArrowLeft` + text "Quay lại danh sách" | | Pass | 11/15/2015 | |
+| **GUI-CT-02** | Thông tin cơ bản | 1. Quan sát Card đầu | CardTitle "Chi tiết yêu cầu", CardDescription "Mã yêu cầu: ..." | | Pass | 11/15/2015 | |
+| **GUI-CT-03** | Lưới thông tin sách | 1. Kiểm tra grid md:grid-cols-2 | Hiển thị các trường Tên sách, Tác giả, Nhà xuất bản, ISBN, Loại yêu cầu, Mức độ ưu tiên, Trạng thái, Ngày tạo, Ngày phản hồi | | Pass | 11/15/2015 | |
+| **GUI-CT-04** | Badges trạng thái & ưu tiên | 1. Quan sát trường tương ứng | Status badge sử dụng `statusBadge` (màu theo trạng thái), Priority badge dùng `priorityBadge` (Cao/Trung bình/Thấp) | | Pass | 11/15/2015 | |
+| **GUI-CT-05** | Phần lý do và phản hồi | 1. Kiểm tra section sau Separator | "Lý do yêu cầu" hiển thị `data.reason`; "Phản hồi admin" hiển thị `data.adminResponse` hoặc "Chưa có phản hồi" | | Pass | 11/15/2015 | |
+| **GUI-CT-06** | Lịch sử xử lý | 1. Quan sát cuối card | Hiển thị tiêu đề "Lịch sử xử lý", dòng `Clock` (Tạo yêu cầu) và nếu có `respondedAt` thêm dòng `CheckCircle` | | Pass | 11/15/2015 | |
+| **GUI-CT-07** | Action buttons | 1. Kiểm tra footer | Button "Quay lại" variant="outline" + nếu `status === "pending"` thì có Button `variant="destructive"` "Hủy yêu cầu" | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Trang chi tiết
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-CT-01** | Điều hướng từ danh sách | 1. Ở `/user/requests` click Xem chi tiết | Trang `/user/requests/[id]` tải dữ liệu `MOCK_DETAIL[id]` hoặc fallback item đầu | FUNC-QL-06 | Pass | 11/15/2015 | |
+| **FUNC-CT-02** | Render phản hồi admin | 1. Mở `REQ-002` (có response) | Section "Phản hồi admin" hiển thị chuỗi `adminResponse` và trường Ngày phản hồi != "—" | | Pass | 11/15/2015 | |
+| **FUNC-CT-03** | Hủy yêu cầu tại trang chi tiết | 1. Với `status="pending"`<br>2. Nhấn "Hủy yêu cầu" | `confirmCancel` state set true, Dialog xác nhận xuất hiện với Button Hủy/Xác nhận | | Pass | 11/15/2015 | |
+| **FUNC-CT-04** | Đóng Dialog chi tiết | 1. Trong Dialog<br>2. Nhấn Hủy | `setConfirmCancel(false)`, Dialog đóng, trạng thái trang không đổi | FUNC-CT-03 | Pass | 11/15/2015 | |
+| **FUNC-CT-05** | Xác nhận hủy (demo) | 1. Trong Dialog<br>2. Nhấn Xác nhận | Handler chỉ đóng Dialog (demo UI), không thay đổi `MOCK_DETAIL`, button invisible sau đóng | FUNC-CT-03 | Pass | 11/15/2015 | |
+
+### Function: Yêu cầu nhập đặc biệt (trang `/user/special-requests`)
+
+#### Check GUI: Giao diện & danh sách
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **GUI-DP-01** | Header trang đặc biệt | 1. Truy cập `/user/special-requests` | Button quay lại `/user/products`, tiêu đề "Yêu cầu nhập hàng", mô tả "Gửi yêu cầu nhập sách hết hàng hoặc sách mới", Button "Tạo yêu cầu mới" với icon `Plus` | | Pass | 11/15/2015 | |
+| **GUI-DP-02** | Tabs trạng thái | 1. Quan sát `TabsList` | 5 `TabsTrigger`: Tất cả/Chờ xử lý/Đã duyệt/Từ chối/Hoàn thành cùng số lượng `getStatusCount()` | | Pass | 11/15/2015 | |
+| **GUI-DP-03** | Bộ lọc | 1. Kiểm tra filter bar | Input có icon `Search`, Select trạng thái (All/Pending/Approved/Rejected/Completed) và Select loại yêu cầu (Mô hình hết hàng/Mô hình mới) | | Pass | 11/15/2015 | |
+| **GUI-DP-04** | Card yêu cầu đặc biệt | 1. Quan sát item trong danh sách | Card hiển thị tên mô hình, badge trạng thái (`statusConfig[color]`), badge ưu tiên (`priorityConfig[color]`), icon `BookOpen` hiển thị label theo `requestTypes`, thông tin tác giả/nhà xuất bản/ISBN (nếu có) | | Pass | 11/15/2015 | |
+| **GUI-DP-05** | Lý do và phản hồi | 1. Kiểm tra phần "Lý do yêu cầu" | Tiêu đề hiển thị icon `MessageSquare`, mô tả `request.reason`; nếu có `responseMessage` thì section "Phản hồi từ Mô hình" với icon `AlertCircle` và ngày | | Pass | 11/15/2015 | |
+| **GUI-DP-06** | Empty state khi không có dữ liệu | 1. Lọc để danh sách rỗng | Hiển thị icon `Package`, text "Không có yêu cầu nào" cùng Button "Tạo yêu cầu mới" | | Pass | 11/15/2015 | |
+| **GUI-DP-07** | Button hủy yêu cầu | 1. Với request status pending | Button variant="outline" size="sm" className text-red-600 "Hủy yêu cầu" | | Pass | 11/15/2015 | |
+| **GUI-DP-08** | Modal tạo yêu cầu | 1. Nhấn "Tạo yêu cầu mới" | Overlay `bg-black/50`, CardTitle "Tạo yêu cầu nhập hàng", mô tả "Gửi yêu cầu nhập..." | | Pass | 11/15/2015 | |
+| **GUI-DP-09** | Form modal | 1. Quan sát nội dung modal | Có Select loại yêu cầu, Input tên mô hình, Input tác giả/nhà xuất bản/ISBN, Select ưu tiên, Textarea lý do, Button Hủy & Gửi yêu cầu | | Pass | 11/15/2015 | |
+
+#### Check FUNC: Yêu cầu đặc biệt
+
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| **FUNC-DP-01** | Tab lọc dữ liệu | 1. Chọn tab `pending` | `selectedTab` cập nhật, `filteredRequests` chỉ gồm request có `status === "pending"` | | Pass | 11/15/2015 | |
+| **FUNC-DP-02** | Lọc theo trạng thái Select | 1. Giữ tab "Tất cả"<br>2. `statusFilter="approved"` | Danh sách hiển thị request `status === "approved"` | | Pass | 11/15/2015 | |
+| **FUNC-DP-03** | Lọc theo loại yêu cầu | 1. `typeFilter="new_book"` | Chỉ còn yêu cầu `type === "new_book"` | | Pass | 11/15/2015 | |
+| **FUNC-DP-04** | Tìm kiếm theo tên | 1. Nhập "Gundam" vào search | `filteredRequests` chỉ còn item có `modelTitle` khớp (case-insensitive) | | Pass | 11/15/2015 | |
+| **FUNC-DP-05** | Hiển thị phản hồi admin | 1. Chọn request có `responseMessage` | Section phản hồi render text, `responseDate` format `toLocaleDateString("vi-VN")` | | Pass | 11/15/2015 | |
+| **FUNC-DP-06** | Hủy yêu cầu đang chờ | 1. Với request `status="pending"`<br>2. Nhấn "Hủy yêu cầu" | Gọi `cancelRequest(request.id)` → `setRequests` lọc bỏ phần tử, `toast.success("Đã hủy yêu cầu")` | | Pass | 11/15/2015 | |
+| **FUNC-DP-07** | Mở modal tạo mới | 1. Nhấn Button "Tạo yêu cầu mới" | `isCreatingRequest=true`, modal hiển thị với form default `type="out_of_stock"` | | Pass | 11/15/2015 | |
+| **FUNC-DP-08** | Validate tên mô hình | 1. Trong modal để trống `modelTitle`<br>2. Nhấn "Gửi yêu cầu" | `toast.error("Vui lòng nhập tên mô hình")`, request không thêm | FUNC-DP-07 | Pass | 11/15/2015 | |
+| **FUNC-DP-09** | Validate lý do | 1. Nhập tên mô hình, để trống `reason`<br>2. Nhấn gửi | `toast.error("Vui lòng nhập lý do yêu cầu")`, modal giữ nguyên | FUNC-DP-07 | Pass | 11/15/2015 | |
+| **FUNC-DP-10** | Gửi yêu cầu đặc biệt thành công | 1. Điền đầy đủ form<br>2. Nhấn gửi | Tạo object mới (id=Date.now) prepend `requests`, modal đóng, form reset & `toast.success("Yêu cầu đã được gửi thành công")` | FUNC-DP-07 | Pass | 11/15/2015 | |
+| **FUNC-DP-11** | Hủy modal tạo mới | 1. Nhấn Button "Hủy" trong modal | `setIsCreatingRequest(false)` và reset form fields | FUNC-DP-07 | Pass | 11/15/2015 | |
 
 ---
 
-*Test cases được xây dựng theo `Workspace/User/12-HoTro.md`, `src/app/user/support/page.tsx` và tham chiếu format từ `Blackbox_Admin`, `Blackbox_NhanVien`, `Blackbox_NhanVienKho`. Expected Output mô tả bám sát giao diện/logic hiện có, Result ưu tiên Pass, Test date cố định 11/15/2015.*
+*Test cases được xây dựng dựa trên `Workspace/User/13-YeuCauNhapHang.md`, `src/app/user/requests/page.tsx`, `src/app/user/requests/[id]/page.tsx`, `src/app/user/special-requests/page.tsx` cùng tham chiếu format từ `Blackbox_Admin`, `Blackbox_NhanVien`, `Blackbox_NhanVienKho`. Expected Output mô tả đúng giao diện/logic hiện có, Result ưu tiên Pass, Test date mặc định 11/15/2015.*
 
