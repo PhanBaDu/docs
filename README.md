@@ -1,14 +1,12 @@
-# Test Case Template - Quản lý tài khoản (Nhân viên)
+# Test Case Template - Tìm kiếm sách và hiển thị (Nhân viên)
 
 ## Module Code
 **Giao lộ 19: Họcl6c (Nhân viên)**
 
 ## Test Requirement
-1. Đăng nhập hệ thống
-2. Thông tin cá nhân
-3. Đổi mật khẩu
-4. Khôi phục mật khẩu
-5. Đăng xuất
+1. Hiển thị danh sách sách
+2. Tìm kiếm sách
+3. Kiểm tra tồn kho
 
 ---
 
@@ -18,129 +16,91 @@
 
 | Status | Count |
 |--------|-------|
-| **Pass** | 25 |
+| **Pass** | 35 |
 | **Fail** | 0 |
 | **Untested** | 0 |
 | **N/A** | 0 |
-| **Number of Test cases** | 25 |
+| **Number of Test cases** | 35 |
 
 ---
 
 ## Test Cases
 
-### Function: Đăng nhập hệ thống
+### Function: Hiển thị danh sách sách
 
-#### Check GUI: Đăng nhập hệ thống
+#### Check GUI: Hiển thị danh sách sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DN-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra tiêu đề | Hiển thị div max-w-md mx-auto w-full với Card, CardHeader có CardTitle "Đăng nhập hệ thống", CardDescription "Đăng nhập vào hệ thống quản lý bán hàng với tài khoản nhân viên" | | Pass | 11/15/2015 | |
-| **GUI-DN-02** | Kiểm tra trường Tên đăng nhập | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra trường | Hiển thị div space-y-2 với Label htmlFor="username" "Tên đăng nhập hoặc email", Input id="username" placeholder="nhanvien@bookstore.com" | | Pass | 11/15/2015 | |
-| **GUI-DN-03** | Kiểm tra trường Mật khẩu | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra trường | Hiển thị div space-y-2 với Label htmlFor="password" "Mật khẩu", Input id="password" type="password" placeholder="••••••••" | | Pass | 11/15/2015 | |
-| **GUI-DN-04** | Kiểm tra checkbox Ghi nhớ | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra checkbox | Hiển thị div flex items-center justify-between với div flex items-center gap-2 chứa Checkbox id="remember", Label htmlFor="remember" className="text-sm" "Ghi nhớ đăng nhập" | | Pass | 11/15/2015 | |
-| **GUI-DN-05** | Kiểm tra link Quên mật khẩu | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra link | Hiển thị Link href="/nhanvien/auth/forgot-password" className="text-sm text-primary hover:underline" "Quên mật khẩu" | | Pass | 11/15/2015 | |
-| **GUI-DN-06** | Kiểm tra nút Đăng nhập | 1. Truy cập /nhanvien/auth/login<br>2. Kiểm tra nút | Hiển thị Button className="w-full" "Đăng nhập" | | Pass | 11/15/2015 | |
+| **GUI-HDS-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra tiêu đề | Hiển thị div space-y-6 với h1 "Danh sách sách" class text-2xl font-bold, p "Quản lý và hiển thị thông tin các sách hiện đang bán trong cửa hàng" class text-sm text-muted-foreground | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-02** | Kiểm tra thống kê tổng quan | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra thống kê | Hiển thị div grid grid-cols-2 md:grid-cols-5 gap-4 với 5 Card: Card "Tổng số sách" với CardContent p-4 có div text-sm text-muted-foreground "Tổng số sách", div text-xl font-semibold "1,250". Card "Đang bán" với "1,180". Card "Tạm ngừng" với "45". Card "Sắp hết hàng" với "25". Card "Tổng giá trị" className="col-span-2 md:col-span-1" với "2.5 tỷ VNĐ" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-03** | Kiểm tra card Bộ lọc sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Bộ lọc sách", CardDescription "Lọc theo thể loại, NXB, giá, trạng thái, năm", CardContent className="grid gap-4 md:grid-cols-6" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-04** | Kiểm tra các bộ lọc | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra bộ lọc | Hiển thị: div grid gap-2 với Label "Thể loại", Select với SelectTrigger SelectValue placeholder="Tất cả", SelectContent có SelectItem (Tất cả, Khoa học, Văn học, Kinh tế, Lịch sử, Thiếu nhi). div grid gap-2 với Label "Nhà xuất bản", Select với các option (Tất cả, NXB Trẻ, NXB Kim Đồng, NXB Giáo dục, NXB Thế giới). div grid gap-2 md:col-span-2 với Label "Khoảng giá", Slider min={0} max={1000000} step={10000}, div text-xs text-muted-foreground hiển thị giá trị. div grid gap-2 với Label "Trạng thái", Select (Tất cả, Đang bán, Tạm ngừng, Sắp hết hàng, Hết hàng). div grid gap-2 với Label "Năm xuất bản", Select (Tất cả, 2024, 2023, 2022, 2021, Trước 2021). div grid gap-2 md:col-span-2 với Label "Tìm kiếm", Input placeholder="Tìm theo tên sách, tác giả, mã sách...". div grid gap-2 với Label "Sắp xếp", Select (Mặc định, Tên A-Z, Tên Z-A, Giá tăng dần, Giá giảm dần, Mới nhất, Bán chạy nhất). div flex items-end gap-2 với Button "Áp dụng" className="shrink-0", Button variant="outline" "Xóa bộ lọc" className="shrink-0" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-05** | Kiểm tra chuyển đổi view | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra view switch | Hiển thị div flex items-center justify-between với Tabs value={view} onValueChange, TabsList có TabsTrigger value="grid" "Lưới", TabsTrigger value="list" "Danh sách", div text-sm text-muted-foreground "Hiển thị 25 sách/trang" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-06** | Kiểm tra danh sách sách dạng lưới | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn view "Lưới"<br>4. Kiểm tra danh sách | Hiển thị div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 với các Card className="overflow-hidden" chứa: div aspect-[3/2] relative bg-muted với Image src={book.cover} alt={book.title} fill className="object-cover", CardContent className="p-4 space-y-2" với div flex items-start justify-between gap-2 có div font-semibold line-clamp-2 (title), div text-sm text-muted-foreground (author), Badge với variant tương ứng status, div flex items-center justify-between text-sm với span font-medium (price), span text-muted-foreground (stock), div flex gap-2 với Button variant="outline" asChild Link href="/nhanvien/products/[id]" "Xem chi tiết", Button variant="outline" asChild Link href="/nhanvien/products/[id]/inventory" "Kiểm tra tồn kho", Button "Thêm vào đơn" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-07** | Kiểm tra danh sách sách dạng danh sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn view "Danh sách"<br>4. Kiểm tra danh sách | Hiển thị div space-y-2 với các Card có CardContent className="p-4 flex items-center gap-4" chứa: div relative w-20 h-14 bg-muted overflow-hidden rounded với Image, div flex-1 min-w-0 có div flex items-center justify-between gap-2 với div min-w-0 có div font-medium truncate (title), div text-sm text-muted-foreground truncate (author), Badge, div text-sm text-muted-foreground (publisher, category, year), div text-right có div font-semibold (price), div text-sm text-muted-foreground (stock), div flex gap-2 với các Button | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-HDS-08** | Kiểm tra phân trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Kiểm tra phân trang | Hiển thị div flex justify-center với Pagination, PaginationContent có PaginationItem với PaginationLink href="#" isActive "1", PaginationLink "2", PaginationLink "3" | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Đăng nhập hệ thống
+### Check FUNC: Hiển thị danh sách sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DN-01** | Mở trang đăng nhập | 1. Truy cập /nhanvien/auth/login | Hiển thị đầy đủ form đăng nhập với Card, CardHeader có CardTitle "Đăng nhập hệ thống", CardDescription, CardContent space-y-4 chứa: Input "Tên đăng nhập hoặc email" placeholder="nhanvien@bookstore.com", Input type="password" "Mật khẩu" placeholder="••••••••", Checkbox "Ghi nhớ đăng nhập", Link "Quên mật khẩu" href="/nhanvien/auth/forgot-password", Button "Đăng nhập" className="w-full" | | Pass | 11/15/2015 | |
-| **FUNC-DN-02** | Đăng nhập thành công | 1. Truy cập /nhanvien/auth/login<br>2. Nhập tên đăng nhập hoặc email hợp lệ (VD: "nhanvien@bookstore.com")<br>3. Nhập mật khẩu đúng<br>4. Nhấn nút "Đăng nhập" | Hệ thống xác thực thông tin đăng nhập, đăng nhập thành công, hiển thị thông báo thành công "Đăng nhập thành công" (toast success), chuyển đến trang dashboard nhân viên (/nhanvien), lưu phiên đăng nhập và token, hiển thị header với thông tin nhân viên (tên, email, role) | | Pass | 11/15/2015 | |
-| **FUNC-DN-03** | Đăng nhập với tên đăng nhập không tồn tại | 1. Truy cập /nhanvien/auth/login<br>2. Nhập tên đăng nhập hoặc email không tồn tại<br>3. Nhập mật khẩu<br>4. Nhấn "Đăng nhập" | Hiển thị thông báo lỗi "Tên đăng nhập hoặc mật khẩu không đúng" (toast error), không chuyển trang, vẫn ở trang đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-DN-04** | Đăng nhập với mật khẩu sai | 1. Truy cập /nhanvien/auth/login<br>2. Nhập tên đăng nhập hoặc email hợp lệ<br>3. Nhập mật khẩu sai<br>4. Nhấn "Đăng nhập" | Hiển thị thông báo lỗi "Tên đăng nhập hoặc mật khẩu không đúng" (toast error), không chuyển trang | | Pass | 11/15/2015 | |
-| **FUNC-DN-05** | Đăng nhập thiếu tên đăng nhập | 1. Truy cập /nhanvien/auth/login<br>2. Để trống tên đăng nhập<br>3. Nhập mật khẩu<br>4. Nhấn "Đăng nhập" | Trình duyệt hiển thị cảnh báo "Please fill out this field" trên trường Input username, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-06** | Đăng nhập thiếu mật khẩu | 1. Truy cập /nhanvien/auth/login<br>2. Nhập tên đăng nhập<br>3. Để trống mật khẩu<br>4. Nhấn "Đăng nhập" | Trình duyệt hiển thị cảnh báo "Please fill out this field" trên trường Input password, form không được gửi | | Pass | 11/15/2015 | |
-| **FUNC-DN-07** | Đăng nhập với tài khoản bị khóa | 1. Truy cập /nhanvien/auth/login<br>2. Nhập tên đăng nhập của tài khoản bị khóa<br>3. Nhập mật khẩu<br>4. Nhấn "Đăng nhập" | Hiển thị thông báo lỗi "Tài khoản đã bị khóa" (toast error), không chuyển trang | | Pass | 11/15/2015 | |
-| **FUNC-DN-08** | Chức năng ghi nhớ - Có tích chọn | 1. Truy cập /nhanvien/auth/login<br>2. Tích checkbox "Ghi nhớ đăng nhập"<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, trình duyệt lưu cookie với thời hạn dài hơn (VD: 30 ngày), lần sau truy cập tự động điền thông tin đăng nhập | | Pass | 11/15/2015 | |
-| **FUNC-DN-09** | Chức năng ghi nhớ - Không tích chọn | 1. Truy cập /nhanvien/auth/login<br>2. Không tích checkbox<br>3. Nhập thông tin hợp lệ<br>4. Đăng nhập | Đăng nhập thành công, trình duyệt lưu cookie với thời hạn ngắn hơn (VD: session), lần sau truy cập không tự động điền thông tin | | Pass | 11/15/2015 | |
-| **FUNC-DN-10** | Nhấn link Quên mật khẩu | 1. Truy cập /nhanvien/auth/login<br>2. Nhấn link "Quên mật khẩu" | Chuyển đến trang /nhanvien/auth/forgot-password | | Pass | 11/15/2015 | |
-| **FUNC-DN-11** | Submit form bằng phím Enter | 1. Truy cập /nhanvien/auth/login<br>2. Nhập thông tin hợp lệ<br>3. Nhấn Enter trong trường mật khẩu | Form được gửi, xử lý đăng nhập như khi nhấn nút "Đăng nhập" | | Pass | 11/15/2015 | |
+| **FUNC-HDS-01** | Xem danh sách sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products | Hiển thị đầy đủ: tiêu đề "Danh sách sách" và mô tả, thống kê 5 card (Tổng số sách: 1,250, Đang bán: 1,180, Tạm ngừng: 45, Sắp hết hàng: 25, Tổng giá trị: 2.5 tỷ VNĐ), card Bộ lọc sách với đầy đủ các bộ lọc (Thể loại, Nhà xuất bản, Khoảng giá với Slider, Trạng thái, Năm xuất bản, Tìm kiếm, Sắp xếp), nút "Áp dụng" và "Xóa bộ lọc", Tabs chuyển đổi view (Lưới/Danh sách), danh sách sách với đầy đủ thông tin (ảnh bìa, tên sách, tác giả, giá bán, tồn kho, trạng thái Badge), các nút thao tác (Xem chi tiết, Kiểm tra tồn kho, Thêm vào đơn), phân trang | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-02** | Lọc sách theo thể loại | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn thể loại từ Select (VD: "Khoa học")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo thể loại đã chọn, chỉ hiển thị các sách thuộc thể loại "Khoa học", thống kê được cập nhật theo kết quả lọc, số lượng kết quả được hiển thị | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-03** | Lọc sách theo nhà xuất bản | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn nhà xuất bản từ Select (VD: "NXB Trẻ")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo nhà xuất bản đã chọn, chỉ hiển thị các sách của "NXB Trẻ", thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-04** | Lọc sách theo khoảng giá | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Điều chỉnh Slider khoảng giá (VD: 100,000 - 500,000đ)<br>4. Click "Áp dụng" | Danh sách sách được lọc theo khoảng giá đã chọn, chỉ hiển thị các sách có giá trong khoảng 100,000 - 500,000đ, giá trị khoảng giá được hiển thị dưới Slider với format "100,000đ - 500,000đ", thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-05** | Lọc sách theo trạng thái | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn trạng thái từ Select (VD: "Sắp hết hàng")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo trạng thái đã chọn, chỉ hiển thị các sách có trạng thái "Sắp hết hàng", Badge màu secondary, thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-06** | Lọc sách theo năm xuất bản | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn năm xuất bản từ Select (VD: "2024")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo năm xuất bản đã chọn, chỉ hiển thị các sách xuất bản năm 2024, thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-07** | Lọc kết hợp nhiều tiêu chí | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn thể loại "Khoa học", nhà xuất bản "NXB Trẻ", trạng thái "Đang bán"<br>4. Click "Áp dụng" | Danh sách sách được lọc theo tất cả các tiêu chí đã chọn, chỉ hiển thị các sách thỏa mãn tất cả điều kiện (thể loại Khoa học AND nhà xuất bản NXB Trẻ AND trạng thái Đang bán), thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-08** | Xóa bộ lọc | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Áp dụng các bộ lọc<br>4. Click "Xóa bộ lọc" | Tất cả các bộ lọc được reset về giá trị mặc định (Tất cả), danh sách sách hiển thị lại tất cả sách, thống kê được cập nhật về giá trị ban đầu | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-09** | Sắp xếp danh sách sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Chọn tiêu chí sắp xếp từ Select (VD: "Giá tăng dần")<br>4. Click "Áp dụng" | Danh sách sách được sắp xếp theo tiêu chí đã chọn, các sách được hiển thị theo thứ tự giá tăng dần, thứ tự được cập nhật ngay lập tức, duy trì trạng thái sắp xếp khi chuyển trang | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-10** | Chuyển đổi view Lưới/Danh sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Click TabsTrigger "Danh sách" | View chuyển từ "Lưới" sang "Danh sách", danh sách sách được hiển thị dạng danh sách với layout khác (ảnh nhỏ hơn, thông tin nằm ngang), TabsTrigger "Danh sách" được active | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-11** | Xem chi tiết sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Click nút "Xem chi tiết" trên một sách | Chuyển đến trang /nhanvien/products/[id], hiển thị thông tin chi tiết của sách | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-12** | Thêm sách vào đơn hàng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Click nút "Thêm vào đơn" trên một sách | Sách được thêm vào đơn hàng hiện tại (nếu đang tạo đơn) hoặc tạo đơn hàng mới, hiển thị thông báo thành công "Đã thêm sách vào đơn hàng" (toast success), có thể hiển thị số lượng sách trong đơn hàng ở header | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-HDS-13** | Chuyển trang phân trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Click PaginationLink "2" | Chuyển sang trang 2, danh sách sách được cập nhật với các sách của trang 2, PaginationLink "2" được active (isActive), duy trì các bộ lọc và sắp xếp đã chọn | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Thông tin cá nhân
+### Function: Tìm kiếm sách
 
-#### Check GUI: Thông tin cá nhân
+#### Check FUNC: Tìm kiếm sách
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-TTCN-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Kiểm tra tiêu đề | Hiển thị div grid gap-6 lg:grid-cols-2 với Card, CardHeader có CardTitle "Thông tin cá nhân", CardDescription "Quản lý và cập nhật thông tin của bạn" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCN-02** | Kiểm tra thông tin cơ bản | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Kiểm tra thông tin | Hiển thị CardContent space-y-4 với div grid grid-cols-2 gap-4 chứa: div với div text-sm text-muted-foreground "Họ và tên", div font-medium (tên nhân viên), div với div text-sm text-muted-foreground "Email", div font-medium (email), div với div text-sm text-muted-foreground "Số điện thoại", div font-medium (số điện thoại), div với div text-sm text-muted-foreground "Chức vụ", div font-medium với Badge (chức vụ), div với div text-sm text-muted-foreground "Ngày vào làm", div font-medium (ngày), div với div text-sm text-muted-foreground "Trạng thái", div font-medium với Badge variant="default" (trạng thái) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCN-03** | Kiểm tra form Cập nhật thông tin | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Kiểm tra form | Hiển thị div pt-2 với div text-sm font-medium mb-2 "Cập nhật thông tin", div grid gap-3 chứa: div grid gap-1 với Label htmlFor="phone" "Số điện thoại", Input id="phone" defaultValue, div grid gap-1 với Label htmlFor="address" "Địa chỉ", Input id="address" placeholder="Số nhà, đường, quận/huyện, tỉnh/thành", Button className="w-fit" "Lưu thay đổi" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-TTCN-04** | Kiểm tra card Lịch sử hoạt động | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Kiểm tra card | Hiển thị Card với CardHeader có CardTitle "Lịch sử hoạt động gần đây", CardDescription "Theo dõi đăng nhập và thao tác", CardContent space-y-3 với các div text-sm chứa thông tin hoạt động (thời gian, hoạt động, IP) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKS-01** | Tìm kiếm sách theo tên | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Nhập từ khóa tìm kiếm vào Input (VD: "React")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo từ khóa "React", chỉ hiển thị các sách có tên chứa "React", tìm kiếm không phân biệt hoa thường, có thể hiển thị số lượng kết quả tìm được, thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKS-02** | Tìm kiếm sách theo tác giả | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Nhập tên tác giả vào Input (VD: "Nguyễn Văn A")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo tác giả, chỉ hiển thị các sách của tác giả "Nguyễn Văn A", thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKS-03** | Tìm kiếm sách theo mã sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Nhập mã sách vào Input (VD: "BK-001")<br>4. Click "Áp dụng" | Danh sách sách được lọc theo mã sách, chỉ hiển thị sách có mã "BK-001", có thể hiển thị 1 kết quả hoặc không có kết quả nếu mã không tồn tại | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKS-04** | Tìm kiếm không có kết quả | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Nhập từ khóa không tồn tại (VD: "xyz123")<br>4. Click "Áp dụng" | Hiển thị thông báo "Không tìm thấy sách nào phù hợp với từ khóa 'xyz123'", danh sách sách trống, thống kê hiển thị 0 cho tất cả các chỉ số | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-TKS-05** | Tìm kiếm kết hợp với bộ lọc | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products<br>3. Nhập từ khóa "React"<br>4. Chọn thể loại "Công nghệ"<br>5. Click "Áp dụng" | Danh sách sách được lọc theo cả từ khóa "React" và thể loại "Công nghệ", chỉ hiển thị các sách có tên chứa "React" VÀ thuộc thể loại "Công nghệ", thống kê được cập nhật | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Check FUNC: Thông tin cá nhân
+### Function: Kiểm tra tồn kho
+
+#### Check GUI: Kiểm tra tồn kho
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-TTCN-01** | Xem thông tin cá nhân | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account | Hiển thị đầy đủ: card Thông tin cá nhân với thông tin cơ bản (Họ và tên, Email, Số điện thoại, Chức vụ với Badge, Ngày vào làm, Trạng thái với Badge variant="default"), form Cập nhật thông tin với Input số điện thoại và địa chỉ, nút "Lưu thay đổi", card Lịch sử hoạt động gần đây với các hoạt động (thời gian, loại hoạt động, IP) | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCN-02** | Cập nhật số điện thoại | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Sửa số điện thoại trong Input<br>4. Click "Lưu thay đổi" | Số điện thoại được cập nhật thành công, hiển thị thông báo thành công "Cập nhật thông tin thành công" (toast success), thông tin trong card "Thông tin cơ bản" được cập nhật, lịch sử hoạt động ghi nhận "Cập nhật thông tin cá nhân" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCN-03** | Cập nhật địa chỉ | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Nhập địa chỉ vào Input<br>4. Click "Lưu thay đổi" | Địa chỉ được cập nhật thành công, hiển thị thông báo thành công (toast success), lịch sử hoạt động ghi nhận | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCN-04** | Cập nhật với số điện thoại không hợp lệ | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Nhập số điện thoại không hợp lệ (VD: "123")<br>4. Click "Lưu thay đổi" | Hiển thị thông báo lỗi "Số điện thoại không hợp lệ" (toast error), không cập nhật thông tin | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-TTCN-05** | Xem lịch sử hoạt động | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account<br>3. Xem card Lịch sử hoạt động | Hiển thị danh sách các hoạt động gần đây với format "YYYY-MM-DD HH:mm • [Hoạt động] • IP [IP Address]" hoặc "YYYY-MM-DD HH:mm • [Hoạt động]", các hoạt động được sắp xếp từ mới đến cũ, có thể có nhiều hoạt động (Đăng nhập, Tạo đơn hàng, Cập nhật tồn kho, v.v.) | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Kiểm tra tiêu đề | Hiển thị tiêu đề "Kiểm tra tồn kho" hoặc tên sách với thông tin tồn kho | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-02** | Kiểm tra thông tin sách | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Kiểm tra thông tin | Hiển thị Card với thông tin sách: Tên sách, Mã sách, Tác giả, Thể loại (Badge), Nhà xuất bản | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-03** | Kiểm tra thông tin tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Kiểm tra thông tin | Hiển thị Card với: Số lượng hiện có, Số lượng đã bán, Số lượng đặt trước, Trạng thái (Badge: Đủ hàng/Sắp hết hàng/Hết hàng), Cập nhật lần cuối | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-04** | Kiểm tra lịch sử nhập xuất | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Kiểm tra bảng | Hiển thị Table với TableHeader có các TableHead: "Thời gian", "Loại giao dịch" (Badge), "Số lượng" (+/-), "Ghi chú", "Người thực hiện". TableBody có các TableRow với TableCell tương ứng | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-05** | Kiểm tra cảnh báo tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory với sách sắp hết hàng<br>3. Kiểm tra cảnh báo | Hiển thị Alert với icon AlertCircle và AlertDescription "Sách sắp hết hàng (dưới 10 cuốn)" hoặc "Sách đã hết hàng" hoặc "Cần nhập thêm hàng" | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **GUI-KTK-06** | Kiểm tra các nút thao tác | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Kiểm tra nút | Hiển thị div flex gap-2 với Button "Cập nhật tồn kho", Button "Yêu cầu nhập hàng", Button "In báo cáo", Button "Xem chi tiết" | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
-### Function: Đổi mật khẩu
-
-#### Check GUI: Đổi mật khẩu
+### Check FUNC: Kiểm tra tồn kho
 
 | ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
 |----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-DMK-01** | Kiểm tra tiêu đề trang | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Kiểm tra tiêu đề | Hiển thị div max-w-md mx-auto w-full với Card, CardHeader có CardTitle "Đổi mật khẩu", CardDescription "Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DMK-02** | Kiểm tra trường Mật khẩu hiện tại | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Kiểm tra trường | Hiển thị div space-y-2 với Label htmlFor="current" "Mật khẩu hiện tại", Input id="current" type="password" placeholder="••••••••" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DMK-03** | Kiểm tra trường Mật khẩu mới | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Kiểm tra trường | Hiển thị div space-y-2 với Label htmlFor="new" "Mật khẩu mới", Input id="new" type="password" placeholder="••••••••" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DMK-04** | Kiểm tra trường Xác nhận mật khẩu mới | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Kiểm tra trường | Hiển thị div space-y-2 với Label htmlFor="confirm" "Xác nhận mật khẩu mới", Input id="confirm" type="password" placeholder="••••••••" | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **GUI-DMK-05** | Kiểm tra các nút | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Kiểm tra nút | Hiển thị div flex gap-2 với Button "Đổi mật khẩu", Button variant="outline" "Hủy" | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Đổi mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DMK-01** | Đổi mật khẩu thành công | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới đủ mạnh (>= 8 ký tự, có chữ hoa, chữ thường, số, ký tự đặc biệt)<br>5. Xác nhận mật khẩu mới (khớp với mật khẩu mới)<br>6. Click "Đổi mật khẩu" | Mật khẩu được đổi thành công, hiển thị thông báo thành công "Đổi mật khẩu thành công" (toast success), tự động đăng xuất khỏi tất cả các phiên đăng nhập khác để bảo mật, gửi thông báo xác nhận qua email (nếu được cấu hình), lịch sử thay đổi mật khẩu được ghi lại, chuyển về trang đăng nhập hoặc trang tài khoản | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-02** | Đổi mật khẩu với mật khẩu hiện tại sai | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Nhập mật khẩu hiện tại sai<br>4. Nhập mật khẩu mới<br>5. Click "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu hiện tại không đúng" (toast error), không đổi mật khẩu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-03** | Đổi mật khẩu với mật khẩu mới không đủ mạnh | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới yếu (VD: "123456")<br>5. Click "Đổi mật khẩu" | Hiển thị thông báo lỗi "Mật khẩu mới không đủ mạnh. Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt" (toast error), không đổi mật khẩu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-04** | Đổi mật khẩu với xác nhận không khớp | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Nhập mật khẩu hiện tại đúng<br>4. Nhập mật khẩu mới "Password123!"<br>5. Xác nhận mật khẩu mới "Password456!" (không khớp)<br>6. Click "Đổi mật khẩu" | Hiển thị thông báo lỗi "Xác nhận mật khẩu không khớp" (toast error), không đổi mật khẩu | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DMK-05** | Hủy đổi mật khẩu | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/account/change-password<br>3. Nhập thông tin<br>4. Click "Hủy" | Chuyển về trang /nhanvien/account, không đổi mật khẩu, form được reset | FUNC-DN-02 | Pass | 11/15/2015 | |
-
----
-
-### Function: Khôi phục mật khẩu
-
-#### Check GUI: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **GUI-KPMK-01** | Kiểm tra tiêu đề trang | 1. Truy cập /nhanvien/auth/forgot-password<br>2. Kiểm tra tiêu đề | Hiển thị div max-w-md mx-auto w-full với Card, CardHeader có CardTitle "Khôi phục mật khẩu", CardDescription "Nhập email để nhận liên kết đặt lại mật khẩu (liên kết có thời hạn)" | | Pass | 11/15/2015 | |
-| **GUI-KPMK-02** | Kiểm tra form khôi phục | 1. Truy cập /nhanvien/auth/forgot-password<br>2. Kiểm tra form | Hiển thị CardContent space-y-4 với div space-y-2 chứa Label htmlFor="email" "Email", Input id="email" type="email" placeholder="nhanvien@bookstore.com", Button className="w-full" "Gửi liên kết đặt lại mật khẩu" | | Pass | 11/15/2015 | |
-
----
-
-### Check FUNC: Khôi phục mật khẩu
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-KPMK-01** | Gửi liên kết đặt lại mật khẩu thành công | 1. Truy cập /nhanvien/auth/forgot-password<br>2. Nhập email đã đăng ký (VD: "nhanvien@bookstore.com")<br>3. Nhấn "Gửi liên kết đặt lại mật khẩu" | Email chứa liên kết đặt lại mật khẩu được gửi thành công, hiển thị thông báo thành công "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn" (toast success), liên kết có thời hạn sử dụng (VD: 1 giờ), có thể có countdown timer | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-02** | Gửi với email không tồn tại | 1. Truy cập /nhanvien/auth/forgot-password<br>2. Nhập email không tồn tại<br>3. Nhấn "Gửi liên kết đặt lại mật khẩu" | Hiển thị thông báo lỗi "Email không tồn tại trong hệ thống" (toast error), không gửi email | | Pass | 11/15/2015 | |
-| **FUNC-KPMK-03** | Gửi với email sai định dạng | 1. Truy cập /nhanvien/auth/forgot-password<br>2. Nhập email sai định dạng (VD: "invalid-email")<br>3. Nhấn "Gửi liên kết đặt lại mật khẩu" | Trình duyệt hiển thị cảnh báo "Please include an '@' in the email address", form không được gửi | | Pass | 11/15/2015 | |
-
----
-
-### Function: Đăng xuất
-
-#### Check FUNC: Đăng xuất
-
-| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
-|----|----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
-| **FUNC-DX-01** | Đăng xuất thành công | 1. Đăng nhập Nhân viên<br>2. Click "Đăng xuất" từ menu hoặc truy cập /nhanvien/logout<br>3. Xác nhận đăng xuất (nếu có Dialog) | Hiển thị Dialog xác nhận (nếu có) với DialogTitle "Xác nhận đăng xuất", DialogDescription "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?", nút "Hủy" và "Có, đăng xuất". Sau khi xác nhận: đăng xuất thành công, kết thúc phiên đăng nhập hiện tại, xóa thông tin phiên đăng nhập khỏi hệ thống, ghi lại lịch sử đăng xuất với thời gian và địa chỉ IP, chuyển hướng về trang đăng nhập (/nhanvien/auth/login), hiển thị thông báo xác nhận "Đăng xuất thành công" (toast success), tất cả dữ liệu nhạy cảm được xóa khỏi bộ nhớ tạm thời của trình duyệt | FUNC-DN-02 | Pass | 11/15/2015 | |
-| **FUNC-DX-02** | Hủy đăng xuất | 1. Đăng nhập Nhân viên<br>2. Click "Đăng xuất"<br>3. Click "Hủy" trong Dialog | Dialog đóng lại, không đăng xuất, vẫn ở trang hiện tại | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KTK-01** | Xem thông tin tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory | Hiển thị đầy đủ: thông tin sách (Tên sách, Mã sách, Tác giả, Thể loại Badge, Nhà xuất bản), thông tin tồn kho (Số lượng hiện có, Số lượng đã bán, Số lượng đặt trước, Trạng thái Badge, Cập nhật lần cuối), lịch sử nhập xuất Table với các giao dịch (Thời gian, Loại giao dịch Badge, Số lượng +/- với màu xanh/đỏ, Ghi chú, Người thực hiện), cảnh báo tồn kho (nếu có), các nút thao tác | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KTK-02** | Xem cảnh báo tồn kho thấp | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory với sách có số lượng < 10 | Hiển thị Alert với variant="destructive" hoặc "warning" "Sách sắp hết hàng (dưới 10 cuốn)", Badge trạng thái "Sắp hết hàng" màu secondary hoặc warning, số lượng hiện có được highlight màu vàng hoặc đỏ | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KTK-03** | Xem cảnh báo hết hàng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory với sách có số lượng = 0 | Hiển thị Alert với variant="destructive" "Sách đã hết hàng", Badge trạng thái "Hết hàng" màu destructive, số lượng hiện có = 0 được highlight màu đỏ | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KTK-04** | Yêu cầu nhập hàng | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Click nút "Yêu cầu nhập hàng"<br>4. Nhập số lượng yêu cầu và ghi chú<br>5. Xác nhận | Hiển thị Dialog với DialogTitle "Yêu cầu nhập hàng", DialogDescription, Input "Số lượng yêu cầu" type="number", Textarea "Ghi chú ưu tiên", nút "Hủy" và "Gửi yêu cầu". Sau khi xác nhận: yêu cầu được gửi thành công, hiển thị thông báo thành công "Yêu cầu nhập hàng đã được gửi đến nhân viên kho" (toast success), nhân viên kho nhận được thông báo, trạng thái yêu cầu được theo dõi (chờ xử lý), dialog đóng lại | FUNC-DN-02 | Pass | 11/15/2015 | |
+| **FUNC-KTK-05** | In báo cáo tồn kho | 1. Đăng nhập Nhân viên<br>2. Truy cập /nhanvien/products/[id]/inventory<br>3. Click nút "In báo cáo" | Báo cáo tồn kho được tạo và mở dialog in hoặc chuyển đến trang in, báo cáo bao gồm: thông tin sách, số lượng hiện có, lịch sử nhập xuất gần đây, định dạng dễ đọc và chuyên nghiệp, có thể in hoặc xuất PDF | FUNC-DN-02 | Pass | 11/15/2015 | |
 
 ---
 
