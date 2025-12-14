@@ -1,120 +1,271 @@
-# 7. NON-FUNCTIONAL REQUIREMENTS AND OTHERS
+# 7. Availability (Tính Khả Dụng)
 
-## Performance
+## 7.1. Mục Tiêu Availability
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Hệ thống phải hỗ trợ tối thiểu 1000 người dùng truy cập đồng thời mà không ảnh hưởng đến hiệu suất. Tiêu chí: Stress test với 1000 concurrent users, response time < 500ms, error rate < 1% |
-| 2 | Thời gian phản hồi API trung bình phải dưới 200ms cho các thao tác đơn giản (xem sách, giỏ hàng, tìm kiếm). Tiêu chí: 95% requests < 200ms, 99% requests < 500ms |
-| 3 | Thời gian tải trang không vượt quá 3 giây với kết nối internet tốc độ trung bình. Tiêu chí: Lighthouse Performance score ≥ 80, First Contentful Paint < 1.5s |
-| 4 | Thời gian xử lý thanh toán và đặt hàng không vượt quá 5 giây. Tiêu chí: 95% checkout transactions hoàn thành trong 5 giây |
-| 5 | Real-time chat hỗ trợ khách hàng có độ trễ tối đa 1 giây (sử dụng Socket.IO). Tiêu chí: Message latency < 1s với 500 concurrent connections |
-| 6 | Tính năng "đọc thử" sách phải tải nhanh với độ trễ tối đa 2 giây. Tiêu chí: PDF/preview loading time < 2s, CDN cache hit rate > 80% |
+### 7.1.1. Uptime Requirements
+- **Target Uptime**: 99.5% (tương đương ~3.6 giờ downtime/tháng)
+- **Planned Downtime**: ≤ 2 giờ/tháng cho bảo trì
+- **Unplanned Downtime**: ≤ 1.6 giờ/tháng
+- **Recovery Time Objective (RTO)**: ≤ 30 phút
+- **Recovery Point Objective (RPO)**: ≤ 24 giờ
 
-## Scalability
+### 7.1.2. Service Level Objectives (SLOs)
+| Dịch vụ | Availability Target | Downtime cho phép/tháng |
+|---------|-------------------|------------------------|
+| Core API | 99.5% | 3.6 giờ |
+| Admin Portal | 99.0% | 7.2 giờ |
+| Database | 99.9% | 43 phút |
+| File Storage | 99.5% | 3.6 giờ |
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Database PostgreSQL phải có khả năng lưu trữ tối thiểu 50,000 đầu sách và 100,000 khách hàng |
-| 2 | Hệ thống phải xử lý được ít nhất 2,000 đơn hàng mỗi ngày (bao gồm đơn online và offline). Tiêu chí: Load test 2000+ orders/day, peak load 200 orders/hour |
-| 3 | Cho phép nhiều nhân viên (Admin, Nhân viên bán hàng, Nhân viên kho) đồng thời quản lý đơn hàng, cập nhật sách mà không xung đột dữ liệu. Implement optimistic locking hoặc version control |
-| 4 | Hỗ trợ upload và lưu trữ tối thiểu 100,000 hình ảnh sách (bìa sách, ảnh chi tiết, ảnh đọc thử) và 50,000 ảnh/video từ đánh giá người dùng. Sử dụng CDN, image optimization (WebP, lazy loading) |
-| 5 | Kiến trúc hệ thống phải cho phép mở rộng horizontal scaling khi lượng truy cập tăng. Thiết kế stateless backend, load balancer, container orchestration (Docker + Kubernetes). Auto-scaling rule: khi CPU > 70% thì scale thêm 1 instance, maximum 10 instances |
-| 6 | Hỗ trợ đồng bộ dữ liệu thời gian thực giữa kênh online và offline. Tiêu chí: Sync delay < 5 giây, có conflict resolution mechanism |
+## 7.2. Backup Strategy
 
-## Security
+### 7.2.1. Database Backup
+**Automated Daily Backup:**
+- **Thời gian**: 2:00 AM - 4:00 AM (giờ thấp điểm)
+- **Loại**: Full backup hàng ngày
+- **Retention**: 
+  - Daily backups: 7 ngày
+  - Weekly backups: 4 tuần
+  - Monthly backups: 12 tháng
+- **Storage**: Cloud storage với geo-redundancy
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Backend sử dụng Node.js phiên bản 20.0 trở lên để đảm bảo các bản vá bảo mật mới nhất. Thực hiện dependency audit hàng tuần |
-| 2 | Xác thực người dùng bắt buộc sử dụng JWT (JSON Web Token) với thời gian hết hạn 24 giờ. Có cơ chế refresh token |
-| 3 | Mật khẩu người dùng phải được mã hóa bằng Bcrypt với salt rounds tối thiểu là 10 |
-| 4 | Phân quyền rõ ràng giữa 4 vai trò: Admin, Nhân viên bán hàng, Nhân viên kho và Khách hàng - mỗi vai trò chỉ truy cập được các chức năng được phép. Implement RBAC (Role-Based Access Control) |
-| 5 | Tích hợp các cổng thanh toán (VNPay, MoMo, ZaloPay, Viettel Money) phải tuân thủ chuẩn bảo mật PCI DSS. Không lưu trữ thông tin thẻ, sử dụng tokenization |
-| 6 | Dữ liệu hệ thống (thông tin sách, đơn hàng, khách hàng, tồn kho) được sao lưu tự động hàng ngày và lưu trữ tại server backup riêng biệt. Retention policy: lưu backup 90 ngày. Thực hiện backup restoration test mỗi quý. RPO < 24 giờ, RTO < 6 giờ |
-| 7 | Tất cả API endpoints phải được bảo vệ bởi middleware xác thực (Passport.js). API security audit với test coverage 100% |
-| 8 | Sử dụng HTTPS/SSL cho mọi kết nối giữa client và server. Enable security headers (HSTS, X-Frame-Options) |
-| 9 | Implement CORS policy để chỉ cho phép các domain được phê duyệt truy cập API |
-| 10 | Chống tấn công XSS, SQL Injection, CSRF thông qua validation (Zod) và sanitization dữ liệu đầu vào. Thực hiện penetration test mỗi 6 tháng hoặc sau mỗi major update. Tuân thủ OWASP Top 10 |
-| 11 | Bảo mật thông tin khách hàng (họ tên, số điện thoại, địa chỉ, lịch sử mua hàng) tuân thủ Nghị định 13/2023 về bảo vệ dữ liệu cá nhân và GDPR principles cho khách hàng quốc tế. Data encryption at rest |
-| 12 | Khôi phục mật khẩu thông qua email/SMS phải có cơ chế xác thực OTP với thời gian hết hạn 5 phút. Có rate limiting để chống spam |
-| 13 | Audit trail cho các thao tác đặc biệt (xóa sách/đơn hàng, sửa giá, thay đổi tồn kho, hoàn tiền). Log phải ghi: timestamp, user, action, old value, new value. Retention: 1 năm. Có chức năng export log cho audit |
+**Incremental Backup:**
+- **Tần suất**: Mỗi 6 giờ
+- **Retention**: 48 giờ
+- **Mục đích**: Giảm RPO xuống còn 6 giờ
 
-## Browser
+### 7.2.2. File Storage Backup
+- **Tần suất**: Daily backup tại 3:00 AM
+- **Phương pháp**: Incremental backup
+- **Retention**: 30 ngày
+- **Verification**: Weekly restore test
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Hỗ trợ các trình duyệt hiện đại: Chrome (3 phiên bản gần nhất - từ version 120 trở lên), Firefox (3 phiên bản gần nhất - từ version 121 trở lên). Có browser compatibility matrix và test plan |
-| 2 | Hỗ trợ Microsoft Edge (phiên bản dựa trên Chromium, từ version 120 trở lên) |
-| 3 | Hỗ trợ Safari 14 trở lên (cho người dùng macOS và iOS) |
-| 4 | Responsive design tương thích với các thiết bị mobile (iOS 15+, Android 10+) cho cả khách hàng và nhân viên. Test các viewport: mobile 375px-767px, tablet 768px-1023px, desktop 1024px+ |
-| 5 | Không hỗ trợ Internet Explorer (đã ngừng hỗ trợ từ Microsoft). Hiển thị thông báo deprecation cho IE users |
-| 6 | Giao diện tối ưu cho màn hình tablet để nhân viên bán hàng dễ dàng xử lý đơn hàng tại quầy |
+### 7.2.3. Configuration Backup
+- **Source Code**: Git repository với multiple remotes
+- **Configuration Files**: Version controlled, backed up daily
+- **Secrets**: Encrypted backup trong vault system
+- **Retention**: Indefinite cho configs quan trọng
 
-## Reliability
+### 7.2.4. Backup Testing
+- **Restore Test**: Monthly full restore test
+- **Disaster Recovery Drill**: Quarterly
+- **Documentation**: Cập nhật runbook sau mỗi test
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Uptime hệ thống đạt tối thiểu 99.5% trong tháng (cho phép downtime không quá 3.6 giờ/tháng). Implement uptime monitoring (Pingdom/UptimeRobot). Thực hiện DR (Disaster Recovery) drill mỗi 6 tháng. RPO < 2 giờ, RTO < 6 giờ |
-| 2 | Thời gian phục hồi hệ thống từ dữ liệu backup trong trường hợp sự cố không quá 6 giờ. Có documented recovery procedures và quarterly DR test |
-| 3 | Cơ chế retry tự động cho các giao dịch thanh toán thất bại. Implement exponential backoff, maximum 3 retries |
-| 4 | Đồng bộ dữ liệu tồn kho giữa online và offline phải chính xác 100% để tránh bán quá số lượng có sẵn. Có conflict resolution mechanism và real-time stock validation |
-| 5 | Thông báo trạng thái đơn hàng cho khách hàng phải được gửi kịp thời (độ trễ tối đa 30 giây). Sử dụng message queue (RabbitMQ/Redis) |
-| 6 | Hệ thống báo cáo phải luôn sẵn sàng cho Admin và nhân viên truy cập mọi lúc. Implement caching strategy cho reports |
+## 7.3. Maintenance Windows
 
-## Availability
+### 7.3.1. Planned Maintenance
+- **Thời gian**: Chủ nhật, 1:00 AM - 3:00 AM
+- **Tần suất**: 2 lần/tháng (tối đa)
+- **Thông báo**: 72 giờ trước cho users
+- **Rollback Plan**: Sẵn sàng cho mọi deployment
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Database và Backend phải có cơ chế high-availability. Deploy theo mô hình active-active hoặc active-standby, multi-zone setup cho database, health check cho backend services, automatic failover < 30 giây |
-| 2 | Critical APIs (checkout, payment, inventory check) phải có availability > 99.9%. Monitoring riêng cho critical endpoints, implement circuit breaker pattern, graceful degradation khi service phụ fail |
+### 7.3.2. Emergency Maintenance
+- **Approval**: CTO/Tech Lead
+- **Notification**: Ngay lập tức qua email/SMS
+- **Maximum Duration**: 2 giờ
+- **Post-mortem**: Bắt buộc trong vòng 24 giờ
 
-## Maintainability
+## 7.4. High Availability Measures
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Code phải tuân thủ coding standards và best practices. Setup ESLint/Prettier, code review process bắt buộc, SonarQube quality gate score > 80% |
-| 2 | CI/CD pipeline cho automated testing và deployment. Setup GitHub Actions/GitLab CI, automated test coverage > 70%, deployment automation với rollback capability |
-| 3 | Comprehensive documentation: API documentation (Swagger/OpenAPI), system architecture diagrams (C4 model), deployment guide, onboarding guide cho developer mới |
+### 7.4.1. Infrastructure
+- **Load Balancer**: Active-active configuration
+- **Application Servers**: Minimum 2 instances
+- **Database**: Primary-replica setup với automatic failover
+- **Cache**: Redis cluster với sentinel
 
-## Compliance
+### 7.4.2. Monitoring & Alerting
+- **Health Checks**: Every 30 seconds
+- **Alert Response Time**: < 5 phút
+- **On-call Rotation**: 24/7 coverage
+- **Escalation**: Automatic sau 15 phút
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Tuân thủ Nghị định 13/2023 về bảo vệ dữ liệu cá nhân Việt Nam. Có privacy policy page, consent mechanism, data subject rights (access/delete/export data), data retention policy rõ ràng |
-| 2 | Tuân thủ quy định về hóa đơn điện tử theo quy định của Tổng cục Thuế (nếu doanh nghiệp đủ điều kiện). Tích hợp hệ thống hóa đơn điện tử nếu cần |
-| 3 | Lưu trữ transaction logs phục vụ audit và pháp lý. Retention: 5 năm theo quy định kế toán. Implement tamper-proof logging |
+### 7.4.3. Degraded Mode
+Khi một số services không khả dụng:
+- **Read-only mode**: Cho phép xem dữ liệu
+- **Cached responses**: Sử dụng cache khi DB down
+- **Queue requests**: Lưu requests để xử lý sau
 
-## Usability
+---
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Thời gian học sử dụng hệ thống cho nhân viên mới < 3 giờ đào tạo. Cung cấp user training document và video tutorials. Sau 3 giờ, nhân viên có thể: tạo đơn hàng, xử lý thanh toán, cập nhật tồn kho |
-| 2 | Người dùng có thể hoàn thành task chính (đặt hàng online) trong < 3 phút và ≤ 5 bước. Thực hiện usability test với ít nhất 5 users, đo task completion time |
-| 3 | Accessibility compliance level AA theo WCAG 2.0. Support keyboard navigation, screen reader compatible, color contrast ratio > 4.5:1, alt text cho tất cả images |
+# 8. Maintainability (Tính Bảo Trì)
 
-## Interfaces
+## 8.1. Code Quality Standards
 
-| No. | Requirement |
-|-----|-------------|
-| 1 | Sử dụng Framework Next.js (version 14+) để tạo giao diện người dùng với SSR/SSG optimization |
-| 2 | Styling sử dụng Tailwind CSS kết hợp shadcn/ui components. Có consistent design system |
-| 3 | Hỗ trợ đa ngôn ngữ (Tiếng Việt, Tiếng Anh) thông qua next-intl. 100% content được dịch, có language switcher |
-| 4 | Responsive design tương thích mọi kích thước màn hình: mobile (375px-767px), tablet (768px-1023px), desktop (1024px+) |
-| 5 | Giao diện riêng biệt cho từng vai trò: Admin Dashboard, Staff POS Interface, Warehouse Management UI, Customer Shopping Interface. Role-based UI và navigation |
-| 6 | Dashboard trực quan cho Admin để theo dõi doanh thu, tồn kho, đơn hàng theo thời gian thực. Sử dụng charts (Recharts), auto-refresh data mỗi 30 giây |
-| 7 | Giao diện POS (Point of Sale) đơn giản, nhanh cho nhân viên bán hàng tại quầy. Optimize cho tablet, tích hợp barcode scanner, quick checkout flow |
-| 8 | Tích hợp API đơn vị vận chuyển (GHTK, GHN, J&T Express) để theo dõi đơn hàng. Sync tracking number, webhook handling cho status updates |
+### 8.1.1. Test Coverage Requirements
+**Minimum Coverage:**
+- **Unit Tests**: ≥ 80% coverage
+- **Integration Tests**: ≥ 60% coverage
+- **Critical Paths**: 100% coverage
+- **New Code**: ≥ 85% coverage (không được giảm tổng coverage)
 
-## Assumptions
+**Coverage Tools:**
+- **Backend**: Jest/pytest với coverage reports
+- **Frontend**: Jest + React Testing Library
+- **CI/CD**: Automated coverage checks, fail build nếu < 80%
 
-| No. | Assumption |
-|-----|------------|
-| 1 | Có thể tạm ngưng hệ thống nếu cần phải nâng cấp (thời gian bảo trì: 2-4h sáng, thông báo trước 24 giờ) |
-| 2 | Người dùng (khách hàng và nhân viên) có kết nối internet ổn định tối thiểu 5 Mbps |
-| 3 | Admin và nhân viên (bán hàng, kho) được đào tạo cơ bản trước khi vận hành hệ thống |
-| 4 | Môi trường dev, staging, production được tách biệt hoàn toàn |
-| 5 | Nhà sách có sẵn thiết bị (máy tính, máy quét mã vạch, máy in hóa đơn) để vận hành hệ thống |
-| 6 | Khách hàng có tài khoản ngân hàng hoặc ví điện tử để thanh toán online |
-| 7 | Thông tin sách (tên, tác giả, NXB, giá) được nhập chính xác bởi nhân viên kho |
-| 8 | Hệ thống xếp hạng (ranking) khách hàng được cập nhật tự động dựa trên tổng giá trị chi tiêu |
+### 8.1.2. Code Review Guidelines
+**Mandatory Reviews:**
+- Tối thiểu 1 reviewer cho mọi PR
+- 2 reviewers cho critical components
+- Tech Lead approval cho architectural changes
+
+**Review Checklist:**
+- [ ] Code follows style guide
+- [ ] Tests included và pass
+- [ ] No security vulnerabilities
+- [ ] Documentation updated
+- [ ] Performance impact assessed
+- [ ] Backward compatibility maintained
+
+### 8.1.3. Coding Standards
+**Style Guides:**
+- **JavaScript/TypeScript**: Airbnb style guide + ESLint
+- **Python**: PEP 8 + Black formatter
+- **SQL**: SQL Style Guide
+- **Enforcement**: Pre-commit hooks + CI checks
+
+## 8.2. Refactoring Guidelines
+
+### 8.2.1. Khi Nào Refactor
+**Triggers:**
+- Technical debt score > threshold
+- Code complexity metrics (cyclomatic complexity > 10)
+- Duplicate code > 3 lần
+- Performance bottlenecks identified
+- Before adding new features to legacy code
+
+### 8.2.2. Refactoring Process
+**Steps:**
+1. **Document**: Ghi chép current behavior
+2. **Tests**: Đảm bảo test coverage ≥ 80% trước refactor
+3. **Small Changes**: Incremental refactoring
+4. **Verify**: Run full test suite sau mỗi change
+5. **Review**: Code review bắt buộc
+6. **Deploy**: Canary deployment
+
+**Safe Refactoring Practices:**
+- Không thay đổi public APIs mà không deprecation notice
+- Maintain backward compatibility tối thiểu 2 versions
+- Feature flags cho changes lớn
+- Automated tests chạy liên tục
+
+### 8.2.3. Technical Debt Management
+**Tracking:**
+- Label PRs với "tech-debt" tag
+- Monthly tech debt review meeting
+- Allocate 20% sprint capacity cho tech debt
+
+**Prioritization:**
+- **P0 (Critical)**: Security issues, data corruption risks
+- **P1 (High)**: Performance issues, scalability blockers  
+- **P2 (Medium)**: Code smell, maintainability issues
+- **P3 (Low)**: Nice-to-have improvements
+
+## 8.3. Documentation Standards
+
+### 8.3.1. Code Documentation
+**Required:**
+- **Functions**: JSDoc/docstring cho public functions
+- **Classes**: Purpose, usage examples
+- **Complex Logic**: Inline comments giải thích "why"
+- **APIs**: OpenAPI/Swagger specs
+
+### 8.3.2. System Documentation
+**Living Documents:**
+- **Architecture Decision Records (ADRs)**: Cho mọi major decisions
+- **Runbooks**: Deployment, troubleshooting procedures
+- **API Documentation**: Auto-generated + updated với mỗi release
+- **Changelog**: Semantic versioning với detailed notes
+
+**Update Frequency:**
+- ADRs: Khi có architectural changes
+- Runbooks: Sau mỗi incident/deployment
+- API docs: Automated với mỗi deployment
+- README: Cập nhật với feature changes
+
+## 8.4. Dependency Management
+
+### 8.4.1. Version Control
+- **Lock Files**: Commit package-lock.json, yarn.lock, requirements.txt
+- **Automated Updates**: Dependabot/Renovate cho security patches
+- **Version Pinning**: Major versions pinned, minor/patch flexible
+- **Audit**: Monthly security audit của dependencies
+
+### 8.4.2. Deprecation Policy
+**Process:**
+1. **Announce**: Deprecation notice 3 months trước
+2. **Document**: Migration guide
+3. **Support**: Maintain old version trong deprecation period
+4. **Remove**: Sau 6 months, remove deprecated code
+
+## 8.5. Monitoring & Observability
+
+### 8.5.1. Logging Standards
+**Log Levels:**
+- **ERROR**: System errors requiring immediate action
+- **WARN**: Potential issues, degraded performance
+- **INFO**: Important business events
+- **DEBUG**: Detailed diagnostic information
+
+**Structured Logging:**
+- JSON format với consistent fields
+- Request ID tracing across services
+- User context (sanitized)
+- Retention: 30 ngày hot, 90 ngày cold storage
+
+### 8.5.2. Metrics Collection
+**Key Metrics:**
+- Response time (p50, p95, p99)
+- Error rates by endpoint
+- Database query performance
+- Cache hit rates
+- Business metrics (orders, revenue, etc.)
+
+**Dashboards:**
+- System health dashboard (24/7 monitoring)
+- Business metrics dashboard
+- Per-service dashboards
+- Custom alerts cho anomalies
+
+## 8.6. Development Workflow
+
+### 8.6.1. Git Workflow
+- **Branching**: GitFlow (main, develop, feature/*, hotfix/*)
+- **Commits**: Conventional commits (feat, fix, docs, refactor, etc.)
+- **PRs**: Template với checklist
+- **Protected Branches**: main, develop require reviews
+
+### 8.6.2. CI/CD Pipeline
+**Automated Checks:**
+- Linting & formatting
+- Unit tests + coverage check (≥80%)
+- Integration tests
+- Security scanning (Snyk, SonarQube)
+- Build verification
+- Automated deployment to staging
+
+**Quality Gates:**
+- All tests pass
+- Coverage ≥ 80%
+- No critical security vulnerabilities
+- No code smells severity > Major
+- Performance regression check
+
+---
+
+## Summary Checklist
+
+### Availability ✓
+- [x] Backup strategy defined (daily, retention policy)
+- [x] Downtime limit: ≤ 2h/tháng planned maintenance
+- [x] RTO/RPO defined
+- [x] High availability measures documented
+- [x] Monitoring and alerting setup
+
+### Maintainability ✓
+- [x] Code coverage requirement: ≥ 80%
+- [x] Refactoring guidelines established
+- [x] Documentation standards defined
+- [x] Code review process documented
+- [x] Tech debt management process
+- [x] CI/CD quality gates configured
