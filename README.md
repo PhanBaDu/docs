@@ -1,272 +1,71 @@
-[# 7. Availability (Tính Khả Dụng)
+# Test Case Document
 
-## 7.1. Mục Tiêu Availability
+## Test Summary
 
-### 7.1.1. Uptime Requirements
-- **Target Uptime**: 99.5% (tương đương ~3.6 giờ downtime/tháng)
-- **Planned Downtime**: ≤ 2 giờ/tháng cho bảo trì
-- **Unplanned Downtime**: ≤ 1.6 giờ/tháng
-- **Recovery Time Objective (RTO)**: ≤ 30 phút
-- **Recovery Point Objective (RPO)**: ≤ 24 giờ
+| Module Code | Quản lý Thông tin Giáo viên |
+|-------------|----------------------------|
+| **Test requirement** | 1. Thêm giáo viên mới<br/>2. Xem danh sách giáo viên<br/>3. Tìm kiếm giáo viên<br/>4. Cập nhật thông tin giáo viên<br/>5. Xóa giáo viên<br/>6. Xem chi tiết giáo viên<br/>7. Upload ảnh đại diện<br/>8. Quản lý trạng thái |
+| **Tester** | |
 
-### 7.1.2. Service Level Objectives (SLOs)
-| Dịch vụ | Availability Target | Downtime cho phép/tháng |
-|---------|-------------------|------------------------|
-| Core API | 99.5% | 3.6 giờ |
-| Admin Portal | 99.0% | 7.2 giờ |
-| Database | 99.9% | 43 phút |
-| File Storage | 99.5% | 3.6 giờ |
+### Test Statistics
 
-## 7.2. Backup Strategy
-
-### 7.2.1. Database Backup
-**Automated Daily Backup:**
-- **Thời gian**: 2:00 AM - 4:00 AM (giờ thấp điểm)
-- **Loại**: Full backup hàng ngày
-- **Retention**: 
-  - Daily backups: 7 ngày
-  - Weekly backups: 4 tuần
-  - Monthly backups: 12 tháng
-- **Storage**: Cloud storage với geo-redundancy
-
-**Incremental Backup:**
-- **Tần suất**: Mỗi 6 giờ
-- **Retention**: 48 giờ
-- **Mục đích**: Giảm RPO xuống còn 6 giờ
-
-### 7.2.2. File Storage Backup
-- **Tần suất**: Daily backup tại 3:00 AM
-- **Phương pháp**: Incremental backup
-- **Retention**: 30 ngày
-- **Verification**: Weekly restore test
-
-### 7.2.3. Configuration Backup
-- **Source Code**: Git repository với multiple remotes
-- **Configuration Files**: Version controlled, backed up daily
-- **Secrets**: Encrypted backup trong vault system
-- **Retention**: Indefinite cho configs quan trọng
-
-### 7.2.4. Backup Testing
-- **Restore Test**: Monthly full restore test
-- **Disaster Recovery Drill**: Quarterly
-- **Documentation**: Cập nhật runbook sau mỗi test
-
-## 7.3. Maintenance Windows
-
-### 7.3.1. Planned Maintenance
-- **Thời gian**: Chủ nhật, 1:00 AM - 3:00 AM
-- **Tần suất**: 2 lần/tháng (tối đa)
-- **Thông báo**: 72 giờ trước cho users
-- **Rollback Plan**: Sẵn sàng cho mọi deployment
-
-### 7.3.2. Emergency Maintenance
-- **Approval**: CTO/Tech Lead
-- **Notification**: Ngay lập tức qua email/SMS
-- **Maximum Duration**: 2 giờ
-- **Post-mortem**: Bắt buộc trong vòng 24 giờ
-
-## 7.4. High Availability Measures
-
-### 7.4.1. Infrastructure
-- **Load Balancer**: Active-active configuration
-- **Application Servers**: Minimum 2 instances
-- **Database**: Primary-replica setup với automatic failover
-- **Cache**: Redis cluster với sentinel
-
-### 7.4.2. Monitoring & Alerting
-- **Health Checks**: Every 30 seconds
-- **Alert Response Time**: < 5 phút
-- **On-call Rotation**: 24/7 coverage
-- **Escalation**: Automatic sau 15 phút
-
-### 7.4.3. Degraded Mode
-Khi một số services không khả dụng:
-- **Read-only mode**: Cho phép xem dữ liệu
-- **Cached responses**: Sử dụng cache khi DB down
-- **Queue requests**: Lưu requests để xử lý sau
+| Pass | Fail | Untested | N/A | Number of Test |
+|------|------|----------|-----|----------------|
+| 0    | 0    | 0        | 0   | 0              |
 
 ---
 
-# 8. Maintainability (Tính Bảo Trì)
+## Test Cases
 
-## 8.1. Code Quality Standards
+| ID | Test Case Description | Test Case Procedure | Expected Output | Inter-test case Dependence | Result | Test date | Note |
+|----|-----------------------|---------------------|-----------------|---------------------------|--------|-----------|------|
+| | **Function: Thêm giáo viên mới** | | | | | | |
+| | **Check FUNC - Thêm giáo viên mới** | | | | | | |
+| FUNC-AddTeacher-01 | Thêm giáo viên mới thành công | Tại Menu Ứng dụng (Admin):<br/>1. Click [Quản lý Giáo viên]<br/>2. Click [Thêm giáo viên mới]<br/>3. Nhập mã giáo viên (VD: GV001)<br/>4. Nhập họ tên<br/>5. Nhập ngày sinh<br/>6. Nhập giới tính<br/>7. Nhập số điện thoại<br/>8. Nhập email<br/>9. Nhập địa chỉ<br/>10. Chọn khoa<br/>11. Nhập các thông tin khác<br/>12. Click [Lưu] | Hiển thị thông báo: "Thêm giáo viên thành công!"<br/>Giáo viên được thêm vào hệ thống<br/>Tài khoản tự động được tạo | | | | |
+| FUNC-AddTeacher-02 | Thêm giáo viên thất bại - Mã trùng | Tại form thêm giáo viên:<br/>1. Nhập mã giáo viên đã tồn tại<br/>2. Nhập các thông tin khác<br/>3. Click [Lưu] | Hiển thị thông báo lỗi: "Mã giáo viên đã tồn tại!" | | | | |
+| FUNC-AddTeacher-03 | Thêm giáo viên thất bại - Email trùng | Tại form thêm giáo viên:<br/>1. Nhập email đã được sử dụng<br/>2. Nhập các thông tin khác<br/>3. Click [Lưu] | Hiển thị thông báo lỗi: "Email đã được sử dụng!" | | | | |
+| FUNC-AddTeacher-04 | Thêm giáo viên thất bại - Thiếu thông tin bắt buộc | Tại form thêm giáo viên:<br/>1. Không nhập họ tên<br/>2. Nhập các thông tin khác<br/>3. Click [Lưu] | Hiển thị thông báo lỗi: "Vui lòng nhập họ tên!" | | | | |
+| FUNC-AddTeacher-05 | Import danh sách giáo viên từ Excel | Tại màn hình quản lý:<br/>1. Click [Import từ Excel]<br/>2. Chọn file Excel có danh sách giáo viên<br/>3. Click [Import] | Hiển thị thông báo: "Import thành công X giáo viên!"<br/>Tất cả giáo viên trong file được thêm vào hệ thống | | | | |
+| | **Function: Xem danh sách giáo viên** | | | | | | |
+| | **Check FUNC - Xem danh sách giáo viên** | | | | | | |
+| FUNC-ListTeacher-01 | Xem danh sách giáo viên thành công | Tại Menu Ứng dụng:<br/>1. Click [Quản lý Giáo viên]<br/>2. Click [Danh sách giáo viên] | Hiển thị danh sách tất cả giáo viên:<br/>- Mã giáo viên<br/>- Họ tên<br/>- Khoa<br/>- Môn dạy<br/>- Trạng thái<br/>- Ảnh đại diện | | | | |
+| FUNC-ListTeacher-02 | Phân trang danh sách giáo viên | Tại màn hình danh sách:<br/>1. Có hơn 20 giáo viên<br/>2. Click [Sau] | Hiển thị trang tiếp theo với 20 giáo viên tiếp theo | | | | |
+| FUNC-ListTeacher-03 | Xem danh sách giáo viên theo khoa | Tại màn hình danh sách:<br/>1. Chọn khoa (VD: Khoa Toán)<br/>2. Click [Lọc] | Hiển thị chỉ các giáo viên thuộc khoa đó | | | | |
+| | **Function: Tìm kiếm giáo viên** | | | | | | |
+| | **Check FUNC - Tìm kiếm giáo viên** | | | | | | |
+| FUNC-SearchTeacher-01 | Tìm kiếm theo tên thành công | Tại màn hình danh sách:<br/>1. Nhập tên giáo viên vào ô tìm kiếm (VD: Nguyễn Văn A)<br/>2. Nhấn Enter | Hiển thị danh sách giáo viên có tên chứa từ khóa | | | | |
+| FUNC-SearchTeacher-02 | Tìm kiếm theo mã số | Tại màn hình danh sách:<br/>1. Nhập mã giáo viên (VD: GV001)<br/>2. Nhấn Enter | Hiển thị giáo viên có mã số đó | | | | |
+| FUNC-SearchTeacher-03 | Tìm kiếm theo môn dạy | Tại màn hình danh sách:<br/>1. Chọn môn dạy (VD: Toán)<br/>2. Click [Tìm kiếm] | Hiển thị danh sách giáo viên dạy môn đó | | | | |
+| FUNC-SearchTeacher-04 | Tìm kiếm theo khoa | Tại màn hình danh sách:<br/>1. Chọn khoa (VD: Khoa Toán)<br/>2. Click [Tìm kiếm] | Hiển thị danh sách giáo viên thuộc khoa đó | | | | |
+| FUNC-SearchTeacher-05 | Tìm kiếm nâng cao với nhiều tiêu chí | Tại màn hình tìm kiếm:<br/>1. Nhập tên<br/>2. Chọn khoa<br/>3. Chọn môn dạy<br/>4. Chọn trạng thái<br/>5. Click [Tìm kiếm] | Hiển thị danh sách giáo viên phù hợp với tất cả tiêu chí | | | | |
+| FUNC-SearchTeacher-06 | Tìm kiếm thất bại - Không tìm thấy | Tại màn hình danh sách:<br/>1. Nhập từ khóa không tồn tại<br/>2. Nhấn Enter | Hiển thị thông báo: "Không tìm thấy giáo viên phù hợp!" | | | | |
+| | **Function: Cập nhật thông tin giáo viên** | | | | | | |
+| | **Check FUNC - Cập nhật thông tin giáo viên** | | | | | | |
+| FUNC-UpdateTeacher-01 | Cập nhật thông tin giáo viên thành công | Tại màn hình danh sách:<br/>1. Chọn một giáo viên<br/>2. Click [Sửa]<br/>3. Sửa thông tin (VD: Đổi số điện thoại, địa chỉ)<br/>4. Click [Lưu] | Hiển thị thông báo: "Cập nhật thông tin giáo viên thành công!"<br/>Thông tin được cập nhật | | | | |
+| FUNC-UpdateTeacher-02 | Cập nhật thất bại - Mã giáo viên không được sửa | Tại form sửa:<br/>1. Sửa mã giáo viên<br/>2. Click [Lưu] | Field mã giáo viên bị disable hoặc hiển thị thông báo: "Mã giáo viên không được phép thay đổi!" | | | | |
+| FUNC-UpdateTeacher-03 | Cập nhật thất bại - Email trùng với giáo viên khác | Tại form sửa:<br/>1. Sửa email thành email đã được sử dụng bởi giáo viên khác<br/>2. Click [Lưu] | Hiển thị thông báo lỗi: "Email đã được sử dụng!" | | | | |
+| FUNC-UpdateTeacher-04 | Giáo viên tự cập nhật thông tin của mình | Tại Menu Ứng dụng (Giáo viên):<br/>1. Click [Thông tin cá nhân]<br/>2. Click [Sửa thông tin]<br/>3. Sửa thông tin (VD: Đổi số điện thoại)<br/>4. Click [Lưu] | Hiển thị thông báo: "Cập nhật thông tin thành công!"<br/>Thông tin được cập nhật | | | | |
+| | **Function: Xóa giáo viên** | | | | | | |
+| | **Check FUNC - Xóa giáo viên** | | | | | | |
+| FUNC-DeleteTeacher-01 | Xóa giáo viên thành công - Không có dữ liệu liên quan | Tại màn hình danh sách:<br/>1. Chọn giáo viên không có lớp, không có phân công<br/>2. Click [Xóa]<br/>3. Xác nhận xóa | Hiển thị thông báo: "Xóa giáo viên thành công!"<br/>Giáo viên bị xóa khỏi hệ thống | | | | |
+| FUNC-DeleteTeacher-02 | Xóa thất bại - Giáo viên có lớp đang dạy | Tại màn hình danh sách:<br/>1. Chọn giáo viên có lớp đang dạy<br/>2. Click [Xóa]<br/>3. Xác nhận xóa | Hiển thị thông báo lỗi: "Không thể xóa giáo viên này vì đang có lớp dạy! Vui lòng hủy phân công trước." | | | | |
+| FUNC-DeleteTeacher-03 | Xóa thất bại - Giáo viên có phân công | Tại màn hình danh sách:<br/>1. Chọn giáo viên có phân công giảng dạy<br/>2. Click [Xóa]<br/>3. Xác nhận xóa | Hiển thị thông báo lỗi: "Không thể xóa giáo viên này vì có phân công giảng dạy! Vui lòng hủy phân công trước." | | | | |
+| FUNC-DeleteTeacher-04 | Hủy xóa giáo viên | Tại màn hình danh sách:<br/>1. Chọn một giáo viên<br/>2. Click [Xóa]<br/>3. Click [Hủy] trong dialog xác nhận | Dialog đóng lại<br/>Giáo viên không bị xóa | | | | |
+| | **Function: Xem chi tiết giáo viên** | | | | | | |
+| | **Check FUNC - Xem chi tiết giáo viên** | | | | | | |
+| FUNC-ViewDetail-01 | Xem chi tiết giáo viên thành công | Tại màn hình danh sách:<br/>1. Chọn một giáo viên<br/>2. Click [Xem chi tiết] | Hiển thị đầy đủ thông tin giáo viên:<br/>- Thông tin cá nhân<br/>- Thông tin chuyên môn<br/>- Môn dạy<br/>- Lớp đang dạy<br/>- Lịch sử công tác<br/>- Đánh giá | | | | |
+| FUNC-ViewDetail-02 | Xem lịch sử công tác | Tại màn hình chi tiết:<br/>1. Click [Lịch sử công tác] | Hiển thị lịch sử:<br/>- Các lớp đã dạy<br/>- Các môn đã dạy<br/>- Thời gian<br/>- Đánh giá | | | | |
+| FUNC-ViewDetail-03 | Xem đánh giá giáo viên | Tại màn hình chi tiết:<br/>1. Click [Đánh giá] | Hiển thị:<br/>- Đánh giá từ học sinh<br/>- Đánh giá từ ban giám hiệu<br/>- Xếp loại<br/>- Lịch sử đánh giá | | | | |
+| | **Function: Upload ảnh đại diện** | | | | | | |
+| | **Check FUNC - Upload ảnh đại diện** | | | | | | |
+| FUNC-UploadAvatar-01 | Upload ảnh đại diện thành công | Tại màn hình quản lý giáo viên:<br/>1. Chọn một giáo viên<br/>2. Click [Upload ảnh đại diện]<br/>3. Chọn file ảnh<br/>4. Click [Lưu] | Ảnh đại diện được cập nhật<br/>Hiển thị ảnh mới | | | | |
+| FUNC-UploadAvatar-02 | Upload thất bại - File không phải ảnh | Tại form upload:<br/>1. Chọn file không phải ảnh (VD: PDF, Word)<br/>2. Click [Lưu] | Hiển thị thông báo lỗi: "File phải là ảnh! Chỉ chấp nhận: JPG, PNG, GIF" | | | | |
+| FUNC-UploadAvatar-03 | Upload thất bại - Ảnh quá lớn | Tại form upload:<br/>1. Chọn ảnh > 5MB<br/>2. Click [Lưu] | Hiển thị thông báo lỗi: "Ảnh quá lớn! Kích thước tối đa là 5MB" | | | | |
+| FUNC-UploadAvatar-04 | Xóa ảnh đại diện | Tại màn hình quản lý:<br/>1. Chọn giáo viên có ảnh đại diện<br/>2. Click [Xóa ảnh đại diện]<br/>3. Xác nhận | Hiển thị thông báo: "Xóa ảnh đại diện thành công!"<br/>Ảnh đại diện bị xóa<br/>Hiển thị ảnh mặc định | | | | |
+| | **Function: Quản lý trạng thái** | | | | | | |
+| | **Check FUNC - Quản lý trạng thái** | | | | | | |
+| FUNC-ManageStatus-01 | Kích hoạt tài khoản giáo viên thành công | Tại màn hình danh sách:<br/>1. Chọn giáo viên có trạng thái "Tạm ngưng"<br/>2. Click [Kích hoạt] | Hiển thị thông báo: "Kích hoạt tài khoản thành công!"<br/>Trạng thái chuyển thành "Đang làm việc"<br/>Giáo viên có thể đăng nhập | | | | |
+| FUNC-ManageStatus-02 | Tạm ngưng tài khoản giáo viên | Tại màn hình danh sách:<br/>1. Chọn giáo viên có trạng thái "Đang làm việc"<br/>2. Click [Tạm ngưng]<br/>3. Nhập lý do<br/>4. Xác nhận | Hiển thị thông báo: "Tạm ngưng tài khoản thành công!"<br/>Trạng thái chuyển thành "Tạm ngưng"<br/>Giáo viên không thể đăng nhập | | | | |
+| FUNC-ManageStatus-03 | Đánh dấu nghỉ việc | Tại màn hình danh sách:<br/>1. Chọn giáo viên<br/>2. Click [Nghỉ việc]<br/>3. Nhập lý do<br/>4. Xác nhận | Hiển thị thông báo: "Đánh dấu nghỉ việc thành công!"<br/>Trạng thái chuyển thành "Nghỉ việc"<br/>Giáo viên không thể đăng nhập<br/>Dữ liệu được lưu trữ | | | | |
+| FUNC-ManageStatus-04 | Xem lịch sử thay đổi trạng thái | Tại màn hình chi tiết giáo viên:<br/>1. Click [Lịch sử trạng thái] | Hiển thị lịch sử tất cả các lần thay đổi trạng thái:<br/>- Trạng thái cũ<br/>- Trạng thái mới<br/>- Thời gian thay đổi<br/>- Người thay đổi<br/>- Lý do | | | | |
 
-### 8.1.1. Test Coverage Requirements
-**Minimum Coverage:**
-- **Unit Tests**: ≥ 80% coverage
-- **Integration Tests**: ≥ 60% coverage
-- **Critical Paths**: 100% coverage
-- **New Code**: ≥ 85% coverage (không được giảm tổng coverage)
-
-**Coverage Tools:**
-- **Backend**: Jest/pytest với coverage reports
-- **Frontend**: Jest + React Testing Library
-- **CI/CD**: Automated coverage checks, fail build nếu < 80%
-
-### 8.1.2. Code Review Guidelines
-**Mandatory Reviews:**
-- Tối thiểu 1 reviewer cho mọi PR
-- 2 reviewers cho critical components
-- Tech Lead approval cho architectural changes
-
-**Review Checklist:**
-- [ ] Code follows style guide
-- [ ] Tests included và pass
-- [ ] No security vulnerabilities
-- [ ] Documentation updated
-- [ ] Performance impact assessed
-- [ ] Backward compatibility maintained
-
-### 8.1.3. Coding Standards
-**Style Guides:**
-- **JavaScript/TypeScript**: Airbnb style guide + ESLint
-- **Python**: PEP 8 + Black formatter
-- **SQL**: SQL Style Guide
-- **Enforcement**: Pre-commit hooks + CI checks
-
-## 8.2. Refactoring Guidelines
-
-### 8.2.1. Khi Nào Refactor
-**Triggers:**
-- Technical debt score > threshold
-- Code complexity metrics (cyclomatic complexity > 10)
-- Duplicate code > 3 lần
-- Performance bottlenecks identified
-- Before adding new features to legacy code
-
-### 8.2.2. Refactoring Process
-**Steps:**
-1. **Document**: Ghi chép current behavior
-2. **Tests**: Đảm bảo test coverage ≥ 80% trước refactor
-3. **Small Changes**: Incremental refactoring
-4. **Verify**: Run full test suite sau mỗi change
-5. **Review**: Code review bắt buộc
-6. **Deploy**: Canary deployment
-
-**Safe Refactoring Practices:**
-- Không thay đổi public APIs mà không deprecation notice
-- Maintain backward compatibility tối thiểu 2 versions
-- Feature flags cho changes lớn
-- Automated tests chạy liên tục
-
-### 8.2.3. Technical Debt Management
-**Tracking:**
-- Label PRs với "tech-debt" tag
-- Monthly tech debt review meeting
-- Allocate 20% sprint capacity cho tech debt
-
-**Prioritization:**
-- **P0 (Critical)**: Security issues, data corruption risks
-- **P1 (High)**: Performance issues, scalability blockers  
-- **P2 (Medium)**: Code smell, maintainability issues
-- **P3 (Low)**: Nice-to-have improvements
-
-## 8.3. Documentation Standards
-
-### 8.3.1. Code Documentation
-**Required:**
-- **Functions**: JSDoc/docstring cho public functions
-- **Classes**: Purpose, usage examples
-- **Complex Logic**: Inline comments giải thích "why"
-- **APIs**: OpenAPI/Swagger specs
-
-### 8.3.2. System Documentation
-**Living Documents:**
-- **Architecture Decision Records (ADRs)**: Cho mọi major decisions
-- **Runbooks**: Deployment, troubleshooting procedures
-- **API Documentation**: Auto-generated + updated với mỗi release
-- **Changelog**: Semantic versioning với detailed notes
-
-**Update Frequency:**
-- ADRs: Khi có architectural changes
-- Runbooks: Sau mỗi incident/deployment
-- API docs: Automated với mỗi deployment
-- README: Cập nhật với feature changes
-
-## 8.4. Dependency Management
-
-### 8.4.1. Version Control
-- **Lock Files**: Commit package-lock.json, yarn.lock, requirements.txt
-- **Automated Updates**: Dependabot/Renovate cho security patches
-- **Version Pinning**: Major versions pinned, minor/patch flexible
-- **Audit**: Monthly security audit của dependencies
-
-### 8.4.2. Deprecation Policy
-**Process:**
-1. **Announce**: Deprecation notice 3 months trước
-2. **Document**: Migration guide
-3. **Support**: Maintain old version trong deprecation period
-4. **Remove**: Sau 6 months, remove deprecated code
-
-## 8.5. Monitoring & Observability
-
-### 8.5.1. Logging Standards
-**Log Levels:**
-- **ERROR**: System errors requiring immediate action
-- **WARN**: Potential issues, degraded performance
-- **INFO**: Important business events
-- **DEBUG**: Detailed diagnostic information
-
-**Structured Logging:**
-- JSON format với consistent fields
-- Request ID tracing across services
-- User context (sanitized)
-- Retention: 30 ngày hot, 90 ngày cold storage
-
-### 8.5.2. Metrics Collection
-**Key Metrics:**
-- Response time (p50, p95, p99)
-- Error rates by endpoint
-- Database query performance
-- Cache hit rates
-- Business metrics (orders, revenue, etc.)
-
-**Dashboards:**
-- System health dashboard (24/7 monitoring)
-- Business metrics dashboard
-- Per-service dashboards
-- Custom alerts cho anomalies
-
-## 8.6. Development Workflow
-
-### 8.6.1. Git Workflow
-- **Branching**: GitFlow (main, develop, feature/*, hotfix/*)
-- **Commits**: Conventional commits (feat, fix, docs, refactor, etc.)
-- **PRs**: Template với checklist
-- **Protected Branches**: main, develop require reviews
-
-### 8.6.2. CI/CD Pipeline
-**Automated Checks:**
-- Linting & formatting
-- Unit tests + coverage check (≥80%)
-- Integration tests
-- Security scanning (Snyk, SonarQube)
-- Build verification
-- Automated deployment to staging
-
-**Quality Gates:**
-- All tests pass
-- Coverage ≥ 80%
-- No critical security vulnerabilities
-- No code smells severity > Major
-- Performance regression check
-
----
-
-## Summary Checklist
-
-### Availability ✓
-- [x] Backup strategy defined (daily, retention policy)
-- [x] Downtime limit: ≤ 2h/tháng planned maintenance
-- [x] RTO/RPO defined
-- [x] High availability measures documented
-- [x] Monitoring and alerting setup
-
-### Maintainability ✓
-- [x] Code coverage requirement: ≥ 80%
-- [x] Refactoring guidelines established
-- [x] Documentation standards defined
-- [x] Code review process documented
-- [x] Tech debt management process
-- [x] CI/CD quality gates configured
-](https://github.com/PhanBaDu/dacnpm/tree/main)
