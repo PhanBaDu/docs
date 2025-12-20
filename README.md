@@ -1,4 +1,4 @@
-# 7. Availability (Tính Khả Dụng)
+[# 7. Availability (Tính Khả Dụng)
 
 ## 7.1. Mục Tiêu Availability
 
@@ -269,3 +269,4 @@ Khi một số services không khả dụng:
 - [x] Code review process documented
 - [x] Tech debt management process
 - [x] CI/CD quality gates configured
+](https://github.com/PhanBaDu/dacnpm/tree/main)
