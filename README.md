@@ -1,52 +1,82 @@
-| ID   | Control Type                    | Mô tả                                           | Thuộc tính                                                    |
-|------|---------------------------------|-------------------------------------------------|---------------------------------------------------------------|
-| X-01 | [Tên cán bộ] Textbox           | Nhập vào tên cán bộ cần thêm.                  | Status = enable<br>Default = blank<br>Max-length = 100        |
-| X-02 | [Giới tính] Combobox           | Lựa chọn giới tính cán bộ.                      | Status = enable<br>Max-length = 20                            |
-| X-03 | [Ngày sinh] Datechoose         | Lựa chọn ngày sinh cán bộ.                      | Status = enable                                               |
-| X-04 | [Số điện thoại] Textbox        | Nhập vào số điện thoại cán bộ.                  | Status = enable<br>Default = blank<br>Max-length = 50         |
-| X-05 | [Hình ảnh] Choosefile          | Chọn hình ảnh đại diện.                         | Status = enable                                               |
-| X-06 | [Email] Textbox                | Nhập vào địa chỉ email cán bộ.                  | Status = enable<br>Default = blank<br>Max-length = 50         |
-| X-07 | [Địa chỉ] Textbox              | Nhập vào địa chỉ cán bộ.                        | Status = enable<br>Max-length = 100                           |
-| X-08 | [Nơi công tác] Textbox         | Nhập vào nơi công tác của cán bộ.               | Status = enable<br>Default = blank<br>Max-length = 100        |
-| X-09 | [Chức vụ] Textbox              | Nhập vào chức vụ của cán bộ.                    | Status = enable<br>Default = blank<br>Max-length = 50         |
-| X-10 | [OK] Button                    | Nút xác nhận thực hiện thao tác.                | Status = enable                                               |
-| X-11 | [Reset] Button                 | Nút xóa toàn bộ dữ liệu đã nhập.                | Status = enable                                               |
-| X-12 | [Hủy] Button                   | Nút hủy bỏ thao tác và đóng form.               | Status = enable                                               |
-| X-13 | [Ghi chú] Textarea             | Nhập ghi chú chi tiết về cán bộ.                | Status = enable<br>Default = blank<br>Max-length = 500        |
-| X-14 | [Mật khẩu] Password            | Nhập mật khẩu tài khoản.                        | Status = enable<br>Default = blank<br>Max-length = 50         |
-| X-15 | [Website] URL                  | Nhập địa chỉ website cá nhân.                   | Status = enable<br>Default = blank<br>Max-length = 100        |
-| X-16 | [Tuổi] Number                  | Nhập tuổi của cán bộ.                           | Status = enable<br>Min = 18<br>Max = 65                       |
-| X-17 | [Lương] Range                  | Chọn mức lương mong muốn.                       | Status = enable<br>Min = 5000000<br>Max = 50000000            |
-| X-18 | [Giờ làm việc] Time            | Chọn giờ bắt đầu làm việc.                      | Status = enable<br>Default = 08:00                            |
-| X-19 | [Tháng tuyển dụng] Month       | Chọn tháng dự kiến tuyển dụng.                  | Status = enable                                               |
-| X-20 | [Nhận tin] Checkbox            | Đồng ý nhận thông tin qua email.                | Status = enable<br>Default = unchecked                        |
-| X-21 | [Loại hợp đồng] Radio          | Chọn loại hợp đồng làm việc.                    | Status = enable<br>Options = Chính thức, Thử việc, Part-time  |
-| X-22 | [Phòng ban] Dropdown           | Chọn phòng ban công tác.                        | Status = enable<br>Default = blank                            |
-| X-23 | [Kỹ năng] Listbox              | Chọn các kỹ năng của cán bộ.                    | Status = enable<br>Multiple = true                            |
-| X-24 | [Tìm kiếm] Search              | Tìm kiếm cán bộ trong hệ thống.                 | Status = enable<br>Default = blank                            |
-| X-25 | [CV file] File                 | Upload file CV của cán bộ.                      | Status = enable<br>Accept = .pdf,.doc,.docx                   |
-| X-26 | [Màu đồng phục] Color          | Chọn màu đồng phục yêu thích.                   | Status = enable<br>Default = #000000                          |
-| X-27 | [Đánh giá] Rating              | Đánh giá năng lực cán bộ.                       | Status = enable<br>Max = 5<br>Default = 0                     |
-| X-28 | [Chứng chỉ] Tag-input          | Nhập các chứng chỉ đã có.                       | Status = enable<br>Default = blank                            |
-| X-29 | [Kích hoạt] Switch             | Bật/tắt trạng thái kích hoạt tài khoản.         | Status = enable<br>Default = off                              |
-| X-30 | [Ảnh CCCD] Image               | Upload ảnh căn cước công dân.                   | Status = enable<br>Accept = .jpg,.png                         |
-| X-31 | [Trình độ] Cascader            | Chọn trình độ học vấn theo cấp.                 | Status = enable                                               |
-| X-32 | [Quyền truy cập] Transfer      | Phân quyền truy cập các module.                 | Status = enable                                               |
-| X-33 | [Mã OTP] OTP-input             | Nhập mã OTP xác thực.                           | Status = enable<br>Length = 6                                 |
-| X-34 | [Ký tên] Signature             | Ký tên điện tử xác nhận.                        | Status = enable<br>Format = base64                            |
-| X-35 | [Vị trí làm việc] Map-picker   | Chọn vị trí làm việc trên bản đồ.               | Status = enable                                               |
-| X-36 | [Mô tả công việc] Rich-text    | Nhập mô tả công việc chi tiết.                  | Status = enable<br>Default = blank<br>Max-length = 2000       |
-| X-37 | [Code mẫu] Code-editor         | Nhập code mẫu kỹ năng lập trình.                | Status = enable<br>Language = javascript                      |
-| X-38 | [Đã kết hôn] Toggle            | Chọn tình trạng hôn nhân.                       | Status = enable<br>Default = off                              |
-| X-39 | [Thâm niên] Slider             | Chọn số năm kinh nghiệm.                        | Status = enable<br>Min = 0<br>Max = 30                        |
-| X-40 | [Bằng cấp] Tree-select         | Chọn bằng cấp từ cấu trúc phân cấp.             | Status = enable                                               |
-| X-41 | [Tài liệu] File-multiple       | Upload nhiều tài liệu liên quan.                | Status = enable<br>Accept = .pdf,.doc,.docx,.xlsx             |
-| X-42 | [Xác thực] Captcha             | Xác thực người dùng không phải robot.           | Status = enable                                               |
-| X-43 | [Ghi âm] Audio                 | Ghi âm giọng nói giới thiệu.                    | Status = enable<br>Max-duration = 60s                         |
-| X-44 | [Video giới thiệu] Video       | Quay video giới thiệu bản thân.                 | Status = enable<br>Max-duration = 120s                        |
-| X-45 | [Quét QR] QR-scanner           | Quét mã QR thẻ nhân viên.                       | Status = enable                                               |
-| X-46 | [Nhập giọng nói] Voice-input   | Nhập liệu bằng giọng nói.                       | Status = enable<br>Language = vi-VN                           |
-| X-47 | [Chụp ảnh] Camera-capture      | Chụp ảnh trực tiếp từ camera.                   | Status = enable<br>Resolution = 1920x1080                     |
-| X-48 | [Loại nhân viên] Segmented     | Chọn loại nhân viên.                            | Status = enable<br>Options = Fulltime, Parttime, Freelance    |
-| X-49 | [Ghi chú Markdown] Markdown    | Nhập ghi chú định dạng Markdown.                | Status = enable<br>Default = blank                            |
-| X-50 | [ID ẩn] Hidden                 | Lưu trữ ID cán bộ (không hiển thị).             | Status = enable<br>Value = auto-generate                      |
+| ID   | Mô tả test case | Các bước thực hiện | Kết quả mong đợi |
+|------|-----------------|-------------------|------------------|
+| **[Tên cán bộ] Textbox** |
+| X-01 | Mở màn hình Thêm cán bộ thành công | Tại Menu Ứng dụng: Click Thêm cán bộ<br>Tại màn hình Danh sách cán bộ: Click Thêm<br>Tại màn hình thêm cán bộ: | Hiển thị màn hình Thêm cán bộ |
+| X-02 | Không nhập tên cán bộ | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Tên cán bộ] textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập tên cán bộ!"<br>Trỏ chuột tại [Tên cán bộ] textbox. |
+| X-03 | Nhập tên cán bộ quá số kí tự cho phép | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 100 ký tự tại [Tên cán bộ] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 100 ký tự!"<br>Trỏ chuột tại [Tên cán bộ]textbox. |
+| X-04 | Nhập tên cán bộ toàn kí tự trống. | Tại màn hình Thêm cán bộ:<br>1. Nhập toàn bộ kí tự trống tại [Tên cán bộ] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập toàn bộ ký tự trống!"<br>Trỏ chuột tại [Tên cán bộ]textbox. |
+| X-05 | Nhập tên cán bộ có kí tự đặc biệt. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Tên cán bộ] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự đặc biệt!"<br>Trỏ chuột tại [Tên cán bộ]textbox. |
+| X-06 | Nhập tên cán bộ có ký tự số. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự số tại [Tên cán bộ] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự số!"<br>Trỏ chuột tại [Tên cán bộ]textbox. |
+| **[Giới tính] Combobox** |
+| X-07 | Không chọn giới tính | Tại màn hình Thêm cán bộ:<br>1. Không chọn giới tính tại [Giới tính] Combobox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn giới tính!"<br>Trỏ chuột tại [Giới tính] Combobox. |
+| **[Ngày sinh] Datechoose** |
+| X-08 | Không nhập ngày sinh | Tại màn hình Thêm cán bộ:<br>1. Không chọn ngày sinh tại [Ngày sinh] Datechoose.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn năm sinh!"<br>Trỏ chuột tại [Ngày sinh] Datechoose. |
+| X-09 | Chọn ngày sinh trong tương lai | Tại màn hình Thêm cán bộ:<br>1. Chọn ngày sinh > ngày hiện tại tại [Ngày sinh] Datechoose.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Ngày sinh không hợp lệ!"<br>Trỏ chuột tại [Ngày sinh] Datechoose. |
+| X-10 | Chọn ngày sinh dưới 18 tuổi | Tại màn hình Thêm cán bộ:<br>1. Chọn ngày sinh < 18 tuổi tại [Ngày sinh] Datechoose.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Cán bộ phải từ 18 tuổi trở lên!"<br>Trỏ chuột tại [Ngày sinh] Datechoose. |
+| **[Số điện thoại] Textbox** |
+| X-11 | Không nhập số điện thoại | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Số điện thoại] textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập số điện thoại!"<br>Trỏ chuột tại [Số điện thoại] textbox. |
+| X-12 | Nhập quá số ký tự số điện thoại cho phép | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 50 ký tự tại [Số điện thoại] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 50 ký tự!"<br>Trỏ chuột tại [Số điện thoại]textbox. |
+| X-13 | Nhập toàn ký tự trống. | Tại màn hình Thêm cán bộ:<br>1. Nhập toàn bộ là ký tự trống tại [Số điện thoại] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập toàn bộ là ký tự trống!"<br>Trỏ chuột tại [Số điện thoại]textbox. |
+| X-14 | Nhập số điện thoại có ký tự là chữ cái. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự chữ cái tại [Số điện thoại] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập chữ cái!"<br>Trỏ chuột tại [Số điện thoại]textbox. |
+| X-15 | Nhập số điện thoại có ký tự đặc biệt. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Số điện thoại] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự đặc biệt!"<br>Trỏ chuột tại [Số điện thoại]textbox. |
+| X-16 | Nhập số điện thoại không đúng định dạng | Tại màn hình Thêm cán bộ:<br>1. Nhập số điện thoại < 10 số tại [Số điện thoại] textbox<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Số điện thoại không hợp lệ!"<br>Trỏ chuột tại [Số điện thoại] textbox. |
+| **[Hình ảnh] Choosefile** |
+| X-17 | Không chọn hình ảnh | Tại màn hình Thêm cán bộ:<br>1. Không chọn hình ảnh đại diện.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn hình ảnh!"<br>Trỏ chuột tại [Hình ảnh] Choosefile. |
+| X-18 | Chọn file không đúng định dạng | Tại màn hình Thêm cán bộ:<br>1. Chọn file không phải jpg, png tại [Hình ảnh] Choosefile.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn file ảnh hợp lệ!"<br>Trỏ chuột tại [Hình ảnh] Choosefile. |
+| X-19 | Chọn file ảnh quá dung lượng cho phép | Tại màn hình Thêm cán bộ:<br>1. Chọn file ảnh > 5MB tại [Hình ảnh] Choosefile.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Dung lượng file quá lớn!"<br>Trỏ chuột tại [Hình ảnh] Choosefile. |
+| **[Email] Textbox** |
+| X-20 | Không nhập địa chỉ email | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Email] textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập địa chỉ email!"<br>Trỏ chuột tại [Email] textbox. |
+| X-21 | Nhập quá số ký tự email cho phép | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 50 ký tự tại [Email] textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 50 ký tự!"<br>Trỏ chuột vào [Email]textbox. |
+| X-22 | Nhập sai định dạng email | Tại màn hình Thêm cán bộ:<br>1. Nhập sai định dạng email tại [Email]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập lại địa chỉ email!"<br>Trỏ chuột tại [Email] textbox. |
+| X-23 | Nhập email không có ký tự @ | Tại màn hình Thêm cán bộ:<br>1. Nhập email thiếu @ tại [Email]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Email không hợp lệ!"<br>Trỏ chuột tại [Email] textbox. |
+| **[Địa chỉ] Textbox** |
+| X-24 | Không nhập địa chỉ | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu địa chỉ tại [Địa chỉ]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập địa chỉ!"<br>Trỏ chuột tại [Địa chỉ] textbox. |
+| X-25 | Nhập quá số ký tự địa chỉ cho phép | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 100 ký tự tại [Địa chỉ]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 100 ký tự!"<br>Trỏ chuột tại [Địa chỉ] textbox. |
+| X-26 | Nhập địa chỉ có ký tự đặc biệt. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Địa chỉ]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự đặc biệt!"<br>Trỏ chuột tại [Địa chỉ]textbox. |
+| **[Nơi công tác] Textbox** |
+| X-27 | Nhập quá số ký tự nơi công tác cho phép. | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 100 ký tự tại [Nơi công tác]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 100 ký tự!"<br>Trỏ chuột tại [Nơi công tác]textbox. |
+| X-28 | Nhập nơi công tác có ký tự đặc biệt. | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Nơi công tác]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự đặc biệt!"<br>Trỏ chuột tại [Nơi công tác]textbox. |
+| **[Chức vụ] Textbox** |
+| X-29 | Không nhập chức vụ | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu chức vụ tại [Chức vụ]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập chức vụ!"<br>Trỏ chuột tại [Chức vụ] textbox. |
+| X-30 | Nhập chức vụ có ký tự đặc biệt | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Chức vụ]textbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập ký tự đặc biệt!"<br>Trỏ chuột tại [Chức vụ] textbox. |
+| **[Ghi chú] Textarea** |
+| X-31 | Nhập quá số ký tự ghi chú cho phép. | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 500 ký tự tại [Ghi chú] Textarea.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 500 ký tự!"<br>Trỏ chuột tại [Ghi chú] Textarea. |
+| X-32 | Nhập ghi chú toàn ký tự trống | Tại màn hình Thêm cán bộ:<br>1. Nhập toàn ký tự trống tại [Ghi chú] Textarea.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập nội dung!"<br>Trỏ chuột tại [Ghi chú] Textarea. |
+| **[Mật khẩu] Password** |
+| X-33 | Không nhập mật khẩu | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Mật khẩu] Password.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập mật khẩu!"<br>Trỏ chuột tại [Mật khẩu] Password. |
+| X-34 | Nhập mật khẩu quá ngắn | Tại màn hình Thêm cán bộ:<br>1. Nhập mật khẩu < 8 ký tự tại [Mật khẩu] Password.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Mật khẩu phải từ 8 ký tự trở lên!"<br>Trỏ chuột tại [Mật khẩu] Password. |
+| X-35 | Nhập mật khẩu không đúng yêu cầu | Tại màn hình Thêm cán bộ:<br>1. Nhập mật khẩu không có chữ hoa, số, ký tự đặc biệt tại [Mật khẩu] Password.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Mật khẩu phải chứa chữ hoa, số và ký tự đặc biệt!"<br>Trỏ chuột tại [Mật khẩu] Password. |
+| **[Website] URL** |
+| X-36 | Không nhập URL website | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Website] URL.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập địa chỉ website!"<br>Trỏ chuột tại [Website] URL. |
+| X-37 | Nhập URL không đúng định dạng | Tại màn hình Thêm cán bộ:<br>1. Nhập URL không có http/https tại [Website] URL.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "URL không hợp lệ!"<br>Trỏ chuột tại [Website] URL. |
+| X-38 | Nhập URL quá dài | Tại màn hình Thêm cán bộ:<br>1. Nhập quá 100 ký tự tại [Website] URL.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng không nhập quá 100 ký tự!"<br>Trỏ chuột tại [Website] URL. |
+| **[Tuổi] Number** |
+| X-39 | Không nhập tuổi | Tại màn hình Thêm cán bộ:<br>1. Không nhập dữ liệu vào [Tuổi] Number.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng nhập tuổi!"<br>Trỏ chuột tại [Tuổi] Number. |
+| X-40 | Nhập tuổi < 18 | Tại màn hình Thêm cán bộ:<br>1. Nhập tuổi < 18 tại [Tuổi] Number.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Tuổi phải từ 18 trở lên!"<br>Trỏ chuột tại [Tuổi] Number. |
+| X-41 | Nhập tuổi > 65 | Tại màn hình Thêm cán bộ:<br>1. Nhập tuổi > 65 tại [Tuổi] Number.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Tuổi không được vượt quá 65!"<br>Trỏ chuột tại [Tuổi] Number. |
+| X-42 | Nhập tuổi có ký tự chữ | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự chữ tại [Tuổi] Number.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chỉ nhập số!"<br>Trỏ chuột tại [Tuổi] Number. |
+| **[Lương] Range** |
+| X-43 | Không chọn mức lương | Tại màn hình Thêm cán bộ:<br>1. Không chọn giá trị tại [Lương] Range.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn mức lương!"<br>Trỏ chuột tại [Lương] Range. |
+| X-44 | Chọn mức lương < min | Tại màn hình Thêm cán bộ:<br>1. Chọn mức lương < 5.000.000 tại [Lương] Range.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Lương tối thiểu là 5.000.000đ!"<br>Trỏ chuột tại [Lương] Range. |
+| **[Giờ làm việc] Time** |
+| X-45 | Không chọn giờ làm việc | Tại màn hình Thêm cán bộ:<br>1. Không chọn giờ tại [Giờ làm việc] Time.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn giờ làm việc!"<br>Trỏ chuột tại [Giờ làm việc] Time. |
+| X-46 | Chọn giờ ngoài giờ hành chính | Tại màn hình Thêm cán bộ:<br>1. Chọn giờ < 6h hoặc > 22h tại [Giờ làm việc] Time.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Giờ làm việc không hợp lệ!"<br>Trỏ chuột tại [Giờ làm việc] Time. |
+| **[Tháng tuyển dụng] Month** |
+| X-47 | Không chọn tháng tuyển dụng | Tại màn hình Thêm cán bộ:<br>1. Không chọn tháng tại [Tháng tuyển dụng] Month.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn tháng tuyển dụng!"<br>Trỏ chuột tại [Tháng tuyển dụng] Month. |
+| X-48 | Chọn tháng trong quá khứ | Tại màn hình Thêm cán bộ:<br>1. Chọn tháng < tháng hiện tại tại [Tháng tuyển dụng] Month.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Không thể chọn tháng trong quá khứ!"<br>Trỏ chuột tại [Tháng tuyển dụng] Month. |
+| **[Nhận tin] Checkbox** |
+| X-49 | Không chọn checkbox nhận tin | Tại màn hình Thêm cán bộ:<br>1. Không check [Nhận tin] Checkbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng đồng ý nhận thông tin!"<br>Trỏ chuột tại [Nhận tin] Checkbox. |
+| **[Loại hợp đồng] Radio** |
+| X-50 | Không chọn loại hợp đồng | Tại màn hình Thêm cán bộ:<br>1. Không chọn radio tại [Loại hợp đồng] Radio.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn loại hợp đồng!"<br>Trỏ chuột tại [Loại hợp đồng] Radio. |
+| **[Phòng ban] Dropdown** |
+| X-51 | Không chọn phòng ban | Tại màn hình Thêm cán bộ:<br>1. Không chọn giá trị tại [Phòng ban] Dropdown.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn phòng ban!"<br>Trỏ chuột tại [Phòng ban] Dropdown. |
+| **[Kỹ năng] Listbox** |
+| X-52 | Không chọn kỹ năng | Tại màn hình Thêm cán bộ:<br>1. Không chọn item nào tại [Kỹ năng] Listbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng chọn ít nhất 1 kỹ năng!"<br>Trỏ chuột tại [Kỹ năng] Listbox. |
+| X-53 | Chọn quá số lượng kỹ năng cho phép | Tại màn hình Thêm cán bộ:<br>1. Chọn > 10 kỹ năng tại [Kỹ năng] Listbox.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Chỉ được chọn tối đa 10 kỹ năng!"<br>Trỏ chuột tại [Kỹ năng] Listbox. |
+| **[Tìm kiếm] Search** |
+| X-54 | Tìm kiếm với từ khóa trống | Tại màn hình Thêm cán bộ:<br>1. Không nhập từ khóa tại [Tìm kiếm] Search.<br>2. Nhấn nút tìm kiếm. | Hiển thị thông báo: "Vui lòng nhập từ khóa tìm kiếm!"<br>Trỏ chuột tại [Tìm kiếm] Search. |
+| X-55 | Tìm kiếm với ký tự đặc biệt | Tại màn hình Thêm cán bộ:<br>1. Nhập ký tự đặc biệt tại [Tìm kiếm] Search.<br>2. Nhấn nút tìm kiếm. | Hiển thị thông báo: "Từ khóa không hợp lệ!"<br>Trỏ chuột tại [Tìm kiếm] Search. |
+| **[CV file] File** |
+| X-56 | Không upload file CV | Tại màn hình Thêm cán bộ:<br>1. Không chọn file tại [CV file] File.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Vui lòng upload file CV!"<br>Trỏ chuột tại [CV file] File. |
+| X-57 | Upload file không đúng định dạng | Tại màn hình Thêm cán bộ:<br>1. Chọn file không phải pdf, doc, docx tại [CV file] File.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo: "Chỉ chấp nhận file pdf, doc, docx!"<br>Trỏ chuột tại [CV file] File. |
+| X-58 | Upload file quá dung lượng | Tại màn hình Thêm cán bộ:<br>1. Chọn file > 10MB tại [CV file] File.<br>2. Nhấn [Thêm] button. | Hiển thị thông báo:
