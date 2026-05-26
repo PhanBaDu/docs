@@ -1,202 +1,388 @@
-# PROMPT 1: PHÂN TÍCH DATABASE
+# 📊 API Flow — BookingKhachSan
 
-## Tổng quan Database: LiteCommerceDB
-
-### 1. Loại dự án phù hợp
-
-Database **LiteCommerceDB** được thiết kế cho **Hệ thống Thương mại điện tử (E-commerce)** hoặc **Quản lý bán hàng trực tuyến**.
-
-**Đặc điểm nhận biết:**
-- Có quản lý sản phẩm với nhiều thuộc tính và hình ảnh
-- Có quy trình đơn hàng từ đặt hàng → xử lý → vận chuyển → hoàn thành
-- Có phân quyền người dùng (Employees với RoleNames)
-- Có quản lý khách hàng với tài khoản đăng nhập
-- Có quản lý vận chuyển (Shippers)
+> **Kiến trúc**: Clean Architecture (4 layers)
+> **Pattern**: CQRS + MediatR + Repository
 
 ---
 
-### 2. Quy trình nghiệp vụ được hỗ trợ
+## 🏗️ Tổng quan kiến trúc
 
-#### 2.1. Quy trình Quản lý Sản phẩm
-- **Nhập hàng từ nhà cung cấp**: Suppliers → Products
-- **Phân loại sản phẩm**: Categories → Products
-- **Quản lý thông tin chi tiết**: ProductAttributes, ProductPhotos
-- **Cập nhật trạng thái bán**: IsSelling flag
-
-#### 2.2. Quy trình Bán hàng trực tuyến
-```
-Khách hàng đặt hàng (Orders)
-    ↓
-Nhân viên xác nhận (Employees → AcceptTime)
-    ↓
-Phân công vận chuyển (Shippers)
-    ↓
-Giao hàng (ShippedTime)
-    ↓
-Hoàn thành (FinishedTime)
-```
-
-#### 2.3. Quy trình Quản lý Khách hàng
-- Đăng ký tài khoản (Customers)
-- Quản lý thông tin cá nhân
-- Quản lý địa chỉ giao hàng theo tỉnh (Provinces)
-- Khóa/mở khóa tài khoản (IsLocked)
-
-#### 2.4. Quy trình Quản lý Nhân sự
-- Quản lý thông tin nhân viên (Employees)
-- Phân quyền theo vai trò (RoleNames)
-- Theo dõi trạng thái làm việc (IsWorking)
-- Gán nhân viên xử lý đơn hàng
-
----
-
-### 3. Vai trò từng nhóm bảng
-
-#### **Nhóm 1: Danh mục cơ bản (Master Data)**
-
-| Bảng | Vai trò | Mục đích |
-|------|---------|----------|
-| `Categories` | Phân loại sản phẩm | Tổ chức sản phẩm theo danh mục |
-| `Suppliers` | Quản lý nhà cung cấp | Theo dõi nguồn hàng |
-| `Provinces` | Danh sách tỉnh/thành | Chuẩn hóa địa chỉ |
-| `Shippers` | Đơn vị vận chuyển | Quản lý giao hàng |
-| `OrderStatus` | Trạng thái đơn hàng | Theo dõi quy trình đơn |
-
-**Đặc điểm:**
-- Dữ liệu ít thay đổi
-- Được sử dụng làm dữ liệu tham chiếu
-- Hỗ trợ dropdown, combobox trong giao diện
-
----
-
-#### **Nhóm 2: Quản lý Sản phẩm (Product Management)**
-
-| Bảng | Vai trò | Mối quan hệ |
-|------|---------|-------------|
-| `Products` | Thông tin sản phẩm chính | Liên kết Categories, Suppliers |
-| `ProductPhotos` | Hình ảnh sản phẩm | 1 Product - N Photos |
-| `ProductAttributes` | Thuộc tính mở rộng | 1 Product - N Attributes |
-
-**Chức năng hỗ trợ:**
-- Quản lý catalog sản phẩm
-- Hiển thị đa phương tiện (nhiều ảnh)
-- Mô tả chi tiết sản phẩm (size, màu sắc, chất liệu...)
-- Quản lý giá và đơn vị tính
-- Đánh dấu sản phẩm đang/ngừng bán
-
----
-
-#### **Nhóm 3: Giao dịch Bán hàng (Transaction)**
-
-| Bảng | Vai trò | Dữ liệu lưu trữ |
-|------|---------|-----------------|
-| `Orders` | Đơn hàng (Header) | Thông tin chung: khách, nhân viên, shipper, thời gian, trạng thái |
-| `OrderDetails` | Chi tiết đơn hàng (Lines) | Sản phẩm, số lượng, giá bán |
-
-**Thiết kế:**
-- Mô hình Master-Detail (1-N)
-- Lưu trữ lịch sử giao dịch
-- Theo dõi timeline: OrderTime → AcceptTime → ShippedTime → FinishedTime
-- Hỗ trợ tính toán doanh thu, thống kê
-
----
-
-#### **Nhóm 4: Quản lý Người dùng (User Management)**
-
-| Bảng | Vai trò | Đối tượng |
-|------|---------|-----------|
-| `Customers` | Khách hàng | Người mua hàng, có tài khoản |
-| `Employees` | Nhân viên | Người quản lý, xử lý đơn |
-
-**Tính năng bảo mật:**
-- Lưu trữ Email/Password
-- Phân quyền (RoleNames cho Employees)
-- Quản lý trạng thái (IsLocked, IsWorking)
-- Lưu thông tin liên hệ, địa chỉ
-
----
-
-### 4. Sơ đồ mối quan hệ chính
-
-```
-Suppliers ──┐
-            ├──→ Products ──┬──→ ProductPhotos
-Categories ─┘              └──→ ProductAttributes
-                                      ↓
-Customers ──→ Orders ──→ OrderDetails ─┘
-                ↓
-            ┌───┼───┬────────┐
-            ↓   ↓   ↓        ↓
-      Employees Shippers OrderStatus Provinces
+```mermaid
+graph LR
+    Client["🌐 Client\n(Postman / Browser)"]
+    API["BookingHotel.API\nControllers"]
+    APP["BookingHotel.Application\nHandlers / Commands / Queries"]
+    INFRA["BookingHotel.Infrastructure\nRepositories / Services"]
+    DB[("💾 Database\nSQLite / SQL Server")]
+    
+    Client -->|"HTTP Request"| API
+    API -->|"mediator.Send(command)"| APP
+    APP -->|"repository.DoSomething()"| INFRA
+    INFRA -->|"EF Core"| DB
+    DB -->|"Entity"| INFRA
+    INFRA -->|"Entity"| APP
+    APP -->|"DTO"| API
+    API -->|"JSON Response"| Client
 ```
 
 ---
 
-### 5. Đánh giá Database
+## 1️⃣ API Quản lý Hotel
 
-#### **Ưu điểm:**
+### `GET /api/hotels` — Danh sách + Tìm kiếm & Lọc
 
-1. **Chuẩn hóa tốt (3NF)**
-   - Không có dữ liệu dư thừa
-   - Khóa chính/ngoại rõ ràng
-   - Dễ bảo trì, mở rộng
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant M as IMediator
+    participant H as GetHotelsHandler.cs
+    participant R as HotelRepository.cs
+    participant DB as 💾 Database
 
-2. **Hỗ trợ đầy đủ quy trình E-commerce**
-   - Quản lý sản phẩm chi tiết
-   - Theo dõi đơn hàng từng bước
-   - Phân quyền người dùng
+    C->>CTL: GET /api/hotels?city=HCM&minStar=3&minPrice=500
+    Note over CTL: GetAll([FromQuery] HotelFilterParams filter)
+    CTL->>M: mediator.Send(new GetHotelsQuery(filter))
+    M->>H: Handle(GetHotelsQuery, CancellationToken)
+    H->>R: hotelRepo.GetAllAsync(filter)
+    Note over R: - Include Images<br/>- Include Rooms (where !IsDeleted)<br/>- Filter: SearchTerm, City, Country<br/>- Filter: MinStar, MaxStar<br/>- Filter: MinPrice, MaxPrice<br/>- Filter: AmenityIds<br/>- Phân trang: Skip/Take
+    R->>DB: SELECT * FROM Hotels WHERE ...
+    DB-->>R: List<Hotel>
+    R-->>H: PagedResult<Hotel>
+    Note over H: items.Select(h => h.ToSummaryDto())<br/>→ chuyển Hotel sang HotelSummaryDto
+    H-->>CTL: PagedResult<HotelSummaryDto>
+    CTL-->>C: 200 OK { items, totalCount, page, pageSize, totalPages }
+```
 
-3. **Thiết kế linh hoạt**
-   - ProductAttributes: Mở rộng thuộc tính không giới hạn
-   - ProductPhotos: Hỗ trợ nhiều ảnh, sắp xếp thứ tự
-   - OrderStatus: Dễ tùy chỉnh quy trình
+### `GET /api/hotels/{id}` — Chi tiết Hotel
 
-4. **Hỗ trợ báo cáo**
-   - Có timestamp chi tiết (OrderTime, AcceptTime, ShippedTime, FinishedTime)
-   - Lưu giá bán tại thời điểm (SalePrice trong OrderDetails)
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant H as GetHotelByIdHandler.cs
+    participant R as HotelRepository.cs
+    participant DB as 💾 Database
 
-#### **Hạn chế & Đề xuất cải tiến:**
+    C->>CTL: GET /api/hotels/{id}
+    CTL->>H: mediator.Send(new GetHotelByIdQuery(id))
+    H->>R: hotelRepo.GetByIdAsync(id, includeDetails: true)
+    Note over R: Include: Images, AmenityMappings+Amenity<br/>Include: Rooms+RoomType
+    R->>DB: SELECT với JOIN
+    DB-->>R: Hotel entity (đầy đủ)
+    R-->>H: Hotel?
+    alt Hotel == null
+        H-->>CTL: throw NotFoundException("Hotel", id)
+        CTL-->>C: 404 Not Found
+    else Hotel tồn tại
+        H-->>CTL: hotel.ToDto() → HotelDto
+        CTL-->>C: 200 OK { id, name, city, images[], amenities[], minRoomPrice }
+    end
+```
 
-| Vấn đề | Giải pháp đề xuất |
-|--------|-------------------|
-| Chưa có Giỏ hàng | Thêm bảng `Cart`, `CartItems` |
-| Chưa quản lý Thanh toán | Thêm bảng `Payments` (phương thức, trạng thái) |
-| Chưa có Đánh giá sản phẩm | Thêm bảng `ProductReviews` (rating, comment) |
-| Chưa có Khuyến mãi | Thêm bảng `Promotions`, `Coupons` |
-| Chưa quản lý Tồn kho | Thêm trường `StockQuantity` vào `Products` |
-| Chưa có Lịch sử giá | Thêm bảng `PriceHistory` |
-| Chưa có Wishlist | Thêm bảng `Wishlists` |
+### `POST /api/hotels` — Tạo Hotel
 
-#### **Mức độ phù hợp:**
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant H as CreateHotelHandler.cs
+    participant R as HotelRepository.cs
+    participant DB as 💾 Database
 
-- **Phù hợp cho:** Website bán hàng vừa và nhỏ, cửa hàng trực tuyến
-- **Quy mô:** 1,000 - 10,000 sản phẩm, 10,000 - 100,000 đơn hàng/năm
-- **Loại hình:** B2C (Business to Customer)
+    C->>CTL: POST /api/hotels\n{ name, address, city, starRating... }
+    CTL->>H: mediator.Send(CreateHotelCommand)
+    Note over H: Tạo new Hotel entity<br/>gán tất cả fields từ command
+    H->>R: hotelRepo.CreateAsync(hotel)
+    R->>DB: INSERT INTO Hotels
+    DB-->>R: Hotel (đã có Id, CreatedAt)
+    R-->>H: Hotel entity
+    H-->>CTL: created.ToDto() → HotelDto
+    CTL-->>C: 201 Created\nLocation: /api/hotels/{newId}\n{ id, name, ... }
+```
+
+### `PUT /api/hotels/{id}` — Cập nhật Hotel
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant H as UpdateHotelHandler.cs
+    participant R as HotelRepository.cs
+    participant DB as 💾 Database
+
+    C->>CTL: PUT /api/hotels/{id}\n{ name, city, starRating... }
+    CTL->>H: mediator.Send(new UpdateHotelCommand(id, ...))
+    H->>R: hotelRepo.GetByIdAsync(id)
+    alt Không tồn tại
+        H-->>CTL: throw NotFoundException
+        CTL-->>C: 404 Not Found
+    else Tồn tại
+        Note over H: Cập nhật từng field<br/>Set UpdatedAt = DateTime.UtcNow
+        H->>R: hotelRepo.UpdateAsync(hotel)
+        R->>DB: UPDATE Hotels SET ...
+        DB-->>R: OK
+        H-->>CTL: hotel.ToDto()
+        CTL-->>C: 200 OK { id, name, ... }
+    end
+```
+
+### `DELETE /api/hotels/{id}` — Xóa mềm Hotel
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant H as DeleteHotelHandler.cs
+    participant R as HotelRepository.cs
+    participant DB as 💾 Database
+
+    C->>CTL: DELETE /api/hotels/{id}
+    CTL->>H: mediator.Send(new DeleteHotelCommand(id))
+    H->>R: hotelRepo.ExistsAsync(id)
+    alt Không tồn tại
+        H-->>CTL: throw NotFoundException
+        CTL-->>C: 404 Not Found
+    else Tồn tại
+        H->>R: hotelRepo.SoftDeleteAsync(id)
+        Note over R: ExecuteUpdateAsync<br/>SET IsDeleted = true<br/>(không xóa vật lý)
+        R->>DB: UPDATE Hotels SET IsDeleted=1 WHERE Id=...
+        H-->>CTL: void
+        CTL-->>C: 204 No Content
+    end
+```
+
+### `POST/DELETE /api/hotels/{id}/amenities/{amenityId}` — Gắn / Gỡ Tiện ích
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as HotelsController.cs
+    participant H as AddHotelAmenityHandler.cs
+    participant R as AmenityRepository.cs
+    participant DB as 💾 Database
+
+    C->>CTL: POST /api/hotels/{id}/amenities/{amenityId}
+    CTL->>H: mediator.Send(new AddHotelAmenityCommand(hotelId, amenityId))
+    H->>R: hotelRepo.ExistsAsync(hotelId)
+    H->>R: amenityRepo.AddToHotelAsync(hotelId, amenityId)
+    Note over R: Kiểm tra đã tồn tại chưa<br/>Nếu chưa: INSERT INTO AmenityMappings
+    R->>DB: INSERT INTO AmenityMappings (HotelId, AmenityId)
+    CTL-->>C: 204 No Content
+```
 
 ---
 
-### 6. Kết luận
+## 2️⃣ API Quản lý Room
 
-Database **LiteCommerceDB** là một thiết kế **cơ bản nhưng đầy đủ** cho hệ thống quản lý bán hàng trực tuyến. 
+### `GET /api/hotels/{hotelId}/rooms` — Danh sách phòng
 
-**Điểm mạnh:**
-- Cấu trúc rõ ràng, dễ hiểu
-- Hỗ trợ đầy đủ quy trình bán hàng cơ bản
-- Có khả năng mở rộng tốt
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as RoomsController.cs
+    participant H as GetRoomsByHotelHandler.cs
+    participant R as RoomRepository.cs
+    participant DB as 💾 Database
 
-**Phù hợp cho:**
-- Đồ án môn học
-- Dự án startup nhỏ
-- Website bán hàng đơn giản
+    C->>CTL: GET /api/hotels/{hotelId}/rooms
+    CTL->>H: mediator.Send(new GetRoomsByHotelQuery(hotelId))
+    H->>R: roomRepo.GetByHotelIdAsync(hotelId)
+    Note over R: Include RoomType, Include Images<br/>WHERE HotelId = ? AND IsDeleted = false
+    R->>DB: SELECT với JOIN
+    DB-->>R: List<Room>
+    R-->>H: IEnumerable<Room>
+    Note over H: rooms.Select(r => r.ToSummaryDto())
+    H-->>CTL: IEnumerable<RoomSummaryDto>
+    CTL-->>C: 200 OK [ { id, roomNumber, roomTypeName, pricePerNight, isAvailable }... ]
+```
 
-**Cần bổ sung nếu triển khai thực tế:**
-- Giỏ hàng
-- Thanh toán trực tuyến
-- Đánh giá sản phẩm
-- Quản lý tồn kho chi tiết
-- Khuyến mãi/Voucher
+### `POST /api/hotels/{hotelId}/rooms` — Tạo phòng mới
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as RoomsController.cs
+    participant H as CreateRoomHandler.cs
+    participant HR as HotelRepository.cs
+    participant RR as RoomRepository.cs
+    participant DB as 💾 Database
+
+    C->>CTL: POST /api/hotels/{hotelId}/rooms\n{ roomTypeId, roomNumber, pricePerNight, capacity }
+    CTL->>H: mediator.Send(new CreateRoomCommand(hotelId, ...))
+    H->>HR: hotelRepo.ExistsAsync(hotelId)
+    alt Hotel không tồn tại
+        H-->>CTL: throw NotFoundException
+        CTL-->>C: 404 Not Found
+    else Hotel tồn tại
+        Note over H: Tạo new Room entity
+        H->>RR: roomRepo.CreateAsync(room)
+        RR->>DB: INSERT INTO Rooms
+        DB-->>RR: Room (với Id mới)
+        H-->>CTL: room.ToDto() → RoomDto
+        CTL-->>C: 201 Created { id, roomNumber, pricePerNight, ... }
+    end
+```
 
 ---
 
-**Ngày phân tích:** 28/01/2026  
-**Phiên bản Database:** LiteCommerceDB_Update2026
+## 3️⃣ API Quản lý RoomType
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as RoomTypesController.cs
+    participant H as Handler (Commands/Queries)
+    participant R as RoomTypeRepository.cs
+    participant DB as 💾 Database
+
+    Note over CTL,R: GET /api/room-types
+    C->>CTL: GET /api/room-types
+    CTL->>H: GetRoomTypesQuery
+    H->>R: repo.GetAllAsync()
+    R->>DB: SELECT * FROM RoomTypes
+    DB-->>H: List<RoomType>
+    H-->>CTL: IEnumerable<RoomTypeDto>
+    CTL-->>C: 200 OK [ { id, name, description }... ]
+
+    Note over CTL,R: POST /api/room-types
+    C->>CTL: POST { name, description }
+    CTL->>H: CreateRoomTypeCommand
+    Note over H: new RoomType { Name, Description }
+    H->>R: repo.CreateAsync(entity)
+    R->>DB: INSERT INTO RoomTypes
+    CTL-->>C: 201 Created { id, name, description }
+
+    Note over CTL,R: DELETE /api/room-types/{id}
+    C->>CTL: DELETE /api/room-types/{id}
+    CTL->>H: DeleteRoomTypeCommand(id)
+    H->>R: repo.GetByIdAsync(id) → kiểm tra tồn tại
+    H->>R: repo.DeleteAsync(id)
+    R->>DB: ExecuteDeleteAsync (xóa vật lý)
+    CTL-->>C: 204 No Content
+```
+
+---
+
+## 4️⃣ API Quản lý Amenity (Tiện ích)
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as AmenitiesController.cs
+    participant H as Handler (Commands/Queries)
+    participant R as AmenityRepository.cs
+    participant DB as 💾 Database
+
+    Note over C,DB: GET /api/amenities
+    C->>CTL: GET /api/amenities
+    CTL->>H: GetAmenitiesQuery
+    H->>R: repo.GetAllAsync()
+    R->>DB: SELECT * FROM Amenities
+    CTL-->>C: 200 OK [ { id, name, icon }... ]
+
+    Note over C,DB: POST /api/amenities
+    C->>CTL: POST { name: "Wifi", icon: "wifi-icon" }
+    CTL->>H: CreateAmenityCommand
+    Note over H: new Amenity { Name, Icon }
+    H->>R: repo.CreateAsync(entity)
+    R->>DB: INSERT INTO Amenities
+    CTL-->>C: 201 Created { id, name, icon }
+
+    Note over C,DB: PUT /api/amenities/{id}
+    C->>CTL: PUT { name, icon }
+    CTL->>H: UpdateAmenityCommand(id, name, icon)
+    H->>R: GetByIdAsync → kiểm tra tồn tại
+    Note over H: Set Name, Icon, UpdatedAt
+    H->>R: UpdateAsync
+    R->>DB: UPDATE Amenities SET ...
+    CTL-->>C: 200 OK { id, name, icon }
+```
+
+---
+
+## 5️⃣ API Upload ảnh (Cloudinary)
+
+```mermaid
+sequenceDiagram
+    participant C as 🌐 Client
+    participant CTL as UploadController.cs
+    participant M as IMediator
+    participant H as UploadImageHandler.cs
+    participant S as CloudinaryService.cs
+    participant CLD as ☁️ Cloudinary CDN
+
+    C->>CTL: POST /api/upload/hotel/{hotelId}\nContent-Type: multipart/form-data\n[file binary]
+    Note over CTL: UploadHotelImage(hotelId, IFormFile file)<br/>Gọi UploadFile(file, folder="hotels/{hotelId}")
+    CTL->>M: mediator.Send(new UploadImageCommand(stream, fileName, folder))
+    M->>H: Handle(UploadImageCommand)
+    H->>S: cloudinary.UploadAsync(stream, fileName, folder)
+    Note over S: Tạo ImageUploadParams<br/>{ File, Folder, UseFilename=true }
+    S->>CLD: HTTP Upload to Cloudinary API
+    CLD-->>S: { SecureUrl, PublicId }
+    S-->>H: UploadResultDto(url, publicId)
+    H-->>CTL: UploadResultDto
+    CTL-->>C: 200 OK { url: "https://res.cloudinary.com/...", publicId: "hotels/abc/img123" }
+```
+
+---
+
+## 📋 Bảng tóm tắt tất cả Endpoints
+
+| Method | Endpoint | Controller | Handler | Repository | Return |
+|--------|----------|------------|---------|------------|--------|
+| GET | `/api/hotels` | HotelsController | GetHotelsHandler | HotelRepository | `PagedResult<HotelSummaryDto>` |
+| GET | `/api/hotels/{id}` | HotelsController | GetHotelByIdHandler | HotelRepository | `HotelDto` |
+| POST | `/api/hotels` | HotelsController | CreateHotelHandler | HotelRepository | `HotelDto` (201) |
+| PUT | `/api/hotels/{id}` | HotelsController | UpdateHotelHandler | HotelRepository | `HotelDto` |
+| DELETE | `/api/hotels/{id}` | HotelsController | DeleteHotelHandler | HotelRepository | `204 NoContent` |
+| POST | `/api/hotels/{id}/amenities/{aid}` | HotelsController | AddHotelAmenityHandler | Amenity+HotelRepo | `204 NoContent` |
+| DELETE | `/api/hotels/{id}/amenities/{aid}` | HotelsController | RemoveHotelAmenityHandler | Amenity+HotelRepo | `204 NoContent` |
+| GET | `/api/hotels/{hotelId}/rooms` | RoomsController | GetRoomsByHotelHandler | RoomRepository | `IEnumerable<RoomSummaryDto>` |
+| GET | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | GetRoomByIdHandler | RoomRepository | `RoomDto` |
+| POST | `/api/hotels/{hotelId}/rooms` | RoomsController | CreateRoomHandler | Room+HotelRepo | `RoomDto` (201) |
+| PUT | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | UpdateRoomHandler | RoomRepository | `RoomDto` |
+| DELETE | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | DeleteRoomHandler | RoomRepository | `204 NoContent` |
+| GET | `/api/room-types` | RoomTypesController | GetRoomTypesHandler | RoomTypeRepository | `IEnumerable<RoomTypeDto>` |
+| GET | `/api/room-types/{id}` | RoomTypesController | GetRoomTypeByIdHandler | RoomTypeRepository | `RoomTypeDto` |
+| POST | `/api/room-types` | RoomTypesController | CreateRoomTypeHandler | RoomTypeRepository | `RoomTypeDto` (201) |
+| PUT | `/api/room-types/{id}` | RoomTypesController | UpdateRoomTypeHandler | RoomTypeRepository | `RoomTypeDto` |
+| DELETE | `/api/room-types/{id}` | RoomTypesController | DeleteRoomTypeHandler | RoomTypeRepository | `204 NoContent` |
+| GET | `/api/amenities` | AmenitiesController | GetAmenitiesHandler | AmenityRepository | `IEnumerable<AmenityDto>` |
+| GET | `/api/amenities/{id}` | AmenitiesController | GetAmenityByIdHandler | AmenityRepository | `AmenityDto` |
+| POST | `/api/amenities` | AmenitiesController | CreateAmenityHandler | AmenityRepository | `AmenityDto` (201) |
+| PUT | `/api/amenities/{id}` | AmenitiesController | UpdateAmenityHandler | AmenityRepository | `AmenityDto` |
+| DELETE | `/api/amenities/{id}` | AmenitiesController | DeleteAmenityHandler | AmenityRepository | `204 NoContent` |
+| POST | `/api/upload/hotel/{hotelId}` | UploadController | UploadImageHandler | CloudinaryService | `UploadResultDto` |
+| POST | `/api/upload/room/{roomId}` | UploadController | UploadImageHandler | CloudinaryService | `UploadResultDto` |
+
+---
+
+## 🔁 Flow chung (áp dụng cho tất cả API)
+
+```mermaid
+flowchart TD
+    A["🌐 HTTP Request"] --> B["Controller\nvalidate route params\ngọi mediator.Send()"]
+    B --> C{{"MediatR\ntìm Handler phù hợp"}}
+    C --> D["Handler\nchứa business logic\ngọi Repository"]
+    D --> E{Cần kiểm tra tồn tại?}
+    E -->|Có| F["Repository.ExistsAsync()\nhoặc GetByIdAsync()"]
+    F --> G{Tồn tại?}
+    G -->|Không| H["throw NotFoundException\n→ 404 Not Found"]
+    G -->|Có| I["Thực hiện thao tác\nCreate / Update / Delete"]
+    E -->|Không| I
+    I --> J["Repository gọi\nEF Core (DbContext)"]
+    J --> K[("💾 Database")]
+    K --> L["Trả về Entity"]
+    L --> M["Handler map Entity\n→ DTO (record)"]
+    M --> N["Controller trả về\nActionResult / IActionResult"]
+    N --> O["🌐 JSON Response"]
+```
+
+---
+
+> **Ghi chú thiết kế:**
+> - **Soft Delete**: Hotel và Room không xóa vật lý, chỉ set `IsDeleted = true`. EF Core `HasQueryFilter` tự động lọc.
+> - **NotFoundException**: Được throw từ Handler, sẽ được xử lý bởi `ExceptionMiddleware` để trả về 404.
+> - **CQRS**: Commands (thay đổi dữ liệu) và Queries (đọc dữ liệu) tách biệt hoàn toàn.
+> - **Nested Route**: Room nằm dưới Hotel (`/api/hotels/{hotelId}/rooms`) để thể hiện quan hệ sở hữu.
