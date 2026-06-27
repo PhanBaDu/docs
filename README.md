@@ -1,308 +1,148 @@
-# 🐳 Docker Cheat Sheet
+# 🐧 Linux Path Cheatsheet
+## Cấu Trúc Thư Mục Gốc Trong Linux
+
+> Trong Linux, mọi thứ đều bắt đầu từ **`/`** (root directory — thư mục gốc).  
+> Đây là "ổ C:\" của Linux, nhưng chỉ có **một** thư mục gốc duy nhất cho toàn hệ thống.
 
 ---
 
-## 📦 Installation & Version
+## 📂 Tổng Quan Cây Thư Mục
 
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker --version` | Xem version Docker |
-| `docker info` | Hiển thị thông tin toàn hệ thống |
-| `docker version` | Chi tiết version client & server |
-
----
-
-## 🖼️ Images
-
-### 🔍 Pull & Search
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker pull <image>` | Pull image từ registry |
-| `docker pull <image>:<tag>` | Pull image theo tag cụ thể |
-| `docker search <term>` | Tìm kiếm image trên Docker Hub |
-
-### 📋 List & Inspect
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker images` | Liệt kê tất cả image local |
-| `docker images -a` | Bao gồm cả intermediate images |
-| `docker inspect <image>` | Xem metadata chi tiết của image |
-
-### 🔧 Build
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker build -t <n>:<tag> .` | Build từ Dockerfile ở thư mục hiện tại |
-| `docker build -f Dockerfile.dev .` | Build từ Dockerfile cụ thể |
-| `docker build --no-cache -t <n> .` | Build không dùng cache |
-
-### 🗑️ Remove Images
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker rmi <image>` | Xóa một image |
-| `docker rmi $(docker images -q)` | Xóa tất cả image |
-| `docker image prune` | Xóa dangling images |
-| `docker image prune -a` | Xóa tất cả image không dùng |
-
----
-
-## 📦 Containers
-
-### ▶️ Run
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker run <image>` | Chạy một container |
-| `docker run -d <image>` | Chạy ở chế độ nền (detached) |
-| `docker run -it <image> bash` | Chạy tương tác với bash |
-| `docker run --name <n> <image>` | Đặt tên cho container |
-| `docker run -p 8080:80 <image>` | Map port host:container |
-| `docker run -v /host/path:/container/path <image>` | Bind mount volume |
-| `docker run --rm <image>` | Tự xóa container sau khi thoát |
-| `docker run -e VAR=value <image>` | Đặt biến môi trường |
-| `docker run --env-file .env <image>` | Load biến môi trường từ file |
-| `docker run --network <network> <image>` | Kết nối vào một network |
-
-### 📊 List
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker ps` | Liệt kê container đang chạy |
-| `docker ps -a` | Liệt kê tất cả container (kể cả đã dừng) |
-| `docker ps -q` | Chỉ hiển thị container IDs |
-
-### ⏯️ Start / Stop / Restart
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker start <container>` | Khởi động container đã dừng |
-| `docker stop <container>` | Dừng container nhẹ nhàng |
-| `docker kill <container>` | Buộc dừng container |
-| `docker restart <container>` | Khởi động lại container |
-| `docker pause <container>` | Tạm dừng container |
-| `docker unpause <container>` | Tiếp tục container |
-
-### 🔎 Inspect & Logs
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker logs <container>` | Xem logs của container |
-| `docker logs -f <container>` | Theo dõi logs realtime |
-| `docker logs --tail 100 <container>` | Xem 100 dòng log cuối |
-| `docker inspect <container>` | Xem thông tin chi tiết container |
-| `docker stats` | Thống kê tài nguyên realtime |
-| `docker top <container>` | Xem các process đang chạy trong container |
-| `docker port <container>` | Xem mapping port |
-
-### 💻 Execute & Attach
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker exec -it <container> bash` | Mở shell trong container đang chạy |
-| `docker exec <container> <cmd>` | Chạy lệnh trong container |
-| `docker attach <container>` | Gắn vào STDIN/STDOUT của container |
-
-### 📁 Copy Files
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker cp <container>:/path/file ./local` | Copy file từ container ra host |
-| `docker cp ./local <container>:/path/file` | Copy file từ host vào container |
-
-### 🗑️ Remove Containers
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker rm <container>` | Xóa container đã dừng |
-| `docker rm -f <container>` | Buộc xóa container đang chạy |
-| `docker rm $(docker ps -aq)` | Xóa tất cả container |
-| `docker container prune` | Xóa tất cả container đã dừng |
-
----
-
-## 💾 Volumes
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker volume create <n>` | Tạo một named volume |
-| `docker volume ls` | Liệt kê tất cả volume |
-| `docker volume inspect <n>` | Xem chi tiết volume |
-| `docker volume rm <n>` | Xóa một volume |
-| `docker volume prune` | Xóa tất cả volume không dùng |
-| `docker run -v myvolume:/app/data <image>` | Mount named volume vào container |
-
----
-
-## 🌐 Networks
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker network create <n>` | Tạo một network |
-| `docker network ls` | Liệt kê các network |
-| `docker network inspect <n>` | Xem chi tiết network |
-| `docker network rm <n>` | Xóa một network |
-| `docker network prune` | Xóa tất cả network không dùng |
-| `docker network connect <network> <container>` | Kết nối container vào network |
-| `docker network disconnect <network> <container>` | Ngắt kết nối container khỏi network |
-
-### 🔌 Common Network Drivers
-
-| Driver | Mô Tả |
-|--------|--------|
-| `bridge` | Network mặc định, cô lập (các container trên cùng host) |
-| `host` | Container dùng chung network với host |
-| `none` | Không có networking |
-
----
-
-## 🐙 Docker Compose
-
-### Các Lệnh Chính
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker compose up` | Khởi động các service |
-| `docker compose up -d` | Khởi động ở chế độ nền |
-| `docker compose up --build` | Rebuild image trước khi khởi động |
-| `docker compose down` | Dừng và xóa containers |
-| `docker compose down -v` | Dừng, xóa containers và volumes |
-| `docker compose ps` | Liệt kê các service đang chạy |
-| `docker compose logs` | Xem logs tất cả service |
-| `docker compose logs -f <service>` | Theo dõi logs của một service |
-| `docker compose exec <svc> bash` | Mở shell trong một service |
-| `docker compose build` | Build/rebuild các service |
-| `docker compose pull` | Pull image mới nhất |
-| `docker compose restart <service>` | Restart một service |
-| `docker compose stop` | Dừng service (không xóa) |
-| `docker compose start` | Khởi động service đã dừng |
-| `docker compose config` | Kiểm tra và xem cấu hình compose |
-
-### 📄 Ví Dụ `docker-compose.yml`
-
-```yaml
-version: "3.9"
-
-services:
-  web:
-    build: .
-    ports:
-      - "8080:80"
-    environment:
-      - NODE_ENV=production
-    depends_on:
-      - db
-    volumes:
-      - .:/app
-    networks:
-      - app-net
-
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_PASSWORD: secret
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - app-net
-
-volumes:
-  db-data:
-
-networks:
-  app-net:
+```
+/
+├── /bin
+├── /boot
+├── /dev
+├── /etc
+├── /home
+├── /lib
+├── /media
+├── /mnt
+├── /opt
+├── /proc
+├── /root
+├── /run
+├── /sbin
+├── /srv
+├── /sys
+├── /tmp
+├── /usr
+└── /var
 ```
 
 ---
 
-## 📝 Dockerfile Reference
+## 📋 Bảng Chi Tiết Từng Thư Mục
 
-| Instruction | Chức Năng |
-|-------------|-----------|
-| `FROM node:20-alpine` | Chỉ định base image |
-| `WORKDIR /app` | Đặt thư mục làm việc |
-| `COPY package*.json ./` | Copy file dependency |
-| `RUN npm install` | Chạy lệnh trong quá trình build |
-| `COPY . .` | Copy toàn bộ source code |
-| `EXPOSE 3000` | Khai báo port (không publish) |
-| `ENV NODE_ENV=production` | Đặt biến môi trường |
-| `ARG VERSION=1.0` | Tham số build-time |
-| `VOLUME ["/data"]` | Khai báo điểm mount volume |
-| `USER node` | Chuyển sang non-root user |
-| `CMD ["node", "server.js"]` | Lệnh mặc định (có thể override) |
-| `ENTRYPOINT ["node"]` | Entrypoint cố định |
-| `HEALTHCHECK --interval=30s CMD curl -f http://localhost/ \|\| exit 1` | Kiểm tra sức khỏe container |
-
-> **CMD vs ENTRYPOINT:** `ENTRYPOINT` đặt executable; `CMD` cung cấp tham số mặc định. Khi cả hai được đặt, các tham số `CMD` được truyền vào `ENTRYPOINT`.
-
----
-
-## 🏪 Registry & Docker Hub
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker login` | Đăng nhập Docker Hub |
-| `docker login <registry-url>` | Đăng nhập private registry |
-| `docker logout` | Đăng xuất |
-| `docker tag <image> <user>/<repo>:<tag>` | Tag một image |
-| `docker push <user>/<repo>:<tag>` | Push lên registry |
-| `docker pull <user>/<repo>:<tag>` | Pull từ registry |
+| Đường Dẫn | Tên Tiếng Anh | Giải Thích (EN) | Giải Thích (VI) |
+|-----------|---------------|-----------------|-----------------|
+| `/bin` | Binary | Essential user commands | Chứa các lệnh cơ bản cho người dùng như `ls`, `cp`, `mv`, `cat` — lệnh nào cũng cần dùng hàng ngày |
+| `/boot` | Boot | Boot loader files | Chứa các file khởi động hệ thống, bao gồm Linux kernel (`vmlinuz`) và GRUB bootloader |
+| `/dev` | Device | Device files | Chứa file đại diện cho các thiết bị phần cứng: ổ cứng (`/dev/sda`), USB, màn hình, v.v. |
+| `/etc` | Et Cetera | System configuration files | Chứa toàn bộ file cấu hình hệ thống: cài đặt mạng, user, password, phần mềm cài sẵn |
+| `/home` | Home | User home directories | Thư mục cá nhân của từng user. Ví dụ: `/home/john` — giống "My Documents" trong Windows |
+| `/lib` | Library | Essential shared libraries | Chứa thư viện dùng chung cho các lệnh trong `/bin` và `/sbin` — giống `.dll` trong Windows |
+| `/media` | Media | Removable media mount points | Điểm gắn thiết bị lưu trữ ngoài: USB, CD/DVD, thẻ nhớ được tự động mount vào đây |
+| `/mnt` | Mount | Temporary mount points | Điểm gắn thủ công tạm thời: dùng khi bạn tự mount ổ cứng, phân vùng, hoặc network drive |
+| `/opt` | Optional | Optional software packages | Chứa phần mềm cài thêm từ bên ngoài (không qua package manager), ví dụ: Chrome, VSCode |
+| `/proc` | Process | Process and kernel information | Thư mục ảo (không có trên ổ cứng thật), chứa thông tin về các tiến trình đang chạy và kernel |
+| `/root` | Root | Root user's home directory | Thư mục home riêng của user `root` (admin). Khác với `/home` — chỉ dành cho superuser |
+| `/run` | Run | Runtime data | Chứa dữ liệu runtime tạm thời: PID files, socket files — được tạo lại mỗi lần khởi động |
+| `/sbin` | System Binary | System administration commands | Chứa lệnh quản trị hệ thống chỉ dành cho root: `fdisk`, `iptables`, `reboot`, `shutdown` |
+| `/srv` | Service | Service data | Chứa dữ liệu của các service đang chạy, ví dụ: web server lưu file HTML vào `/srv/www` |
+| `/sys` | System | Kernel and hardware information | Thư mục ảo cung cấp thông tin về phần cứng và kernel theo thời gian thực |
+| `/tmp` | Temporary | Temporary files | Chứa file tạm thời, bị xóa tự động khi restart. Mọi user đều có quyền ghi vào đây |
+| `/usr` | Unix System Resources | User applications and data | Chứa phần lớn phần mềm cài qua package manager: `/usr/bin`, `/usr/lib`, `/usr/share` |
+| `/var` | Variable | Variable data (logs, cache, etc.) | Chứa dữ liệu thay đổi liên tục: log hệ thống (`/var/log`), cache, email, database files |
 
 ---
 
-## 🧹 System & Cleanup
+## 🔍 Giải Thích Chi Tiết Từng Thư Mục Quan Trọng
 
-### Disk Usage
+### `/etc` — Cấu Hình Hệ Thống
+Đây là nơi bạn sẽ vào nhiều nhất khi cần chỉnh sửa cấu hình.
 
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker system df` | Xem dung lượng disk đang dùng |
-| `docker system prune` | Xóa tất cả dữ liệu không dùng |
-| `docker system prune -a` | Xóa tất cả dữ liệu không dùng (kể cả images) |
-| `docker system prune -a --volumes` | Xóa tất cả kể cả volumes |
-
-### Individual Pruning
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker container prune` | Xóa container đã dừng |
-| `docker image prune -a` | Xóa image không dùng |
-| `docker volume prune` | Xóa volume không dùng |
-| `docker network prune` | Xóa network không dùng |
+| File / Thư Mục | Chức Năng |
+|----------------|-----------|
+| `/etc/passwd` | Danh sách tất cả user trong hệ thống |
+| `/etc/shadow` | Mật khẩu đã mã hóa của các user |
+| `/etc/hosts` | Mapping IP ↔ hostname thủ công |
+| `/etc/fstab` | Cấu hình tự động mount ổ cứng khi khởi động |
+| `/etc/nginx/` | Cấu hình web server Nginx |
+| `/etc/ssh/` | Cấu hình SSH server |
+| `/etc/crontab` | Lịch chạy tự động (cron jobs) |
 
 ---
 
-## 💡 Useful Tips & Tricks
+### `/var` — Dữ Liệu Động
+Nơi lưu log và dữ liệu thay đổi theo thời gian.
 
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container>` | Lấy IP address của container |
-| `docker run --rm -it ubuntu bash` | Chạy lệnh một lần và tự xóa |
-| `docker export <container> > backup.tar` | Export container thành file tar |
-| `docker import backup.tar <image-name>` | Import container từ file tar |
-| `docker save -o myimage.tar <image>` | Lưu image thành file tar |
-| `docker load -i myimage.tar` | Load image từ file tar |
-| `docker history <image>` | Xem các layer của image |
-| `docker logs -f --timestamps <container>` | Theo dõi logs kèm timestamp |
-| `docker run --memory="512m" --cpus="1.5" <image>` | Giới hạn tài nguyên container |
+| File / Thư Mục | Chức Năng |
+|----------------|-----------|
+| `/var/log/` | Tất cả file log hệ thống |
+| `/var/log/syslog` | Log chung của hệ thống |
+| `/var/log/auth.log` | Log đăng nhập, xác thực |
+| `/var/log/nginx/` | Log của Nginx web server |
+| `/var/cache/` | Cache của các phần mềm |
+| `/var/lib/` | Dữ liệu của các ứng dụng (database, v.v.) |
+| `/var/mail/` | Email của user trong hệ thống |
 
 ---
 
-## 🏷️ Common Flags Reference
+### `/usr` — Phần Mềm Người Dùng
+Nơi phần lớn phần mềm cài đặt thông qua `apt`, `yum`, `dnf`.
 
-| Flag | Mô Tả |
-|------|--------|
-| `-d` | Chế độ nền (detached) |
-| `-it` | Interactive + pseudo-TTY |
-| `-p host:container` | Map port |
-| `-v host:container` | Volume / bind mount |
-| `-e KEY=VAL` | Biến môi trường |
-| `--name` | Đặt tên container |
-| `--rm` | Xóa container sau khi thoát |
-| `--network` | Kết nối vào một network |
-| `--restart` | Restart policy (`always`, `unless-stopped`, `on-failure`) |
-| `--memory` | Giới hạn bộ nhớ (vd: `512m`) |
-| `--cpus` | Giới hạn CPU (vd: `1.5`) |
-| `--user` | Đặt user (vd: `1000:1000`) |
+| Thư Mục | Chức Năng |
+|---------|-----------|
+| `/usr/bin/` | Lệnh của các phần mềm cài thêm (không phải lệnh hệ thống cốt lõi) |
+| `/usr/sbin/` | Lệnh quản trị của phần mềm cài thêm |
+| `/usr/lib/` | Thư viện của phần mềm cài thêm |
+| `/usr/share/` | File dùng chung: tài liệu, icon, theme |
+| `/usr/local/` | Phần mềm cài thủ công (biên dịch từ source) |
+
+---
+
+### `/proc` — Thông Tin Tiến Trình (Ảo)
+Không phải file thật — đây là interface để xem thông tin kernel.
+
+| File | Chức Năng |
+|------|-----------|
+| `/proc/cpuinfo` | Thông tin CPU |
+| `/proc/meminfo` | Thông tin RAM |
+| `/proc/uptime` | Thời gian hệ thống đã chạy |
+| `/proc/<PID>/` | Thư mục chứa thông tin của tiến trình có PID tương ứng |
+| `/proc/net/` | Thông tin mạng |
+
+---
+
+## ⚡ Lệnh Điều Hướng Nhanh
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `ls /` | Xem toàn bộ thư mục gốc |
+| `ls /etc` | Xem nội dung thư mục `/etc` |
+| `cat /etc/os-release` | Xem thông tin distro Linux đang dùng |
+| `cat /proc/cpuinfo` | Xem thông tin CPU |
+| `cat /proc/meminfo` | Xem thông tin bộ nhớ RAM |
+| `df -h /` | Xem dung lượng ổ đĩa gốc |
+| `du -sh /var/log` | Xem kích thước thư mục log |
+| `ls /home` | Xem danh sách tất cả user |
+| `ls /dev/sd*` | Xem danh sách ổ cứng |
+
+---
+
+## 💡 Mẹo Nhớ Nhanh
+
+| Nhóm | Thư Mục | Cách Nhớ |
+|------|---------|----------|
+| **Lệnh hệ thống** | `/bin`, `/sbin` | **bin** = binary (file thực thi). `sbin` = system binary (chỉ root dùng) |
+| **Cấu hình** | `/etc` | Mọi thứ cần **chỉnh sửa** đều nằm ở đây |
+| **Người dùng** | `/home`, `/root` | `/home` cho user thường, `/root` cho admin |
+| **Phần mềm** | `/usr`, `/opt` | `/usr` = cài qua package manager, `/opt` = cài thủ công |
+| **Dữ liệu động** | `/var`, `/tmp` | `/var` lưu lâu dài, `/tmp` xóa khi reboot |
+| **Phần cứng** | `/dev`, `/sys`, `/proc` | Đây là "cửa sổ" nhìn vào phần cứng và kernel |
+| **Mount** | `/media`, `/mnt` | `/media` = tự động, `/mnt` = thủ công |
+
+---
+
+> 📌 **Lưu ý:** Trong Linux, **mọi thứ đều là file** — kể cả thiết bị phần cứng, tiến trình, và kết nối mạng đều được biểu diễn dưới dạng file trong cây thư mục này.
