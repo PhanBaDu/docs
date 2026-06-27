@@ -1,274 +1,308 @@
-# 🖥️ Cheat Sheet Terminal
-## Các Lệnh Hay Dùng Cho Developer
+# 🐳 Docker Cheat Sheet
 
 ---
 
-## 📁 1. Điều Hướng Thư Mục
+## 📦 Installation & Version
 
 | Lệnh | Chức Năng |
 |------|-----------|
-| `pwd` | Xem thư mục hiện tại |
-| `ls` | Liệt kê file và thư mục |
-| `ls -la` | Liệt kê chi tiết (kể cả file ẩn) |
-| `cd <folder>` | Di chuyển vào thư mục |
-| `cd ..` | Lùi lại 1 cấp |
-| `cd ~` | Về thư mục home |
-| `cd -` | Quay lại thư mục trước đó |
-| `tree` | Hiển thị cấu trúc thư mục |
+| `docker --version` | Xem version Docker |
+| `docker info` | Hiển thị thông tin toàn hệ thống |
+| `docker version` | Chi tiết version client & server |
 
-```bash
-$ pwd
-$ ls -la
-$ cd src
-$ cd ..
+---
+
+## 🖼️ Images
+
+### 🔍 Pull & Search
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker pull <image>` | Pull image từ registry |
+| `docker pull <image>:<tag>` | Pull image theo tag cụ thể |
+| `docker search <term>` | Tìm kiếm image trên Docker Hub |
+
+### 📋 List & Inspect
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker images` | Liệt kê tất cả image local |
+| `docker images -a` | Bao gồm cả intermediate images |
+| `docker inspect <image>` | Xem metadata chi tiết của image |
+
+### 🔧 Build
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker build -t <n>:<tag> .` | Build từ Dockerfile ở thư mục hiện tại |
+| `docker build -f Dockerfile.dev .` | Build từ Dockerfile cụ thể |
+| `docker build --no-cache -t <n> .` | Build không dùng cache |
+
+### 🗑️ Remove Images
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker rmi <image>` | Xóa một image |
+| `docker rmi $(docker images -q)` | Xóa tất cả image |
+| `docker image prune` | Xóa dangling images |
+| `docker image prune -a` | Xóa tất cả image không dùng |
+
+---
+
+## 📦 Containers
+
+### ▶️ Run
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker run <image>` | Chạy một container |
+| `docker run -d <image>` | Chạy ở chế độ nền (detached) |
+| `docker run -it <image> bash` | Chạy tương tác với bash |
+| `docker run --name <n> <image>` | Đặt tên cho container |
+| `docker run -p 8080:80 <image>` | Map port host:container |
+| `docker run -v /host/path:/container/path <image>` | Bind mount volume |
+| `docker run --rm <image>` | Tự xóa container sau khi thoát |
+| `docker run -e VAR=value <image>` | Đặt biến môi trường |
+| `docker run --env-file .env <image>` | Load biến môi trường từ file |
+| `docker run --network <network> <image>` | Kết nối vào một network |
+
+### 📊 List
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker ps` | Liệt kê container đang chạy |
+| `docker ps -a` | Liệt kê tất cả container (kể cả đã dừng) |
+| `docker ps -q` | Chỉ hiển thị container IDs |
+
+### ⏯️ Start / Stop / Restart
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker start <container>` | Khởi động container đã dừng |
+| `docker stop <container>` | Dừng container nhẹ nhàng |
+| `docker kill <container>` | Buộc dừng container |
+| `docker restart <container>` | Khởi động lại container |
+| `docker pause <container>` | Tạm dừng container |
+| `docker unpause <container>` | Tiếp tục container |
+
+### 🔎 Inspect & Logs
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker logs <container>` | Xem logs của container |
+| `docker logs -f <container>` | Theo dõi logs realtime |
+| `docker logs --tail 100 <container>` | Xem 100 dòng log cuối |
+| `docker inspect <container>` | Xem thông tin chi tiết container |
+| `docker stats` | Thống kê tài nguyên realtime |
+| `docker top <container>` | Xem các process đang chạy trong container |
+| `docker port <container>` | Xem mapping port |
+
+### 💻 Execute & Attach
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker exec -it <container> bash` | Mở shell trong container đang chạy |
+| `docker exec <container> <cmd>` | Chạy lệnh trong container |
+| `docker attach <container>` | Gắn vào STDIN/STDOUT của container |
+
+### 📁 Copy Files
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker cp <container>:/path/file ./local` | Copy file từ container ra host |
+| `docker cp ./local <container>:/path/file` | Copy file từ host vào container |
+
+### 🗑️ Remove Containers
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker rm <container>` | Xóa container đã dừng |
+| `docker rm -f <container>` | Buộc xóa container đang chạy |
+| `docker rm $(docker ps -aq)` | Xóa tất cả container |
+| `docker container prune` | Xóa tất cả container đã dừng |
+
+---
+
+## 💾 Volumes
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker volume create <n>` | Tạo một named volume |
+| `docker volume ls` | Liệt kê tất cả volume |
+| `docker volume inspect <n>` | Xem chi tiết volume |
+| `docker volume rm <n>` | Xóa một volume |
+| `docker volume prune` | Xóa tất cả volume không dùng |
+| `docker run -v myvolume:/app/data <image>` | Mount named volume vào container |
+
+---
+
+## 🌐 Networks
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker network create <n>` | Tạo một network |
+| `docker network ls` | Liệt kê các network |
+| `docker network inspect <n>` | Xem chi tiết network |
+| `docker network rm <n>` | Xóa một network |
+| `docker network prune` | Xóa tất cả network không dùng |
+| `docker network connect <network> <container>` | Kết nối container vào network |
+| `docker network disconnect <network> <container>` | Ngắt kết nối container khỏi network |
+
+### 🔌 Common Network Drivers
+
+| Driver | Mô Tả |
+|--------|--------|
+| `bridge` | Network mặc định, cô lập (các container trên cùng host) |
+| `host` | Container dùng chung network với host |
+| `none` | Không có networking |
+
+---
+
+## 🐙 Docker Compose
+
+### Các Lệnh Chính
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker compose up` | Khởi động các service |
+| `docker compose up -d` | Khởi động ở chế độ nền |
+| `docker compose up --build` | Rebuild image trước khi khởi động |
+| `docker compose down` | Dừng và xóa containers |
+| `docker compose down -v` | Dừng, xóa containers và volumes |
+| `docker compose ps` | Liệt kê các service đang chạy |
+| `docker compose logs` | Xem logs tất cả service |
+| `docker compose logs -f <service>` | Theo dõi logs của một service |
+| `docker compose exec <svc> bash` | Mở shell trong một service |
+| `docker compose build` | Build/rebuild các service |
+| `docker compose pull` | Pull image mới nhất |
+| `docker compose restart <service>` | Restart một service |
+| `docker compose stop` | Dừng service (không xóa) |
+| `docker compose start` | Khởi động service đã dừng |
+| `docker compose config` | Kiểm tra và xem cấu hình compose |
+
+### 📄 Ví Dụ `docker-compose.yml`
+
+```yaml
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    networks:
+      - app-net
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+volumes:
+  db-data:
+
+networks:
+  app-net:
 ```
 
 ---
 
-## 📄 2. Quản Lý File
+## 📝 Dockerfile Reference
 
-| Lệnh | Chức Năng |
-|------|-----------|
-| `touch file.txt` | Tạo file mới |
-| `cat file.txt` | Xem nội dung file |
-| `less file.txt` | Xem file dài (cuộn) |
-| `head file.txt` | Xem 10 dòng đầu |
-| `tail file.txt` | Xem 10 dòng cuối |
-| `tail -f log.txt` | Theo dõi log realtime |
-| `nano file.txt` | Mở file bằng editor nano |
-| `echo "text" > file.txt` | Ghi nội dung vào file |
-
-```bash
-$ cat package.json
-$ tail -f production.log
-```
-
----
-
-## 📂 Quản Lý Thư Mục & File
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `mkdir folder` | Tạo thư mục |
-| `mkdir -p a/b/c` | Tạo nhiều thư mục cấp |
-| `rm file.txt` | Xóa file |
-| `rm -rf folder` | Xóa thư mục (force) |
-| `cp a.txt b.txt` | Sao chép file |
-| `cp -r src/ dest/` | Sao chép thư mục |
-| `mv a.txt b.txt` | Đổi tên file |
-| `mv file.txt folder/` | Di chuyển file |
-
-```bash
-$ mkdir project
-$ cp src/index.js backup.js
-$ mv old.txt new.txt
-```
-
----
-
-## 🔍 Tìm Kiếm
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `find . -name "*.js"` | Tìm file theo tên |
-| `find . -type d -name "src"` | Tìm thư mục |
-| `grep "text" file.txt` | Tìm text trong file |
-| `grep -r "text" .` | Tìm text trong toàn bộ thư mục |
-| `which node` | Tìm đường dẫn của lệnh |
-| `whereis python` | Tìm binary, source, man page |
-
-```bash
-$ find . -name "*.rb"
-$ grep -r "TODO" .
-$ which docker
-```
-
----
-
-## ⚙️ Process & Hệ Thống
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `ps aux` | Liệt kê tất cả process |
-| `top` | Theo dõi hệ thống realtime |
-| `htop` | Top nâng cao (nếu có) |
-| `kill <PID>` | Dừng process |
-| `kill -9 <PID>` | Force kill process |
-| `df -h` | Xem dung lượng ổ đĩa |
-| `du -sh *` | Xem dung lượng thư mục |
-| `free -h` | Xem RAM |
-| `uname -a` | Thông tin hệ thống |
-
-```bash
-$ ps aux | grep node
-$ kill 12345
-```
-
----
-
-## 🌐 Network
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `ping google.com` | Kiểm tra kết nối mạng |
-| `curl https://api.github.com` | Gọi API (hiển thị kết quả) |
-| `curl -I example.com` | Xem header |
-| `wget https://file/file.zip` | Tải file |
-| `netstat -tulpn` | Xem các port đang mở |
-| `lsof -i :3000` | Xem process dùng port |
-| `nslookup domain.com` | Tra cứu DNS |
-
-```bash
-$ ping google.com
-$ curl https://api.github.com
-$ lsof -i :3000
-```
-
----
-
-## 🔀 Git (Cơ Bản)
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `git status` | Xem trạng thái |
-| `git add .` | Thêm tất cả file |
-| `git commit -m "message"` | Commit với message |
-| `git push` | Đẩy code lên remote |
-| `git pull` | Kéo code từ remote |
-| `git checkout branch` | Chuyển branch (cũ) |
-| `git switch branch` | Chuyển branch (mới) |
-| `git log --oneline` | Xem lịch sử commit ngắn |
-| `git diff` | Xem thay đổi |
-| `git stash` | Lưu thay đổi tạm thời |
-
-```bash
-$ git status
-$ git add . && git commit -m "update"
-$ git push
-```
-
----
-
-## 🟢 Node.js / NPM
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `node -v` | Xem version Node |
-| `npm -v` | Xem version NPM |
-| `npm install` | Cài đặt dependencies |
-| `npm install -g package` | Cài global package |
-| `npm run dev` | Chạy script dev |
-| `npm run build` | Build project |
-| `npm test` | Chạy test |
-| `npx create-next-app` | Tạo project Next.js |
-| `yarn` | Cài dependencies (Yarn) |
-| `pnpm install` | Cài dependencies (PNPM) |
-
-```bash
-$ npm install
-$ npm run dev
-```
-
----
-
-## 🐳 Docker
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `docker ps` | Xem container đang chạy |
-| `docker ps -a` | Xem tất cả container |
-| `docker images` | Xem danh sách image |
-| `docker build -t myapp .` | Build image |
-| `docker run -d -p 3000:3000 myapp` | Chạy container |
-| `docker logs <container_id>` | Xem logs |
-| `docker exec -it <id> sh` | Vào container |
-| `docker stop <id>` | Dừng container |
-| `docker rm <id>` | Xóa container |
-| `docker rmi <image>` | Xóa image |
-
-```bash
-$ docker ps
-$ docker logs my_container
-```
-
----
-
-## ☸️ Kubernetes (Kubectl)
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `kubectl get pods` | Xem pods |
-| `kubectl get svc` | Xem services |
-| `kubectl get deployments` | Xem deployments |
-| `kubectl describe pod <pod>` | Chi tiết pod |
-| `kubectl logs <pod>` | Xem logs pod |
-| `kubectl exec -it <pod> -- sh` | Vào pod |
-| `kubectl apply -f file.yaml` | Áp dụng file yaml |
-| `kubectl delete -f file.yaml` | Xóa theo file yaml |
-
-```bash
-$ kubectl get pods
-$ kubectl logs my-pod
-```
-
----
-
-## ⚡ Nâng Suất Terminal
-
-| Lệnh / Phím | Chức Năng |
+| Instruction | Chức Năng |
 |-------------|-----------|
-| `history` | Xem lịch sử lệnh |
-| `!!` | Thực thi lại lệnh vừa chạy |
-| `!n` | Thực thi lệnh số n trong history |
-| `Ctrl + R` | Tìm kiếm trong history |
-| `Tab` | Tự động hoàn thành |
-| `Ctrl + C` | Hủy lệnh đang chạy |
-| `Ctrl + L` hoặc `clear` | Xóa màn hình |
-| `exit` | Thoát terminal |
-| `alias ll="ls -la"` | Tạo alias (ví dụ) |
-| `unalias ll` | Xóa alias |
+| `FROM node:20-alpine` | Chỉ định base image |
+| `WORKDIR /app` | Đặt thư mục làm việc |
+| `COPY package*.json ./` | Copy file dependency |
+| `RUN npm install` | Chạy lệnh trong quá trình build |
+| `COPY . .` | Copy toàn bộ source code |
+| `EXPOSE 3000` | Khai báo port (không publish) |
+| `ENV NODE_ENV=production` | Đặt biến môi trường |
+| `ARG VERSION=1.0` | Tham số build-time |
+| `VOLUME ["/data"]` | Khai báo điểm mount volume |
+| `USER node` | Chuyển sang non-root user |
+| `CMD ["node", "server.js"]` | Lệnh mặc định (có thể override) |
+| `ENTRYPOINT ["node"]` | Entrypoint cố định |
+| `HEALTHCHECK --interval=30s CMD curl -f http://localhost/ \|\| exit 1` | Kiểm tra sức khỏe container |
 
-```bash
-$ history
-$ !!
-$ clear
-```
-
----
-
-## 💡 Mẹo Hay
-
-- ✅ Sử dụng `↑` `↓` để duyệt các lệnh đã dùng.
-- ✅ Dùng `Tab` để tự động hoàn thành đường dẫn.
-- ✅ Dùng `Ctrl + R` để tìm lệnh nhanh trong history.
-- ✅ Dùng `2>&1` để ghi log lỗi cùng output.
-- ✅ Dùng `>>` để ghi đè, `>>` để thêm vào cuối file.
-- ✅ Dùng `|` (pipe) để kết hợp lệnh.
-- ✅ Dùng `man <command>` để xem hướng dẫn.
-
-### Ví Dụ Pipe
-
-```bash
-$ ps aux | grep node      # Tìm process node
-$ cat log.txt | grep ERROR  # Tìm ERROR trong log
-$ ls -la | less           # Xem kết quả dài
-```
+> **CMD vs ENTRYPOINT:** `ENTRYPOINT` đặt executable; `CMD` cung cấp tham số mặc định. Khi cả hai được đặt, các tham số `CMD` được truyền vào `ENTRYPOINT`.
 
 ---
 
-## 📚 Tài Liệu Nhanh
+## 🏪 Registry & Docker Hub
 
-```bash
-man <command>        # hoặc
-<command> --help
-
-# Ví dụ:
-man ls
-git --help
-```
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker login` | Đăng nhập Docker Hub |
+| `docker login <registry-url>` | Đăng nhập private registry |
+| `docker logout` | Đăng xuất |
+| `docker tag <image> <user>/<repo>:<tag>` | Tag một image |
+| `docker push <user>/<repo>:<tag>` | Push lên registry |
+| `docker pull <user>/<repo>:<tag>` | Pull từ registry |
 
 ---
 
-> ⭐ **Ghi Nhớ:** Không cần nhớ tất cả! Hãy dùng thường xuyên để thành thạo.
+## 🧹 System & Cleanup
 
-> ⚠️ **Luôn Sao Lưu Trước Khi Xóa:** Đặc biệt với lệnh `rm -rf` — Không có nút "Undo" trong terminal!
+### Disk Usage
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker system df` | Xem dung lượng disk đang dùng |
+| `docker system prune` | Xóa tất cả dữ liệu không dùng |
+| `docker system prune -a` | Xóa tất cả dữ liệu không dùng (kể cả images) |
+| `docker system prune -a --volumes` | Xóa tất cả kể cả volumes |
+
+### Individual Pruning
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker container prune` | Xóa container đã dừng |
+| `docker image prune -a` | Xóa image không dùng |
+| `docker volume prune` | Xóa volume không dùng |
+| `docker network prune` | Xóa network không dùng |
+
+---
+
+## 💡 Useful Tips & Tricks
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container>` | Lấy IP address của container |
+| `docker run --rm -it ubuntu bash` | Chạy lệnh một lần và tự xóa |
+| `docker export <container> > backup.tar` | Export container thành file tar |
+| `docker import backup.tar <image-name>` | Import container từ file tar |
+| `docker save -o myimage.tar <image>` | Lưu image thành file tar |
+| `docker load -i myimage.tar` | Load image từ file tar |
+| `docker history <image>` | Xem các layer của image |
+| `docker logs -f --timestamps <container>` | Theo dõi logs kèm timestamp |
+| `docker run --memory="512m" --cpus="1.5" <image>` | Giới hạn tài nguyên container |
+
+---
+
+## 🏷️ Common Flags Reference
+
+| Flag | Mô Tả |
+|------|--------|
+| `-d` | Chế độ nền (detached) |
+| `-it` | Interactive + pseudo-TTY |
+| `-p host:container` | Map port |
+| `-v host:container` | Volume / bind mount |
+| `-e KEY=VAL` | Biến môi trường |
+| `--name` | Đặt tên container |
+| `--rm` | Xóa container sau khi thoát |
+| `--network` | Kết nối vào một network |
+| `--restart` | Restart policy (`always`, `unless-stopped`, `on-failure`) |
+| `--memory` | Giới hạn bộ nhớ (vd: `512m`) |
+| `--cpus` | Giới hạn CPU (vd: `1.5`) |
+| `--user` | Đặt user (vd: `1000:1000`) |
