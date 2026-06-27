@@ -1,388 +1,274 @@
-# 📊 API Flow — BookingKhachSan
-
-> **Kiến trúc**: Clean Architecture (4 layers)
-> **Pattern**: CQRS + MediatR + Repository
+# 🖥️ Cheat Sheet Terminal
+## Các Lệnh Hay Dùng Cho Developer
 
 ---
 
-## 🏗️ Tổng quan kiến trúc
+## 📁 1. Điều Hướng Thư Mục
 
-```mermaid
-graph LR
-    Client["🌐 Client\n(Postman / Browser)"]
-    API["BookingHotel.API\nControllers"]
-    APP["BookingHotel.Application\nHandlers / Commands / Queries"]
-    INFRA["BookingHotel.Infrastructure\nRepositories / Services"]
-    DB[("💾 Database\nSQLite / SQL Server")]
-    
-    Client -->|"HTTP Request"| API
-    API -->|"mediator.Send(command)"| APP
-    APP -->|"repository.DoSomething()"| INFRA
-    INFRA -->|"EF Core"| DB
-    DB -->|"Entity"| INFRA
-    INFRA -->|"Entity"| APP
-    APP -->|"DTO"| API
-    API -->|"JSON Response"| Client
-```
+| Lệnh | Chức Năng |
+|------|-----------|
+| `pwd` | Xem thư mục hiện tại |
+| `ls` | Liệt kê file và thư mục |
+| `ls -la` | Liệt kê chi tiết (kể cả file ẩn) |
+| `cd <folder>` | Di chuyển vào thư mục |
+| `cd ..` | Lùi lại 1 cấp |
+| `cd ~` | Về thư mục home |
+| `cd -` | Quay lại thư mục trước đó |
+| `tree` | Hiển thị cấu trúc thư mục |
 
----
-
-## 1️⃣ API Quản lý Hotel
-
-### `GET /api/hotels` — Danh sách + Tìm kiếm & Lọc
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant M as IMediator
-    participant H as GetHotelsHandler.cs
-    participant R as HotelRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: GET /api/hotels?city=HCM&minStar=3&minPrice=500
-    Note over CTL: GetAll([FromQuery] HotelFilterParams filter)
-    CTL->>M: mediator.Send(new GetHotelsQuery(filter))
-    M->>H: Handle(GetHotelsQuery, CancellationToken)
-    H->>R: hotelRepo.GetAllAsync(filter)
-    Note over R: - Include Images<br/>- Include Rooms (where !IsDeleted)<br/>- Filter: SearchTerm, City, Country<br/>- Filter: MinStar, MaxStar<br/>- Filter: MinPrice, MaxPrice<br/>- Filter: AmenityIds<br/>- Phân trang: Skip/Take
-    R->>DB: SELECT * FROM Hotels WHERE ...
-    DB-->>R: List<Hotel>
-    R-->>H: PagedResult<Hotel>
-    Note over H: items.Select(h => h.ToSummaryDto())<br/>→ chuyển Hotel sang HotelSummaryDto
-    H-->>CTL: PagedResult<HotelSummaryDto>
-    CTL-->>C: 200 OK { items, totalCount, page, pageSize, totalPages }
-```
-
-### `GET /api/hotels/{id}` — Chi tiết Hotel
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant H as GetHotelByIdHandler.cs
-    participant R as HotelRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: GET /api/hotels/{id}
-    CTL->>H: mediator.Send(new GetHotelByIdQuery(id))
-    H->>R: hotelRepo.GetByIdAsync(id, includeDetails: true)
-    Note over R: Include: Images, AmenityMappings+Amenity<br/>Include: Rooms+RoomType
-    R->>DB: SELECT với JOIN
-    DB-->>R: Hotel entity (đầy đủ)
-    R-->>H: Hotel?
-    alt Hotel == null
-        H-->>CTL: throw NotFoundException("Hotel", id)
-        CTL-->>C: 404 Not Found
-    else Hotel tồn tại
-        H-->>CTL: hotel.ToDto() → HotelDto
-        CTL-->>C: 200 OK { id, name, city, images[], amenities[], minRoomPrice }
-    end
-```
-
-### `POST /api/hotels` — Tạo Hotel
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant H as CreateHotelHandler.cs
-    participant R as HotelRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: POST /api/hotels\n{ name, address, city, starRating... }
-    CTL->>H: mediator.Send(CreateHotelCommand)
-    Note over H: Tạo new Hotel entity<br/>gán tất cả fields từ command
-    H->>R: hotelRepo.CreateAsync(hotel)
-    R->>DB: INSERT INTO Hotels
-    DB-->>R: Hotel (đã có Id, CreatedAt)
-    R-->>H: Hotel entity
-    H-->>CTL: created.ToDto() → HotelDto
-    CTL-->>C: 201 Created\nLocation: /api/hotels/{newId}\n{ id, name, ... }
-```
-
-### `PUT /api/hotels/{id}` — Cập nhật Hotel
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant H as UpdateHotelHandler.cs
-    participant R as HotelRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: PUT /api/hotels/{id}\n{ name, city, starRating... }
-    CTL->>H: mediator.Send(new UpdateHotelCommand(id, ...))
-    H->>R: hotelRepo.GetByIdAsync(id)
-    alt Không tồn tại
-        H-->>CTL: throw NotFoundException
-        CTL-->>C: 404 Not Found
-    else Tồn tại
-        Note over H: Cập nhật từng field<br/>Set UpdatedAt = DateTime.UtcNow
-        H->>R: hotelRepo.UpdateAsync(hotel)
-        R->>DB: UPDATE Hotels SET ...
-        DB-->>R: OK
-        H-->>CTL: hotel.ToDto()
-        CTL-->>C: 200 OK { id, name, ... }
-    end
-```
-
-### `DELETE /api/hotels/{id}` — Xóa mềm Hotel
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant H as DeleteHotelHandler.cs
-    participant R as HotelRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: DELETE /api/hotels/{id}
-    CTL->>H: mediator.Send(new DeleteHotelCommand(id))
-    H->>R: hotelRepo.ExistsAsync(id)
-    alt Không tồn tại
-        H-->>CTL: throw NotFoundException
-        CTL-->>C: 404 Not Found
-    else Tồn tại
-        H->>R: hotelRepo.SoftDeleteAsync(id)
-        Note over R: ExecuteUpdateAsync<br/>SET IsDeleted = true<br/>(không xóa vật lý)
-        R->>DB: UPDATE Hotels SET IsDeleted=1 WHERE Id=...
-        H-->>CTL: void
-        CTL-->>C: 204 No Content
-    end
-```
-
-### `POST/DELETE /api/hotels/{id}/amenities/{amenityId}` — Gắn / Gỡ Tiện ích
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as HotelsController.cs
-    participant H as AddHotelAmenityHandler.cs
-    participant R as AmenityRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: POST /api/hotels/{id}/amenities/{amenityId}
-    CTL->>H: mediator.Send(new AddHotelAmenityCommand(hotelId, amenityId))
-    H->>R: hotelRepo.ExistsAsync(hotelId)
-    H->>R: amenityRepo.AddToHotelAsync(hotelId, amenityId)
-    Note over R: Kiểm tra đã tồn tại chưa<br/>Nếu chưa: INSERT INTO AmenityMappings
-    R->>DB: INSERT INTO AmenityMappings (HotelId, AmenityId)
-    CTL-->>C: 204 No Content
+```bash
+$ pwd
+$ ls -la
+$ cd src
+$ cd ..
 ```
 
 ---
 
-## 2️⃣ API Quản lý Room
+## 📄 2. Quản Lý File
 
-### `GET /api/hotels/{hotelId}/rooms` — Danh sách phòng
+| Lệnh | Chức Năng |
+|------|-----------|
+| `touch file.txt` | Tạo file mới |
+| `cat file.txt` | Xem nội dung file |
+| `less file.txt` | Xem file dài (cuộn) |
+| `head file.txt` | Xem 10 dòng đầu |
+| `tail file.txt` | Xem 10 dòng cuối |
+| `tail -f log.txt` | Theo dõi log realtime |
+| `nano file.txt` | Mở file bằng editor nano |
+| `echo "text" > file.txt` | Ghi nội dung vào file |
 
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as RoomsController.cs
-    participant H as GetRoomsByHotelHandler.cs
-    participant R as RoomRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: GET /api/hotels/{hotelId}/rooms
-    CTL->>H: mediator.Send(new GetRoomsByHotelQuery(hotelId))
-    H->>R: roomRepo.GetByHotelIdAsync(hotelId)
-    Note over R: Include RoomType, Include Images<br/>WHERE HotelId = ? AND IsDeleted = false
-    R->>DB: SELECT với JOIN
-    DB-->>R: List<Room>
-    R-->>H: IEnumerable<Room>
-    Note over H: rooms.Select(r => r.ToSummaryDto())
-    H-->>CTL: IEnumerable<RoomSummaryDto>
-    CTL-->>C: 200 OK [ { id, roomNumber, roomTypeName, pricePerNight, isAvailable }... ]
-```
-
-### `POST /api/hotels/{hotelId}/rooms` — Tạo phòng mới
-
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as RoomsController.cs
-    participant H as CreateRoomHandler.cs
-    participant HR as HotelRepository.cs
-    participant RR as RoomRepository.cs
-    participant DB as 💾 Database
-
-    C->>CTL: POST /api/hotels/{hotelId}/rooms\n{ roomTypeId, roomNumber, pricePerNight, capacity }
-    CTL->>H: mediator.Send(new CreateRoomCommand(hotelId, ...))
-    H->>HR: hotelRepo.ExistsAsync(hotelId)
-    alt Hotel không tồn tại
-        H-->>CTL: throw NotFoundException
-        CTL-->>C: 404 Not Found
-    else Hotel tồn tại
-        Note over H: Tạo new Room entity
-        H->>RR: roomRepo.CreateAsync(room)
-        RR->>DB: INSERT INTO Rooms
-        DB-->>RR: Room (với Id mới)
-        H-->>CTL: room.ToDto() → RoomDto
-        CTL-->>C: 201 Created { id, roomNumber, pricePerNight, ... }
-    end
+```bash
+$ cat package.json
+$ tail -f production.log
 ```
 
 ---
 
-## 3️⃣ API Quản lý RoomType
+## 📂 Quản Lý Thư Mục & File
 
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as RoomTypesController.cs
-    participant H as Handler (Commands/Queries)
-    participant R as RoomTypeRepository.cs
-    participant DB as 💾 Database
+| Lệnh | Chức Năng |
+|------|-----------|
+| `mkdir folder` | Tạo thư mục |
+| `mkdir -p a/b/c` | Tạo nhiều thư mục cấp |
+| `rm file.txt` | Xóa file |
+| `rm -rf folder` | Xóa thư mục (force) |
+| `cp a.txt b.txt` | Sao chép file |
+| `cp -r src/ dest/` | Sao chép thư mục |
+| `mv a.txt b.txt` | Đổi tên file |
+| `mv file.txt folder/` | Di chuyển file |
 
-    Note over CTL,R: GET /api/room-types
-    C->>CTL: GET /api/room-types
-    CTL->>H: GetRoomTypesQuery
-    H->>R: repo.GetAllAsync()
-    R->>DB: SELECT * FROM RoomTypes
-    DB-->>H: List<RoomType>
-    H-->>CTL: IEnumerable<RoomTypeDto>
-    CTL-->>C: 200 OK [ { id, name, description }... ]
-
-    Note over CTL,R: POST /api/room-types
-    C->>CTL: POST { name, description }
-    CTL->>H: CreateRoomTypeCommand
-    Note over H: new RoomType { Name, Description }
-    H->>R: repo.CreateAsync(entity)
-    R->>DB: INSERT INTO RoomTypes
-    CTL-->>C: 201 Created { id, name, description }
-
-    Note over CTL,R: DELETE /api/room-types/{id}
-    C->>CTL: DELETE /api/room-types/{id}
-    CTL->>H: DeleteRoomTypeCommand(id)
-    H->>R: repo.GetByIdAsync(id) → kiểm tra tồn tại
-    H->>R: repo.DeleteAsync(id)
-    R->>DB: ExecuteDeleteAsync (xóa vật lý)
-    CTL-->>C: 204 No Content
+```bash
+$ mkdir project
+$ cp src/index.js backup.js
+$ mv old.txt new.txt
 ```
 
 ---
 
-## 4️⃣ API Quản lý Amenity (Tiện ích)
+## 🔍 Tìm Kiếm
 
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as AmenitiesController.cs
-    participant H as Handler (Commands/Queries)
-    participant R as AmenityRepository.cs
-    participant DB as 💾 Database
+| Lệnh | Chức Năng |
+|------|-----------|
+| `find . -name "*.js"` | Tìm file theo tên |
+| `find . -type d -name "src"` | Tìm thư mục |
+| `grep "text" file.txt` | Tìm text trong file |
+| `grep -r "text" .` | Tìm text trong toàn bộ thư mục |
+| `which node` | Tìm đường dẫn của lệnh |
+| `whereis python` | Tìm binary, source, man page |
 
-    Note over C,DB: GET /api/amenities
-    C->>CTL: GET /api/amenities
-    CTL->>H: GetAmenitiesQuery
-    H->>R: repo.GetAllAsync()
-    R->>DB: SELECT * FROM Amenities
-    CTL-->>C: 200 OK [ { id, name, icon }... ]
-
-    Note over C,DB: POST /api/amenities
-    C->>CTL: POST { name: "Wifi", icon: "wifi-icon" }
-    CTL->>H: CreateAmenityCommand
-    Note over H: new Amenity { Name, Icon }
-    H->>R: repo.CreateAsync(entity)
-    R->>DB: INSERT INTO Amenities
-    CTL-->>C: 201 Created { id, name, icon }
-
-    Note over C,DB: PUT /api/amenities/{id}
-    C->>CTL: PUT { name, icon }
-    CTL->>H: UpdateAmenityCommand(id, name, icon)
-    H->>R: GetByIdAsync → kiểm tra tồn tại
-    Note over H: Set Name, Icon, UpdatedAt
-    H->>R: UpdateAsync
-    R->>DB: UPDATE Amenities SET ...
-    CTL-->>C: 200 OK { id, name, icon }
+```bash
+$ find . -name "*.rb"
+$ grep -r "TODO" .
+$ which docker
 ```
 
 ---
 
-## 5️⃣ API Upload ảnh (Cloudinary)
+## ⚙️ Process & Hệ Thống
 
-```mermaid
-sequenceDiagram
-    participant C as 🌐 Client
-    participant CTL as UploadController.cs
-    participant M as IMediator
-    participant H as UploadImageHandler.cs
-    participant S as CloudinaryService.cs
-    participant CLD as ☁️ Cloudinary CDN
+| Lệnh | Chức Năng |
+|------|-----------|
+| `ps aux` | Liệt kê tất cả process |
+| `top` | Theo dõi hệ thống realtime |
+| `htop` | Top nâng cao (nếu có) |
+| `kill <PID>` | Dừng process |
+| `kill -9 <PID>` | Force kill process |
+| `df -h` | Xem dung lượng ổ đĩa |
+| `du -sh *` | Xem dung lượng thư mục |
+| `free -h` | Xem RAM |
+| `uname -a` | Thông tin hệ thống |
 
-    C->>CTL: POST /api/upload/hotel/{hotelId}\nContent-Type: multipart/form-data\n[file binary]
-    Note over CTL: UploadHotelImage(hotelId, IFormFile file)<br/>Gọi UploadFile(file, folder="hotels/{hotelId}")
-    CTL->>M: mediator.Send(new UploadImageCommand(stream, fileName, folder))
-    M->>H: Handle(UploadImageCommand)
-    H->>S: cloudinary.UploadAsync(stream, fileName, folder)
-    Note over S: Tạo ImageUploadParams<br/>{ File, Folder, UseFilename=true }
-    S->>CLD: HTTP Upload to Cloudinary API
-    CLD-->>S: { SecureUrl, PublicId }
-    S-->>H: UploadResultDto(url, publicId)
-    H-->>CTL: UploadResultDto
-    CTL-->>C: 200 OK { url: "https://res.cloudinary.com/...", publicId: "hotels/abc/img123" }
+```bash
+$ ps aux | grep node
+$ kill 12345
 ```
 
 ---
 
-## 📋 Bảng tóm tắt tất cả Endpoints
+## 🌐 Network
 
-| Method | Endpoint | Controller | Handler | Repository | Return |
-|--------|----------|------------|---------|------------|--------|
-| GET | `/api/hotels` | HotelsController | GetHotelsHandler | HotelRepository | `PagedResult<HotelSummaryDto>` |
-| GET | `/api/hotels/{id}` | HotelsController | GetHotelByIdHandler | HotelRepository | `HotelDto` |
-| POST | `/api/hotels` | HotelsController | CreateHotelHandler | HotelRepository | `HotelDto` (201) |
-| PUT | `/api/hotels/{id}` | HotelsController | UpdateHotelHandler | HotelRepository | `HotelDto` |
-| DELETE | `/api/hotels/{id}` | HotelsController | DeleteHotelHandler | HotelRepository | `204 NoContent` |
-| POST | `/api/hotels/{id}/amenities/{aid}` | HotelsController | AddHotelAmenityHandler | Amenity+HotelRepo | `204 NoContent` |
-| DELETE | `/api/hotels/{id}/amenities/{aid}` | HotelsController | RemoveHotelAmenityHandler | Amenity+HotelRepo | `204 NoContent` |
-| GET | `/api/hotels/{hotelId}/rooms` | RoomsController | GetRoomsByHotelHandler | RoomRepository | `IEnumerable<RoomSummaryDto>` |
-| GET | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | GetRoomByIdHandler | RoomRepository | `RoomDto` |
-| POST | `/api/hotels/{hotelId}/rooms` | RoomsController | CreateRoomHandler | Room+HotelRepo | `RoomDto` (201) |
-| PUT | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | UpdateRoomHandler | RoomRepository | `RoomDto` |
-| DELETE | `/api/hotels/{hotelId}/rooms/{id}` | RoomsController | DeleteRoomHandler | RoomRepository | `204 NoContent` |
-| GET | `/api/room-types` | RoomTypesController | GetRoomTypesHandler | RoomTypeRepository | `IEnumerable<RoomTypeDto>` |
-| GET | `/api/room-types/{id}` | RoomTypesController | GetRoomTypeByIdHandler | RoomTypeRepository | `RoomTypeDto` |
-| POST | `/api/room-types` | RoomTypesController | CreateRoomTypeHandler | RoomTypeRepository | `RoomTypeDto` (201) |
-| PUT | `/api/room-types/{id}` | RoomTypesController | UpdateRoomTypeHandler | RoomTypeRepository | `RoomTypeDto` |
-| DELETE | `/api/room-types/{id}` | RoomTypesController | DeleteRoomTypeHandler | RoomTypeRepository | `204 NoContent` |
-| GET | `/api/amenities` | AmenitiesController | GetAmenitiesHandler | AmenityRepository | `IEnumerable<AmenityDto>` |
-| GET | `/api/amenities/{id}` | AmenitiesController | GetAmenityByIdHandler | AmenityRepository | `AmenityDto` |
-| POST | `/api/amenities` | AmenitiesController | CreateAmenityHandler | AmenityRepository | `AmenityDto` (201) |
-| PUT | `/api/amenities/{id}` | AmenitiesController | UpdateAmenityHandler | AmenityRepository | `AmenityDto` |
-| DELETE | `/api/amenities/{id}` | AmenitiesController | DeleteAmenityHandler | AmenityRepository | `204 NoContent` |
-| POST | `/api/upload/hotel/{hotelId}` | UploadController | UploadImageHandler | CloudinaryService | `UploadResultDto` |
-| POST | `/api/upload/room/{roomId}` | UploadController | UploadImageHandler | CloudinaryService | `UploadResultDto` |
+| Lệnh | Chức Năng |
+|------|-----------|
+| `ping google.com` | Kiểm tra kết nối mạng |
+| `curl https://api.github.com` | Gọi API (hiển thị kết quả) |
+| `curl -I example.com` | Xem header |
+| `wget https://file/file.zip` | Tải file |
+| `netstat -tulpn` | Xem các port đang mở |
+| `lsof -i :3000` | Xem process dùng port |
+| `nslookup domain.com` | Tra cứu DNS |
 
----
-
-## 🔁 Flow chung (áp dụng cho tất cả API)
-
-```mermaid
-flowchart TD
-    A["🌐 HTTP Request"] --> B["Controller\nvalidate route params\ngọi mediator.Send()"]
-    B --> C{{"MediatR\ntìm Handler phù hợp"}}
-    C --> D["Handler\nchứa business logic\ngọi Repository"]
-    D --> E{Cần kiểm tra tồn tại?}
-    E -->|Có| F["Repository.ExistsAsync()\nhoặc GetByIdAsync()"]
-    F --> G{Tồn tại?}
-    G -->|Không| H["throw NotFoundException\n→ 404 Not Found"]
-    G -->|Có| I["Thực hiện thao tác\nCreate / Update / Delete"]
-    E -->|Không| I
-    I --> J["Repository gọi\nEF Core (DbContext)"]
-    J --> K[("💾 Database")]
-    K --> L["Trả về Entity"]
-    L --> M["Handler map Entity\n→ DTO (record)"]
-    M --> N["Controller trả về\nActionResult / IActionResult"]
-    N --> O["🌐 JSON Response"]
+```bash
+$ ping google.com
+$ curl https://api.github.com
+$ lsof -i :3000
 ```
 
 ---
 
-> **Ghi chú thiết kế:**
-> - **Soft Delete**: Hotel và Room không xóa vật lý, chỉ set `IsDeleted = true`. EF Core `HasQueryFilter` tự động lọc.
-> - **NotFoundException**: Được throw từ Handler, sẽ được xử lý bởi `ExceptionMiddleware` để trả về 404.
-> - **CQRS**: Commands (thay đổi dữ liệu) và Queries (đọc dữ liệu) tách biệt hoàn toàn.
-> - **Nested Route**: Room nằm dưới Hotel (`/api/hotels/{hotelId}/rooms`) để thể hiện quan hệ sở hữu.
+## 🔀 Git (Cơ Bản)
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `git status` | Xem trạng thái |
+| `git add .` | Thêm tất cả file |
+| `git commit -m "message"` | Commit với message |
+| `git push` | Đẩy code lên remote |
+| `git pull` | Kéo code từ remote |
+| `git checkout branch` | Chuyển branch (cũ) |
+| `git switch branch` | Chuyển branch (mới) |
+| `git log --oneline` | Xem lịch sử commit ngắn |
+| `git diff` | Xem thay đổi |
+| `git stash` | Lưu thay đổi tạm thời |
+
+```bash
+$ git status
+$ git add . && git commit -m "update"
+$ git push
+```
+
+---
+
+## 🟢 Node.js / NPM
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `node -v` | Xem version Node |
+| `npm -v` | Xem version NPM |
+| `npm install` | Cài đặt dependencies |
+| `npm install -g package` | Cài global package |
+| `npm run dev` | Chạy script dev |
+| `npm run build` | Build project |
+| `npm test` | Chạy test |
+| `npx create-next-app` | Tạo project Next.js |
+| `yarn` | Cài dependencies (Yarn) |
+| `pnpm install` | Cài dependencies (PNPM) |
+
+```bash
+$ npm install
+$ npm run dev
+```
+
+---
+
+## 🐳 Docker
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `docker ps` | Xem container đang chạy |
+| `docker ps -a` | Xem tất cả container |
+| `docker images` | Xem danh sách image |
+| `docker build -t myapp .` | Build image |
+| `docker run -d -p 3000:3000 myapp` | Chạy container |
+| `docker logs <container_id>` | Xem logs |
+| `docker exec -it <id> sh` | Vào container |
+| `docker stop <id>` | Dừng container |
+| `docker rm <id>` | Xóa container |
+| `docker rmi <image>` | Xóa image |
+
+```bash
+$ docker ps
+$ docker logs my_container
+```
+
+---
+
+## ☸️ Kubernetes (Kubectl)
+
+| Lệnh | Chức Năng |
+|------|-----------|
+| `kubectl get pods` | Xem pods |
+| `kubectl get svc` | Xem services |
+| `kubectl get deployments` | Xem deployments |
+| `kubectl describe pod <pod>` | Chi tiết pod |
+| `kubectl logs <pod>` | Xem logs pod |
+| `kubectl exec -it <pod> -- sh` | Vào pod |
+| `kubectl apply -f file.yaml` | Áp dụng file yaml |
+| `kubectl delete -f file.yaml` | Xóa theo file yaml |
+
+```bash
+$ kubectl get pods
+$ kubectl logs my-pod
+```
+
+---
+
+## ⚡ Nâng Suất Terminal
+
+| Lệnh / Phím | Chức Năng |
+|-------------|-----------|
+| `history` | Xem lịch sử lệnh |
+| `!!` | Thực thi lại lệnh vừa chạy |
+| `!n` | Thực thi lệnh số n trong history |
+| `Ctrl + R` | Tìm kiếm trong history |
+| `Tab` | Tự động hoàn thành |
+| `Ctrl + C` | Hủy lệnh đang chạy |
+| `Ctrl + L` hoặc `clear` | Xóa màn hình |
+| `exit` | Thoát terminal |
+| `alias ll="ls -la"` | Tạo alias (ví dụ) |
+| `unalias ll` | Xóa alias |
+
+```bash
+$ history
+$ !!
+$ clear
+```
+
+---
+
+## 💡 Mẹo Hay
+
+- ✅ Sử dụng `↑` `↓` để duyệt các lệnh đã dùng.
+- ✅ Dùng `Tab` để tự động hoàn thành đường dẫn.
+- ✅ Dùng `Ctrl + R` để tìm lệnh nhanh trong history.
+- ✅ Dùng `2>&1` để ghi log lỗi cùng output.
+- ✅ Dùng `>>` để ghi đè, `>>` để thêm vào cuối file.
+- ✅ Dùng `|` (pipe) để kết hợp lệnh.
+- ✅ Dùng `man <command>` để xem hướng dẫn.
+
+### Ví Dụ Pipe
+
+```bash
+$ ps aux | grep node      # Tìm process node
+$ cat log.txt | grep ERROR  # Tìm ERROR trong log
+$ ls -la | less           # Xem kết quả dài
+```
+
+---
+
+## 📚 Tài Liệu Nhanh
+
+```bash
+man <command>        # hoặc
+<command> --help
+
+# Ví dụ:
+man ls
+git --help
+```
+
+---
+
+> ⭐ **Ghi Nhớ:** Không cần nhớ tất cả! Hãy dùng thường xuyên để thành thạo.
+
+> ⚠️ **Luôn Sao Lưu Trước Khi Xóa:** Đặc biệt với lệnh `rm -rf` — Không có nút "Undo" trong terminal!
