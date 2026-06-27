@@ -1,148 +1,285 @@
-# 🐧 Linux Path Cheatsheet
-## Cấu Trúc Thư Mục Gốc Trong Linux
+# ✏️ Nano & Vi/Vim Cheat Sheet
+## Các Cú Pháp Hay Dùng Nhất
 
-> Trong Linux, mọi thứ đều bắt đầu từ **`/`** (root directory — thư mục gốc).  
-> Đây là "ổ C:\" của Linux, nhưng chỉ có **một** thư mục gốc duy nhất cho toàn hệ thống.
+> **Nano** = Editor đơn giản, thân thiện cho người mới.  
+> **Vi/Vim** = Editor mạnh mẽ hơn, có mặt trên mọi Linux server, cần học để dùng được.
 
 ---
 
-## 📂 Tổng Quan Cây Thư Mục
+## 🟢 NANO
+
+> Mở file: `nano filename.txt`  
+> Các phím tắt hiển thị ở **thanh dưới màn hình** — `^` nghĩa là phím `Ctrl`
+
+---
+
+### 📂 Mở & Thoát
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `nano <file>` | Open a file | Mở file để chỉnh sửa |
+| `nano +N <file>` | Open file at line N | Mở file và nhảy đến dòng N |
+| `Ctrl + X` | Exit | Thoát khỏi nano |
+| `Ctrl + X` → `Y` → `Enter` | Save and exit | Lưu file rồi thoát |
+| `Ctrl + X` → `N` | Exit without saving | Thoát mà không lưu |
+
+---
+
+### 💾 Lưu File
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `Ctrl + O` | Write Out (Save) | Lưu file (giữ nguyên tên) |
+| `Ctrl + O` → đổi tên → `Enter` | Save as new name | Lưu file với tên khác |
+
+---
+
+### 🔍 Tìm Kiếm & Thay Thế
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `Ctrl + W` | Search (Where is) | Tìm kiếm từ/cụm từ |
+| `Ctrl + W` → `Enter` | Search next | Tìm kết quả tiếp theo |
+| `Alt + W` | Search previous | Tìm kết quả trước đó |
+| `Ctrl + \` | Search and Replace | Tìm và thay thế |
+
+---
+
+### 🖱️ Di Chuyển Con Trỏ
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `Ctrl + A` | Go to beginning of line | Về đầu dòng |
+| `Ctrl + E` | Go to end of line | Về cuối dòng |
+| `Ctrl + Y` | Page Up | Cuộn lên một trang |
+| `Ctrl + V` | Page Down | Cuộn xuống một trang |
+| `Ctrl + _` | Go to line number | Nhảy đến số dòng cụ thể |
+| `Alt + \` | Go to first line | Nhảy về dòng đầu tiên |
+| `Alt + /` | Go to last line | Nhảy xuống dòng cuối cùng |
+
+---
+
+### ✂️ Cắt, Sao Chép & Dán
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `Ctrl + K` | Cut current line | Cắt dòng hiện tại (vào clipboard) |
+| `Ctrl + U` | Paste (Uncut) | Dán nội dung từ clipboard |
+| `Alt + 6` | Copy current line | Sao chép dòng hiện tại |
+| `Ctrl + K` (nhiều lần) | Cut multiple lines | Cắt nhiều dòng liên tiếp |
+
+---
+
+### 🔧 Tiện Ích Khác
+
+| Phím Tắt | Tiếng Anh | Tiếng Việt |
+|----------|-----------|------------|
+| `Ctrl + G` | Help | Mở trang trợ giúp |
+| `Ctrl + C` | Show cursor position | Hiển thị vị trí con trỏ (dòng, cột) |
+| `Alt + U` | Undo | Hoàn tác thay đổi vừa làm |
+| `Alt + E` | Redo | Làm lại thay đổi đã hoàn tác |
+| `Alt + N` | Toggle line numbers | Bật/tắt hiển thị số dòng |
+| `Alt + M` | Toggle mouse support | Bật/tắt dùng chuột |
+| `Ctrl + L` | Refresh screen | Làm mới màn hình |
+
+---
+
+---
+
+## 🔵 VI / VIM
+
+> Mở file: `vi filename.txt` hoặc `vim filename.txt`
+
+### ⚠️ Hiểu Về Chế Độ (Mode) — Quan Trọng Nhất
+
+Vim có **3 chế độ chính**, đây là điểm khác biệt lớn nhất so với các editor khác:
+
+| Chế Độ | Tên | Mô Tả |
+|--------|-----|--------|
+| **Normal** | Normal Mode | Chế độ mặc định khi mở file. Dùng để di chuyển, xóa, copy, paste. **Không gõ được chữ.** |
+| **Insert** | Insert Mode | Chế độ gõ văn bản bình thường như các editor khác. Nhấn `i` để vào. |
+| **Command** | Command Mode | Chế độ nhập lệnh (lưu, thoát, tìm kiếm). Nhấn `:` để vào. |
 
 ```
-/
-├── /bin
-├── /boot
-├── /dev
-├── /etc
-├── /home
-├── /lib
-├── /media
-├── /mnt
-├── /opt
-├── /proc
-├── /root
-├── /run
-├── /sbin
-├── /srv
-├── /sys
-├── /tmp
-├── /usr
-└── /var
+Mở file → [Normal Mode]
+              ↓ i / a / o
+         [Insert Mode]  →  Gõ văn bản
+              ↓ Esc
+         [Normal Mode]
+              ↓ :
+         [Command Mode] →  :w  :q  :wq
 ```
 
 ---
 
-## 📋 Bảng Chi Tiết Từng Thư Mục
+### 🚪 Vào / Thoát Các Chế Độ
 
-| Đường Dẫn | Tên Tiếng Anh | Giải Thích (EN) | Giải Thích (VI) |
-|-----------|---------------|-----------------|-----------------|
-| `/bin` | Binary | Essential user commands | Chứa các lệnh cơ bản cho người dùng như `ls`, `cp`, `mv`, `cat` — lệnh nào cũng cần dùng hàng ngày |
-| `/boot` | Boot | Boot loader files | Chứa các file khởi động hệ thống, bao gồm Linux kernel (`vmlinuz`) và GRUB bootloader |
-| `/dev` | Device | Device files | Chứa file đại diện cho các thiết bị phần cứng: ổ cứng (`/dev/sda`), USB, màn hình, v.v. |
-| `/etc` | Et Cetera | System configuration files | Chứa toàn bộ file cấu hình hệ thống: cài đặt mạng, user, password, phần mềm cài sẵn |
-| `/home` | Home | User home directories | Thư mục cá nhân của từng user. Ví dụ: `/home/john` — giống "My Documents" trong Windows |
-| `/lib` | Library | Essential shared libraries | Chứa thư viện dùng chung cho các lệnh trong `/bin` và `/sbin` — giống `.dll` trong Windows |
-| `/media` | Media | Removable media mount points | Điểm gắn thiết bị lưu trữ ngoài: USB, CD/DVD, thẻ nhớ được tự động mount vào đây |
-| `/mnt` | Mount | Temporary mount points | Điểm gắn thủ công tạm thời: dùng khi bạn tự mount ổ cứng, phân vùng, hoặc network drive |
-| `/opt` | Optional | Optional software packages | Chứa phần mềm cài thêm từ bên ngoài (không qua package manager), ví dụ: Chrome, VSCode |
-| `/proc` | Process | Process and kernel information | Thư mục ảo (không có trên ổ cứng thật), chứa thông tin về các tiến trình đang chạy và kernel |
-| `/root` | Root | Root user's home directory | Thư mục home riêng của user `root` (admin). Khác với `/home` — chỉ dành cho superuser |
-| `/run` | Run | Runtime data | Chứa dữ liệu runtime tạm thời: PID files, socket files — được tạo lại mỗi lần khởi động |
-| `/sbin` | System Binary | System administration commands | Chứa lệnh quản trị hệ thống chỉ dành cho root: `fdisk`, `iptables`, `reboot`, `shutdown` |
-| `/srv` | Service | Service data | Chứa dữ liệu của các service đang chạy, ví dụ: web server lưu file HTML vào `/srv/www` |
-| `/sys` | System | Kernel and hardware information | Thư mục ảo cung cấp thông tin về phần cứng và kernel theo thời gian thực |
-| `/tmp` | Temporary | Temporary files | Chứa file tạm thời, bị xóa tự động khi restart. Mọi user đều có quyền ghi vào đây |
-| `/usr` | Unix System Resources | User applications and data | Chứa phần lớn phần mềm cài qua package manager: `/usr/bin`, `/usr/lib`, `/usr/share` |
-| `/var` | Variable | Variable data (logs, cache, etc.) | Chứa dữ liệu thay đổi liên tục: log hệ thống (`/var/log`), cache, email, database files |
+| Phím | Từ Chế Độ | Tiếng Anh | Tiếng Việt |
+|------|-----------|-----------|------------|
+| `i` | Normal → Insert | Insert before cursor | Vào Insert Mode — gõ trước con trỏ |
+| `I` | Normal → Insert | Insert at beginning of line | Vào Insert Mode — nhảy về đầu dòng rồi gõ |
+| `a` | Normal → Insert | Append after cursor | Vào Insert Mode — gõ sau con trỏ |
+| `A` | Normal → Insert | Append at end of line | Vào Insert Mode — nhảy về cuối dòng rồi gõ |
+| `o` | Normal → Insert | Open new line below | Tạo dòng mới bên dưới rồi vào Insert Mode |
+| `O` | Normal → Insert | Open new line above | Tạo dòng mới bên trên rồi vào Insert Mode |
+| `Esc` | Insert → Normal | Exit Insert Mode | Thoát khỏi Insert Mode, về Normal Mode |
+| `:` | Normal → Command | Enter Command Mode | Vào Command Mode để gõ lệnh |
 
 ---
 
-## 🔍 Giải Thích Chi Tiết Từng Thư Mục Quan Trọng
+### 💾 Lưu & Thoát (Command Mode)
 
-### `/etc` — Cấu Hình Hệ Thống
-Đây là nơi bạn sẽ vào nhiều nhất khi cần chỉnh sửa cấu hình.
+> Nhớ nhấn `Esc` trước, rồi gõ lệnh bắt đầu bằng `:`
 
-| File / Thư Mục | Chức Năng |
-|----------------|-----------|
-| `/etc/passwd` | Danh sách tất cả user trong hệ thống |
-| `/etc/shadow` | Mật khẩu đã mã hóa của các user |
-| `/etc/hosts` | Mapping IP ↔ hostname thủ công |
-| `/etc/fstab` | Cấu hình tự động mount ổ cứng khi khởi động |
-| `/etc/nginx/` | Cấu hình web server Nginx |
-| `/etc/ssh/` | Cấu hình SSH server |
-| `/etc/crontab` | Lịch chạy tự động (cron jobs) |
-
----
-
-### `/var` — Dữ Liệu Động
-Nơi lưu log và dữ liệu thay đổi theo thời gian.
-
-| File / Thư Mục | Chức Năng |
-|----------------|-----------|
-| `/var/log/` | Tất cả file log hệ thống |
-| `/var/log/syslog` | Log chung của hệ thống |
-| `/var/log/auth.log` | Log đăng nhập, xác thực |
-| `/var/log/nginx/` | Log của Nginx web server |
-| `/var/cache/` | Cache của các phần mềm |
-| `/var/lib/` | Dữ liệu của các ứng dụng (database, v.v.) |
-| `/var/mail/` | Email của user trong hệ thống |
+| Lệnh | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `:w` | Write (save) | Lưu file |
+| `:w <tên>` | Save as new filename | Lưu file với tên khác |
+| `:q` | Quit | Thoát (chỉ thoát được nếu chưa sửa gì) |
+| `:q!` | Force quit without saving | Thoát mà không lưu, bỏ qua mọi thay đổi |
+| `:wq` | Write and quit | Lưu rồi thoát |
+| `:wq!` | Force write and quit | Buộc lưu rồi thoát |
+| `ZZ` | Save and quit (shortcut) | Lưu và thoát nhanh (ở Normal Mode, không cần `:`) |
+| `ZQ` | Quit without saving | Thoát không lưu nhanh (ở Normal Mode) |
 
 ---
 
-### `/usr` — Phần Mềm Người Dùng
-Nơi phần lớn phần mềm cài đặt thông qua `apt`, `yum`, `dnf`.
+### 🖱️ Di Chuyển Con Trỏ (Normal Mode)
 
-| Thư Mục | Chức Năng |
-|---------|-----------|
-| `/usr/bin/` | Lệnh của các phần mềm cài thêm (không phải lệnh hệ thống cốt lõi) |
-| `/usr/sbin/` | Lệnh quản trị của phần mềm cài thêm |
-| `/usr/lib/` | Thư viện của phần mềm cài thêm |
-| `/usr/share/` | File dùng chung: tài liệu, icon, theme |
-| `/usr/local/` | Phần mềm cài thủ công (biên dịch từ source) |
+#### Di Chuyển Cơ Bản
 
----
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `h` | Move left | Di chuyển sang trái |
+| `l` | Move right | Di chuyển sang phải |
+| `j` | Move down | Di chuyển xuống |
+| `k` | Move up | Di chuyển lên |
+| `w` | Next word | Nhảy đến đầu từ tiếp theo |
+| `b` | Back word | Nhảy về đầu từ trước đó |
+| `e` | End of word | Nhảy đến cuối từ hiện tại |
 
-### `/proc` — Thông Tin Tiến Trình (Ảo)
-Không phải file thật — đây là interface để xem thông tin kernel.
+#### Di Chuyển Theo Dòng
 
-| File | Chức Năng |
-|------|-----------|
-| `/proc/cpuinfo` | Thông tin CPU |
-| `/proc/meminfo` | Thông tin RAM |
-| `/proc/uptime` | Thời gian hệ thống đã chạy |
-| `/proc/<PID>/` | Thư mục chứa thông tin của tiến trình có PID tương ứng |
-| `/proc/net/` | Thông tin mạng |
-
----
-
-## ⚡ Lệnh Điều Hướng Nhanh
-
-| Lệnh | Chức Năng |
-|------|-----------|
-| `ls /` | Xem toàn bộ thư mục gốc |
-| `ls /etc` | Xem nội dung thư mục `/etc` |
-| `cat /etc/os-release` | Xem thông tin distro Linux đang dùng |
-| `cat /proc/cpuinfo` | Xem thông tin CPU |
-| `cat /proc/meminfo` | Xem thông tin bộ nhớ RAM |
-| `df -h /` | Xem dung lượng ổ đĩa gốc |
-| `du -sh /var/log` | Xem kích thước thư mục log |
-| `ls /home` | Xem danh sách tất cả user |
-| `ls /dev/sd*` | Xem danh sách ổ cứng |
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `0` | Beginning of line | Về đầu dòng |
+| `^` | First non-blank character | Về ký tự không trắng đầu tiên trong dòng |
+| `$` | End of line | Về cuối dòng |
+| `G` | Go to last line | Nhảy xuống dòng cuối file |
+| `gg` | Go to first line | Nhảy lên dòng đầu file |
+| `:<N>` | Go to line N | Nhảy đến dòng số N (vd: `:25`) |
+| `Ctrl + F` | Page down | Cuộn xuống một trang |
+| `Ctrl + B` | Page up | Cuộn lên một trang |
+| `Ctrl + D` | Half page down | Cuộn xuống nửa trang |
+| `Ctrl + U` | Half page up | Cuộn lên nửa trang |
 
 ---
 
-## 💡 Mẹo Nhớ Nhanh
+### ✂️ Xóa (Normal Mode)
 
-| Nhóm | Thư Mục | Cách Nhớ |
-|------|---------|----------|
-| **Lệnh hệ thống** | `/bin`, `/sbin` | **bin** = binary (file thực thi). `sbin` = system binary (chỉ root dùng) |
-| **Cấu hình** | `/etc` | Mọi thứ cần **chỉnh sửa** đều nằm ở đây |
-| **Người dùng** | `/home`, `/root` | `/home` cho user thường, `/root` cho admin |
-| **Phần mềm** | `/usr`, `/opt` | `/usr` = cài qua package manager, `/opt` = cài thủ công |
-| **Dữ liệu động** | `/var`, `/tmp` | `/var` lưu lâu dài, `/tmp` xóa khi reboot |
-| **Phần cứng** | `/dev`, `/sys`, `/proc` | Đây là "cửa sổ" nhìn vào phần cứng và kernel |
-| **Mount** | `/media`, `/mnt` | `/media` = tự động, `/mnt` = thủ công |
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `x` | Delete character | Xóa một ký tự tại con trỏ |
+| `X` | Delete character before | Xóa ký tự trước con trỏ (như Backspace) |
+| `dd` | Delete current line | Xóa toàn bộ dòng hiện tại |
+| `dw` | Delete word | Xóa từ hiện tại |
+| `d$` | Delete to end of line | Xóa từ con trỏ đến cuối dòng |
+| `d0` | Delete to beginning of line | Xóa từ đầu dòng đến con trỏ |
+| `dgg` | Delete to first line | Xóa từ dòng hiện tại lên đến dòng đầu |
+| `dG` | Delete to last line | Xóa từ dòng hiện tại xuống đến dòng cuối |
+| `5dd` | Delete 5 lines | Xóa 5 dòng liên tiếp (thay 5 bằng số bất kỳ) |
 
 ---
 
-> 📌 **Lưu ý:** Trong Linux, **mọi thứ đều là file** — kể cả thiết bị phần cứng, tiến trình, và kết nối mạng đều được biểu diễn dưới dạng file trong cây thư mục này.
+### 📋 Sao Chép & Dán (Normal Mode)
+
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `yy` | Yank (copy) current line | Sao chép dòng hiện tại |
+| `yw` | Yank word | Sao chép một từ |
+| `y$` | Yank to end of line | Sao chép từ con trỏ đến cuối dòng |
+| `5yy` | Yank 5 lines | Sao chép 5 dòng liên tiếp |
+| `p` | Paste after cursor | Dán nội dung sau con trỏ / sau dòng hiện tại |
+| `P` | Paste before cursor | Dán nội dung trước con trỏ / trước dòng hiện tại |
+
+---
+
+### 🔄 Hoàn Tác & Làm Lại (Normal Mode)
+
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `u` | Undo | Hoàn tác thay đổi vừa làm |
+| `Ctrl + R` | Redo | Làm lại thay đổi đã hoàn tác |
+| `U` | Undo all changes on line | Hoàn tác tất cả thay đổi trên dòng hiện tại |
+
+---
+
+### 🔍 Tìm Kiếm & Thay Thế
+
+| Lệnh | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `/text` | Search forward | Tìm kiếm xuôi xuống (gõ `/` rồi nhập từ cần tìm) |
+| `?text` | Search backward | Tìm kiếm ngược lên trên |
+| `n` | Next match | Nhảy đến kết quả tìm kiếm tiếp theo |
+| `N` | Previous match | Nhảy về kết quả tìm kiếm trước đó |
+| `:%s/old/new/g` | Replace all | Thay thế tất cả `old` bằng `new` trong toàn file |
+| `:%s/old/new/gc` | Replace with confirm | Thay thế từng cái một, hỏi xác nhận trước mỗi lần |
+| `:s/old/new/g` | Replace in current line | Chỉ thay thế trong dòng hiện tại |
+
+---
+
+### 🔧 Chỉnh Sửa Nhanh (Normal Mode)
+
+| Phím | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `r` | Replace single character | Thay thế đúng 1 ký tự tại con trỏ |
+| `R` | Replace mode | Vào chế độ ghi đè (gõ đè lên ký tự cũ) |
+| `cc` | Change entire line | Xóa dòng hiện tại và vào Insert Mode |
+| `cw` | Change word | Xóa từ hiện tại và vào Insert Mode |
+| `c$` | Change to end of line | Xóa từ con trỏ đến cuối dòng và vào Insert Mode |
+| `~` | Toggle case | Đổi chữ hoa ↔ chữ thường |
+| `>>` | Indent line | Thêm tab/indent cho dòng |
+| `<<` | Unindent line | Bỏ tab/indent của dòng |
+| `==` | Auto-indent line | Tự động căn chỉnh indent |
+
+---
+
+### 🖥️ Lệnh Hữu Ích Khác (Command Mode)
+
+| Lệnh | Tiếng Anh | Tiếng Việt |
+|------|-----------|------------|
+| `:set number` | Show line numbers | Bật hiển thị số dòng |
+| `:set nonumber` | Hide line numbers | Tắt hiển thị số dòng |
+| `:set hlsearch` | Highlight search | Bật highlight kết quả tìm kiếm |
+| `:set nohlsearch` | Remove highlight | Tắt highlight tìm kiếm |
+| `:set paste` | Paste mode | Bật chế độ dán (tránh lỗi indent khi paste) |
+| `:syntax on` | Syntax highlighting | Bật tô màu cú pháp |
+| `:syntax off` | No syntax highlighting | Tắt tô màu cú pháp |
+| `:%d` | Delete all lines | Xóa toàn bộ nội dung file |
+| `:10,20d` | Delete lines 10 to 20 | Xóa từ dòng 10 đến dòng 20 |
+| `:!<cmd>` | Run shell command | Chạy lệnh shell mà không thoát vim (vd: `:!ls`) |
+
+---
+
+## ⚡ So Sánh Nano vs Vim
+
+| Tiêu Chí | Nano | Vim |
+|----------|------|-----|
+| **Độ khó** | Dễ, phù hợp người mới | Khó ban đầu, cần học mode |
+| **Tốc độ** | Chậm hơn | Rất nhanh khi thành thạo |
+| **Có sẵn trên server** | Không phải lúc nào cũng có | Hầu như luôn có (`vi`) |
+| **Tính năng** | Cơ bản | Rất mạnh, hỗ trợ plugin |
+| **Phù hợp cho** | Sửa nhanh file cấu hình | Lập trình, chỉnh sửa phức tạp |
+| **Thoát như thế nào** | `Ctrl + X` | `Esc` → `:q!` |
+
+---
+
+## 🆘 Bị Kẹt Trong Vim? Thoát Ngay!
+
+```
+1. Nhấn  Esc  (một hoặc vài lần)
+2. Gõ    :q!
+3. Nhấn  Enter
+```
+
+> `:q!` = thoát ngay lập tức, **không lưu** bất kỳ thay đổi nào.
